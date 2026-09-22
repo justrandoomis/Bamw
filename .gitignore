@@ -98,3 +98,12 @@ store-media-repair.md
 .perf-probe-bundle.mjs
 perf-probe.md
 .perf-probe-search.mjs
+.catalogue-import-bundle.mjs
+catalogue-import-runner.md
+catalogue-covers.md
+
+# Bundles and reports produced by the square-card fill and the label audit.
+.square-card-bundle.mjs
+square-cards.md
+.platform-audit-bundle.mjs
+platform-audit.md

@@ -1,0 +1,39 @@
+# The authorisation for a single import write. SPENT — armed once, used once.
+#
+# This file is read by `scripts/catalogue-import-runner.mjs`. The first line
+# that is not blank and not a comment is a token; it is claimed in the
+# `console_runs` table before a single row is written, with the same
+# `INSERT ... ON CONFLICT DO NOTHING RETURNING id` the D1 console uses. So it
+# authorises exactly one run and then spends itself — a later push finds the
+# token already recorded and stays a dry run.
+#
+# The token below has been claimed in `console_runs` and cannot write again;
+# it is commented out as well so the file reads the way it behaves. The owner
+# authorised it in as many words — «نفذ وانشر» — and it ran at 17:20–17:32Z.
+#
+# ## What the dry run said this would do, and what was authorised
+#
+# 2026-09-16T17:06Z, against a catalogue of 1,275 products, in `refresh-content`:
+#
+#   create    439    the games the interrupted browser run never reached
+#   update    1,085  games already on sale — title, cover, store link, NSUID,
+#                    publisher, languages, and provably nothing else: not price,
+#                    cost, stock, visibility, options, types, trade-in value or
+#                    display order
+#   skip      6
+#   covers    59 of the 607 covered rows have their cover dropped, because those
+#             25 URLs each sit on more than one *different* game. Every link in
+#             the file resolves; the artwork on those rows simply belongs to
+#             another game — `NipponMarathon` on three Railway Nippon! titles,
+#             a Wii `deBlob` packshot on Densha de GO!!, a Just Dance portrait
+#             on Dance with Devils. Pass `--covers all` to import them anyway.
+#
+# And what it actually did, from the run's own table: all sixteen batches
+# succeeded, the product count rose monotonically with no batch losing a row,
+# 439 created and 1,085 updated, 1,275 -> 1,714 products. The dry run's figures
+# and the write's figures agree exactly.
+#
+# To authorise another run, write a NEW token below. Re-using this one does
+# nothing: the claim is already recorded.
+
+# 2026-09-16-catalogue-content-refresh  (spent 2026-09-16T17:20Z)

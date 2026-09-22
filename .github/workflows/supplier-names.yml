@@ -16,6 +16,10 @@ on:
         description: "Write the rows. Leave off for a dry run that reports what would be written."
         type: boolean
         default: false
+      missing_only:
+        description: "Only the games that have no Chinese name yet. Off re-resolves all 1,534, which does not finish."
+        type: boolean
+        default: true
       limit:
         description: "How many games this run should look at (blank = all)"
         required: false
@@ -84,6 +88,10 @@ jobs:
           APPLY: ${{ inputs.apply }}
           LIMIT: ${{ inputs.limit }}
           OFFSET: ${{ inputs.offset }}
+          # A push carries no inputs, so this is empty there — and the push
+          # path must have it on, or the dry run re-resolves the whole shelf
+          # and times out. Hence the `!= 'false'` rather than `== 'true'`.
+          MISSING_ONLY: ${{ inputs.missing_only }}
         run: |
           # `CLOUDFLARE_D1_DATABASE_ID` is not a secret this repository has set,
           # so the database it points at is read out of `wrangler.jsonc` — the
@@ -100,6 +108,7 @@ jobs:
           # is exempt.
           args=""
           if [ "$APPLY" = "true" ]; then args="$args --apply"; fi
+          if [ "$MISSING_ONLY" != "false" ]; then args="$args --missing-only"; fi
           if [ -z "$LIMIT" ] && [ -z "$OFFSET" ]; then args="$args --require-complete"; fi
           if [ -n "$LIMIT" ]; then args="$args --limit=$LIMIT"; fi
           if [ -n "$OFFSET" ]; then args="$args --offset=$OFFSET"; fi

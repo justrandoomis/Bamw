@@ -14,7 +14,9 @@ import {
   saveMarketConfig,
 } from "@/lib/banana.server";
 /* The same numbers the pricing uses, so the refusal cannot disagree with it. */
-import { PRICE_STEP, roundsToZero } from "@/lib/banana-market-config.server";
+import { getMarketConfig, marketConfigProblem } from "@/lib/banana-market-config.server";
+import { getWheelOdds, saveWheelOdds } from "@/lib/wheel.server";
+import { wheelOddsProblem } from "@/lib/wheel-odds";
 import {
   createBananCodesBatch,
   deleteBananCode,
@@ -92,18 +94,19 @@ export const Route = createFileRoute("/api/admin/banana")({
             const patch: Record<string, unknown> = {};
             if (data.rewardRatePerIqd !== undefined) {
               patch["bananaPerDinar"] = Number(data.rewardRatePerIqd);
+              /*
+                Both names for one number, written together so they cannot
+                drift. `orders.server.ts` minted from `banana_reward_rate`
+                while this panel only ever wrote `bananaPerDinar`, so the earn
+                rate the owner set had no effect on what anyone earned.
+              */
+              patch["banana_reward_rate"] = Number(data.rewardRatePerIqd);
             }
             if (data.dinarPerBanana !== undefined) {
               patch["dinarPerBanana"] = Number(data.dinarPerBanana);
             }
             if (data.signupGrant !== undefined) {
               patch["bananaSignupGrant"] = Number(data.signupGrant);
-            }
-            if (Object.keys(patch).length > 0) {
-              await updateStore((store) => ({
-                ...store,
-                settings: { ...(store.settings ?? {}), ...patch },
-              }));
             }
 
             const enginePatch: Record<string, number> = {};
@@ -112,6 +115,40 @@ export const Route = createFileRoute("/api/admin/banana")({
             }
             if (data.promoRatePerMinute !== undefined) {
               enginePatch["promoRatePerMinute"] = Number(data.promoRatePerMinute);
+            }
+
+            /*
+              Everything checked before anything is written.
+
+              This form saves two halves — the store's settings and the market
+              engine's — and it used to write the first half and then refuse
+              the second. A rejected save had already changed the shop's earn
+              rate, and the admin saw only the error: a save that half
+              happened, reported as a save that did not.
+
+              The engine half is held to the same rules as the engine tab,
+              because this is the screen the owner actually uses.
+              `save_market_config` refuses a base outside its band and a band
+              that rounds to nothing; this action wrote `basePrice` with
+              nothing checked at all, which is how a base of 0.0004 went into a
+              shop whose ceiling was 0.0003 and killed the market silently. One
+              set of rules, both doors.
+            */
+            for (const [key, value] of Object.entries({ ...patch, ...enginePatch })) {
+              if (!Number.isFinite(Number(value))) {
+                return json({ error: `قيمة غير صالحة للحقل ${key}` }, { status: 400 });
+              }
+            }
+            if (Object.keys(enginePatch).length > 0) {
+              const problem = marketConfigProblem({ ...(await getMarketConfig()), ...enginePatch });
+              if (problem) return json({ error: problem }, { status: 400 });
+            }
+
+            if (Object.keys(patch).length > 0) {
+              await updateStore((store) => ({
+                ...store,
+                settings: { ...(store.settings ?? {}), ...patch },
+              }));
             }
             if (Object.keys(enginePatch).length > 0) await saveMarketConfig(enginePatch);
 
@@ -147,69 +184,61 @@ export const Route = createFileRoute("/api/admin/banana")({
             if (c["botsEnabled"] !== undefined) patch["botsEnabled"] = Boolean(c["botsEnabled"]);
 
             /*
-              A floor above the ceiling, or a base outside its own bounds, is a
-              market nobody can list into. `getMarketConfig` silently repairs
-              the first of those on read; refusing here means the admin is told
-              rather than left wondering why the engine ignored them.
+              One set of rules, shared with `save_settings` above, so the two
+              doors into the same configuration cannot disagree about what a
+              usable market is. Refused rather than silently repaired: the
+              admin is told which number is wrong and why, instead of being
+              left to wonder why the engine ignored them.
             */
             const current = (await getAdminBananaData()).marketConfig;
-            const merged = { ...current, ...patch } as typeof current;
-            if (merged.minPrice > merged.maxPrice) {
-              return json({ error: "أدنى سعر أكبر من أعلى سعر" }, { status: 400 });
-            }
-            if (!(merged.basePrice > 0)) {
-              return json({ error: "السعر الأساسي يجب أن يكون أكبر من صفر" }, { status: 400 });
-            }
-            /*
-              The comment above promised this check and the code never made it.
-              Production is in exactly the state it describes: a base of 0.0004
-              against a ceiling of 0.0003, so `spotPriceAt` clamps every price
-              to the ceiling and the base the admin set means nothing.
-            */
-            if (merged.basePrice < merged.minPrice || merged.basePrice > merged.maxPrice) {
-              return json(
-                {
-                  error:
-                    `السعر الأساسي (${merged.basePrice}) خارج حدوده: ` +
-                    `أدنى ${merged.minPrice} وأعلى ${merged.maxPrice}. ` +
-                    "المحرك يحصر السعر داخل الحدين، فالقيمة خارجهما لا أثر لها.",
-                },
-                { status: 400 },
-              );
-            }
-            /*
-              A band that rounds to nothing.
-
-              `spotPriceAt` rounds to three decimals, so a ceiling below 0.0005
-              prices at 0.000 for every customer no matter what the base says —
-              which is the «موزة واحدة $0.00» that was reported. Refused with
-              the smallest usable number rather than saved and left to puzzle
-              the admin, who sees a price they set and a market showing zero.
-            */
-            for (const [label, value] of [
-              ["السعر الأساسي", merged.basePrice],
-              ["أدنى سعر", merged.minPrice],
-              ["أعلى سعر", merged.maxPrice],
-            ] as const) {
-              if (roundsToZero(value)) {
-                return json(
-                  {
-                    error:
-                      `${label} (${value}) يُقرَّب إلى صفر عند دقة السوق. ` +
-                      `أصغر قيمة قابلة للعرض هي ${PRICE_STEP}.`,
-                  },
-                  { status: 400 },
-                );
-              }
-            }
-            if (merged.botMinQuantity > merged.botMaxQuantity) {
-              return json({ error: "أقل كمية للبوت أكبر من أكبر كمية" }, { status: 400 });
-            }
-            if (merged.minListingQuantity > merged.maxListingQuantity) {
-              return json({ error: "أقل كمية للعرض أكبر من أكبر كمية" }, { status: 400 });
-            }
+            const problem = marketConfigProblem({ ...current, ...patch } as typeof current);
+            if (problem) return json({ error: problem }, { status: 400 });
 
             return json({ success: true, marketConfig: await saveMarketConfig(patch) });
+          }
+
+          /* ------------------------------ the wheel ---------------------------- */
+
+          if (action === "save_wheel_odds") {
+            /*
+              Validated as the admin typed it, not as the reader would repair
+              it. `normalizeWheelOdds` sorts a jumbled set and substitutes the
+              shipped bands for an unusable one — which is right on the way
+              OUT of storage, and would silently swallow the mistake on the way
+              in. So the raw values are coerced to numbers and checked, and
+              only then saved.
+            */
+            const raw = (data.odds ?? {}) as Record<string, unknown>;
+            const current = await getWheelOdds();
+
+            const tiers = Array.isArray(raw["tiers"])
+              ? (raw["tiers"] as Record<string, unknown>[]).map((tier, index) => {
+                  const bound = tier?.["upTo"];
+                  return {
+                    upTo:
+                      bound === null || bound === undefined || bound === "" ? null : Number(bound),
+                    weight: Number(tier?.["weight"]),
+                    label: String(tier?.["label"] ?? `فئة ${index + 1}`),
+                  };
+                })
+              : current.tiers;
+
+            const candidate = {
+              tiers,
+              losingPercent:
+                raw["losingPercent"] === undefined
+                  ? current.losingPercent
+                  : Number(raw["losingPercent"]),
+              ticketPriceBananas:
+                raw["ticketPriceBananas"] === undefined
+                  ? current.ticketPriceBananas
+                  : Number(raw["ticketPriceBananas"]),
+            };
+
+            const problem = wheelOddsProblem(candidate);
+            if (problem) return json({ error: problem }, { status: 400 });
+
+            return json({ success: true, wheelOdds: await saveWheelOdds(candidate) });
           }
 
           /* ------------------------------- bots -------------------------------- */
@@ -291,6 +320,62 @@ export const Route = createFileRoute("/api/admin/banana")({
             if (!listingId) return json({ error: "معرّف العرض مطلوب" }, { status: 400 });
             await adminCancelMarketListing(listingId);
             return json({ success: true, refundedBananas: 0 });
+          }
+
+          /*
+            Tickets, granted by hand.
+
+            «أو تعطى عن طريق الأدمن للمستخدمين» — the second of the two ways a
+            member can get a ticket. Bananas are the first and they go through
+            the redemption screen; this is the shop simply handing one over.
+
+            `referenceId` is what makes it safe to press twice: the ledger has
+            a unique index on it, so a repeated grant with the same reference
+            adds nothing and says so.
+          */
+          if (action === "grant_wheel_tickets") {
+            const userId = String(data.userId ?? "").trim();
+            const quantity = Math.floor(Number(data.quantity));
+            if (!userId) return json({ error: "معرّف المستخدم مطلوب" }, { status: 400 });
+            if (!Number.isFinite(quantity) || quantity <= 0 || quantity > 100) {
+              return json({ error: "عدد التذاكر يجب أن يكون بين 1 و 100" }, { status: 400 });
+            }
+
+            const { grantTickets } = await import("@/lib/wheel.server");
+            const reference = String(data.referenceId ?? "").trim();
+            const result = await grantTickets({
+              userId,
+              quantity,
+              reason: `admin_grant:${String(data.reason ?? "").slice(0, 120)}`,
+              ...(reference ? { referenceId: reference } : {}),
+            });
+
+            return json({
+              success: true,
+              granted: result.granted,
+              tickets: result.balance,
+              // Said plainly rather than silently: a second press changed nothing.
+              ...(result.granted ? {} : { note: "تم منح هذه التذاكر سابقاً بنفس المرجع" }),
+            });
+          }
+
+          /*
+            Turn a redemption offer into a ticket offer, or back.
+
+            The banana price stays where the admin already sets prices — on the
+            offer itself. This only records how many tickets that offer hands
+            over, which is the one thing the redemption table cannot hold.
+          */
+          if (action === "set_ticket_offer") {
+            const offerId = String(data.offerId ?? "").trim();
+            const quantity = Math.floor(Number(data.ticketQuantity ?? 0));
+            if (!offerId) return json({ error: "معرّف المكافأة مطلوب" }, { status: 400 });
+            if (!Number.isFinite(quantity) || quantity < 0 || quantity > 100) {
+              return json({ error: "عدد التذاكر غير صالح" }, { status: 400 });
+            }
+            const { setTicketOffer } = await import("@/lib/wheel.server");
+            await setTicketOffer(offerId, quantity);
+            return json({ success: true, offerId, ticketQuantity: quantity });
           }
 
           if (action === "adjust_balance") {

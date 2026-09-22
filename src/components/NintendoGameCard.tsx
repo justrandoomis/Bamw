@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Link } from "@tanstack/react-router";
 
 import NintendoCover from "@/components/NintendoCover";
@@ -19,7 +20,7 @@ export interface NintendoGameCardProps {
  * It intentionally contains only the requested essentials: square artwork,
  * title, and price, plus the Switch 2 band when the product belongs to it.
  */
-export function NintendoGameCard({
+function NintendoGameCardBase({
   product,
   priority = false,
   formatPrice,
@@ -92,5 +93,15 @@ export function NintendoGameCard({
     </Link>
   );
 }
+
+/*
+  Memoised because the shelf that renders it renders up to 1,714 of them and
+  grows that list a screenful at a time as the member scrolls. Every growth
+  re-renders the page; without this, each one re-rendered every card already on
+  screen. The props are a product object straight out of the store query, a
+  boolean and two optional values — all stable between growths — so the shallow
+  compare bails out on everything except the cards that are actually new.
+*/
+export const NintendoGameCard = memo(NintendoGameCardBase);
 
 export default NintendoGameCard;

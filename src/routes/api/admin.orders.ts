@@ -21,6 +21,7 @@ import { evaluateOrderAutoCompletion } from "@/lib/orders.server";
 import { completeOrder, withDeliveryDeadline } from "@/lib/order-completion.server";
 import {
   completeDigitalOrderAndNext,
+  completeDigitalOrderManually,
   ensureDigitalOrderQueueEntry,
   getDeliveryOrderState,
   mapUnmatchedDeliveryItem,
@@ -65,6 +66,8 @@ type Action =
   | "mark_shipped"
   | "mark_delivered"
   | "complete_digital_and_next"
+  /* The second door, for an order delivered outside the tool. */
+  | "complete_digital_manual"
   | "complete_order"
   | "send_discount";
 
@@ -81,7 +84,13 @@ interface AdminOrderBody {
   code?: string;
   pin?: string;
   rawText?: string;
+  /** Manual completion: why the order is being closed without the tool. */
+  reason?: string;
+  /** Manual completion: the order's own code, typed by the admin. */
+  confirmText?: string;
   text?: string;
+  /** `send_instructions`: which published guide's steps to send. */
+  guideId?: string;
   title?: string;
   clientMessageId?: string;
   /** Bulk-prepared accounts for one order line. */
@@ -309,6 +318,86 @@ export const Route = createFileRoute("/api/admin/orders")({
                 );
               }
             }
+            case "complete_digital_manual": {
+              /*
+                The order was delivered by hand — over WhatsApp, or read down
+                the phone — so the delivery slots never reached a terminal
+                state and the strict button refuses for the rest of the order's
+                life. This is the deliberate exception, and it asks for the
+                order's own code and a written reason before it will act.
+              */
+              try {
+                const result = await completeDigitalOrderManually({
+                  orderId: order.id,
+                  adminId: admin.id,
+                  adminName,
+                  reason: String(data.reason ?? ""),
+                  confirmText: String(data.confirmText ?? ""),
+                  threadId: data.threadId,
+                  now,
+                });
+
+                /*
+                  Ids only. The reason was redacted before it was stored, and no
+                  username, password, delivery code or OTP is recorded here —
+                  the audit trail says which slots were forced and from what
+                  state, never what was in them.
+                */
+                try {
+                  await d1Run(
+                    `INSERT INTO audit_logs (id, user_id, action, entity_type, entity_id, details, created_at)
+                     VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                    randomId("aud"),
+                    admin.id,
+                    "complete_digital_order_manually",
+                    "order",
+                    order.id,
+                    JSON.stringify({
+                      code: order.code,
+                      previousStatus: order.status,
+                      adminName,
+                      forced: result.forcedDeliveryItems,
+                      archivedUnmapped: result.archivedUnmappedItems,
+                    }),
+                    now,
+                  );
+                } catch {
+                  // An audit row must never fail the completion it records.
+                }
+
+                return json({
+                  success: true,
+                  order: redactOrder(result.order, ADMIN_VIEWER),
+                  state: result.state,
+                  orderFinished: true,
+                  nextOrder: result.nextOrder,
+                  forcedDeliveryItems: result.forcedDeliveryItems,
+                  archivedUnmappedItems: result.archivedUnmappedItems,
+                });
+              } catch (error) {
+                const code = error instanceof Error ? error.message : "MANUAL_COMPLETION_FAILED";
+                const message =
+                  code === "MANUAL_COMPLETION_CONFIRMATION_MISMATCH"
+                    ? "اكتب رقم الطلب بالضبط لتأكيد الإكمال اليدوي."
+                    : code === "MANUAL_COMPLETION_REASON_REQUIRED"
+                      ? "اكتب سبب الإكمال اليدوي (١٠ أحرف على الأقل)."
+                      : code === "ORDER_NOT_FULLY_DIGITAL"
+                        ? "هذا الإجراء مخصص للطلبات الرقمية الكاملة فقط."
+                        : code === "ORDER_HAS_OPEN_DELIVERY_ISSUE"
+                          ? "لا يمكن إكمال الطلب قبل حل بلاغ التسليم المفتوح."
+                          : code === "ORDER_ALREADY_CANCELLED"
+                            ? "لا يمكن إكمال طلب ملغي."
+                            : code === "THREAD_ORDER_MISMATCH"
+                              ? "المحادثة المفتوحة لا تتبع هذا الطلب. أعد تحميل الصفحة."
+                              : code === "DELIVERY_ITEMS_NOT_TERMINAL"
+                                ? "لا توجد عناصر تسليم لهذا الطلب؛ راجع عناصر الطلب أولاً."
+                                : "تعذر إكمال الطلب يدوياً.";
+                return json(
+                  { error: message, code },
+                  { status: code === "ORDER_NOT_FOUND" ? 404 : 409 },
+                );
+              }
+            }
             case "delete_order": {
               if (order.paymentStatus === "paid" && order.status !== "cancelled") {
                 return json(
@@ -428,12 +517,43 @@ export const Route = createFileRoute("/api/admin/orders")({
                   wasPaidByWallet = true;
                   refundAmount = Math.abs(Number(payments[0]?.amount || 0));
                 } else if (order.paymentStatus === "paid") {
-                  wasPaidByWallet = true;
-                  refundAmount = Number(order.total || 0);
+                  /*
+                    MARKED PAID, BUT THE WALLET NEVER PAID IT.
+
+                    This used to credit the member the whole order total. An
+                    order can be `paid` without any wallet payment row — an
+                    admin pressing «تأكيد الدفع» for cash or ZainCash, or, until
+                    the fix in `orders.server.ts`, any order carrying a physical
+                    line, which was written `unpaid`, then confirmed by hand.
+                    Cancelling it put the full price INTO a wallet that had
+                    never been charged: money created out of nothing, repeatable
+                    for as long as someone kept ordering and cancelling.
+
+                    The ledger is the evidence. No payment row means the wallet
+                    did not pay, so there is nothing for it to get back, and a
+                    refund of cash is a separate act someone has to decide to
+                    make — the admin wallet adjustment exists for exactly that
+                    and records who granted it.
+                  */
+                  wasPaidByWallet = false;
+                  refundAmount = 0;
+                  console.warn("[order:cancel_no_wallet_payment]", {
+                    orderId: order.id,
+                    code: order.code,
+                    total: order.total,
+                    note: "paid without a wallet payment row — no automatic wallet refund",
+                  });
                 }
               } else {
-                wasPaidByWallet = order.paymentStatus === "paid";
-                refundAmount = Number(order.total || 0);
+                /*
+                  The JSON driver has no ledger to consult, so the same rule is
+                  applied the only way it can be there: a wallet payment leaves
+                  a `paymentReference`, and an order without one was not paid
+                  from the wallet.
+                */
+                wasPaidByWallet =
+                  order.paymentStatus === "paid" && Boolean(order.paymentReference);
+                refundAmount = wasPaidByWallet ? Number(order.total || 0) : 0;
               }
 
               // 2. Check Idempotency: has this order already received an order_refund transaction?
@@ -813,11 +933,46 @@ export const Route = createFileRoute("/api/admin/orders")({
               return json({ success: true, ...result });
             }
             case "send_instructions": {
+              /*
+                With `guideId`, the steps come from the guide the shop actually
+                publishes — resolved HERE, not sent by the browser.
+
+                The admin used to retype the same fifteen steps into every
+                order, and they got shorter as the evening got longer. Now they
+                pick a method and the server renders it, so what a member reads
+                is what the shop publishes and the message carries a button
+                back to that method's own place on /account_guides.
+
+                Resolved server-side for the plain reason that a browser must
+                not be able to put arbitrary text in the shop's voice, or link
+                a member to a guide that does not exist. Without `guideId` this
+                is exactly what it was: the admin's own words.
+              */
+              let instructionBody: Record<string, unknown> = { text: data.text ?? "" };
+              const guideId = String(data.guideId ?? "").trim();
+              if (guideId) {
+                const { mergeContent } = await import("@/lib/content");
+                const { getStoreMeta } = await import("@/lib/db.server");
+                const { applyGuideOverrides, shippedGuides } = await import("@/lib/siteGuides");
+                const { guideMessageBody } = await import("@/lib/guideMessage");
+
+                const meta = (await getStoreMeta()) as { content?: unknown };
+                const guides = applyGuideOverrides(
+                  shippedGuides(),
+                  mergeContent(meta?.content).guides ?? [],
+                );
+                const guide = guides.find((item) => item.id === guideId);
+                if (!guide) {
+                  return json({ error: "الشرح غير موجود أو غير منشور" }, { status: 404 });
+                }
+                instructionBody = { ...guideMessageBody(guide) };
+              }
+
               await appendMessage(order.threadId, {
                 senderRole: "admin",
                 senderName: adminName,
                 kind: "instructions",
-                body: { text: data.text ?? "" },
+                body: instructionBody,
               });
               break;
             }

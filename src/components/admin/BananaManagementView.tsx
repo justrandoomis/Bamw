@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { adminApi } from "@/lib/api";
+import { formatPrice, roundPrice } from "@/lib/banana-price";
+import { LOSING_LABEL, oddsBreakdown, tierCounts } from "@/lib/wheel-odds";
 import {
   Sparkles,
   Gift,
@@ -31,6 +33,7 @@ import {
   DollarSign,
   UserCheck,
   Award,
+  Ticket,
 } from "lucide-react";
 
 const MARKET_FIELDS = [
@@ -76,11 +79,41 @@ function toBotPayload(bot: any) {
   };
 }
 
+/**
+ * A chance, as the owner reads it.
+ *
+ * `toFixed(1)` alone prints `0.0%` for a band that a member can still land on,
+ * which reads as "never" — and the rarest band in this catalogue is one game
+ * at weight 1 out of a pool of 115,969. A floor of «أقل من 0.1%» says small
+ * without saying impossible.
+ */
+function pct(chance: number): string {
+  const value = Number(chance);
+  if (!Number.isFinite(value) || value <= 0) return "0%";
+  if (value < 0.001) return "أقل من 0.1%";
+  return `${(value * 100).toFixed(1)}%`;
+}
+
 export function BananaManagementView() {
   const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState<
-    "rewards" | "redemptions" | "listings" | "settings" | "wallets" | "market"
+    "rewards" | "redemptions" | "listings" | "settings" | "wallets" | "market" | "wheel"
   >("rewards");
+
+  /*
+    The wheel's bands, its losing chance and what a ticket costs.
+
+    Seeded empty and filled from the server once the query lands — never from a
+    local default. The market form's own defaults taught that lesson: pressing
+    save before the GET resolves writes the component's guesses over the shop's
+    real numbers.
+  */
+  const [wheelForm, setWheelForm] = useState<{
+    tiers: { upTo: number | null; weight: number; label: string }[];
+    losingPercent: number;
+    ticketPriceBananas: number;
+  } | null>(null);
+  const [wheelError, setWheelError] = useState("");
 
   const [marketForm, setMarketForm] = useState<Record<string, any>>(DEFAULT_MARKET);
 
@@ -117,6 +150,59 @@ export function BananaManagementView() {
     if (data?.marketConfig) setMarketForm({ ...DEFAULT_MARKET, ...data.marketConfig });
   }, [data?.marketConfig]);
 
+  /*
+    Filled from the server, never from a local default, and only once — an
+    admin mid-edit must not have their typing replaced by a refetch.
+  */
+  React.useEffect(() => {
+    const odds = (data as Record<string, any> | undefined)?.["wheelOdds"];
+    if (odds && !wheelForm) {
+      setWheelForm({
+        tiers: (odds.tiers ?? []).map((tier: any) => ({
+          upTo: tier.upTo ?? null,
+          weight: Number(tier.weight ?? 0),
+          label: String(tier.label ?? ""),
+        })),
+        losingPercent: Number(odds.losingPercent ?? 0),
+        ticketPriceBananas: Number(odds.ticketPriceBananas ?? 0),
+      });
+    }
+  }, [data, wheelForm]);
+
+  /*
+    What the owner is actually setting, as percentages, while they type.
+
+    A weight is not a chance: a band's chance is its weight times the number of
+    games in it, and that multiplier runs from one game to nine hundred and
+    eighty-four across this catalogue. Typing 100 into the cheapest band and
+    120 into «حظ أوفر» reads as "a little more likely" and produces a
+    thousandth of it. «يستطيع تحديد النسب يدويا» is not served by a screen that
+    shows only weights, however carefully it is labelled.
+
+    Computed from the pool's prices with the wheel's own `tierCounts` and
+    `oddsBreakdown` — the same two functions `/api/wheel` serves the member
+    screen from — so what the owner reads here is what a member will read
+    there, for the bands as they are being typed rather than as they were last
+    saved.
+  */
+  const wheelPreview = useMemo(() => {
+    const prices = ((data as Record<string, any> | undefined)?.["wheelPoolPrices"] ??
+      []) as number[];
+    if (!wheelForm) return null;
+    const odds = {
+      tiers: wheelForm.tiers,
+      losingPercent: wheelForm.losingPercent,
+      ticketPriceBananas: wheelForm.ticketPriceBananas,
+    };
+    const rows = oddsBreakdown(odds, tierCounts(wheelForm.tiers, prices));
+    return {
+      poolSize: prices.length,
+      rows,
+      byTier: rows.slice(0, wheelForm.tiers.length),
+      losing: rows.find((row) => row.label === LOSING_LABEL) ?? null,
+    };
+  }, [data, wheelForm]);
+
   // Reward Modal State
   const [rewardModalOpen, setRewardModalOpen] = useState(false);
   const [editingReward, setEditingReward] = useState<any | null>(null);
@@ -133,7 +219,26 @@ export function BananaManagementView() {
     rewardCode: "",
     isActive: true,
     sortOrder: 0,
+    /* Wheel tickets this reward hands over. 0 means it is not a ticket offer. */
+    ticketQuantity: 0,
   });
+
+  // Grant-tickets Modal State
+  const [ticketModalOpen, setTicketModalOpen] = useState(false);
+  const [ticketUser, setTicketUser] = useState<any | null>(null);
+  const [ticketCount, setTicketCount] = useState("1");
+  const [ticketReason, setTicketReason] = useState("");
+  /*
+    One value per opening of the dialog, so the reference identifies THIS
+    press and not "a grant that looks like this one".
+
+    It was built from the member, the count and the reason, which makes a
+    double-click harmless and also makes the second deliberate grant
+    impossible: one ticket with no reason typed produces the same reference
+    for the rest of that member's life, and the ledger refuses it forever
+    with "already granted". A count and a note are not an identity.
+  */
+  const [ticketPress, setTicketPress] = useState("");
 
   // Redemption Details Modal State
   const [selectedRedemption, setSelectedRedemption] = useState<any | null>(null);
@@ -228,6 +333,26 @@ export function BananaManagementView() {
     },
   });
 
+  const saveWheelOddsMutation = useMutation({
+    mutationFn: (odds: NonNullable<typeof wheelForm>) => adminApi.saveWheelOdds(odds),
+    onError: (error: unknown) => {
+      /*
+        The server's own sentence, not a generic one. Every refusal names which
+        number is wrong and why — «حدود الفئات يجب أن تكون تصاعدية», «نسبة حظ
+        أوفر يجب أن تكون بين 0 و 95» — and replacing that with "failed" would
+        throw away the only thing that tells the owner what to change.
+      */
+      setWheelError(
+        error instanceof Error && error.message ? error.message : "تعذّر الحفظ — حاول مرة أخرى",
+      );
+    },
+    onSuccess: () => {
+      setWheelError("");
+      queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
+      showToast("تم حفظ نسب عجلة الحظ وسعر التذكرة");
+    },
+  });
+
   const saveBotMutation = useMutation({
     mutationFn: (bot: any) => adminApi.saveBananaBot(bot),
     onError: showFailure,
@@ -247,13 +372,54 @@ export function BananaManagementView() {
   });
 
   const saveRewardMutation = useMutation({
-    mutationFn: (reward: any) => adminApi.saveBananaReward(reward),
+    mutationFn: async (reward: any) => {
+      const result = await adminApi.saveBananaReward(reward);
+      /*
+        The ticket count lives in its own table, so it is its own write — and
+        it goes second deliberately: if the reward did not save there is no
+        offer for a ticket count to belong to.
+
+        Only when it actually changed. A blind write would send 0 for any
+        reward whose card was opened before the screen learned to read the
+        number, and 0 removes the offer from the wheel.
+      */
+      const offerId = String((result as any)?.reward?.id ?? reward.id ?? "").trim();
+      const before = Number(
+        (data?.rewards || []).find((r: any) => r.id === offerId)?.ticketQuantity ?? 0,
+      );
+      const after = Math.max(0, Math.floor(Number(reward.ticketQuantity) || 0));
+      if (offerId && after !== before) await adminApi.setBananaRewardTickets(offerId, after);
+      return result;
+    },
     onError: showFailure,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
       setRewardModalOpen(false);
       setEditingReward(null);
       showToast("تم حفظ الجائزة بنجاح في قاعدة البيانات");
+    },
+  });
+
+  /*
+    «أو تعطى عن طريق الأدمن للمستخدمين». The reply says whether anything
+    actually moved: a repeat with the same reference is refused by the
+    ledger's unique index, and saying "done" to that would be a lie.
+  */
+  const grantTicketsMutation = useMutation({
+    mutationFn: ({ userId, quantity, reason, referenceId }: any) =>
+      adminApi.grantWheelTickets({ userId, quantity, reason, referenceId }),
+    onError: showFailure,
+    onSuccess: (result) => {
+      queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
+      setTicketModalOpen(false);
+      setTicketCount("1");
+      setTicketReason("");
+      setTicketPress("");
+      showToast(
+        result?.note
+          ? result.note
+          : `تم منح التذاكر — الرصيد الآن ${Number(result?.tickets ?? 0)} تذكرة`,
+      );
     },
   });
 
@@ -378,6 +544,7 @@ export function BananaManagementView() {
         rewardCode: r.rewardCode || "",
         isActive: r.isActive !== false,
         sortOrder: r.sortOrder || 0,
+        ticketQuantity: Number(r.ticketQuantity ?? 0),
       });
     } else {
       setEditingReward(null);
@@ -394,6 +561,7 @@ export function BananaManagementView() {
         rewardCode: "",
         isActive: true,
         sortOrder: (data?.rewards?.length || 0) + 1,
+        ticketQuantity: 0,
       });
     }
     setRewardModalOpen(true);
@@ -599,6 +767,17 @@ export function BananaManagementView() {
           <Sliders className="w-4 h-4" />
           إعدادات الاقتصاد وقواعد السوق
         </button>
+        <button
+          onClick={() => setActiveTab("wheel")}
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs transition-all shrink-0 ${
+            activeTab === "wheel"
+              ? "bg-black text-white dark:bg-white dark:text-black shadow-sm"
+              : "bg-muted/40 text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          <Ticket className="w-4 h-4" />
+          عجلة الحظ — النسب وسعر التذكرة
+        </button>
       </div>
 
       {/* TAB: MARKET ENGINE + BOTS */}
@@ -610,7 +789,7 @@ export function BananaManagementView() {
                 <TrendingUp className="w-4 h-4" /> محرك تسعير سوق الموز
               </h3>
               <span className="text-xs font-bold text-muted-foreground">
-                السعر الحالي: {(data?.livePrice ?? 0).toFixed(3)} د.ع
+                السعر الحالي: {formatPrice(data?.livePrice ?? 0)} د.ع
               </span>
             </div>
 
@@ -679,8 +858,13 @@ export function BananaManagementView() {
                   const rand = (min: number, max: number, step = 1) =>
                     Math.round((min + Math.random() * (max - min)) / step) * step;
                   const base = Number(data?.livePrice ?? marketForm.basePrice ?? 1) || 1;
-                  const minPrice = Number((base * (0.6 + Math.random() * 0.25)).toFixed(3));
-                  const maxPrice = Number((base * (1.1 + Math.random() * 0.45)).toFixed(3));
+                  /*
+                    Rounded the way the engine rounds, not to three decimals.
+                    A base of 0.0004 through `toFixed(3)` gives a floor and a
+                    ceiling of 0.000, which is a band no price can sit inside.
+                  */
+                  const minPrice = roundPrice(base * (0.6 + Math.random() * 0.25));
+                  const maxPrice = roundPrice(base * (1.1 + Math.random() * 0.45));
                   const maxTrade = rand(1000, 20000, 500);
                   saveBotMutation.mutate({
                     name: `بوت ${(data?.bots?.length || 0) + 1}`,
@@ -883,6 +1067,13 @@ export function BananaManagementView() {
                       <span>
                         تنشئ كود خصم بقيمة {reward.couponValue.toLocaleString("en-US")} د.ع
                       </span>
+                    </div>
+                  )}
+
+                  {Number(reward.ticketQuantity) > 0 && (
+                    <div className="mt-2 text-[11px] font-semibold text-violet-600 dark:text-violet-400 bg-violet-500/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5">
+                      <Ticket className="w-3 h-3" />
+                      <span>تعطي {Number(reward.ticketQuantity)} تذكرة لعجلة الحظ</span>
                     </div>
                   )}
                 </div>
@@ -1096,40 +1287,51 @@ export function BananaManagementView() {
                         </div>
                         {listing.user_phone && (
                           <div className="text-[11px] text-muted-foreground" dir="ltr">
-                            {listing.user_phone}
+                            {listing.userPhone}
                           </div>
                         )}
                       </td>
                       <td className="p-3.5 font-bold text-amber-500 text-sm">
                         🍌 {Number(listing.quantity).toLocaleString("en-US")}
                       </td>
+                      {/*
+                        `price_per` is a column this table does not have, so
+                        both of these printed «NaN د.ع» on every row. The stored
+                        column is `price_iqd` and it is the TOTAL; the server
+                        divides the unit price out of it now and sends both.
+                      */}
                       <td className="p-3.5 font-semibold text-foreground">
-                        {Number(listing.price_per).toLocaleString("en-US", {
-                          maximumFractionDigits: 3,
+                        {Number(listing.pricePer).toLocaleString("en-US", {
+                          maximumFractionDigits: 6,
                         })}{" "}
                         د.ع
                       </td>
                       <td className="p-3.5 font-bold text-emerald-600">
-                        {Math.round(
-                          Number(listing.quantity) * Number(listing.price_per),
-                        ).toLocaleString("en-US")}{" "}
-                        د.ع
+                        {Math.round(Number(listing.priceIqd)).toLocaleString("en-US")} د.ع
                       </td>
                       <td className="p-3.5">
+                        {/*
+                          `is_promoted` and `is_private` are columns the table
+                          does not have either, so this could only ever print
+                          «عادي». The listing's own status is the thing that is
+                          actually recorded, so that is what is shown until the
+                          two flags are either stored or dropped.
+                        */}
                         <div className="flex items-center gap-1.5 flex-wrap">
-                          {listing.is_promoted === 1 && (
-                            <span className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 font-bold text-[10px]">
-                              مميز ⭐
+                          <span className="text-muted-foreground text-[11px]">
+                            {listing.status === "sold"
+                              ? "مُباع"
+                              : listing.status === "cancelled"
+                                ? "ملغى"
+                                : listing.status === "processing"
+                                  ? "قيد البيع"
+                                  : "معروض"}
+                          </span>
+                          {listing.buyerId ? (
+                            <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold text-[10px]">
+                              اشتراه {listing.buyerId.slice(-6)}
                             </span>
-                          )}
-                          {listing.is_private === 1 && (
-                            <span className="px-2 py-0.5 rounded bg-muted text-muted-foreground font-bold text-[10px]">
-                              خاص 🔒
-                            </span>
-                          )}
-                          {!listing.is_promoted && !listing.is_private && (
-                            <span className="text-muted-foreground text-[11px]">عادي</span>
-                          )}
+                          ) : null}
                         </div>
                       </td>
                       <td className="p-3.5">
@@ -1231,6 +1433,20 @@ export function BananaManagementView() {
                         >
                           تعديل الرصيد
                         </button>
+                        <button
+                          onClick={() => {
+                            setTicketUser(user);
+                            setTicketCount("1");
+                            setTicketReason("");
+                            setTicketPress(
+                              `press_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`,
+                            );
+                            setTicketModalOpen(true);
+                          }}
+                          className="ms-2 px-3 py-1.5 rounded-lg bg-violet-500/10 text-violet-700 dark:text-violet-400 hover:bg-violet-500/20 text-xs font-bold transition-colors"
+                        >
+                          منح تذاكر
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -1248,6 +1464,207 @@ export function BananaManagementView() {
       )}
 
       {/* TAB 5: ECONOMY & MARKET SETTINGS */}
+      {/* TAB: THE WHEEL — bands, the losing chance, and what a ticket costs */}
+      {activeTab === "wheel" && (
+        <div className="w-full bg-card border border-border rounded-2xl p-6 space-y-6 shadow-sm">
+          <div>
+            <h2 className="text-lg font-bold">عجلة الحظ — النسب والتقسيمات</h2>
+            <p className="text-xs text-muted-foreground mt-1 font-medium">
+              فئات الأسعار، وزن كل فئة، نسبة «حظ أوفر»، وسعر التذكرة بالموز.
+            </p>
+          </div>
+
+          {!wheelForm ? (
+            <p className="text-xs text-muted-foreground">جارِ التحميل…</p>
+          ) : (
+            <div className="space-y-5">
+              <div>
+                <label className="block text-xs font-bold mb-1.5">
+                  سعر التذكرة الواحدة (🍌 موزة):
+                </label>
+                <input
+                  type="number"
+                  min={0}
+                  step={1}
+                  value={wheelForm.ticketPriceBananas}
+                  onChange={(e) =>
+                    setWheelForm({
+                      ...wheelForm,
+                      ticketPriceBananas: parseInt(e.target.value) || 0,
+                    })
+                  }
+                  className="w-full p-3 rounded-xl border border-border bg-muted/40 font-bold text-sm outline-none focus:border-amber-500 transition-colors"
+                />
+                <p className="text-[11px] text-muted-foreground mt-1">
+                  {wheelForm.ticketPriceBananas > 0 ? (
+                    <>
+                      الزبون يدفع{" "}
+                      <span className="font-bold text-amber-500">
+                        {wheelForm.ticketPriceBananas.toLocaleString("en-US")} موزة
+                      </span>{" "}
+                      مقابل دورة واحدة.
+                    </>
+                  ) : (
+                    <span className="font-bold text-amber-600">
+                      صفر يعني أن التذاكر غير معروضة للبيع — لن يتمكن أحد من الشراء حتى تحدد سعرًا.
+                    </span>
+                  )}
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold mb-1.5">
+                  نسبة «حظ أوفر» — الدورة التي لا تربح شيئًا (%):
+                </label>
+                <input
+                  type="number"
+                  min={0}
+                  max={95}
+                  step={1}
+                  value={wheelForm.losingPercent}
+                  onChange={(e) =>
+                    setWheelForm({ ...wheelForm, losingPercent: parseFloat(e.target.value) || 0 })
+                  }
+                  className="w-full p-3 rounded-xl border border-border bg-muted/40 font-bold text-sm outline-none focus:border-amber-500 transition-colors"
+                />
+                <p className="text-[11px] text-muted-foreground mt-1">
+                  من كل 100 دورة،{" "}
+                  <span className="font-bold text-amber-500">
+                    {Math.round(wheelForm.losingPercent)}
+                  </span>{" "}
+                  لا تربح لعبة. التذكرة تُخصم في كل الحالات.
+                </p>
+                {wheelPreview?.losing && wheelPreview.byTier[0] ? (
+                  <p
+                    className={`text-[11px] font-bold mt-1 ${
+                      wheelPreview.losing.chance > wheelPreview.byTier[0].chance
+                        ? "text-emerald-600"
+                        : "text-amber-600"
+                    }`}
+                  >
+                    {wheelPreview.losing.chance > wheelPreview.byTier[0].chance
+                      ? `«حظ أوفر» ${pct(wheelPreview.losing.chance)} — أعلى من «${wheelPreview.byTier[0].label}» (${pct(wheelPreview.byTier[0].chance)}).`
+                      : `«حظ أوفر» ${pct(wheelPreview.losing.chance)} — ما زالت أقل من «${wheelPreview.byTier[0].label}» (${pct(wheelPreview.byTier[0].chance)}).`}
+                  </p>
+                ) : null}
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold mb-2">فئات الأسعار وأوزانها:</label>
+                <div className="space-y-2">
+                  {wheelForm.tiers.map((tier, index) => (
+                    <div
+                      key={index}
+                      className="grid grid-cols-[1fr_auto_auto] gap-2 items-center bg-muted/30 rounded-xl p-2"
+                    >
+                      <input
+                        value={tier.label}
+                        onChange={(e) => {
+                          const tiers = [...wheelForm.tiers];
+                          tiers[index] = { ...tier, label: e.target.value };
+                          setWheelForm({ ...wheelForm, tiers });
+                        }}
+                        placeholder="الاسم"
+                        className="p-2 rounded-lg border border-border bg-background font-bold text-xs outline-none focus:border-amber-500"
+                      />
+                      <input
+                        type="number"
+                        value={tier.upTo ?? ""}
+                        onChange={(e) => {
+                          const tiers = [...wheelForm.tiers];
+                          tiers[index] = {
+                            ...tier,
+                            upTo: e.target.value === "" ? null : parseInt(e.target.value) || 0,
+                          };
+                          setWheelForm({ ...wheelForm, tiers });
+                        }}
+                        placeholder="بلا حد"
+                        title="أعلى سعر في هذه الفئة — اتركه فارغًا للفئة الأخيرة"
+                        className="w-28 p-2 rounded-lg border border-border bg-background font-bold text-xs outline-none focus:border-amber-500"
+                      />
+                      <input
+                        type="number"
+                        min={0}
+                        value={tier.weight}
+                        onChange={(e) => {
+                          const tiers = [...wheelForm.tiers];
+                          tiers[index] = { ...tier, weight: parseFloat(e.target.value) || 0 };
+                          setWheelForm({ ...wheelForm, tiers });
+                        }}
+                        title="الوزن — كلما زاد زادت فرصة كل لعبة في هذه الفئة"
+                        className="w-20 p-2 rounded-lg border border-border bg-background font-bold text-xs outline-none focus:border-amber-500"
+                      />
+                      {wheelPreview?.byTier[index] ? (
+                        <p className="col-span-3 text-[11px] text-muted-foreground -mt-0.5">
+                          <span className="font-bold text-amber-500">
+                            {pct(wheelPreview.byTier[index].chance)}
+                          </span>{" "}
+                          من الدورات · {wheelPreview.byTier[index].games.toLocaleString("en-US")}{" "}
+                          لعبة في هذه الفئة
+                        </p>
+                      ) : null}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-[11px] text-muted-foreground mt-2">
+                  الوزن لكل <span className="font-bold">لعبة</span> وليس للفئة: فرصة الفئة = وزنها ×
+                  عدد ألعابها. اترك الحد الأعلى فارغًا في الفئة الأخيرة لتشمل كل ما فوقها.
+                </p>
+
+                {wheelPreview && wheelPreview.poolSize > 0 ? (
+                  <div className="mt-3 rounded-xl border border-border bg-muted/20 p-3">
+                    <p className="text-[11px] font-bold mb-2">
+                      النتيجة على {wheelPreview.poolSize.toLocaleString("en-US")} لعبة في العجلة
+                      الآن:
+                    </p>
+                    <div className="space-y-1">
+                      {wheelPreview.rows.map((row, index) => (
+                        <div
+                          key={`${index}-${row.label}`}
+                          className="flex items-center justify-between gap-2 text-[11px]"
+                        >
+                          <span
+                            className={row.label === LOSING_LABEL ? "font-bold" : "text-foreground"}
+                          >
+                            {row.label}
+                          </span>
+                          <span className="flex items-center gap-2">
+                            <span className="text-muted-foreground">
+                              {row.games ? `${row.games.toLocaleString("en-US")} لعبة` : "—"}
+                            </span>
+                            <span className="font-bold text-amber-500 w-14 text-left">
+                              {pct(row.chance)}
+                            </span>
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-[11px] text-amber-600 font-bold mt-3">
+                    لا توجد ألعاب في العجلة الآن، فلا يمكن حساب النسب.
+                  </p>
+                )}
+              </div>
+
+              {wheelError && (
+                <p className="text-xs font-bold text-red-500 bg-red-500/10 rounded-xl p-3">
+                  {wheelError}
+                </p>
+              )}
+
+              <button
+                onClick={() => saveWheelOddsMutation.mutate(wheelForm)}
+                disabled={saveWheelOddsMutation.isPending}
+                className="w-full bg-black dark:bg-white text-white dark:text-black rounded-xl p-3.5 font-bold text-sm disabled:opacity-60"
+              >
+                {saveWheelOddsMutation.isPending ? "…" : "✓ حفظ نسب العجلة وسعر التذكرة"}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
       {activeTab === "settings" && (
         <div className="w-full bg-card border border-border rounded-2xl p-6 space-y-6 shadow-sm">
           <div>
@@ -1462,6 +1879,43 @@ export function BananaManagementView() {
                   </div>
                 </div>
               )}
+
+              {/*
+                Tickets, on every category rather than behind one.
+                A ticket offer is not a coupon and not a digital code — it is
+                whatever the owner decides to call it, and hiding the field
+                behind a category would mean the reward's name has to be
+                chosen before the thing it sells can be.
+              */}
+              <div className="p-3.5 rounded-xl bg-violet-500/10 border border-violet-500/20 space-y-2">
+                <div className="text-violet-700 dark:text-violet-400 font-bold flex items-center gap-1.5">
+                  <Ticket className="w-3.5 h-3.5" />
+                  <span>تذاكر عجلة الحظ</span>
+                </div>
+                <div>
+                  <label className="block mb-1 text-muted-foreground">
+                    كم تذكرة يحصل عليها المستخدم عند استبدال هذه الجائزة:
+                  </label>
+                  <input
+                    type="number"
+                    min={0}
+                    max={100}
+                    step="1"
+                    value={rewardForm.ticketQuantity}
+                    onChange={(e) =>
+                      setRewardForm({
+                        ...rewardForm,
+                        ticketQuantity: Math.max(0, parseInt(e.target.value) || 0),
+                      })
+                    }
+                    className="w-full p-2.5 rounded-lg border border-border bg-card font-bold text-xs outline-none"
+                  />
+                  <p className="text-[10px] text-muted-foreground mt-1 font-normal">
+                    اتركها صفراً إذا لم تكن هذه الجائزة تذاكر. سعر التذكرة بالموز هو سعر الجائزة
+                    نفسه في الأعلى.
+                  </p>
+                </div>
+              </div>
 
               {/* Special settings for digital codes */}
               {rewardForm.category === "digital" && (
@@ -1705,6 +2159,100 @@ export function BananaManagementView() {
                   <Check className="w-3 h-3" />
                 )}
                 تأكيد التعديل
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: GRANT WHEEL TICKETS */}
+      {ticketModalOpen && ticketUser && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-card border border-border rounded-3xl p-6 md:p-8 max-w-sm w-full shadow-2xl space-y-4">
+            <div className="flex items-center justify-between border-b border-border pb-3">
+              <h3 className="font-black text-base">منح تذاكر عجلة الحظ</h3>
+              <button
+                onClick={() => setTicketModalOpen(false)}
+                className="p-1.5 rounded-full hover:bg-muted text-muted-foreground"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="space-y-3 text-xs font-bold">
+              <div className="p-3 rounded-xl bg-muted/40 border border-border">
+                <div className="text-muted-foreground">المستخدم:</div>
+                <div className="text-sm font-black text-foreground">
+                  {ticketUser.name || "مستخدم"}
+                </div>
+                <div className="mt-1 text-[11px] text-muted-foreground font-mono">
+                  {ticketUser.userId}
+                </div>
+              </div>
+
+              <div>
+                <label className="block mb-1">عدد التذاكر (من 1 إلى 100):</label>
+                <input
+                  type="number"
+                  min={1}
+                  max={100}
+                  step="1"
+                  value={ticketCount}
+                  onChange={(e) => setTicketCount(e.target.value)}
+                  className="w-full p-3 rounded-xl border border-border bg-card font-black text-sm outline-none focus:border-violet-500"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-1">السبب / ملاحظة العملية:</label>
+                <input
+                  type="text"
+                  placeholder="مثال: مكافأة مسابقة، تعويض، إلخ..."
+                  value={ticketReason}
+                  onChange={(e) => setTicketReason(e.target.value)}
+                  className="w-full p-2.5 rounded-xl border border-border bg-card font-medium text-xs outline-none focus:border-violet-500"
+                />
+              </div>
+
+              <p className="text-[10px] text-muted-foreground font-normal leading-relaxed">
+                التذاكر تُمنح مرة واحدة لكل ضغطة. إذا ضغطت مرتين بالخطأ، الضغطة الثانية لن تضيف
+                شيئاً وسيظهر لك ذلك.
+              </p>
+            </div>
+
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-border">
+              <button
+                onClick={() => setTicketModalOpen(false)}
+                className="px-4 py-2 rounded-xl border border-border text-xs font-bold hover:bg-muted"
+              >
+                إلغاء
+              </button>
+              <button
+                onClick={() =>
+                  grantTicketsMutation.mutate({
+                    userId: ticketUser.userId,
+                    quantity: Math.floor(Number(ticketCount) || 0),
+                    reason: ticketReason || "منح إداري",
+                    /*
+                      This opening of the dialog. Two clicks on the button
+                      below share it and grant once; closing and opening the
+                      dialog again is a new intention and grants again.
+                    */
+                    referenceId: `admin:${ticketUser.userId}:${ticketPress}`,
+                  })
+                }
+                disabled={
+                  !(Number(ticketCount) >= 1 && Number(ticketCount) <= 100) ||
+                  grantTicketsMutation.isPending
+                }
+                className="px-5 py-2 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-black text-xs transition-colors disabled:opacity-50 flex items-center gap-2"
+              >
+                {grantTicketsMutation.isPending ? (
+                  <RefreshCw className="w-3 h-3 animate-spin" />
+                ) : (
+                  <Ticket className="w-3 h-3" />
+                )}
+                منح التذاكر
               </button>
             </div>
           </div>

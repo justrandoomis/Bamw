@@ -11,10 +11,25 @@ import { BalanceCard } from "@/components/wallet/BalanceCard";
 import { TransactionList } from "@/components/wallet/TransactionList";
 import { TopUpModal } from "@/components/wallet/TopUpModal";
 import { Skeleton } from "@/components/ui/skeleton";
+import RequireSignIn from "@/components/RequireSignIn";
 
 export const Route = createFileRoute("/wallet")({
-  component: WalletPage,
+  component: WalletRoute,
 });
+
+/*
+  The wallet is one member's money. Rendered to a signed-out visitor it showed
+  a balance card reading 0 د.ع and an empty history, and answered the first tap
+  with the English word «unauthorised» — so the guard goes outside the page,
+  not inside it, and the page below is never mounted without a session.
+*/
+function WalletRoute() {
+  return (
+    <RequireSignIn>
+      <WalletPage />
+    </RequireSignIn>
+  );
+}
 
 function WalletPage() {
   const { user } = useAuth();

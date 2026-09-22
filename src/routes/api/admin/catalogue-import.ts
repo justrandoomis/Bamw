@@ -51,199 +51,20 @@ import { d1All, d1Batch, d1Run } from "@/lib/d1.server";
 import { body, guard, json } from "@/lib/http.server";
 import { requireAdmin } from "@/lib/session.server";
 import { supplierNameStatements } from "@/lib/productAdminMetadata.server";
-import { buildListing, type CatalogueRow, type ImportMode } from "@/lib/catalogueImport";
+import {
+  buildListing,
+  decide,
+  type CatalogueRow,
+  type Decision,
+  type ImportMode,
+  type RowResult,
+} from "@/lib/catalogueImport";
 import { categoryFilterAliases, resolveCategoryType } from "@/lib/productSection";
 import { assertBoundParameters, chunkForParams } from "@/lib/sql-params";
 import type { StoreDoc } from "@/lib/types";
 
 /** One request's worth. A hundred products is one transaction, not a hundred. */
 const MAX_BATCH = 100;
-
-type Outcome = "created" | "updated" | "skipped";
-
-interface RowResult {
-  line: number;
-  name: string;
-  outcome: Outcome;
-  /** Present on `skipped`, always in Arabic — the admin reads this list. */
-  reason?: string;
-  id?: string;
-}
-
-function slugOf(product: Record<string, unknown>): string {
-  return String(product["slug"] ?? "")
-    .trim()
-    .toLowerCase();
-}
-
-/**
- * The Nintendo Switch Games category, as this store actually spells it.
- *
- * The section has six accepted spellings (`SECTION_CATEGORY_ALIASES`), and
- * guessing the wrong one puts fifteen hundred games in a category the sidebar
- * does not list. So the store's own categories are consulted first and only
- * the canonical id is used as a fallback.
- */
-function resolveGamesCategory(categories: unknown): { id: string; title: string } {
-  const list = Array.isArray(categories) ? (categories as Record<string, unknown>[]) : [];
-  const aliases = categoryFilterAliases("nintendo-switch-games");
-  for (const category of list) {
-    const id = String(category?.["id"] ?? "")
-      .trim()
-      .toLowerCase();
-    if (id && aliases.includes(id)) {
-      return { id: String(category["id"]), title: String(category["title"] ?? "") };
-    }
-  }
-  return { id: "nintendo-switch-games", title: "ألعاب نينتندو سويتش" };
-}
-
-/** What one pass over a store snapshot decided. */
-interface Decision {
-  products: Record<string, unknown>[];
-  results: RowResult[];
-  created: number;
-  updated: number;
-  categoryId: string;
-  names: { productId: string; supplierNameZhCn: string; englishTitle: string }[];
-}
-
-/**
- * Every row in the batch, decided against one snapshot of the catalogue.
- *
- * Pure, and re-runnable: `updateStore` re-reads the store and re-applies the
- * mutation when another writer wins the revision, so the decision has to be a
- * function of the snapshot it is handed rather than of one taken earlier. That
- * is also what makes the preview honest — it is this same function, run and
- * thrown away.
- */
-function decide(current: StoreDoc, rows: CatalogueRow[], mode: ImportMode): Decision {
-  const products = [...((current.products ?? []) as unknown as Record<string, unknown>[])];
-  const category = resolveGamesCategory(current.categories);
-  const out: Decision = {
-    products,
-    results: [],
-    created: 0,
-    updated: 0,
-    categoryId: category.id,
-    names: [],
-  };
-
-  /*
-    One pass over the catalogue, not one lookup per row. A `find` per row over
-    seventeen hundred products is eighty-five thousand string comparisons per
-    batch, and there are sixteen batches.
-  */
-  const bySlug = new Map<string, number>();
-  const byId = new Map<string, number>();
-  const byTitle = new Map<string, number>();
-  for (let at = 0; at < products.length; at++) {
-    const product = products[at]!;
-    const slug = slugOf(product);
-    if (slug && !bySlug.has(slug)) bySlug.set(slug, at);
-    const id = String(product["id"] ?? "").trim();
-    if (id && !byId.has(id)) byId.set(id, at);
-
-    /*
-      Only games are looked up by title.
-
-      The title index exists to stop a second «Fire Emblem: Three Houses»
-      being created beside one an admin added by hand. It was built over every
-      product in the shop — hardware, accessories, amiibo, gift cards, bundles
-      — so a console accessory or a bundle that happens to share a name with a
-      game was taken as "the same game". That costs the row twice over: the
-      import declines to touch the accessory (rightly), and the game it was
-      supposed to create is never created, because the row has been answered.
-
-      A slug or id match still works across every kind, which is the precise
-      case: a collision there is a URL or key collision and a real conflict.
-    */
-    const isGame =
-      resolveCategoryType(
-        String(product["categoryId"] ?? ""),
-        String(product["category"] ?? product["categoryTitle"] ?? ""),
-        String(product["kind"] ?? ""),
-        String(product["schemaId"] ?? ""),
-      ) === "game";
-    if (!isGame) continue;
-
-    const title = String(product["titleEn"] ?? product["title"] ?? "")
-      .trim()
-      .toLowerCase();
-    if (title && !byTitle.has(title)) byTitle.set(title, at);
-  }
-
-  for (const row of rows) {
-    const name = String(row?.englishName ?? "").trim();
-    const line = Number(row?.line) || 0;
-    if (!name || !(Number(row?.offlinePriceIqd) > 0)) {
-      out.results.push({ line, name, outcome: "skipped", reason: "صف غير صالح" });
-      continue;
-    }
-
-    /*
-      Matched by slug, then by the id this importer would mint, then by name.
-
-      The slug is what a re-run of the same sheet produces, so it is the
-      reliable key. The id lookup closes the gap the first version left: a
-      listing whose slug was later corrected still owns `prd_cat_<slug>`, and
-      creating a second product under an id already in the catalogue is a
-      duplicate key, not a new game. The title lookup is what stops a second
-      «Fire Emblem: Three Houses» beside one an admin added by hand.
-    */
-    const desiredSlug = String(row.slug ?? "")
-      .trim()
-      .toLowerCase();
-    const at =
-      (desiredSlug ? bySlug.get(desiredSlug) : undefined) ??
-      (desiredSlug ? byId.get(`prd_cat_${desiredSlug}`) : undefined) ??
-      byTitle.get(name.toLowerCase());
-    const existing = at === undefined ? undefined : products[at];
-
-    const outcome = buildListing(row, {
-      categoryId: category.id,
-      categoryTitle: category.title,
-      mode,
-      ...(existing ? { existing } : {}),
-    });
-
-    if (outcome.action === "skip") {
-      out.results.push({ line, name, outcome: "skipped", reason: outcome.reason });
-      continue;
-    }
-
-    const id = String(outcome.product["id"]);
-    if (outcome.action === "create") {
-      products.push(outcome.product);
-      const added = products.length - 1;
-      if (desiredSlug) bySlug.set(desiredSlug, added);
-      byId.set(id, added);
-      byTitle.set(name.toLowerCase(), added);
-      out.created += 1;
-    } else {
-      products[at!] = outcome.product;
-      out.updated += 1;
-    }
-
-    /*
-      The Chinese name goes to its own admin-only table and never onto the
-      product. `getStore()` does not load that table, so there is no path by
-      which the storefront could serialise it — which is the whole reason it
-      lives there.
-    */
-    if (outcome.chineseName) {
-      out.names.push({ productId: id, supplierNameZhCn: outcome.chineseName, englishTitle: name });
-    }
-    out.results.push({
-      line,
-      name,
-      outcome: outcome.action === "create" ? "created" : "updated",
-      id,
-    });
-  }
-
-  return out;
-}
 
 export const Route = createFileRoute("/api/admin/catalogue-import")({
   server: {
@@ -323,7 +144,10 @@ export const Route = createFileRoute("/api/admin/catalogue-import")({
 
           const rows = Array.isArray(payload?.rows) ? payload.rows : [];
           if (rows.length === 0) {
-            return json({ error: "لا توجد صفوف في هذه الدفعة", code: "EMPTY_BATCH" }, { status: 400 });
+            return json(
+              { error: "لا توجد صفوف في هذه الدفعة", code: "EMPTY_BATCH" },
+              { status: 400 },
+            );
           }
           if (rows.length > MAX_BATCH) {
             return json(
@@ -343,7 +167,9 @@ export const Route = createFileRoute("/api/admin/catalogue-import")({
             listings this importer created — see `buildListing`.
           */
           const mode: ImportMode =
-            payload?.mode === "refresh-prices" ? "refresh-prices" : "create-only";
+            payload?.mode === "refresh-prices" || payload?.mode === "refresh-content"
+              ? payload.mode
+              : "create-only";
 
           /*
             Held outside the mutation so the response can report what the

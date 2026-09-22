@@ -969,6 +969,15 @@ const SCHEMA_PATCHES: string[] = [
   `ALTER TABLE orders ADD COLUMN customer_confirmed_at TEXT`,
   `ALTER TABLE orders ADD COLUMN auto_completed_at TEXT`,
   `ALTER TABLE orders ADD COLUMN delivery_issue_opened_at TEXT`,
+  /*
+    When to ask for the review — thirty minutes after the last OTP, cleared as
+    soon as the ask goes out or the order completes. `ensureDigitalDeliverySchema`
+    adds the same column, but the canonical schema is what the storefront's
+    cold start runs and what `schema-coverage.test.ts` reads; a column declared
+    in only one of the two is a statement that fails on whichever path gets
+    there first.
+  */
+  `ALTER TABLE orders ADD COLUMN review_prompt_at TEXT`,
   `CREATE UNIQUE INDEX IF NOT EXISTS orders_idempotency_idx ON orders (idempotency_key) WHERE idempotency_key IS NOT NULL`,
   // migrations/0002_otp_phone.sql created otp_codes with only
   // (id, phone, purpose, code_hash, expires_at, attempts, created_at).
@@ -1031,6 +1040,13 @@ const SCHEMA_PATCHES: string[] = [
   // disc trades
   `CREATE TABLE IF NOT EXISTS disc_trades (id TEXT PRIMARY KEY, user_id TEXT NOT NULL, game_name TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending', valuation_iqd INTEGER, created_at TEXT NOT NULL, updated_at TEXT NOT NULL)`,
   `CREATE INDEX IF NOT EXISTS disc_trades_user_idx ON disc_trades (user_id, created_at DESC)`,
+  /*
+    Same story as `product_reviews_due_idx`: the minute cron cancels trades
+    still pending after seven days, keyed on `(status, created_at)`, and the
+    only index here is keyed on the member. Production answered `SCAN
+    disc_trades`.
+  */
+  `CREATE INDEX IF NOT EXISTS disc_trades_pending_idx ON disc_trades (status, created_at)`,
   `ALTER TABLE disc_trades ADD COLUMN platform TEXT NOT NULL DEFAULT 'Nintendo Switch'`,
   `ALTER TABLE disc_trades ADD COLUMN condition TEXT NOT NULL DEFAULT 'like_new'`,
   `ALTER TABLE disc_trades ADD COLUMN notes TEXT`,
@@ -1172,6 +1188,29 @@ const SCHEMA_PATCHES: string[] = [
   `ALTER TABLE product_reviews ADD COLUMN instagram_proof_url TEXT`,
   `ALTER TABLE product_reviews ADD COLUMN is_auto_review INTEGER DEFAULT 0`,
   `ALTER TABLE product_reviews ADD COLUMN review_due_at TEXT`,
+  /*
+    The every-minute cron asks for the reviews that are due to auto-approve —
+    `status = 'pending' AND review_due_at <= ?` — and both indexes on this
+    table are keyed on somebody's id, so `EXPLAIN QUERY PLAN` in production
+    answered `SCAN product_reviews`: every review the shop has ever collected,
+    walked sixty times an hour to find the handful that are due.
+
+    It belongs here rather than beside those two, because `review_due_at` is
+    itself a patch. An index declared in the base schema would reference a
+    column that does not exist yet on a fresh database, and the bootstrap's
+    compatibility mode would skip it without complaint — leaving the scan in
+    place and this comment claiming otherwise.
+  */
+  `CREATE INDEX IF NOT EXISTS product_reviews_due_idx ON product_reviews (status, review_due_at)`,
+  /*
+    The queue, which is now built from the orders that are actually unfinished
+    rather than from every conversation that happens to still be open. That
+    question is `status IN ('pending','processing','delivering')`, asked on a
+    customer's poll, and the only indexes on this table are keyed on a member
+    or on an idempotency key — so it was a full scan of every order the shop
+    has ever taken.
+  */
+  `CREATE INDEX IF NOT EXISTS orders_status_idx ON orders (status, created_at DESC)`,
   `ALTER TABLE product_reviews ADD COLUMN approved_at TEXT`,
   `ALTER TABLE product_reviews ADD COLUMN approved_by TEXT`,
   `ALTER TABLE product_reviews ADD COLUMN updated_at TEXT`,
@@ -2014,7 +2053,7 @@ export function ensureCouponsSchema(): Promise<void> {
 // Bumped whenever SCHEMA_PATCHES gains a statement existing databases need.
 // The stamp below short-circuits the bootstrap, so a new patch is invisible to
 // already-deployed databases until this number moves.
-const RUNTIME_SCHEMA_VERSION = 26;
+const RUNTIME_SCHEMA_VERSION = 27;
 
 /**
  * Run schema statements in as few round trips as the database allows.

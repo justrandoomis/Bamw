@@ -40,7 +40,7 @@
  * order is read for writing or written at all.
  *
  * Usage:
- *   node scripts/supplier-name-fill.mjs [--apply] [--limit=N] [--only=id,id]
+ *   node scripts/supplier-name-fill.mjs [--apply] [--missing-only] [--limit=N] [--only=id,id]
  * Env: CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_API_TOKEN, D1_DATABASE_ID
  */
 import { build } from "esbuild";
@@ -70,6 +70,21 @@ const APPLY = process.argv.includes("--apply");
   a success.
 */
 const REQUIRE_COMPLETE = process.argv.includes("--require-complete");
+/*
+  Only the games that have no name yet.
+
+  Without it every run re-resolves the whole shelf, and the shelf is now 1,534
+  games against a curated list of 141 — so nearly every one of them costs two
+  Wikidata requests and a courtesy pause, and the job runs out of time long
+  before it reaches the end. That was survivable when the catalogue was 143
+  games and it is not survivable now, which matters because this is not a
+  one-off: the owner adds games, and each new one arrives with no name.
+
+  What it skips is decided in D1, not here — a row whose `supplier_name_zh_cn`
+  is a non-empty string. A row that exists with an empty name is a game still
+  waiting, so it is asked about again.
+*/
+const MISSING_ONLY = process.argv.includes("--missing-only");
 const LIMIT = Number(flag("limit", "0"));
 const OFFSET = Math.max(0, Number(flag("offset", "0")) || 0);
 const ONLY = flag("only", "")
@@ -134,6 +149,26 @@ let games = [...live.values()]
 if (ONLY.length) {
   games = games.filter((g) => ONLY.includes(String(g.id)) || ONLY.includes(String(g.slug)));
 }
+
+/*
+  Asked of D1, not inferred from the catalogue: the table is the only thing
+  that knows which games already carry a name, and it is the same table the
+  admin screen reads.
+*/
+const inCatalogue = games.length;
+let alreadyNamed = 0;
+if (MISSING_ONLY) {
+  const named = new Set(
+    (
+      await app.d1All(
+        "SELECT product_id FROM product_admin_metadata WHERE TRIM(COALESCE(supplier_name_zh_cn, '')) <> ''",
+      )
+    ).map((row) => String(row.product_id)),
+  );
+  const before = games.length;
+  games = games.filter((g) => !named.has(String(g.id)));
+  alreadyNamed = before - games.length;
+}
 /*
   Offset before limit, so a long fill can be done in batches that each finish
   inside a job's lifetime. The order is the stable one this list is already
@@ -143,11 +178,27 @@ const total = games.length;
 if (OFFSET > 0) games = games.slice(OFFSET);
 if (LIMIT > 0) games = games.slice(0, LIMIT);
 
-say(`games in the catalogue: ${total}`);
+say(`games in the catalogue: ${inCatalogue}`);
+if (MISSING_ONLY) {
+  say(`already named, not asked about again: ${alreadyNamed}`);
+  say(`games with no Chinese name: ${total}`);
+}
 if (OFFSET > 0 || LIMIT > 0) {
   say(`this batch: ${games.length} — from ${OFFSET + 1} to ${OFFSET + games.length}`);
 }
-if (!games.length) throw new Error("no games matched — refusing to report an empty pass as a fill");
+if (!games.length) {
+  /*
+    Under `--missing-only` an empty list is the finished state, not a failure:
+    every game in the catalogue already has a name. Throwing here would turn a
+    repeatable check into a run that only ever passes once.
+  */
+  if (MISSING_ONLY && inCatalogue > 0) {
+    say("");
+    say("Every game in the catalogue already carries a Chinese name. Nothing to fill.");
+    process.exit(0);
+  }
+  throw new Error("no games matched — refusing to report an empty pass as a fill");
+}
 
 /* ------------------------------------------------- the curated names, first */
 const curatedFile = JSON.parse(readFileSync(CURATED, "utf8"));
@@ -336,6 +387,33 @@ for (const game of games) {
         ? "Hong Kong sells it in Latin, and Wikidata has no Chinese name for it"
         : "no Chinese name in any source";
     report.push({ id, english, outcome: why, filled: false });
+
+    /*
+      A row with no name, rather than no row.
+
+      A game absent from `product_admin_metadata` is absent from the admin
+      screen that lists what still needs a name — so "nobody has found one"
+      and "nobody has looked" are the same thing there, and the game that
+      most needs attention is the one that cannot be seen. `writeSupplierNameZh`
+      stores an empty name as `missing`, which is what that status is for.
+
+      It does not hide the game from a later run: `--missing-only` skips a
+      row whose name is a non-empty string, and this one's is empty.
+
+      And it is what lets the audit's reconciliation mean something. Two games
+      were deliberately left unnamed in the curated file — the candidates were
+      a Hong Kong lexical form and a machine paraphrase — and with no rows at
+      all the count came up two short and failed a gate that was right to
+      fire and had nothing to point at.
+    */
+    if (APPLY) {
+      await app.writeSupplierNameZh({
+        productId: id,
+        supplierNameZhCn: "",
+        englishTitle: english,
+        updatedBy: UPDATED_BY,
+      });
+    }
     continue;
   }
 

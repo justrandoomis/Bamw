@@ -92,20 +92,61 @@ async function attempt<T>(
     sqlError?: string;
   };
   if (!response.ok) {
+    /*
+      A 401 says one thing and it is not an error the member can act on by
+      reading it. The server answers `{ "error": "unauthorised" }`, this turned
+      that word straight into a toast, and a signed-out visitor tapping "شحن
+      الرصيد" was shown the English string «unauthorised» with nothing to do
+      about it.
+
+      So the status decides the wording, not the payload, and the flag below is
+      what lets a screen send the visitor to sign in instead of apologising to
+      them.
+    */
+    const unauthorized = response.status === 401;
     // Keep structured hints on the thrown error
-    const errorText =
-      data.message ||
-      (data.error && data.error !== "server_error" ? data.error : null) ||
-      data.details ||
-      data.sqlError ||
-      (data.error === "server_error"
-        ? "خطأ في السيرفر أو قاعدة البيانات"
-        : "حدث خطأ، حاول مرة أخرى");
-    const error = Object.assign(new Error(errorText), data);
+    const errorText = unauthorized
+      ? "سجّل الدخول للمتابعة"
+      : data.message ||
+        (data.error && data.error !== "server_error" ? data.error : null) ||
+        data.details ||
+        data.sqlError ||
+        (data.error === "server_error"
+          ? "خطأ في السيرفر أو قاعدة البيانات"
+          : "حدث خطأ، حاول مرة أخرى");
+    const error = Object.assign(new Error(errorText), data, {
+      message: errorText,
+      status: response.status,
+      unauthorized,
+    });
     throw error;
   }
   return data;
 }
+
+/**
+ * POSTs that must never be retried, and why each one is here.
+ *
+ * A timeout means the answer did not arrive. It does not mean the request did
+ * not happen — the server may have done the work and lost the reply. Retrying
+ * is therefore only safe where the second attempt cannot spend anything twice,
+ * and the rule was written with `/api/otp` alone in it while three other
+ * endpoints had grown the same problem.
+ *
+ * `/api/wheel`: a spin claims a ticket, and the claim carries no key the
+ * server could recognise a second time. A slow network on a spin costs the
+ * member a ticket they never watched being spent. (Buying tickets is safe —
+ * it sends a `requestId` — but the spin shares the route, and excluding the
+ * route is the honest boundary.)
+ *
+ * `/api/banana`: creating a market listing debits the seller's bananas and
+ * inserts a row, with no idempotency key anywhere on the path. A retry makes
+ * two listings and takes the bananas twice.
+ *
+ * Anything carrying an idempotency key — order creation does — is safe to
+ * retry and deliberately absent from this list.
+ */
+const NEVER_RETRY_POST = ["/api/otp", "/api/wheel", "/api/banana"];
 
 async function request<T>(url: string, init?: RequestInit, timeoutMs = 20000): Promise<T> {
   // A hung request must never leave the UI stuck on a loading screen,
@@ -114,8 +155,8 @@ async function request<T>(url: string, init?: RequestInit, timeoutMs = 20000): P
     return await attempt<T>(url, init, timeoutMs);
   } catch (err) {
     if (err instanceof RequestTimeoutError && !init?.signal?.aborted) {
-      // Don't retry non-idempotent endpoints like OTP
-      if (url.includes("/api/otp") && init?.method === "POST") {
+      const method = String(init?.method ?? "GET").toUpperCase();
+      if (method === "POST" && NEVER_RETRY_POST.some((path) => url.includes(path))) {
         throw err;
       }
       return await attempt<T>(url, init, timeoutMs);
@@ -123,6 +164,9 @@ async function request<T>(url: string, init?: RequestInit, timeoutMs = 20000): P
     throw err;
   }
 }
+
+/** Exported for the test that holds this list to its reasons. */
+export const __NEVER_RETRY_POST = NEVER_RETRY_POST;
 
 export const api = {
   fetch: <T = any>(url: string, init?: RequestInit, timeoutMs = 20000) =>
@@ -256,6 +300,12 @@ export const api = {
     targetProductId?: string | number,
     /* A referral code the member typed. The server resolves and re-prices it. */
     referralCode?: string,
+    /*
+      «المحفظة» or «الدفع عند الاستلام». The server offers cash only when every
+      line is something a courier carries, and refuses this outright otherwise —
+      so sending it is asking, not choosing.
+    */
+    paymentMethod?: "wallet" | "cash_on_delivery",
   ) =>
     request<{ order: Order }>("/api/orders", {
       method: "POST",
@@ -267,6 +317,7 @@ export const api = {
         idempotencyKey,
         targetProductId,
         referralCode,
+        paymentMethod,
       }),
     }),
   setOrderAddress: (orderId: string, address: unknown) =>
@@ -432,6 +483,10 @@ export const api = {
       orderFinished?: boolean;
       nextReadyDeliveryItemId?: string;
       nextOrder?: { orderId: string; threadId?: string; code?: string; userName?: string };
+      /* Returned by `complete_digital_manual`: which slots were forced, and
+         from what state. Ids only — never what was in them. */
+      forcedDeliveryItems?: { id: string; from: string }[];
+      archivedUnmappedItems?: string[];
     }>("/api/admin/orders", {
       method: "POST",
       body: JSON.stringify(payload),
@@ -836,25 +891,32 @@ export const adminApi = {
    * customer before somebody finishes it.
    */
   createPlaceholderGame: (name: string) =>
-    request<{ success?: boolean; product?: { id: string }; id?: string }>(
-      "/api/admin/products",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          title: name,
-          titleEn: name,
-          price: 0,
-          isHidden: true,
-          category: "cat_nintendo",
-          categoryId: "cat_nintendo",
-        }),
-      },
-    ),
+    request<{ success?: boolean; product?: { id: string }; id?: string }>("/api/admin/products", {
+      method: "POST",
+      body: JSON.stringify({
+        title: name,
+        titleEn: name,
+        price: 0,
+        isHidden: true,
+        category: "cat_nintendo",
+        categoryId: "cat_nintendo",
+      }),
+    }),
 
   saveBananaMarketConfig: (config: Record<string, unknown>) =>
     request<{ success: boolean; marketConfig: any }>("/api/admin/banana", {
       method: "POST",
       body: JSON.stringify({ action: "save_market_config", config }),
+    }),
+  /** «حظ أوفر», the price bands and what a ticket costs — all one save. */
+  saveWheelOdds: (odds: {
+    tiers?: { upTo: number | null; weight: number; label: string }[];
+    losingPercent?: number;
+    ticketPriceBananas?: number;
+  }) =>
+    request<{ success: boolean; wheelOdds: any }>("/api/admin/banana", {
+      method: "POST",
+      body: JSON.stringify({ action: "save_wheel_odds", odds }),
     }),
   saveBananaBot: (bot: any) =>
     request<{ success: boolean; id: string }>("/api/admin/banana", {
@@ -906,6 +968,33 @@ export const adminApi = {
       method: "POST",
       body: JSON.stringify({ action: "cancel_listing", listingId }),
     }),
+  /*
+    How many wheel tickets a redemption reward hands over. Zero removes it
+    from the wheel, which is why the argument is a number and not a flag.
+  */
+  setBananaRewardTickets: (offerId: string, ticketQuantity: number) =>
+    request<{ success: boolean; offerId: string; ticketQuantity: number }>("/api/admin/banana", {
+      method: "POST",
+      body: JSON.stringify({ action: "set_ticket_offer", offerId, ticketQuantity }),
+    }),
+  /*
+    The other way a member gets a ticket: the shop hands one over.
+    `referenceId` is what makes a double press harmless — the ledger's unique
+    index refuses the second one and the reply says it changed nothing.
+  */
+  grantWheelTickets: (payload: {
+    userId: string;
+    quantity: number;
+    reason?: string;
+    referenceId?: string;
+  }) =>
+    request<{ success: boolean; granted: boolean; tickets: number; note?: string }>(
+      "/api/admin/banana",
+      {
+        method: "POST",
+        body: JSON.stringify({ action: "grant_wheel_tickets", ...payload }),
+      },
+    ),
   adjustUserBanana: (userId: string, amount: number, reason?: string) =>
     request<{ success: boolean; userId: string; oldBalance: number; newBalance: number }>(
       "/api/admin/banana",
@@ -923,6 +1012,34 @@ export function fileToDataUrl(file: File) {
     reader.onerror = () => reject(new Error("failed_to_read_file"));
     reader.readAsDataURL(file);
   });
+}
+
+/**
+ * What to tell a member when an upload is refused, in their own language.
+ *
+ * The codes are the server's, and every one of them has a thing the member can
+ * actually do about it. An unrecognised code falls through to the general
+ * sentence rather than being printed — printing it is how «unsupported_image_
+ * format» ended up on somebody's screen.
+ */
+function uploadErrorText(code: unknown, status: number): string {
+  switch (String(code ?? "")) {
+    case "unsupported_image_format":
+      return "تعذر تحويل هذه الصورة. أرسلها بصيغة JPG أو PNG، أو اخترها من الاستوديو بدل «الملفات».";
+    case "invalid_image":
+      return "هذه الصورة بصيغة لا يدعمها المتجر. جرّب JPG أو PNG.";
+    case "missing_file":
+      return "لم يصل أي ملف. اختر الصورة مرة أخرى.";
+    case "invalid_upload_folder":
+      return "تعذر حفظ الملف في مكانه الصحيح، حاول مرة أخرى.";
+    case "upload_storage_verification_failed":
+      return "لم يكتمل حفظ الصورة، أعد المحاولة.";
+    default:
+      if (status === 401 || status === 403) return "انتهت الجلسة. سجّل الدخول ثم أعد الإرسال.";
+      if (status === 413) return "الملف كبير جداً. أرسل صورة أصغر أو مقطعاً أقصر.";
+      if (status === 429) return "محاولات كثيرة خلال وقت قصير. انتظر قليلاً ثم أعد المحاولة.";
+      return "تعذر رفع الملف، حاول مرة أخرى.";
+  }
 }
 
 export function uploadFileWithProgress(
@@ -954,21 +1071,33 @@ export function uploadFileWithProgress(
           const data = JSON.parse(xhr.responseText);
           resolve(data);
         } catch {
-          reject(new Error("Invalid response from server"));
+          reject(new Error("تعذر فهم رد الخادم، حاول مرة أخرى."));
         }
       } else {
+        /*
+          The server writes an Arabic `message` beside its machine-readable
+          `error`, and this read the machine-readable one — so a member whose
+          photo was refused was shown the token «unsupported_image_format» and
+          left to work out what to do about it.
+        */
         try {
           const errData = JSON.parse(xhr.responseText);
-          reject(new Error(errData.error || `Upload failed with status ${xhr.status}`));
+          reject(new Error(errData.message || uploadErrorText(errData.error, xhr.status)));
         } catch {
-          reject(new Error(`Upload failed with status ${xhr.status}`));
+          reject(new Error(uploadErrorText(undefined, xhr.status)));
         }
       }
     };
 
-    xhr.onerror = () => reject(new Error("Upload network error"));
-    xhr.ontimeout = () => reject(new Error("Upload timed out"));
-    xhr.timeout = 60000;
+    xhr.onerror = () => reject(new Error("انقطع الاتصال أثناء الرفع، حاول مرة أخرى."));
+    xhr.ontimeout = () =>
+      reject(new Error("استغرق الرفع وقتاً طويلاً. تحقق من الاتصال أو أرسل ملفاً أصغر."));
+    /*
+      A minute is plenty for a photograph and nowhere near enough for a clip on
+      a phone connection — a member sending a short video watched the progress
+      bar reach ninety-odd percent and then be told it had timed out.
+    */
+    xhr.timeout = (file.type || "").toLowerCase().startsWith("video/") ? 180000 : 60000;
 
     xhr.send(formData);
   });

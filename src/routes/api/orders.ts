@@ -14,6 +14,7 @@ import {
   randomId,
 } from "@/lib/db.server";
 import { body, guard, json } from "@/lib/http.server";
+import { isPaymentMethod } from "@/lib/payment-method";
 import {
   AwaitingReleaseError,
   createOrderForUser,
@@ -71,6 +72,32 @@ async function canTransition(oldStatus: string, newStatus: string, kind: string)
   }
   if (oldStatus === "delivered" && newStatus === "preparing") return false;
   return true;
+}
+
+/**
+ * Origins a browser may legitimately claim for its own checkout.
+ *
+ * Deliberately a short list of things the customer genuinely is doing, and
+ * deliberately NOT including any source the shop uses to mean "the server
+ * granted this" — a gift, a prize, a compensation. Those are decided on the
+ * server, and a request body is not the server.
+ */
+const CUSTOMER_SOURCES = new Set([
+  "checkout_web",
+  "checkout_mobile",
+  "cart",
+  "buy_now",
+  "product_page",
+  "bundle",
+  "preorder",
+]);
+
+/** The source to record: the one the browser asked for, if it may have it. */
+function allowedSource(raw: unknown): string {
+  const value = String(raw ?? "")
+    .trim()
+    .toLowerCase();
+  return CUSTOMER_SOURCES.has(value) ? value : "checkout_web";
 }
 
 export const Route = createFileRoute("/api/orders")({
@@ -134,6 +161,12 @@ export const Route = createFileRoute("/api/orders")({
               request's own cookie and from the database.
             */
             referralCode?: string;
+            /*
+              «المحفظة» or «الدفع عند الاستلام». A request and nothing more:
+              `createOrderForUser` decides from the cart's own contents whether
+              cash is on offer at all, and refuses this outright when it is not.
+            */
+            paymentMethod?: string;
           }>(request);
           const throttle = await consumeRateLimit(request, "order-create", 15, 15 * 60, user.id);
           if (!throttle.allowed) return rateLimitResponse(throttle.retryAfter);
@@ -154,7 +187,21 @@ export const Route = createFileRoute("/api/orders")({
               data.acceptedTerms ?? true,
               data.idempotencyKey,
               data.targetProductId,
-              data.source || "checkout_web",
+              /*
+                The source is a label the BROWSER sends, and it reaches order
+                records, the member's order card, the admin's orders screen
+                and the Telegram message. Nothing validated it, so a member
+                could post an ordinary paid order claiming any origin they
+                liked — including the one the shop uses to mark a lucky-wheel
+                prize as a gift, which would put «🎁 هدية» on an order they
+                paid nothing extra for and had not won.
+
+                A label a customer can choose is not evidence of anything. The
+                allow-list keeps the handful of legitimate checkout origins and
+                sends everything else to the default; server-decided sources
+                are set on the server and never accepted from here.
+              */
+              allowedSource(data.source),
               data.checkoutSessionId,
               {
                 request,
@@ -162,6 +209,7 @@ export const Route = createFileRoute("/api/orders")({
                   ? { referralCode: data.referralCode.trim().slice(0, 64) }
                   : {}),
               },
+              isPaymentMethod(data.paymentMethod) ? data.paymentMethod : undefined,
             );
             return json({ order: redactOrder(order!, user) });
           } catch (error) {

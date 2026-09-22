@@ -11,10 +11,22 @@
  * so the check keeps the "must be your own file" rule and widens the folder set
  * to the ones members upload into.
  */
+/*
+  `avif` is here because `/api/upload` stores one: a phone that hands over an
+  AVIF has nothing else to give, and every current browser renders it. This
+  list and the upload route's `SERVABLE_IMAGE` are the same question asked at
+  two steps — when they disagreed, a file uploaded 200 and the very next call
+  refused it with `invalid_image`, and the member saw a photo that sent itself
+  and then vanished.
+*/
 const MEMBER_UPLOAD_URL =
-  /^\/api\/files\/(chat|uploads|orders|receipts|support|documents|reviews)\/(usr_[a-z0-9]+)\/[a-z0-9_-]{1,96}\.(png|jpe?g|webp|gif|mp4|webm|mov)$/i;
+  /^\/api\/files\/(chat|uploads|orders|receipts|support|documents|reviews)\/(usr_[a-z0-9]+)\/[a-z0-9_-]{1,96}\.(png|jpe?g|webp|gif|avif|mp4|webm|mov)$/i;
+/*
+  Review proof is a screenshot from a phone, and a phone may well hand over an
+  AVIF — the same reason the member folders accept one above.
+*/
 const REVIEW_IMAGE_URL =
-  /^\/api\/files\/reviews\/(usr_[a-z0-9]+)\/[a-z0-9_-]{1,96}\.(png|jpe?g|webp|gif)$/i;
+  /^\/api\/files\/reviews\/(usr_[a-z0-9]+)\/[a-z0-9_-]{1,96}\.(png|jpe?g|webp|gif|avif)$/i;
 
 const VIDEO_EXT = /^(mp4|webm|mov)$/i;
 
@@ -26,6 +38,22 @@ export function isOwnUploadUrl(url: string, userId: string): boolean {
 /** A public review may expose only a still image uploaded for that review. */
 export function isOwnReviewImageUrl(url: string, userId: string): boolean {
   const match = REVIEW_IMAGE_URL.exec(url);
+  return Boolean(match && match[1] === userId);
+}
+
+/*
+  The delivery attachment on a two-step submission, which may be a short clip
+  as well as a photo — the customer is showing what arrived.
+
+  Kept separate from `isOwnReviewImageUrl` rather than widening it: the
+  Instagram proof is a screenshot and nothing else, and a check that accepted
+  video everywhere would quietly accept it there too.
+*/
+const REVIEW_MEDIA_URL =
+  /^\/api\/files\/reviews\/(usr_[a-z0-9]+)\/[a-z0-9_-]{1,96}\.(png|jpe?g|webp|gif|avif|mp4|webm|mov)$/i;
+
+export function isOwnReviewMediaUrl(url: string, userId: string): boolean {
+  const match = REVIEW_MEDIA_URL.exec(url);
   return Boolean(match && match[1] === userId);
 }
 

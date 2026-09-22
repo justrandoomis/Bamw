@@ -32,6 +32,17 @@ const DELIVERY_PATH = [
   "src/lib/support/engine.ts",
 ];
 
+/**
+ * Files whose name says "delivery" and whose subject is not the hand-over.
+ *
+ * This codebase uses the word for two unrelated things: handing a member their
+ * game account, and the courier who carries a console. `delivery-fee.ts`
+ * computes «رسوم التوصيل» from the shop's base fee and its per-city list, and
+ * has no idea a code exists. Excluded by name, with the reason written down,
+ * rather than by loosening the sweep that catches a real new module.
+ */
+const NOT_THE_HANDOVER = ["src/lib/delivery-fee.ts"];
+
 /** Anything that could invent a number to hand to a customer. */
 const GENERATORS =
   /\b(Math\s*\.\s*random|crypto\s*\.\s*getRandomValues|randomInt|generateSecureOtpCode|nanoid)\b/;
@@ -89,7 +100,7 @@ describe("the delivery code is never fabricated", () => {
     // And the delivery path has not grown a module this list does not know
     // about: any `*delivery*` source in lib is either audited or deliberately
     // excluded here.
-    const known = new Set([...DELIVERY_PATH]);
+    const known = new Set([...DELIVERY_PATH, ...NOT_THE_HANDOVER]);
     const stray: string[] = [];
     const walk = (dir: string) => {
       for (const entry of readdirSync(dir)) {
@@ -102,6 +113,11 @@ describe("the delivery code is never fabricated", () => {
         }
       }
     };
+    // And the excuses still have to name real files, so one cannot be left
+    // behind covering a module that has since been renamed or deleted.
+    for (const file of NOT_THE_HANDOVER) {
+      expect(statSync(resolve(process.cwd(), file)).isFile(), file).toBe(true);
+    }
     walk(resolve(process.cwd(), "src/lib"));
     expect(stray, `unaudited delivery module: ${stray.join(", ")}`).toEqual([]);
   });

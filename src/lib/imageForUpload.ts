@@ -48,13 +48,12 @@ const OUTPUT_TYPES = ["image/webp", "image/jpeg"] as const;
 
 /** A format the whole pipeline can already read, so there is nothing to gain. */
 function isAlreadyFine(file: File): boolean {
-  return (
-    file.size <= SKIP_BELOW_BYTES &&
-    /^image\/(jpeg|png|webp|gif)$/i.test(file.type || "")
-  );
+  return file.size <= SKIP_BELOW_BYTES && /^image\/(jpeg|png|webp|gif)$/i.test(file.type || "");
 }
 
-async function decode(file: File): Promise<{ width: number; height: number; source: CanvasImageSource } | null> {
+async function decode(
+  file: File,
+): Promise<{ width: number; height: number; source: CanvasImageSource } | null> {
   /*
     `createImageBitmap` is the fast path and, on Safari, the one that decodes
     HEIC. The `<img>` fallback is for browsers that lack it or refuse a
@@ -102,9 +101,49 @@ function encode(canvas: HTMLCanvasElement, type: string): Promise<Blob | null> {
 /**
  * The same picture, small enough to upload — or the original, unchanged.
  */
+/**
+ * Names that say "picture" when the browser would not.
+ *
+ * iOS «Files» and several Android file managers hand a file over with an empty
+ * `type`. That file used to be returned untouched — so the one conversion in
+ * the whole system, the browser's own, was skipped for exactly the HEICs that
+ * most need it, and the server refused them a minute later after the entire
+ * photo had been uploaded.
+ */
+const IMAGE_NAME = /\.(hei[cf]|avif|jpe?g|png|webp|bmp|tiff?)$/i;
+
+/** Formats the rest of the shop can store and a browser can display. */
+const SERVABLE_TYPE = /^image\/(jpeg|png|webp|gif|avif)$/i;
+
+function looksLikeImage(file: File): boolean {
+  const type = (file.type || "").toLowerCase();
+  if (type.startsWith("video/")) return false;
+  if (type.startsWith("image/")) return true;
+  return type === "" && IMAGE_NAME.test(file.name || "");
+}
+
+/**
+ * The same picture, prepared, and whether it can actually be sent.
+ *
+ * `prepareImageForUpload` promises never to fail, which is right for it and
+ * wrong for the chat: a photo it hands back unchanged may be an HEIC, and the
+ * member then waits out a full upload to be told in English that it was not
+ * supported. This runs the same pipeline and says which happened, so the chat
+ * can refuse in Arabic before a byte leaves the phone.
+ *
+ * A video is not this function's business and is returned as servable —
+ * nothing here decodes one, and the upload path stores it untouched.
+ */
+export async function prepareServableImage(file: File): Promise<{ file: File; servable: boolean }> {
+  if (!file) return { file, servable: false };
+  if ((file.type || "").toLowerCase().startsWith("video/")) return { file, servable: true };
+  const prepared = await prepareImageForUpload(file);
+  return { file: prepared, servable: SERVABLE_TYPE.test(prepared.type || "") };
+}
+
 export async function prepareImageForUpload(file: File): Promise<File> {
   try {
-    if (!file || !file.type.startsWith("image/")) return file;
+    if (!file || !looksLikeImage(file)) return file;
     /* An animation loses its animation on a canvas, so it is left alone. */
     if (/^image\/gif$/i.test(file.type)) return file;
     if (isAlreadyFine(file)) return file;

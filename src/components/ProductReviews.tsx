@@ -4,6 +4,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useI18n } from "@/i18n";
 import { playSound } from "@/utils/audio";
 import { api, fileToDataUrl } from "@/lib/api";
+import { isVideoUrl } from "@/lib/uploads";
 import ReviewRewardCode, { type ReviewRewardData } from "@/components/reviews/ReviewRewardCode";
 import { toast } from "sonner";
 
@@ -155,12 +156,21 @@ export default function ProductReviews({ productId }: { productId: string }) {
                   rel="noreferrer"
                   className="block w-fit overflow-hidden rounded-xl border border-border"
                 >
-                  <img
-                    src={myReview.screenshot_url}
-                    alt="صورة تقييمك"
-                    loading="lazy"
-                    className="h-24 w-24 object-cover"
-                  />
+                  {isVideoUrl(myReview.screenshot_url) ? (
+                    <video
+                      src={myReview.screenshot_url}
+                      className="h-24 w-24 object-cover"
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    <img
+                      src={myReview.screenshot_url}
+                      alt="صورة تقييمك"
+                      loading="lazy"
+                      className="h-24 w-24 object-cover"
+                    />
+                  )}
                 </a>
               )}
 
@@ -336,12 +346,28 @@ export default function ProductReviews({ productId }: { productId: string }) {
                   rel="noreferrer"
                   className="block w-fit overflow-hidden rounded-xl border border-border"
                 >
-                  <img
-                    src={r.screenshot_url}
-                    alt="صورة مرفقة بالتقييم"
-                    loading="lazy"
-                    className="max-h-56 w-auto max-w-full object-cover"
-                  />
+                  {/*
+                    The review attachment may be a clip: the two-step
+                    submission asks for «صورة أو مقطع». An <img> pointed at an
+                    mp4 renders a broken image, so the tag follows the file.
+                  */}
+                  {isVideoUrl(r.screenshot_url) ? (
+                    <video
+                      src={r.screenshot_url}
+                      className="max-h-56 w-auto max-w-full object-cover"
+                      controls
+                      muted
+                      playsInline
+                      preload="metadata"
+                    />
+                  ) : (
+                    <img
+                      src={r.screenshot_url}
+                      alt="صورة مرفقة بالتقييم"
+                      loading="lazy"
+                      className="max-h-56 w-auto max-w-full object-cover"
+                    />
+                  )}
                 </a>
               )}
             </article>

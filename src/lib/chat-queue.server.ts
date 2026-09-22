@@ -1,5 +1,7 @@
 import {
-  listThreads,
+  listOpenThreads,
+  listUnfinishedOrderIds,
+  findThreadByIdOrOrder,
   getThread,
   saveThread,
   appendMessage,
@@ -113,8 +115,15 @@ export async function processInactivityAndQueue(): Promise<void> {
   lastProcessedTime = nowMs;
 
   try {
-    const allThreads = await listThreads();
-    const openThreads = allThreads.filter((t) => t.status === "open" && t.mode !== "RESOLVED");
+    /*
+      Scoped in the query, not filtered afterwards.
+
+      This called `listThreads()` and kept the open ones — which reads the
+      document of every conversation the shop has ever had, closed ones
+      included, and parses each of them in the Worker. Every minute, growing
+      with the shop's whole history, to look at two fields.
+    */
+    const openThreads = await listOpenThreads();
 
     for (const thread of openThreads) {
       // 1. Check Regular Human Support (GENERAL_SUPPORT without Order)
@@ -193,7 +202,7 @@ export async function processInactivityAndQueue(): Promise<void> {
         // Check if there are active delivery items in D1
         let deliveryItems: Array<{ status: string; sent_at?: string; proof_received_at?: string }> =
           [];
-        if (thread.orderId && (await import("./d1.server").then(m => m.d1Ready()))) {
+        if (thread.orderId && (await import("./d1.server").then((m) => m.d1Ready()))) {
           try {
             deliveryItems = await d1All<{
               status: string;
@@ -397,11 +406,20 @@ export function isDigitalOrderPreparationThread(t: Thread): boolean {
  */
 export async function calculateQueueMetrics(threadOrOrderId: string): Promise<QueueMetrics> {
   const availability = await getAdminAvailabilityStatus();
-  const allThreads = await listThreads();
-
-  const targetThread = allThreads.find(
-    (t) => t.id === threadOrOrderId || t.orderId === threadOrOrderId,
-  );
+  /*
+    The queue is made of open threads, and the one being asked about may not be
+    one: a closed conversation can still ask for its metrics. So the queue is
+    read as the queue, and the subject is looked up by its own id — rather than
+    both being found by scanning every thread in the shop, on a customer's
+    request rather than on a cron.
+  */
+  const [openThreads, unfinishedOrderIds] = await Promise.all([
+    listOpenThreads(),
+    listUnfinishedOrderIds(),
+  ]);
+  const targetThread =
+    openThreads.find((t) => t.id === threadOrOrderId || t.orderId === threadOrOrderId) ??
+    (await findThreadByIdOrOrder(threadOrOrderId));
 
   const orderId =
     targetThread?.orderId ||
@@ -420,7 +438,7 @@ export async function calculateQueueMetrics(threadOrOrderId: string): Promise<Qu
     otp_sent_at?: string | null;
   }> = [];
 
-  if (orderId && (await import("./d1.server").then(m => m.d1Ready()))) {
+  if (orderId && (await import("./d1.server").then((m) => m.d1Ready()))) {
     try {
       deliveryRows = await d1All<{
         id: string;
@@ -487,10 +505,29 @@ export async function calculateQueueMetrics(threadOrOrderId: string): Promise<Qu
     }
   }
 
-  // Active queue threads: open and strictly digital orders requiring preparation/delivery
-  const queueThreads = allThreads.filter((t) => {
-    if (t.status !== "open" || t.mode === "RESOLVED" || isPureAutomatedThread(t)) return false;
+  /*
+    The queue is the work still waiting, not the conversations still open.
+
+    A customer was shown «السابع في الطابور» with nobody in front of them. The
+    filter below asked only whether a thread carries an order id, and a
+    conversation stays open long after its order is delivered — so every order
+    the shop had ever completed was still standing in the queue, and the number
+    only ever grew.
+
+    So the order's own state decides. A thread whose order is completed,
+    cancelled, awaiting the customer's confirmation or sitting in a delivery
+    issue is no longer work the admin is about to reach, and it is not counted.
+    A thread with no order id at all is left as it was: there is no order to
+    ask about, and dropping it would empty the queue of the general-support
+    conversations that legitimately belong in it.
+  */
+  const isWaitingOnAdmin = (t: Thread): boolean =>
+    !t.orderId || unfinishedOrderIds.has(String(t.orderId));
+
+  const queueThreads = openThreads.filter((t) => {
+    if (isPureAutomatedThread(t)) return false;
     if (t.queueStatus === "snoozed") return false;
+    if (!isWaitingOnAdmin(t)) return false;
     return isDigitalOrderPreparationThread(t);
   });
 
@@ -524,9 +561,15 @@ export async function calculateQueueMetrics(threadOrOrderId: string): Promise<Qu
     null;
 
   if (index === -1) {
+    /*
+      Not in the queue. Either the conversation is not queue work at all, or —
+      and this is the case the old code got wrong — its own order is finished,
+      in which case telling the customer they are «الأول في الطابور» is as
+      wrong as telling them they are seventh.
+    */
     const isEligible = targetThread
-      ? isDigitalOrderPreparationThread(targetThread)
-      : Boolean(orderId);
+      ? isDigitalOrderPreparationThread(targetThread) && isWaitingOnAdmin(targetThread)
+      : Boolean(orderId) && unfinishedOrderIds.has(String(orderId));
 
     return {
       isQueueEligible: isEligible,

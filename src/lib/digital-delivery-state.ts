@@ -86,3 +86,21 @@ export function autoCompleteAtFromLastOtp(lastOtpSentAt: string): string {
   if (!Number.isFinite(timestamp)) throw new Error("invalid_last_otp_sent_at");
   return new Date(timestamp + 60 * 60 * 1_000).toISOString();
 }
+
+/** Thirty minutes, the wait before the shop asks for a review on its own. */
+export const REVIEW_PROMPT_DELAY_MINUTES = 30;
+
+/**
+ * When to ask for the review if the customer has not confirmed by then.
+ *
+ * Deliberately not {@link autoCompleteAtFromLastOtp}. That is the sixty-minute
+ * deadline after which an unconfirmed order completes itself, and the owner's
+ * rule for the review is half that — the customer has the code, they can say
+ * what they think of the delivery without waiting for a timer they never see.
+ * Two timers, two functions: changing one must not move the other.
+ */
+export function reviewPromptAtFromLastOtp(lastOtpSentAt: string): string {
+  const timestamp = new Date(lastOtpSentAt).getTime();
+  if (!Number.isFinite(timestamp)) throw new Error("invalid_last_otp_sent_at");
+  return new Date(timestamp + REVIEW_PROMPT_DELAY_MINUTES * 60 * 1_000).toISOString();
+}

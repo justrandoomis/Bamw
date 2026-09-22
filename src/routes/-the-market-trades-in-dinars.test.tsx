@@ -12,7 +12,7 @@
  */
 import { describe, expect, it } from "vitest";
 
-import { dinars } from "@/routes/banana_market";
+import { dinars } from "@/lib/banana-price";
 
 describe("what a price looks like on this page", () => {
   it("is marked in dinars, not dollars", () => {

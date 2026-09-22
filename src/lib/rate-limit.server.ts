@@ -40,6 +40,20 @@ async function ensureTable() {
         key TEXT PRIMARY KEY, count INTEGER NOT NULL,
         window_started INTEGER NOT NULL, expires_at INTEGER NOT NULL)`,
     )
+      /*
+        The sweep below filters on `expires_at`, and the table had an index on
+        nothing but `key` — so every cold isolate opened by scanning the whole
+        table to find the expired rows. A Worker makes isolates constantly, and
+        this table has a row per (scope, client, identity) across every limited
+        path in the shop, so that scan is paid far more often than the once-per
+        -isolate it looks like.
+      */
+      .then(() =>
+        d1Run(
+          `CREATE INDEX IF NOT EXISTS idx_security_rate_limits_expires
+             ON security_rate_limits (expires_at)`,
+        ),
+      )
       .then(() =>
         d1Run(
           `DELETE FROM security_rate_limits WHERE expires_at < ?`,
@@ -68,13 +82,24 @@ export async function consumeRateLimit(
   const key = `${scope}:${fingerprint}`;
 
   if (await ensureTable()) {
-    await d1Run(
+    /*
+      One statement, not two.
+
+      This counted with an INSERT and then read the result back with a separate
+      SELECT — two D1 round trips on every limited request, and the limited
+      paths include sign-in, OTP, orders, chat, uploads and every image the
+      proxy has to fetch. `RETURNING` gives the same two numbers from the write
+      that produced them, which is also the only version that cannot read a
+      count some other isolate changed in between.
+    */
+    const row = await d1First<{ count: number; expires_at: number }>(
       `INSERT INTO security_rate_limits (key, count, window_started, expires_at)
        VALUES (?, 1, ?, ?)
        ON CONFLICT(key) DO UPDATE SET
          count = CASE WHEN security_rate_limits.expires_at <= ? THEN 1 ELSE security_rate_limits.count + 1 END,
          window_started = CASE WHEN security_rate_limits.expires_at <= ? THEN ? ELSE security_rate_limits.window_started END,
-         expires_at = CASE WHEN security_rate_limits.expires_at <= ? THEN ? ELSE security_rate_limits.expires_at END`,
+         expires_at = CASE WHEN security_rate_limits.expires_at <= ? THEN ? ELSE security_rate_limits.expires_at END
+       RETURNING count, expires_at`,
       key,
       now,
       expiresAt,
@@ -84,10 +109,10 @@ export async function consumeRateLimit(
       now,
       expiresAt,
     );
-    const row = await d1First<{ count: number; expires_at: number }>(
-      `SELECT count, expires_at FROM security_rate_limits WHERE key = ?`,
-      key,
-    );
+    /*
+      A row that does not come back is treated as over the limit, exactly as
+      before: a limiter that cannot read its own count must refuse, not allow.
+    */
     const count = Number(row?.count ?? limit + 1);
     const retryAfter = Math.max(1, Number(row?.expires_at ?? expiresAt) - now);
     return { allowed: count <= limit, retryAfter, remaining: Math.max(0, limit - count) };

@@ -494,8 +494,26 @@ export interface ProblemEntry {
   published?: boolean;
 }
 
+/**
+ * The review popup's admin-managed copy.
+ *
+ * It lives here rather than in `store.settings` for a concrete reason: a
+ * `/api/data` POST replaces the whole settings object, so a field added there
+ * is erased by the next unrelated save from any admin screen that round-trips
+ * settings. Content is patched key by key.
+ */
+export interface ReviewPromptData {
+  /** The shop's pinned Instagram post — step two opens this. */
+  instagram_post_url: string;
+  /** What the customer is asked for in step one. */
+  step_one_note_ar?: string;
+  /** What proof step two wants, in the shop's own words. */
+  step_two_note_ar?: string;
+}
+
 export interface ContentDoc {
   problems?: ProblemEntry[];
+  reviewPrompt?: ReviewPromptData;
   faqCategories: FaqCategory[];
   faq: FaqItem[];
   policy: PolicyData;
@@ -521,6 +539,16 @@ const opt = (
 
 export const DEFAULT_CONTENT: ContentDoc = {
   problems: [],
+  reviewPrompt: {
+    /*
+      Empty by default, and the sheet says so rather than guessing a link. An
+      invented Instagram URL would send every customer to the wrong place and
+      make the proof unverifiable.
+    */
+    instagram_post_url: "",
+    step_one_note_ar: "اكتب رأيك بتسليم المنتجات وأرفق صورة أو مقطعاً.",
+    step_two_note_ar: "علّق على منشور الإنستغرام المثبّت، ثم أرفق صورة تعليقك.",
+  },
   faqCategories: [],
   faq: [],
   policy: {
@@ -790,6 +818,9 @@ export function mergeContent(partial: unknown): ContentDoc {
   const source = (partial ?? {}) as Partial<ContentDoc>;
   return {
     problems: Array.isArray(source.problems) ? source.problems : DEFAULT_CONTENT.problems,
+    reviewPrompt: source.reviewPrompt
+      ? { ...DEFAULT_CONTENT.reviewPrompt, ...source.reviewPrompt }
+      : DEFAULT_CONTENT.reviewPrompt,
     faqCategories: Array.isArray(source.faqCategories)
       ? source.faqCategories
       : DEFAULT_CONTENT.faqCategories,

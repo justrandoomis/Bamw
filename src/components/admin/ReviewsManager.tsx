@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { CheckCircle2, EyeOff, ShieldCheck, Trash2 } from "lucide-react";
 import { toast } from "sonner";
+import { isVideoUrl } from "@/lib/uploads";
+import ReviewPromptSettings from "./ReviewPromptSettings";
 
 interface AdminReview {
   id: string;
@@ -77,6 +79,9 @@ export default function ReviewsManager() {
 
   return (
     <div className="space-y-4" dir="rtl">
+      {/* Set the post the review's second step opens, before moderating what it produced. */}
+      <ReviewPromptSettings />
+
       <div className="flex flex-wrap items-center gap-2">
         <input
           value={query}
@@ -178,12 +183,24 @@ export default function ReviewsManager() {
                   rel="noreferrer"
                   className="block w-fit overflow-hidden rounded-xl border border-border"
                 >
-                  <img
-                    src={r.screenshot_url}
-                    alt="صورة مرفقة بالتقييم"
-                    loading="lazy"
-                    className="max-h-64 w-auto max-w-full object-contain"
-                  />
+                  {/* A review attachment may be a clip — an <img> would show a broken image. */}
+                  {isVideoUrl(r.screenshot_url) ? (
+                    <video
+                      src={r.screenshot_url}
+                      className="max-h-64 w-auto max-w-full object-contain"
+                      controls
+                      muted
+                      playsInline
+                      preload="metadata"
+                    />
+                  ) : (
+                    <img
+                      src={r.screenshot_url}
+                      alt="صورة مرفقة بالتقييم"
+                      loading="lazy"
+                      className="max-h-64 w-auto max-w-full object-contain"
+                    />
+                  )}
                 </a>
               )}
 

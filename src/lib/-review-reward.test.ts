@@ -207,38 +207,47 @@ describe("the invitation", () => {
     expect(button.web_app).toBeUndefined();
   });
 
-  it("states the amount, the expiry date and that the code is theirs alone", async () => {
+  it("asks for the review and names the prize, without handing over a code", async () => {
+    /*
+      The contract changed, and this is the sentence that changed it: the code
+      is no longer minted on completion. The customer is told what rating the
+      order is worth and what to do; the code itself exists only after they
+      submit proof and an admin approves it.
+    */
     const { sendReviewInvitation } = await import("./review-reward.server");
     await sendReviewInvitation(ORDER, { now: "2026-09-04T00:00:00.000Z" });
 
     const text = sent[0]!.text;
+    expect(text).toContain("يرجى التقييم");
     expect(text).toContain("1,000");
-    expect(text).toContain("2026-09-11");
-    expect(text).toContain("مخصص لحسابك");
+    expect(text).toContain("منشور الإنستغرام");
+    expect(text).toContain("بعد موافقة الإدارة");
+    // No code, and none of the phrasing that used to accompany one.
+    expect(text).not.toMatch(/REV-/);
+    expect(text).not.toContain("مخصص لحسابك");
   });
 
-  it("still congratulates the customer when no code could be minted", async () => {
+  it("mints nothing at all — not a coupon, not a ledger row", async () => {
     /*
-      The order really is finished. Telling them nothing because the reward
-      failed would be the worse of the two outcomes.
+      The owner's objection in one assertion. An invitation that quietly paid
+      out is what made the reward automatic; a customer must now earn it.
     */
-    insertFails = (sql) => (sql.includes("INSERT INTO coupons") ? "D1 is down" : null);
     const { sendReviewInvitation } = await import("./review-reward.server");
-    await sendReviewInvitation(ORDER);
+    await sendReviewInvitation(ORDER, { now: "2026-09-04T00:00:00.000Z" });
 
-    expect(sent).toHaveLength(1);
-    expect(sent[0]!.text).toContain("تم اكتمال طلبك");
-    expect(sent[0]!.text).not.toContain("كود خصم");
+    // The fixture starts it null, so falsy is the honest assertion here.
+    expect(ledger).toBeFalsy();
+    expect(couponInsert()).toBeUndefined();
   });
 
-  it("mints the reward even when the member has not linked Telegram", async () => {
+  it("is still sent when the member has not linked Telegram — and still mints nothing", async () => {
     telegramChatId = null;
     const { sendReviewInvitation } = await import("./review-reward.server");
 
     await expect(sendReviewInvitation(ORDER)).resolves.toBe(false);
 
-    expect(ledger?.coupon_code).toMatch(/^REV-/);
-    expect(couponInsert()).toBeDefined();
+    expect(ledger).toBeFalsy();
+    expect(couponInsert()).toBeUndefined();
     expect(sent).toHaveLength(0);
   });
 
@@ -254,7 +263,7 @@ describe("the invitation", () => {
 
 describe("every completion path reaches the invitation", () => {
   it.each([
-    ["src/lib/order-completion.server.ts", "sendReviewInvitation("],
+    ["src/lib/order-completion.server.ts", "promptForReview("],
     ["src/lib/order-delivery-items.server.ts", "completeOrder("],
   ])("%s delegates to the central completion flow", async (file, call) => {
     const { readFileSync } = await import("node:fs");
@@ -264,7 +273,50 @@ describe("every completion path reaches the invitation", () => {
       Digital delivery must enter the central completion service, and that
       service owns the invitation. Keeping a single owner prevents one path
       from silently drifting away from the other.
+
+      Completion now asks through `promptForReview` rather than calling
+      `sendReviewInvitation` itself, because it is one of three triggers and
+      they share a claim — see the next test.
     */
     expect(text).toContain(call);
+  });
+
+  it("routes all three of the owner's triggers through the one claim", async () => {
+    const { readFileSync } = await import("node:fs");
+    const { resolve } = await import("node:path");
+    const read = (file: string) => readFileSync(resolve(process.cwd(), file), "utf8");
+
+    const reward = read("src/lib/review-reward.server.ts");
+    /*
+      One table decides whether a message goes out, whichever trigger fires
+      first. Reusing `review_reward_notifications` would have been silent
+      suppression: production rows there already read 'sent' for every order
+      completed since it shipped.
+    */
+    expect(reward).toContain("INSERT OR IGNORE INTO order_review_prompts");
+
+    /*
+      The customer confirming, and an admin completing by hand, both land in
+      the completion service — and it names which one it was, so the recorded
+      trigger says something. "completed" for all three would have answered
+      nothing about which of them reaches customers.
+    */
+    const completion = read("src/lib/order-completion.server.ts");
+    expect(completion).toContain("await promptForReview(");
+    expect(completion).toContain('options.role === "USER" ? "customer_confirmed"');
+    expect(completion).toContain('"admin_manual"');
+    // The thirty-minute timer is its own trigger, and does not wait for
+    // completion.
+    expect(read("src/lib/order-delivery-items.server.ts")).toContain(
+      'promptForReview(order, "otp_timer"',
+    );
+
+    /*
+      The two timers stay separate. The review asks at thirty minutes; the
+      order still completes itself at sixty, and nothing here may move that.
+    */
+    const state = read("src/lib/digital-delivery-state.ts");
+    expect(state).toContain("REVIEW_PROMPT_DELAY_MINUTES = 30");
+    expect(state).toContain("timestamp + 60 * 60 * 1_000");
   });
 });

@@ -36,6 +36,8 @@ import { toast } from "sonner";
 import { validateCoupon } from "@/lib/reviews-coupons.functions";
 import AppShell from "@/components/AppShell";
 import { useAuth } from "@/hooks/useAuth";
+import { resolveDeliveryPrice } from "@/lib/delivery-fee";
+import { cashOnDeliveryAllowed } from "@/lib/payment-method";
 import { api } from "@/lib/api";
 import type { Address, Product, ProductKind, Order } from "@/lib/types";
 import { cartNeedsAddress, cartTotal, useCartStore } from "@/store/useCartStore";
@@ -276,7 +278,7 @@ function CartItemCard({
 
 function CartPage() {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, refetch: refreshMe } = useAuth();
   const queryClient = useQueryClient();
   const { formatIQDPrice } = useCurrency();
   const {
@@ -460,9 +462,19 @@ function CartPage() {
   const subtotal = cartTotal(lines);
   const totalItemsCount = lines.reduce((sum, l) => sum + (l.quantity || 1), 0);
 
-  // Delivery calculation if physical hardware exists
-  const deliveryBase = Number(storeData?.settings?.["deliveryBase"] || 5000);
-  const deliveryPrice = needsAddress ? deliveryBase : 0;
+  /*
+    Delivery, from the same function the checkout uses.
+
+    This read `deliveryBase` alone and ignored the owner's per-city list, while
+    the server applied it — so an order to a city priced differently was shown
+    one fee and charged another, in the one line of the bill nobody checks.
+
+    It follows the city as it is typed, which is also what the checkout will
+    read off the same address a moment later.
+  */
+  const deliveryPrice = needsAddress
+    ? resolveDeliveryPrice(storeData?.settings as Record<string, unknown> | undefined, address.city)
+    : 0;
 
   // Coupon state
   const [couponCode, setCouponCode] = useState("");
@@ -567,7 +579,31 @@ function CartPage() {
   const totalPayable = Math.max(0, subtotal - finalDiscount + deliveryPrice);
 
   const walletBalance = user?.walletBalance || 0;
+
+  /*
+    CASH AT THE DOOR, WHERE THERE IS A DOOR.
+
+    The same rule the server applies, imported rather than restated, so the
+    screen can never offer a choice the checkout would refuse. It says yes only
+    when every line is something a courier carries — a digital account is
+    handed over in the chat the moment the order is paid, and an unpaid one has
+    nowhere for the money to arrive from.
+  */
+  const codAllowed = cashOnDeliveryAllowed(lines.map((l) => ({ kind: l.kind })));
+  const [payAtDoor, setPayAtDoor] = useState(false);
+  /*
+    A game added to a cart of accessories takes the choice away again, so the
+    selection cannot survive as a stale `true` into a cart it no longer applies
+    to — the server would refuse the order and the member would not know why.
+  */
+  useEffect(() => {
+    if (!codAllowed && payAtDoor) setPayAtDoor(false);
+  }, [codAllowed, payAtDoor]);
+  const payFromWallet = !(codAllowed && payAtDoor);
+
   const isBalanceSufficient = walletBalance >= totalPayable;
+  /* Only the wallet needs a balance. Cash is checked at the door, by a person. */
+  const canPlaceOrder = payFromWallet ? isBalanceSufficient : true;
   const missingAmount = Math.max(0, totalPayable - walletBalance);
 
   // Quantity updates
@@ -634,6 +670,7 @@ function CartPage() {
           either way and never takes the discount from this request.
         */
         referral?.referralCode ?? undefined,
+        payFromWallet ? "wallet" : "cash_on_delivery",
       );
     },
     onSuccess: ({ order }) => {
@@ -642,9 +679,26 @@ function CartPage() {
       // Generate new key for subsequent sessions
       idempotencyKeyRef.current = crypto.randomUUID();
       queryClient.invalidateQueries({ queryKey: ["cart"] });
-      queryClient.invalidateQueries({ queryKey: ["auth"] });
-      queryClient.invalidateQueries({ queryKey: ["orders"] });
-      queryClient.invalidateQueries({ queryKey: ["threads"] });
+      /*
+        THE BALANCE ON SCREEN, AFTER THE MONEY HAS MOVED.
+
+        This invalidated `["auth"]`, and no query is registered under that key.
+        The member's balance comes from `useAuth`, whose query key is `["me"]`
+        (src/hooks/useAuth.ts:11) with `staleTime: Infinity` and
+        refetchOnWindowFocus, refetchOnMount and refetchOnReconnect all off —
+        so nothing would ever refetch it on its own either.
+
+        The effect: checkout debited the wallet correctly, atomically, in the
+        database, and the card on screen went on showing the number from before
+        the purchase until a hard reload. Which reads, to anyone watching it,
+        as the wallet not being charged at all.
+
+        `useAuth`'s own `refetch()` already refreshes `["me"]`, `["wallet"]`,
+        `["banana-balance"]`, the orders and the threads together, so it is
+        called rather than a fourth list of keys being written here to drift
+        out of step with it.
+      */
+      void refreshMe();
       playSound("bumper_end", 0.7);
       toast.success("تم تأكيد الطلب والدفع بنجاح!");
       void navigate({ to: "/chat", search: { initialOrderId: order.id } });
@@ -659,6 +713,17 @@ function CartPage() {
       } else if (err.message === "insufficient_balance") {
         toast.error("رصيد المحفظة غير كافٍ لإتمام الدفع.");
         setShowInsufficientModal(true);
+      } else if (err.message === "cash_on_delivery_not_available") {
+        /*
+          The server refused the cash option. It should be unreachable — the
+          cart asks the same rule before showing the choice — but a tab left
+          open while a game was added in another one can still get here, and a
+          raw identifier in a toast is not an answer.
+        */
+        toast.error(
+          "الدفع عند الاستلام متاح للأجهزة والإكسسوارات فقط. أعد المحاولة بالدفع من المحفظة.",
+        );
+        setPayAtDoor(false);
       } else if (err.message === "product_not_released") {
         /*
           A game in this cart has not come out yet. It can only have got here
@@ -714,7 +779,15 @@ function CartPage() {
       return;
     }
 
-    if (!isBalanceSufficient) {
+    /*
+      A WALLET GUARD, ON THE WALLET PATH ONLY.
+
+      This read `!isBalanceSufficient` and refused, which would have blocked
+      the exact order cash on delivery exists for: a member with an empty
+      wallet buying a console they intend to pay the courier for. `canPlaceOrder`
+      is the same check on the wallet path and simply true at the door.
+    */
+    if (!canPlaceOrder) {
       playSound("Error", 0.5);
       setShowInsufficientModal(true);
       return;
@@ -1116,7 +1189,12 @@ function CartPage() {
               <span className="font-bold text-foreground">{tr("رصيد محفظتك الحالي")}:</span>
               <span
                 className={`font-black ${
-                  isBalanceSufficient
+                  /*
+                    Red means "not enough for this order". At the door the
+                    wallet is not paying for anything, so a short balance is
+                    not a problem and must not be coloured like one.
+                  */
+                  !payFromWallet || isBalanceSufficient
                     ? "text-emerald-600 dark:text-emerald-400"
                     : "text-rose-600 dark:text-rose-400"
                 }`}
@@ -1128,7 +1206,10 @@ function CartPage() {
             {/* Amount to be deducted */}
             <div className="pt-1 flex justify-between items-center">
               <span className="font-black text-foreground text-sm">
-                {tr("المبلغ المطلوب دفعه من المحفظة")}:
+                {payFromWallet
+                  ? tr("المبلغ المطلوب دفعه من المحفظة")
+                  : tr("المبلغ الذي تدفعه للمندوب عند الاستلام")}
+                :
               </span>
               <span className="font-black text-primary text-base">
                 {formatIQDPrice(totalPayable)}
@@ -1136,8 +1217,8 @@ function CartPage() {
             </div>
           </div>
 
-          {/* Insufficient Balance Notice */}
-          {!isBalanceSufficient && (
+          {/* Insufficient Balance Notice — a wallet problem, and only there */}
+          {payFromWallet && !isBalanceSufficient && (
             <div className="mt-3 p-3.5 bg-rose-500/10 border border-rose-500/25 rounded-2xl text-right space-y-2">
               <div className="flex items-center gap-2 text-rose-600 dark:text-rose-400 text-xs font-black">
                 <AlertCircle className="w-4 h-4 shrink-0" />
@@ -1282,7 +1363,7 @@ function CartPage() {
             </div>
             <div
               className={`font-black text-sm sm:text-base tracking-tight ${
-                isBalanceSufficient
+                !payFromWallet || isBalanceSufficient
                   ? "text-emerald-600 dark:text-emerald-400"
                   : "text-rose-600 dark:text-rose-400"
               }`}
@@ -1292,9 +1373,60 @@ function CartPage() {
           </div>
         </div>
 
+        {/*
+          HOW THIS ORDER IS PAID FOR.
+
+          Shown only when the shop is actually willing to wait for the money —
+          every line something a courier carries. The rule is imported from the
+          server's own module, so this can never offer a choice the checkout
+          would then refuse.
+        */}
+        {codAllowed && (
+          <div className="max-w-2xl mx-auto w-full grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              id="checkout-method-wallet-btn"
+              onClick={() => setPayAtDoor(false)}
+              aria-pressed={!payAtDoor}
+              className={`rounded-2xl border px-3 py-2.5 text-right transition-all active:scale-[0.99] ${
+                !payAtDoor
+                  ? "border-primary bg-primary/10 text-foreground"
+                  : "border-border bg-[var(--card)] text-muted-foreground"
+              }`}
+            >
+              <span className="flex items-center gap-1.5 font-black text-xs sm:text-sm">
+                <Wallet className="w-3.5 h-3.5" />
+                {tr("الدفع من المحفظة")}
+              </span>
+              <span className="block text-[10px] font-bold mt-0.5 opacity-80">
+                {tr("يُخصم الآن")}
+              </span>
+            </button>
+            <button
+              type="button"
+              id="checkout-method-cod-btn"
+              onClick={() => setPayAtDoor(true)}
+              aria-pressed={payAtDoor}
+              className={`rounded-2xl border px-3 py-2.5 text-right transition-all active:scale-[0.99] ${
+                payAtDoor
+                  ? "border-primary bg-primary/10 text-foreground"
+                  : "border-border bg-[var(--card)] text-muted-foreground"
+              }`}
+            >
+              <span className="flex items-center gap-1.5 font-black text-xs sm:text-sm">
+                <Truck className="w-3.5 h-3.5" />
+                {tr("الدفع عند الاستلام")}
+              </span>
+              <span className="block text-[10px] font-bold mt-0.5 opacity-80">
+                {tr("تدفع للمندوب")}
+              </span>
+            </button>
+          </div>
+        )}
+
         {/* Payment Action Button */}
         <div className="max-w-2xl mx-auto w-full">
-          {isBalanceSufficient ? (
+          {canPlaceOrder ? (
             <button
               id="checkout-pay-btn"
               onClick={handleInitiatePayment}
@@ -1310,8 +1442,12 @@ function CartPage() {
                 </>
               ) : (
                 <>
-                  <Wallet className="w-4 h-4" />
-                  <span className="text-sm sm:text-base">{tr("إتمام الدفع عبر المحفظة")}</span>
+                  {payFromWallet ? <Wallet className="w-4 h-4" /> : <Truck className="w-4 h-4" />}
+                  <span className="text-sm sm:text-base">
+                    {payFromWallet
+                      ? tr("إتمام الدفع عبر المحفظة")
+                      : tr("تأكيد الطلب — الدفع عند الاستلام")}
+                  </span>
                 </>
               )}
             </button>
@@ -1456,20 +1592,39 @@ function CartPage() {
                   <span className="text-muted-foreground font-medium">{tr("إجمالي المبلغ")}:</span>
                   <span className="text-foreground font-black">{formatIQDPrice(totalPayable)}</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground font-medium">{tr("رصيدك الحالي")}:</span>
-                  <span className="text-muted-foreground font-bold">
-                    {formatIQDPrice(walletBalance)}
-                  </span>
-                </div>
-                <div className="pt-2 border-t border-border flex justify-between items-center">
-                  <span className="text-emerald-600 dark:text-emerald-400 font-bold">
-                    {tr("الرصيد المتبقي بعد الدفع")}:
-                  </span>
-                  <span className="text-emerald-600 dark:text-emerald-400 font-black">
-                    {formatIQDPrice(Math.max(0, walletBalance - totalPayable))}
-                  </span>
-                </div>
+                {/*
+                  The confirmation must describe the payment that is about to
+                  happen. Showing «الرصيد المتبقي بعد الدفع» on an order paid at
+                  the door states a deduction that will not occur — which is the
+                  same fault, in words, as the one the checkout had in code.
+                */}
+                {payFromWallet ? (
+                  <>
+                    <div className="flex justify-between items-center">
+                      <span className="text-muted-foreground font-medium">
+                        {tr("رصيدك الحالي")}:
+                      </span>
+                      <span className="text-muted-foreground font-bold">
+                        {formatIQDPrice(walletBalance)}
+                      </span>
+                    </div>
+                    <div className="pt-2 border-t border-border flex justify-between items-center">
+                      <span className="text-emerald-600 dark:text-emerald-400 font-bold">
+                        {tr("الرصيد المتبقي بعد الدفع")}:
+                      </span>
+                      <span className="text-emerald-600 dark:text-emerald-400 font-black">
+                        {formatIQDPrice(Math.max(0, walletBalance - totalPayable))}
+                      </span>
+                    </div>
+                  </>
+                ) : (
+                  <div className="pt-2 border-t border-border flex items-start gap-2">
+                    <Truck className="w-4 h-4 mt-0.5 text-primary shrink-0" />
+                    <span className="text-foreground font-bold text-right">
+                      {tr("تدفع المبلغ للمندوب عند الاستلام. لن يُخصم من محفظتك شيء الآن.")}
+                    </span>
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-col gap-2">

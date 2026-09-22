@@ -14,7 +14,7 @@
 
 import { randomId } from "../crypto.server";
 import { d1All, d1First, d1Run } from "../d1.server";
-import { findUserById, getStore } from "../db.server";
+import { findUserById, getStore, getStoreSettings } from "../db.server";
 import { resolveUnitPrice } from "../productPricing";
 import { findProductByIdOrSlug, getProductSlug } from "../productRouting";
 import type { Product, User } from "../types";
@@ -45,7 +45,12 @@ import {
   type DeviceHints,
 } from "./identity.server";
 import { referralAmounts, REFERRER_PERCENT_BPS, toIqd } from "./money";
-import { toReferralAttribution, toReferralCode, type ReferralAttribution, type ReferralCode } from "./rows";
+import {
+  toReferralAttribution,
+  toReferralCode,
+  type ReferralAttribution,
+  type ReferralCode,
+} from "./rows";
 import {
   assessReferralRisk,
   recordRiskEvent,
@@ -63,10 +68,15 @@ import {
  */
 export const REFERRAL_REFUSAL_MESSAGE = "تعذر تطبيق كود الإحالة على هذه العملية.";
 
-/** Read the programme's settings out of the live store document. */
+/**
+ * Read the programme's settings out of the live store document.
+ *
+ * Without the catalogue: `settings` is on the base `store` row, and pulling the
+ * eleven product chunks to reach it cost `/api/referral` most of its time.
+ */
 export async function getReferralSettings(): Promise<ReferralSettings> {
-  const store = await getStore();
-  return readReferralSettings(store?.settings);
+  const settings = await getStoreSettings();
+  return readReferralSettings(settings);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -456,11 +466,19 @@ export async function captureAttribution(params: {
     }
   }
 
-  const store = await getStore();
+  /*
+    The catalogue, only when a product was actually named.
+
+    This read it every time. Applying a code from the cart carries no product
+    reference at all, so the commonest use of this function paid for fourteen
+    chunks, five megabytes of JSON and seventeen hundred products normalised —
+    to look nothing up. On a cold isolate that is seconds; the deploy
+    verifier's `POST /api/referral`, which sends a code and no product, sat
+    unanswered until its connection was dropped.
+  */
   const product = params.productRef
-    ? (findProductByIdOrSlug(store?.products as unknown[], params.productRef) as
-        | Record<string, unknown>
-        | undefined)
+    ? (findProductByIdOrSlug((await getStore())?.products as unknown[], params.productRef) as
+        Record<string, unknown> | undefined)
     : undefined;
   const productId = product ? String(product["id"] ?? "") : "";
 
@@ -548,10 +566,7 @@ export async function captureAttribution(params: {
     productId,
     productTitle,
     buyerPercentBps: settings.buyerPercentBps,
-    setCookies: [
-      ...identity.setCookies,
-      await attributionCookie(token, params.request),
-    ],
+    setCookies: [...identity.setCookies, await attributionCookie(token, params.request)],
     message: productId
       ? `تم تطبيق إحالة @${alias}. ستحصل على خصم ${percent}% عند شراء هذه اللعبة.`
       : `تم تطبيق إحالة @${alias}. ستحصل على خصم ${percent}% على أول لعبة مؤهلة.`,
@@ -751,11 +766,7 @@ export async function bindAttributionToUser(request: Request, userId: string): P
     const { checkReferredAccountIsNew, bindReferrerIfUnbound } = await import("./binding.server");
     const newAccount = verdict.blocked
       ? { ok: false, reason: undefined }
-      : await checkReferredAccountIsNew(
-          userId,
-          attribution.capturedAt,
-          attribution.referrerUserId,
-        );
+      : await checkReferredAccountIsNew(userId, attribution.capturedAt, attribution.referrerUserId);
 
     const refused = verdict.blocked || !newAccount.ok;
 
@@ -950,7 +961,7 @@ export async function quoteReferral(params: {
     path adds no read; a caller that passes neither still works.
   */
   const store = params.products && params.bundles ? undefined : await getStore();
-  const products = params.products ?? ((store?.products as Product[] | undefined) ?? []);
+  const products = params.products ?? (store?.products as Product[] | undefined) ?? [];
   /*
     Bundles are sold from their own list, and the programme never looked in it.
 
@@ -965,8 +976,7 @@ export async function quoteReferral(params: {
     `category` field, so without this it would read as a game and be judged by
     the game rule.
   */
-  const bundles =
-    params.bundles ?? ((store?.bundles as Record<string, unknown>[] | undefined) ?? []);
+  const bundles = params.bundles ?? (store?.bundles as Record<string, unknown>[] | undefined) ?? [];
   const productOf = (id: string | number) => {
     const found = products.find((entry) => String(entry.id) === String(id));
     if (found) return found as Product & Record<string, unknown>;

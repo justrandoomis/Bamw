@@ -1,3 +1,4 @@
+import { catalogueCacheKey } from "@/lib/catalogueCacheKey";
 import { createFileRoute } from "@tanstack/react-router";
 
 import {
@@ -67,7 +68,24 @@ const LIST_FIELDS = [
   "category",
   "categoryId",
   "categoryTitle",
+  /*
+    The snake_case spellings, and why they belong here.
+
+    `getProductCategory` reads `category_id`, `category_title`, `schema_id`
+    and `schema.id` alongside the camelCase names — and `resolveCategoryType`
+    ends with `return "game"` when nothing resolves. A pre-schema hardware or
+    accessory row carrying only `category_id` therefore read as hardware from
+    the full record and as a GAME from this projection: not re-ordered within
+    its shelf, but standing on the wrong shelf entirely.
+
+    The same rule as `coverHiResImage` above: this list's contract is every
+    field the listing rules read, not every field some product happens to use
+    this week.
+  */
+  "category_id",
+  "category_title",
   "schemaId",
+  "schema_id",
   /*
     Whether the game has English in it.
 
@@ -99,6 +117,17 @@ const LIST_FIELDS = [
   "image",
   "coverImage",
   "coverImageTrim",
+  /*
+    The high-resolution cover.
+
+    `hasUsableImage` — which decides whether a listing counts as having artwork,
+    and therefore whether it is shelved first or last — reads seven fields, and
+    this was the one that did not travel. Measured on the live catalogue today:
+    NO product relies on it alone, so nothing moves and nothing was mislabelled.
+    It is here because the contract this list keeps is "every field the listing
+    rules read", not "every field some product happens to use this week".
+  */
+  "coverHiResImage",
   "coverUrl",
   "box_front_url",
   "banner",
@@ -304,6 +333,23 @@ function publicPayload(
   return (cache.full ??= JSON.stringify(cache.visible));
 }
 
+/**
+ * The Worker's shared cache, which the DOM's `CacheStorage` type does not name.
+ *
+ * `caches.default` is a Cloudflare extension: one cache per zone, shared by
+ * every isolate, with no `open()` call and no `vary` negotiation. This project
+ * does not install `@cloudflare/workers-types` — adding it to reach one
+ * property would change how every ambient global in the tree is typed — so the
+ * shape is named narrowly here instead.
+ *
+ * Returns undefined outside a Worker, which is what the test runner and a
+ * local Node process are, so the caller falls through to building the payload.
+ */
+function workerCache(): Cache | undefined {
+  const store = (globalThis as { caches?: { default?: Cache } }).caches;
+  return store?.default;
+}
+
 export const Route = createFileRoute("/api/data")({
   server: {
     handlers: {
@@ -399,6 +445,55 @@ export const Route = createFileRoute("/api/data")({
             });
           }
 
+          /*
+            The public catalogue, held in the Worker's own cache and keyed on
+            the revision that built it.
+
+            A cold isolate answering a shopper used to call `getStore()`: read
+            fourteen chunks out of D1, concatenate five megabytes of JSON, parse
+            it, normalise seventeen hundred products, then build the slim
+            payload — for a body that is byte-identical to the one the isolate
+            next door just built. The edge cache could not help, because one URL
+            answers admins and shoppers and so the response carries
+            `vary: cookie`.
+
+            This cache is inside the Worker, so `vary` does not apply to it and
+            the admin branch simply never reaches it.
+
+            It is keyed on `store_rev` rather than on a clock, and that is what
+            makes it safe rather than a bet. `persistStore` writes the next
+            revision into the *same* `d1Batch` as the catalogue chunks, so any
+            change to a price, a cost, a stock figure or a visibility flag moves
+            the revision, which moves the key, which means the entry built from
+            the old figures is never asked for again. There is no window in
+            which a cached body quotes a price the shop has changed.
+
+            Revision zero means the revision could not be read, and an answer
+            built without knowing which catalogue it came from is not one to
+            keep.
+          */
+          const cacheKeyUrl = catalogueCacheKey({
+            version: catalogVersion,
+            slim,
+            page,
+            limit,
+            category,
+            isAdmin: Boolean(viewer?.isAdmin),
+          });
+          const cacheKey = cacheKeyUrl ? new Request(cacheKeyUrl, { method: "GET" }) : null;
+
+          if (cacheKey) {
+            const cached = await workerCache()
+              ?.match(cacheKey)
+              .catch(() => undefined);
+            if (cached) {
+              const headers = new Headers(cached.headers);
+              headers.set("x-cache-status", "worker-hit");
+              headers.set("server-timing", `worker-cache;dur=${Date.now() - startTime}`);
+              return new Response(cached.body, { status: cached.status, headers });
+            }
+          }
+
           const store = await getStore();
           const duration = Date.now() - startTime;
 
@@ -484,7 +579,25 @@ export const Route = createFileRoute("/api/data")({
             vary: "cookie",
           };
           headers["x-cache-status"] = "fresh";
-          return new Response(payload, { headers });
+          const response = new Response(payload, { headers });
+
+          /*
+            Kept only when there is a catalogue worth keeping. An empty or
+            degraded answer is refused above; this is the second guard, so a
+            momentary emptiness reaching here by some route this file does not
+            know about cannot be pinned to a revision and handed to everyone.
+
+            The put is awaited rather than handed to `ctx.waitUntil`, because
+            `ctx` is not published to this layer — `server.ts` publishes `env`
+            and nothing else — and inventing a global to reach it would be a
+            worse trade than the few milliseconds this costs once per revision.
+          */
+          if (cacheKey && servesProducts) {
+            await workerCache()
+              ?.put(cacheKey, response.clone())
+              .catch(() => {});
+          }
+          return response;
         }),
 
       POST: async ({ request }) =>

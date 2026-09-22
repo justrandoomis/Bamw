@@ -39,6 +39,11 @@ export interface SafeOrderItem {
   id: string;
   productId: string;
   title: string;
+  /*
+    The same union as the catalogue's, by reference rather than by hand. This
+    was a copy of `ProductKind` and the copy went stale the moment a new kind
+    was named — a type error in a file that only passes the value through.
+  */
   kind: ProductKind;
   quantity: number;
   /** delivered account email — only present once it was sent to this user */

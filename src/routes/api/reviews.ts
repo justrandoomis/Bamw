@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { d1All, d1First, d1Run, ensureSchema, getD1 } from "@/lib/d1.server";
 import { body, guard, json } from "@/lib/http.server";
-import { issueReviewReward } from "@/lib/review-reward.server";
 import {
   ensureReviewsSchema,
   findCompletedPurchase,
@@ -173,13 +172,11 @@ export const Route = createFileRoute("/api/reviews")({
           });
 
           /*
-            Completion normally issues this reward. Calling the same idempotent
-            function here repairs an older/missed completion and, crucially,
-            returns the real code to the website instead of hiding it in a
-            Telegram-only message.
+            No reward from here. This endpoint publishes a plain star rating —
+            `ProductReviews.tsx` still posts to it — and a code is earned only
+            through the two-step submission an admin approves. Minting here
+            would leave a door that skips the Instagram proof *and* the admin.
           */
-          const reward = await issueReviewReward(purchase.order);
-
           return json({
             ok: true,
             status: "approved",
@@ -194,7 +191,6 @@ export const Route = createFileRoute("/api/reviews")({
               status: review.status,
               created_at: review.created_at,
             },
-            reward,
           });
         }),
 
@@ -230,7 +226,6 @@ export const Route = createFileRoute("/api/reviews")({
                   comment: review.comment || "",
                   screenshotUrl: review.screenshot_url || null,
                 });
-                await issueReviewReward(purchase.order);
                 return json({ ok: true, verified: true });
               }
             }

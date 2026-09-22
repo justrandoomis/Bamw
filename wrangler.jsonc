@@ -36,6 +36,39 @@
   "observability": {
     "enabled": true,
   },
+
+  /*
+    The CPU ceiling, and why this line is the most important one in the file.
+
+    Roughly half of every-minute cron firings and nine catalogue-import batches
+    were dying with `exceededCpu`. The telemetry would not say what ceiling they
+    hit: every killed invocation reported exactly 10 ms of CPU while successful
+    ones ran 65-461 ms, so the number on a kill was the limit, not the work.
+
+    Setting a `limits` block was refused outright:
+
+        CPU limits are not supported for the Free plan.
+        Switch to a paid plan ... to set CPU limits.  [code: 100328]
+
+    That was the answer. The account was on the Workers Free plan, whose ceiling
+    is 10 ms per invocation, and it killed a static `.webp` served straight from
+    the ASSETS binding — a request that runs no handler code at all. Nothing in
+    this repository could have made a server-rendered React route, or a write of
+    a five-megabyte catalogue, finish inside 10 ms. That is why three rounds of
+    real optimisation moved the kill rate only 64% -> 61%: they removed tens of
+    milliseconds from paths that were allowed ten.
+
+    The account is now on Workers Paid, so the block below is accepted and the
+    ceiling is the one we choose. 30,000 ms is Cloudflare's paid default; the
+    slowest honest invocation measured here was 461 ms, so this is headroom for
+    a catalogue write, not a licence to be slow.
+
+    If a deploy ever fails again with 100328, the plan lapsed — remove the
+    block to deploy, and fix the billing rather than the code.
+  */
+  "limits": {
+    "cpu_ms": 30000,
+  },
   "d1_databases": [
     {
       "binding": "bananto",

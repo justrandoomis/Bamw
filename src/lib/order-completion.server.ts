@@ -299,10 +299,37 @@ export async function completeOrder(
     able to fail the completion that earned it.
   */
   try {
-    const { sendReviewInvitation } = await import("./review-reward.server");
-    await sendReviewInvitation(next, { now: options.now ?? undefined });
+    const { promptForReview } = await import("./review-reward.server");
+    /*
+      Through the shared claim, not straight to the invitation. Completion is
+      one of three triggers the owner named — the customer confirming, the
+      thirty-minute timer after the last OTP, and an admin completing by hand —
+      and a customer who was already asked by the timer must not be asked twice
+      when the order then completes.
+    */
+    /*
+      Name the trigger truthfully. `order_review_prompts.trigger_source` is
+      how the owner can see which of the three actually reaches customers —
+      "completed" for every one of them would have answered nothing.
+    */
+    await promptForReview(
+      next,
+      options.role === "USER" ? "customer_confirmed" : options.auto ? "completed" : "admin_manual",
+      { now: options.now ?? undefined },
+    );
   } catch (err) {
     console.warn("[order-completion:review_invite_failed]", { orderId: order.id }, err);
+  }
+
+  /*
+    The timer has nothing left to do: the order is finished and the invitation
+    above has been claimed. Clearing it also keeps the minute sweep's index
+    small, since only unfinished orders stay in it.
+  */
+  try {
+    await d1Run(`UPDATE orders SET review_prompt_at = NULL WHERE id = ?`, order.id);
+  } catch {
+    // The column may predate this deploy on a database that has not healed yet.
   }
 
   return { order: next, changed };
@@ -344,18 +371,29 @@ export async function reconcileCompletedOrderReviewFollowups(
        FROM orders AS o
        WHERE o.status = 'completed'
      )
+     /*
+       The missing-invitation branch, and only that.
+
+       This used to also match "reward.order_id IS NULL" -- an order with no
+       reward row. That was a sound question while completion minted a reward:
+       a missing row meant a missed completion. It stopped being sound the
+       moment the coupon became something an admin issues after approving a
+       review, because then nearly every completed order the shop has ever
+       taken has no reward row, forever, and this cron would re-run the whole
+       completion path on a fresh batch of them every single minute.
+
+       The OR made the removal clean: the remaining branch asks the question
+       that is still worth asking — was this customer ever invited to rate the
+       order — and answers it from the message that invitation writes.
+     */
      SELECT completed_orders.id, completed_orders.thread_id
      FROM completed_orders
-     LEFT JOIN review_rewards AS reward ON reward.order_id = completed_orders.id
-     WHERE reward.order_id IS NULL
-        OR (
-          completed_orders.thread_id IS NOT NULL
-          AND NOT EXISTS (
-            SELECT 1 FROM messages AS message
-            WHERE message.thread_id = completed_orders.thread_id
-              AND message.client_message_id = 'order-review-request-' || completed_orders.id
-          )
-        )
+     WHERE completed_orders.thread_id IS NOT NULL
+       AND NOT EXISTS (
+         SELECT 1 FROM messages AS message
+         WHERE message.thread_id = completed_orders.thread_id
+           AND message.client_message_id = 'order-review-request-' || completed_orders.id
+       )
      ORDER BY completed_orders.id ASC
      LIMIT ?`,
     boundedLimit,

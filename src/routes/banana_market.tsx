@@ -9,6 +9,7 @@ import TextFlip from "@/components/TextFlip";
 import { lazyWithRetry } from "@/lib/lazyRetry";
 import { useBananaMarket, type BananaListing } from "@/hooks/useBananaMarket";
 import { playSound } from "@/utils/audio";
+import { PRICE_STEP, dinars, formatPrice, roundPrice } from "@/lib/banana-price";
 
 // recharts is the heaviest dependency on this route; keep it off the critical path.
 const BananaPriceChart = lazyWithRetry(() => import("@/components/BananaPriceChart"));
@@ -67,33 +68,6 @@ function marketErrorText(
     profile_incomplete: "أكمل بيانات حسابك أولاً لتتمكن من التداول.",
   };
   return map[code] ?? (code ? `تعذّر إتمام العملية (${code})` : "تعذّر إتمام العملية");
-}
-
-/**
- * A banana price, in the currency the market actually trades in.
- *
- * Every figure on this page was printed with a `$` in front of it, and the
- * market has never been in dollars: the offers column is `price_iqd`, the bot
- * floor it is compared against is `min_price_iqd`, and the admin panel calls
- * the same number «السعر الأساسي (د.ع)». The shop's own default currency is
- * IQD. So the sign was simply wrong, on every row a customer reads.
- *
- * Not `formatGenericPrice`: that guesses the unit from the magnitude — under
- * 500 it treats the number as dollars and converts it — which is precisely
- * backwards for a price that is a fraction of one dinar. The unit is known
- * here, so it is stated rather than inferred.
- *
- * Three decimals below one dinar, because that is the precision the engine
- * rounds to (`spotPriceAt`), and a price of 0.24 shown as «0 د.ع» would be the
- * same lie in a different font.
- */
-export function dinars(value: number | undefined | null): string {
-  const amount = Number(value) || 0;
-  const digits = amount !== 0 && Math.abs(amount) < 1 ? 3 : amount % 1 === 0 ? 0 : 2;
-  return `${amount.toLocaleString("en-US", {
-    minimumFractionDigits: digits,
-    maximumFractionDigits: digits,
-  })} د.ع`;
 }
 
 /** Full timestamp with seconds, shown faintly under the price in the tooltip. */
@@ -165,8 +139,20 @@ function BananaMarketPage() {
   const pricePct =
     price > 0 && Number(pricePer) > 0 ? Math.round(((Number(pricePer) - price) / price) * 100) : 0;
 
+  /*
+    A quick-pick the server will actually accept.
+
+    This floored at 0.01 and rounded to two decimals. Against a ceiling of
+    0.0004 that made every quick-pick 0.01 — sixteen times the highest price
+    the market allows — so the slider could not produce a listable price at
+    all, and «نشر العرض» came back refused whatever the seller chose. The
+    market's own band is the floor and the ceiling now, and the rounding is
+    the engine's.
+  */
   const applyPricePct = (pct: number) => {
-    const next = Math.max(0.01, Math.round(price * (1 + pct / 100) * 100) / 100);
+    const floor = limits.minPrice > 0 ? limits.minPrice : PRICE_STEP;
+    const ceiling = limits.maxPrice > 0 ? limits.maxPrice : Number.POSITIVE_INFINITY;
+    const next = Math.min(ceiling, Math.max(floor, roundPrice(price * (1 + pct / 100))));
     setPricePer(String(next));
   };
 
@@ -414,9 +400,7 @@ function BananaMarketPage() {
 
                   <div className="flex items-center gap-3">
                     <div className="flex flex-col text-left" dir="ltr">
-                      <div className="text-sm font-black leading-tight">
-                        ${l.total.toLocaleString("en-US")}
-                      </div>
+                      <div className="text-sm font-black leading-tight">{dinars(l.total)}</div>
                       <div className="mt-0.5 text-[10px] font-bold leading-tight text-foreground/60">
                         {dinars(l.pricePer)} / موزة
                       </div>
@@ -611,7 +595,7 @@ function BananaMarketPage() {
                     </div>
                     <div className="flex items-center justify-between border-t border-foreground/10 pt-2 text-base font-black">
                       <span>{tr("الإجمالي")}</span>
-                      <span dir="ltr">${buying.total.toLocaleString("en-US")}</span>
+                      <span dir="ltr">{dinars(buying.total)}</span>
                     </div>
                   </div>
 
@@ -675,14 +659,20 @@ function BananaMarketPage() {
                   />
 
                   <label className="mt-4 block text-xs font-bold text-foreground/70">
-                    {tr("السعر لكل موزة (دولار)")}
+                    {tr("السعر لكل موزة")}
                   </label>
                   <input
                     value={pricePer}
                     onChange={(e) => setPricePer(e.target.value.replace(/[^0-9.]/g, ""))}
                     inputMode="decimal"
                     dir="ltr"
-                    placeholder="0.25"
+                    /*
+                      From when a banana was worth a quarter of a dinar. The
+                      shop's base is 0.0004 today, so "0.25" in a price box
+                      reads as a suggestion to list six hundred times the
+                      market. The live price is the only honest hint.
+                    */
+                    placeholder={formatPrice(limits.minPrice)}
                     className="mt-1 w-full rounded-2xl border border-foreground/15 bg-foreground/5 px-4 py-3 text-sm font-bold outline-none focus:border-foreground/40"
                   />
 

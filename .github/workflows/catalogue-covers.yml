@@ -1,0 +1,66 @@
+# Check every cover URL in the supplier sheet before importing it.
+#
+# READ ONLY: it fetches the URLs and writes a report. It touches neither the
+# database nor the catalogue, and it runs here rather than in the agent's
+# sandbox because that sandbox has no outbound route to Nintendo's CDN — every
+# request comes back 403 from the proxy, which is not a fact about the links.
+#
+# A listing pointing at a broken URL is worse than one with no picture: the shop
+# has a designed placeholder for the second and a torn-image icon for the first.
+name: Catalogue covers
+
+run-name: Catalogue covers — ${{ inputs.file || 'import-sources/catalogue.csv' }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: "CSV path in the repository"
+        type: string
+        default: "import-sources/catalogue.csv"
+      concurrency:
+        description: "Requests in flight"
+        type: string
+        default: "12"
+  # So the answer is waiting without anyone dispatching it, whenever the sheet
+  # or the checker changes.
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - import-sources/catalogue.csv
+      - scripts/catalogue-covers-check.mjs
+      - .github/workflows/catalogue-covers.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: catalogue-covers
+  cancel-in-progress: true
+
+jobs:
+  covers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check
+        run: |
+          node scripts/catalogue-covers-check.mjs \
+            --file "${{ inputs.file || 'import-sources/catalogue.csv' }}" \
+            --concurrency "${{ inputs.concurrency || '12' }}"
+      - name: Upload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalogue-covers
+          path: catalogue-covers.md
+          if-no-files-found: warn
+      - name: Summary
+        if: always()
+        run: cat catalogue-covers.md >> "$GITHUB_STEP_SUMMARY" || true

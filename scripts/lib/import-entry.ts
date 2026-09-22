@@ -49,6 +49,13 @@ export {
   PLATFORM_DEVICE,
 } from "@/lib/devicePerformance";
 export { getProductCategory } from "@/lib/productSection";
+/*
+  Which picture a listing card draws. Exported for the read-only measurement
+  in scripts/slim-shelf-cost.mjs, which asks whether the slim projection
+  leaves a card with a real photograph or a placeholder — a question only this
+  function can answer, because it is the one the card itself asks.
+*/
+export { resolveProductImage } from "@/lib/productImages";
 export { checkSupplierNameZh, writeSupplierNameZh } from "@/lib/productAdminMetadata.server";
 export { syncGameDevicePerformance } from "@/lib/devicePerformance.server";
 

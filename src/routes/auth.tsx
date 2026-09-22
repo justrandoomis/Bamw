@@ -22,6 +22,7 @@ import OtpBoxes from "@/components/auth/OtpBoxes";
 import TelegramLinkPrompt from "@/components/auth/TelegramLinkPrompt";
 import { ASSET_BASE_URL } from "@/config/publicAssets";
 
+import { takeAfterSignIn } from "@/lib/signInReturn";
 import { authPageAction } from "@/lib/authRedirect";
 import { useAuth } from "@/hooks/useAuth";
 import type { OtpChannel } from "@/lib/otp.server";
@@ -143,7 +144,15 @@ function AuthPage() {
   useEffect(() => {
     const action = authPageAction({ user, isLoading, isFetching }, { view, isNewRegistration });
     if (action.type === "view") setView(action.view);
-    if (action.type === "redirect") void navigate({ to: action.to, replace: true });
+    /*
+      Back to whatever they were trying to reach. `RequireSignIn` puts the path
+      aside on the way in; without this, a member who tapped «المحفظة» signs in
+      and lands on their profile, having to find the wallet again themselves.
+    */
+    if (action.type === "redirect") {
+      const back = takeAfterSignIn();
+      void navigate({ to: back ?? action.to, replace: true });
+    }
   }, [user, isLoading, isFetching, navigate, isNewRegistration, view]);
 
   const go = (next: View, data?: AuthData) => {

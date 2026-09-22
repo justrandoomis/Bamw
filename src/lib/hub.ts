@@ -6,6 +6,7 @@
 
 import { toAmount } from "./purchasable";
 import { resolveNintendoImage } from "./nintendoImages";
+import { ordinaryOfflineRow, pricingTypeRows } from "./productPricing";
 
 export type OfferKind = "account" | "accountOnline" | "lend" | "disc";
 
@@ -225,7 +226,21 @@ export function normalizeHubGame(product: Record<string, unknown>): HubGame {
 export function readOffers(p: Record<string, unknown>): HubOffer[] {
   const list: HubOffer[] = [];
 
-  const accountPrice = num(p["accountPrice"]) || num(p["price"]);
+  /*
+    THE OFFLINE ACCOUNT'S PRICE, FROM THE TIER ROW WHEN THERE IS ONE.
+
+    This read `accountPrice || price` and never looked at `types` — so on a
+    product that prices its ordinary offline account through a tier row, the
+    hero, the sticky bar and the CTA all quoted a different number from the card
+    beside them. The card leads with that row now, and two numbers for one
+    product is the fault this shop has spent the day removing.
+
+    `ordinaryOfflineRow` is the same function the card and the buy sheet ask.
+    The old expression stays as the fallback, which is what every product
+    without such a row still uses.
+  */
+  const offlineTier = ordinaryOfflineRow(pricingTypeRows(p));
+  const accountPrice = num(offlineTier?.["price"]) || num(p["accountPrice"]) || num(p["price"]);
   const accountInfinite = bool(p["accountInfinite"]) || bool(p["isInfiniteStock"]);
   const accountStock = accountInfinite
     ? undefined

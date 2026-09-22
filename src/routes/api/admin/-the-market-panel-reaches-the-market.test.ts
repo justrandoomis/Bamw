@@ -191,15 +191,34 @@ describe("the engine settings the owner types", () => {
     expect(body.error).toContain("خارج حدوده");
   });
 
-  it("refuses a band that rounds to nothing at the market's own precision", async () => {
-    const { status, body } = await post({
+  it("now ACCEPTS the band this shop actually runs on", async () => {
+    /*
+      This case used to be refused, and the refusal was right for an engine
+      that priced to three decimals: 0.0002 rounded to 0.000 and the shop
+      showed every customer a price of nothing.
+
+      It is wrong now, and that is the point. The owner's banana is worth four
+      ten-thousandths of a dinar, and an engine that cannot express the price
+      its own shop runs on is the fault, not the configuration. The step is a
+      millionth now, so this band is a real band.
+    */
+    const { status } = await post({
       action: "save_market_config",
       config: { basePrice: 0.0002, minPrice: 0.0001, maxPrice: 0.0003 },
     });
+    expect(status).toBe(200);
+  });
+
+  it("still refuses a band the market genuinely cannot express", async () => {
+    const { status, body } = await post({
+      action: "save_market_config",
+      config: { basePrice: 1e-8, minPrice: 1e-9, maxPrice: 1e-7 },
+    });
     expect(status).toBe(400);
     expect(body.error).toContain("يُقرَّب إلى صفر");
-    // The message names the smallest usable value rather than only refusing.
-    expect(body.error).toContain("0.001");
+    // The message names the smallest usable value rather than only refusing,
+    // and names it as a person would write it, not as 1e-6.
+    expect(body.error).toContain("0.000001");
   });
 
   it("accepts the smallest band that does price above zero", async () => {
@@ -340,7 +359,10 @@ describe("redemption rewards", () => {
 
   it("edits an existing reward rather than creating a second one", async () => {
     await post({ action: "save_reward", reward: { id: "rw-edit", title: "الأولى", cost: 500 } });
-    await post({ action: "save_reward", reward: { id: "rw-edit", title: "بعد التعديل", cost: 900 } });
+    await post({
+      action: "save_reward",
+      reward: { id: "rw-edit", title: "بعد التعديل", cost: 900 },
+    });
     const rewards = (await get()).body.rewards.filter((r: { id: string }) => r.id === "rw-edit");
     expect(rewards).toHaveLength(1);
     expect(rewards[0]).toMatchObject({ title: "بعد التعديل", cost: 900 });

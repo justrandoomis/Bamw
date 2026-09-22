@@ -20,7 +20,9 @@ import { toast } from "sonner";
 import type { Order } from "@/lib/types";
 import type { DeliveryItemStatus } from "@/lib/digital-delivery-state";
 
+import { PrepThumbnail } from "./PrepThumbnail";
 import { SupplierNameCopy, copySilently } from "./SupplierNameCopy";
+import type { ManualCompletionRequest } from "./types";
 
 interface DeliveryItemView {
   id: string;
@@ -83,6 +85,10 @@ interface DeliveryActionResponse {
   state?: DeliveryStateView;
   orderFinished?: boolean;
   nextReadyDeliveryItemId?: string;
+  /** The next account was SENT by the same call, not merely selected. */
+  sentNextCredentials?: boolean;
+  /** The account after that, if the chained send found another ready. */
+  followingReadyDeliveryItemId?: string;
   nextOrder?: {
     orderId: string;
     threadId?: string;
@@ -103,7 +109,21 @@ export interface AccountToolsModalProps {
   onClose: () => void;
   order?: Order | null;
   defaultTab?: "credentials" | "card" | "otp" | "instructions";
+  /**
+   * Bumped by the inbox when the member does something on this thread.
+   *
+   * A number rather than a callback because the tool decides WHETHER to
+   * reload — it refuses while an action is in flight — and only the tool
+   * knows that.
+   */
+  deliveryRefreshKey?: number;
   onCompleteOrder?: (orderId: string) => Promise<unknown> | void;
+  /*
+    The manual door. This surface is the only one that has the delivery state
+    loaded, so it is the only one that can tell the dialog how many slots will
+    be forced and how many unmapped rows will be archived.
+  */
+  onCompleteOrderManually?: (order: ManualCompletionRequest) => void;
   isCompletingOrder?: boolean;
   onDeliveryFinished?: (payload: { nextOrder?: DeliveryActionResponse["nextOrder"] }) => void;
   onStateChanged?: () => void;
@@ -172,7 +192,9 @@ export function AccountToolsModal({
   onClose,
   order,
   defaultTab = "credentials",
+  deliveryRefreshKey = 0,
   onCompleteOrder,
+  onCompleteOrderManually,
   isCompletingOrder = false,
   onDeliveryFinished,
   onStateChanged,
@@ -249,6 +271,26 @@ export function AccountToolsModal({
   useEffect(() => {
     if (isOpen) void loadState();
   }, [isOpen, loadState]);
+
+  /*
+    Live, while it is open.
+
+    Delivery state changed under this screen all the time and the screen never
+    said so: the member uploads the login proof and the slot becomes eligible
+    for its OTP, but the tool kept showing «بانتظار الإثبات» until the admin
+    closed it and opened it again. `deliveryRefreshKey` is bumped by the inbox
+    whenever a realtime message arrives from the member on this thread, so the
+    reload happens for the reason it should — something actually changed —
+    rather than on a timer that is wrong in both directions.
+
+    Never while a field is being edited: `busyId` is set for the whole of an
+    action, and a reload mid-action would replace a draft the admin is still
+    typing with what the server last saw.
+  */
+  useEffect(() => {
+    if (!isOpen || !deliveryRefreshKey || busyId) return;
+    void loadState();
+  }, [isOpen, deliveryRefreshKey, busyId, loadState]);
 
   useEffect(
     () => () => {
@@ -407,6 +449,28 @@ export function AccountToolsModal({
     [orderItemById],
   );
 
+  /*
+    The picture the ORDER recorded, not the one the catalogue holds today.
+
+    An order is a record of what was sold. Re-arting a product must not change
+    what an old order shows, for the same reason re-pricing one must not change
+    its margin — so this reads `order.items`, the snapshot taken at checkout,
+    and matches by the order-item id the delivery slot carries. The fallback on
+    `productId` covers orders whose slots predate that id.
+  */
+  const artworkFor = useCallback(
+    (orderItemId: string | null): { image: string; productId: string } => {
+      if (!orderItemId) return { image: "", productId: "" };
+      const byId = order?.items?.find((it) => String(it.id) === String(orderItemId));
+      if (byId) return { image: String(byId.image || ""), productId: String(byId.productId || "") };
+      const productId = orderItemById.get(orderItemId)?.productId;
+      if (!productId) return { image: "", productId: "" };
+      const byProduct = order?.items?.find((it) => String(it.productId) === String(productId));
+      return { image: String(byProduct?.image || ""), productId: String(productId) };
+    },
+    [order?.items, orderItemById],
+  );
+
   /**
    * A game with no Chinese name yet.
    *
@@ -441,6 +505,19 @@ export function AccountToolsModal({
       active.every((item) => item.status !== "needs_mapping") &&
       expected.every((item) => item.status === "otp_sent" || item.status === "completed")
     );
+  }, [deliveryState?.deliveryItems]);
+
+  /*
+    The slots the manual door would force to `completed` — the same set the
+    strict button is refusing over. Shown in the confirmation so the admin
+    reads the number before typing the order code, not after.
+  */
+  const pendingExpectedCount = useMemo(() => {
+    const active = deliveryState?.deliveryItems.filter((item) => !item.archivedAt) || [];
+    return active.filter(
+      (item) =>
+        Boolean(item.orderItemId) && item.status !== "otp_sent" && item.status !== "completed",
+    ).length;
   }, [deliveryState?.deliveryItems]);
 
   const handleQuickPaste = useCallback(async () => {
@@ -540,13 +617,28 @@ export function AccountToolsModal({
       if (result.state) applyState(result.state);
       setOtpById((value) => ({ ...value, [selected.id]: "" }));
       onStateChanged?.();
+      /*
+        Four outcomes, and they call for different things from the admin, so
+        they get four different sentences rather than one that covers them
+        all. The server decides which happened — see sendDeliveryOtp — and
+        this only reports it.
+      */
       if (result.orderFinished) {
-        toast.success("تم إرسال آخر OTP وإخراج الطلب من طابور التجهيز");
+        toast.success("تم إرسال آخر OTP واكتمل الطلب وخرج من طابور التجهيز");
         onDeliveryFinished?.({ nextOrder: result.nextOrder });
         onClose();
-      } else if (result.nextReadyDeliveryItemId) {
+      } else if (result.sentNextCredentials && result.nextReadyDeliveryItemId) {
+        // Already with the member. The admin's next job is its OTP, not its send.
         setSelectedId(result.nextReadyDeliveryItemId);
-        toast.success("تم إرسال OTP والانتقال إلى اللعبة الجاهزة التالية");
+        toast.success("تم إرسال OTP، وأُرسل الحساب الجاهز التالي للعميل مباشرة");
+      } else if (result.nextReadyDeliveryItemId) {
+        /*
+          The chained send did not happen — the slot stopped being ready
+          between the OTP and the attempt. Selected, not sent, and said so,
+          because "sent" and "ready to send" are not the same screen.
+        */
+        setSelectedId(result.nextReadyDeliveryItemId);
+        toast.success("تم إرسال OTP. الحساب التالي جاهز — راجعه ثم أرسله.");
       } else {
         toast.success("تم إرسال OTP لهذا الحساب. الطلب ينتظر بقية العناصر.");
       }
@@ -791,35 +883,48 @@ export function AccountToolsModal({
                       type="button"
                       key={item.id}
                       onClick={() => setSelectedId(item.id)}
-                      className={`min-w-[145px] rounded-xl border px-3 py-2 text-right transition-colors cursor-pointer ${
+                      className={`flex min-w-[185px] items-start gap-2 rounded-xl border px-3 py-2 text-right transition-colors cursor-pointer ${
                         selectedId === item.id
                           ? "border-primary bg-primary/10"
                           : "border-border bg-card hover:bg-muted/50"
                       }`}
                     >
-                      <SupplierNameCopy
-                        supplierName={supplierNameFor(item.orderItemId)}
-                        onMissing={() => reportMissingSupplierName(item.orderItemId)}
-                        className="block truncate text-[11px] font-bold text-foreground"
-                      >
-                        {item.productTitle}
-                      </SupplierNameCopy>
-                      <span className="mt-0.5 block text-[10px] text-muted-foreground">
-                        #{item.slotNumber || 1} • {STATUS_LABEL[item.status]}
-                      </span>
                       {/*
+                        No `productId` here on purpose: this chip is a button,
+                        and an anchor inside a button is invalid HTML that
+                        browsers resolve by dropping one of the two. The chip's
+                        own click selects the slot, which is what an admin
+                        reaching for it wants.
+                      */}
+                      <PrepThumbnail
+                        image={artworkFor(item.orderItemId).image}
+                        title={item.productTitle}
+                      />
+                      <span className="min-w-0 flex-1">
+                        <SupplierNameCopy
+                          supplierName={supplierNameFor(item.orderItemId)}
+                          onMissing={() => reportMissingSupplierName(item.orderItemId)}
+                          className="block truncate text-[11px] font-bold text-foreground"
+                        >
+                          {item.productTitle}
+                        </SupplierNameCopy>
+                        <span className="mt-0.5 block text-[10px] text-muted-foreground">
+                          #{item.slotNumber || 1} • {STATUS_LABEL[item.status]}
+                        </span>
+                        {/*
                         What was actually sold. The title alone is not enough
                         to prepare an account: an offline account and an online
                         one are different products behind the same name.
                       */}
-                      {selectionFor(item.orderItemId) ? (
-                        <span className="mt-0.5 block truncate text-[10px] font-bold text-primary">
-                          {selectionFor(item.orderItemId)}
-                          {quantityFor(item.orderItemId) > 1
-                            ? ` ×${quantityFor(item.orderItemId)}`
-                            : ""}
-                        </span>
-                      ) : null}
+                        {selectionFor(item.orderItemId) ? (
+                          <span className="mt-0.5 block truncate text-[10px] font-bold text-primary">
+                            {selectionFor(item.orderItemId)}
+                            {quantityFor(item.orderItemId) > 1
+                              ? ` ×${quantityFor(item.orderItemId)}`
+                              : ""}
+                          </span>
+                        ) : null}
+                      </span>
                     </button>
                   ))}
                 </div>
@@ -832,7 +937,18 @@ export function AccountToolsModal({
                       <span className="text-[10px] font-bold text-muted-foreground">
                         اسم اللعبة من D1
                       </span>
-                      <div className="mt-1 flex items-center gap-1.5 text-sm font-black text-foreground">
+                      <div className="mt-1 flex items-center gap-2 text-sm font-black text-foreground">
+                        {/*
+                          Here the thumbnail IS a link — this is a heading, not
+                          a button — so one tap opens the product page for a
+                          closer look at what is being prepared.
+                        */}
+                        <PrepThumbnail
+                          image={artworkFor(selected.orderItemId).image}
+                          productId={artworkFor(selected.orderItemId).productId}
+                          title={selected.productTitle}
+                          size="md"
+                        />
                         <Gamepad2 className="h-4 w-4 shrink-0 text-primary" />
                         {/*
                           Same silent copy as the chip. Identical styling to
@@ -1049,57 +1165,82 @@ export function AccountToolsModal({
           >
             إغلاق
           </button>
-          {canCompleteOrder && order && onCompleteOrder ? (
-            <button
-              type="button"
-              onClick={() => void onCompleteOrder(order.id)}
-              disabled={isCompletingOrder}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 px-5 py-2.5 text-xs font-bold text-white disabled:opacity-40 cursor-pointer"
-            >
-              {isCompletingOrder ? (
-                <Loader2 className="h-3.5 w-3.5 animate-spin" />
-              ) : (
-                <CheckCircle2 className="h-3.5 w-3.5" />
-              )}{" "}
-              إكمال الطلب والانتقال للتالي
-            </button>
-          ) : selected && selectedDraft && isCodeKind(selected.kind) ? (
-            <button
-              type="button"
-              onClick={() => void sendCode()}
-              disabled={
-                !selectedDraft.username.trim() ||
-                LOCKED_STATUSES.has(selected.status) ||
-                busyId === selected.id
-              }
-              className="inline-flex items-center gap-1.5 rounded-xl bg-foreground px-5 py-2.5 text-xs font-bold text-background disabled:opacity-40 cursor-pointer"
-            >
-              {busyId === selected.id ? (
-                <Loader2 className="h-3.5 w-3.5 animate-spin" />
-              ) : (
-                <Ticket className="h-3.5 w-3.5" />
-              )}{" "}
-              إرسال كود هذا العنصر
-            </button>
-          ) : selected ? (
-            <button
-              type="button"
-              onClick={() => void sendCredentials()}
-              disabled={
-                selected.status !== "ready" ||
-                busyId === selected.id ||
-                Boolean(savingIds[selected.id])
-              }
-              className="inline-flex items-center gap-1.5 rounded-xl bg-foreground px-5 py-2.5 text-xs font-bold text-background disabled:opacity-40 cursor-pointer"
-            >
-              {busyId === selected.id ? (
-                <Loader2 className="h-3.5 w-3.5 animate-spin" />
-              ) : (
-                <Send className="h-3.5 w-3.5" />
-              )}{" "}
-              إرسال الحساب المحدد
-            </button>
-          ) : null}
+          <div className="flex items-center gap-2">
+            {/*
+              Offered whenever the strict button is refusing — that refusal is
+              exactly the state an admin who delivered by hand lands in, and
+              without this the order has no way out of the tool.
+            */}
+            {order && onCompleteOrderManually && !canCompleteOrder ? (
+              <button
+                type="button"
+                onClick={() =>
+                  onCompleteOrderManually({
+                    orderId: order.id,
+                    code: order.code || order.id,
+                    pendingCount: pendingExpectedCount,
+                    unmappedCount: unmappedItems.length,
+                  })
+                }
+                disabled={isCompletingOrder}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-amber-500/30 bg-amber-500/15 px-3.5 py-2.5 text-xs font-bold text-amber-700 dark:text-amber-300 hover:bg-amber-500/25 disabled:opacity-40 cursor-pointer"
+                title="للطلبات التي سلّمتها بنفسك خارج الأداة"
+              >
+                <ShieldCheck className="h-3.5 w-3.5" /> إكمال يدوي
+              </button>
+            ) : null}
+            {canCompleteOrder && order && onCompleteOrder ? (
+              <button
+                type="button"
+                onClick={() => void onCompleteOrder(order.id)}
+                disabled={isCompletingOrder}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 px-5 py-2.5 text-xs font-bold text-white disabled:opacity-40 cursor-pointer"
+              >
+                {isCompletingOrder ? (
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                ) : (
+                  <CheckCircle2 className="h-3.5 w-3.5" />
+                )}{" "}
+                إكمال الطلب والانتقال للتالي
+              </button>
+            ) : selected && selectedDraft && isCodeKind(selected.kind) ? (
+              <button
+                type="button"
+                onClick={() => void sendCode()}
+                disabled={
+                  !selectedDraft.username.trim() ||
+                  LOCKED_STATUSES.has(selected.status) ||
+                  busyId === selected.id
+                }
+                className="inline-flex items-center gap-1.5 rounded-xl bg-foreground px-5 py-2.5 text-xs font-bold text-background disabled:opacity-40 cursor-pointer"
+              >
+                {busyId === selected.id ? (
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                ) : (
+                  <Ticket className="h-3.5 w-3.5" />
+                )}{" "}
+                إرسال كود هذا العنصر
+              </button>
+            ) : selected ? (
+              <button
+                type="button"
+                onClick={() => void sendCredentials()}
+                disabled={
+                  selected.status !== "ready" ||
+                  busyId === selected.id ||
+                  Boolean(savingIds[selected.id])
+                }
+                className="inline-flex items-center gap-1.5 rounded-xl bg-foreground px-5 py-2.5 text-xs font-bold text-background disabled:opacity-40 cursor-pointer"
+              >
+                {busyId === selected.id ? (
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                ) : (
+                  <Send className="h-3.5 w-3.5" />
+                )}{" "}
+                إرسال الحساب المحدد
+              </button>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

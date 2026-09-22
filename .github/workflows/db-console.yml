@@ -1,0 +1,100 @@
+# A console onto the production database and object store.
+#
+# Reading is the default. A push of the console's own files runs the overview
+# and any SELECTs in `.db-console/read.sql`, and can write nothing at all.
+#
+# Writing needs one of two deliberate acts:
+#   - a dispatched run with `apply` ticked, or
+#   - statements committed to `.db-console/apply.sql` under a `-- run-once:`
+#     token, which is claimed in the database so a later push cannot replay it.
+#
+# Whatever the route, `scripts/lib/console-guards.mjs` refuses DROP, TRUNCATE,
+# and any DELETE or UPDATE with no WHERE, and masks credentials, contact
+# details and the private supplier name out of everything it prints.
+name: D1 / R2 console
+
+on:
+  workflow_dispatch:
+    inputs:
+      sql:
+        description: "SQL to run — one statement per line, ending in ;"
+        type: string
+        required: false
+      apply:
+        description: "Allow writes (INSERT/UPDATE/DELETE). Leave off to read."
+        type: boolean
+        default: false
+      r2_prefix:
+        description: "List R2 objects under this prefix (* for the bucket root)"
+        type: string
+        required: false
+      overview:
+        description: "Print the tables, store_kv composition and catalogue counts"
+        type: boolean
+        default: true
+      max_rows:
+        description: "Rows printed per result"
+        type: string
+        default: "40"
+  # So a question can be asked by pushing it, without waiting for a merge.
+  # A push can never set apply — only the committed run-once file can, and only
+  # once per token.
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/db-console.yml
+      - scripts/db-console.mjs
+      - scripts/lib/console-guards.mjs
+      - .db-console/**
+
+permissions:
+  contents: read
+
+concurrency:
+  group: db-console
+  cancel-in-progress: false
+
+jobs:
+  console:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+      - name: Run
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          CLOUDFLARE_R2_BUCKET_NAME: ${{ secrets.CLOUDFLARE_R2_BUCKET_NAME }}
+          # A dispatched run may carry SQL inline; a pushed run reads the
+          # committed questions instead. `apply` is only ever the dispatcher's.
+          CONSOLE_SQL: ${{ inputs.sql }}
+          CONSOLE_APPLY: ${{ inputs.apply }}
+          CONSOLE_R2_PREFIX: ${{ inputs.r2_prefix }}
+          CONSOLE_OVERVIEW: ${{ inputs.overview == null && 'true' || inputs.overview }}
+          CONSOLE_MAX_ROWS: ${{ inputs.max_rows || '40' }}
+          CONSOLE_READ_FILE: .db-console/read.sql
+          CONSOLE_APPLY_FILE: .db-console/apply.sql
+        run: node scripts/db-console.mjs
+      - name: Upload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: db-console
+          path: db-console.md
+          if-no-files-found: warn
+      - name: Summary
+        if: always()
+        run: cat db-console.md >> "$GITHUB_STEP_SUMMARY" || true

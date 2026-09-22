@@ -1,7 +1,7 @@
 import { tr, useI18n } from "@/i18n";
 import { threadKind } from "@/lib/thread-lifecycle";
 import { toast } from "sonner";
-import { prepareImageForUpload } from "@/lib/imageForUpload";
+import { prepareServableImage } from "@/lib/imageForUpload";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
 import {
@@ -32,6 +32,7 @@ import {
   Sparkles,
   User,
   ArrowRight,
+  BookOpen,
   ArrowLeft,
   AlertCircle,
   RotateCcw,
@@ -49,6 +50,7 @@ import { useCurrency } from "@/context/CurrencyContext";
 import { useAuth } from "@/hooks/useAuth";
 import { useChatRealtime } from "@/hooks/useChatRealtime";
 import { api, uploadFileWithProgress, walletApi } from "@/lib/api";
+import { bubbleSide, bubbleTail } from "@/lib/chatSides";
 import { isVideoUrl } from "@/lib/uploads";
 import { supportAnswer, type SupportContext } from "@/lib/support";
 import { buildProductIndex, searchProducts } from "@/lib/search/products";
@@ -378,14 +380,22 @@ function LocationSelectionView({
         className="flex h-full flex-col overflow-y-auto overflow-x-hidden pb-4 text-right"
         dir="rtl"
       >
-        <div className="mb-4 flex items-center">
+        {/*
+          The heading first in the DOM and `justify-between` to separate them,
+          rather than an auto margin pushing the close button to a physical
+          edge — in a panel that is always RTL, `ml-auto` put the X where the
+          title should begin.
+        */}
+        <div className="mb-4 flex items-center justify-between gap-2">
+          <h2 className="min-w-0 truncate text-xl font-bold text-[var(--ink)]">
+            {tr("موقع جديد")}
+          </h2>
           <button
             onClick={() => setMode("list")}
-            className="ml-auto rounded-full bg-[var(--surface-3)] p-2 text-[var(--ink)] cursor-pointer"
+            className="shrink-0 rounded-full bg-[var(--surface-3)] p-2 text-[var(--ink)] cursor-pointer"
           >
             <X className="h-4 w-4" />
           </button>
-          <h2 className="text-xl font-bold text-[var(--ink)]">{tr("موقع جديد")}</h2>
         </div>
         <div className="relative mb-4 flex h-48 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface-3)]">
           <div className="relative z-10 flex flex-col items-center">
@@ -635,7 +645,7 @@ function WalletView({
           className="space-y-5 rounded-2xl border border-[var(--line)] bg-card p-6 shadow-xs"
         >
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[var(--surface)] text-[var(--ink)]">
-            <Send className="ml-1 h-6 w-6" />
+            <Send className="ms-1 h-6 w-6 rtl:-scale-x-100" />
           </div>
           <div className="text-center">
             <h3 className="text-lg font-bold text-[var(--ink)]">{tr("تأكيد الطلب")}</h3>
@@ -784,8 +794,12 @@ export default function ChatView({
     if (!initialOrderId) return;
     if (resolvedOrderThreadRef.current === initialOrderId) return;
 
-    const fromOrder = orders.find((order) => order.id === initialOrderId || order.code === initialOrderId)?.threadId;
-    const fromThreads = threads.find((thread) => thread.orderId === initialOrderId || thread.subject?.includes(initialOrderId))?.id;
+    const fromOrder = orders.find(
+      (order) => order.id === initialOrderId || order.code === initialOrderId,
+    )?.threadId;
+    const fromThreads = threads.find(
+      (thread) => thread.orderId === initialOrderId || thread.subject?.includes(initialOrderId),
+    )?.id;
     const target = fromOrder || fromThreads;
     if (target) {
       resolvedOrderThreadRef.current = initialOrderId;
@@ -877,7 +891,8 @@ export default function ChatView({
   }, [currentThread, threadId, initialOrderId, initialThreadId]);
 
   const currentOrder = useMemo(
-    () => (activeOrderId ? orders.find((o) => o.id === activeOrderId || o.code === activeOrderId) : null),
+    () =>
+      activeOrderId ? orders.find((o) => o.id === activeOrderId || o.code === activeOrderId) : null,
     [activeOrderId, orders],
   );
 
@@ -1774,7 +1789,39 @@ export default function ChatView({
       is also what makes an iPhone HEIC work — Safari decodes it, the Worker
       cannot. Returns the original untouched if any of that is unavailable.
     */
-    const file = await prepareImageForUpload(rawFile);
+    const { file, servable } = await prepareServableImage(rawFile);
+
+    /*
+      Refused here, before a byte leaves the phone.
+
+      An HEIC picked through «الملفات» rather than the camera roll cannot be
+      decoded by anything downstream, and what used to happen was the worst of
+      both: an optimistic bubble appeared, the whole photo uploaded over a
+      phone connection, and a minute later the member was shown the English
+      token «unsupported_image_format» with no bubble left and nothing to do.
+    */
+    if (!servable) {
+      toast.error(
+        "تعذر تحويل هذه الصورة على جهازك. أرسلها بصيغة JPG أو PNG، أو اخترها من الاستوديو بدل «الملفات».",
+      );
+      return;
+    }
+
+    /*
+      And a size the connection can actually carry. There was no limit here at
+      all: a member could start a 300 MB video upload, watch it crawl, and be
+      told only that it timed out.
+    */
+    const isVideoFile = (file.type || "").toLowerCase().startsWith("video/");
+    const MB = 1024 * 1024;
+    if (!isVideoFile && file.size > 10 * MB) {
+      toast.error("الصورة كبيرة جداً. حاول إرسالها من الاستوديو لتصغيرها.");
+      return;
+    }
+    if (isVideoFile && file.size > 50 * MB) {
+      toast.error("المقطع كبير جداً (أكثر من ٥٠ ميغابايت). أرسل مقطعاً أقصر.");
+      return;
+    }
 
     const tempId = `upload-${Date.now()}`;
     const objectUrl = URL.createObjectURL(file);
@@ -1838,7 +1885,9 @@ export default function ChatView({
           err instanceof Error && err.message ? err.message : "تعذر إرسال الصورة. حاول مرة أخرى.";
         toast.error(reason);
         setServerMessages((prev) =>
-          prev.map((m) => (m.id === tempId ? { ...m, status: "failed", failureReason: reason } : m)),
+          prev.map((m) =>
+            m.id === tempId ? { ...m, status: "failed", failureReason: reason } : m,
+          ),
         );
       }
     } else {
@@ -2105,23 +2154,30 @@ export default function ChatView({
     >
       {/* 1. Modern Compact Sticky Header */}
       <div className="sticky top-0 z-30 flex items-center justify-between border-b border-white/40 bg-[var(--surface-5)]/85 px-3.5 py-2.5 shadow-xs backdrop-blur-md transition-all">
-        {/* Back Button */}
+        {/*
+          `shrink-0` on both ends and `min-w-0` in the middle. A flex item's
+          default minimum width is its content, so the untruncated title in the
+          centre column could push the actions past the edge of a 360px phone —
+          the header stopped fitting and the whole pane could be scrolled
+          sideways. The back label hides below 360px rather than squeezing the
+          title, because an arrow alone still reads as "back".
+        */}
         <button
           onClick={onBack}
           aria-label={tr("رجوع")}
-          className="flex h-9 items-center gap-1.5 rounded-full border border-white/40 bg-card/90 px-3 text-[13px] font-bold text-[var(--ink)] shadow-xs transition-all hover:bg-[var(--surface-3)] active:scale-95 cursor-pointer"
+          className="flex h-9 shrink-0 items-center gap-1.5 rounded-full border border-white/40 bg-card/90 px-2.5 text-[13px] font-bold text-[var(--ink)] shadow-xs transition-all hover:bg-[var(--surface-3)] active:scale-95 cursor-pointer"
         >
           <ArrowRight
             className="h-4 w-4 rtl:rotate-0 ltr:rotate-180 text-[var(--ink)]"
             strokeWidth={2.2}
           />
-          <span className="text-[12px] font-bold">{tr("رجوع")}</span>
+          <span className="hidden text-[12px] font-bold min-[360px]:inline">{tr("رجوع")}</span>
         </button>
 
         {/* Thread Info & Live Status Badge */}
-        <div className="flex flex-col items-center justify-center text-center">
-          <div className="flex items-center gap-1.5" dir={isRtl ? "rtl" : "ltr"}>
-            <span className="text-[13.5px] font-bold text-[var(--ink)]">
+        <div className="flex min-w-0 flex-1 flex-col items-center justify-center px-1.5 text-center">
+          <div className="flex min-w-0 max-w-full items-center gap-1.5" dir={isRtl ? "rtl" : "ltr"}>
+            <span className="truncate text-[13.5px] font-bold tracking-[-0.01em] text-[var(--ink)]">
               {isOrderMode
                 ? `${tr("محادثة تجهيز الطلب")} ${currentOrder?.code ? `(${currentOrder.code})` : ""}`
                 : isAutomatedThread
@@ -2129,7 +2185,7 @@ export default function ChatView({
                   : currentThread?.subject || tr("محادثة الإدارة")}
             </span>
             {isOrderMode ? (
-              <span className="flex items-center gap-1 rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-bold text-amber-700 dark:text-amber-400">
+              <span className="flex shrink-0 items-center gap-1 rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-bold text-amber-700 dark:text-amber-400">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
                 {currentOrder?.status === "completed"
                   ? tr("مكتمل")
@@ -2166,7 +2222,29 @@ export default function ChatView({
         </div>
 
         {/* Actions (Search + History) */}
-        <div className="flex items-center gap-1.5">
+        <div className="flex shrink-0 items-center gap-1.5">
+          {/*
+            The guides, one tap from the conversation that needs them.
+
+            A member being walked through signing in to a Nintendo account is
+            precisely the member who wants «شرح طرق تسجيل الدخول», and the only
+            way to reach it was to leave the order, find the menu and come back
+            — which on a phone means losing your place in a queue you are
+            watching. Quiet on purpose: the same size and weight as the search
+            and history buttons beside it, not a call to action.
+          */}
+          {isOrderMode && (
+            <a
+              href="/account_guides"
+              target="_blank"
+              rel="noopener noreferrer"
+              title={tr("شرح الحسابات وطرق تسجيل الدخول")}
+              aria-label={tr("شرح الحسابات وطرق تسجيل الدخول")}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-card/80 text-[var(--ink)] shadow-xs transition-colors hover:bg-[var(--surface-3)] cursor-pointer"
+            >
+              <BookOpen className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+            </a>
+          )}
           {isHumanChat && (
             <button
               onClick={() => setIsSearching(!isSearching)}
@@ -2250,7 +2328,7 @@ export default function ChatView({
                       ? tr("⚡ دورك الآن — قيد التجهيز المباشر من المشرف")
                       : `${tr("طابور التجهيز المباشر: الدور")} #${liveQueueMetrics?.position || currentQueueIndex}`}
                     {(liveQueueMetrics?.aheadCount ?? currentQueueIndex - 1) > 0 && (
-                      <span className="mr-2 rounded-md bg-amber-500/15 px-1.5 py-0.5 text-[11px] font-semibold text-amber-800 dark:text-amber-300">
+                      <span className="ms-2 rounded-md bg-amber-500/15 px-1.5 py-0.5 text-[11px] font-semibold text-amber-800 dark:text-amber-300">
                         {isAr
                           ? `(أمامك ${liveQueueMetrics?.aheadCount ?? currentQueueIndex - 1} طلبات)`
                           : `(${liveQueueMetrics?.aheadCount ?? currentQueueIndex - 1} orders ahead)`}
@@ -2321,17 +2399,13 @@ export default function ChatView({
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={tr("بحث في المحادثة...")}
                 autoFocus
-                className={`h-10 w-full rounded-xl border border-[var(--line)] bg-card px-9 text-xs font-medium text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none ${
-                  isRtl ? "text-right" : "text-left"
-                }`}
+                className={`h-10 w-full rounded-xl border border-[var(--line)] bg-card px-9 text-[16px] font-medium text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none sm:text-xs ${"text-start"}`}
               />
-              <Search
-                className={`absolute ${isRtl ? "right-3" : "left-3"} h-4 w-4 text-[var(--muted-ink)]`}
-              />
+              <Search className="absolute start-3 h-4 w-4 text-[var(--muted-ink)]" />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className={`absolute ${isRtl ? "left-3" : "right-3"} text-[var(--muted-ink)] hover:text-[var(--ink)] cursor-pointer`}
+                  className="absolute end-3 text-[var(--muted-ink)] hover:text-[var(--ink)] cursor-pointer"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -2345,9 +2419,7 @@ export default function ChatView({
                   <button
                     key={res.id}
                     onClick={() => jumpToMessage(res.id)}
-                    className={`flex w-full flex-col rounded-lg p-2 transition-colors hover:bg-[var(--surface-3)] cursor-pointer ${
-                      isRtl ? "text-right" : "text-left"
-                    }`}
+                    className={`flex w-full flex-col rounded-lg p-2 transition-colors hover:bg-[var(--surface-3)] cursor-pointer ${"text-start"}`}
                   >
                     <div className="flex items-center justify-between text-[10px] text-[var(--muted-ink)]">
                       <span>{res.senderRole === "user" ? tr("أنت") : tr("الدعم")}</span>
@@ -2381,7 +2453,7 @@ export default function ChatView({
       <div
         ref={messagesContainerRef}
         onScroll={handleScroll}
-        className="flex flex-1 flex-col gap-4 overflow-y-auto px-4 pb-4 pt-3 sm:px-6"
+        className="flex flex-1 flex-col gap-4 overflow-y-auto overflow-x-hidden px-4 pb-4 pt-3 sm:px-6"
       >
         {/* Load older messages button / trigger */}
         {hasMore && (
@@ -2579,7 +2651,7 @@ export default function ChatView({
         </AnimatePresence>
 
         {/* Dynamic Chat Messages */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col">
           {threadLoadError && !isThreadLoading ? (
             <div className="mx-auto my-8 flex w-full max-w-sm flex-col items-center gap-3 rounded-2xl border border-[var(--line)] bg-card p-5 text-center">
               <span className="text-2xl">⚠️</span>
@@ -2604,14 +2676,36 @@ export default function ChatView({
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-[var(--ink)] border-t-transparent" />
                 <span>{tr("جاري تحميل المحادثة...")}</span>
               </div>
-              <div className="flex w-3/4 mr-auto animate-pulse flex-col gap-2 rounded-2xl bg-black/5 p-4 dark:bg-white/5" />
-              <div className="flex w-2/3 ml-auto animate-pulse flex-col gap-2 rounded-2xl bg-amber-500/10 p-4" />
-              <div className="flex w-1/2 mr-auto animate-pulse flex-col gap-2 rounded-2xl bg-black/5 p-4 dark:bg-white/5" />
+              {/* The placeholders stand where the messages they stand in for will. */}
+              <div
+                className={`flex w-3/4 ${bubbleSide(false)} animate-pulse flex-col gap-2 rounded-2xl bg-black/5 p-4 dark:bg-white/5`}
+              />
+              <div
+                className={`flex w-2/3 ${bubbleSide(true)} animate-pulse flex-col gap-2 rounded-2xl bg-amber-500/10 p-4`}
+              />
+              <div
+                className={`flex w-1/2 ${bubbleSide(false)} animate-pulse flex-col gap-2 rounded-2xl bg-black/5 p-4 dark:bg-white/5`}
+              />
             </div>
           ) : (
-            messages.map((msg) => {
+            messages.map((msg, index) => {
               const isMine = msg.sender === "user";
               const isHighlighted = highlightedMessageId === msg.id;
+
+              /*
+                Consecutive messages from one sender are one thought, and were
+                being spaced as though they were four separate ones. Tight
+                inside a run, roomy between runs — the shape a reader already
+                knows from every messaging app they have ever used, and the
+                single change that does most for «الشات يبدو كبير وغير مرتب».
+
+                The tail and the timestamp belong to the run, not to every
+                bubble in it: only the last message of a run carries them.
+              */
+              const previous = messages[index - 1];
+              const next = messages[index + 1];
+              const startsRun = !previous || previous.sender !== msg.sender;
+              const endsRun = !next || next.sender !== msg.sender;
 
               return (
                 <motion.div
@@ -2619,9 +2713,21 @@ export default function ChatView({
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   key={msg.id}
-                  className={`flex w-fit max-w-full ${
-                    isMine ? "ml-auto mr-0" : "mr-auto ml-0"
-                  } ${isHighlighted ? "animate-pulse rounded-2xl ring-2 ring-amber-500 p-0.5" : ""}`}
+                  /*
+                    Physical margins, and see src/lib/chatSides.ts for why.
+
+                    This file previously argued itself into `ms-auto`, on the
+                    grounds that the member's own messages belong at "the end of
+                    the line the reader finishes on". In Arabic that is the
+                    LEFT, and the owner's instruction is the other one: «المرسل
+                    يجب أن يكون في اليمين والدعم في اليسار» — the sender on the
+                    right, whatever the language. Everything in the thread now
+                    takes its side from the one helper, so the bubbles, the
+                    typing indicator and the skeletons cannot disagree again.
+                  */
+                  className={`flex w-fit max-w-full ${startsRun ? "mt-3" : "mt-0.5"} ${bubbleSide(
+                    isMine,
+                  )} ${isHighlighted ? "animate-pulse rounded-2xl ring-2 ring-amber-500 p-0.5" : ""}`}
                 >
                   {msg.type === "digital_order_card" && msg.payload ? (
                     <DigitalOrderCard
@@ -2835,7 +2941,7 @@ export default function ChatView({
                             <ShoppingBag className="h-7 w-7 text-[var(--ink)]" />
                           )}
                         </div>
-                        <div className="flex flex-1 flex-col justify-center text-right">
+                        <div className="flex flex-1 flex-col justify-center text-start">
                           <span className="mb-0.5 line-clamp-1 text-[15px] font-bold leading-tight text-[var(--ink)]">
                             {String(msg.payload["name"] ?? "")}
                           </span>
@@ -2844,7 +2950,7 @@ export default function ChatView({
                           </span>
                         </div>
                       </div>
-                      <div className="border-t border-[var(--surface-4)]/50 pt-2 text-right text-[13px] leading-relaxed text-[var(--ink)]/80">
+                      <div className="border-t border-[var(--surface-4)]/50 pt-2 text-start text-[13px] leading-relaxed text-[var(--ink)]/80">
                         {msg.text}
                       </div>
                       <a
@@ -2865,10 +2971,10 @@ export default function ChatView({
                         </motion.div>
                       </div>
                       <div className="px-3 pb-3">
-                        <div className="mb-0.5 text-right text-[15px] font-bold text-[var(--ink)]">
+                        <div className="mb-0.5 text-start text-[15px] font-bold text-[var(--ink)]">
                           {String(msg.payload["name"] ?? "")}
                         </div>
-                        <div className="mb-2 text-right text-[12px] leading-relaxed text-[var(--muted-ink)]">
+                        <div className="mb-2 text-start text-[12px] leading-relaxed text-[var(--muted-ink)]">
                           {msg.text}
                         </div>
                       </div>
@@ -2931,13 +3037,23 @@ export default function ChatView({
                       </button>
                     </div>
                   ) : (
-                    <div className="flex flex-col items-end gap-1 max-w-[85%]">
+                    <div
+                      /*
+                        `items-end`/`items-start` are logical as well, so the
+                        timestamp under an Arabic bubble used to sit under the
+                        far corner of the bubble it belongs to. The children
+                        pin themselves physically instead.
+                      */
+                      className="flex max-w-[80%] flex-col gap-1 sm:max-w-[85%]"
+                    >
                       <div
                         dir="auto"
-                        className={`whitespace-pre-wrap rounded-2xl px-4 py-3 text-[14.5px] font-medium leading-[1.4] shadow-xs ${
+                        className={`overflow-hidden break-words whitespace-pre-wrap rounded-2xl px-3 py-2 text-[13.5px] font-medium leading-[1.45] shadow-xs sm:px-4 sm:py-2.5 sm:text-[14.5px] ${bubbleSide(
+                          isMine,
+                        )} ${startsRun ? bubbleTail(isMine) : ""} ${
                           isMine
-                            ? "rounded-tr-[4px] bg-[var(--ink)] text-[var(--surface-2)]"
-                            : "rounded-tl-[4px] border border-white/50 bg-card/85 text-[var(--ink)] backdrop-blur-xs"
+                            ? "bg-[var(--ink)] text-[var(--surface-2)]"
+                            : "border border-white/50 bg-card/85 text-[var(--ink)] backdrop-blur-xs"
                         }`}
                       >
                         {msg.sender === "ai" ? (
@@ -2951,9 +3067,22 @@ export default function ChatView({
                         )}
                       </div>
 
-                      {/* Timestamp & Status Checkmark */}
-                      {isMine && (
-                        <div className="flex items-center gap-1 text-[10px] text-[var(--muted-ink)] px-1">
+                      {/*
+                        The time, on both sides and once per run.
+
+                        Only the customer's own messages carried a time, so a
+                        conversation read as half-stamped — and every bubble in
+                        a four-message burst carried its own, which is four
+                        timestamps saying the same minute. One line under the
+                        last message of a run says when the run happened, which
+                        is the thing anybody actually wants to know.
+                      */}
+                      {endsRun && (
+                        <div
+                          className={`flex w-fit items-center gap-1 px-1 text-[10px] text-[var(--muted-ink)] ${bubbleSide(
+                            isMine,
+                          )}`}
+                        >
                           {msg.createdAt && (
                             <span>
                               {new Date(msg.createdAt).toLocaleTimeString("ar", {
@@ -2962,13 +3091,13 @@ export default function ChatView({
                               })}
                             </span>
                           )}
-                          {msg.status === "sending" && (
+                          {isMine && msg.status === "sending" && (
                             <Clock className="h-3 w-3 animate-spin text-[var(--muted-ink)]" />
                           )}
-                          {msg.status === "sent" && (
+                          {isMine && msg.status === "sent" && (
                             <CheckCheck className="h-3.5 w-3.5 text-emerald-600" />
                           )}
-                          {msg.status === "failed" && (
+                          {isMine && msg.status === "failed" && (
                             <button
                               onClick={() => handleRetry(msg)}
                               className="flex items-center gap-0.5 text-red-500 font-bold hover:underline cursor-pointer"
@@ -2991,10 +3120,15 @@ export default function ChatView({
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex justify-start"
+              className="mt-3 flex"
             >
-              <div className="flex max-w-[85%] items-center gap-1.5 rounded-2xl rounded-tl-[4px] border border-white/50 bg-card/80 px-4 py-3 text-[var(--ink)] shadow-xs backdrop-blur-xs">
-                <span className="text-[12px] font-medium text-[var(--muted-ink)] ml-1">
+              {/* The shop is typing, so it stands where the shop's bubbles do. */}
+              <div
+                className={`flex max-w-[85%] items-center gap-1.5 rounded-2xl ${bubbleTail(
+                  false,
+                )} ${bubbleSide(false)} border border-white/50 bg-card/80 px-4 py-3 text-[var(--ink)] shadow-xs backdrop-blur-xs`}
+              >
+                <span className="text-[12px] font-medium text-[var(--muted-ink)]">
                   {isAutomatedThread ? "المساعد الآلي يفكر" : "الدعم يكتب"}
                 </span>
                 {[0, 0.2, 0.4].map((delay) => (
@@ -3051,20 +3185,22 @@ export default function ChatView({
         }}
       />
 
-      {/* 4. Bottom Sheet Composer & Navigation Area */}
-      <div className="relative z-10 mx-auto flex w-full shrink-0 flex-col gap-2.5 rounded-t-[28px] border-t border-white/80 bg-[var(--surface)] px-4 pb-4 pt-2 shadow-[0_-10px_40px_rgba(150,130,120,0.15)] sm:px-6">
-        <div className="mx-auto text-[var(--line-2)]">
-          <svg width="24" height="6" viewBox="0 0 24 12" fill="none">
-            <path
-              d="M4 3L12 7L20 3"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
+      {/*
+        4. Bottom Sheet Composer & Navigation Area
 
+        This block was 213 of the 640 pixels a common phone has, and with the
+        header and the queue banner the conversation itself was left under half
+        the screen. That is the whole of «الشات يبدو كبير»: the bubbles are a
+        reasonable size, there was simply nowhere to put them.
+
+        What came out is chrome that was decorating rather than working — the
+        padding on both ends, the gap between every row, and a decorative
+        chevron that named no action. What stayed is the input, the actions and
+        the safe-area inset a phone needs. The pane behind it is translucent, so
+        the conversation reads as continuing underneath rather than stopping at
+        a wall.
+      */}
+      <div className="relative z-10 mx-auto flex w-full shrink-0 flex-col gap-1.5 rounded-t-[28px] border-t border-white/80 bg-[var(--surface)]/92 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 shadow-[0_-10px_40px_rgba(150,130,120,0.15)] backdrop-blur-xl sm:px-6">
         {/* 30-second Human Support Request Countdown Banner */}
         <AnimatePresence>
           {supportCountdown?.active && (
@@ -3128,7 +3264,7 @@ export default function ChatView({
                 className="flex items-center justify-center rounded-[14px] border border-[var(--surface-4)] bg-[var(--surface-2)] px-3.5 py-1.5 text-[var(--ink)] shadow-xs transition-colors hover:bg-card cursor-pointer"
               >
                 {recordingState === "paused" ? (
-                  <Play className="ml-1 h-4 w-4" fill="currentColor" />
+                  <Play className="ms-1 h-4 w-4" fill="currentColor" />
                 ) : (
                   <Pause className="h-4 w-4" fill="currentColor" />
                 )}
@@ -3142,7 +3278,7 @@ export default function ChatView({
                 className="flex items-center justify-center gap-1.5 rounded-[14px] bg-[var(--ink)] px-4 py-1.5 text-[12px] font-medium text-white shadow-xs transition-colors hover:bg-[var(--ink-strong)] cursor-pointer"
               >
                 <span>{tr("إرسال")}</span>
-                <Send className="ml-0.5 h-3.5 w-3.5" />
+                <Send className="ms-0.5 h-3.5 w-3.5 rtl:-scale-x-100" />
               </button>
             </motion.div>
           ) : inputText.length === 0 && !isInputFocused ? (
@@ -3157,7 +3293,7 @@ export default function ChatView({
                 overflow: "hidden",
                 transition: { duration: 0.2 },
               }}
-              className={`relative z-10 flex flex-wrap gap-1.5 ${isRtl ? "justify-end" : "justify-start"}`}
+              className="relative z-10 flex flex-wrap gap-1.5 justify-start"
             >
               {activeSuggestions.map((suggestion, idx) => (
                 <button
@@ -3193,7 +3329,7 @@ export default function ChatView({
               if (file) void attachWithProgress(file);
             }}
           />
-          <div className="relative ml-1 flex items-center justify-center">
+          <div className="relative ms-1 flex items-center justify-center">
             <AnimatePresence>
               {showAttachments && (
                 <motion.div
@@ -3274,9 +3410,17 @@ export default function ChatView({
                       ? tr("اكتب رسالتك للدعم...")
                       : tr("اسألني أي شيء")
                 }
-                className={`h-full w-full bg-transparent ${
-                  isRtl ? "pl-4 pr-[44px]" : "pr-4 pl-[44px]"
-                } text-[13px] font-medium text-[var(--ink)] placeholder-[var(--muted-ink)] focus:outline-none`}
+                /*
+                  16px on a phone, not 13.
+
+                  iOS Safari zooms the whole page when a focused field is
+                  smaller than 16px, and it does not zoom back out. That is
+                  what «تضغط على بعض الأزرار والمحادثات الفقاعات تبدو كبيرة
+                  جدا» actually is: nothing grew, the page did. Shrinking this
+                  further would have made it worse. Desktop keeps the compact
+                  13px, where no such rule exists.
+                */
+                className={`h-full w-full bg-transparent ${"ps-[44px] pe-4"} text-[16px] font-medium text-[var(--ink)] placeholder-[var(--muted-ink)] focus:outline-none sm:text-[13px]`}
               />
             )}
             <button
@@ -3285,9 +3429,7 @@ export default function ChatView({
                 else if (inputText.length > 0) void handleSend();
                 else setRecordingState("recording");
               }}
-              className={`absolute ${
-                isRtl ? "right-1" : "left-1"
-              } z-20 flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-[var(--ink)] transition-colors hover:bg-[var(--ink-strong)] cursor-pointer`}
+              className={`absolute ${"start-1"} z-20 flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-[var(--ink)] transition-colors hover:bg-[var(--ink-strong)] cursor-pointer`}
             >
               {recordingState !== "idle" ? (
                 <X className="h-4 w-4 text-white" strokeWidth={1.5} />
@@ -3304,8 +3446,9 @@ export default function ChatView({
         {!isOrderMode && !isInputFocused && (
           <div
             // Short phones cannot afford the full-height bar: it is what pushes the
-            // composer or the icons themselves off the screen.
-            className="relative z-10 mx-auto flex h-[82px] w-full max-w-md items-end px-1 pb-1 [@media(max-height:700px)]:h-[68px]"
+            // composer or the icons themselves off the screen. It was 82px —
+            // taller than the input field above it — for five 38px circles.
+            className="relative z-10 mx-auto flex h-[66px] w-full max-w-md items-end px-1 pb-0.5 [@media(max-height:700px)]:h-[58px]"
             dir={isRtl ? "rtl" : "ltr"}
           >
             <AnimatePresence mode="wait">

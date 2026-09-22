@@ -16,7 +16,13 @@ export type InboxFilter =
   | "waiting_admin"
   | "escalated"
   | "completed_orders"
-  | "closed_tickets";
+  | "closed_tickets"
+  /*
+    Not a thread filter. Review submissions are not conversations, so this one
+    swaps the panel for the approval list rather than narrowing the threads —
+    it lives beside the others because that is where the admin already looks.
+  */
+  | "pending_reviews";
 
 export interface FilterOption {
   id: InboxFilter;
@@ -51,4 +57,16 @@ export interface InstructionsPayload {
   title: string;
   text: string;
   steps?: string[];
+}
+
+/**
+ * What a surface hands up when the admin asks to complete an order by hand.
+ * The counts are optional: only the delivery tool has the state loaded, and a
+ * dialog that guessed a count would be worse than one that stays quiet.
+ */
+export interface ManualCompletionRequest {
+  orderId: string;
+  code: string;
+  pendingCount?: number;
+  unmappedCount?: number;
 }

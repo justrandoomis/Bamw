@@ -53,32 +53,41 @@ export async function processBotTrading() {
   */
   if (!(marketPrice > 0)) return;
 
-  for (const bot of bots) {
-    /*
-      3. Offers cheaper than the market, per banana.
+  /*
+    3. Offers cheaper than the market, per banana.
 
-      `price_iqd` is the *total* the seller wants — `createListing` writes
-      `quantity × pricePer` into it — and this compared that total against a
-      per-banana price. A thousand bananas at a fair price has a total in the
-      hundreds and the market price is a fraction of one dinar, so the test was
-      false for every listing that has ever existed: the bots have never bought
-      anything from anyone.
+    `price_iqd` is the *total* the seller wants — `createListing` writes
+    `quantity × pricePer` into it — and this compared that total against a
+    per-banana price. A thousand bananas at a fair price has a total in the
+    hundreds and the market price is a fraction of one dinar, so the test was
+    false for every listing that has ever existed: the bots have never bought
+    anything from anyone.
 
-      Dividing here rather than storing a second column, because the total is
-      what the seller is owed and the per-banana price is derived from it
-      everywhere else too (see `getSnapshot`).
-    */
-    const offers = (
-      await d1All<BananaMarketOfferRow>(
-        `SELECT o.* FROM banana_market_offers o
+    Dividing here rather than storing a second column, because the total is
+    what the seller is owed and the per-banana price is derived from it
+    everywhere else too (see `getSnapshot`).
+
+    Asked once, not once per bot. This sat inside the loop below and mentions
+    no bot: every active bot re-ran the identical join, every minute, on a cron
+    that is already being killed for exceeding its CPU. Working from one list
+    is safe because `executeBotPurchase` claims each offer with a conditional
+    update and returns when the claim changes no rows — so a second bot
+    reaching an offer the first has taken finds it gone, exactly as it would
+    have with a freshly read list.
+  */
+  const offers = (
+    await d1All<BananaMarketOfferRow>(
+      `SELECT o.* FROM banana_market_offers o
        LEFT JOIN banana_bots b ON o.user_id = b.id
        WHERE o.status = 'active' AND b.id IS NULL
        AND o.quantity > 0
        AND (o.price_iqd / o.quantity) <= ?`,
-        marketPrice,
-      )
-    ).map(toBananaMarketOffer);
+      marketPrice,
+    )
+  ).map(toBananaMarketOffer);
+  if (!offers.length) return;
 
+  for (const bot of bots) {
     for (const offer of offers) {
       // Logic for price deviation and waiting period
       const offerPricePer = offer.quantity > 0 ? offer.priceIqd / offer.quantity : 0;
@@ -126,8 +135,24 @@ async function executeBotPurchase(bot: BananaBot, offer: BananaMarketOffer, now:
     return; // Already taken
   }
 
+  /*
+    A GUARD NOTHING WAS CHAINED TO IS NOT A GUARD.
+
+    Statement 0 deducts the bot's budget under `AND budget_iqd >= ?`. When that
+    matched no rows — the bot is out of money — the other five statements ran
+    anyway: the seller was paid, the bananas released and the offer closed, with
+    money the bot does not have. `bot.budgetIqd` is read once for the whole run,
+    so it is stale for every offer after the first, and the batch result was
+    thrown away.
+
+    Reproduced: a bot with a budget of 1 IQD bought two 1-IQD offers. Seller
+    wallet 2, bot budget floored at 0, both offers sold, two deposit rows.
+
+    Every statement after the guard is chained to it now, and the result is
+    read — the pattern `orders.server.ts` uses for the wallet debit.
+  */
   try {
-    await d1Batch([
+    const paid = await d1Batch([
       // Bot Deduct Budget
       {
         sql: `UPDATE banana_bots SET budget_iqd = budget_iqd - ?, updated_at = ? WHERE id = ? AND budget_iqd >= ?`,
@@ -135,13 +160,14 @@ async function executeBotPurchase(bot: BananaBot, offer: BananaMarketOffer, now:
       },
       // Seller Add IQD (Wallet)
       {
-        sql: `UPDATE users SET wallet_balance = COALESCE(wallet_balance, 0) + ? WHERE id = ?`,
+        sql: `UPDATE users SET wallet_balance = COALESCE(wallet_balance, 0) + ?
+              WHERE id = ? AND changes() = 1`,
         params: [offer.priceIqd, offer.userId],
       },
       // Financial Ledger - Seller IQD
       {
         sql: `INSERT INTO wallet_transactions (id, user_id, kind, amount, description, created_at, reference_type, reference_id)
-               VALUES (?, ?, 'deposit', ?, ?, ?, 'banana_market', ?)`,
+               SELECT ?, ?, 'deposit', ?, ?, ?, 'banana_market', ? WHERE changes() = 1`,
         params: [
           randomId("wtx"),
           offer.userId,
@@ -162,18 +188,20 @@ async function executeBotPurchase(bot: BananaBot, offer: BananaMarketOffer, now:
         instead of poisoning.
       */
       {
-        sql: `UPDATE users SET banana_locked = MAX(0, COALESCE(banana_locked, 0) - ?) WHERE id = ?`,
+        sql: `UPDATE users SET banana_locked = MAX(0, COALESCE(banana_locked, 0) - ?)
+              WHERE id = ? AND changes() = 1`,
         params: [offer.lockedBanana, offer.userId],
       },
       // Close Offer
       {
-        sql: `UPDATE banana_market_offers SET status = 'sold', updated_at = ? WHERE id = ? AND status = 'processing'`,
-        params: [now, offer.id],
+        sql: `UPDATE banana_market_offers SET status = 'sold', buyer_id = ?, updated_at = ?
+              WHERE id = ? AND status = 'processing' AND changes() = 1`,
+        params: [bot.id, now, offer.id],
       },
       // Bot Log
       {
         sql: `INSERT INTO bot_activity_logs (id, bot_id, action, details, created_at)
-              VALUES (?, ?, 'purchase', ?, ?)`,
+              SELECT ?, ?, 'purchase', ?, ? WHERE changes() = 1`,
         params: [
           randomId("bal"),
           bot.id,
@@ -182,6 +210,14 @@ async function executeBotPurchase(bot: BananaBot, offer: BananaMarketOffer, now:
         ],
       },
     ]);
+    /*
+      The budget did not cover it. Nothing downstream ran, so there is nothing
+      to undo beyond the claim — and the `catch` below is the one place that
+      releases it.
+    */
+    if (Number(paid?.[0]?.meta?.changes ?? 0) !== 1) {
+      throw new Error("bot_budget_exhausted");
+    }
   } catch (err) {
     // Revert claim on failure
     await d1Run(`UPDATE banana_market_offers SET status = 'active' WHERE id = ?`, offer.id);
@@ -299,7 +335,7 @@ export async function processDigitalDeliveryMaintenance(now = new Date().toISOSt
   try {
     const { processDueDeliveryAutoCompletions } = await import("./order-delivery-items.server");
     const result = await processDueDeliveryAutoCompletions(now);
-    if (result.completed || result.reconciled || result.errors) {
+    if (result.completed || result.reconciled || result.prompted || result.errors) {
       console.log("[scheduled-jobs:digital-delivery]", result);
     }
   } catch (err) {

@@ -6,7 +6,9 @@ import {
   CheckCircle2,
   Copy,
   Gamepad2,
+  Gift,
   ImagePlus,
+  BookOpen,
   Send,
   ShieldCheck,
   Sparkles,
@@ -16,6 +18,8 @@ import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { api, fileToDataUrl } from "@/lib/api";
+import { bubbleSide } from "@/lib/chatSides";
+import { readGuideMessage } from "@/lib/guideMessage";
 import { isAccountKind, type ChatMessage, type Order, type OrderItem } from "@/lib/types";
 import OrderReviewModal from "@/components/OrderReviewModal";
 import { AccountBatchPanel } from "@/components/admin/AccountBatchPanel";
@@ -24,9 +28,18 @@ function Bubble({ message, children }: { message: ChatMessage; children: React.R
   const mine = message.senderRole === "user";
   const system = message.senderRole === "system";
   return (
-    <div className={`flex ${mine ? "justify-end" : "justify-start"}`}>
+    /*
+      Physical sides — see src/lib/chatSides.ts. `justify-end` follows the
+      reading direction, so on this Arabic screen the member's own messages
+      sat on the LEFT and the shop's on the right, the wrong way round from
+      what the owner asked for and from what the same member sees in every
+      other messaging app.
+    */
+    <div className="flex">
       <div
-        className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-xs ${
+        className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-xs ${bubbleSide(
+          mine,
+        )} ${
           system
             ? "border border-amber-200 bg-amber-50 text-amber-900 dark:bg-amber-950/30 dark:text-amber-200 dark:border-amber-900/50"
             : mine
@@ -392,6 +405,36 @@ function MessageBody({ message, order }: { message: ChatMessage; order: Order })
           <p>✅ تم إكمال الطلب {String(message.body["code"] ?? "")} بنجاح!</p>
         </div>
       );
+    case "instructions": {
+      /*
+        The steps, and a way back to the method they came from.
+
+        The text is what the member reads without leaving the conversation;
+        the button is for the step that needs the pictures, and it deep-links
+        to THAT method rather than the top of a page with six on it. An older
+        instructions message, or one the admin typed themselves, carries no
+        anchor and gets no button — never a button to nowhere.
+      */
+      const guide = readGuideMessage(message.body);
+      if (!guide)
+        return <p className="whitespace-pre-wrap">{String(message.body["text"] ?? "")}</p>;
+      return (
+        <div className="space-y-2.5">
+          <p className="whitespace-pre-wrap">{guide.text}</p>
+          {guide.href ? (
+            <a
+              href={guide.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background px-3 py-2 text-[11px] font-bold text-foreground transition-colors hover:border-[var(--brand-red)]/40 hover:text-[var(--brand-red)]"
+            >
+              <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>{guide.guideTitle}</span>
+            </a>
+          ) : null}
+        </div>
+      );
+    }
     default:
       return <p className="whitespace-pre-wrap">{String(message.body["text"] ?? "")}</p>;
   }
@@ -594,22 +637,67 @@ export default function OrderChat({
               : (order as any)?.status === "delivering"
                 ? "قيد التسليم 📦"
                 : "قيد المعالجة ⏳"}{" "}
-            · {order.paymentStatus === "paid" ? "مدفوع من المحفظة" : "بانتظار الدفع"}
+            ·{" "}
+            {/*
+              «بانتظار الدفع» is true of an order awaiting a receipt and
+              misleading about one the member chose to pay at the door: nothing
+              is expected of them until the courier arrives, and this line was
+              the only thing on the screen telling them otherwise.
+            */}
+            {order.paymentStatus === "paid"
+              ? "مدفوع من المحفظة"
+              : order.paymentMethod === "cash_on_delivery"
+                ? "الدفع عند الاستلام"
+                : "بانتظار الدفع"}
           </p>
         </div>
-        <div className="text-left">
-          <p className="text-sm font-bold text-[var(--brand-red)]">
-            {order.total.toLocaleString()} {order.currency}
-          </p>
-          {isCompleted && (
-            <button
-              onClick={() => setShowReviewModal(true)}
-              className="mt-0.5 inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 dark:text-amber-400 hover:underline"
+        <div className="flex items-center gap-2">
+          {/*
+            A gift says so. Without it a member — and an admin — sees a game
+            sold for nothing with no explanation, and the most likely reading
+            of that is a mistake rather than a prize.
+          */}
+          {(order as any)?.isGift ? (
+            <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-amber-500/15 px-2.5 py-1 text-[10px] font-black text-amber-700 dark:text-amber-300">
+              <Gift className="h-3 w-3" aria-hidden="true" />
+              هدية
+            </span>
+          ) : null}
+          {/*
+            The guides, one tap away from the conversation that needs them.
+
+            A member being walked through signing in to a Nintendo account is
+            exactly the member who wants «شرح طرق تسجيل الدخول», and the only
+            way to reach it was to leave the order, find the menu and come
+            back. Small and quiet on purpose — it sits beside the total, not
+            in front of it.
+          */}
+          {!isAdmin && (
+            <a
+              href="/account_guides"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="شرح الحسابات وطرق تسجيل الدخول"
+              aria-label="شرح الحسابات وطرق تسجيل الدخول"
+              className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border/70 bg-muted/40 text-muted-foreground transition-colors hover:border-[var(--brand-red)]/40 hover:bg-[var(--brand-red)]/10 hover:text-[var(--brand-red)]"
             >
-              <Star className="h-3 w-3 fill-current" />
-              <span>تقييم الطلب</span>
-            </button>
+              <BookOpen className="h-4 w-4" aria-hidden="true" />
+            </a>
           )}
+          <div className="text-left">
+            <p className="text-sm font-bold text-[var(--brand-red)]">
+              {order.total.toLocaleString()} {order.currency}
+            </p>
+            {isCompleted && (
+              <button
+                onClick={() => setShowReviewModal(true)}
+                className="mt-0.5 inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 dark:text-amber-400 hover:underline"
+              >
+                <Star className="h-3 w-3 fill-current" />
+                <span>تقييم الطلب</span>
+              </button>
+            )}
+          </div>
         </div>
       </div>
 

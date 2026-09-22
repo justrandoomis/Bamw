@@ -21,6 +21,8 @@ import {
 } from "@/lib/support.functions";
 import { CustomerList } from "./CustomerList";
 import { ActiveConversation, ConversationErrorBoundary } from "./ActiveConversation";
+import { ManualCompletionDialog } from "./ManualCompletionDialog";
+import { ReviewApprovalPanel } from "./ReviewApprovalPanel";
 import { AdminAvailabilityBar } from "./AdminAvailabilityBar";
 import { InboxFilter } from "./types";
 import { toast } from "sonner";
@@ -35,6 +37,12 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
   const queryClient = useQueryClient();
   const [selectedThreadId, setSelectedThreadId] = useState<string | null>(initialThreadId);
   const [activeFilter, setActiveFilter] = useState<InboxFilter>("order_queue");
+  const [manualCompletion, setManualCompletion] = useState<{
+    orderId: string;
+    code: string;
+    pendingCount?: number;
+    unmappedCount?: number;
+  } | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [, startTransition] = useTransition();
 
@@ -491,6 +499,17 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
     },
   });
 
+  /*
+    Only the count, so the pill has a number before the panel is ever opened.
+    It shares its cache key with the panel, so approving a card updates both.
+  */
+  const { data: reviewSubmissions } = useQuery({
+    queryKey: ["admin-review-submissions"],
+    queryFn: () => api.fetch<{ groups: unknown[]; count: number }>("/api/admin/review-submissions"),
+    refetchInterval: 120_000,
+    staleTime: 60_000,
+  });
+
   const completeDigitalMutation = useMutation({
     mutationFn: ({ orderId, threadId }: { orderId: string; threadId?: string }) =>
       api.adminOrderAction({
@@ -521,6 +540,71 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
     },
   });
 
+  /*
+    The manual door. Same landing as the strict one — invalidate, hop to the
+    next order — but it is a different action on the server, it asks for the
+    order code and a reason, and it never records an OTP as sent.
+  */
+  const completeDigitalManualMutation = useMutation({
+    mutationFn: ({
+      orderId,
+      threadId,
+      reason,
+      confirmText,
+    }: {
+      orderId: string;
+      threadId?: string;
+      reason: string;
+      confirmText: string;
+    }) =>
+      api.adminOrderAction({
+        orderId,
+        threadId,
+        reason,
+        confirmText,
+        action: "complete_digital_manual",
+      }),
+    onSuccess: (result) => {
+      setManualCompletion(null);
+      void queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
+      void queryClient.invalidateQueries({ queryKey: ["admin-threads"] });
+      void queryClient.invalidateQueries({ queryKey: ["orders"] });
+
+      // Say exactly what moved, so the admin can see the action matched what
+      // the dialog promised.
+      const forced = Array.isArray(result.forcedDeliveryItems)
+        ? result.forcedDeliveryItems.length
+        : 0;
+      const archived = Array.isArray(result.archivedUnmappedItems)
+        ? result.archivedUnmappedItems.length
+        : 0;
+      const detail = [forced ? `${forced} عنصر تسليم` : "", archived ? `${archived} سطر مؤرشف` : ""]
+        .filter(Boolean)
+        .join(" • ");
+
+      const nextThreadId =
+        result.nextOrder?.threadId ||
+        threads.find((thread) => thread.orderId === result.nextOrder?.orderId)?.id;
+      if (nextThreadId) {
+        setSelectedThreadId(nextThreadId);
+        markReadMutation.mutate(nextThreadId);
+        toast.success(
+          `تم الإكمال اليدوي${detail ? ` (${detail})` : ""} والانتقال للتالي ${
+            result.nextOrder?.code ? `#${result.nextOrder.code}` : ""
+          } ⏭️`,
+        );
+      } else {
+        setSelectedThreadId(null);
+        toast.success(
+          `تم الإكمال اليدوي${detail ? ` (${detail})` : ""}. لا توجد طلبات أخرى تحتاج تجهيزًا الآن 🎉`,
+        );
+      }
+    },
+    onError: (error: unknown) => {
+      toast.error(error instanceof Error ? error.message : "تعذر إكمال الطلب يدوياً");
+    },
+  });
+
   // Hotkey support: Ctrl+K / Cmd+K to focus search input
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -542,8 +626,20 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
         className="w-full h-full flex flex-col overflow-hidden bg-card"
         style={{ direction: "rtl" }}
       >
-        {/* Top Bar: Admin Availability Status & Scheduling */}
-        <AdminAvailabilityBar />
+        {/*
+          The availability bar belongs to the INBOX, not to a conversation.
+
+          On a phone the customer list and the conversation share the screen —
+          one hides while the other shows — but this bar sat above both, so
+          opening a customer put a working-hours scheduler on top of the
+          conversation and pushed the messages down. The owner asked for it out
+          of the conversation, and out is where it now is: still the first thing
+          on the inbox screen, gone the moment a customer is open, and unchanged
+          on desktop where the two columns are side by side and it heads both.
+        */}
+        <div className={selectedThreadId ? "hidden md:block" : "block"}>
+          <AdminAvailabilityBar />
+        </div>
 
         <div
           className="w-full flex-1 flex flex-col md:flex-row overflow-hidden"
@@ -566,92 +662,135 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
               searchTerm={searchTerm}
               onChangeSearchTerm={setSearchTerm}
               isLoading={isThreadsLoading}
+              pendingReviewCount={reviewSubmissions?.count ?? 0}
             />
           </div>
 
           {/* Column 2: Active Conversation Main Area (Center/Right on Desktop: 1fr) */}
           <div
             className={`flex-1 h-full min-w-0 bg-card flex flex-col ${
-              !selectedThreadId ? "hidden md:flex" : "flex"
+              !selectedThreadId && activeFilter !== "pending_reviews" ? "hidden md:flex" : "flex"
             }`}
             style={{ direction: "rtl" }}
           >
-            <ActiveConversation
-              thread={selectedThread}
-              messages={liveMessages}
-              orders={orders}
-              isLoadingMessages={isMessagesLoading && liveMessages.length === 0}
-              isCustomerOnline={isCustomerOnline}
-              isCustomerTyping={isCustomerTyping}
-              customerLastReadAt={customerLastReadAt}
-              hasMore={hasMore}
-              isLoadingOlder={isLoadingOlder}
-              onLoadOlder={handleLoadOlder}
-              onBackToList={() => setSelectedThreadId(null)}
-              onNavigateToOrder={onNavigateToOrder}
-              onRetryMessage={handleRetryMessage}
-              onSendMessage={(payload) => {
-                if (selectedThreadId) {
-                  sendMutation.mutate({
-                    threadId: selectedThreadId,
-                    clientMessageId:
-                      (payload as any).clientMessageId ||
-                      `admin-msg-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
-                    ...payload,
-                  });
+            {activeFilter === "pending_reviews" ? (
+              /*
+                A submission is not a conversation, so it gets the panel rather
+                than a thread that does not exist.
+              */
+              <ReviewApprovalPanel />
+            ) : (
+              <ActiveConversation
+                thread={selectedThread}
+                messages={liveMessages}
+                orders={orders}
+                isLoadingMessages={isMessagesLoading && liveMessages.length === 0}
+                isCustomerOnline={isCustomerOnline}
+                isCustomerTyping={isCustomerTyping}
+                customerLastReadAt={customerLastReadAt}
+                hasMore={hasMore}
+                isLoadingOlder={isLoadingOlder}
+                onLoadOlder={handleLoadOlder}
+                onBackToList={() => setSelectedThreadId(null)}
+                onNavigateToOrder={onNavigateToOrder}
+                onRetryMessage={handleRetryMessage}
+                onSendMessage={(payload) => {
+                  if (selectedThreadId) {
+                    sendMutation.mutate({
+                      threadId: selectedThreadId,
+                      clientMessageId:
+                        (payload as any).clientMessageId ||
+                        `admin-msg-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+                      ...payload,
+                    });
+                  }
+                }}
+                onSetThreadMode={(mode) => {
+                  if (selectedThreadId) {
+                    modeMutation.mutate({ threadId: selectedThreadId, mode });
+                  }
+                }}
+                onSetThreadStatus={(status) => {
+                  if (selectedThreadId) {
+                    statusMutation.mutate({ threadId: selectedThreadId, status });
+                  }
+                }}
+                onSkipQueue={() => {
+                  if (selectedThreadId) {
+                    skipQueueMutation.mutate(selectedThreadId);
+                  }
+                }}
+                onResumeQueue={() => {
+                  if (selectedThreadId) {
+                    resumeQueueMutation.mutate(selectedThreadId);
+                  }
+                }}
+                onSendQueueReminder={(text) => {
+                  if (selectedThreadId) {
+                    reminderMutation.mutate({ threadId: selectedThreadId, text });
+                  }
+                }}
+                onCompleteOrder={(orderId) =>
+                  completeDigitalMutation.mutateAsync({
+                    orderId,
+                    threadId: selectedThreadId || undefined,
+                  })
                 }
-              }}
-              onSetThreadMode={(mode) => {
-                if (selectedThreadId) {
-                  modeMutation.mutate({ threadId: selectedThreadId, mode });
+                isCompletingOrder={completeDigitalMutation.isPending}
+                onCompleteOrderManually={(order) =>
+                  setManualCompletion({
+                    orderId: order.orderId,
+                    code: order.code,
+                    ...(typeof order.pendingCount === "number"
+                      ? { pendingCount: order.pendingCount }
+                      : {}),
+                    ...(typeof order.unmappedCount === "number"
+                      ? { unmappedCount: order.unmappedCount }
+                      : {}),
+                  })
                 }
-              }}
-              onSetThreadStatus={(status) => {
-                if (selectedThreadId) {
-                  statusMutation.mutate({ threadId: selectedThreadId, status });
-                }
-              }}
-              onSkipQueue={() => {
-                if (selectedThreadId) {
-                  skipQueueMutation.mutate(selectedThreadId);
-                }
-              }}
-              onResumeQueue={() => {
-                if (selectedThreadId) {
-                  resumeQueueMutation.mutate(selectedThreadId);
-                }
-              }}
-              onSendQueueReminder={(text) => {
-                if (selectedThreadId) {
-                  reminderMutation.mutate({ threadId: selectedThreadId, text });
-                }
-              }}
-              onCompleteOrder={(orderId) =>
-                completeDigitalMutation.mutateAsync({
-                  orderId,
-                  threadId: selectedThreadId || undefined,
-                })
-              }
-              isCompletingOrder={completeDigitalMutation.isPending}
-              onDeliveryFinished={({ nextOrder }) => {
-                void queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
-                void queryClient.invalidateQueries({ queryKey: ["admin-threads"] });
-                void queryClient.invalidateQueries({ queryKey: ["orders"] });
-                if (nextOrder?.threadId) {
-                  setSelectedThreadId(nextOrder.threadId);
-                  toast.success(
-                    `تم الانتقال إلى الطلب التالي ${nextOrder.code ? `#${nextOrder.code}` : ""} ⏭️`,
-                  );
-                } else {
-                  setSelectedThreadId(null);
-                  toast.success("لا توجد طلبات أخرى تحتاج تجهيزًا الآن 🎉");
-                }
-              }}
-              isSending={sendMutation.isPending}
-            />
+                onDeliveryFinished={({ nextOrder }) => {
+                  void queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
+                  void queryClient.invalidateQueries({ queryKey: ["admin-threads"] });
+                  void queryClient.invalidateQueries({ queryKey: ["orders"] });
+                  if (nextOrder?.threadId) {
+                    setSelectedThreadId(nextOrder.threadId);
+                    toast.success(
+                      `تم الانتقال إلى الطلب التالي ${nextOrder.code ? `#${nextOrder.code}` : ""} ⏭️`,
+                    );
+                  } else {
+                    setSelectedThreadId(null);
+                    toast.success("لا توجد طلبات أخرى تحتاج تجهيزًا الآن 🎉");
+                  }
+                }}
+                isSending={sendMutation.isPending}
+              />
+            )}
           </div>
         </div>
       </div>
+
+      <ManualCompletionDialog
+        isOpen={Boolean(manualCompletion)}
+        onClose={() => setManualCompletion(null)}
+        orderCode={manualCompletion?.code || ""}
+        isBusy={completeDigitalManualMutation.isPending}
+        {...(typeof manualCompletion?.pendingCount === "number"
+          ? { pendingCount: manualCompletion.pendingCount }
+          : {})}
+        {...(typeof manualCompletion?.unmappedCount === "number"
+          ? { unmappedCount: manualCompletion.unmappedCount }
+          : {})}
+        onConfirm={({ reason, confirmText }) => {
+          if (!manualCompletion) return;
+          return completeDigitalManualMutation.mutateAsync({
+            orderId: manualCompletion.orderId,
+            threadId: selectedThreadId || undefined,
+            reason,
+            confirmText,
+          });
+        }}
+      />
     </ConversationErrorBoundary>
   );
 }

@@ -143,7 +143,12 @@ function InnerMessageCard({
   const body = message.body || {};
   const isFailed = Boolean(rawMessage.isFailed || body["_failed"]);
   const isPending = Boolean(rawMessage.pending);
-  const errorReason = typeof rawMessage.errorReason === "string" ? rawMessage.errorReason : typeof body["_errorReason"] === "string" ? (body["_errorReason"] as string) : undefined;
+  const errorReason =
+    typeof rawMessage.errorReason === "string"
+      ? rawMessage.errorReason
+      : typeof body["_errorReason"] === "string"
+        ? (body["_errorReason"] as string)
+        : undefined;
 
   const copyText = (text: string, label: string) => {
     if (!text) return;
@@ -290,7 +295,7 @@ function InnerMessageCard({
       ) : (
         <div
           dir="auto"
-          className={`relative max-w-[88%] sm:max-w-[78%] rounded-2xl p-3.5 shadow-2xs text-xs leading-relaxed transition-all ${
+          className={`relative max-w-[78%] sm:max-w-[80%] rounded-2xl p-2.5 shadow-2xs text-xs leading-relaxed transition-all sm:p-3.5 ${
             isAdmin
               ? "bg-[var(--admin-ink,#1e293b)] text-white rounded-tr-xs border border-black/10"
               : isAssistant

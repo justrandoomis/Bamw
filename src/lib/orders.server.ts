@@ -17,6 +17,7 @@ import { sendTelegramMessage } from "./telegram.server";
 import {
   checkCoupon,
   couponDiscount,
+  isPhysicalKind,
   rowToCoupon,
   type CouponCheckItem,
   type CouponRow,
@@ -33,7 +34,14 @@ import {
 } from "./referral/binding.server";
 import { insertRewardStatement, markAttributionConverted } from "./referral/rewards.server";
 import { memberAllowsNotification } from "./notification-preferences.server";
+/*
+  Still imported — for FULFILMENT, which is the question it actually answers.
+  It used to decide whether an order had been PAID for as well; those were one
+  boolean and they are two now.
+*/
 import { isFullyDigitalOrder } from "./delivery-kinds";
+import { resolveDeliveryPrice } from "./delivery-fee";
+import { cashOnDeliveryAllowed, resolvePaymentMethod } from "./payment-method";
 import type {
   Address,
   Order,
@@ -316,6 +324,30 @@ function productPlatform(product: Record<string, unknown>): string {
 
 const idempotencyCache = new Map<string, { order: Order; at: number }>();
 
+/*
+  AN IDEMPOTENCY KEY BELONGS TO THE MEMBER WHO SENT IT.
+
+  The key comes from the browser — `crypto.randomUUID()` in the cart, but a
+  request can carry any string at all — and it was the whole of the lookup:
+  the cache was keyed on it alone and the D1 read was
+  `WHERE idempotency_key = ?` with no owner. So the key was a claim on
+  whatever order had used it, from anybody.
+
+  Send `1` as the key and the first person ever to have used `1` has bought
+  you their order: their document comes back as yours, with their items, their
+  name, their phone and their address in it, no product is reserved, no coupon
+  or referral is spent, and — the part that makes it a money hole rather than
+  only a leak — the wallet is never touched, because a cache hit returns before
+  any of the payment path runs.
+
+  Scoping the key to the user closes both halves. The retry it exists for is
+  the same member sending the same request twice, which still matches.
+*/
+function scopedIdempotencyKey(userId: string, key?: string): string | undefined {
+  if (!key) return undefined;
+  return `${userId}\u0000${key}`;
+}
+
 function getCachedOrder(key?: string): Order | null {
   if (!key) return null;
   const entry = idempotencyCache.get(key);
@@ -339,6 +371,55 @@ function setCachedOrder(key: string | undefined, order: Order) {
   }
 }
 
+/**
+ * How many bananas one dinar of spending mints.
+ *
+ * TWO admin screens write `bananaPerDinar`, and they mean OPPOSITE things.
+ * The banana panel's «معدل كسب الموز لكل 1 دينار» means bananas earned per
+ * dinar — the mint rate — and its save writes `banana_reward_rate` too. The
+ * pricing screen's «سعر الموزة مقابل الدينار (للمستخدم)» means the dinar
+ * VALUE of one banana, the inverse, for redemption; it defaults the field to
+ * 1 and writes the whole settings object back.
+ *
+ * I made `bananaPerDinar` the first key this function reads. Before that it
+ * was inert here and the collision cost nothing; after it, saving the pricing
+ * screen set the mint rate. At its default of 1 a 50,000-dinar order mints
+ * 50,000 bananas instead of 340,000. Typed as a per-banana price of 1,000 it
+ * mints 50,000,000 on one order — more than three times every banana in
+ * existence. `??` made it worse than `||` ever was, because `??` does not step
+ * over a stored 0 or an empty string.
+ *
+ * So `banana_reward_rate` is authoritative: only the banana panel writes it,
+ * and that panel means the mint rate by it. `bananaPerDinar` survives as a
+ * fallback for a shop that last saved before the panel wrote both.
+ *
+ * Both ends are guarded. A non-positive or unparseable rate falls through
+ * rather than being obeyed — the guard the `||`→`??` change quietly removed.
+ * And a rate above the ceiling is refused outright: nothing between an admin's
+ * text input and `users.banana_balance` checked the size of the number, and a
+ * mistyped one is indistinguishable from a deliberate one after the fact.
+ */
+const DEFAULT_BANANA_REWARD_RATE = 6.8;
+/** Bananas per dinar. Fifteen times the default is already implausible. */
+const MAX_BANANA_REWARD_RATE = 100;
+
+export function bananaRewardRate(settings: Record<string, unknown> | undefined): number {
+  const usable = (value: unknown): number => {
+    const n = toNumber(value);
+    if (!Number.isFinite(n) || n <= 0) return 0;
+    if (n > MAX_BANANA_REWARD_RATE) {
+      console.error("[orders:banana_rate_rejected]", { rate: n, max: MAX_BANANA_REWARD_RATE });
+      return 0;
+    }
+    return n;
+  };
+  return (
+    usable(settings?.["banana_reward_rate"]) ||
+    usable(settings?.["bananaPerDinar"]) ||
+    DEFAULT_BANANA_REWARD_RATE
+  );
+}
+
 export async function createOrderForUser(
   user: User,
   lines: CheckoutLine[],
@@ -358,6 +439,13 @@ export async function createOrderForUser(
     referrer or its own discount.
   */
   referralContext?: { request?: Request; referralCode?: string },
+  /*
+    Wallet, or cash at the door. A REQUEST, not an instruction: the server
+    decides from the cart's own contents whether cash is on offer at all, and
+    a browser asking for it on a cart that cannot have it is refused rather
+    than quietly charged.
+  */
+  requestedPaymentMethod?: unknown,
 ): Promise<Order> {
   if (!user || !user.id || typeof user.id !== "string") {
     throw new Error("missing_user");
@@ -367,30 +455,62 @@ export async function createOrderForUser(
     throw new Error("terms_required");
   }
 
-  const cleanIdempotencyKey = idempotencyKey?.trim() || undefined;
+  let cleanIdempotencyKey = idempotencyKey?.trim() || undefined;
 
   if (cleanIdempotencyKey) {
     // 1. Check in-memory cache
-    const existingMem = getCachedOrder(cleanIdempotencyKey);
+    const existingMem = getCachedOrder(scopedIdempotencyKey(user.id, cleanIdempotencyKey));
     if (existingMem) return existingMem;
 
-    // 2. Check D1 for existing order with this idempotency_key
+    // 2. Check D1 for existing order with this idempotency_key — the member's
+    //    own, by `user_id`, so a key cannot reach across accounts.
     try {
       const existingRow = await d1First<{ doc: string }>(
-        `SELECT doc FROM orders WHERE idempotency_key = ? LIMIT 1`,
+        `SELECT doc FROM orders WHERE idempotency_key = ? AND user_id = ? LIMIT 1`,
         cleanIdempotencyKey,
+        user.id,
       );
       if (existingRow) {
         const parsed = JSON.parse(existingRow.doc) as Order;
         if (parsed && parsed.id) {
-          setCachedOrder(cleanIdempotencyKey, parsed);
+          setCachedOrder(scopedIdempotencyKey(user.id, cleanIdempotencyKey), parsed);
           return parsed;
         }
       }
     } catch {
       // Ignored if query fails
     }
+
+    /*
+      3. Somebody else's key.
+
+      `orders_idempotency_idx` is UNIQUE on `idempotency_key` alone, across
+      every member. Now that a key no longer hands over another member's
+      order, a request carrying one that is already taken would run the whole
+      checkout — spending the coupon, debiting the wallet — and then fail to
+      insert, falling back to `saveOrder`'s degraded write.
+
+      So a taken key is simply dropped. The order is created normally without
+      one, which costs only the retry protection for that single request, and
+      the member is not made to pay for a string they did not choose.
+    */
+    try {
+      const owner = await d1First<{ user_id: string }>(
+        `SELECT user_id FROM orders WHERE idempotency_key = ? LIMIT 1`,
+        cleanIdempotencyKey,
+      );
+      if (owner && String(owner.user_id) !== String(user.id)) {
+        console.warn("[order:idempotency_key_taken]", { userId: user.id });
+        cleanIdempotencyKey = undefined;
+      }
+    } catch {
+      // Ignored if query fails
+    }
   }
+
+  // The cache key, which is the member's id and the key together — never the
+  // key on its own. See `scopedIdempotencyKey`.
+  const cacheKey = scopedIdempotencyKey(user.id, cleanIdempotencyKey);
 
   const store = await getStore();
   const items: OrderItem[] = [];
@@ -669,9 +789,100 @@ export async function createOrderForUser(
       : undefined;
 
   const finalItemsTotal = Math.max(0, itemsTotal - discountAmount);
-  const needsWalletPayment = isFullyDigitalOrder(items);
 
-  if (needsWalletPayment && (user.walletBalance || 0) < finalItemsTotal) {
+  /*
+    EVERY ORDER IS PAID FROM THE WALLET.
+
+    This was `isFullyDigitalOrder(items)`, and it is the hole the owner
+    reported: «عند شراء المنتج لا يخصم من المحفظة».
+
+    One physical line — a console, an accessory, a used disc — made the whole
+    cart "not fully digital", and then this single flag decided THREE things at
+    once: whether to take the money, what `paymentStatus` to write, and whether
+    the referral reward was owed. So an order containing any physical item was
+    written `unpaid` and NOTHING was taken, while the cart had just shown the
+    member «رصيدك الحالي», «الرصيد المتبقي بعد الدفع: balance − total», a button
+    reading «إتمام الدفع عبر المحفظة» and, on success, «تم تأكيد الطلب والدفع
+    بنجاح». There is no branch in that screen for a physical cart, and no
+    cash-on-delivery option anywhere in it: the shop promised a wallet payment,
+    said it had succeeded, and took nothing. Add one cheap accessory to a cart
+    of games and the games go with it.
+
+    The gate was answering a different question from the one it was asked.
+    Whether an order needs a delivery slot or a shipping address has nothing to
+    do with whether it has been paid for, and the two were the same boolean.
+    They are separate now: `needsAddress` still decides shipping,
+    `isFullyDigitalOrder` still decides delivery slots where fulfilment asks
+    it, and payment is simply always taken.
+
+    AND FOR THE FULL AMOUNT. The debit was `finalItemsTotal`, which excludes
+    the delivery fee — harmless while only digital orders were charged, since
+    those have none. Now that a shipped order is charged, the number taken has
+    to be the number the cart showed, or the shop pays the courier out of its
+    own pocket on every delivery.
+  */
+  /*
+    CASH ON DELIVERY, AND ONLY WHERE THERE IS A DOOR.
+
+    `cashOnDeliveryAllowed` says yes only when every line is something a
+    courier carries. That limit is what makes the option safe: a digital
+    account is handed over in the chat as soon as the order is paid, so an
+    unpaid digital order is either given away or held forever. A mixed cart is
+    refused for the same reason from the other side — the game would wait on
+    the van.
+
+    Asking for cash on a cart that cannot have it is an error, not a fallback.
+    Falling back to the wallet would charge someone who had just chosen not to
+    be charged.
+  */
+  if (requestedPaymentMethod === "cash_on_delivery" && !cashOnDeliveryAllowed(items)) {
+    if (couponClaimed) {
+      await releaseCouponUse({ ...couponClaimed, releaseGlobal: true }).catch(() => {});
+    }
+    if (referralClaimed) await releaseReferralDiscount(orderId);
+    throw new Error("cash_on_delivery_not_available");
+  }
+  const paymentMethod = resolvePaymentMethod(requestedPaymentMethod, items);
+
+  /*
+    EVERY OTHER ORDER IS PAID FROM THE WALLET.
+
+    This was `isFullyDigitalOrder(items)`, and it is the hole the owner
+    reported: «عند شراء المنتج لا يخصم من المحفظة». One physical line made the
+    whole cart "not fully digital" and nothing was taken, while the cart screen
+    had promised «إتمام الدفع عبر المحفظة» and shown the balance it would
+    leave. Whether an order needs a delivery slot has nothing to do with
+    whether it has been paid for, and the two were one boolean.
+
+    They are three things now, and each is asked its own question: `needsAddress`
+    decides shipping, `isFullyDigitalOrder` decides fulfilment, and the money is
+    taken unless the member chose to pay at the door.
+  */
+  const needsWalletPayment = paymentMethod === "wallet";
+
+  /*
+    The same function the cart calls, so the fee on the screen is the fee in
+    the bill. The cart used to show `deliveryBase` for every address while this
+    applied the city list, which meant a member in a city the owner had priced
+    differently was quoted one number and charged another.
+  */
+  const deliveryPrice = resolveDeliveryPrice(store.settings, address?.city);
+
+  /*
+    The same five kinds that decide a delivery slot is not needed
+    (`isDigitalOrderKind`) and that a digital-only coupon refuses. Read from
+    one place so the two answers cannot drift: a kind that ships must never be
+    a kind the fulfilment code hands over as an account.
+  */
+  const needsAddress = items.some((item) => isPhysicalKind(item.kind));
+  const total = finalItemsTotal + (needsAddress ? deliveryPrice : 0);
+
+  /*
+    The balance check moved down here, because it has to be made against the
+    amount that will actually be taken — and the delivery fee is only known
+    once the address has picked its city.
+  */
+  if (needsWalletPayment && (user.walletBalance || 0) < total) {
     // The coupon use was claimed a moment ago; give it back rather than
     // burning a member's single use on an order that never happened.
     if (couponClaimed) {
@@ -682,24 +893,6 @@ export async function createOrderForUser(
     if (referralClaimed) await releaseReferralDiscount(orderId);
     throw new Error("insufficient_balance");
   }
-
-  const deliveryBase = toNumber(store.settings?.["deliveryBase"] || 5000);
-  const deliveryExceptions = (
-    Array.isArray(store.settings?.["deliveryExceptions"])
-      ? store.settings["deliveryExceptions"]
-      : []
-  ) as { city: string; price: number }[];
-
-  let deliveryPrice = deliveryBase;
-  if (address?.city) {
-    const exception = deliveryExceptions.find((e) => e.city === address.city);
-    if (exception) deliveryPrice = toNumber(exception.price);
-  }
-
-  const needsAddress = items.some((item) =>
-    ["hardware", "physical", "accessory", "device", "collectible"].includes(item.kind),
-  );
-  const total = finalItemsTotal + (needsAddress ? deliveryPrice : 0);
 
   const threadId = randomId("thr");
   const code = `BN-${Date.now().toString().slice(-6)}`;
@@ -739,6 +932,7 @@ export async function createOrderForUser(
     paymentStatus: needsWalletPayment ? "paid" : "unpaid",
     needsAddress,
     ...(address ? { address } : {}),
+    paymentMethod,
     threadId,
     createdAt: now,
     updatedAt: now,
@@ -783,50 +977,94 @@ export async function createOrderForUser(
     : undefined;
 
   if (needsWalletPayment) {
-    const payment = await d1Batch([
-      {
-        sql: `UPDATE users SET wallet_balance = CASE WHEN wallet_balance >= ? THEN wallet_balance - ? ELSE NULL END WHERE id = ?`,
-        params: [finalItemsTotal, finalItemsTotal, user.id],
-      },
-      {
-        sql: `INSERT INTO wallet_transactions (id, user_id, kind, amount, description, order_id, created_at)
+    /*
+      GIVE THE CLAIMS BACK WHENEVER THE PAYMENT DOES NOT HAPPEN.
+
+      Both were claimed before the money was tried: `releaseCouponUse` puts a
+      single-use coupon back, and `releaseReferralDiscount` clears
+      `referral_discount_used_at` — the column that makes the discount once per
+      account FOR EVER. The pre-flight balance check releases both. The branch
+      that finds the debit did not apply released only the coupon, and a thrown
+      error released neither, because nothing wrapped the batch at all.
+
+      So a member with 10,000 and two tabs open, checking out two 8,000 carts
+      in the same second, lost the one referral discount of their life to the
+      tab that lost the race — with no order, no money moved and nothing on any
+      screen to explain it.
+    */
+    const releaseCheckoutClaims = async () => {
+      if (couponClaimed) {
+        await releaseCouponUse({ ...couponClaimed, releaseGlobal: true }).catch(() => {});
+      }
+      if (referralClaimed) await releaseReferralDiscount(orderId).catch(() => {});
+    };
+
+    let payment;
+    try {
+      payment = await d1Batch([
+        {
+          /*
+          The condition belongs in the WHERE clause, not in a CASE.
+
+          It was `SET wallet_balance = CASE WHEN wallet_balance >= ? THEN
+          wallet_balance - ? ELSE NULL END`, which relies on the column's NOT
+          NULL constraint to abort the batch — so an overdraw surfaced as a raw
+          database error rather than «رصيد المحفظة غير كافٍ», and the
+          `changes() !== 1` guard below could never fire, because SQLite counts
+          a row as changed whenever the UPDATE matched it, whichever branch of
+          the CASE ran.
+
+          In the WHERE clause the statement simply matches nothing when the
+          money is not there: `changes()` is 0, every chained statement is
+          skipped, the order is not written, and the guard reports what
+          actually happened.
+        */
+          sql: `UPDATE users SET wallet_balance = wallet_balance - ? WHERE id = ? AND wallet_balance >= ?`,
+          params: [total, user.id, total],
+        },
+        {
+          sql: `INSERT INTO wallet_transactions (id, user_id, kind, amount, description, order_id, created_at)
                SELECT ?, ?, 'payment', ?, ?, ?, ? WHERE changes() = 1`,
-        params: [walletTxId, user.id, -finalItemsTotal, `شراء طلب ${code}`, orderId, now],
-      },
-      {
-        sql: `INSERT INTO orders (
+          params: [walletTxId, user.id, -total, `شراء طلب ${code}`, orderId, now],
+        },
+        {
+          sql: `INSERT INTO orders (
                 id, code, user_id, doc, status, payment_status, total, created_at, updated_at,
                 idempotency_key, checkout_session_id, payment_reference, source, created_by
               ) SELECT ?, ?, ?, ?, 'processing', 'paid', ?, ?, ?, ?, ?, ?, ?, ? WHERE changes() = 1`,
-        params: [
-          order.id,
-          order.code,
-          order.userId,
-          JSON.stringify(order),
-          order.total,
-          now,
-          now,
-          order.idempotencyKey || null,
-          order.checkoutSessionId || null,
-          order.paymentReference || null,
-          order.source || "checkout_web",
-          order.createdBy || user.id,
-        ],
-      },
-      /*
+          params: [
+            order.id,
+            order.code,
+            order.userId,
+            JSON.stringify(order),
+            order.total,
+            now,
+            now,
+            order.idempotencyKey || null,
+            order.checkoutSessionId || null,
+            order.paymentReference || null,
+            order.source || "checkout_web",
+            order.createdBy || user.id,
+          ],
+        },
+        /*
         The reward is written in the same batch as the payment, chained to it by
         `changes() = 1` like every statement before it. A discount the buyer
         received and a reward the referrer is owed are two halves of one
         decision: they are committed together or not at all.
       */
-      ...(rewardStatement
-        ? [{ sql: rewardStatement.chainedSql, params: rewardStatement.params }]
-        : []),
-    ]);
+        ...(rewardStatement
+          ? [{ sql: rewardStatement.chainedSql, params: rewardStatement.params }]
+          : []),
+      ]);
+    } catch (err) {
+      // A constraint abort, a lost connection — the money did not move, so
+      // neither claim may stay spent.
+      await releaseCheckoutClaims();
+      throw err;
+    }
     if (Number(payment[0]?.meta?.changes ?? 0) !== 1) {
-      if (couponClaimed) {
-        await releaseCouponUse({ ...couponClaimed, releaseGlobal: true }).catch(() => {});
-      }
+      await releaseCheckoutClaims();
       throw new Error("insufficient_balance");
     }
   }
@@ -914,8 +1152,8 @@ export async function createOrderForUser(
     console.error("[order:audit_log_failed]", err);
   }
 
-  if (cleanIdempotencyKey) {
-    setCachedOrder(cleanIdempotencyKey, order);
+  if (cacheKey) {
+    setCachedOrder(cacheKey, order);
   }
 
   // Snapshot Order Items (Safe)
@@ -958,8 +1196,43 @@ export async function createOrderForUser(
   try {
     const bananaEligible = items.every((item) => !["hardware", "device"].includes(item.kind));
     if (bananaEligible && order.paymentStatus === "paid") {
-      const rewardRate = toNumber(store.settings?.["banana_reward_rate"] || 6.8);
-      const bananaReward = Math.floor(itemsTotal * rewardRate);
+      /*
+        The rate the admin actually typed.
+
+        This read `banana_reward_rate`, and the admin panel writes
+        `bananaPerDinar` — two names for one number, and the only code that
+        mints bananas on a purchase was reading the one nothing writes. The
+        fault was invisible because the fallback is 6.8 and the owner's
+        setting is also 6.8: changing «معدل كسب الموز لكل 1 دينار» to any
+        other value did nothing at all, and the panel went on displaying the
+        number it had saved.
+
+        `banana_reward_rate` wins, and `bananaPerDinar` is only the legacy
+        fallback. I had it the other way round, and it was a mint waiting to
+        happen — see `bananaRewardRate` for what that key means on the other
+        admin screen.
+      */
+      const rewardRate = bananaRewardRate(store.settings);
+
+      /*
+        A prize is not a purchase.
+
+        Bananas are earned on `itemsTotal`, the price before any discount, and
+        for every other coupon that is the shop's existing rule — left alone
+        here. The wheel breaks it: a prize pays the whole price, so the order
+        costs nothing and would still mint bananas on the full amount. At the
+        default rate a 5,000-dinar win pays 34,000 bananas, which buys more
+        tickets than it cost to win, which wins more games. The wheel would
+        fund itself out of the shop.
+
+        So on a prize order — and only on one, recognised by the code the
+        wheel mints — the bananas are earned on what the member actually
+        paid. A win that covered the whole price earns nothing; a win against
+        a pricier edition still earns on the difference the member paid.
+      */
+      const isWheelPrize = String(appliedCoupon?.code ?? "").startsWith("WIN-");
+      const bananaBase = isWheelPrize ? finalItemsTotal : itemsTotal;
+      const bananaReward = Math.floor(bananaBase * rewardRate);
 
       const existingReward = await d1First(
         `SELECT id FROM banana_ledger WHERE user_id = ? AND reference_id = ? AND type = 'reward'`,
@@ -1069,6 +1342,28 @@ export async function createOrderForUser(
           currency: order.currency,
           paymentStatus: "paid",
           text: `🎮 تم تأكيد طلبك الرقمي (${order.code}) بنجاح!\nالمبلغ المدفوع من المحفظة: ${order.total.toLocaleString()} د.ع\nيقوم فريق الدعم حالياً بتجهيز بيانات الحساب والرمز وإرسالها لك في هذه المحادثة.`,
+        },
+      });
+    } else if (paymentMethod === "cash_on_delivery") {
+      /*
+        A CASH ORDER MUST NOT BE ASKED FOR A TRANSFER.
+
+        The `else` below opens with the shop's intro and then a
+        `payment_methods_card` — «أرسل المبلغ ثم ارفع صورة الإيصال هنا». That
+        card is right for an order awaiting a ZainCash receipt and exactly
+        wrong for one the member chose to pay at the door: they would be told
+        to transfer the money they had just elected to hand the courier, and
+        an uploaded receipt would then be waiting for an admin who has nothing
+        to approve.
+
+        So cash orders get their own confirmation, saying what is owed and to
+        whom. Nothing about the wallet, because nothing was taken from it.
+      */
+      await appendMessage(threadId, {
+        senderRole: "system",
+        kind: "system",
+        body: {
+          text: `✅ تم تأكيد طلبك (${code}).\nطريقة الدفع: الدفع عند الاستلام.\nالمبلغ المطلوب: ${total.toLocaleString()} د.ع تُسلَّم للمندوب عند وصول الطلب.\nلم يُخصم من محفظتك شيء. سنتابع تجهيز الطلب والشحن معك هنا.`,
         },
       });
     } else {
@@ -1205,7 +1500,7 @@ export async function createOrderForUser(
     }
   }
 
-  setCachedOrder(idempotencyKey, order);
+  setCachedOrder(cacheKey, order);
 
   return order;
 }

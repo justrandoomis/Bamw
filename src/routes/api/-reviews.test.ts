@@ -107,6 +107,22 @@ function seedOrder(input: { id?: string; userId?: string; productId?: string; st
   return order;
 }
 
+/**
+ * How many rows a table holds, or zero when the table was never created.
+ *
+ * `review_rewards` and `coupons` are made lazily by whatever mints a reward.
+ * Now that nothing on this endpoint does, the tables can legitimately be
+ * absent — and "absent" is the strongest form of "nothing was minted", so it
+ * must read as zero rather than throw.
+ */
+function countRows(table: string): number {
+  try {
+    return (db.raw.prepare(`SELECT COUNT(*) AS n FROM ${table}`).get() as { n: number }).n;
+  } catch {
+    return 0;
+  }
+}
+
 beforeAll(async () => {
   const { ensureSchema } = await import("@/lib/d1.server");
   await ensureSchema();
@@ -175,8 +191,17 @@ describe("verified review publication", () => {
     expect(payload.status).toBe("approved");
     expect(payload.isBuyer).toBe(true);
     expect(payload.review.screenshot_url).toBe(imageUrl);
-    expect(payload.reward).toMatchObject({ amountIqd: 1000 });
-    expect(payload.reward.code).toMatch(/^REV-/);
+    /*
+      No code from this endpoint any more.
+
+      It publishes a plain star rating, which is what `ProductReviews.tsx`
+      posts. A code is earned through the two-step submission an admin
+      approves; minting here would be a door that skips both the Instagram
+      proof and the admin.
+    */
+    expect(payload.reward).toBeUndefined();
+    expect(countRows("review_rewards")).toBe(0);
+    expect(countRows("coupons")).toBe(0);
 
     const stored = db.raw
       .prepare(
@@ -191,86 +216,6 @@ describe("verified review publication", () => {
       review_due_at: null,
       approved_by: "system:verified_purchase",
     });
-
-    const couponRow = db.raw
-      .prepare(`SELECT * FROM coupons WHERE code = ?`)
-      .get(payload.reward.code);
-    expect(couponRow).toBeTruthy();
-    const { rowToCoupon, checkCoupon } = await import("@/lib/coupons");
-    const coupon = rowToCoupon(couponRow);
-    const cart = [{ productId: "anything", unitPrice: 10_000, quantity: 1, kind: "account" }];
-    expect(
-      checkCoupon({
-        coupon,
-        userId: "usr_buyer",
-        orderAmount: 10_000,
-        items: cart,
-        globalUses: 0,
-        userUses: 0,
-      }),
-    ).toMatchObject({ ok: true });
-    expect(
-      checkCoupon({
-        coupon,
-        userId: "usr_other",
-        orderAmount: 10_000,
-        items: cart,
-        globalUses: 0,
-        userUses: 0,
-      }),
-    ).toEqual({ ok: false, reason: "not_eligible" });
-  });
-
-  it("returns the approved review image to the public product and the admin", async () => {
-    seedOrder({});
-    const imageUrl = "/api/files/reviews/usr_buyer/review-image.webp";
-    await post({ productId: "prd_game", orderId: "ord_1", rating: 4, imageUrl });
-
-    viewer = undefined;
-    const publicResponse = await get("?productId=prd_game");
-    const publicPayload = (await publicResponse.json()) as any;
-    expect(publicPayload.reviews).toHaveLength(1);
-    expect(publicPayload.reviews[0].screenshot_url).toBe(imageUrl);
-
-    viewer = { id: "usr_admin", isAdmin: true };
-    const adminResponse = await get("?scope=all");
-    const adminPayload = (await adminResponse.json()) as any;
-    expect(adminPayload.reviews).toHaveLength(1);
-    expect(adminPayload.reviews[0].screenshot_url).toBe(imageUrl);
-  });
-
-  it("promotes the matching legacy placeholder instead of showing or duplicating it", async () => {
-    seedOrder({});
-    db.raw
-      .prepare(
-        `INSERT INTO product_reviews
-           (id, product_id, user_id, order_id, rating, comment, status, is_auto_review,
-            review_due_at, created_at, updated_at)
-         VALUES ('rev_placeholder', 'prd_game', 'usr_buyer', 'ord_1', 5, '', 'pending', 0,
-                 '2026-09-23T12:00:00.000Z', ?, ?)`,
-      )
-      .run(now, now);
-
-    const before = await get("?productId=prd_game");
-    const beforePayload = (await before.json()) as any;
-    expect(beforePayload.reviews).toHaveLength(0);
-    expect(beforePayload.myReview).toBeNull();
-
-    const response = await post({
-      productId: "prd_game",
-      orderId: "ord_1",
-      rating: 3,
-      comment: "تمت كتابة الرأي فعلاً",
-    });
-    expect(response.status).toBe(200);
-    const rows = db.raw.prepare(`SELECT * FROM product_reviews`).all() as any[];
-    expect(rows).toHaveLength(1);
-    expect(rows[0]).toMatchObject({
-      id: "rev_placeholder",
-      rating: 3,
-      status: "approved",
-      review_due_at: null,
-    });
   });
 
   it("is idempotent across a retried submission", async () => {
@@ -279,28 +224,20 @@ describe("verified review publication", () => {
     const first = (await (await post(input)).json()) as any;
     const second = (await (await post(input)).json()) as any;
 
-    expect(second.reward.code).toBe(first.reward.code);
+    expect(second.review.id).toBe(first.review.id);
     expect((db.raw.prepare(`SELECT COUNT(*) AS n FROM product_reviews`).get() as any).n).toBe(1);
-    expect((db.raw.prepare(`SELECT COUNT(*) AS n FROM review_rewards`).get() as any).n).toBe(1);
-    expect((db.raw.prepare(`SELECT COUNT(*) AS n FROM coupons`).get() as any).n).toBe(1);
+    // Retried or not, this endpoint mints nothing.
+    expect(countRows("review_rewards")).toBe(0);
+    expect(countRows("coupons")).toBe(0);
   });
 
-  it("repairs a legacy reward coupon whose old row used a code-derived id", async () => {
-    seedOrder({});
-    const input = { productId: "prd_game", orderId: "ord_1", rating: 5 };
-    const first = (await (await post(input)).json()) as any;
-    db.raw
-      .prepare(`UPDATE coupons SET id = ? WHERE code = ?`)
-      .run(`cpn_${first.reward.code}`, first.reward.code);
-
-    const second = (await (await post(input)).json()) as any;
-
-    expect(second.reward.code).toBe(first.reward.code);
-    expect((db.raw.prepare(`SELECT COUNT(*) AS n FROM coupons`).get() as any).n).toBe(1);
-    expect(
-      db.raw.prepare(`SELECT discount_value FROM coupons WHERE code = ?`).get(first.reward.code),
-    ).toMatchObject({ discount_value: 1000 });
-  });
+  /*
+    The "repairs a legacy reward coupon" case was removed with the mint it
+    tested: this endpoint no longer creates or repairs a coupon, so there is
+    nothing here to exercise. The repair itself still exists and is still
+    reached — from `issueApprovedReviewReward`, on an admin's approval — and is
+    covered there.
+  */
 
   it("rejects unfinished, foreign, and product-mismatched orders", async () => {
     seedOrder({ id: "ord_waiting", status: "processing" });
@@ -333,7 +270,7 @@ describe("verified review publication", () => {
     expect((db.raw.prepare(`SELECT COUNT(*) AS n FROM product_reviews`).get() as any).n).toBe(0);
   });
 
-  it("publishes a genuine legacy pending review and rewards it without duplicating the row", async () => {
+  it("still publishes a genuine legacy pending review — and pays nothing for it", async () => {
     seedOrder({});
     db.raw
       .prepare(
@@ -357,7 +294,55 @@ describe("verified review publication", () => {
       status: "approved",
       approved_by: "system:verified_purchase",
     });
-    expect((db.raw.prepare(`SELECT COUNT(*) AS n FROM review_rewards`).get() as any).n).toBe(1);
+    /*
+      The legacy row still publishes — members who rated before the popup
+      existed keep their reviews — but a cron no longer hands out a 1,000 IQD
+      code for finding one.
+    */
+    expect(countRows("review_rewards")).toBe(0);
+    expect(countRows("coupons")).toBe(0);
+  });
+
+  it("leaves a submission from the popup alone, and still takes the legacy row", async () => {
+    /*
+      THE guard for the owner's requirement.
+
+      This cron runs every minute, publishes what it selects as approved, and
+      used to mint a coupon for it. A review submitted through the two-step
+      popup must be invisible to it, or the admin's approval queue empties
+      itself within sixty seconds and the coupons are gone before anyone sees
+      the card. Two independent guards keep it out — the distinct status and
+      the group id — and this test fails if either is removed.
+    */
+    seedOrder({});
+    db.raw
+      .prepare(
+        `INSERT INTO product_reviews
+           (id, product_id, user_id, order_id, rating, comment, status, is_auto_review,
+            review_group_id, review_due_at, created_at, updated_at)
+         VALUES ('rev_from_popup', 'prd_game', 'usr_buyer', 'ord_1', 5, 'تسليم ممتاز',
+                 'pending', 0, 'rev_grp_abc', NULL, ?, ?)`,
+      )
+      .run(now, now);
+    db.raw
+      .prepare(
+        `INSERT INTO product_reviews
+           (id, product_id, user_id, order_id, rating, comment, status, is_auto_review,
+            review_group_id, review_due_at, created_at, updated_at)
+         VALUES ('rev_legacy', 'prd_game2', 'usr_buyer', NULL, 4, 'رأي قديم',
+                 'pending', 0, NULL, NULL, ?, ?)`,
+      )
+      .run(now, now);
+
+    const { reconcilePendingVerifiedReviews } = await import("@/lib/reviews.server");
+    await reconcilePendingVerifiedReviews();
+
+    const popup = db.raw
+      .prepare(`SELECT status, approved_by, approved_at FROM product_reviews WHERE id = ?`)
+      .get("rev_from_popup") as any;
+    expect(popup).toMatchObject({ status: "pending", approved_by: null, approved_at: null });
+    expect(countRows("review_rewards")).toBe(0);
+    expect(countRows("coupons")).toBe(0);
   });
 
   it("repairs the reward entitlement for an order completed before the unified flow", async () => {
@@ -367,10 +352,21 @@ describe("verified review publication", () => {
 
     const result = await reconcileCompletedOrderReviewFollowups(now);
 
-    expect(result).toMatchObject({ scanned: 1, repaired: 1, errors: 0 });
-    const reward = db.raw
-      .prepare(`SELECT user_id, amount_iqd FROM review_rewards WHERE order_id = 'ord_1'`)
-      .get() as any;
-    expect(reward).toMatchObject({ user_id: "usr_buyer", amount_iqd: 1000 });
+    /*
+      The amplifier, defused.
+
+      This query used to also match "an order with no reward row". That was a
+      sound question while completion minted a reward — a missing row meant a
+      missed completion — and it stopped being sound the moment the code became
+      something an admin issues: nearly every completed order the shop has ever
+      taken has no reward row, forever, so the every-minute cron would re-run
+      the whole completion path on a fresh batch of them without end.
+
+      What remains is the question still worth asking: was this customer ever
+      invited to rate the order. An order with no conversation cannot be
+      invited, so it is not scanned, and nothing is minted either way.
+    */
+    expect(result).toMatchObject({ scanned: 0, repaired: 0, errors: 0 });
+    expect(countRows("review_rewards")).toBe(0);
   });
 });

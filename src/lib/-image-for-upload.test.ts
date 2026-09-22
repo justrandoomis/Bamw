@@ -100,7 +100,12 @@ describe("the chat composer gets the same treatment", () => {
     /*
       The same photo, the same phone, the same 20 MB ceiling — reported first
       as a chat failure and then as a wallet one.
+
+      The chat now asks `prepareServableImage`, which runs the same pipeline
+      and additionally says whether the result can be sent at all. That answer
+      is what lets it refuse an undecodable HEIC in Arabic before the upload
+      rather than in English a minute after it.
     */
-    expect(chatView).toContain("prepareImageForUpload(rawFile)");
+    expect(chatView).toContain("prepareServableImage(rawFile)");
   });
 });

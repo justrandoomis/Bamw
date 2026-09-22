@@ -1,11 +1,7 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import AppShell from "@/components/AppShell";
 import ProfileView from "@/components/ProfileView";
-import { useAuth } from "@/hooks/useAuth";
-import { profileRedirectTarget } from "@/lib/authRedirect";
-import { useI18n } from "@/i18n";
-import { useEffect, useState } from "react";
-import { Loader2 } from "lucide-react";
+import RequireSignIn from "@/components/RequireSignIn";
 
 export const Route = createFileRoute("/profile")({
   head: () => ({
@@ -19,39 +15,17 @@ export const Route = createFileRoute("/profile")({
   component: ProfilePage,
 });
 
+/*
+  The same gate as the wallet's, from the same component. This page kept its
+  own copy of the wait-then-redirect rule; two copies of that rule is how one
+  of them ends up bouncing a signed-in member to /auth on a hard refresh.
+*/
 function ProfilePage() {
-  const { user, isLoading, isFetching } = useAuth();
-  const { t } = useI18n();
-  const navigate = useNavigate();
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    const target = profileRedirectTarget({ user, isLoading, isFetching, isClient });
-    if (target) void navigate({ to: target, replace: true });
-  }, [user, isLoading, isFetching, navigate, isClient]);
-
-  if (!isClient || isLoading || (isFetching && !user)) {
-    return (
-      <AppShell currentView="profile">
-        <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-          <Loader2 className="h-10 w-10 animate-spin text-[var(--brand-red)]" />
-          <p className="text-sm font-bold text-muted-foreground">
-            {t("جاري تحميل الملف الشخصي...")}
-          </p>
-        </div>
-      </AppShell>
-    );
-  }
-
-  if (!user) return null;
-
   return (
-    <AppShell currentView="profile">
-      <ProfileView />
-    </AppShell>
+    <RequireSignIn>
+      <AppShell currentView="profile">
+        <ProfileView />
+      </AppShell>
+    </RequireSignIn>
   );
 }

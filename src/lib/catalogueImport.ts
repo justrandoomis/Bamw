@@ -24,6 +24,9 @@
  * rather than a preview that can disagree with what gets written.
  */
 
+import { categoryFilterAliases, resolveCategoryType } from "./productSection";
+import type { StoreDoc } from "./types";
+
 export interface CatalogueRow {
   /** The line number in the file, 1-based, for error messages. */
   line: number;
@@ -58,6 +61,26 @@ export interface CatalogueRow {
   offlinePriceIqd: number;
   /** Whether the game can be played in English. */
   englishSupport: boolean;
+
+  /*
+    Everything below arrived in a later sheet and is optional throughout.
+
+    An empty string means "the file says nothing about this", which is not the
+    same as "the file says it is empty" — and the difference decides whether a
+    refresh writes over something the shop already knows. Nothing here is ever
+    written when blank.
+  */
+  /** A picture of the game. The shop reads `coverImage` first of seven fields. */
+  coverUrl: string;
+  /** The eShop page the row was matched against. */
+  storeLink: string;
+  /** Nintendo's own product code. */
+  nsuid: string;
+  publisher: string;
+  /** Comma-separated, as the sheet writes them. */
+  languages: string;
+  /** The official title the supplier's name was matched to. */
+  matchedTitle: string;
 }
 
 export interface CatalogueParseIssue {
@@ -94,6 +117,20 @@ const COLUMN_ALIASES: Record<SheetColumn, string[]> = {
     "sellingprice",
   ],
   englishSupport: ["englishsupport", "english", "supportsenglish", "englang"],
+  /*
+    The columns a later sheet grew, all optional.
+
+    A file without them is still a valid file — the first fifteen hundred rows
+    arrived with none of these — so none of them can refuse a row. What they
+    carry is the artwork and the provenance a bare listing has been missing:
+    696 of the products in the shop have a name and a price and nothing else.
+  */
+  coverUrl: ["coverurl", "cover", "image", "imageurl", "coverimage", "boxart"],
+  storeLink: ["storelink", "store", "url", "link", "productlink", "eshoplink"],
+  nsuid: ["nsuid", "nsuids", "productcode"],
+  publisher: ["publisher", "developer", "studio"],
+  languages: ["languages", "language", "langs", "supportedlanguages"],
+  matchedTitle: ["matchedtitle", "officialtitle", "canonicaltitle"],
 };
 
 function headerKey(value: string): string {
@@ -220,7 +257,9 @@ function readPlatform(value: string): "switch1" | "switch2" | null {
  * a question.
  */
 function readEnglishSupport(value: string): boolean {
-  const text = String(value ?? "").trim().toLowerCase();
+  const text = String(value ?? "")
+    .trim()
+    .toLowerCase();
   if (!text) return false;
   if (text.startsWith("لا") || text.startsWith("no")) return false;
   return text.startsWith("نعم") || text.startsWith("yes") || text === "true" || text === "1";
@@ -252,6 +291,12 @@ export function parseCatalogueCsv(text: string): CatalogueParseResult {
     platform: columnOf("platform"),
     offlinePriceIqd: columnOf("offlinePriceIqd"),
     englishSupport: columnOf("englishSupport"),
+    coverUrl: columnOf("coverUrl"),
+    storeLink: columnOf("storeLink"),
+    nsuid: columnOf("nsuid"),
+    publisher: columnOf("publisher"),
+    languages: columnOf("languages"),
+    matchedTitle: columnOf("matchedTitle"),
   };
 
   const issues: CatalogueParseIssue[] = [];
@@ -351,6 +396,17 @@ export function parseCatalogueCsv(text: string): CatalogueParseResult {
       platform,
       offlinePriceIqd: price,
       englishSupport: readEnglishSupport(cell(record, index.englishSupport)),
+      /*
+        `cell()` returns "" for a column the file does not have and for a cell
+        the file left blank alike. Both mean the same thing to every reader
+        below: say nothing, write nothing.
+      */
+      coverUrl: cell(record, index.coverUrl),
+      storeLink: cell(record, index.storeLink),
+      nsuid: cell(record, index.nsuid),
+      publisher: cell(record, index.publisher),
+      languages: cell(record, index.languages),
+      matchedTitle: cell(record, index.matchedTitle),
     });
   }
 
@@ -505,7 +561,7 @@ export interface BuiltListing {
  * The comment at the top of this file claimed the update "touches nothing
  * else" while the code wrote all of them, which is worse than either.
  */
-export type ImportMode = "create-only" | "refresh-prices";
+export type ImportMode = "create-only" | "refresh-prices" | "refresh-content";
 
 export interface BuildOptions {
   categoryId: string;
@@ -541,6 +597,52 @@ export function buildListing(row: CatalogueRow, options: BuildOptions): BuildOut
         reason: "موجود مسبقاً كمنتج أُنشئ يدوياً — لم يُلمس",
       };
     }
+    /*
+      Content, and not a penny of it.
+
+      The owner's second sheet added artwork and provenance for games already
+      on sale, and asked for exactly one thing: bring those across, leave the
+      product alone "من حيث التكلفه والبيع" — the cost, the selling price, and
+      everything of that kind.
+
+      So this branch names the fields it writes, one at a time, onto a copy of
+      the stored product. It is deliberately not a spread of a freshly built
+      record over the existing one: that is the shape that carried visibility,
+      stock and options along with the price in the first draft of the refresh
+      below, and it would do it again here.
+
+      Every field is written only when the sheet actually says something. A
+      blank cell and an absent column both arrive as "" and both mean the sheet
+      is silent — and silence must never overwrite a title somebody corrected
+      by hand or a cover somebody uploaded.
+    */
+    if (options.mode === "refresh-content") {
+      const patch: Record<string, unknown> = {};
+      if (row.englishName) {
+        patch["title"] = row.englishName;
+        patch["titleEn"] = row.englishName;
+      }
+      /*
+        `coverImage` is the first of the seven fields `hasUsableImage` reads,
+        so writing it is what moves a listing out of «بانتظار التفاصيل».
+      */
+      if (row.coverUrl) patch["coverImage"] = row.coverUrl;
+      if (row.storeLink) patch["officialStoreUrl"] = row.storeLink;
+      if (row.nsuid) patch["nsuid"] = row.nsuid;
+      if (row.publisher) patch["publisher"] = row.publisher;
+      if (row.languages) patch["languages"] = row.languages;
+      if (row.matchedTitle) patch["canonicalTitle"] = row.matchedTitle;
+
+      if (Object.keys(patch).length === 0) {
+        return { action: "skip", reason: "الملف لا يضيف شيئاً لهذا المنتج" };
+      }
+      return {
+        action: "update",
+        product: { ...existing, ...patch, updatedAt: new Date().toISOString() },
+        chineseName: row.chineseName,
+      };
+    }
+
     if (options.mode !== "refresh-prices") {
       return { action: "skip", reason: "موجود مسبقاً — لم يتغيّر شيء" };
     }
@@ -617,6 +719,20 @@ export function buildListing(row: CatalogueRow, options: BuildOptions): BuildOut
     isHidden: false,
     status: "active",
 
+    /*
+      A new listing arrives with whatever the sheet knows about it.
+
+      The first run of this import had none of these columns, which is why 696
+      of the products in the shop are a name and a price and nothing else. A
+      row that carries a cover should not produce another one.
+    */
+    ...(row.coverUrl ? { coverImage: row.coverUrl } : {}),
+    ...(row.storeLink ? { officialStoreUrl: row.storeLink } : {}),
+    ...(row.nsuid ? { nsuid: row.nsuid } : {}),
+    ...(row.publisher ? { publisher: row.publisher } : {}),
+    ...(row.languages ? { languages: row.languages } : {}),
+    ...(row.matchedTitle ? { canonicalTitle: row.matchedTitle } : {}),
+
     /** Shown to the customer: 17 of these titles have no English in them. */
     englishSupport: row.englishSupport,
     /** Where this listing came from, so a re-run can recognise its own work. */
@@ -626,4 +742,322 @@ export function buildListing(row: CatalogueRow, options: BuildOptions): BuildOut
   };
 
   return { action: "create", product, chineseName: row.chineseName };
+}
+
+/* ------------------------------------------------------------------ */
+/* Covers that belong to more than one game                            */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The cover URLs in this file that sit on more than one *different* game.
+ *
+ * Not a check that a link works — every one of the 567 in the owner's sheet
+ * does. This is the failure that survives a link check: the sheet matched a
+ * title to the wrong eShop page, the URL resolves perfectly, and the shop shows
+ * the wrong box art on a product somebody is being asked to pay for.
+ *
+ * The sheet has 25 of them across 59 rows, and they are not subtle once the
+ * names are put side by side:
+ *
+ *   - `NipponMarathon` on all three «Railway Nippon!» games
+ *   - `OfficeLovers` on «DIABOLIK LOVERS» and «LoveR Kiss»
+ *   - a Wii-era `justdance` portrait on six Just Dance titles *and* on
+ *     «Dance with Devils», which is a visual novel
+ *
+ * Distinct *names* is the test, not distinct rows. A game listed twice in the
+ * sheet — «Absolute Fear -AOONI-» appears once per console — shares its cover
+ * with itself, and that is correct rather than suspect. Sixteen of the sheet's
+ * duplicate URLs are that case and keep their artwork.
+ *
+ * What the caller does with the answer is its own decision. The runner import
+ * drops the cover from these rows by default, because a listing with no picture
+ * falls back to the placeholder the shop designed, and that is plainly better
+ * than Just Dance artwork on an otome game.
+ */
+export function sharedCoverUrls(rows: readonly CatalogueRow[]): Map<string, string[]> {
+  const names = new Map<string, Set<string>>();
+  for (const row of rows) {
+    const url = (row.coverUrl || "").trim();
+    if (!url) continue;
+    const name = (row.englishName || "").trim().toLowerCase();
+    if (!names.has(url)) names.set(url, new Set());
+    names.get(url)!.add(name);
+  }
+  const shared = new Map<string, string[]>();
+  for (const [url, set] of names) {
+    if (set.size > 1) shared.set(url, [...set].sort());
+  }
+  return shared;
+}
+
+/**
+ * The same rows with the suspect covers taken off, and nothing else changed.
+ *
+ * Returns a new array; the rows that keep their cover are the same objects.
+ */
+export function withoutSharedCovers(rows: readonly CatalogueRow[]): {
+  rows: CatalogueRow[];
+  dropped: number;
+  shared: Map<string, string[]>;
+} {
+  const shared = sharedCoverUrls(rows);
+  if (shared.size === 0) return { rows: [...rows], dropped: 0, shared };
+  let dropped = 0;
+  const out = rows.map((row) => {
+    const url = (row.coverUrl || "").trim();
+    if (!url || !shared.has(url)) return row;
+    dropped += 1;
+    return { ...row, coverUrl: "" };
+  });
+  return { rows: out, dropped, shared };
+}
+
+/* ------------------------------------------------------------------ */
+/* Deciding a batch against a snapshot                                 */
+/* ------------------------------------------------------------------ */
+
+/*
+  `decide` used to live inside the route file, which meant only a Worker could
+  reach it — and a Worker is the one place this import cannot finish, because
+  the shop is on a plan whose CPU ceiling a catalogue write cannot fit inside.
+  Anything else that wanted to run this import would have had to reimplement
+  the matching rules, and a second implementation of "which existing product is
+  this row?" is how an import creates duplicates of games the shop already
+  sells.
+
+  So it lives here, beside `buildListing` and `parseCatalogueCsv`, in a module
+  with no server imports: the browser preview, the Worker route and a script on
+  a runner all decide identically because they all call this.
+*/
+export type Outcome = "created" | "updated" | "skipped";
+
+export interface RowResult {
+  line: number;
+  name: string;
+  outcome: Outcome;
+  /** Present on `skipped`, always in Arabic — the admin reads this list. */
+  reason?: string;
+  id?: string;
+}
+
+function slugOf(product: Record<string, unknown>): string {
+  return String(product["slug"] ?? "")
+    .trim()
+    .toLowerCase();
+}
+
+/**
+ * The Nintendo Switch Games category, as this store actually spells it.
+ *
+ * The section has six accepted spellings (`SECTION_CATEGORY_ALIASES`), and
+ * guessing the wrong one puts fifteen hundred games in a category the sidebar
+ * does not list. So the store's own categories are consulted first and only
+ * the canonical id is used as a fallback.
+ */
+function resolveGamesCategory(categories: unknown): { id: string; title: string } {
+  const list = Array.isArray(categories) ? (categories as Record<string, unknown>[]) : [];
+  const aliases = categoryFilterAliases("nintendo-switch-games");
+  for (const category of list) {
+    const id = String(category?.["id"] ?? "")
+      .trim()
+      .toLowerCase();
+    if (id && aliases.includes(id)) {
+      return { id: String(category["id"]), title: String(category["title"] ?? "") };
+    }
+  }
+  return { id: "nintendo-switch-games", title: "ألعاب نينتندو سويتش" };
+}
+
+/** What one pass over a store snapshot decided. */
+export interface Decision {
+  products: Record<string, unknown>[];
+  results: RowResult[];
+  created: number;
+  updated: number;
+  categoryId: string;
+  names: { productId: string; supplierNameZhCn: string; englishTitle: string }[];
+  /**
+   * Rows that named a product another row in the same file had already named,
+   * with a different Chinese name. Neither is written — see `decide`.
+   */
+  nameConflicts: { productId: string; englishTitle: string; line: number }[];
+}
+
+/**
+ * Every row in the batch, decided against one snapshot of the catalogue.
+ *
+ * Pure, and re-runnable: `updateStore` re-reads the store and re-applies the
+ * mutation when another writer wins the revision, so the decision has to be a
+ * function of the snapshot it is handed rather than of one taken earlier. That
+ * is also what makes the preview honest — it is this same function, run and
+ * thrown away.
+ */
+export function decide(current: StoreDoc, rows: CatalogueRow[], mode: ImportMode): Decision {
+  const products = [...((current.products ?? []) as unknown as Record<string, unknown>[])];
+  const category = resolveGamesCategory(current.categories);
+  const out: Decision = {
+    products,
+    results: [],
+    created: 0,
+    updated: 0,
+    categoryId: category.id,
+    names: [],
+    nameConflicts: [],
+  };
+  /*
+    Which supplier name each product has already been given in this run.
+
+    Twelve English titles appear twice in the owner's sheet, each pair carrying
+    two *different* Chinese names — two supplier SKUs listed under one English
+    name. The title index below deliberately matches the second row onto the
+    first row's product, so both rows would write a name to the same row of
+    `product_admin_metadata` and the one that happened to be written last would
+    win. The admin would then copy that name to the supplier and be sent the
+    other edition of the game.
+
+    So the first name stands and the second is refused rather than guessed at.
+    A conflict is reported instead of resolved: which of the two is right is
+    not something this file can know, and a wrong supplier name is the exact
+    failure the copy button exists to prevent.
+  */
+  const nameByProduct = new Map<string, string>();
+
+  /*
+    One pass over the catalogue, not one lookup per row. A `find` per row over
+    seventeen hundred products is eighty-five thousand string comparisons per
+    batch, and there are sixteen batches.
+  */
+  const bySlug = new Map<string, number>();
+  const byId = new Map<string, number>();
+  const byTitle = new Map<string, number>();
+  for (let at = 0; at < products.length; at++) {
+    const product = products[at]!;
+    const slug = slugOf(product);
+    if (slug && !bySlug.has(slug)) bySlug.set(slug, at);
+    const id = String(product["id"] ?? "").trim();
+    if (id && !byId.has(id)) byId.set(id, at);
+
+    /*
+      Only games are looked up by title.
+
+      The title index exists to stop a second «Fire Emblem: Three Houses»
+      being created beside one an admin added by hand. It was built over every
+      product in the shop — hardware, accessories, amiibo, gift cards, bundles
+      — so a console accessory or a bundle that happens to share a name with a
+      game was taken as "the same game". That costs the row twice over: the
+      import declines to touch the accessory (rightly), and the game it was
+      supposed to create is never created, because the row has been answered.
+
+      A slug or id match still works across every kind, which is the precise
+      case: a collision there is a URL or key collision and a real conflict.
+    */
+    const isGame =
+      resolveCategoryType(
+        String(product["categoryId"] ?? ""),
+        String(product["category"] ?? product["categoryTitle"] ?? ""),
+        String(product["kind"] ?? ""),
+        String(product["schemaId"] ?? ""),
+      ) === "game";
+    if (!isGame) continue;
+
+    const title = String(product["titleEn"] ?? product["title"] ?? "")
+      .trim()
+      .toLowerCase();
+    if (title && !byTitle.has(title)) byTitle.set(title, at);
+  }
+
+  for (const row of rows) {
+    const name = String(row?.englishName ?? "").trim();
+    const line = Number(row?.line) || 0;
+    if (!name || !(Number(row?.offlinePriceIqd) > 0)) {
+      out.results.push({ line, name, outcome: "skipped", reason: "صف غير صالح" });
+      continue;
+    }
+
+    /*
+      Matched by slug, then by the id this importer would mint, then by name.
+
+      The slug is what a re-run of the same sheet produces, so it is the
+      reliable key. The id lookup closes the gap the first version left: a
+      listing whose slug was later corrected still owns `prd_cat_<slug>`, and
+      creating a second product under an id already in the catalogue is a
+      duplicate key, not a new game. The title lookup is what stops a second
+      «Fire Emblem: Three Houses» beside one an admin added by hand.
+    */
+    const desiredSlug = String(row.slug ?? "")
+      .trim()
+      .toLowerCase();
+    const at =
+      (desiredSlug ? bySlug.get(desiredSlug) : undefined) ??
+      (desiredSlug ? byId.get(`prd_cat_${desiredSlug}`) : undefined) ??
+      byTitle.get(name.toLowerCase());
+    const existing = at === undefined ? undefined : products[at];
+
+    const outcome = buildListing(row, {
+      categoryId: category.id,
+      categoryTitle: category.title,
+      mode,
+      ...(existing ? { existing } : {}),
+    });
+
+    /*
+      The Chinese name goes to its own admin-only table and never onto the
+      product. `getStore()` does not load that table, so there is no path by
+      which the storefront could serialise it — which is the whole reason it
+      lives there.
+
+      It is collected before the skip below, and that is the point. A row the
+      catalogue declines to write still names a product the shop has, and the
+      supplier's name for it is exactly what the admin needs at the counter.
+      Collecting it only on a create or an update meant `create-only` — the
+      safest mode, the one that touches nothing — could never carry a name to
+      a game already on sale.
+    */
+    const resolvedId =
+      outcome.action === "skip"
+        ? existing
+          ? String(existing["id"] ?? "")
+          : ""
+        : String(outcome.product["id"]);
+    if (row.chineseName && resolvedId) {
+      const already = nameByProduct.get(resolvedId);
+      if (already === undefined) {
+        nameByProduct.set(resolvedId, row.chineseName);
+        out.names.push({
+          productId: resolvedId,
+          supplierNameZhCn: row.chineseName,
+          englishTitle: name,
+        });
+      } else if (already !== row.chineseName) {
+        out.nameConflicts.push({ productId: resolvedId, englishTitle: name, line });
+      }
+    }
+
+    if (outcome.action === "skip") {
+      out.results.push({ line, name, outcome: "skipped", reason: outcome.reason });
+      continue;
+    }
+
+    const id = resolvedId;
+    if (outcome.action === "create") {
+      products.push(outcome.product);
+      const added = products.length - 1;
+      if (desiredSlug) bySlug.set(desiredSlug, added);
+      byId.set(id, added);
+      byTitle.set(name.toLowerCase(), added);
+      out.created += 1;
+    } else {
+      products[at!] = outcome.product;
+      out.updated += 1;
+    }
+
+    out.results.push({
+      line,
+      name,
+      outcome: outcome.action === "create" ? "created" : "updated",
+      id,
+    });
+  }
+
+  return out;
 }

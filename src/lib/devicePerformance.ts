@@ -221,8 +221,19 @@ export function getDevicePerformanceList(product: Record_ | null | undefined): D
   if (!hasLegacy) return [];
 
   const switch2 = platform === "switch2" || platform === "both";
+  /*
+    Through the same normaliser as the v2 records above.
+
+    This branch used to return a hand-built literal, so a product with legacy
+    flat performance fields came back with `resolution: ""` and
+    `performanceNotes: ""` on the first pass and without them on the second —
+    the one place `normalizeProductRecord` was not a fixed point on its own
+    output. `loadStore` normalises three times, so the compacted form is what
+    production already stores; producing it on the first pass makes the passes
+    agree without changing the value that lands in D1.
+  */
   return [
-    {
+    normalizeDevicePerformance({
       device: switch2 ? "Nintendo Switch 2" : "Nintendo Switch",
       deviceSlug: switch2 ? "nintendo-switch-2" : "nintendo-switch",
       handheld: handheld || fps ? { supported: true, resolution: handheld, fps } : undefined,
@@ -245,8 +256,8 @@ export function getDevicePerformanceList(product: Record_ | null | undefined): D
         : {}),
       performanceNotes: text(product["perfNotes"]),
       verificationStatus: "unverified",
-    },
-  ];
+    }),
+  ].filter(Boolean) as DevicePerformance[];
 }
 
 function calculateRecordCompleteness(record: DevicePerformance): number {

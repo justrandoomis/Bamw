@@ -7,7 +7,15 @@
  */
 
 import { getStoreSettings, updateStore } from "./db.server";
+/*
+  Re-exported rather than redefined. The panel prints a price and a client
+  component may not import a `.server` module, so the arithmetic lives in
+  `banana-price.ts` and everything that already imports it from here keeps
+  working — one definition of how many decimals a price has.
+*/
+export { PRICE_STEP, formatPrice, roundPrice, roundsToZero } from "./banana-price";
 import { d1All, d1First, d1Run, d1Ready } from "./d1.server";
+import { PRICE_STEP, formatPrice, roundPrice, roundsToZero } from "./banana-price";
 
 export interface BananaMarketConfig {
   /** Reference price (IQD per banana). */
@@ -87,10 +95,7 @@ export async function getMarketConfig(): Promise<BananaMarketConfig> {
   const d = DEFAULT_MARKET_CONFIG;
 
   const config: BananaMarketConfig = {
-    basePrice: price(
-      price(raw["basePrice"], 0) || settings["bananaOpeningPrice"],
-      d.basePrice,
-    ),
+    basePrice: price(price(raw["basePrice"], 0) || settings["bananaOpeningPrice"], d.basePrice),
     minPrice: price(raw["minPrice"], d.minPrice),
     maxPrice: price(raw["maxPrice"], d.maxPrice),
     commissionPercent: num(raw["commissionPercent"], d.commissionPercent),
@@ -113,9 +118,76 @@ export async function getMarketConfig(): Promise<BananaMarketConfig> {
     ),
   };
 
-  if (config.minPrice > config.maxPrice) config.minPrice = config.maxPrice;
-  if (config.botMinQuantity > config.botMaxQuantity) config.botMinQuantity = config.botMaxQuantity;
-  return config;
+  return repairBand(config);
+}
+
+/**
+ * A configuration the engine can run, from one it cannot.
+ *
+ * Production held `basePrice: 0.0004` against `maxPrice: 0.0003`, so
+ * `spotPriceAt` clamped every price to the ceiling and the number the owner
+ * had actually typed meant nothing — and the whole market died, because
+ * `processBotTrading` stands down when the price is not above zero.
+ *
+ * `marketConfigProblem` refuses that combination on the way in now, but a
+ * refusal only protects the next save. It does nothing for the shop already in
+ * that state, and nobody is going to guess that re-typing the same number into
+ * a different tab would revive it. So the stored value is repaired on the way
+ * out as well.
+ *
+ * The base wins. It is the field on the admin's screen — the panel shows «سعر
+ * الافتتاح المرجعي» and does not show the floor or the ceiling — so those are
+ * far more likely to be a leftover nobody chose. The band widens to admit the
+ * base; neither number is thrown away.
+ */
+export function repairBand(config: BananaMarketConfig): BananaMarketConfig {
+  const fixed = { ...config };
+  if (fixed.minPrice > fixed.maxPrice) fixed.minPrice = fixed.maxPrice;
+  if (fixed.basePrice > fixed.maxPrice) fixed.maxPrice = fixed.basePrice;
+  if (fixed.basePrice < fixed.minPrice) fixed.minPrice = fixed.basePrice;
+  if (fixed.botMinQuantity > fixed.botMaxQuantity) fixed.botMinQuantity = fixed.botMaxQuantity;
+  return fixed;
+}
+
+/**
+ * What makes a market configuration usable, in one place.
+ *
+ * These rules lived inside the `save_market_config` action and nowhere else,
+ * and the screen the owner actually uses is a different action — `save_settings`,
+ * which writes `basePrice` straight through `saveMarketConfig` with nothing
+ * checked at all. So every guard was in the door nobody walks through, and
+ * `0.0004` went into a shop whose ceiling was `0.0003` without a word.
+ *
+ * Returns the Arabic sentence to show the admin, or null when the
+ * configuration is one the engine can actually run.
+ */
+export function marketConfigProblem(config: BananaMarketConfig): string | null {
+  if (!(config.basePrice > 0)) return "السعر الأساسي يجب أن يكون أكبر من صفر";
+  if (config.minPrice > config.maxPrice) return "أدنى سعر أكبر من أعلى سعر";
+  if (config.basePrice < config.minPrice || config.basePrice > config.maxPrice) {
+    return (
+      `السعر الأساسي (${config.basePrice}) خارج حدوده: ` +
+      `أدنى ${config.minPrice} وأعلى ${config.maxPrice}. ` +
+      "المحرك يحصر السعر داخل الحدين، فالقيمة خارجهما لا أثر لها."
+    );
+  }
+  for (const [label, value] of [
+    ["السعر الأساسي", config.basePrice],
+    ["أدنى سعر", config.minPrice],
+    ["أعلى سعر", config.maxPrice],
+  ] as const) {
+    if (roundsToZero(value)) {
+      return (
+        `${label} (${value}) يُقرَّب إلى صفر عند دقة السوق. ` +
+        `أصغر قيمة قابلة للعرض هي ${formatPrice(PRICE_STEP)}.`
+      );
+    }
+  }
+  if (config.botMinQuantity > config.botMaxQuantity) return "أقل كمية للبوت أكبر من أكبر كمية";
+  if (config.minListingQuantity > config.maxListingQuantity) {
+    return "أقل كمية للعرض أكبر من أكبر كمية";
+  }
+  return null;
 }
 
 export async function saveMarketConfig(
@@ -154,21 +226,6 @@ function hash01(bucket: number, salt: number): number {
   return ((x >>> 0) % 100000) / 100000;
 }
 
-/**
- * The precision the market prices at, and the smallest price it can express.
- *
- * `spotPriceAt` rounds to three decimals below, so any band under 0.0005
- * renders as 0.000 to every customer however carefully it was configured.
- * Exported so the admin save can refuse such a band using the same number the
- * pricing uses, rather than a second opinion about what "too small" means.
- */
-export const PRICE_STEP = 0.001;
-
-/** The lowest price that does not round to nothing. */
-export function roundsToZero(value: number): boolean {
-  return !(Math.round(value * 1000) / 1000 > 0);
-}
-
 /** Spot price for a given timestamp — same for everyone, clamped to admin bounds. */
 export function spotPriceAt(config: BananaMarketConfig, at: number = Date.now()): number {
   const bucket = Math.floor(at / BUCKET_MS);
@@ -178,7 +235,7 @@ export function spotPriceAt(config: BananaMarketConfig, at: number = Date.now())
     Math.sin(bucket / 17) * 0.6 + Math.sin(bucket / 53) * 0.3 + (hash01(bucket, 7) - 0.5) * 0.2;
   const price = config.basePrice * (1 + wave * amp);
   const clamped = Math.min(config.maxPrice, Math.max(config.minPrice, price));
-  return Math.round(clamped * 1000) / 1000;
+  return roundPrice(clamped);
 }
 
 export function changePercent24h(config: BananaMarketConfig, at: number = Date.now()): number {
@@ -258,7 +315,9 @@ export async function getChart(config: BananaMarketConfig, range = "1D"): Promis
     out.push({
       time: label(at, spec.hours),
       t: at.toISOString(),
-      price: match ? Math.round(match.price * 1000) / 1000 : spotPriceAt(config, ts),
+      // The chart at the market's own precision; three decimals drew this
+      // shop's entire price history as a flat line along zero.
+      price: match ? roundPrice(match.price) : spotPriceAt(config, ts),
     });
   }
 

@@ -414,6 +414,22 @@ export function OrdersManagerView({ onNavigateToChat }: OrdersManagerViewProps) 
                       <span>{paymentConfig.label}</span>
                     </span>
 
+                    {/*
+                      CASH ON DELIVERY, WHERE THE ADMIN CAN SEE IT.
+
+                      A cash order is written `unpaid` on purpose — the money
+                      arrives with the courier — and `unpaid` on its own reads
+                      as "this customer has not paid yet", which is the cue to
+                      chase them for a receipt. The badge says which of the two
+                      it is, so the amount is collected at the door instead.
+                    */}
+                    {order.paymentMethod === "cash_on_delivery" && (
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-500/10 text-sky-700 dark:text-sky-400 border border-sky-500/20">
+                        <Truck className="w-3 h-3" />
+                        <span>الدفع عند الاستلام</span>
+                      </span>
+                    )}
+
                     {/* Auto Delete Notice for Cancelled */}
                     {order.status === "cancelled" && (
                       <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20">

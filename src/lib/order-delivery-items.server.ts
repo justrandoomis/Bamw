@@ -27,6 +27,7 @@ import {
   allExpectedDeliveryItemsDelivered,
   autoCompleteAtFromLastOtp,
   calculateDeliveryProgress,
+  reviewPromptAtFromLastOtp,
   deliveryDraftStatus,
   nextReadyDeliveryItemId,
   type DeliveryItemStatus,
@@ -87,6 +88,14 @@ const ORDER_DELIVERY_COLUMNS = [
   "customer_confirmed_at TEXT",
   "auto_completed_at TEXT",
   "delivery_issue_opened_at TEXT",
+  /*
+    When to ask this customer to rate the order.
+
+    Stamped from the same last-OTP timestamp that sets `auto_complete_at`, in
+    the same statement, so the two clocks cannot drift: the invitation is due
+    thirty minutes after the last code went out, the auto-completion sixty.
+  */
+  "review_prompt_at TEXT",
 ] as const;
 
 let deliverySchemaPromise: Promise<void> | undefined;
@@ -113,6 +122,15 @@ export async function ensureDigitalDeliverySchema(): Promise<void> {
           if (!/duplicate column|already exists/i.test(message)) throw error;
         }
       }
+      /*
+        After the loop, never in a migration file: an index cannot be created
+        against a column the migration did not add, and this column is added
+        here.
+      */
+      await d1Run(
+        `CREATE INDEX IF NOT EXISTS orders_review_prompt_due_idx
+           ON orders (review_prompt_at) WHERE review_prompt_at IS NOT NULL`,
+      );
     })().catch((error) => {
       deliverySchemaPromise = undefined;
       throw error;
@@ -663,8 +681,15 @@ export async function saveQuickPaste(orderId: string, rawText: string): Promise<
   const parsed = parseAccountPaste(rawText);
   if (!parsed.accounts.length) throw new Error("NO_CREDENTIALS_EXTRACTED");
 
+  /*
+    `metadata_json` is selected because line 579 reads it. It was missing from
+    this column list, so `readOrderItemSelection` was handed `undefined` on
+    every row and every target carried the default label — the matcher could
+    not tell an offline line from an online one of the same game. The read at
+    `getDeliveryOrderState` always selected it; this query had drifted.
+  */
   const canonicalItems = await d1All<CanonicalOrderItemRow>(
-    `SELECT id, product_id, product_title, kind, quantity
+    `SELECT id, product_id, product_title, kind, quantity, metadata_json
      FROM order_items WHERE order_id = ? ORDER BY created_at ASC, id ASC`,
     order.id,
   );
@@ -943,6 +968,16 @@ export interface DeliveryActionResult {
     code?: string;
     userName?: string;
   };
+  /**
+   * The account named by `nextReadyDeliveryItemId` was sent by this call.
+   *
+   * The admin needs to know which of two things happened: the tool moved them
+   * to the next account, or the member already has it. Those call for
+   * different next actions, and one toast cannot say both.
+   */
+  sentNextCredentials?: boolean;
+  /** The account after that one, if the chained send found another ready. */
+  followingReadyDeliveryItemId?: string;
 }
 
 export async function sendDeliveryCredentials(input: {
@@ -1354,6 +1389,13 @@ async function moveOrderToAwaitingConfirmation(
   );
   const effectiveLastOtpSentAt = finalOtp?.value || lastOtpSentAt;
   const autoCompleteAt = autoCompleteAtFromLastOtp(effectiveLastOtpSentAt);
+  /*
+    The last OTP is out, so the half-hour review clock starts here. It is a
+    separate timestamp from `auto_complete_at` on purpose: the customer is
+    asked for their review at thirty minutes whether or not they ever press
+    «تم استلام», and the order still completes itself at sixty.
+  */
+  const reviewPromptAt = reviewPromptAtFromLastOtp(effectiveLastOtpSentAt);
   const transitionAt = new Date().toISOString();
   const event = JSON.stringify({
     type: "delivery_completed",
@@ -1378,7 +1420,8 @@ async function moveOrderToAwaitingConfirmation(
            )
          ),
          status = 'awaiting_customer_confirmation',
-         last_otp_sent_at = ?, auto_complete_at = ?, delivery_issue_opened_at = NULL,
+         last_otp_sent_at = ?, auto_complete_at = ?, review_prompt_at = ?,
+         delivery_issue_opened_at = NULL,
          updated_at = ?
      WHERE id = ?
        AND json_extract(doc, '$.status') NOT IN (
@@ -1395,6 +1438,7 @@ async function moveOrderToAwaitingConfirmation(
     event,
     effectiveLastOtpSentAt,
     autoCompleteAt,
+    reviewPromptAt,
     transitionAt,
     order.id,
   );
@@ -1459,6 +1503,208 @@ async function moveOrderToAwaitingConfirmation(
   return {
     order: next,
     nextOrder: await getNextActionableQueuedOrder(order.id, actorId),
+  };
+}
+
+/** What a manual completion did, beyond completing the order. */
+export interface ManualCompletionResult extends CompleteDigitalOrderResult {
+  /** Delivery slots forced terminal, with the status each came from. */
+  forcedDeliveryItems: { id: string; from: string }[];
+  /** Unmatched pasted lines archived out of the way, by id. */
+  archivedUnmappedItems: string[];
+}
+
+/**
+ * Complete a digital order the admin delivered by hand.
+ *
+ * ## Why this exists
+ *
+ * `completeDigitalOrderAndNext` refuses unless every delivery slot reached
+ * `otp_sent` or `completed`, and only two functions can put a row in either
+ * state — both of which require the code or OTP to travel through the tool. An
+ * admin who sent the code over WhatsApp, or read it down the phone, leaves the
+ * slots at `sent` or `ready` forever, and the button then refuses for the rest
+ * of the order's life with «لا يمكن إكمال الطلب قبل إرسال OTP أو الكود لكل
+ * عناصر التسليم». There is no path out: nothing anywhere moves those rows on.
+ *
+ * ## Why it is a separate function and not a flag
+ *
+ * A `force` parameter on the strict path would leave every assertion about
+ * that path green while gutting what they assert — the guard would still be
+ * *present*, just skipped. A second door can be read, audited and tested as
+ * the exception it is.
+ *
+ * ## What it does not weaken
+ *
+ * Every guard the strict path applies is applied here, in the same order and
+ * unchanged. An open delivery complaint is exactly when nobody may force-close,
+ * so both issue checks stay.
+ *
+ * And it writes `completed`, never `otp_sent` — it sets no `otp_sent_at`, no
+ * `sent_at`, and touches neither `username` nor `password_enc`. The database
+ * must never end up claiming a code went out through the tool when it did not;
+ * that guarantee is what `delivery-otp-never-fabricated.test.ts` exists to
+ * hold, and a manual completion is an admin asserting the customer was served,
+ * not a record of a message this system sent.
+ *
+ * ## What it asks of the admin
+ *
+ * The order's own code, typed, and a reason of at least ten characters. The
+ * code rather than a generic word because a generic word becomes muscle memory
+ * across orders; the reason because this is the one path that closes an order
+ * the system could not verify, and six months later somebody will want to know
+ * why. The reason is redacted before it is stored, so a pasted credential
+ * cannot reach the audit trail.
+ */
+export async function completeDigitalOrderManually(input: {
+  orderId: string;
+  adminId: string;
+  adminName: string;
+  reason: string;
+  confirmText: string;
+  threadId?: string;
+  now?: string;
+}): Promise<ManualCompletionResult> {
+  let order = await getOrder(input.orderId);
+  if (!order) throw new Error("ORDER_NOT_FOUND");
+  if (order.status === "cancelled") throw new Error("ORDER_ALREADY_CANCELLED");
+  if (!isFullyDigitalOrder(order.items)) throw new Error("ORDER_NOT_FULLY_DIGITAL");
+
+  const confirmText = String(input.confirmText ?? "").trim();
+  if (!confirmText || confirmText !== String(order.code ?? "").trim()) {
+    throw new Error("MANUAL_COMPLETION_CONFIRMATION_MISMATCH");
+  }
+  const reason = String(input.reason ?? "").trim();
+  if (reason.length < 10 || reason.length > 500) {
+    throw new Error("MANUAL_COMPLETION_REASON_REQUIRED");
+  }
+
+  const linkedThreadId = await resolveOrderThreadId(order);
+  if (input.threadId && linkedThreadId && input.threadId !== linkedThreadId) {
+    throw new Error("THREAD_ORDER_MISMATCH");
+  }
+  if (!order.threadId && linkedThreadId) order = { ...order, threadId: linkedThreadId };
+
+  await ensureOrderDeliveryRecords(order);
+
+  /*
+    Idempotency before any write: a double-clicked button must not append a
+    second completion message or a second audit row.
+  */
+  if (order.status === "completed") {
+    return {
+      order,
+      state: await getDeliveryOrderState(order),
+      orderFinished: true,
+      nextOrder: await getNextActionableQueuedOrder(order.id, input.adminId),
+      forcedDeliveryItems: [],
+      archivedUnmappedItems: [],
+    };
+  }
+
+  if (order.status === "delivery_issue" || order.deliveryIssueOpenedAt) {
+    throw new Error("ORDER_HAS_OPEN_DELIVERY_ISSUE");
+  }
+  if (await hasOpenDeliveryIssue(order.id)) {
+    throw new Error("ORDER_HAS_OPEN_DELIVERY_ISSUE");
+  }
+
+  const now = input.now || new Date().toISOString();
+  const rows = await deliveryRows(order.id);
+
+  /*
+    Pasted lines that matched no order item. They are not "expected" rows, but
+    `allExpectedDeliveryItemsDelivered` refuses while any of them is present,
+    so they are archived out of the way rather than left to block the admin who
+    is already stuck. Archiving keeps the row and its contents; nothing is
+    deleted.
+  */
+  const archivedUnmappedItems = rows
+    .filter((row) => !row.archived_at && !row.order_item_id && row.status === "needs_mapping")
+    .map((row) => row.id);
+  if (archivedUnmappedItems.length) {
+    await d1Run(
+      `UPDATE order_delivery_items
+         SET archived_at = ?, updated_at = ?, revision = revision + 1
+       WHERE order_id = ? AND archived_at IS NULL AND order_item_id IS NULL
+         AND status = 'needs_mapping'`,
+      now,
+      now,
+      order.id,
+    );
+  }
+
+  const forcedDeliveryItems = rows
+    .filter(
+      (row) =>
+        !row.archived_at &&
+        row.order_item_id &&
+        row.status !== "otp_sent" &&
+        row.status !== "completed",
+    )
+    .map((row) => ({ id: row.id, from: row.status }));
+  if (forcedDeliveryItems.length) {
+    /*
+      `completed`, never `otp_sent`. This is also what stops a late proof
+      upload reopening the order: `recordDeliveryProof` accepts only a row that
+      is `sent` or `proof_received`, and would otherwise set a closed thread
+      back to needing an admin minutes after it was closed.
+    */
+    await d1Run(
+      `UPDATE order_delivery_items
+         SET status = 'completed', completed_at = COALESCE(completed_at, ?),
+             updated_at = ?, revision = revision + 1
+       WHERE order_id = ? AND archived_at IS NULL AND order_item_id IS NOT NULL
+         AND status NOT IN ('otp_sent', 'completed')`,
+      now,
+      now,
+      order.id,
+    );
+  }
+
+  /*
+    Re-asked after the two writes above, and still refused if false. What
+    survives is the one case those writes cannot fix — an order with no
+    expected delivery rows at all — and that should still not complete here.
+  */
+  if (!(await strictDeliveryIsComplete(order.id))) {
+    throw new Error("DELIVERY_ITEMS_NOT_TERMINAL");
+  }
+
+  const { redactSecrets } = await import("./telegram-admin-routing.server");
+  const safeReason = redactSecrets(reason);
+
+  const completed = await completeOrder(order, {
+    by: input.adminId,
+    role: "ADMIN",
+    note: `إكمال يدوي: ${safeReason}`,
+    message:
+      "✅ تم إكمال الطلب يدوياً من قبل الإدارة بعد تسليم العناصر خارج النظام.\n" +
+      "إذا لم يعمل الكود، راسلنا هنا مباشرة وسنعالج الأمر.",
+    now,
+  });
+  order = completed.order;
+
+  const thread = linkedThreadId ? await getThread(linkedThreadId) : undefined;
+  if (thread) {
+    await saveThread({
+      ...thread,
+      status: "closed",
+      mode: "RESOLVED",
+      needsAdmin: false,
+      queueStatus: "completed",
+      lastAdminMessageAt: now,
+      lastMessageAt: now,
+    });
+  }
+
+  return {
+    order,
+    state: await getDeliveryOrderState(order),
+    orderFinished: true,
+    nextOrder: await getNextActionableQueuedOrder(order.id, input.adminId),
+    forcedDeliveryItems,
+    archivedUnmappedItems,
   };
 }
 
@@ -1539,11 +1785,89 @@ export async function sendDeliveryOtp(input: {
   const state = await getDeliveryOrderState(order);
   await syncThreadToDeliveryState(order, state, now);
   const nextReady = nextReadyDeliveryItemId(state.deliveryItems, row.id);
-  return {
-    state,
-    orderFinished: false,
-    ...(nextReady ? { nextReadyDeliveryItemId: nextReady } : {}),
-  };
+
+  /*
+    The OTP has gone out and cannot be taken back. Everything below is the
+    NEXT step, and nothing below is allowed to undo it: each branch is caught
+    and reported, never thrown, because an admin whose OTP succeeded must not
+    be told it failed.
+
+    The owner asked for two things here, and both are about the gap between
+    one account and the next. When another account is already prepared, the
+    member should get it straight after this OTP instead of waiting for the
+    admin to come back to the tool and press send again — the gap was minutes
+    on a busy evening, and the member spent them watching a queue. And when
+    this was the LAST OTP, the order is finished, so it should finish.
+  */
+  if (nextReady) {
+    try {
+      const chained = await sendDeliveryCredentials({
+        orderId: order.id,
+        deliveryItemId: nextReady,
+        adminId: input.adminId,
+        adminName: input.adminName,
+        ...(input.threadId ? { threadId: input.threadId } : {}),
+      });
+      return {
+        state: chained.state,
+        orderFinished: false,
+        nextReadyDeliveryItemId: nextReady,
+        sentNextCredentials: true,
+        ...(chained.nextReadyDeliveryItemId
+          ? { followingReadyDeliveryItemId: chained.nextReadyDeliveryItemId }
+          : {}),
+      };
+    } catch (error) {
+      /*
+        The next account was ready a moment ago and is not now — another admin
+        took it, or its draft changed under us. The OTP still went out, so say
+        what happened and leave the slot selected for a human.
+      */
+      console.error("[delivery:auto_send_next_failed]", {
+        orderId: order.id,
+        deliveryItemId: nextReady,
+        error: error instanceof Error ? error.message : String(error),
+      });
+      return { state, orderFinished: false, nextReadyDeliveryItemId: nextReady };
+    }
+  }
+
+  /*
+    No account left to send. If every slot has reached a terminal state and
+    nothing is disputed, this WAS the last OTP and the order is done.
+
+    `completeDigitalOrderAndNext` re-checks all of that itself — the strict
+    terminal check, the open-issue check, the fully-digital check — so this is
+    not a second opinion about whether the order may close. It is the same
+    door, opened at the moment the condition became true instead of waiting
+    for someone to notice and press it.
+  */
+  try {
+    if (await strictDeliveryIsComplete(order.id)) {
+      const finished = await completeDigitalOrderAndNext({
+        orderId: order.id,
+        adminId: input.adminId,
+        adminName: input.adminName,
+        ...(input.threadId ? { threadId: input.threadId } : {}),
+      });
+      return {
+        state: finished.state,
+        orderFinished: true,
+        ...(finished.nextOrder ? { nextOrder: finished.nextOrder } : {}),
+      };
+    }
+  } catch (error) {
+    /*
+      Not a failure of this action. The order stays open, the admin still has
+      the completion button, and the OTP is unaffected.
+    */
+    console.error("[delivery:auto_complete_failed]", {
+      orderId: order.id,
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
+
+  return { state, orderFinished: false };
 }
 
 export async function sendDigitalDeliveryCode(input: {
@@ -1914,10 +2238,11 @@ export async function maybeAutoCompleteDeliveredOrder(
 export async function processDueDeliveryAutoCompletions(
   now = new Date().toISOString(),
   limit = 100,
-): Promise<{ completed: number; reconciled: number; errors: number }> {
+): Promise<{ completed: number; reconciled: number; prompted: number; errors: number }> {
   await ensureDigitalDeliverySchema();
   let completed = 0;
   let reconciled = 0;
+  let prompted = 0;
   let errors = 0;
   // Repair queue visibility independently of the completion deadline. This
   // also covers a Worker retry after the atomic order transition succeeded but
@@ -1934,6 +2259,39 @@ export async function processDueDeliveryAutoCompletions(
        )`,
     now,
   );
+  /*
+    The half-hour review ask, the second of the owner's three triggers.
+
+    It rides this sweep rather than a job of its own: the minute firing is the
+    shop's most expensive scheduled work, and this is one indexed read against
+    a table the sweep already opens. The stamp is cleared before the message is
+    attempted, so a send that fails costs one ask rather than one per minute
+    forever — `promptForReview` holds the claim that decides whether anything
+    goes out at all.
+  */
+  const reviewDue = await d1All<{ id: string }>(
+    `SELECT id FROM orders
+     WHERE review_prompt_at IS NOT NULL
+       AND review_prompt_at <= ?
+       AND delivery_issue_opened_at IS NULL
+       AND json_extract(doc, '$.status') = 'awaiting_customer_confirmation'
+     ORDER BY review_prompt_at ASC LIMIT ?`,
+    now,
+    Math.min(limit, 25),
+  );
+  for (const row of reviewDue) {
+    try {
+      await d1Run(`UPDATE orders SET review_prompt_at = NULL WHERE id = ?`, row.id);
+      const order = await getOrder(row.id);
+      if (!order) continue;
+      const { promptForReview } = await import("./review-reward.server");
+      if (await promptForReview(order, "otp_timer", { now })) prompted += 1;
+    } catch (error) {
+      errors += 1;
+      console.error("[delivery:review_prompt_failed]", { orderId: row.id, error });
+    }
+  }
+
   const due = await d1All<{ id: string }>(
     `SELECT id FROM orders
      WHERE auto_complete_at IS NOT NULL
@@ -1998,5 +2356,5 @@ export async function processDueDeliveryAutoCompletions(
       });
     }
   }
-  return { completed, reconciled, errors };
+  return { completed, reconciled, prompted, errors };
 }

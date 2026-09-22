@@ -1,5 +1,5 @@
 {
-  "note": "The Chinese name each game is ordered under at the supplier. Keyed by the shelf title exactly as the catalogue carries it — the official Latin title stays on the product's own titleEn and is never edited here. `source` is where the name was read; `status` is verified only where that source is the publisher, Nintendo, an official store listing or a Chinese encyclopaedia entry for this exact game and edition. Where China genuinely has no Chinese title, the value says so in Chinese — `英文名（中国区官方沿用英文名）` — rather than presenting an invented translation as official, and stays needs_review because it is an operational label, not a published title.",
+  "note": "The Chinese name each game is ordered under at the supplier. Keyed by the shelf title exactly as the catalogue carries it — the official Latin title stays on the product's own titleEn and is never edited here. `source` is where the name was read; `status` is verified only where that source is the publisher, Nintendo, an official store listing or a Chinese encyclopaedia entry for this exact game and edition. Where China genuinely has no Chinese title, the value says so in Chinese — `英文名（中国区官方沿用英文名）` — rather than presenting an invented translation as official, and stays needs_review because it is an operational label, not a published title.\n\nSixteen entries added 2026-09-21 for the games that arrived after the first fill. Each was researched from an official storefront or a Chinese encyclopaedia entry for that exact product and then put to two independent checkers, one of them asked only to refute it. Two were left out rather than written: «Dragon Ball Z: Kakarot + A New Power Awakens Set», because the candidate 七龙珠Z 卡卡洛特 is the Hong Kong and Taiwan lexical form and the mainland market says 龙珠…卡卡罗特, which no reachable source confirmed; and «Fuyuzono Sacrifice», because 祭奠 is a memorial rite for the dead and not a rendering of サクリファイス — that candidate had the shape of a machine paraphrase, which is the one thing this file may never carry. Both remain empty and both are in the fill's report as work still to do.",
   "names": {
     "1-2-Switch": {
       "zh": "1-2-Switch（中国区官方沿用英文名）",
@@ -19,6 +19,16 @@
     "Assassin's Creed Shadows": {
       "zh": "刺客信条：影",
       "source": "https://baike.baidu.com/item/%E5%88%BA%E5%AE%A2%E4%BF%A1%E6%9D%A1%EF%BC%9A%E5%BD%B1/64413535",
+      "status": "verified"
+    },
+    "Atelier Ryza Secret Trilogy Deluxe Pack": {
+      "zh": "莱莎的炼金工房 ～秘密三部曲～ DX",
+      "source": "https://store.playstation.com/zh-hans-hk/product/HP0106-PPSA30304_00-RYZADXBUNDLE0000",
+      "status": "verified"
+    },
+    "Atelier Ryza Secret Trilogy Deluxe Pack switch 2": {
+      "zh": "莱莎的炼金工房 ～秘密三部曲～ DX",
+      "source": "https://store.steampowered.com/bundle/58615/Atelier_Ryza_Secret_Trilogy_Deluxe_Pack/?l=schinese",
       "status": "verified"
     },
     "Bayonetta": {
@@ -46,6 +56,11 @@
       "source": "https://store.steampowered.com/app/2833580/BRAVELY_DEFAULT_FLYING_FAIRY_HD_Remaster/?l=schinese",
       "status": "verified"
     },
+    "Captain Tsubasa 2: World Fighters": {
+      "zh": "队长小翼2 世界群星",
+      "source": "https://store.steampowered.com/app/2172910/CAPTAIN_TSUBASA_2_WORLD_FIGHTERS/?l=schinese",
+      "status": "verified"
+    },
     "Cuphead": {
       "zh": "茶杯头",
       "source": "https://store.steampowered.com/app/268910/Cuphead/?l=schinese",
@@ -54,6 +69,11 @@
     "Cyberpunk 2077: Ultimate Edition [Switch 2]": {
       "zh": "赛博朋克2077：终极版",
       "source": "https://baike.baidu.com/item/%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B2077%EF%BC%9A%E7%BB%88%E6%9E%81%E7%89%88/65551339",
+      "status": "verified"
+    },
+    "Danganronpa 2x2": {
+      "zh": "超级枪弹辩驳2×2",
+      "source": "https://www.danganronpa.com/2x2/cn/",
       "status": "verified"
     },
     "DAVE THE DIVER – Nintendo Switch 2 Edition": {
@@ -206,6 +226,11 @@
       "source": "https://indienova.com/game/grid-legends-deluxe-edition",
       "status": "verified"
     },
+    "Gunvolt Chronicles: Luminous Avenger iX 2": {
+      "zh": "银白钢铁X2",
+      "source": "https://store.playstation.com/zh-hans-hk/product/JP1368-PPSA04840_00-LAIX2PSAPP000000",
+      "status": "needs_review"
+    },
     "Hades": {
       "zh": "哈迪斯",
       "source": "https://store.steampowered.com/app/1145360/Hades/?l=schinese",
@@ -260,6 +285,11 @@
       "zh": "舞力全开2026",
       "source": "https://zh.wikipedia.org/wiki/%E8%88%9E%E5%8A%9B%E5%85%A8%E5%BC%802026",
       "status": "verified"
+    },
+    "Katana ZERO": {
+      "zh": "武士 零",
+      "source": "https://store.steampowered.com/app/460950/Katana_ZERO/?l=schinese",
+      "status": "needs_review"
     },
     "Kirby Air Riders": {
       "zh": "星之卡比 气垫大战",
@@ -381,6 +411,11 @@
       "source": "https://indienova.com/game/nintendo-switch-sports",
       "status": "verified"
     },
+    "Onimusha: Way of the Sword": {
+      "zh": "鬼武者 Way of the Sword",
+      "source": "https://store.steampowered.com/app/2638890/_Way_of_the_Sword/?l=schinese",
+      "status": "needs_review"
+    },
     "Paper Mario: The Origami King": {
       "zh": "纸片马力欧：折纸国王",
       "source": "https://baike.baidu.com/item/%E7%BA%B8%E7%89%87%E9%A9%AC%E5%8A%9B%E6%AC%A7%EF%BC%9A%E6%8A%98%E7%BA%B8%E5%9B%BD%E7%8E%8B/50087104",
@@ -486,6 +521,21 @@
       "source": "https://baike.baidu.com/item/%E5%BD%B1%E5%AD%90%E6%88%98%E6%9C%AF%EF%BC%9A%E5%B0%86%E5%86%9B%E4%B9%8B%E5%88%83/20597478",
       "status": "verified"
     },
+    "Shovel Knight Dig": {
+      "zh": "铲子骑士挖掘",
+      "source": "https://ec.nintendo.com/HK/zh/titles/70010000058909",
+      "status": "needs_review"
+    },
+    "Shovel Knight: Specter of Torment": {
+      "zh": "铲子骑士：幽灵的折磨",
+      "source": "https://baike.baidu.com/item/%E9%93%B2%E5%AD%90%E9%AA%91%E5%A3%AB%EF%BC%9A%E5%B9%BD%E7%81%B5%E7%9A%84%E6%8A%98%E7%A3%A8",
+      "status": "needs_review"
+    },
+    "Shovel Knight: Treasure Trove": {
+      "zh": "铲子骑士：无主珍宝",
+      "source": "https://gouhuo.qq.com/games/detail/321279",
+      "status": "needs_review"
+    },
     "Splatoon 3": {
       "zh": "斯普拉遁3",
       "source": "https://zh.wikipedia.org/zh-hans/%E6%96%AF%E6%99%AE%E6%8B%89%E9%81%81%E7%B3%BB%E5%88%97",
@@ -500,6 +550,16 @@
       "zh": "双影奇境",
       "source": "https://www.gameants.com/article-3803-1.html",
       "status": "verified"
+    },
+    "SpongeBob SquarePants: Titans of the Tide switch 1": {
+      "zh": "海绵宝宝：潮汐巨神",
+      "source": "https://store.steampowered.com/app/2479650/SpongeBob_SquarePants_Titans_of_the_Tide/?l=schinese",
+      "status": "needs_review"
+    },
+    "SpongeBob SquarePants: Titans of the Tide switch 2": {
+      "zh": "海绵宝宝：潮汐巨神",
+      "source": "https://store.steampowered.com/app/2479650/SpongeBob_SquarePants_Titans_of_the_Tide/?l=schinese",
+      "status": "needs_review"
     },
     "Star Wars Outlaws Gold Edition": {
       "zh": "星球大战：亡命之徒 黄金版",
@@ -571,6 +631,11 @@
       "source": "https://isaac.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5",
       "status": "needs_review"
     },
+    "The Elder Scrolls V: Skyrim": {
+      "zh": "上古卷轴5：天际",
+      "source": "https://baike.baidu.com/item/%E4%B8%8A%E5%8F%A4%E5%8D%B7%E8%BD%B45%EF%BC%9A%E5%A4%A9%E9%99%85",
+      "status": "needs_review"
+    },
     "The Hundred Line: Last Defense Academy": {
       "zh": "百日战纪 -最终防卫学园-",
       "source": "https://store.steampowered.com/app/3014080/HUNDRED_LINE/?l=schinese",
@@ -630,6 +695,16 @@
       "zh": "Tomodachi Life 朋友收集 梦想生活",
       "source": "https://zh.wikipedia.org/zh-cn/Tomodachi_Life_%E6%9C%8B%E5%8F%8B%E6%94%B6%E9%9B%86_%E5%A4%A2%E6%83%B3%E7%94%9F%E6%B4%BB",
       "status": "verified"
+    },
+    "Trails in the Sky 2nd Chapter": {
+      "zh": "空之轨迹 the 2nd",
+      "source": "https://www.cloudedleopardent.com/game/sora2/zh-hans/",
+      "status": "needs_review"
+    },
+    "Trails in the Sky 2nd Chapter - Nintendo Switch 2 Edition": {
+      "zh": "空之轨迹 the 2nd",
+      "source": "https://www.cloudedleopardent.com/game/sora2/zh-hans/",
+      "status": "needs_review"
     },
     "Two Point Museum": {
       "zh": "双点博物馆",
@@ -705,6 +780,11 @@
       "zh": "伊苏X -诺曼荣光-",
       "source": "https://store.steampowered.com/app/3821790/Ys_X_Proud_Nordics/?l=schinese",
       "status": "verified"
+    },
+    "Zettai Kaikyuu Gakuen ~Eden with roses and phantasm~": {
+      "zh": "绝对阶级学园",
+      "source": "https://baike.baidu.com/item/%E7%BB%9D%E5%AF%B9%E9%98%B6%E7%BA%A7%E5%AD%A6%E5%9B%AD/17702481",
+      "status": "needs_review"
     }
   }
 }

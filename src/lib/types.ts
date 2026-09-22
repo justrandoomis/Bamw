@@ -1,6 +1,15 @@
 import type { NotificationPreferences } from "./notification-preferences";
 
 export type ProductKind =
+  /*
+    What the catalogue importer writes on every listing it publishes. It is a
+    category word rather than a delivery word, and it was absent from this
+    union for as long as the importer has existed — so nothing type-checked it
+    and the delivery code's allow-list quietly excluded it. It is named here
+    because that is what the stored data says; the fulfilment rule that used to
+    depend on this list is now a deny-list of the kinds that physically ship.
+  */
+  | "game"
   | "account"
   | "offline_account"
   | "online_account"
@@ -474,7 +483,16 @@ export interface User {
   bananaLocked?: number;
 }
 
-export type ReviewStatus = "pending" | "approved" | "rejected";
+/**
+ * Where a review sits.
+ *
+ * `awaiting_admin` is the state the two-step submission writes, and it is
+ * deliberately NOT `pending`: the every-minute reconciliation cron selects
+ * `status = 'pending'`, publishes the row as approved and mints a coupon, so a
+ * submission written as `pending` would be approved and paid within sixty
+ * seconds — with the admin's queue empty and nothing on screen explaining why.
+ */
+export type ReviewStatus = "pending" | "awaiting_admin" | "approved" | "rejected";
 
 export interface ProductReview {
   id: string;
@@ -487,6 +505,10 @@ export interface ProductReview {
   instagramProofUrl?: string;
   status: ReviewStatus;
   isAutoReview: boolean;
+  /** The submission this row belongs to; one per product, shared across them. */
+  reviewGroupId?: string;
+  /** Why an admin refused it. A rejection keeps the row rather than deleting it. */
+  rejectionReason?: string;
   reviewDueAt?: string;
   approvedAt?: string;
   approvedBy?: string;
@@ -862,6 +884,23 @@ export type OrderStatus =
   | "completed"
   | "cancelled";
 
+/**
+ * Every state an order can be in, as values rather than only as a type.
+ *
+ * The queue needs the complement of the finished set, and a complement cannot
+ * be taken from a type that exists only at compile time. Listing them here
+ * means the day a state is added, it is added in one place.
+ */
+export const ORDER_STATUSES: readonly OrderStatus[] = [
+  "pending",
+  "processing",
+  "delivering",
+  "awaiting_customer_confirmation",
+  "delivery_issue",
+  "completed",
+  "cancelled",
+];
+
 /** Orders in these states are done as far as the admin queue is concerned. */
 export const ADMIN_FINISHED_ORDER_STATUSES: readonly OrderStatus[] = [
   "awaiting_customer_confirmation",
@@ -959,7 +998,28 @@ export interface Order {
   updatedAt: string;
   events: { type: string; at: string; payload?: unknown }[];
   source?: string;
+  /**
+   * A prize, not a sale.
+   *
+   * The wheel awards a game by creating a real order at nothing — see
+   * `wheel-gift-order.server.ts`. Without a marker, a member and an admin both
+   * see a game sold for zero with no explanation, and the shop's own profit
+   * report cannot tell a gift apart from a mistake. Every surface that shows
+   * an order reads this to say «هدية».
+   */
+  isGift?: boolean;
   checkoutSessionId?: string;
+  /**
+   * Wallet, or cash at the door.
+   *
+   * Absent on every order written before the choice existed, and those were
+   * all wallet orders — `paymentStatus` and the wallet ledger already say so,
+   * and nothing reads this field to decide whether money moved. It is here so
+   * that an order the courier must collect for can be told apart from one that
+   * is merely awaiting a transfer, on the admin's screen and in the member's
+   * own order card.
+   */
+  paymentMethod?: "wallet" | "cash_on_delivery";
   paymentReference?: string;
   idempotencyKey?: string;
   createdBy?: string;
@@ -981,6 +1041,8 @@ export type MessageKind =
   | "shipping_update"
   | "order_completed"
   | "review_request"
+  /** A submitted review waiting for an admin, rendered as a compact card. */
+  | "review_submitted"
   | "discount_code"
   | "digital_order_card";
 

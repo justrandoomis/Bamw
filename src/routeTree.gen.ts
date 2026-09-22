@@ -29,6 +29,7 @@ import { Route as SearchRouteImport } from './routes/search'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as UsedRouteImport } from './routes/used'
 import { Route as WalletRouteImport } from './routes/wallet'
+import { Route as WheelRouteImport } from './routes/wheel'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminImportRouteImport } from './routes/admin.import'
 import { Route as AdminOrdersRouteImport } from './routes/admin.orders'
@@ -45,6 +46,7 @@ import { Route as ApiGameCatalogRouteImport } from './routes/api/game-catalog'
 import { Route as ApiGameRequestsRouteImport } from './routes/api/game-requests'
 import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as ApiImgRouteImport } from './routes/api/img'
+import { Route as ApiOrderReviewRouteImport } from './routes/api/order-review'
 import { Route as ApiOrdersRouteImport } from './routes/api/orders'
 import { Route as ApiOtpRouteImport } from './routes/api/otp'
 import { Route as ApiProductRouteImport } from './routes/api/product'
@@ -59,6 +61,7 @@ import { Route as ApiTrackRouteImport } from './routes/api/track'
 import { Route as ApiTranslateRouteImport } from './routes/api/translate'
 import { Route as ApiUploadRouteImport } from './routes/api/upload'
 import { Route as ApiWalletRouteImport } from './routes/api/wallet'
+import { Route as ApiWheelRouteImport } from './routes/api/wheel'
 import { Route as BundleBundleIdRouteImport } from './routes/bundle.$bundleId'
 import { Route as BundlesIndexRouteImport } from './routes/bundles.index'
 import { Route as BundlesBundleIdRouteImport } from './routes/bundles.$bundleId'
@@ -85,11 +88,13 @@ import { Route as ApiAdminHealthRouteImport } from './routes/api/admin/health'
 import { Route as ApiAdminImportGameRouteImport } from './routes/api.admin.import-game'
 import { Route as ApiAdminKnowledgeBaseRouteImport } from './routes/api/admin/knowledge-base'
 import { Route as ApiAdminMigrateImagesRouteImport } from './routes/api/admin/migrate-images'
+import { Route as ApiAdminMissingSquareImagesRouteImport } from './routes/api/admin/missing-square-images'
 import { Route as ApiAdminOrdersRouteImport } from './routes/api/admin.orders'
 import { Route as ApiAdminProductMetadataRouteImport } from './routes/api/admin/product-metadata'
 import { Route as ApiAdminProductsRouteImport } from './routes/api/admin/products'
 import { Route as ApiAdminPurgeRouteImport } from './routes/api/admin/purge'
 import { Route as ApiAdminReferralsRouteImport } from './routes/api/admin/referrals'
+import { Route as ApiAdminReviewSubmissionsRouteImport } from './routes/api/admin/review-submissions'
 import { Route as ApiAdminStoreRouteImport } from './routes/api/admin/store'
 import { Route as ApiAdminUsersRouteImport } from './routes/api/admin/users'
 import { Route as ApiFilesSplatRouteImport } from './routes/api/files/$'
@@ -231,6 +236,11 @@ const WalletRoute = WalletRouteImport.update({
   path: '/wallet',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WheelRoute = WheelRouteImport.update({
+  id: '/wheel',
+  path: '/wheel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/admin/',
   path: '/admin/',
@@ -311,6 +321,11 @@ const ApiImgRoute = ApiImgRouteImport.update({
   path: '/api/img',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiOrderReviewRoute = ApiOrderReviewRouteImport.update({
+  id: '/api/order-review',
+  path: '/api/order-review',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiOrdersRoute = ApiOrdersRouteImport.update({
   id: '/api/orders',
   path: '/api/orders',
@@ -379,6 +394,11 @@ const ApiUploadRoute = ApiUploadRouteImport.update({
 const ApiWalletRoute = ApiWalletRouteImport.update({
   id: '/api/wallet',
   path: '/api/wallet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiWheelRoute = ApiWheelRouteImport.update({
+  id: '/api/wheel',
+  path: '/api/wheel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BundleBundleIdRoute = BundleBundleIdRouteImport.update({
@@ -511,6 +531,12 @@ const ApiAdminMigrateImagesRoute = ApiAdminMigrateImagesRouteImport.update({
   path: '/api/admin/migrate-images',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminMissingSquareImagesRoute =
+  ApiAdminMissingSquareImagesRouteImport.update({
+    id: '/api/admin/missing-square-images',
+    path: '/api/admin/missing-square-images',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiAdminOrdersRoute = ApiAdminOrdersRouteImport.update({
   id: '/api/admin/orders',
   path: '/api/admin/orders',
@@ -536,6 +562,12 @@ const ApiAdminReferralsRoute = ApiAdminReferralsRouteImport.update({
   path: '/api/admin/referrals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminReviewSubmissionsRoute =
+  ApiAdminReviewSubmissionsRouteImport.update({
+    id: '/api/admin/review-submissions',
+    path: '/api/admin/review-submissions',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiAdminStoreRoute = ApiAdminStoreRouteImport.update({
   id: '/api/admin/store',
   path: '/api/admin/store',
@@ -774,6 +806,7 @@ export interface FileRoutesByFullPath {
   '/support': typeof SupportRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
+  '/wheel': typeof WheelRoute
   '/admin/import': typeof AdminImportRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/api/admin-wipe': typeof ApiAdminWipeRoute
@@ -789,6 +822,7 @@ export interface FileRoutesByFullPath {
   '/api/game-requests': typeof ApiGameRequestsRoute
   '/api/health': typeof ApiHealthRoute
   '/api/img': typeof ApiImgRoute
+  '/api/order-review': typeof ApiOrderReviewRoute
   '/api/orders': typeof ApiOrdersRoute
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
@@ -803,6 +837,7 @@ export interface FileRoutesByFullPath {
   '/api/translate': typeof ApiTranslateRoute
   '/api/upload': typeof ApiUploadRoute
   '/api/wallet': typeof ApiWalletRouteWithChildren
+  '/api/wheel': typeof ApiWheelRoute
   '/bundle/$bundleId': typeof BundleBundleIdRoute
   '/bundles/$bundleId': typeof BundlesBundleIdRoute
   '/category/$categoryId': typeof CategoryCategoryIdRoute
@@ -830,11 +865,13 @@ export interface FileRoutesByFullPath {
   '/api/admin/import-game': typeof ApiAdminImportGameRoute
   '/api/admin/knowledge-base': typeof ApiAdminKnowledgeBaseRoute
   '/api/admin/migrate-images': typeof ApiAdminMigrateImagesRoute
+  '/api/admin/missing-square-images': typeof ApiAdminMissingSquareImagesRoute
   '/api/admin/orders': typeof ApiAdminOrdersRoute
   '/api/admin/product-metadata': typeof ApiAdminProductMetadataRoute
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
   '/api/admin/purge': typeof ApiAdminPurgeRoute
   '/api/admin/referrals': typeof ApiAdminReferralsRoute
+  '/api/admin/review-submissions': typeof ApiAdminReviewSubmissionsRoute
   '/api/admin/store': typeof ApiAdminStoreRoute
   '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/files/$': typeof ApiFilesSplatRoute
@@ -897,6 +934,7 @@ export interface FileRoutesByTo {
   '/support': typeof SupportRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
+  '/wheel': typeof WheelRoute
   '/admin/import': typeof AdminImportRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/api/admin-wipe': typeof ApiAdminWipeRoute
@@ -912,6 +950,7 @@ export interface FileRoutesByTo {
   '/api/game-requests': typeof ApiGameRequestsRoute
   '/api/health': typeof ApiHealthRoute
   '/api/img': typeof ApiImgRoute
+  '/api/order-review': typeof ApiOrderReviewRoute
   '/api/orders': typeof ApiOrdersRoute
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
@@ -926,6 +965,7 @@ export interface FileRoutesByTo {
   '/api/translate': typeof ApiTranslateRoute
   '/api/upload': typeof ApiUploadRoute
   '/api/wallet': typeof ApiWalletRouteWithChildren
+  '/api/wheel': typeof ApiWheelRoute
   '/bundle/$bundleId': typeof BundleBundleIdRoute
   '/bundles/$bundleId': typeof BundlesBundleIdRoute
   '/category/$categoryId': typeof CategoryCategoryIdRoute
@@ -953,11 +993,13 @@ export interface FileRoutesByTo {
   '/api/admin/import-game': typeof ApiAdminImportGameRoute
   '/api/admin/knowledge-base': typeof ApiAdminKnowledgeBaseRoute
   '/api/admin/migrate-images': typeof ApiAdminMigrateImagesRoute
+  '/api/admin/missing-square-images': typeof ApiAdminMissingSquareImagesRoute
   '/api/admin/orders': typeof ApiAdminOrdersRoute
   '/api/admin/product-metadata': typeof ApiAdminProductMetadataRoute
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
   '/api/admin/purge': typeof ApiAdminPurgeRoute
   '/api/admin/referrals': typeof ApiAdminReferralsRoute
+  '/api/admin/review-submissions': typeof ApiAdminReviewSubmissionsRoute
   '/api/admin/store': typeof ApiAdminStoreRoute
   '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/files/$': typeof ApiFilesSplatRoute
@@ -1021,6 +1063,7 @@ export interface FileRoutesById {
   '/support': typeof SupportRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
+  '/wheel': typeof WheelRoute
   '/admin/import': typeof AdminImportRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/api/admin-wipe': typeof ApiAdminWipeRoute
@@ -1036,6 +1079,7 @@ export interface FileRoutesById {
   '/api/game-requests': typeof ApiGameRequestsRoute
   '/api/health': typeof ApiHealthRoute
   '/api/img': typeof ApiImgRoute
+  '/api/order-review': typeof ApiOrderReviewRoute
   '/api/orders': typeof ApiOrdersRoute
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
@@ -1050,6 +1094,7 @@ export interface FileRoutesById {
   '/api/translate': typeof ApiTranslateRoute
   '/api/upload': typeof ApiUploadRoute
   '/api/wallet': typeof ApiWalletRouteWithChildren
+  '/api/wheel': typeof ApiWheelRoute
   '/bundle/$bundleId': typeof BundleBundleIdRoute
   '/bundles/$bundleId': typeof BundlesBundleIdRoute
   '/category/$categoryId': typeof CategoryCategoryIdRoute
@@ -1077,11 +1122,13 @@ export interface FileRoutesById {
   '/api/admin/import-game': typeof ApiAdminImportGameRoute
   '/api/admin/knowledge-base': typeof ApiAdminKnowledgeBaseRoute
   '/api/admin/migrate-images': typeof ApiAdminMigrateImagesRoute
+  '/api/admin/missing-square-images': typeof ApiAdminMissingSquareImagesRoute
   '/api/admin/orders': typeof ApiAdminOrdersRoute
   '/api/admin/product-metadata': typeof ApiAdminProductMetadataRoute
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
   '/api/admin/purge': typeof ApiAdminPurgeRoute
   '/api/admin/referrals': typeof ApiAdminReferralsRoute
+  '/api/admin/review-submissions': typeof ApiAdminReviewSubmissionsRoute
   '/api/admin/store': typeof ApiAdminStoreRoute
   '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/files/$': typeof ApiFilesSplatRoute
@@ -1146,6 +1193,7 @@ export interface FileRouteTypes {
     | '/support'
     | '/used'
     | '/wallet'
+    | '/wheel'
     | '/admin/import'
     | '/admin/orders'
     | '/api/admin-wipe'
@@ -1161,6 +1209,7 @@ export interface FileRouteTypes {
     | '/api/game-requests'
     | '/api/health'
     | '/api/img'
+    | '/api/order-review'
     | '/api/orders'
     | '/api/otp'
     | '/api/product'
@@ -1175,6 +1224,7 @@ export interface FileRouteTypes {
     | '/api/translate'
     | '/api/upload'
     | '/api/wallet'
+    | '/api/wheel'
     | '/bundle/$bundleId'
     | '/bundles/$bundleId'
     | '/category/$categoryId'
@@ -1202,11 +1252,13 @@ export interface FileRouteTypes {
     | '/api/admin/import-game'
     | '/api/admin/knowledge-base'
     | '/api/admin/migrate-images'
+    | '/api/admin/missing-square-images'
     | '/api/admin/orders'
     | '/api/admin/product-metadata'
     | '/api/admin/products'
     | '/api/admin/purge'
     | '/api/admin/referrals'
+    | '/api/admin/review-submissions'
     | '/api/admin/store'
     | '/api/admin/users'
     | '/api/files/$'
@@ -1269,6 +1321,7 @@ export interface FileRouteTypes {
     | '/support'
     | '/used'
     | '/wallet'
+    | '/wheel'
     | '/admin/import'
     | '/admin/orders'
     | '/api/admin-wipe'
@@ -1284,6 +1337,7 @@ export interface FileRouteTypes {
     | '/api/game-requests'
     | '/api/health'
     | '/api/img'
+    | '/api/order-review'
     | '/api/orders'
     | '/api/otp'
     | '/api/product'
@@ -1298,6 +1352,7 @@ export interface FileRouteTypes {
     | '/api/translate'
     | '/api/upload'
     | '/api/wallet'
+    | '/api/wheel'
     | '/bundle/$bundleId'
     | '/bundles/$bundleId'
     | '/category/$categoryId'
@@ -1325,11 +1380,13 @@ export interface FileRouteTypes {
     | '/api/admin/import-game'
     | '/api/admin/knowledge-base'
     | '/api/admin/migrate-images'
+    | '/api/admin/missing-square-images'
     | '/api/admin/orders'
     | '/api/admin/product-metadata'
     | '/api/admin/products'
     | '/api/admin/purge'
     | '/api/admin/referrals'
+    | '/api/admin/review-submissions'
     | '/api/admin/store'
     | '/api/admin/users'
     | '/api/files/$'
@@ -1392,6 +1449,7 @@ export interface FileRouteTypes {
     | '/support'
     | '/used'
     | '/wallet'
+    | '/wheel'
     | '/admin/import'
     | '/admin/orders'
     | '/api/admin-wipe'
@@ -1407,6 +1465,7 @@ export interface FileRouteTypes {
     | '/api/game-requests'
     | '/api/health'
     | '/api/img'
+    | '/api/order-review'
     | '/api/orders'
     | '/api/otp'
     | '/api/product'
@@ -1421,6 +1480,7 @@ export interface FileRouteTypes {
     | '/api/translate'
     | '/api/upload'
     | '/api/wallet'
+    | '/api/wheel'
     | '/bundle/$bundleId'
     | '/bundles/$bundleId'
     | '/category/$categoryId'
@@ -1448,11 +1508,13 @@ export interface FileRouteTypes {
     | '/api/admin/import-game'
     | '/api/admin/knowledge-base'
     | '/api/admin/migrate-images'
+    | '/api/admin/missing-square-images'
     | '/api/admin/orders'
     | '/api/admin/product-metadata'
     | '/api/admin/products'
     | '/api/admin/purge'
     | '/api/admin/referrals'
+    | '/api/admin/review-submissions'
     | '/api/admin/store'
     | '/api/admin/users'
     | '/api/files/$'
@@ -1516,6 +1578,7 @@ export interface RootRouteChildren {
   SupportRoute: typeof SupportRoute
   UsedRoute: typeof UsedRoute
   WalletRoute: typeof WalletRoute
+  WheelRoute: typeof WheelRoute
   AdminImportRoute: typeof AdminImportRoute
   AdminOrdersRoute: typeof AdminOrdersRoute
   ApiAdminWipeRoute: typeof ApiAdminWipeRoute
@@ -1531,6 +1594,7 @@ export interface RootRouteChildren {
   ApiGameRequestsRoute: typeof ApiGameRequestsRoute
   ApiHealthRoute: typeof ApiHealthRoute
   ApiImgRoute: typeof ApiImgRoute
+  ApiOrderReviewRoute: typeof ApiOrderReviewRoute
   ApiOrdersRoute: typeof ApiOrdersRoute
   ApiOtpRoute: typeof ApiOtpRoute
   ApiProductRoute: typeof ApiProductRoute
@@ -1545,6 +1609,7 @@ export interface RootRouteChildren {
   ApiTranslateRoute: typeof ApiTranslateRoute
   ApiUploadRoute: typeof ApiUploadRoute
   ApiWalletRoute: typeof ApiWalletRouteWithChildren
+  ApiWheelRoute: typeof ApiWheelRoute
   BundleBundleIdRoute: typeof BundleBundleIdRoute
   BundlesBundleIdRoute: typeof BundlesBundleIdRoute
   CategoryCategoryIdRoute: typeof CategoryCategoryIdRoute
@@ -1572,11 +1637,13 @@ export interface RootRouteChildren {
   ApiAdminImportGameRoute: typeof ApiAdminImportGameRoute
   ApiAdminKnowledgeBaseRoute: typeof ApiAdminKnowledgeBaseRoute
   ApiAdminMigrateImagesRoute: typeof ApiAdminMigrateImagesRoute
+  ApiAdminMissingSquareImagesRoute: typeof ApiAdminMissingSquareImagesRoute
   ApiAdminOrdersRoute: typeof ApiAdminOrdersRoute
   ApiAdminProductMetadataRoute: typeof ApiAdminProductMetadataRoute
   ApiAdminProductsRoute: typeof ApiAdminProductsRouteWithChildren
   ApiAdminPurgeRoute: typeof ApiAdminPurgeRoute
   ApiAdminReferralsRoute: typeof ApiAdminReferralsRoute
+  ApiAdminReviewSubmissionsRoute: typeof ApiAdminReviewSubmissionsRoute
   ApiAdminStoreRoute: typeof ApiAdminStoreRoute
   ApiAdminUsersRoute: typeof ApiAdminUsersRoute
   ApiFilesSplatRoute: typeof ApiFilesSplatRoute
@@ -1749,6 +1816,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WalletRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wheel': {
+      id: '/wheel'
+      path: '/wheel'
+      fullPath: '/wheel'
+      preLoaderRoute: typeof WheelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/': {
       id: '/admin/'
       path: '/admin'
@@ -1861,6 +1935,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiImgRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/order-review': {
+      id: '/api/order-review'
+      path: '/api/order-review'
+      fullPath: '/api/order-review'
+      preLoaderRoute: typeof ApiOrderReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/orders': {
       id: '/api/orders'
       path: '/api/orders'
@@ -1957,6 +2038,13 @@ declare module '@tanstack/react-router' {
       path: '/api/wallet'
       fullPath: '/api/wallet'
       preLoaderRoute: typeof ApiWalletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/wheel': {
+      id: '/api/wheel'
+      path: '/api/wheel'
+      fullPath: '/api/wheel'
+      preLoaderRoute: typeof ApiWheelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bundle/$bundleId': {
@@ -2141,6 +2229,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdminMigrateImagesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/missing-square-images': {
+      id: '/api/admin/missing-square-images'
+      path: '/api/admin/missing-square-images'
+      fullPath: '/api/admin/missing-square-images'
+      preLoaderRoute: typeof ApiAdminMissingSquareImagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/admin/orders': {
       id: '/api/admin/orders'
       path: '/api/admin/orders'
@@ -2174,6 +2269,13 @@ declare module '@tanstack/react-router' {
       path: '/api/admin/referrals'
       fullPath: '/api/admin/referrals'
       preLoaderRoute: typeof ApiAdminReferralsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/review-submissions': {
+      id: '/api/admin/review-submissions'
+      path: '/api/admin/review-submissions'
+      fullPath: '/api/admin/review-submissions'
+      preLoaderRoute: typeof ApiAdminReviewSubmissionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/admin/store': {
@@ -2542,6 +2644,7 @@ const rootRouteChildren: RootRouteChildren = {
   SupportRoute: SupportRoute,
   UsedRoute: UsedRoute,
   WalletRoute: WalletRoute,
+  WheelRoute: WheelRoute,
   AdminImportRoute: AdminImportRoute,
   AdminOrdersRoute: AdminOrdersRoute,
   ApiAdminWipeRoute: ApiAdminWipeRoute,
@@ -2557,6 +2660,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiGameRequestsRoute: ApiGameRequestsRoute,
   ApiHealthRoute: ApiHealthRoute,
   ApiImgRoute: ApiImgRoute,
+  ApiOrderReviewRoute: ApiOrderReviewRoute,
   ApiOrdersRoute: ApiOrdersRoute,
   ApiOtpRoute: ApiOtpRoute,
   ApiProductRoute: ApiProductRoute,
@@ -2571,6 +2675,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiTranslateRoute: ApiTranslateRoute,
   ApiUploadRoute: ApiUploadRoute,
   ApiWalletRoute: ApiWalletRouteWithChildren,
+  ApiWheelRoute: ApiWheelRoute,
   BundleBundleIdRoute: BundleBundleIdRoute,
   BundlesBundleIdRoute: BundlesBundleIdRoute,
   CategoryCategoryIdRoute: CategoryCategoryIdRoute,
@@ -2598,11 +2703,13 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminImportGameRoute: ApiAdminImportGameRoute,
   ApiAdminKnowledgeBaseRoute: ApiAdminKnowledgeBaseRoute,
   ApiAdminMigrateImagesRoute: ApiAdminMigrateImagesRoute,
+  ApiAdminMissingSquareImagesRoute: ApiAdminMissingSquareImagesRoute,
   ApiAdminOrdersRoute: ApiAdminOrdersRoute,
   ApiAdminProductMetadataRoute: ApiAdminProductMetadataRoute,
   ApiAdminProductsRoute: ApiAdminProductsRouteWithChildren,
   ApiAdminPurgeRoute: ApiAdminPurgeRoute,
   ApiAdminReferralsRoute: ApiAdminReferralsRoute,
+  ApiAdminReviewSubmissionsRoute: ApiAdminReviewSubmissionsRoute,
   ApiAdminStoreRoute: ApiAdminStoreRoute,
   ApiAdminUsersRoute: ApiAdminUsersRoute,
   ApiFilesSplatRoute: ApiFilesSplatRoute,

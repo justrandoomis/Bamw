@@ -315,6 +315,80 @@ async function readFromD1() {
       "SELECT count(*) AS n FROM banana_market_offers WHERE status = 'active'",
     );
     out.d1ActiveOffers = Number(offers?.[0]?.n ?? 0);
+
+    /*
+      The board a buyer actually sees.
+
+      «البوتات في الشراء لا تعمل» — and no table holds the answer. The bots'
+      offers are generated per bucket from the spot price, so the only honest
+      way to check them is to generate them with the shop's own code and read
+      what comes out. Production's six bots carry floors from 0.643 to 0.769
+      IQD, seeded when a banana was worth about one dinar; with those applied
+      after the market's ceiling every one of them listed nineteen hundred
+      times above the market, which is a dead board with numbers on it.
+
+      Prices and counts only — a bot is admin configuration, not a member.
+    */
+    /*
+      What the screen would write for that price.
+
+      The number being right is half of it. The reported symptom was «يظهر سعر
+      صفر» — and the engine held 0.0004 the whole time, while `dinars()` printed
+      it to three decimals as «0.000 د.ع». A check that reads only the price
+      would have called that market healthy.
+
+      The page cannot be read from a runner: Cloudflare answers `/api/banana`
+      from a datacentre IP with a challenge, so the screen renders its empty
+      state and every number on it is zero for a reason that has nothing to do
+      with the shop. So the page's own formatter is called here, on the price
+      production is actually serving.
+    */
+    out.d1PriceAsShown = app.dinars(out.d1Price);
+    out.d1PriceShowsZero = /^0(\.0+)?\s/.test(out.d1PriceAsShown);
+
+    const bots = await app.getBotListings(config, out.d1Price);
+    out.d1BotListings = bots.length;
+    out.d1BotPrices = bots.map((listing) => Number(listing.pricePer));
+    out.d1BotsWithinBand = bots.every(
+      (listing) =>
+        Number(listing.pricePer) >= out.d1MinPrice && Number(listing.pricePer) <= out.d1MaxPrice,
+    );
+    out.d1BotQuantities = bots.map((listing) => Number(listing.quantity));
+    out.d1BotsEnabled = Boolean(config?.botsEnabled);
+    out.d1BotCount = Number(config?.botCount ?? 0);
+    const activeBots = await app.d1All("SELECT count(*) AS n FROM banana_bots WHERE is_active = 1");
+    out.d1ActiveBots = Number(activeBots?.[0]?.n ?? 0);
+
+    /*
+      The wheel, as a member opening it would be told.
+
+      The odds are a set of weights over whatever games the catalogue holds
+      right now, so the percentages are not stored anywhere either — and «حظ
+      أوفر» is the one the owner asked to be higher than the cheapest band, a
+      claim only the live pool can settle.
+    */
+    const odds = await app.getWheelOdds();
+    const pool = await app.wheelCandidates();
+    const counts = app.tierCounts(
+      odds.tiers,
+      pool.map((candidate) => Number(candidate.price)),
+    );
+    const breakdown = app.oddsBreakdown(odds, counts);
+    out.wheelPoolSize = pool.length;
+    out.wheelTicketPrice = Number(odds.ticketPriceBananas ?? 0);
+    out.wheelLosingPercent = Number(odds.losingPercent ?? 0);
+    out.wheelOdds = breakdown.map((row) => ({
+      label: row.label,
+      games: row.games,
+      chance: Math.round(row.chance * 1000) / 10,
+    }));
+    const losing = breakdown.find((row) => row.label === app.LOSING_LABEL);
+    const cheapest = breakdown[0];
+    out.wheelLosingChance = losing ? Math.round(losing.chance * 1000) / 10 : 0;
+    out.wheelCheapestChance = cheapest ? Math.round(cheapest.chance * 1000) / 10 : 0;
+    out.wheelLosingBeatsCheapest = Boolean(losing && cheapest && losing.chance > cheapest.chance);
+    out.wheelChanceTotal =
+      Math.round(breakdown.reduce((sum, row) => sum + row.chance, 0) * 1000) / 10;
   } catch (error) {
     out.d1Error = String(error).split("\n")[0];
   } finally {
@@ -335,8 +409,33 @@ if (Number.isFinite(out.d1Price)) {
     out.change24h = out.d1Change24h;
     out.listings = out.d1ActiveOffers;
   }
-  out.ok = out.d1Price > 0;
+  /*
+    A price is half of it.
+
+    The report was «السوق ميت ولا يعمل بشكل نهائي», and a board with a correct
+    price and nothing on it is dead in exactly the way that was described. So
+    the verdict asks for both: a price above zero, and — when the owner has the
+    bots switched on — offers actually generated and priced inside the band
+    they configured.
+
+    Bots switched off is the owner's decision and passes. A board that is empty
+    while they are switched on does not.
+  */
+  const priceOk = out.d1Price > 0 && out.d1PriceShowsZero === false;
+  const boardOk = !out.d1BotsEnabled || (out.d1BotListings > 0 && out.d1BotsWithinBand);
+  out.priceOk = priceOk;
+  out.boardOk = boardOk;
+  out.ok = priceOk && boardOk;
 }
+
+/*
+  The wheel is reported, never a reason to fail the release.
+
+  Whether «حظ أوفر» outweighs the cheapest band is a number the owner sets, and
+  a check that failed the deploy because they later chose 20% would be
+  enforcing my reading of one sentence against their own panel. It is printed
+  so it can be seen, and that is all.
+*/
 
 /** Pull only prices and counts out of a snapshot — never a balance or a member. */
 function readSnapshot(target, snapshot) {
@@ -389,9 +488,30 @@ say(
 say(`| مصدر القراءة | ${out.source ? WHERE[out.source] : "—"} |`);
 say(`| نص الصفحة (حروف) | ${out.screenTextLength ?? "—"} |`);
 say(`| **السعر من D1 مباشرة** | ${Number.isFinite(out.d1Price) ? out.d1Price : "—"} |`);
+say(`| **السعر كما يُكتب على الشاشة** | ${out.d1PriceAsShown ?? "—"} |`);
 say(`| \`basePrice\` المخزّن | ${Number.isFinite(out.d1BasePrice) ? out.d1BasePrice : "—"} |`);
 say(`| تغيّر 24 ساعة (D1) | ${Number.isFinite(out.d1Change24h) ? out.d1Change24h : "—"}% |`);
 say(`| عروض نشطة (D1) | ${out.d1ActiveOffers ?? "—"} |`);
+say(`| بوتات مفعّلة (D1) | ${out.d1ActiveBots ?? "—"} |`);
+say(`| **عروض البوتات المعروضة** | ${out.d1BotListings ?? "—"} |`);
+say(
+  `| أسعار البوتات داخل الحد | ${out.d1BotsWithinBand === undefined ? "—" : out.d1BotsWithinBand} |`,
+);
+say(
+  `| نطاق سعر البوتات | ${
+    out.d1BotPrices?.length
+      ? `${Math.min(...out.d1BotPrices)} – ${Math.max(...out.d1BotPrices)}`
+      : "—"
+  } |`,
+);
+say(`| ألعاب العجلة | ${out.wheelPoolSize ?? "—"} |`);
+say(`| سعر التذكرة (موز) | ${out.wheelTicketPrice ?? "—"} |`);
+say(`| **نسبة «حظ أوفر»** | ${out.wheelLosingChance ?? "—"}% |`);
+say(`| نسبة الفئة الأرخص | ${out.wheelCheapestChance ?? "—"}% |`);
+say(
+  `| «حظ أوفر» أعلى من الأرخص | ${out.wheelLosingBeatsCheapest === undefined ? "—" : out.wheelLosingBeatsCheapest} |`,
+);
+say(`| مجموع النسب | ${out.wheelChanceTotal ?? "—"}% |`);
 if (out.d1Error) say(`| قراءة D1 | فشلت: ${out.d1Error} |`);
 say();
 if (out.apiStatus && out.apiStatus !== 200) {
@@ -406,6 +526,15 @@ if (out.directApiStatus && out.directApiStatus !== 200) {
   say(`- \`content-type\`: \`${out.directApiType || "—"}\``);
   say(`- \`cf-mitigated\`: \`${out.directApiMitigated || "—"}\``);
   say(`- الجسم: \`${out.directApiBody || "—"}\``);
+  say();
+}
+if (out.wheelOdds?.length) {
+  say();
+  say("### العجلة، كما تُعرض الآن");
+  say();
+  say("| الفئة | ألعاب | النسبة |");
+  say("|---|---:|---:|");
+  for (const row of out.wheelOdds) say(`| ${row.label} | ${row.games} | ${row.chance}% |`);
   say();
 }
 if (out.screenSample) {
@@ -445,11 +574,32 @@ if (out.source === null && out.challenged) {
       "السوق يفتح بلا أسعار.** راجع الترويسات أعلاه.",
   );
 } else {
-  say(
-    out.ok
-      ? `**سعر الموزة على الإنتاج: ${out.price} — ليس صفراً.**`
-      : "**السعر ما زال صفراً أو المخطط مسطّح على الصفر.**",
-  );
+  if (out.ok) {
+    say(
+      `**سعر الموزة على الإنتاج: ${out.price} — ليس صفراً، ويُكتب على الشاشة ` +
+        `«${out.d1PriceAsShown}».**`,
+    );
+    if (out.d1BotsEnabled) {
+      say();
+      say(
+        `_و${out.d1BotListings} عرض شراء من البوتات، كلّها داخل الحد المضبوط ` +
+          `(${out.d1MinPrice} – ${out.d1MaxPrice})._`,
+      );
+    }
+  } else if (out.priceOk === true && out.boardOk === false) {
+    say(
+      `**السعر ${out.price} لكن لوحة الشراء ${
+        out.d1BotListings ? "خارج الحد المضبوط" : "فارغة"
+      } — البوتات مفعّلة و${out.d1ActiveBots} منها نشط.**`,
+    );
+  } else if (out.d1Price > 0 && out.d1PriceShowsZero === true) {
+    say(
+      `**المحرّك يحمل ${out.d1Price} لكن الشاشة تكتبه «${out.d1PriceAsShown}» — ` +
+        "وهذا هو العطل المُبلَّغ عنه بعينه.**",
+    );
+  } else {
+    say("**السعر ما زال صفراً أو المخطط مسطّح على الصفر.**");
+  }
   if (out.source === "api") {
     say();
     say(
@@ -484,6 +634,19 @@ say(
       apiStatus: out.apiStatus ?? null,
       apiChallenged,
       screenShowsZeroPrice: out.screenShowsZeroPrice ?? null,
+      d1PriceAsShown: out.d1PriceAsShown ?? null,
+      d1PriceShowsZero: out.d1PriceShowsZero ?? null,
+      d1BotCount: out.d1BotCount ?? null,
+      d1ActiveBots: out.d1ActiveBots ?? null,
+      d1BotListings: out.d1BotListings ?? null,
+      d1BotsWithinBand: out.d1BotsWithinBand ?? null,
+      priceOk: out.priceOk ?? null,
+      boardOk: out.boardOk ?? null,
+      wheelPoolSize: out.wheelPoolSize ?? null,
+      wheelTicketPrice: out.wheelTicketPrice ?? null,
+      wheelLosingChance: out.wheelLosingChance ?? null,
+      wheelCheapestChance: out.wheelCheapestChance ?? null,
+      wheelLosingBeatsCheapest: out.wheelLosingBeatsCheapest ?? null,
       ok: out.ok,
     }),
 );

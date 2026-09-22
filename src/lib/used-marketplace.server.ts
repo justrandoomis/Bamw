@@ -16,7 +16,13 @@
  */
 
 import { d1All, d1BatchRun, d1First, d1Run, d1RunChanges, getD1 } from "./d1.server";
-import { createAuditLog, createNotification, getStore, randomId, updateStore } from "./db.server";
+import {
+  createAuditLog,
+  createNotification,
+  getStoreSettings,
+  randomId,
+  updateStore,
+} from "./db.server";
 import { isOwnUploadUrl } from "./uploads";
 import { normalizeContact } from "./contact-links";
 import {
@@ -178,9 +184,26 @@ export async function ensureUsedMarketplaceSchema(): Promise<void> {
 
 /* ------------------------------- config ---------------------------------- */
 
+/**
+ * The section's own settings, read without the catalogue attached.
+ *
+ * This called `getStore()`, which reads all eleven catalogue chunks — 3.8 MB —
+ * parses them and runs `normalizeProductRecord` over eight hundred and
+ * seventy-six products, to reach one key in `settings`.
+ *
+ * `transitionListing()` calls it on every status change, and `expireDueListings()`
+ * transitions each expired listing through that same gate on the every-minute
+ * cron. So a cold isolate firing that cron paid for the whole catalogue before
+ * it could decide whether this section was even switched on — which is what
+ * `exceededCpu` looks like when no single query looks wrong.
+ *
+ * It is the same fault as `getMarketConfig()` reading 3.8 MB to find five
+ * numbers, and it has the same fix: `settings` lives on the base `store` row,
+ * not in a heavy section, so `getStoreSettings()` reaches it with the product
+ * rows excluded by the query.
+ */
 export async function getUsedConfig(): Promise<UsedMarketplaceConfig> {
-  const store = await getStore();
-  const settings = (store.settings ?? {}) as Record<string, unknown>;
+  const settings = await getStoreSettings();
   return readUsedConfig(settings["usedMarketplace"]);
 }
 

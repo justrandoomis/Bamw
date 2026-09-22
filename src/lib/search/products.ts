@@ -21,6 +21,7 @@
  * expansion adds — are allowed to miss.
  */
 
+import { hasListingPicture } from "../listingOrder";
 import { normalize, squash, SYNONYMS, tokenizeQuery, type QueryToken } from "./normalize";
 import { buildField, matchQuality, type IndexedField } from "./relevance";
 
@@ -70,6 +71,65 @@ const PRODUCT_SYNONYMS: Record<string, string[]> = {
   سويج: ["switch"],
   سويتش: ["switch"],
   نينتيندو: ["nintendo", "نينتندو"],
+
+  /*
+    Franchise names, in the Arabic a customer actually types.
+
+    ## Why this is here rather than in the scoring
+
+    Fifteen hundred games came from the supplier's sheet carrying one English
+    string and nothing else — no Arabic name on 1,546 of the catalogue's 1,714
+    rows. So every Arabic query has to cross scripts, and the only bridge is
+    `phoneticKey`, which romanises each side independently: «فاير» becomes
+    "fair" while "fire" stays "fire", two edits apart against a budget of one.
+    «فاير امبلم» returned nothing while five Fire Emblem games sat in the
+    catalogue. Measured, not assumed — along with «ون بيس», «ديزني», «سبونج
+    بوب», «ستريت فايتر» and «ماين كرافت», all at zero.
+
+    Three other repairs were tried first and each was measured to be worse:
+
+      - Widening the cross-script typo budget by one brings «غسالة» back —
+        Salt and Sacrifice, Sally Face, Gal Guardians — which is the exact
+        regression the revert at relevance.ts:135-149 already records.
+      - Folding the transliteration table harder (silent «gh», z→s) answers
+        «zelda» with METAL GEAR SOLID and «خبز» with two dozen games.
+      - Writing Arabic titles onto all 1,546 rows automatically is worse than
+        doing nothing for two-word franchises: an automatic pass writes the
+        one-word «مينكرافت» while the customer types «ماين كرافت», so
+        Minecraft went from no answer to a wrong answer with the real games
+        deleted.
+
+    A named alias costs nothing at index time, cannot fire on a word nobody
+    typed, and is the one lever measured to take these queries to their real
+    games while «غسالة» stays at zero. Each line is one franchise, and both
+    halves of a two-word name are listed because the all-words rule requires
+    every typed word to score somewhere on the product.
+  */
+  فاير: ["fire emblem"],
+  امبلم: ["fire emblem"],
+  ون: ["one piece"],
+  بيس: ["one piece"],
+  ديزني: ["disney"],
+  سبونج: ["spongebob"],
+  /*
+    «بوب» on its own is ambiguous — it is also how «pop» is written — and it
+    was left out at first for that reason. But the all-words rule deletes a
+    product when any typed word scores nothing, so «سبونج بوب» found nothing
+    at all until both halves were named. The ambiguity is the lesser cost.
+  */
+  بوب: ["spongebob"],
+  ستريت: ["street fighter"],
+  فايتر: ["street fighter", "fighter"],
+  ماين: ["minecraft"],
+  كرافت: ["minecraft"],
+  زيلدا: ["zelda"],
+  ماريو: ["mario"],
+  سونيك: ["sonic"],
+  كيربي: ["kirby"],
+  ناروتو: ["naruto"],
+  سبلاتون: ["splatoon"],
+  دراغون: ["dragon"],
+  دراجون: ["dragon"],
 };
 
 /** The ceiling one word can earn from each field. */
@@ -96,6 +156,12 @@ export interface IndexedProduct {
   /** For the tie-break: what sells, and where the admin put it. */
   sales: number;
   displayOrder: number;
+  /**
+   * Whether a result card has anything to show. Two results that match the
+   * query equally well are not equally useful, and the one with a cover is the
+   * one somebody can recognise.
+   */
+  pictured: boolean;
 }
 
 export interface ProductSearchResult {
@@ -111,12 +177,13 @@ const list = (value: unknown): string[] =>
 
 const field = (values: string[], weight: number) => buildField(values, weight, normalize, squash);
 
-export function buildProductIndex(
-  products: readonly Record<string, unknown>[],
-): IndexedProduct[] {
+export function buildProductIndex(products: readonly Record<string, unknown>[]): IndexedProduct[] {
   return products.map((product) => {
-    const names = [text(product["titleEn"]), text(product["titleAr"]), text(product["english_name"])]
-      .filter(Boolean);
+    const names = [
+      text(product["titleEn"]),
+      text(product["titleAr"]),
+      text(product["english_name"]),
+    ].filter(Boolean);
     /*
       `title` only when it says something the English name does not. On this
       catalogue it never does, but a product edited by hand could, and a name
@@ -129,7 +196,10 @@ export function buildProductIndex(
       product,
       fields: [
         field(names, WEIGHTS.name),
-        field([text(product["subtitle"]), text(product["slug"]).replace(/-/g, " ")], WEIGHTS.subtitle),
+        field(
+          [text(product["subtitle"]), text(product["slug"]).replace(/-/g, " ")],
+          WEIGHTS.subtitle,
+        ),
         field(
           [
             ...list(product["seriesName"]),
@@ -140,7 +210,10 @@ export function buildProductIndex(
           ],
           WEIGHTS.franchise,
         ),
-        field([text(product["developer"]), text(product["publisher"]), text(product["brand"])], WEIGHTS.people),
+        field(
+          [text(product["developer"]), text(product["publisher"]), text(product["brand"])],
+          WEIGHTS.people,
+        ),
         field(
           [
             ...list(product["genre"]),
@@ -156,6 +229,7 @@ export function buildProductIndex(
       nameBlob: names.map(squash).join("|"),
       sales: Number(product["sales"]) || 0,
       displayOrder: Number(product["displayOrder"]) || 0,
+      pictured: hasListingPicture(product),
     };
   });
 }
@@ -299,8 +373,14 @@ function scoreProduct(
   */
   if (squashedQuery.length >= 1) {
     for (const name of entry.nameBlob.split("|")) {
-      if (name.startsWith(squashedQuery)) { score += 0.3; break; }
-      if (name.includes(squashedQuery)) { score += 0.15; break; }
+      if (name.startsWith(squashedQuery)) {
+        score += 0.3;
+        break;
+      }
+      if (name.includes(squashedQuery)) {
+        score += 0.15;
+        break;
+      }
     }
   }
 
@@ -355,9 +435,19 @@ export function searchProducts(
 
   const scored = index
     .map((entry) => ({ entry, ...scoreProduct(entry, words, squashedQuery) }))
+    /*
+      Rank still decides. Somebody typing an exact title must be given that
+      game whether or not the shop has artwork for it — a search is where a
+      member has said precisely what they want, and answering with something
+      else because the right answer has no picture would be the worse failure.
+
+      The picture only breaks a tie, ahead of what sells, so a shelf of equally
+      plausible matches leads with the ones a member can recognise.
+    */
     .sort(
       (a, b) =>
         b.rank - a.rank ||
+        Number(b.entry.pictured) - Number(a.entry.pictured) ||
         b.entry.sales - a.entry.sales ||
         a.entry.displayOrder - b.entry.displayOrder,
     );

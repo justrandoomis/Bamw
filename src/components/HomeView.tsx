@@ -7,6 +7,7 @@ import { useCurrency } from "../context/CurrencyContext";
 import { BananaIcon } from "./Icons";
 import { Headset, CreditCard, Wallet, Star, Trophy, Sparkles } from "lucide-react";
 import { playSound, preloadSound } from "../utils/audio";
+import { onlyPictured, squareCardFirst } from "@/lib/listingOrder";
 import { filterPurchasable } from "@/lib/purchasable";
 import { getProductCategory, isGameProduct } from "@/lib/productSection";
 import { productImageUrl } from "@/lib/productImages";
@@ -28,6 +29,7 @@ import { preloadGameCovers, preloadImage, preload3DBoxAssets } from "@/lib/image
 import { LazySection } from "./LazySection";
 import NintendoNews from "./NintendoNews";
 import { HomeBananaMarket } from "./HomeBananaMarket";
+import { HomeGameZone } from "./HomeGameZone";
 import { StoreServices } from "./StoreServices";
 import { SectionErrorBoundary } from "./SectionErrorBoundary";
 
@@ -93,8 +95,22 @@ export default function HomeView({
   const banners: any[] = Array.isArray(store?.banners) ? store.banners : [];
   const { user } = useAuth();
   // Suggestions follow the genres the member picked at signup / in preferences.
+  /*
+    The front page shows only what has artwork.
+
+    Fifteen hundred games came in from the supplier's sheet with no covers, and
+    the «أحدث الألعاب» strip below is sorted by when a product was added — so
+    all of them arrived in front of the whole shop at once and the home page
+    became a wall of placeholders. They are not hidden and they are not
+    unbuyable; they simply do not go in the display window. A category page,
+    the games page and search all still list them, after the pictured ones.
+  */
   const adminProducts: any[] = useMemo(
-    () => rankByPreference(filterPurchasable<any>(Array.isArray(store?.products) ? store.products : []), user?.preferredGenres),
+    () =>
+      rankByPreference(
+        onlyPictured(filterPurchasable<any>(Array.isArray(store?.products) ? store.products : [])),
+        user?.preferredGenres,
+      ),
     [store?.products, user?.preferredGenres],
   );
   const nintendoGames: any[] = useMemo(
@@ -108,10 +124,7 @@ export default function HomeView({
   );
   const adminCategories: any[] = Array.isArray(store?.categories) ? store.categories : [];
 
-  const activeBanners = useMemo(
-    () => banners.filter((b) => b && b.isActive !== false),
-    [banners],
-  );
+  const activeBanners = useMemo(() => banners.filter((b) => b && b.isActive !== false), [banners]);
 
   useEffect(() => {
     // Preload top game covers & 3D box assets on home load
@@ -207,7 +220,9 @@ export default function HomeView({
           ) : activeBanners.length > 0 ? (
             <div
               className="w-full h-full relative"
-              style={{ backgroundColor: activeBanners[currentBannerIndex]?.bgColor || "transparent" }}
+              style={{
+                backgroundColor: activeBanners[currentBannerIndex]?.bgColor || "transparent",
+              }}
             >
               <AnimatePresence mode="wait" initial={false}>
                 {(() => {
@@ -260,7 +275,9 @@ export default function HomeView({
                       ) : banner.title || banner.subtitle ? (
                         <div className="w-full h-full flex flex-col justify-center items-center text-center p-6 bg-gradient-to-br from-[#E60012] to-[#80000A] text-white">
                           {banner.title && (
-                            <h2 className="text-white text-2xl sm:text-3xl font-black mb-2">{banner.title}</h2>
+                            <h2 className="text-white text-2xl sm:text-3xl font-black mb-2">
+                              {banner.title}
+                            </h2>
                           )}
                           {banner.subtitle && (
                             <p className="text-white/80 text-base sm:text-lg">{banner.subtitle}</p>
@@ -358,9 +375,15 @@ export default function HomeView({
             <div className="relative mb-6 mt-2 min-h-[200px] w-full max-w-full">
               <LazySection placeholder={<CartridgeSkeleton />}>
                 <CartridgeStrip
-                  games={adminProducts
-                    .filter((p) => isGameProduct(p))
-                    .map((p) => ({
+                  /*
+                    Square art first here too. `adminProducts` is already
+                    `onlyPictured`, so nothing artwork-less reaches the front
+                    page at all — but a box-cover-only game still draws a
+                    placeholder in this square window, and it belongs behind
+                    the ones that fill it.
+                  */
+                  games={squareCardFirst(adminProducts.filter((p) => isGameProduct(p))).map(
+                    (p) => ({
                       id: p.id,
                       slug: p.slug,
                       title: p.titleEn || p.english_name || p.title || "Game",
@@ -370,7 +393,8 @@ export default function HomeView({
                       subtitle: p.developer || p.publisher || "Nintendo Switch",
                       rating: p.metacriticRating ?? null,
                       platform: p.platform,
-                    }))}
+                    }),
+                  )}
                   clickedId={clickedCartridgeId}
                   onSelect={(game: any) => {
                     if (clickedCartridgeId != null) return;
@@ -392,86 +416,87 @@ export default function HomeView({
         </SectionErrorBoundary>
 
         {/* Dynamic / Custom Categories */}
-        {isClient && adminCategories
-          .filter((category) => {
-            if (!category) return false;
-            const catId = String(category.id || category.key || "").toLowerCase();
-            const catTitle = String(category.title || category.name || "").toLowerCase();
-            if (
-              catId === "nintendo-switch-games" ||
-              catId === "cat_nintendo" ||
-              catId === "nintendo_games" ||
-              catId === "cat_1" ||
-              catId === "hardware" ||
-              catId === "cat_hardware" ||
-              catId === "accessories" ||
-              catId === "cat_accessories" ||
-              catId === "amiibo" ||
-              catId === "cat_amiibo" ||
-              catId === "gift-cards" ||
-              catId === "cat_gift_cards" ||
-              catId === "used" ||
-              catId === "cat_used" ||
-              catId === "bundles" ||
-              catTitle.includes("nintendo switch") ||
-              catTitle.includes("هاردوير") ||
-              catTitle.includes("إكسسوار") ||
-              catTitle.includes("amiibo") ||
-              catTitle.includes("تعبئة") ||
-              catTitle.includes("مستخدم")
-            ) {
-              return false;
-            }
-            return true;
-          })
-          .map((category) => {
-            const mapGame = (p: any) => ({
-              id: p.id,
-              slug: p.slug,
-              title: p.titleEn || p.english_name || p.title || "Item",
-              price: p.price ?? 0,
-              image: resolveNintendoImageUrl(p, "listing-card"),
-              source: p,
-              subtitle: p.developer || p.publisher || category.title || category.name || "",
-              rating: p.metacriticRating ?? null,
-              platform: p.platform,
-            });
+        {isClient &&
+          adminCategories
+            .filter((category) => {
+              if (!category) return false;
+              const catId = String(category.id || category.key || "").toLowerCase();
+              const catTitle = String(category.title || category.name || "").toLowerCase();
+              if (
+                catId === "nintendo-switch-games" ||
+                catId === "cat_nintendo" ||
+                catId === "nintendo_games" ||
+                catId === "cat_1" ||
+                catId === "hardware" ||
+                catId === "cat_hardware" ||
+                catId === "accessories" ||
+                catId === "cat_accessories" ||
+                catId === "amiibo" ||
+                catId === "cat_amiibo" ||
+                catId === "gift-cards" ||
+                catId === "cat_gift_cards" ||
+                catId === "used" ||
+                catId === "cat_used" ||
+                catId === "bundles" ||
+                catTitle.includes("nintendo switch") ||
+                catTitle.includes("هاردوير") ||
+                catTitle.includes("إكسسوار") ||
+                catTitle.includes("amiibo") ||
+                catTitle.includes("تعبئة") ||
+                catTitle.includes("مستخدم")
+              ) {
+                return false;
+              }
+              return true;
+            })
+            .map((category) => {
+              const mapGame = (p: any) => ({
+                id: p.id,
+                slug: p.slug,
+                title: p.titleEn || p.english_name || p.title || "Item",
+                price: p.price ?? 0,
+                image: resolveNintendoImageUrl(p, "listing-card"),
+                source: p,
+                subtitle: p.developer || p.publisher || category.title || category.name || "",
+                rating: p.metacriticRating ?? null,
+                platform: p.platform,
+              });
 
-            const categoryProducts = adminProducts
-              .filter((p) => p.category === category.id || p.categoryId === category.id)
-              .map(mapGame);
+              const categoryProducts = adminProducts
+                .filter((p) => p.category === category.id || p.categoryId === category.id)
+                .map(mapGame);
 
-            if (categoryProducts.length === 0) return null;
+              if (categoryProducts.length === 0) return null;
 
-            return (
-              <SectionErrorBoundary key={category.id} sectionName={`Category_${category.id}`}>
-                <LazySection>
-                  <section className="mt-6 w-full max-w-full">
-                    <div className="flex items-center justify-between gap-2 mb-4 px-4 sm:px-8">
-                      <h3 className="text-xl font-bold text-foreground">
-                        {t(category.title || category.name || "Category")}
-                      </h3>
-                      <Link
-                        to="/category/$categoryId"
-                        params={{ categoryId: category.id }}
-                        className="text-orange-500 hover:text-orange-600 px-2 py-1 text-sm font-bold transition-colors"
-                      >
-                        {t("common.viewAll")}
-                      </Link>
-                    </div>
-                    <ProductStrip
-                      products={categoryProducts}
-                      onSelect={(product: any) => onGameClick(product)}
-                      formatPrice={formatGenericPrice}
-                      onPress={() => playSound("bumper_end", 0.6)}
-                      ratingIcon={<BananaIcon className="w-3 h-3 sm:w-4 sm:h-4" solid />}
-                      loading={isPending && adminProducts.length === 0}
-                    />
-                  </section>
-                </LazySection>
-              </SectionErrorBoundary>
-            );
-          })}
+              return (
+                <SectionErrorBoundary key={category.id} sectionName={`Category_${category.id}`}>
+                  <LazySection>
+                    <section className="mt-6 w-full max-w-full">
+                      <div className="flex items-center justify-between gap-2 mb-4 px-4 sm:px-8">
+                        <h3 className="text-xl font-bold text-foreground">
+                          {t(category.title || category.name || "Category")}
+                        </h3>
+                        <Link
+                          to="/category/$categoryId"
+                          params={{ categoryId: category.id }}
+                          className="text-orange-500 hover:text-orange-600 px-2 py-1 text-sm font-bold transition-colors"
+                        >
+                          {t("common.viewAll")}
+                        </Link>
+                      </div>
+                      <ProductStrip
+                        products={categoryProducts}
+                        onSelect={(product: any) => onGameClick(product)}
+                        formatPrice={formatGenericPrice}
+                        onPress={() => playSound("bumper_end", 0.6)}
+                        ratingIcon={<BananaIcon className="w-3 h-3 sm:w-4 sm:h-4" solid />}
+                        loading={isPending && adminProducts.length === 0}
+                      />
+                    </section>
+                  </LazySection>
+                </SectionErrorBoundary>
+              );
+            })}
 
         {/* Section 5: Hardware & Accessories */}
         <SectionErrorBoundary sectionName="HardwareAccessories">
@@ -643,6 +668,16 @@ export default function HomeView({
             >
               <HomeBananaMarket />
             </Suspense>
+          </LazySection>
+        </SectionErrorBoundary>
+
+        {/*
+          Section 9.5: Games & Prizes — «فوق الأخبار وتحت سوق الموز», exactly
+          where the owner put it.
+        */}
+        <SectionErrorBoundary sectionName="HomeGameZone">
+          <LazySection>
+            <HomeGameZone />
           </LazySection>
         </SectionErrorBoundary>
 

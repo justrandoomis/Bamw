@@ -50,6 +50,8 @@ interface CustomerListProps {
   searchTerm: string;
   onChangeSearchTerm: (term: string) => void;
   isLoading?: boolean;
+  /** Review submissions waiting for a decision — counted server-side, not from threads. */
+  pendingReviewCount?: number;
 }
 
 export function CustomerList({
@@ -62,6 +64,7 @@ export function CustomerList({
   searchTerm,
   onChangeSearchTerm,
   isLoading = false,
+  pendingReviewCount = 0,
 }: CustomerListProps) {
   // Map orders for fast lookup
   const orderMap = useMemo(() => {
@@ -92,6 +95,11 @@ export function CustomerList({
       escalated: 0,
       completed_orders: 0,
       closed_tickets: 0,
+      /*
+        Always zero here, and deliberately so: submissions are not threads, so
+        this loop cannot count them. The pill reads the server's count instead.
+      */
+      pending_reviews: 0,
     };
 
     for (const t of threads) {
@@ -228,6 +236,14 @@ export function CustomerList({
         case "closed_tickets":
           matchesFilter = isClosed;
           break;
+        case "pending_reviews":
+          /*
+            Explicitly none. Submissions are not threads, so without this the
+            `default` below would show every conversation beside a panel that
+            is listing something else entirely.
+          */
+          matchesFilter = false;
+          break;
         case "all":
         default:
           matchesFilter = true;
@@ -315,6 +331,11 @@ export function CustomerList({
     { id: "waiting_admin", label: "بانتظار الإدارة" },
     { id: "escalated", label: "المصعّدة", color: "text-purple-600 bg-purple-500/10" },
     { id: "closed_tickets", label: "تذاكر مغلقة" },
+    {
+      id: "pending_reviews",
+      label: "التقييمات بحاجة إلى موافقة",
+      color: "text-amber-700 bg-amber-500/15",
+    },
   ];
 
   return (
@@ -414,7 +435,11 @@ export function CustomerList({
         {/* Secondary Filter Pills */}
         <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
           {SUB_FILTERS.map((f) => {
-            const count = filterCounts[f.id] || 0;
+            /*
+              The review count comes from the server, not from `threads`: a
+              submission has no conversation to be counted in.
+            */
+            const count = f.id === "pending_reviews" ? pendingReviewCount : filterCounts[f.id] || 0;
             const isSelected = activeFilter === f.id;
             return (
               <button
@@ -454,10 +479,21 @@ export function CustomerList({
         ) : filteredThreads.length === 0 ? (
           <div className="p-10 text-center text-muted-foreground text-xs space-y-2">
             <MessageSquare className="w-8 h-8 mx-auto text-muted-foreground/30" />
-            <div className="font-semibold">لا توجد محادثات مطابقة</div>
-            <p className="text-[11px] text-muted-foreground/70">
-              جرب تغيير التصفية أو مسح كلمة البحث
-            </p>
+            {activeFilter === "pending_reviews" ? (
+              <>
+                <div className="font-semibold">التقييمات تظهر في اللوحة المجاورة</div>
+                <p className="text-[11px] text-muted-foreground/70">
+                  التقييم ليس محادثة، لذلك لا يظهر في هذه القائمة.
+                </p>
+              </>
+            ) : (
+              <>
+                <div className="font-semibold">لا توجد محادثات مطابقة</div>
+                <p className="text-[11px] text-muted-foreground/70">
+                  جرب تغيير التصفية أو مسح كلمة البحث
+                </p>
+              </>
+            )}
           </div>
         ) : (
           filteredThreads.map((t, index) => {

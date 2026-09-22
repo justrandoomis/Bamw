@@ -1,16 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
 import { readCouponUsage } from "./coupon-usage.server";
 import { z } from "zod";
-import {
-  d1All,
-  d1First,
-  d1Run,
-  d1Batch,
-  randomId,
-  createAuditLog,
-  findUserById,
-} from "./db.server";
-import { requireAppAuth, requireAdmin, authed } from "./auth.middleware";
+import { d1First } from "./db.server";
+import { requireAppAuth, authed } from "./auth.middleware";
 import {
   COUPON_REFUSAL_MESSAGE,
   checkCoupon,
@@ -18,132 +10,22 @@ import {
   rowToCoupon,
   type CouponRow,
 } from "./coupons";
-import type { ProductReview, Coupon } from "./types";
 
-/**
- * Submit a review for a product linked to an order.
- */
-export const submitProductReview = createServerFn({ method: "POST" })
-  .middleware([requireAppAuth])
-  .validator(
-    z.object({
-      productId: z.string(),
-      orderId: z.string(),
-      rating: z.number().min(1).max(5),
-      comment: z.string().min(5),
-      screenshotUrl: z.string().optional(),
-      instagramProofUrl: z.string().optional(),
-    }),
-  )
-  .handler(async ({ data, context }) => {
-    const userId = authed(context).userId;
-    const now = new Date().toISOString();
+/*
+  `submitProductReview` and `approveReview` were here, and nothing imported
+  either of them. Production agrees: `review_cooldowns`, the only table
+  `approveReview` ever wrote, holds zero rows.
 
-    const reviewId = randomId("rev");
-    await d1Run(
-      `INSERT INTO product_reviews (id, product_id, user_id, order_id, rating, comment, screenshot_url, instagram_proof_url, status, is_auto_review, created_at, updated_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', 0, ?, ?)`,
-      reviewId,
-      data.productId,
-      userId,
-      data.orderId,
-      data.rating,
-      data.comment,
-      data.screenshotUrl || null,
-      data.instagramProofUrl || null,
-      now,
-      now,
-    );
+  They are gone rather than rewired because what they did is now wrong as well
+  as dead. `approveReview` minted a coupon from `Math.random()`, took the
+  discount from whatever the caller passed, and checked a cooldown table
+  nothing else maintained; the reward is now minted by
+  `issueApprovedReviewReward`, which is the only place the weekly limit is
+  enforced. The submission is `submitOrderReviewGroup`, which writes one row
+  per product tied by a group id and demands the Instagram proof.
 
-    await createAuditLog(userId, "submit_review", "product_review", reviewId);
-    return { success: true, reviewId };
-  });
-
-/**
- * Approve a review and grant a coupon if eligible.
- */
-export const approveReview = createServerFn({ method: "POST" })
-  .middleware([requireAdmin])
-  .validator(
-    z.object({
-      reviewId: z.string(),
-      couponSettings: z
-        .object({
-          discountType: z.enum(["percentage", "fixed"]),
-          discountValue: z.number().positive(),
-          expirationDays: z.number().default(7),
-        })
-        .optional(),
-    }),
-  )
-  .handler(async ({ data, context }) => {
-    const adminId = authed(context).userId;
-    const now = new Date().toISOString();
-
-    const review = await d1First<ProductReview>(
-      `SELECT * FROM product_reviews WHERE id = ? AND status = 'pending'`,
-      data.reviewId,
-    );
-
-    if (!review) throw new Error("Review not found or already processed");
-
-    // Check Cooldown: Once per 7 days
-    const cooldown = await d1First<{ last_rewarded_at: string }>(
-      `SELECT last_rewarded_at FROM review_cooldowns WHERE user_id = ?`,
-      review.userId,
-    );
-
-    const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
-    const isEligibleForCoupon = !cooldown || cooldown.last_rewarded_at < sevenDaysAgo;
-
-    let couponCode: string | null = null;
-
-    // Start Batch
-    const batch: { sql: string; params: unknown[] }[] = [
-      {
-        sql: `UPDATE product_reviews SET status = 'approved', approved_at = ?, approved_by = ?, updated_at = ? WHERE id = ?`,
-        params: [now, adminId, now, data.reviewId],
-      },
-    ];
-
-    if (isEligibleForCoupon && data.couponSettings) {
-      couponCode = `REV-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
-      const expirationAt = new Date(
-        Date.now() + data.couponSettings.expirationDays * 24 * 60 * 60 * 1000,
-      ).toISOString();
-
-      batch.push({
-        sql: `INSERT INTO coupons (id, code, discount_type, discount_value, expiration_at, usage_limit, per_user_limit, eligible_users, is_active, created_at)
-              VALUES (?, ?, ?, ?, ?, 1, 1, ?, 1, ?)`,
-        params: [
-          randomId("cpn"),
-          couponCode,
-          data.couponSettings.discountType,
-          data.couponSettings.discountValue,
-          expirationAt,
-          JSON.stringify([review.userId]),
-          now,
-        ],
-      });
-
-      batch.push({
-        sql: `INSERT INTO review_cooldowns (user_id, last_rewarded_at) VALUES (?, ?) ON CONFLICT(user_id) DO UPDATE SET last_rewarded_at = excluded.last_rewarded_at`,
-        params: [review.userId, now],
-      });
-    }
-
-    await d1Batch(batch);
-    await createAuditLog(
-      adminId,
-      "approve_review",
-      "product_review",
-      data.reviewId,
-      { oldStatus: "pending" },
-      { newStatus: "approved", couponGranted: !!couponCode },
-    );
-
-    return { success: true, couponCode };
-  });
+  See `/api/admin/review-submissions` and `/api/order-review`.
+*/
 
 /**
  * Validate a coupon code server-side.

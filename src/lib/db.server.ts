@@ -15,10 +15,7 @@ import {
 } from "./d1.server";
 import { normalizePhone, arePhonesEqual } from "./phone";
 import { listKeys, mutateJson, readJson, writeJson } from "./storage.server";
-import {
-  productIndexStatements,
-  readProductIndexFingerprints,
-} from "./product-index.server";
+import { productIndexStatements, readProductIndexFingerprints } from "./product-index.server";
 import { sendWhatsappMessage } from "./whatsapp.server";
 import { getUserTelegramChatId } from "./telegram-notifications.server";
 import { escapeHtml, sendTelegramMessage } from "./telegram.server";
@@ -33,10 +30,7 @@ import {
   DEFAULT_AVAILABILITY_CONFIG,
 } from "./admin-availability";
 import { dedupeDevicePerformance, getDevicePerformanceList } from "./devicePerformance";
-import {
-  normalizeProductOption,
-  normalizeProductType,
-} from "./productOptionDescriptions";
+import { normalizeProductOption, normalizeProductType } from "./productOptionDescriptions";
 export {
   isOwnerAccount,
   isOwnerEmail,
@@ -78,6 +72,7 @@ import type {
   AuditLog,
   StoreNotification,
 } from "./types";
+import { ADMIN_FINISHED_ORDER_STATUSES, ORDER_STATUSES } from "./types";
 
 /**
  * Executes multiple D1 statements in a single batch transaction.
@@ -287,11 +282,7 @@ export function isValidProductRecord(item: unknown): item is Product {
   if (!item || typeof item !== "object" || Array.isArray(item)) return false;
   const p = item as Record<string, unknown>;
   const id =
-    typeof p.id === "string"
-      ? p.id.trim()
-      : typeof p.id === "number"
-        ? String(p.id).trim()
-        : "";
+    typeof p.id === "string" ? p.id.trim() : typeof p.id === "number" ? String(p.id).trim() : "";
   if (!id) return false;
 
   // Exclude known non-product sub-objects (like option ids, type ids, feature fragments)
@@ -317,16 +308,24 @@ const KNOWN_GAME_COVERS: Record<string, string> = {
   prd_ca9a9392db394624: "https://art.gametdb.com/switch/cover/US/AC4NA.jpg",
   prd_ebcb11cda2854251: "https://art.gametdb.com/switch/cover/US/AKZRA.jpg",
   prd_ed0f0c2742ab46d8: "https://art.gametdb.com/switch/cover/US/A24MA.jpg",
-  prd_032470e4f7dd4cf0: "https://gamesdb-images.launchbox.gg/r2_a1a586f9-c64e-4401-9fa0-073209704dbe.jpg",
-  prd_6e23a34819ac4bc6: "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
-  prd_91e34a020d374ca5: "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
-  prd_6143c4166fc84049: "https://cdn.essential-japan.com/wp-content/uploads/2025/09/super-mario-galaxy-1-2-switch-2.webp",
-  prd_7037e22716fa4681: "https://www.jnlgame.com/cdn/shop/files/71-VuMoP_vL.jpg?v=1772148408&width=5760",
-  prd_7415614215294c49: "https://www.nintendo.com/my/games/switch2/aaaca/assets/img/product-img.jpg",
-  prd_34be2de35cbe4d6b: "https://www.nintendo.com/ph/games/switch2/aaaaa/assets/img/product/package.webp",
+  prd_032470e4f7dd4cf0:
+    "https://gamesdb-images.launchbox.gg/r2_a1a586f9-c64e-4401-9fa0-073209704dbe.jpg",
+  prd_6e23a34819ac4bc6:
+    "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
+  prd_91e34a020d374ca5:
+    "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+  prd_6143c4166fc84049:
+    "https://cdn.essential-japan.com/wp-content/uploads/2025/09/super-mario-galaxy-1-2-switch-2.webp",
+  prd_7037e22716fa4681:
+    "https://www.jnlgame.com/cdn/shop/files/71-VuMoP_vL.jpg?v=1772148408&width=5760",
+  prd_7415614215294c49:
+    "https://www.nintendo.com/my/games/switch2/aaaca/assets/img/product-img.jpg",
+  prd_34be2de35cbe4d6b:
+    "https://www.nintendo.com/ph/games/switch2/aaaaa/assets/img/product/package.webp",
   prd_3c36dc21c4964b5e: "https://www.nintendo.com/my/games/switch2/aadla/img/package.jpg",
   prd_10cbc863226547e2: "https://art.gametdb.com/switch/cover/US/AXN7A.jpg",
-  prd_c5e13fa3f0c84edd: "https://cdn.switch-images-julio.com/file/switch-images-julio/AZ89A/front.png",
+  prd_c5e13fa3f0c84edd:
+    "https://cdn.switch-images-julio.com/file/switch-images-julio/AZ89A/front.png",
   prd_0dbec174d9834d8e: "https://art.gametdb.com/switch/cover/US/AAAAA.jpg",
   prd_8305beacb7f14685: "https://art.gametdb.com/switch/cover/US/AAACA.jpg",
 };
@@ -334,14 +333,36 @@ const KNOWN_GAME_COVERS: Record<string, string> = {
 function fixDisplayUrl(url?: string | null): string | undefined {
   if (!url || typeof url !== "string") return undefined;
   const trimmed = url.trim();
-  const julioMatch = /switch-images-julio\.com\/.*\/display\/index\.html\?code=([A-Z0-9]+)/i.exec(trimmed);
+  const julioMatch = /switch-images-julio\.com\/.*\/display\/index\.html\?code=([A-Z0-9]+)/i.exec(
+    trimmed,
+  );
   if (julioMatch && julioMatch[1]) {
     return `https://cdn.switch-images-julio.com/file/switch-images-julio/${julioMatch[1]}/front.png`;
   }
   return trimmed;
 }
 
+/**
+ * Objects this function has itself produced.
+ *
+ * `loadStore` normalises every product on the way out of D1 (line ~705), then
+ * normalises the same objects again at the section sweep (~817), and
+ * `persistStore` normalises them a third time before writing (~976). Passes two
+ * and three run over records that pass one already produced: the function is a
+ * fixed point on its own output, so they cost a full rebuild of the catalogue —
+ * three per import batch — and change nothing.
+ *
+ * Identity is the check, not a flag on the record: nothing is written to the
+ * product, so nothing about what a product *contains* changes. Any object this
+ * function did not mint — a record straight from JSON.parse, a granular
+ * overlay, a listing `buildListing` just built, an admin's edited copy — is
+ * absent from the set and is normalised exactly as before. A `WeakSet` holds no
+ * strong reference, so a catalogue that goes out of scope is still collected.
+ */
+const alreadyNormalized = new WeakSet<object>();
+
 export function normalizeProductRecord(p: any): Product {
+  if (p && typeof p === "object" && alreadyNormalized.has(p)) return p as Product;
   if (!p || typeof p !== "object") {
     return {
       id: `prod_${Date.now()}`,
@@ -397,13 +418,17 @@ export function normalizeProductRecord(p: any): Product {
 
   // Normalize image fields and inject verified covers for known catalogue games
   const knownCover = KNOWN_GAME_COVERS[id];
-  const boxFront = fixDisplayUrl(p.box_front_url || p.boxFrontUrl || (knownCover ? knownCover : undefined));
-  const coverUrl = fixDisplayUrl(p.coverUrl || p.cover_front_url || p.cover_box_url || (knownCover ? knownCover : undefined));
+  const boxFront = fixDisplayUrl(
+    p.box_front_url || p.boxFrontUrl || (knownCover ? knownCover : undefined),
+  );
+  const coverUrl = fixDisplayUrl(
+    p.coverUrl || p.cover_front_url || p.cover_box_url || (knownCover ? knownCover : undefined),
+  );
   const cartridgeImage = fixDisplayUrl(p.cartridgeImage);
   const coverImage = fixDisplayUrl(p.coverImage);
   const image = fixDisplayUrl(p.image || boxFront || coverUrl || knownCover);
 
-  return {
+  const out = {
     ...p,
     id,
     title,
@@ -447,6 +472,8 @@ export function normalizeProductRecord(p: any): Product {
       ? { devicePerformance: dedupeDevicePerformance(getDevicePerformanceList(p)) }
       : {}),
   };
+  alreadyNormalized.add(out);
+  return out;
 }
 
 function chunkJson(value: unknown): string[] {
@@ -644,7 +671,10 @@ async function loadStore(options?: { skipProducts?: boolean }): Promise<StoreDoc
           }
 
           // If joined chunks yielded empty or failed, salvage item-by-item from individual chunk rows
-          if ((parsed === undefined || (Array.isArray(parsed) && parsed.length === 0)) && section !== "content") {
+          if (
+            (parsed === undefined || (Array.isArray(parsed) && parsed.length === 0)) &&
+            section !== "content"
+          ) {
             const salvagedFromChunks: any[] = [];
             for (const r of chunkRows) {
               if (r.value && r.value.trim()) {
@@ -656,7 +686,9 @@ async function loadStore(options?: { skipProducts?: boolean }): Promise<StoreDoc
             }
             if (salvagedFromChunks.length > 0) {
               parsed = salvagedFromChunks;
-              console.warn(`[store:load_section:chunk_salvage_success] section=${section} salvagedCount=${salvagedFromChunks.length}`);
+              console.warn(
+                `[store:load_section:chunk_salvage_success] section=${section} salvagedCount=${salvagedFromChunks.length}`,
+              );
             }
           }
         }
@@ -679,7 +711,9 @@ async function loadStore(options?: { skipProducts?: boolean }): Promise<StoreDoc
                 if (salvaged.length === 0) {
                   throw new Error(`store_section_unreadable:${section}`);
                 }
-                console.warn(`[store:corrupt_section_salvaged] section=${section} salvagedCount=${salvaged.length}`);
+                console.warn(
+                  `[store:corrupt_section_salvaged] section=${section} salvagedCount=${salvaged.length}`,
+                );
                 parsed = salvaged;
               }
             }
@@ -707,7 +741,10 @@ async function loadStore(options?: { skipProducts?: boolean }): Promise<StoreDoc
         }
       } catch (sectionErr) {
         console.error(`[store:load_section_failed] section=${section}`, sectionErr);
-        if (sectionErr instanceof Error && sectionErr.message.startsWith('store_section_unreadable')) {
+        if (
+          sectionErr instanceof Error &&
+          sectionErr.message.startsWith("store_section_unreadable")
+        ) {
           throw sectionErr;
         }
         /*
@@ -736,18 +773,20 @@ async function loadStore(options?: { skipProducts?: boolean }): Promise<StoreDoc
         if (!Array.isArray(doc.products)) {
           doc.products = [];
         }
-        const granularProducts = granularRows.map((r) => {
-          try {
-            return JSON.parse(r.value);
-          } catch {
-            return null;
-          }
-        }).filter(Boolean);
+        const granularProducts = granularRows
+          .map((r) => {
+            try {
+              return JSON.parse(r.value);
+            } catch {
+              return null;
+            }
+          })
+          .filter(Boolean);
 
         // Deduplicate: granular products overwrite chunked products
         const productsMap = new Map<string, any>();
         const existingIds = new Set((doc.products as any[]).map((p) => String(p?.id || "")));
-        
+
         // 1. First add newly created granular products that aren't in base chunks yet (so they appear first!)
         for (const p of granularProducts) {
           if (p && p.id && !p._deleted && isValidProductRecord(p)) {
@@ -796,19 +835,24 @@ async function loadStore(options?: { skipProducts?: boolean }): Promise<StoreDoc
     const cleanList = <T>(list: unknown): T[] =>
       (Array.isArray(list) ? list : []).filter((x) => x && typeof x === "object") as T[];
 
-    doc.products = cleanList<Product>(doc.products).filter(isValidProductRecord).map(normalizeProductRecord);
+    doc.products = cleanList<Product>(doc.products)
+      .filter(isValidProductRecord)
+      .map(normalizeProductRecord);
 
     // If products is completely empty, attempt recovery from game_catalog table
     const currentProducts = doc.products as Product[];
     if (currentProducts.length === 0) {
       try {
         const catalogRows = await d1RawAll<any>(
-          `SELECT id, game_id, title, english_name, canonical_name, slug, release_date, description_en, description_ar, publisher, developer, box_front_url, cover_front_url, cover_box_url, metacritic_score, genres, is_active FROM game_catalog WHERE is_active = 1 OR is_active IS NULL LIMIT 2000`
+          `SELECT id, game_id, title, english_name, canonical_name, slug, release_date, description_en, description_ar, publisher, developer, box_front_url, cover_front_url, cover_box_url, metacritic_score, genres, is_active FROM game_catalog WHERE is_active = 1 OR is_active IS NULL LIMIT 2000`,
         );
         if (catalogRows && catalogRows.length > 0) {
           const recoveredProducts: Product[] = [];
           for (const row of catalogRows) {
-            const rowId = row.game_id || row.id || `prod_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+            const rowId =
+              row.game_id ||
+              row.id ||
+              `prod_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
             const rowTitle = row.title || row.canonical_name || row.english_name || "Game";
             const rowImg = row.box_front_url || row.cover_front_url || row.cover_box_url || "";
             let genres: string[] = [];
@@ -832,7 +876,7 @@ async function loadStore(options?: { skipProducts?: boolean }): Promise<StoreDoc
                 description: String(row.description_ar || row.description_en || ""),
                 categories: genres.length > 0 ? genres : ["games"],
                 tags: genres,
-              })
+              }),
             );
           }
           if (recoveredProducts.length > 0) {
@@ -954,10 +998,13 @@ async function persistStore(next: StoreDoc, expectedRev: number): Promise<number
       if (isValidProductRecord(p)) {
         cleanProducts.push(normalizeProductRecord(p));
       } else {
-        console.error(`[store:persist_corrupt_product_prevented] Filtered out invalid product before persist:`, {
-          id: (p as any)?.id,
-          title: (p as any)?.title,
-        });
+        console.error(
+          `[store:persist_corrupt_product_prevented] Filtered out invalid product before persist:`,
+          {
+            id: (p as any)?.id,
+            title: (p as any)?.title,
+          },
+        );
       }
     }
     next = {
@@ -1253,7 +1300,7 @@ export async function getStore(): Promise<StoreDoc> {
     })
     .catch(async (err) => {
       console.error("[getStore:failed_or_timed_out]", err);
-      if (err instanceof Error && err.message.startsWith('store_section_unreadable')) {
+      if (err instanceof Error && err.message.startsWith("store_section_unreadable")) {
         throw err;
       }
       if (storeCache?.doc && (storeCache.doc.products?.length ?? 0) > 0) {
@@ -1284,7 +1331,9 @@ export async function getStore(): Promise<StoreDoc> {
   return storeInFlight;
 }
 
-export async function updateStore(mutate: (current: StoreDoc) => StoreDoc | void): Promise<StoreDoc> {
+export async function updateStore(
+  mutate: (current: StoreDoc) => StoreDoc | void,
+): Promise<StoreDoc> {
   /*
     The snapshot that used to be taken here was thrown away.
 
@@ -1547,6 +1596,27 @@ function rowToUser(row: UserRow): User {
   };
 }
 
+/**
+ * Write a user row — everything about them EXCEPT their money.
+ *
+ * `wallet_balance`, `banana_balance` and `banana_locked` are set when the row
+ * is created and are never written again from here. They used to be in the
+ * `DO UPDATE SET` clause, bound from an in-memory snapshot, and `updateUser`
+ * is a read-modify-write of the whole row — so ANY save of anything about a
+ * member rewrote their balance to whatever it had been when that request
+ * started.
+ *
+ * That is a hole a customer can drive through. Save a profile field in one tab
+ * while buying a game in another: checkout debits the balance correctly and
+ * atomically, the profile save then puts the pre-purchase number back, and the
+ * game is already delivered. Nothing in the debit is wrong; it is simply
+ * overwritten afterwards by a request that had no business touching money.
+ *
+ * Money moves through the paths built for it, each of which changes the column
+ * RELATIVE to itself under a guard — `adjustUserWalletBalance`, the checkout
+ * batch in `orders.server.ts`, `creditBananaBalance`. A snapshot can never win
+ * a race against a relative update, because it never takes part in one.
+ */
 async function upsertUserRow(user: User) {
   await d1Execute(
     `INSERT INTO users (id, name, username, member_no, email, email_verified_at, phone, phone_verified_at, password_hash, avatar,
@@ -1565,10 +1635,7 @@ async function upsertUserRow(user: User) {
        is_admin = excluded.is_admin, provider = excluded.provider,
        provider_id = excluded.provider_id, settings = excluded.settings,
         addresses = excluded.addresses, favorites = excluded.favorites,
-        friend_id = excluded.friend_id,
-        wallet_balance = excluded.wallet_balance,
-        banana_balance = excluded.banana_balance,
-        banana_locked = excluded.banana_locked`,
+        friend_id = excluded.friend_id`,
     user.id,
     user.name,
     user.username ?? null,
@@ -2346,6 +2413,106 @@ export async function listThreads(): Promise<Thread[]> {
   return threads.filter((t): t is Thread => !!t).map(normalizeThread);
 }
 
+/**
+ * The conversations that are still going.
+ *
+ * `processInactivityAndQueue()` runs on the every-minute cron and wanted these
+ * — and got them by calling `listThreads()` and filtering the answer. That
+ * reads the document of every conversation the shop has ever had, closed ones
+ * included, ships them all to the Worker and parses each one, sixty times an
+ * hour, to look at two fields. It is the same shape as the market config read
+ * that was killing this cron before: read everything to find a little, and get
+ * slower every week the shop is open.
+ *
+ * `status` and `mode` live inside the document rather than in columns, so the
+ * filter is a JSON path. That still scans the table, but it scans it *inside
+ * D1* — and what exceeds the CPU limit and kills the isolate is the Worker's
+ * own parsing, not the database's read. Only open conversations cross the
+ * wire now.
+ *
+ * `json_extract` raises on a malformed document and would take the whole sweep
+ * down with one unreadable row, so `json_valid` is asked first, inside a CASE
+ * that fixes the order of evaluation. Such a row is skipped — which is what
+ * already happened, since `parse()` turned it into an object with no `status`
+ * and the filter dropped it.
+ *
+ * `COALESCE` on `mode` for the reason SQL always needs it: a thread with no
+ * mode yields NULL, `NULL <> 'RESOLVED'` is NULL rather than true, and the
+ * open conversation would have been silently left out of the sweep.
+ */
+export async function listOpenThreads(): Promise<Thread[]> {
+  if (await d1Ready()) {
+    const rows = await d1All<{ doc: string }>(
+      `SELECT doc FROM threads
+        WHERE CASE WHEN json_valid(doc)
+                   THEN json_extract(doc, '$.status') = 'open'
+                        AND COALESCE(json_extract(doc, '$.mode'), '') <> 'RESOLVED'
+                   ELSE 0 END
+        ORDER BY last_message_at DESC`,
+    );
+    return rows.map((r) => normalizeThread(parse<Thread>(r.doc, {} as Thread)));
+  }
+  const all = await listThreads();
+  return all.filter((t) => t.status === "open" && t.mode !== "RESOLVED");
+}
+
+/**
+ * The orders that are still waiting for the admin to do something.
+ *
+ * A customer was shown «أنت السابع في الطابور» with nobody in front of them,
+ * and the reason was that the queue counted every open conversation carrying
+ * an order id. A conversation stays open long after its order is delivered —
+ * that is the point of it — so the queue grew by one with every order the shop
+ * ever completed and never shrank.
+ *
+ * The queue is a list of work, so it is built from the state of the work.
+ * `ADMIN_FINISHED_ORDER_STATUSES` already names the states that are done as
+ * far as the admin is concerned; this asks for their complement, positively,
+ * because `status IN (...)` can use an index and `NOT IN (...)` cannot.
+ *
+ * Returns the ids, not the orders: the caller needs set membership and nothing
+ * else, and reading whole order documents to answer a customer's poll is how
+ * this sort of thing got expensive in the first place.
+ */
+export async function listUnfinishedOrderIds(): Promise<Set<string>> {
+  const active = ORDER_STATUSES.filter((status) => !ADMIN_FINISHED_ORDER_STATUSES.includes(status));
+  if (await d1Ready()) {
+    const rows = await d1All<{ id: string }>(
+      `SELECT id FROM orders WHERE status IN (${active.map(() => "?").join(", ")})`,
+      ...active,
+    );
+    return new Set(rows.map((r) => String(r.id)));
+  }
+  const all = await listOrders();
+  return new Set(
+    all
+      .filter((order) => !ADMIN_FINISHED_ORDER_STATUSES.includes(order.status))
+      .map((order) => String(order.id)),
+  );
+}
+
+/**
+ * One conversation, by its own id or by the order it belongs to.
+ *
+ * The queue metrics needed this and reached it through the whole thread list,
+ * on a customer's request rather than on a cron. Both columns are indexed.
+ */
+export async function findThreadByIdOrOrder(ref: string): Promise<Thread | undefined> {
+  if (!ref) return undefined;
+  if (await d1Ready()) {
+    const row = await d1First<{ doc: string }>(
+      `SELECT doc FROM threads WHERE id = ? OR order_id = ?
+        ORDER BY last_message_at DESC LIMIT 1`,
+      ref,
+      ref,
+    );
+    const parsed = row ? parse<Thread | undefined>(row.doc, undefined) : undefined;
+    return parsed ? normalizeThread(parsed) : undefined;
+  }
+  const all = await listThreads();
+  return all.find((t) => t.id === ref || t.orderId === ref);
+}
+
 /** Threads owned by a single user — scoped at the query level, never filtered client-side. */
 export async function listThreadsByUser(userId: string): Promise<Thread[]> {
   if (!userId) return [];
@@ -2883,9 +3050,24 @@ export async function getWalletTransactions(userId: string): Promise<WalletTrans
               correctAmount,
               tx.id,
             );
+            /*
+              ROUND THE CORRECTION, NEVER THE BALANCE.
+
+              This was `SET wallet_balance = ROUND(COALESCE(wallet_balance, 0) + ?)`,
+              which rounds the member's WHOLE balance, not the amount being put
+              right. A balance of 12,500.60 became 12,501 — and this runs inside
+              a GET that the wallet page polls every five seconds, so it happened
+              while a member was merely looking at the screen, with nothing in
+              the statement to explain the change.
+
+              The correction is a whole number already (it is parsed out of
+              «(N IQD)»), and it is rounded here before binding rather than in
+              SQL, so only the delta is ever rounded and the stored total keeps
+              whatever precision it had.
+            */
             await d1Execute(
-              `UPDATE users SET wallet_balance = ROUND(COALESCE(wallet_balance, 0) + ?) WHERE id = ?`,
-              diff,
+              `UPDATE users SET wallet_balance = COALESCE(wallet_balance, 0) + ? WHERE id = ?`,
+              Math.round(diff),
               tx.user_id,
             );
           }
@@ -2950,6 +3132,30 @@ export async function createWalletTransaction(
  * update did not apply, so the ledger can never record a transfer that did not
  * happen.
  */
+/**
+ * Add bananas to a member, relative to whatever the column holds now.
+ *
+ * The two banana-code redemptions did this through `updateUser`, which is a
+ * read-modify-write of the whole user row — the one thing `upsertUserRow` no
+ * longer does for money. Redeeming two codes at once would have had the second
+ * overwrite the first; now each adds to the stored value.
+ */
+export async function addBananaBalance(userId: string, amount: number): Promise<void> {
+  if (!Number.isFinite(amount) || amount === 0) return;
+  if (await d1Ready()) {
+    await d1Run(`UPDATE users SET banana_balance = COALESCE(banana_balance, 0) + ? WHERE id = ?`, amount, userId);
+    return;
+  }
+  // JSON driver (local sandbox): no SQL, and no concurrency to lose to either.
+  const users = await readJson<User[]>(USERS_KEY, []);
+  await writeJson(
+    USERS_KEY,
+    users.map((u) =>
+      u.id === userId ? { ...u, bananaBalance: (Number(u.bananaBalance) || 0) + amount } : u,
+    ),
+  );
+}
+
 export async function adjustUserWalletBalance(
   userId: string,
   amount: number,
@@ -3373,12 +3579,7 @@ export async function consumeBananCode(
     const dinarPerBanana = Number(store.settings?.["dinarPerBanana"] || 1000);
     if (dinarPerBanana > 0) {
       const bananasEarned = Math.floor(bc.value / dinarPerBanana);
-      if (bananasEarned > 0) {
-        await updateUser(userId, (u) => ({
-          ...u,
-          bananaBalance: (Number(u.bananaBalance) || 0) + bananasEarned,
-        }));
-      }
+      if (bananasEarned > 0) await addBananaBalance(userId, bananasEarned);
     }
 
     return { success: true, amount: bc.value, currency: "IQD" };
@@ -3415,12 +3616,7 @@ export async function consumeBananCode(
   const dinarPerBanana = Number(store.settings?.["dinarPerBanana"] || 1000);
   if (dinarPerBanana > 0) {
     const bananasEarned = Math.floor(targetCode.value / dinarPerBanana);
-    if (bananasEarned > 0) {
-      await updateUser(userId, (u) => ({
-        ...u,
-        bananaBalance: (Number(u.bananaBalance) || 0) + bananasEarned,
-      }));
-    }
+    if (bananasEarned > 0) await addBananaBalance(userId, bananasEarned);
   }
 
   return { success: true, amount: targetCode.value, currency: "IQD" };
