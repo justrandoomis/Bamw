@@ -178,24 +178,85 @@ export function initialOptionId(
  * Empty when the options carry prices, because then the options lead and
  * preselecting a variant would move the price off the option the page opened
  * on. Empty, too, when no variant is priced: there is nothing to agree with.
+ *
+ * It follows `listingPricing` STEP FOR STEP — the ordinary offline account
+ * first, then the variant priced at the base, then nothing at all when the base
+ * undercuts every variant, and only then the cheapest. It used to jump straight
+ * to "the variant priced at the base, else the cheapest", which on the 65 games
+ * whose only priced row is an online account opened the page on that row while
+ * the card beside it led with the cheaper account: «الشاشة تعرض سعر الأونلاين
+ * بدل الأوفلاين».
+ *
+ * The empty answer is not a failure to choose. `resolveUnitPrice` with nothing
+ * selected returns the base price, which is what the card printed and what
+ * checkout charges — so an unset chip and the card agree, while any chip this
+ * could have picked would not.
  */
 export function initialVariantName(
-  variants: readonly { name: string; price?: number | undefined }[],
+  variants: readonly { name: string; id?: string; price?: number | undefined }[],
   basePrice: number,
   options: readonly { price?: number | undefined }[] = [],
 ): string {
   if (options.some((option) => typeof option.price === "number" && option.price > 0)) return "";
+  const named = variants.filter((variant) => variant.name);
+  return String(initialPricedRow(named, basePrice)?.["name"] ?? "");
+}
 
-  const priced = variants.filter(
-    (variant) => typeof variant.price === "number" && variant.price > 0 && variant.name,
-  ) as { name: string; price: number }[];
-  if (priced.length === 0) return "";
-
-  if (basePrice > 0) {
-    const match = priced.find((variant) => variant.price === basePrice);
-    if (match) return match.name;
+/**
+ * THE ONE SELECTION RULE, so the three surfaces cannot each have their own.
+ *
+ * `listingPricing` chose the row the card prints, `initialVariantName` chose
+ * the one the details page opened on, and the buy sheet chose a third way — and
+ * the three disagreed on exactly the products the owner kept reporting. This is
+ * that rule, written once:
+ *
+ *   1. the ordinary offline account, when the product has one — «حساب اوفلاين
+ *      عادي», which is the tier the owner named rather than a number;
+ *   2. otherwise the row priced at the record's base;
+ *   3. otherwise NOTHING, when the base undercuts every row — `resolveUnitPrice`
+ *      with no selection returns the base, which is what the card printed and
+ *      what checkout charges, so an unset selection is the honest answer and any
+ *      row would be dearer than advertised;
+ *   4. otherwise the cheapest row.
+ *
+ * Returns the row itself, because one caller wants its id and another its name.
+ */
+function initialPricedRow(value: unknown, basePrice: number): Row | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const priced: Row[] = [];
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object") continue;
+    if (toAmount((entry as Row)["price"]) > 0) priced.push(entry as Row);
   }
-  return priced.reduce((min, variant) => (variant.price < min.price ? variant : min)).name;
+  if (!priced.length) return undefined;
+
+  const offline = ordinaryOfflineRow(priced);
+  if (offline) return offline;
+
+  const priceOfRow = (row: Row) => toAmount(row["price"]);
+  const cheapest = priced.reduce((min, row) => (priceOfRow(row) < priceOfRow(min) ? row : min));
+  if (basePrice > 0) {
+    const match = priced.find((row) => priceOfRow(row) === basePrice);
+    if (match) return match;
+    if (basePrice < priceOfRow(cheapest)) return undefined;
+  }
+  return cheapest;
+}
+
+/**
+ * The tier id the buy sheet should open on, or "" for none.
+ *
+ * `rows` is the sheet's own option-filtered list; the product supplies the base
+ * price. The sheet used to answer this itself with `ordinaryOfflineRow(rows)?.id
+ * ?? rows[0]?.id ?? ""`, and the `??` chain never reached the empty string — so
+ * on the 65 games whose only row is an online account it opened at 42,000 while
+ * the card beside it said 12,000. Asking the shared rule is what stops a fourth
+ * answer appearing the next time this is touched.
+ */
+export function initialTypeId(product: Row | null | undefined, rows?: unknown): string {
+  const list = rows === undefined ? pricingTypeRows(product) : rows;
+  const base = product && typeof product === "object" ? toAmount(product["price"]) : 0;
+  return String(initialPricedRow(list, base)?.["id"] ?? "");
 }
 
 /**

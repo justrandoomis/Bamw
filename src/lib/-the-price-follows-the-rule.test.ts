@@ -126,6 +126,50 @@ describe("«بحد اقصى ٩ الف» — the ceiling the owner lowered", () =
     expect(priceOf({ ...cheap, title: "Mario Kart World", isSwitch2: true })).toBe(9_000);
     expect(priceOf({ ...cheap, title: "Donkey Kong Bananza", isSwitch2: true })).toBe(8_000);
   });
+
+  it("holds his figure even when the cost carries the game into the other band", () => {
+    /*
+      FOUND BY THE DRY RUN ON THE LIVE CATALOGUE, NOT BY GUESSWORK.
+
+      Breath of the Wild's Switch 2 edition costs 2,500, which is above the
+      2,000 split — so the ladder, which lives inside the cheap band, never saw
+      it, and the dear band's arithmetic put it at 7,000. The owner said 8,000
+      for that exact game. The anchor is therefore checked BEFORE the split.
+    */
+    expect(
+      priceOf({
+        title: "The Legend of Zelda: Breath of the Wild – Nintendo Switch 2 Edition",
+        cost: 2_500,
+        price: 17_000,
+        isSwitch2: true,
+      }),
+    ).toBe(8_000);
+  });
+
+  it("refuses an anchor that would sell below cost, rather than obeying it blindly", () => {
+    /*
+      The one thing that outranks him naming a price: the shop must not lose
+      money on the sale. It has never fired on this catalogue — the dearest
+      anchored game costs 2,500 — but a supplier price rise should fall through
+      to the rules and be caught by the gate, not be written at a loss.
+    */
+    const decision = priceOf({ title: "Mario Kart World", cost: 20_000, price: 30_000 });
+    expect(decision).toBeGreaterThan(20_000);
+    expect(decision).not.toBe(9_000);
+  });
+
+  it("anchors only Bananza of the Donkey Kong games, and leaves the others to the rules", () => {
+    // «دونكي كونك ب٨ الف» in a sentence about Switch 2 games. The Switch 1
+    // titles take his own Switch 1 figure, and Tropical Freeze earns 8,000 on
+    // its own cost rather than on the anchor.
+    expect(priceOf({ title: "Donkey Kong Country Returns HD", cost: 1_927.2, price: 11_000 })).toBe(
+      7_000,
+    );
+    expect(priceOf({ title: "Mario vs. Donkey Kong", cost: 1_500, price: 11_000 })).toBe(7_000);
+    expect(
+      priceOf({ title: "Donkey Kong Country: Tropical Freeze", cost: 2_574, price: 12_000 }),
+    ).toBe(8_000);
+  });
 });
 
 describe("«لتكون ولتبدو ارخص للزبون» — the prices that are not whole thousands", () => {

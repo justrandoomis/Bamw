@@ -70,17 +70,72 @@ export const CHEAP_SWITCH2 = 8_000;
 /** IQD. «٧ متوسط» — and his price for a Switch 1 game however famous. */
 export const CHEAP_MIDDLE = 7_000;
 
+/** What the owner said a named game should cost, by generation. */
+export interface NamedPrice {
+  /** His figure for the Switch 2 edition. */
+  switch2?: number;
+  /** His figure for the Switch 1 edition. */
+  switch1?: number;
+  /** One figure, whichever generation — used when he gave only one. */
+  both?: number;
+}
+
 /**
  * The games the owner priced by name, and the price he gave.
  *
- * Matched through `comparableTitle`, so the catalogue's «Mario Kart World
- * [Switch 2]» and «mario kart world» are the same key. An anchor OVERRIDES the
- * ladder in both directions — it is the owner speaking about a specific game,
- * which outranks any rule inferred from his general sentence.
+ *   «مثلا لعبه زيلدا botw او totk تكون ٨ الف سويتش ٢ ،و ٧ الف سويتش ١
+ *    مثلا ماريو كارت ورلد ب٩ الف
+ *    دونكي كونك ب٨ الف»
+ *
+ * Matched through `comparableTitle` by containment — the same rule
+ * `bestSellerRank` uses — so the catalogue's «Mario Kart World [Switch 2]», its
+ * «The Legend of Zelda: Breath of the Wild – Nintendo Switch 2 Edition» and his
+ * «زيلدا botw» all reach the right row. Keys are tried longest first so a short
+ * one cannot swallow a longer one.
+ *
+ * An anchor OVERRIDES everything, INCLUDING THE COST SPLIT — it is the owner
+ * speaking about one specific game, which outranks any rule inferred from his
+ * general sentence. That is not decoration: the dry run put Breath of the
+ * Wild's Switch 2 edition at 7,000 because its cost of 2,500 carried it into
+ * the dear band, where the ladder does not reach. He said 8,000 for that exact
+ * game, and he is not wrong about his own shop.
+ *
+ * Only «دونكي كونك بنانزا» is anchored of the four Donkey Kong games in the
+ * catalogue. It is the Switch 2 title, released beside Mario Kart World, and it
+ * is what «دونكي كونك ب٨ الف» names in a sentence about Switch 2 games.
+ * Tropical Freeze reaches 8,000 on its own cost, and the two Switch 1 titles
+ * settle at 7,000 — which is his own figure for a Switch 1 game.
  */
-export const NAMED_PRICES: Readonly<Record<string, number>> = {
-  "mario kart world": 9_000,
+export const NAMED_PRICES: Readonly<Record<string, NamedPrice>> = {
+  "mario kart world": { both: 9_000 },
+  "zelda breath of the wild": { switch2: 8_000, switch1: 7_000 },
+  "zelda tears of the kingdom": { switch2: 8_000, switch1: 7_000 },
+  "donkey kong bananza": { both: 8_000 },
 };
+
+/** Longest key first, so «zelda breath of the wild» is never lost to a prefix. */
+const NAMED_KEYS: readonly string[] = Object.keys(NAMED_PRICES).sort(
+  (a, b) => b.length - a.length,
+);
+
+/**
+ * The price the owner gave this game by name, or null.
+ *
+ * `undefined` for a game he never mentioned; a number for one he did. The
+ * generation decides between his two Zelda figures, and a game with only one
+ * figure takes it whatever generation it is.
+ */
+export function namedPriceFor(title: unknown, isSwitch2?: boolean): number | null {
+  const text = comparableTitle(title);
+  if (!text) return null;
+  for (const key of NAMED_KEYS) {
+    if (text !== key && !text.includes(key)) continue;
+    const said = NAMED_PRICES[key]!;
+    const price = isSwitch2 ? (said.switch2 ?? said.both) : (said.switch1 ?? said.both);
+    return price ?? null;
+  }
+  return null;
+}
 /** IQD. The cost that divides the two rules. */
 export const COST_SPLIT = 2_000;
 /** IQD. «اجعل الربح اقل شي هو 5000» */
@@ -213,25 +268,32 @@ export function repriceOne(product: RepriceProduct): RepriceDecision {
   const cost = Number(product.cost);
   const price = Number(product.price);
 
+  /*
+    A GAME THE OWNER PRICED HIMSELF.
+
+    Checked before anything else — before the cost split, not inside the cheap
+    band — because it is him naming a game and a number, and no rule inferred
+    from his general sentence gets to argue with it. Inside the cheap band it
+    would have missed Breath of the Wild's Switch 2 edition, whose cost of 2,500
+    puts it in the other band entirely.
+
+    The one thing that can refuse it is the shop's own floor: a price at or
+    under cost is not a price, it is a loss, and the guard below would stop the
+    run anyway. Falling through to the rules is the honest answer there, and it
+    has never fired on this catalogue — the dearest anchored game costs 2,500.
+  */
+  const named = namedPriceFor(product.title, product.isSwitch2);
+  if (named !== null && named > cost) {
+    return {
+      ...base,
+      newPrice: named,
+      changed: named !== price,
+      reason: `سعر حدّده المالك بالاسم: ${named.toLocaleString("en-US")}`,
+      skipped: null,
+    };
+  }
+
   if (cost <= COST_SPLIT) {
-    /*
-      A GAME THE OWNER PRICED HIMSELF.
-
-      Checked before anything else, and it wins in both directions — this is
-      him naming a game and a number, which no rule inferred from his general
-      sentence gets to argue with.
-    */
-    const named = NAMED_PRICES[comparableTitle(product.title)];
-    if (named !== undefined) {
-      return {
-        ...base,
-        newPrice: named,
-        changed: named !== price,
-        reason: `سعر حدّده المالك بالاسم: ${named.toLocaleString("en-US")}`,
-        skipped: null,
-      };
-    }
-
     // «اذا كان سعر اللعبه ٥ او ٧ اتركها» — said outright, so it is checked first.
     if (LEAVE_ALONE.has(price)) {
       return {
