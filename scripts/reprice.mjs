@@ -30,6 +30,13 @@ import { build } from "esbuild";
 import { readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
+import {
+  bumpAfterOverlayWrites,
+  overlayProductIds,
+  readOverlayProduct,
+  writeOverlayProduct,
+} from "./lib/store-overlay.mjs";
+
 const args = Object.fromEntries(
   process.argv
     .slice(2)
@@ -133,6 +140,14 @@ const inputs = products.map((product) => ({
   schemaId: String(product["schemaId"] ?? product["schema_id"] ?? ""),
   cost: num(product["cost"]) ?? num(product["costPrice"]) ?? num(product["baseCost"]),
   price: num(product["price"]) ?? num(product["basePrice"]),
+  /*
+    The one thing that lifts a cheap-band game above 7,000: «٨ العاب قويه، ٩
+    العاب قويه جدا وسويتش ٢», and every 8,000 and 9,000 the owner named is a
+    Switch 2 title. Answered by the app's own detector, which reads the
+    platform, the `switch2` object, the enhanced flag and the tags — not by a
+    second guess at what a Switch 2 game looks like.
+  */
+  isSwitch2: app.isNintendoSwitch2Product(product),
 }));
 
 /*
@@ -183,6 +198,7 @@ for (const row of disagreeing) {
         schemaId: String(product["schemaId"] ?? product["schema_id"] ?? ""),
         cost: costOf.get(row.id) ?? null,
         price: Number(row.accountPrice),
+        isSwitch2: app.isNintendoSwitch2Product(product),
       })
     : null;
   if (decision && !decision.skipped && Number(decision.newPrice) === Number(row.price)) {
@@ -322,6 +338,47 @@ for (const [price, count] of [...after.entries()].sort((a, b) => a[0] - b[0])) {
 }
 say();
 
+/*
+  THE FOUR GAMES THE OWNER PRICED BY NAME, AND WHERE THE RULES PUT THEM.
+
+    «مثلا لعبه زيلدا botw او totk تكون ٨ الف سويتش ٢ ،و ٧ الف سويتش ١
+     مثلا ماريو كارت ورلد ب٩ الف
+     دونكي كونك ب٨ الف»
+
+  Printed as a table rather than checked in code, because the answer depends on
+  what the catalogue actually says about each row's generation — and if the
+  Switch 2 detector is wrong about one of them, that is a fact to see before a
+  price is written, not an assertion to trip over afterwards.
+*/
+const NAMED_BY_OWNER = [
+  [/breath of the wild|أنفاس البرية/i, "زيلدا BOTW — ٨ سويتش ٢ / ٧ سويتش ١"],
+  [/tears of the kingdom|دموع المملكة/i, "زيلدا TOTK — ٨ سويتش ٢ / ٧ سويتش ١"],
+  [/mario kart world/i, "ماريو كارت ورلد — ٩"],
+  [/donkey kong/i, "دونكي كونك — ٨"],
+];
+const inputById = new Map(inputs.map((row) => [row.id, row]));
+say("## الألعاب التي سمّاها المالك");
+say();
+say("| اللعبة | ما قاله | سويتش ٢؟ | التكلفة | الآن | بعد القاعدة |");
+say("|---|---|:-:|---:|---:|---:|");
+for (const [pattern, said] of NAMED_BY_OWNER) {
+  const rows = decisions.filter((d) => pattern.test(d.title));
+  if (!rows.length) {
+    say(`| — | ${said} | | | | **غير موجودة في الكتالوج** |`);
+    continue;
+  }
+  for (const d of rows.slice(0, 6)) {
+    const input = inputById.get(d.id);
+    say(
+      `| ${d.title.slice(0, 40)} | ${said} | ${input?.isSwitch2 ? "نعم" : "لا"} | ` +
+        `${(d.cost ?? 0).toLocaleString("en-US")} | ` +
+        `${(d.oldPrice ?? 0).toLocaleString("en-US")} | ` +
+        `${d.skipped ? d.skipped : (d.newPrice ?? 0).toLocaleString("en-US")} |`,
+    );
+  }
+}
+say();
+
 const payload = {
   apply: APPLY,
   moving: moving.map((d) => ({
@@ -364,12 +421,52 @@ const wanted = new Map(moving.map((d) => [d.id, d.newPrice]));
   itself moved. Everything else is still refused by the rehearsal below.
 */
 const mirrorWanted = new Map(staleMirrors.map((row) => [row.id, Number(row.price)]));
-for (const id of new Set([...wanted.keys(), ...mirrorWanted.keys()])) {
-  const before = byId.get(id);
-  if (!before) fail(`${id} ليس في الكتالوج`);
-  const patched = { ...before };
+/*
+  WHICH PRODUCTS ARE NOT SERVED FROM THE CHUNKS AT ALL.
+
+  See `scripts/lib/store-overlay.mjs`. `updateStore` writes the chunked
+  catalogue; a product owning a `store:product:<id>` row is served from THAT
+  row and the chunk write is invisible. This script wrote only the chunks
+  until 2026-09-22, when its own read-back caught forty products sitting at
+  the price they started with.
+*/
+const overlayIds = await overlayProductIds(app);
+
+const touched = new Set([...wanted.keys(), ...mirrorWanted.keys()]);
+
+/*
+  The raw granular documents, read BEFORE the rehearsal.
+
+  The rehearsal must run against the document that will actually be written.
+  Rehearsing the normalized product from `getStore()` while writing the raw
+  row rehearses a document that never existed — which is how the one document
+  that can go wrong becomes the one never checked.
+*/
+const rawOverlay = new Map();
+for (const id of touched) {
+  if (!overlayIds.has(id)) continue;
+  const stored = await readOverlayProduct(app, id);
+  if (!stored) fail(`${id}: صف \`store:product:\` غير قابل للقراءة — لن أكتب فوقه`);
+  rawOverlay.set(id, stored);
+}
+
+const patchOne = (doc, id) => {
+  const patched = { ...doc };
   if (wanted.has(id)) patched.price = wanted.get(id);
   if (mirrorWanted.has(id)) patched.accountPrice = mirrorWanted.get(id);
+  return patched;
+};
+
+for (const id of touched) {
+  /*
+    The rehearsal runs on whichever document this product actually lives in —
+    the raw granular row when it has one, the merged catalogue product
+    otherwise. Both are held to the same rule: `price` and, only for a proved
+    stale mirror, `accountPrice`. Nothing else.
+  */
+  const before = rawOverlay.get(id) ?? byId.get(id);
+  if (!before) fail(`${id} ليس في الكتالوج`);
+  const patched = patchOne(before, id);
   const price = patched.price;
   for (const key of new Set([...Object.keys(before), ...Object.keys(patched)])) {
     if (key === "price" && wanted.has(id)) continue;
@@ -381,26 +478,38 @@ for (const id of new Set([...wanted.keys(), ...mirrorWanted.keys()])) {
   if (patched.price !== price) fail(`البروفة: ${id}.price لم يُضبط`);
 }
 
-let written = 0;
-await app.updateStore((current) => {
-  /*
-    Reset, because `updateStore` re-reads and re-applies on a revision
-    conflict, up to four times. A counter that only incremented would report
-    four times the products it changed.
-  */
-  written = 0;
-  const list = Array.isArray(current?.products) ? current.products : [];
-  const next = list.map((item) => {
-    const id = String(item?.id ?? "");
-    if (!wanted.has(id) && !mirrorWanted.has(id)) return item;
-    written += 1;
-    const patched = { ...item };
-    if (wanted.has(id)) patched.price = wanted.get(id);
-    if (mirrorWanted.has(id)) patched.accountPrice = mirrorWanted.get(id);
-    return patched;
+const overlayWrites = [...touched].filter((id) => overlayIds.has(id));
+const chunkWrites = [...touched].filter((id) => !overlayIds.has(id));
+say(`- عبر صفوف \`store:product:<id>\`: **${overlayWrites.length}**`);
+say(`- عبر كتل الكتالوج: **${chunkWrites.length}**`);
+say();
+
+for (const id of overlayWrites) {
+  await writeOverlayProduct(app, id, patchOne(rawOverlay.get(id), id));
+}
+/* The bare INSERT moves no revision, so the edge would serve the old price. */
+await bumpAfterOverlayWrites(app, overlayWrites.length);
+
+let written = overlayWrites.length;
+if (chunkWrites.length) {
+  const chunkSet = new Set(chunkWrites);
+  await app.updateStore((current) => {
+    /*
+      Reset, because `updateStore` re-reads and re-applies on a revision
+      conflict, up to four times. A counter that only incremented would report
+      four times the products it changed.
+    */
+    written = overlayWrites.length;
+    const list = Array.isArray(current?.products) ? current.products : [];
+    const next = list.map((item) => {
+      const id = String(item?.id ?? "");
+      if (!chunkSet.has(id)) return item;
+      written += 1;
+      return patchOne(item, id);
+    });
+    return { ...current, products: next };
   });
-  return { ...current, products: next };
-});
+}
 
 /*
   Read back, field by field, FROM D1 — not from this process's own memory.
@@ -465,6 +574,19 @@ const settled = app
       schemaId: String(product["schemaId"] ?? product["schema_id"] ?? ""),
       cost: num(product["cost"]) ?? num(product["costPrice"]) ?? num(product["baseCost"]),
       price: num(product["price"]) ?? num(product["basePrice"]),
+      /*
+        THE SAME QUESTION THE PROPOSAL ASKED, OR THIS CHECK IS NOT THE RULES.
+
+        `inputs` above passes the generation and this did not, so every game
+        was re-checked as a Switch 1 title — and the rung for those is 7,000.
+        Ninety Switch 2 games sitting correctly at 8,000 were therefore
+        reported as «ما زال 8000، والمطلوب 7000» and failed a run that had
+        written exactly what it meant to.
+
+        A verification that asks a different question from the rule it is
+        verifying is not a verification; it is a second, worse rule.
+      */
+      isSwitch2: app.isNintendoSwitch2Product(product),
     })),
   )
   .filter((d) => d.changed);

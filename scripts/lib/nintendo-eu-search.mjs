@@ -35,7 +35,7 @@
  * chain every other candidate goes through.
  */
 
-import { normalizeTitle } from "./nintendo-store.mjs";
+import { normalizeTitle, titleAlternatives, titlesAgree } from "./nintendo-store.mjs";
 
 const ENDPOINT = "https://search.nintendo-europe.com/en/select";
 
@@ -64,31 +64,64 @@ export async function europeRows(title, fetchJson) {
   const bare = String(title ?? "")
     .replace(PLATFORM_BRACKET, "")
     .trim();
-  const wanted = normalizeTitle(bare);
-  if (!wanted) return { ok: false, reason: "no comparable title" };
-
-  const query = escapeSolr(bare).trim();
-  if (!query) return { ok: false, reason: "title has no searchable words" };
-
-  const url =
-    `${ENDPOINT}?q=${encodeURIComponent(query)}` +
-    `&fq=${encodeURIComponent("type:GAME AND *:*")}` +
-    `&rows=24&wt=json`;
-
-  const found = await fetchJson(url);
-  if (!found.ok) return { ok: false, reason: `search HTTP ${found.status ?? 0}` };
-
-  const docs = found.json?.response?.docs;
-  if (!Array.isArray(docs) || docs.length === 0) return { ok: false, reason: "no rows" };
+  if (!normalizeTitle(bare)) return { ok: false, reason: "no comparable title" };
 
   /*
-    Equality, not containment, and on the same normalisation the url-key path
-    uses. Relevance ranking is what makes a search dangerous here; an exact
-    title is the only thing worth acting on.
+    ONE SEARCH PER ALTERNATIVE, IN ORDER, AND THE FIRST THAT ANSWERS WINS.
+
+    «Pokémon Sword / Shield» is two games, and Europe has no row with that
+    exact title — so the whole row was refused with «no row with this exact
+    title» while both halves sat in the index.
+
+    Deliberately a loop and not one pooled search: pooling would put «Pokémon
+    Sword» and «Pokémon Shield» in `exact` together and trip the two-rows
+    refusal downstream, which reads several exact matches as an ambiguity it
+    must not guess at. Asked one at a time, each answer is unambiguous.
+
+    The whole title is always tried first, so nothing that resolves today stops
+    resolving, and the LAST failure's reason is what gets reported.
   */
-  const exact = docs.filter((row) => normalizeTitle(row?.title) === wanted);
-  if (exact.length === 0) return { ok: false, reason: "no row with this exact title" };
-  return { ok: true, rows: exact };
+  let lastReason = "no row with this exact title";
+  for (const candidate of titleAlternatives(bare)) {
+    const wanted = normalizeTitle(candidate);
+    if (!wanted) continue;
+
+    const query = escapeSolr(candidate).trim();
+    if (!query) {
+      lastReason = "title has no searchable words";
+      continue;
+    }
+
+    const url =
+      `${ENDPOINT}?q=${encodeURIComponent(query)}` +
+      `&fq=${encodeURIComponent("type:GAME AND *:*")}` +
+      `&rows=24&wt=json`;
+
+    const found = await fetchJson(url);
+    if (!found.ok) {
+      lastReason = `search HTTP ${found.status ?? 0}`;
+      continue;
+    }
+
+    const docs = found.json?.response?.docs;
+    if (!Array.isArray(docs) || docs.length === 0) {
+      lastReason = "no rows";
+      continue;
+    }
+
+    /*
+      Equality, not containment, and on the same normalisation the url-key path
+      uses. Relevance ranking is what makes a search dangerous here; an exact
+      title is the only thing worth acting on.
+    */
+    const exact = docs.filter((row) => normalizeTitle(row?.title) === wanted);
+    if (exact.length === 0) {
+      lastReason = "no row with this exact title";
+      continue;
+    }
+    return { ok: true, rows: exact };
+  }
+  return { ok: false, reason: lastReason };
 }
 
 /**
@@ -116,13 +149,133 @@ export async function searchEuropeGenerations(title, fetchJson) {
 }
 
 /**
+ * Nintendo's OWN page id for this row, taken from the store link the supplier
+ * sheet gave us.
+ *
+ * `https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Pokemon-Scarlet-2179556.html`
+ * → `2179556`. Measured on `import-sources/catalogue.csv`: 1,469 of the 1,517
+ * rows with a store link end in one, and 346 of the games still missing a
+ * square card carry it.
+ */
+export function europeIdFromStoreUrl(storeUrl) {
+  const text = String(storeUrl ?? "");
+  if (!/nintendo\.com/i.test(text)) return "";
+  return text.match(/-(\d{5,9})\.html(?:[?#]|$)/)?.[1] ?? "";
+}
+
+/**
+ * The European row for Nintendo's own page id — identity without a title.
+ *
+ * THE POINT OF THIS. The title route has to refuse a great deal: a title that
+ * is not exactly equal, two rows sharing one title, a row on the other
+ * generation. Every one of those refusals is right, because a search ranks by
+ * relevance and relevance is how a game ends up wearing another game's art.
+ *
+ * The store link removes the search from the question. It is Nintendo's own
+ * URL for the exact row the importer matched, and the number at the end of it
+ * is Nintendo's own product id. A row whose `url` carries that id IS this
+ * game; there is nothing to rank and nothing to be wrong about.
+ *
+ * Two queries are tried because the index's field name for that id is not
+ * documented and this will not pretend to know it. Whichever query returns a
+ * row, the row is accepted ONLY when its own `url` ends in `-<id>.html`. So a
+ * query that matches for the wrong reason still cannot produce a wrong answer
+ * — the acceptance test is on the row, not on the query.
+ */
+export async function europeRowByStoreUrl(storeUrl, fetchJson) {
+  const id = europeIdFromStoreUrl(storeUrl);
+  if (!id) return { ok: false, reason: "no Nintendo page id in the store link" };
+
+  const wanted = new RegExp(`-${id}\\.html$`);
+  const queries = [
+    `${ENDPOINT}?q=${encodeURIComponent(id)}` +
+      `&fq=${encodeURIComponent("type:GAME AND *:*")}&rows=24&wt=json`,
+    `${ENDPOINT}?q=*%3A*` +
+      `&fq=${encodeURIComponent(`type:GAME AND url:*-${id}.html`)}&rows=8&wt=json`,
+  ];
+
+  let lastReason = "no row carries this Nintendo page id";
+  for (const url of queries) {
+    const found = await fetchJson(url);
+    if (!found.ok) {
+      lastReason = `search HTTP ${found.status ?? 0}`;
+      continue;
+    }
+    const docs = found.json?.response?.docs;
+    if (!Array.isArray(docs) || docs.length === 0) {
+      lastReason = "no rows";
+      continue;
+    }
+    /*
+      The acceptance test, and it is the whole guard: the row must be the page
+      the store link points at. Not similar to it, not ranked first for it.
+    */
+    const exact = docs.filter((row) => wanted.test(String(row?.url ?? "")));
+    if (exact.length === 1) return { ok: true, rows: exact };
+    if (exact.length > 1) {
+      lastReason = `${exact.length} rows share Nintendo's own page id`;
+      continue;
+    }
+  }
+  return { ok: false, reason: lastReason };
+}
+
+/**
  * The square art Nintendo Europe holds for this exact game, or null.
  *
  * @param title     the shelf title, bracket and all
  * @param wantTwo   true when this shop's line is a Switch 2 edition
  * @param fetchJson injected so the caller owns timeouts and retries
  */
-export async function searchEuropeSquare(title, wantTwo, fetchJson) {
+export async function searchEuropeSquare(title, wantTwo, fetchJson, storeUrl = "") {
+  /*
+    NINTENDO'S OWN PAGE FIRST, WHEN THE SHEET GAVE US ONE.
+
+    Measured on the live catalogue: 346 of the 372 games still without a square
+    card carry `officialStoreUrl`, against 3 with an nsuid and 0 with a product
+    code. It is by far the most widely held key this shop has, and it is an
+    exact pointer rather than a search term — so it goes ahead of the title,
+    for the same reason a url key goes ahead of a title everywhere else here.
+
+    A row found this way needs no generation filter and no
+    one-row-per-title rule: those exist to survive a relevance ranking, and
+    there is no ranking here. The id either names this row or it does not.
+  */
+  if (storeUrl) {
+    const byId = await europeRowByStoreUrl(storeUrl, fetchJson);
+    /*
+      AND THE ROW MUST STILL BE THIS GAME.
+
+      The store link comes from the same supplier sheet, matched by the same
+      importer, as the nsuid an adversarial review destroyed — and the sheet is
+      demonstrably wrong about some rows: «Railway Nippon! Real Pro» is given
+      the store page for «Nippon Marathon», «Fate/EXTELLA» the page for
+      «Fate/EXTELLA LINK», «Guilty Gear -Strive-» the 1998 «GUILTY GEAR».
+      Following the link without checking would fetch the wrong game's art with
+      complete confidence.
+
+      What the id DOES buy, and it is real, is the removal of the ranking: no
+      relevance ordering decides anything, and two editions sharing a title no
+      longer make the answer ambiguous. The title still has to agree, and it is
+      checked against NINTENDO's live row rather than against the sheet's own
+      note about it.
+    */
+    if (byId.ok && titlesAgree(byId.rows[0]?.title, title)) {
+      const row = byId.rows[0];
+      const square = String(row?.image_url_sq_s ?? "").trim();
+      if (square) {
+        return {
+          ok: true,
+          url: square.startsWith("//") ? `https:${square}` : square,
+          provenance:
+            `Nintendo of Europe, square key art from the store page the supplier sheet ` +
+            `names for this row — "${row.title}"`,
+          matchedTitle: String(row.title ?? ""),
+        };
+      }
+    }
+  }
+
   const found = await europeRows(title, fetchJson);
   if (!found.ok) return found;
   const exact = found.rows;

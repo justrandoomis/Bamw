@@ -20,6 +20,24 @@ export function slugifyTitle(title) {
       // Before NFKD, which decomposes ™ into the letters "TM".
       .replace(/[™®©]/g, "")
       .normalize("NFKD")
+      /*
+        THE COMBINING MARKS NFKD LEAVES BEHIND.
+
+        NFKD turns «é» into `e` + U+0301, and U+0301 is not in `[a-zA-Z0-9]` —
+        so the replace below turned it into a HYPHEN and every Pokémon key in
+        this catalogue read `poke-mon`. Not one of them is a page, which is why
+        the most famous games in the shop are the ones without a square cover.
+
+        This repository already knew the answer in two other places —
+        `src/lib/productSort.ts` and `src/lib/search/normalize.ts` both strip
+        `[\u0300-\u036f]` right after NFKD, with the same comment. This is the
+        one place that forgot. `normalizeTitle` below escapes it by luck: it
+        replaces with "" instead of "-", so its comparisons were always right.
+
+        Nintendo's own spelling, from this shop's own sheet, is plain:
+        `.../Pokemon-Scarlet-2179556.html`, `.../Pokken-Tournament-DX-…`.
+      */
+      .replace(/[\u0300-\u036f]/g, "")
       .replace(/['’]/g, "")
       .replace(/&/g, " and ")
       // Nintendo writes "Mario + Rabbids" as "mario-plus-rabbids".
@@ -350,6 +368,67 @@ const bareTitle = (title) =>
  * "Nintendo Switch Sports" and "Everybody 1-2-Switch!", where those words are
  * the game's name. Both spellings are offered and the first that answers wins.
  */
+/**
+ * The other games one catalogue row might be naming.
+ *
+ * Three of the shop's most famous rows are not one product on Nintendo's store:
+ *
+ *   «Pokémon Sword / Shield»                            — two games
+ *   «Pokémon Scarlet / Violet»                          — two games
+ *   «Pokémon Scarlet + The Hidden Treasure of Area Zero» — a game and its DLC
+ *
+ * Nintendo sells each half separately, so no key built from the whole row can
+ * ever resolve, however the accents are spelled. The whole title always comes
+ * FIRST here, so nothing that resolves today stops resolving; the alternatives
+ * are only reached after it fails.
+ *
+ * ONLY A SPACED SLASH SPLITS. Measured on `import-sources/catalogue.csv`: four
+ * rows carry «X / Y» and all four name two Pokémon games, while six carry an
+ * unspaced one — `Fate/stay night`, `FINAL FANTASY X/X-2`, `.hack//G.U.`,
+ * `Ultraman R/B` — and every one of those is a single game whose name must not
+ * be cut in half.
+ */
+export function titleAlternatives(title) {
+  const out = [];
+  const add = (value) => {
+    const text = String(value ?? "").trim();
+    if (text && !out.includes(text)) out.push(text);
+  };
+  const whole = String(title ?? "").trim();
+  add(whole);
+
+  const sides = whole.split(/\s+\/\s+/);
+  if (sides.length > 1) {
+    // «Pokémon Sword / Shield» → the lead's franchise is «Pokémon», so the
+    // second half becomes «Pokémon Shield» rather than the bare «Shield».
+    const lead = sides[0].replace(/\s+\S+$/, "").trim();
+    add(sides[0].trim());
+    for (const side of sides.slice(1)) if (lead) add(`${lead} ${side.trim()}`);
+  }
+
+  // A game plus its add-on: «Pokémon Scarlet + The Hidden Treasure of Area Zero».
+  const joined = whole.split(/\s+\+\s+/);
+  if (joined.length > 1) add(joined[0].trim());
+
+  return out;
+}
+
+/**
+ * Do these two titles name the same game?
+ *
+ * EQUALITY, under the same normalisation the url-key path compares with, and
+ * across each side's `titleAlternatives` so a two-game row can agree with
+ * either half. Never containment: «Toki» is a substring of «Harukanaru Toki no
+ * Naka de 7» and they are not the same game — that exact pair is one of the
+ * wrong matches this exists to refuse.
+ */
+export function titlesAgree(a, b) {
+  const left = titleAlternatives(a).map(normalizeTitle).filter(Boolean);
+  const right = titleAlternatives(b).map(normalizeTitle).filter(Boolean);
+  if (!left.length || !right.length) return false;
+  return left.some((one) => right.includes(one));
+}
+
 export function candidateKeys(doc) {
   const title = String(doc.title ?? doc.name ?? "");
   const two = isSwitch2(`${doc.platform ?? ""} ${title} ${doc.slug ?? ""}`);
@@ -384,7 +463,20 @@ export function candidateKeys(doc) {
     /[-–—:]?\s*\bnintendo\s*switch\s*2\s*edition\b.*$/i,
     "",
   );
-  addBase(withoutEdition);
+  /*
+    NINTENDO'S OWN TITLE FOR THIS ROW, WHEN THE SHOP ALREADY HAS IT.
+
+    `catalogueImport` stores the supplier sheet's `Matched Title` — which is
+    Nintendo's own name for the row — in `canonicalTitle`. For «Pokémon Scarlet
+    + The Hidden Treasure of Area Zero» that field already says «Pokémon
+    Scarlet». Asking the record before doing string surgery on the title is the
+    smaller fix and the more honest one; the surgery below stays for the rows
+    that have no canonical title.
+  */
+  const canonical = String(doc.canonicalTitle ?? "").trim();
+  if (canonical) for (const variant of titleAlternatives(canonical)) addBase(variant);
+
+  for (const variant of titleAlternatives(withoutEdition)) addBase(variant);
   // Console words removed, for the titles where they are packaging, not a name.
   addBase(
     withoutEdition
@@ -408,9 +500,16 @@ export function candidateKeys(doc) {
       if (!keys.includes(k)) keys.push(k);
     }
   }
-  // Enough shapes to find the page; not so many that a missing game costs a
-  // dozen requests before it is reported.
-  return keys.filter(Boolean).slice(0, 10);
+  /*
+    Enough shapes to find the page; not so many that a missing game costs a
+    dozen requests before it is reported.
+
+    Raised from 10 when the split titles and the canonical title were added:
+    they push the slug-derived base — the last one added and the one that
+    rescues a title the sheet spells differently — off the end of a ten-key
+    list on exactly the rows that need the most shapes.
+  */
+  return keys.filter(Boolean).slice(0, 16);
 }
 
 export function apolloProducts(html) {
@@ -453,9 +552,23 @@ export function identityMatch(doc, node) {
   }
   const nsuidConflict = Boolean(storedNsuid && nodeNsuid && storedNsuid !== nodeNsuid);
 
-  const want = bareTitle(doc.title ?? doc.name);
+  /*
+    EQUALITY AGAINST ANY OF THE ROW'S TITLES, NOT JUST THE ROW'S OWN.
+
+    A two-game row reaches «Pokémon Shield»'s page through `titleAlternatives`,
+    and this check would then refuse it with «title "Pokémon Shield" is not
+    "Pokémon Sword / Shield"» — found, and thrown away. The set of acceptable
+    titles widens; the comparison does not relax, so the sequel trap below is
+    exactly as closed as it was.
+  */
+  const wants = [
+    ...titleAlternatives(doc.title ?? doc.name),
+    ...titleAlternatives(doc.canonicalTitle ?? ""),
+  ]
+    .map(bareTitle)
+    .filter(Boolean);
   const got = bareTitle(node.name);
-  if (!want || !got) return { ok: false, reason: "no comparable title" };
+  if (!wants.length || !got) return { ok: false, reason: "no comparable title" };
   /*
     Equality, not containment.
 
@@ -470,7 +583,9 @@ export function identityMatch(doc, node) {
     A title that does not match exactly is reported and left alone. Missing a
     page costs a report line; taking the wrong one corrupts a product.
   */
-  if (want !== got) return { ok: false, reason: `title "${node.name}" is not "${doc.title}"` };
+  if (!wants.includes(got)) {
+    return { ok: false, reason: `title "${node.name}" is not "${doc.title}"` };
+  }
 
   const wantTwo = isSwitch2(`${doc.platform ?? ""} ${doc.title ?? ""} ${doc.slug ?? ""}`);
   const gotTwo = isSwitch2(

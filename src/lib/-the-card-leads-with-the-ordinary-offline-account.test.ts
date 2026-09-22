@@ -30,7 +30,13 @@ import path from "node:path";
 
 import { describe, expect, it } from "vitest";
 
-import { listingPricing, ordinaryOfflineRow, resolveUnitPrice } from "./productPricing";
+import {
+  initialTypeId,
+  initialVariantName,
+  listingPricing,
+  ordinaryOfflineRow,
+  resolveUnitPrice,
+} from "./productPricing";
 
 const dialogs = readFileSync(path.resolve(__dirname, "../hub/gamehub/Dialogs.tsx"), "utf8");
 const gameCard = readFileSync(path.resolve(__dirname, "../components/cards/GameCard.tsx"), "utf8");
@@ -161,15 +167,78 @@ describe("the card and the till agree", () => {
     expect(resolveUnitPrice(onlineOnly).unitPrice).toBe(listingPricing(onlineOnly).unitPrice);
   });
 
-  it("the buy sheet opens on the same tier, not on array order", () => {
+  /*
+    THE FALLBACK THIS FILE ITSELF LOCKED IN, AND WHAT IT COST.
+
+    The test here used to assert the sheet's line VERBATIM, fallback and all:
+
+      setSelectedTypeId(String(offlineRow?.["id"] ?? initialTypes[0]?.id ?? ""));
+
+    and so it passed while the sheet did the opposite of the comment above it.
+    A `??` chain never reaches its last arm when the middle one exists, and on
+    these 65 games `initialTypes[0]` is the online row — so the card said
+    12,000, the hero said 12,000, and the sheet opened at 42,000. Asserting the
+    source text proved only that the source text was what I had written.
+
+    So the rule is RUN here instead of read: the sheet's own selection
+    expression, priced through the same resolver checkout uses, against the
+    number the card printed. A string check for the fallback's absence stays
+    underneath, because that one line is the whole fault.
+  */
+  it("the buy sheet opens on a tier that costs what the card advertised", () => {
+    for (const product of [onlineOnly, bothTiers]) {
+      const typeId = initialTypeId(product);
+      const sheet = resolveUnitPrice(product, typeId ? { typeId } : {});
+      expect(sheet.unitPrice, product.id).toBe(listingPricing(product).unitPrice);
+    }
+  });
+
+  it("and asks the shared rule rather than carrying its own", () => {
     expect(dialogs).toContain(
-      'import { ordinaryOfflineRow, resolveUnitPrice } from "@/lib/productPricing";',
+      'import { initialTypeId, resolveUnitPrice } from "@/lib/productPricing";',
     );
-    expect(dialogs).toContain("const offlineRow = ordinaryOfflineRow(initialTypes);");
     expect(dialogs).toContain(
-      'setSelectedTypeId(String(offlineRow?.["id"] ?? initialTypes[0]?.id ?? ""));',
+      "setSelectedTypeId(initialTypeId(game.rawProduct ?? null, initialTypes));",
     );
-    expect(dialogs).not.toContain('setSelectedTypeId(initialTypes[0]?.id ?? "");');
+    expect(dialogs).not.toContain("const offlineRow = ordinaryOfflineRow(initialTypes);");
+  });
+
+  /*
+    AND THE THIRD SURFACE, FOUND WITH THE SECOND.
+
+    `ProductDetails` opens on a variant chosen by `initialVariantName`, which
+    was "the variant priced at the base, else the CHEAPEST" — the same arithmetic
+    the card had before this change, and wrong in the same way on the same 65
+    games. It now follows `listingPricing` step for step.
+  */
+  it("the details page opens on the price the card printed", () => {
+    for (const product of [onlineOnly, bothTiers]) {
+      const variants = product.types.map((row) => ({ ...row, name: String(row.name) }));
+      const name = initialVariantName(variants, product.price, []);
+      const picked = variants.find((row) => row.name === name);
+      const opened = resolveUnitPrice(product, picked ? { typeId: picked.id } : {});
+      expect(opened.unitPrice, product.id).toBe(listingPricing(product).unitPrice);
+    }
+  });
+
+  it("all three surfaces answer with the same row, not merely the same price", () => {
+    for (const product of [onlineOnly, bothTiers]) {
+      const variants = product.types.map((row) => ({ ...row, name: String(row.name) }));
+      const sheetRow = initialTypeId(product);
+      const pageRow = variants.find(
+        (row) => row.name === initialVariantName(variants, product.price, []),
+      );
+      expect(String(pageRow?.id ?? ""), product.id).toBe(sheetRow);
+      expect(ordinaryOfflineRow(product.types)?.["id"] ?? "", product.id).toBe(
+        sheetRow || (ordinaryOfflineRow(product.types)?.["id"] ?? ""),
+      );
+    }
+  });
+
+  it("leaves nothing selected when the base undercuts every row, which is what the card shows", () => {
+    const variants = onlineOnly.types.map((row) => ({ ...row, name: String(row.name) }));
+    expect(initialVariantName(variants, onlineOnly.price, [])).toBe("");
+    expect(listingPricing(onlineOnly).unitPrice).toBe(12000);
   });
 
   it("the other card reads the same rule instead of the raw base price", () => {

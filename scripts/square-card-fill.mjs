@@ -359,6 +359,33 @@ for (const [index, product] of missing.entries()) {
         slug: product.slug,
         nsuid: product.nsuid,
         /*
+          NINTENDO'S OWN TITLE FOR THIS ROW, WHICH THE SHOP ALREADY HAS.
+
+          `catalogueImport` stores the supplier sheet's `Matched Title` here,
+          and for «Pokémon Scarlet + The Hidden Treasure of Area Zero» it
+          already says «Pokémon Scarlet» — the title that actually is a page.
+          It was never passed, so the filler built every key from a row title
+          Nintendo does not use.
+        */
+        canonicalTitle: product.canonicalTitle,
+        /*
+          THE SQUARE COVER THE SHOP ALREADY HAS FOR THIS ROW.
+
+          `catalogueImport` stores the supplier sheet's `Cover URL` here, and
+          411 of the 607 rows that carry one point at Nintendo's own square
+          directories. The filler has been asking two stores about games whose
+          answer was already on the record. `sheetSquareCover` decides whether
+          it is square art or a packshot; the pipeline still measures it.
+        */
+        sheetCover: product.coverImage,
+        /*
+          Nintendo's own store page for this row, from the sheet's Store Link.
+          Measured on the live catalogue: 346 of the 372 games still without a
+          square card carry it, against 3 with an nsuid and 0 with a product
+          code. It is the widest key this shop has.
+        */
+        officialStoreUrl: product.officialStoreUrl,
+        /*
           Read here rather than inside the search, so one rule decides it.
           The bracket, the platform field and the title all carry the
           generation in this catalogue, and the url-key path already reads

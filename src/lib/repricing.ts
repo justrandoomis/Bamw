@@ -24,10 +24,118 @@
  * 985 of the 1,549 games costing 2,000 or less are at 5,000 today.
  */
 
+import { comparableTitle } from "@/lib/bestSellers";
+
 /** IQD. Below this a game must not be sold, whatever it cost. */
 export const CHEAP_FLOOR = 5_000;
-/** IQD. «ولنقل ١٢ الف كحد اقصى في الالعاب القويه جدا» */
-export const CHEAP_CEILING = 12_000;
+/**
+ * IQD. The top of the cheap band, LOWERED from 12,000 on the owner's
+ * instruction: «اجعل السعر يعرض بحد اقصى ٩ الف بدلا من ١٢».
+ */
+export const CHEAP_CEILING = 9_000;
+
+/* ------------------------------------------------------------------
+ * THE LADDER, in the owner's own words:
+ *
+ *   «الالعاب الاقل من ٢ الف تكون بحد اقصى ٩ الف
+ *    ( ٥ اغلبها وأكثرها، ٧ متوسط ، ٨ العاب قويه،
+ *      ٩ العاب قويه جدا وسويتش ٢ )»
+ *
+ * and the four games he priced himself:
+ *
+ *   «مثلا لعبه زيلدا botw او totk تكون ٨ الف سويتش ٢ ،و ٧ الف سويتش ١
+ *    مثلا ماريو كارت ورلد ب٩ الف
+ *    دونكي كونك ب٨ الف»
+ *
+ * Read together, every 8,000 and 9,000 he named is a SWITCH 2 title and his
+ * only Switch 1 figure is 7,000 — including for Breath of the Wild, which is
+ * the fourth best-selling Switch game there is. So the generation, not the
+ * fame, is what lifts a price above 7,000:
+ *
+ *   9,000  Switch 2, and named by the owner himself
+ *   8,000  Switch 2
+ *   7,000  everything else
+ *   5,000  the floor, and where most of the catalogue already sits
+ *
+ * The 9,000 rung is deliberately ANCHOR-ONLY. There is no signal in this shop
+ * that separates «قويه» from «قويه جدا» in the direction the owner's examples
+ * point: Mario Kart World must be 9,000 and Breath of the Wild's Switch 2
+ * edition must be 8,000, and every popularity measure available here ranks
+ * Breath of the Wild higher. Rather than invent a ranking that produces the
+ * answer he gave, the top rung holds only titles he has named.
+ * ------------------------------------------------------------------ */
+
+/** IQD. A Switch 2 title the owner has not singled out. */
+export const CHEAP_SWITCH2 = 8_000;
+/** IQD. «٧ متوسط» — and his price for a Switch 1 game however famous. */
+export const CHEAP_MIDDLE = 7_000;
+
+/** What the owner said a named game should cost, by generation. */
+export interface NamedPrice {
+  /** His figure for the Switch 2 edition. */
+  switch2?: number;
+  /** His figure for the Switch 1 edition. */
+  switch1?: number;
+  /** One figure, whichever generation — used when he gave only one. */
+  both?: number;
+}
+
+/**
+ * The games the owner priced by name, and the price he gave.
+ *
+ *   «مثلا لعبه زيلدا botw او totk تكون ٨ الف سويتش ٢ ،و ٧ الف سويتش ١
+ *    مثلا ماريو كارت ورلد ب٩ الف
+ *    دونكي كونك ب٨ الف»
+ *
+ * Matched through `comparableTitle` by containment — the same rule
+ * `bestSellerRank` uses — so the catalogue's «Mario Kart World [Switch 2]», its
+ * «The Legend of Zelda: Breath of the Wild – Nintendo Switch 2 Edition» and his
+ * «زيلدا botw» all reach the right row. Keys are tried longest first so a short
+ * one cannot swallow a longer one.
+ *
+ * An anchor OVERRIDES everything, INCLUDING THE COST SPLIT — it is the owner
+ * speaking about one specific game, which outranks any rule inferred from his
+ * general sentence. That is not decoration: the dry run put Breath of the
+ * Wild's Switch 2 edition at 7,000 because its cost of 2,500 carried it into
+ * the dear band, where the ladder does not reach. He said 8,000 for that exact
+ * game, and he is not wrong about his own shop.
+ *
+ * Only «دونكي كونك بنانزا» is anchored of the four Donkey Kong games in the
+ * catalogue. It is the Switch 2 title, released beside Mario Kart World, and it
+ * is what «دونكي كونك ب٨ الف» names in a sentence about Switch 2 games.
+ * Tropical Freeze reaches 8,000 on its own cost, and the two Switch 1 titles
+ * settle at 7,000 — which is his own figure for a Switch 1 game.
+ */
+export const NAMED_PRICES: Readonly<Record<string, NamedPrice>> = {
+  "mario kart world": { both: 9_000 },
+  "zelda breath of the wild": { switch2: 8_000, switch1: 7_000 },
+  "zelda tears of the kingdom": { switch2: 8_000, switch1: 7_000 },
+  "donkey kong bananza": { both: 8_000 },
+};
+
+/** Longest key first, so «zelda breath of the wild» is never lost to a prefix. */
+const NAMED_KEYS: readonly string[] = Object.keys(NAMED_PRICES).sort(
+  (a, b) => b.length - a.length,
+);
+
+/**
+ * The price the owner gave this game by name, or null.
+ *
+ * `undefined` for a game he never mentioned; a number for one he did. The
+ * generation decides between his two Zelda figures, and a game with only one
+ * figure takes it whatever generation it is.
+ */
+export function namedPriceFor(title: unknown, isSwitch2?: boolean): number | null {
+  const text = comparableTitle(title);
+  if (!text) return null;
+  for (const key of NAMED_KEYS) {
+    if (text !== key && !text.includes(key)) continue;
+    const said = NAMED_PRICES[key]!;
+    const price = isSwitch2 ? (said.switch2 ?? said.both) : (said.switch1 ?? said.both);
+    return price ?? null;
+  }
+  return null;
+}
 /** IQD. The cost that divides the two rules. */
 export const COST_SPLIT = 2_000;
 /** IQD. «اجعل الربح اقل شي هو 5000» */
@@ -81,6 +189,14 @@ export interface RepriceProduct {
   schemaId?: string;
   cost: number | null;
   price: number | null;
+  /**
+   * Whether this listing is a Nintendo Switch 2 title.
+   *
+   * The caller decides, through `isNintendoSwitch2Product`, because that reads
+   * four places on a product record and this module is given only a price and
+   * a cost. It is the ONE thing that lifts a cheap-band game above 7,000.
+   */
+  isSwitch2?: boolean;
 }
 
 export interface RepriceDecision {
@@ -100,6 +216,15 @@ export interface RepriceDecision {
 const isThousand = (value: number) => value % 1_000 === 0;
 const floorThousand = (value: number) => Math.floor(value / 1_000) * 1_000;
 const ceilThousand = (value: number) => Math.ceil(value / 1_000) * 1_000;
+/**
+ * The nearest whole thousand, with an exact half going DOWN.
+ *
+ * `Math.round` sends a half up, and the owner's own worked example sends it
+ * down: a cost of 2,500 needs 7,500 for a margin of 5,000 and he priced it at
+ * 7,000. Written as a ceiling of `value - 500` so the tie is unambiguous
+ * rather than left to a floating-point comparison.
+ */
+const roundHalfDownThousand = (value: number) => Math.ceil((value - 500) / 1_000) * 1_000;
 
 /** Out of scope, and why — or null when the product is a game to be priced. */
 export function skipReason(product: RepriceProduct): string | null {
@@ -143,6 +268,31 @@ export function repriceOne(product: RepriceProduct): RepriceDecision {
   const cost = Number(product.cost);
   const price = Number(product.price);
 
+  /*
+    A GAME THE OWNER PRICED HIMSELF.
+
+    Checked before anything else — before the cost split, not inside the cheap
+    band — because it is him naming a game and a number, and no rule inferred
+    from his general sentence gets to argue with it. Inside the cheap band it
+    would have missed Breath of the Wild's Switch 2 edition, whose cost of 2,500
+    puts it in the other band entirely.
+
+    The one thing that can refuse it is the shop's own floor: a price at or
+    under cost is not a price, it is a loss, and the guard below would stop the
+    run anyway. Falling through to the rules is the honest answer there, and it
+    has never fired on this catalogue — the dearest anchored game costs 2,500.
+  */
+  const named = namedPriceFor(product.title, product.isSwitch2);
+  if (named !== null && named > cost) {
+    return {
+      ...base,
+      newPrice: named,
+      changed: named !== price,
+      reason: `سعر حدّده المالك بالاسم: ${named.toLocaleString("en-US")}`,
+      skipped: null,
+    };
+  }
+
   if (cost <= COST_SPLIT) {
     // «اذا كان سعر اللعبه ٥ او ٧ اتركها» — said outright, so it is checked first.
     if (LEAVE_ALONE.has(price)) {
@@ -165,15 +315,25 @@ export function repriceOne(product: RepriceProduct): RepriceDecision {
       notes.push("تقريب لأقرب ألف للأسفل");
     }
 
-    // «اذا رايت سعر يستحق ان تنخفض مثلا من ٩ الى ٨ اعملها» — the example, applied.
-    if (next === 9_000) {
-      next = 8_000;
-      notes.push("من 9 إلى 8");
-    }
+    /*
+      THE CEILING IS THE LADDER'S RUNG FOR THIS GAME.
 
-    if (next > CHEAP_CEILING) {
-      next = CHEAP_CEILING;
-      notes.push(`سقف ${CHEAP_CEILING.toLocaleString("en-US")} للألعاب القوية`);
+      8,000 for a Switch 2 title, 7,000 for everything else, and 9,000 only for
+      a game the owner has named — which the branch above has already answered.
+
+      It can only ever LOWER a price: the owner asked for cheaper, and raising a
+      game to its rung would be reading «بحد اقصى» as a target instead of a
+      limit. A game already below its rung is a judgement he made and this
+      keeps.
+    */
+    const rung = product.isSwitch2 ? CHEAP_SWITCH2 : CHEAP_MIDDLE;
+    if (next > rung) {
+      next = rung;
+      notes.push(
+        product.isSwitch2
+          ? `سقف ${CHEAP_SWITCH2.toLocaleString("en-US")} لسويتش 2`
+          : `سقف ${CHEAP_MIDDLE.toLocaleString("en-US")}`,
+      );
     }
     if (next < CHEAP_FLOOR) {
       next = CHEAP_FLOOR;
@@ -192,32 +352,49 @@ export function repriceOne(product: RepriceProduct): RepriceDecision {
   /*
     Cost above 2,000: «اجعل الربح اقل شي هو 5000 ... الاسعار تبدأ من 7000».
 
-    The floor is rounded UP to a whole thousand, so a cost of 2,142.8 requires
-    8,000 rather than 7,142.8 — the margin is never allowed below 5,000, and
-    the price stays a round number a customer can read. Rounding the current
-    price down happens first and can only ever be undone by the floor, so no
-    game in this band can end up earning less than 5,000.
-  */
-  const required = Math.max(DEAR_FLOOR, ceilThousand(cost + MIN_MARGIN));
-  const notes: string[] = [];
-  let next = price;
+    ROUNDED TO THE NEAREST THOUSAND, WITH A HALF GOING DOWN — because the owner
+    worked an example that the old arithmetic got wrong:
 
-  if (!isThousand(next)) {
-    next = floorThousand(next);
-    notes.push("تقريب لأقرب ألف للأسفل");
-  }
-  if (next < required) {
-    next = required;
-    notes.push(
-      `أقل ربح ${MIN_MARGIN.toLocaleString("en-US")} — التكلفة ${cost.toLocaleString("en-US")}`,
-    );
-  }
+      «٧ الف اغلبها لو كانت مثلا سعر التكلفه ٢٥٠٠ يكون سعرها ٧ الف»
+
+    A cost of 2,500 wants 7,500 for a margin of exactly 5,000. Rounding that UP
+    gave 8,000; he says 7,000. So the half rounds down, which costs the margin
+    500 dinars on that one point and gives him the «٧ الف اغلبها» he asked for —
+    most of this band at 7,000. Anything at or above x,501 still rounds up, so
+    the margin is never more than 500 short and is usually over.
+
+    `DEAR_FLOOR` is no longer a backstop that never binds: at a cost of 2,001
+    the nearest thousand to 7,001 is 7,000, which is the floor exactly.
+  */
+  const required = Math.max(DEAR_FLOOR, roundHalfDownThousand(cost + MIN_MARGIN));
+
+  /*
+    AND THE COST NOW DECIDES THE PRICE, IN BOTH DIRECTIONS.
+
+    This used to be a floor only: a price above it was left alone. But the
+    owner's example is not a minimum, it is the answer —
+
+      «لو كانت مثلا سعر التكلفه ٢٥٠٠ يكون سعرها ٧ الف وهكذا»
+
+    «يكون سعرها ٧ الف» is «its price IS 7,000», and «وهكذا» — and so on — says
+    the cost determines it. A cost-2,500 game sitting at 14,000 was left at
+    14,000 by a floor, which is the opposite of «اجعل الالعاب تكون سعرها ارخص».
+
+    So this band is now deterministic: price = cost + 5,000, to the nearer
+    thousand with a half going down, never under 7,000. Nothing in it is left to
+    judgement, which is what «وهكذا» asks for — and it is the reason the dry run
+    matters before any of it is written.
+  */
+  const next = required;
 
   return {
     ...base,
     newPrice: next,
     changed: next !== price,
-    reason: notes.join(" · ") || "داخل النطاق أصلاً",
+    reason:
+      next === price
+        ? "مطابق للقاعدة أصلاً"
+        : `${MIN_MARGIN.toLocaleString("en-US")} ربحًا فوق تكلفة ${cost.toLocaleString("en-US")}`,
     skipped: null,
   };
 }
@@ -246,8 +423,16 @@ export function decisionProblem(decision: RepriceDecision): string | null {
     if (next > CHEAP_CEILING) return `${decision.id}: ${next} فوق سقف ${CHEAP_CEILING}`;
   } else {
     if (next < DEAR_FLOOR) return `${decision.id}: ${next} تحت أرضية ${DEAR_FLOOR}`;
-    if (next - cost < MIN_MARGIN) {
-      return `${decision.id}: الربح ${next - cost} أقل من ${MIN_MARGIN}`;
+    /*
+      The margin, with the half-thousand the owner's own example gives away.
+
+      «لو كانت مثلا سعر التكلفه ٢٥٠٠ يكون سعرها ٧ الف» — a margin of 4,500, not
+      5,000, because the price rounds to the nearer thousand and a half goes
+      down. So the gate allows the rounding to cost at most 500 and no more: a
+      margin of 4,499 is still a bug in the rules and still stops the run.
+    */
+    if (next - cost < MIN_MARGIN - 500) {
+      return `${decision.id}: الربح ${next - cost} أقل من ${MIN_MARGIN - 500}`;
     }
   }
   return null;

@@ -16,7 +16,7 @@ import { useCartStore } from "@/store/useCartStore";
 import { useHub } from "./hubContext";
 import { showAddToCartToast } from "@/utils/cart-toast";
 import { resolvePurchaseImage } from "@/lib/nintendoImages";
-import { ordinaryOfflineRow, resolveUnitPrice } from "@/lib/productPricing";
+import { initialTypeId, resolveUnitPrice } from "@/lib/productPricing";
 
 /** Cart labels for the admin offer kinds encoded in the offer id. */
 const OFFER_LABELS_AR: Record<string, string> = {
@@ -65,7 +65,7 @@ export function BuySheet({
 
   const [selectedOptionId, setSelectedOptionId] = useState<string>(() => options[0]?.id ?? "");
   const [selectedTypeId, setSelectedTypeId] = useState<string>(() =>
-    String(ordinaryOfflineRow(game.types ?? [])?.["id"] ?? ""),
+    initialTypeId(game.rawProduct ?? null, game.types ?? []),
   );
   const [selectedEdition, setSelectedEdition] = useState<string>(
     () => editionId ?? editions[0]?.id ?? "",
@@ -89,26 +89,27 @@ export function BuySheet({
         ? allTypes.filter((t) => !t.optionId || t.optionId === "all" || t.optionId === initialOpt)
         : allTypes;
       /*
-        OPEN ON THE ORDINARY OFFLINE ACCOUNT, NOT ON WHICHEVER ROW IS FIRST.
+        OPEN ON WHAT THE CARD ADVERTISED, THROUGH THE CARD'S OWN RULE.
 
-        This was `initialTypes[0]`, which is array order — and array order is
-        the order the admin happened to add the tiers in. On a product whose
-        rows are «حساب أونلاين» then «حساب أوفلاين», the sheet opened on the
-        dearer one; on the 65 products whose only row is online, it opened on
-        that row while the card beside it now leads with the cheaper offline
-        account, and the two would disagree.
+        This was `initialTypes[0]` — array order, which is the order the admin
+        happened to add the tiers in. Then it became `ordinaryOfflineRow(...)?.id
+        ?? initialTypes[0]?.id ?? ""`, and that `??` chain never reached the
+        empty string: with no offline row it still took the first one. On the 65
+        games whose ONLY row is an online account, that is the online row — so
+        the card said 12,000, the hero said 12,000, and this sheet opened at
+        42,000. «الشاشة تعرض سعر الأونلاين بدل الأوفلاين», on the very products
+        the card fix was written for.
 
-        `ordinaryOfflineRow` is the same function the card asks, so the sheet
-        opens on the tier the card advertised. An empty selection is not a
-        fallback failure: `resolveUnitPrice` with no type returns the base
-        offline account, which is exactly what the card showed in that case.
+        `initialTypeId` is now the single rule all three surfaces ask, so a
+        fourth answer cannot appear here again. Empty is one of its answers and
+        is the right one: `resolveUnitPrice` with no type returns the base price,
+        which is what the card printed and what checkout charges.
       */
-      const offlineRow = ordinaryOfflineRow(initialTypes);
-      setSelectedTypeId(String(offlineRow?.["id"] ?? initialTypes[0]?.id ?? ""));
+      setSelectedTypeId(initialTypeId(game.rawProduct ?? null, initialTypes));
       setSelectedEdition(editionId ?? editions[0]?.id ?? "");
       setQuantity(1);
     }
-  }, [open, editionId, options, allTypes, editions]);
+  }, [open, editionId, options, allTypes, editions, game.rawProduct]);
 
   // When selected option changes, ensure valid selected type
   const handleSelectOption = (optId: string) => {
