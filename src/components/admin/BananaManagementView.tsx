@@ -842,11 +842,8 @@ export function BananaManagementView() {
     reply is merged into `savedFlags` exactly as it arrives.
   */
   const setGameFlagsMutation = useMutation({
-    mutationFn: (payload: {
-      productId: string;
-      popularity?: PopularityTier;
-      excluded?: boolean;
-    }) => adminApi.setRouletteGameFlags(payload),
+    mutationFn: (payload: { productId: string; popularity?: PopularityTier; excluded?: boolean }) =>
+      adminApi.setRouletteGameFlags(payload),
     onError: showFailure,
     onSuccess: (result) => {
       setSavedFlags((prev) => ({
@@ -896,9 +893,7 @@ export function BananaManagementView() {
     onError: showFailure,
     onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ["admin_roulette_odds"] });
-      showToast(
-        `تم تصنيف ${result.count} لعبة على أنها «${POPULARITY_LABELS[result.popularity]}»`,
-      );
+      showToast(`تم تصنيف ${result.count} لعبة على أنها «${POPULARITY_LABELS[result.popularity]}»`);
     },
   });
 
@@ -1315,7 +1310,9 @@ export function BananaManagementView() {
                     : "bg-emerald-500/10 text-emerald-600 border border-emerald-500/30"
                 }`}
               >
-                {marketForm.directSellEnabled === false ? "مُعطَّل — اضغط للتفعيل" : "مُفعَّل — اضغط للتعطيل"}
+                {marketForm.directSellEnabled === false
+                  ? "مُعطَّل — اضغط للتفعيل"
+                  : "مُفعَّل — اضغط للتعطيل"}
               </button>
             </div>
 
@@ -2152,6 +2149,460 @@ export function BananaManagementView() {
               </button>
             </div>
           )}
+        </div>
+      )}
+
+      {/*
+        TAB: THE ROULETTE — the real curve, the games behind it, and the audit.
+
+        Three cards rather than three screens, because they answer one another:
+        the table says four buckets are empty, the list is where the owner fills
+        them, and the search is how a single spin is explained afterwards. They
+        sit beside the wheel's own tab and the ticket controls it already has.
+      */}
+      {activeTab === "roulette" && (
+        <div className="space-y-6">
+          {/* ---- the odds, as the engine will really run them ---- */}
+          <div className="rounded-2xl border border-border bg-card p-5 space-y-4">
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-3">
+              <div className="min-w-0">
+                <h3 className="font-black text-sm flex items-center gap-2">
+                  <Dices className="w-4 h-4" />
+                  النسب الفعلية للروليت — من تذكرة واحدة إلى عشر
+                </h3>
+                <p className="text-xs text-muted-foreground mt-1 font-medium leading-relaxed">
+                  كل رقم في الجدول هو النسبة النهائية بعد إعادة التوزيع، كما يحسبها الخادم ويستخدمها
+                  في الدورة نفسها. لا أوزان هنا، ولا حساب داخل المتصفح.
+                </p>
+              </div>
+              <button
+                onClick={() => rouletteOddsQuery.refetch()}
+                disabled={rouletteOddsQuery.isFetching}
+                className="flex items-center gap-2 min-h-[44px] px-4 rounded-xl border border-border bg-card hover:bg-muted font-bold text-xs transition-colors shadow-sm disabled:opacity-50 shrink-0"
+              >
+                <RefreshCw
+                  className={`w-3.5 h-3.5 ${rouletteOddsQuery.isFetching ? "animate-spin" : ""}`}
+                />
+                إعادة حساب النسب
+              </button>
+            </div>
+
+            {rouletteOddsQuery.isLoading ? (
+              <p className="text-xs text-muted-foreground font-bold">جارِ حساب النسب…</p>
+            ) : rouletteOddsQuery.isError ? (
+              <p className="text-xs font-bold text-red-500 bg-red-500/10 rounded-xl p-3">
+                {rouletteOddsQuery.error instanceof Error && rouletteOddsQuery.error.message
+                  ? rouletteOddsQuery.error.message
+                  : "تعذّر حساب النسب — حاول مرة أخرى"}
+              </p>
+            ) : rouletteOdds ? (
+              <>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="px-3 py-1.5 rounded-lg bg-muted/50 text-[11px] font-bold">
+                    ألعاب مؤهلة للجوائز:{" "}
+                    <span dir="ltr" className="text-amber-500 font-black">
+                      {rouletteOdds.poolSize.toLocaleString("en-US")}
+                    </span>
+                  </span>
+                  <span className="px-3 py-1.5 rounded-lg bg-muted/50 text-[11px] font-bold">
+                    حدّ فصل السعر:{" "}
+                    <span dir="ltr" className="text-amber-500 font-black">
+                      {rouletteOdds.priceBoundary.toLocaleString("en-US")}
+                    </span>{" "}
+                    د.ع
+                  </span>
+                </div>
+
+                {/*
+                  A what-if, said to be one.
+
+                  `roulette_odds` answers on whatever line it is given and saves
+                  nothing, so this moves the preview and not the shop. Labelling
+                  it anything else would be the panel promising a setting that
+                  does not exist.
+                */}
+                <div className="flex flex-wrap items-end gap-2">
+                  <label className="text-[11px] font-bold space-y-1">
+                    <span className="text-muted-foreground block">
+                      جرّب حدّ سعر آخر (معاينة فقط — لا يُحفظ):
+                    </span>
+                    <input
+                      type="number"
+                      min={1}
+                      step={500}
+                      dir="ltr"
+                      value={boundaryInput}
+                      onChange={(e) => setBoundaryInput(e.target.value)}
+                      placeholder={String(DEFAULT_PRICE_BOUNDARY)}
+                      className="w-36 min-h-[44px] px-3 rounded-xl bg-muted/40 border border-border outline-none font-bold text-xs focus:border-amber-500"
+                    />
+                  </label>
+                  <button
+                    onClick={() => {
+                      const value = Number(boundaryInput);
+                      setBoundaryApplied(Number.isFinite(value) && value > 0 ? value : null);
+                    }}
+                    className="min-h-[44px] px-4 rounded-xl bg-muted/60 hover:bg-muted font-bold text-xs"
+                  >
+                    اعرض النسب على هذا الحد
+                  </button>
+                  {boundaryApplied !== null && (
+                    <button
+                      onClick={() => {
+                        setBoundaryInput("");
+                        setBoundaryApplied(null);
+                      }}
+                      className="min-h-[44px] px-4 rounded-xl border border-border font-bold text-xs"
+                    >
+                      ارجع للحد الفعلي
+                    </button>
+                  )}
+                </div>
+
+                {/*
+                  The scroll belongs to this box.
+
+                  Ten rows by seven outcomes does not fit a 320px phone and must
+                  never try: a table that widens the document makes mobile
+                  Safari shrink the whole page to fit, which in RTL shows up as
+                  an empty band down the left of every screen in the panel.
+                */}
+                <div className="overflow-x-auto rounded-xl border border-border">
+                  <table className="w-full min-w-[760px] text-right text-[11px]">
+                    <thead className="bg-muted/50 border-b border-border text-muted-foreground font-bold">
+                      <tr>
+                        <th className="p-2.5 whitespace-nowrap">التذاكر</th>
+                        <th className="p-2.5 whitespace-nowrap">
+                          <div className="font-black text-foreground">حظ أوفر</div>
+                          <div className="text-[10px] font-semibold">لا تربح شيئاً</div>
+                        </th>
+                        {BUCKET_COLUMNS.map((column) => {
+                          const games = Number(rouletteOdds.population?.[column.key] ?? 0);
+                          return (
+                            <th key={column.key} className="p-2.5 whitespace-nowrap">
+                              <div className={games > 0 ? "text-foreground" : "text-rose-500"}>
+                                {column.tier}
+                              </div>
+                              <div className="text-[10px] font-semibold">{column.band}</div>
+                              <div className="text-[10px] font-semibold" dir="ltr">
+                                {games.toLocaleString("en-US")}
+                              </div>
+                            </th>
+                          );
+                        })}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-border/60 font-medium">
+                      {oddsRowsByTickets.map((row) => (
+                        <tr key={row.tickets} className="hover:bg-muted/30 transition-colors">
+                          <td className="p-2.5 font-black" dir="ltr">
+                            {row.tickets}
+                          </td>
+                          <td className="p-2.5 font-bold tabular-nums" dir="ltr">
+                            {percentText(row.percentOf["lose"])}
+                          </td>
+                          {BUCKET_COLUMNS.map((column) => {
+                            const empty = Number(rouletteOdds.population?.[column.key] ?? 0) === 0;
+                            return (
+                              <td
+                                key={column.key}
+                                dir="ltr"
+                                className={`p-2.5 tabular-nums ${
+                                  empty ? "text-muted-foreground/60" : "text-amber-600 font-bold"
+                                }`}
+                              >
+                                {percentText(row.percentOf[column.key])}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {emptiedBuckets.length > 0 && (
+                  <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3.5 py-2.5 text-[11px] font-bold leading-relaxed text-amber-700 dark:text-amber-300">
+                    فئات فارغة لا توجد فيها لعبة واحدة مؤهلة:{" "}
+                    {emptiedBuckets
+                      .map((key) => {
+                        const column = BUCKET_COLUMNS.find((entry) => entry.key === key);
+                        return column ? `«${column.tier} — ${column.band}»` : `«${key}»`;
+                      })
+                      .join("، ")}
+                    . نصيب كل فئة فارغة يُعاد توزيعه على الفئات التي تستطيع أن تدفع، بنسبها بينها،
+                    و«حظ أوفر» يحتفظ بنصيبه كما هو. الأرقام في الجدول أعلاه هي النسب بعد إعادة
+                    التوزيع وليست قبله — وتُملأ هذه الفئات من قائمة تصنيف الألعاب في الأسفل.
+                  </div>
+                )}
+
+                {Object.keys(rouletteOdds.skipped ?? {}).length > 0 && (
+                  <div className="rounded-xl border border-border bg-muted/20 p-3.5">
+                    <p className="text-[11px] font-black mb-2">ألعاب خارج الجوائز، ولماذا خرجت:</p>
+                    <div className="space-y-1">
+                      {Object.entries(rouletteOdds.skipped).map(([reason, count]) => (
+                        <div
+                          key={reason}
+                          className="flex items-center justify-between gap-2 text-[11px]"
+                        >
+                          <span className="text-muted-foreground">
+                            {SKIP_REASONS[reason] ?? reason}
+                          </span>
+                          <span dir="ltr" className="font-bold tabular-nums">
+                            {Number(count).toLocaleString("en-US")}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : null}
+          </div>
+
+          {/* ---- classifying the catalogue ---- */}
+          <div className="rounded-2xl border border-border bg-card p-5 space-y-4">
+            <div>
+              <h3 className="font-black text-sm flex items-center gap-2">
+                <Award className="w-4 h-4" />
+                شهرة الألعاب والاستبعاد من الروليت
+              </h3>
+              {/*
+                The measurement, said on the screen rather than kept in a commit
+                message: 1,707 games are prize-eligible and not one of them has
+                been classified, so every game sits in «غير مشهورة» and four of
+                the six buckets are empty. This list is how that is fixed, and
+                it is why the search and the bulk button exist — a form that
+                classified one game at a time would never be finished.
+              */}
+              <p className="text-xs text-muted-foreground mt-1 font-medium leading-relaxed">
+                كل لعبة لم تُصنَّف بعد تُحسب «غير مشهورة» — ولهذا تظهر فئات فارغة في الجدول أعلاه.
+                ابحث عن اللعبة أو عن سلسلة كاملة، وحدّد الشهرة. الاستبعاد يخرج اللعبة من الجوائز دون
+                حذفها من المتجر.
+              </p>
+            </div>
+
+            <div className="relative">
+              <Search className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="ابحث باسم اللعبة بالعربية أو بالإنجليزية..."
+                value={gameSearch}
+                onChange={(e) => setGameSearch(e.target.value)}
+                className="w-full min-h-[44px] pl-3 pr-9 rounded-xl border border-border bg-card text-xs font-medium focus:border-amber-500 outline-none"
+              />
+            </div>
+
+            {/*
+              One press for everything on screen.
+
+              Deliberately bound to the rows the admin can SEE — «صنّف كل
+              النتائج الظاهرة» over a search they have just read is a decision;
+              the same press over seventeen hundred unseen rows would not be.
+            */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-[11px] font-bold text-muted-foreground">
+                صنّف كل النتائج الظاهرة (<span dir="ltr">{visibleGames.length}</span>) على أنها:
+              </span>
+              {POPULARITY_ORDER.map((tier) => (
+                <button
+                  key={tier}
+                  disabled={visibleGames.length === 0 || bulkClassifyMutation.isPending}
+                  onClick={() => {
+                    if (
+                      !confirm(
+                        `سيتم تصنيف ${visibleGames.length} لعبة على أنها «${POPULARITY_LABELS[tier]}». هل تريد المتابعة؟`,
+                      )
+                    ) {
+                      return;
+                    }
+                    bulkClassifyMutation.mutate({
+                      productIds: visibleGames.map((game) => String(game["id"])),
+                      popularity: tier,
+                    });
+                  }}
+                  className="min-h-[44px] px-4 rounded-xl bg-muted/60 hover:bg-muted font-bold text-xs disabled:opacity-50"
+                >
+                  {POPULARITY_LABELS[tier]}
+                </button>
+              ))}
+              {bulkClassifyMutation.isPending && (
+                <span className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground">
+                  <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                  جارٍ الحفظ لعبة بعد لعبة…
+                </span>
+              )}
+            </div>
+
+            {catalogueQuery.isLoading ? (
+              <p className="text-xs text-muted-foreground font-bold">جارِ تحميل قائمة الألعاب…</p>
+            ) : catalogueQuery.isError ? (
+              <p className="text-xs font-bold text-red-500 bg-red-500/10 rounded-xl p-3">
+                تعذّر تحميل قائمة الألعاب — حاول التحديث.
+              </p>
+            ) : (
+              <>
+                <div className="space-y-2">
+                  {visibleGames.map((game) => {
+                    const productId = String(game["id"] ?? "");
+                    const flags = savedFlags[productId];
+                    const excluded = flags?.excluded === true;
+                    const price = gamePrice(game);
+                    return (
+                      <div
+                        key={productId}
+                        /* Named, like the bundle picker's rows, so a test can press one game's tier and not another's. */
+                        data-testid="roulette-game-row"
+                        data-id={productId}
+                        className={`rounded-xl border p-3 flex flex-wrap items-center gap-2 ${
+                          excluded ? "border-rose-500/30 bg-rose-500/5" : "border-border"
+                        }`}
+                      >
+                        <div className="min-w-[160px] flex-1">
+                          <div className="font-bold text-xs leading-snug">{gameName(game)}</div>
+                          <div className="text-[10px] text-muted-foreground font-semibold mt-0.5 flex items-center gap-2">
+                            <span dir="ltr">{price.toLocaleString("en-US")} د.ع</span>
+                            {flags?.popularity === undefined && (
+                              <span>· لم تُصنَّف بعد (تُحسب «غير مشهورة»)</span>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {POPULARITY_ORDER.map((tier) => {
+                            const chosen = flags?.popularity === tier;
+                            return (
+                              <button
+                                key={tier}
+                                onClick={() =>
+                                  /* Only the tier. An `excluded` sent alongside would overwrite a decision nobody touched. */
+                                  setGameFlagsMutation.mutate({ productId, popularity: tier })
+                                }
+                                disabled={setGameFlagsMutation.isPending}
+                                aria-pressed={chosen}
+                                className={`min-h-[44px] px-3 rounded-xl font-bold text-[11px] transition-colors disabled:opacity-60 ${
+                                  chosen
+                                    ? "bg-amber-500 text-black"
+                                    : "bg-muted/50 text-muted-foreground hover:text-foreground"
+                                }`}
+                              >
+                                {POPULARITY_LABELS[tier]}
+                              </button>
+                            );
+                          })}
+
+                          <button
+                            onClick={() =>
+                              /* Only the switch, for the same reason. */
+                              setGameFlagsMutation.mutate({ productId, excluded: !excluded })
+                            }
+                            disabled={setGameFlagsMutation.isPending}
+                            aria-pressed={excluded}
+                            title="استبعاد من الروليت"
+                            className={`min-h-[44px] px-3 rounded-xl font-bold text-[11px] flex items-center gap-1.5 transition-colors disabled:opacity-60 ${
+                              excluded
+                                ? "bg-rose-500/15 text-rose-600 border border-rose-500/30"
+                                : "bg-muted/50 text-muted-foreground hover:text-foreground"
+                            }`}
+                          >
+                            <Ban className="w-3.5 h-3.5" />
+                            {excluded ? "مستبعدة — اضغط للإرجاع" : "استبعاد من الروليت"}
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {visibleGames.length === 0 && (
+                  <div className="text-center py-10 bg-muted/20 rounded-2xl border border-dashed border-border text-muted-foreground text-xs">
+                    لا توجد لعبة مطابقة لبحثك.
+                  </div>
+                )}
+
+                {matchedGames.length > visibleGames.length && (
+                  <p className="text-[11px] text-muted-foreground font-bold">
+                    يُعرض <span dir="ltr">{visibleGames.length}</span> من{" "}
+                    <span dir="ltr">{matchedGames.length.toLocaleString("en-US")}</span> نتيجة —
+                    ضيّق البحث لترى البقية.
+                  </p>
+                )}
+              </>
+            )}
+          </div>
+
+          {/* ---- the audit ---- */}
+          <div className="rounded-2xl border border-border bg-card p-5 space-y-4">
+            <div>
+              <h3 className="font-black text-sm flex items-center gap-2">
+                <FileSearch className="w-4 h-4" />
+                تدقيق الروليت
+              </h3>
+              <p className="text-xs text-muted-foreground mt-1 font-medium leading-relaxed">
+                صندوق واحد لكل المعرّفات: الدورات، الجوائز، مبيعات الموز المباشرة، وحركة التذاكر.
+                للقراءة فقط.
+              </p>
+            </div>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setAuditQuery(auditInput.trim());
+              }}
+              className="flex flex-wrap items-center gap-2"
+            >
+              <div className="relative flex-1 min-w-[200px]">
+                <Search className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="text"
+                  placeholder="ابحث بمعرّف مستخدم أو دورة أو جائزة أو طلب"
+                  value={auditInput}
+                  onChange={(e) => setAuditInput(e.target.value)}
+                  className="w-full min-h-[44px] pl-3 pr-9 rounded-xl border border-border bg-card text-xs font-medium focus:border-amber-500 outline-none"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={!auditInput.trim() || auditResults.isFetching}
+                className="min-h-[44px] px-5 rounded-xl bg-black text-white dark:bg-white dark:text-black font-black text-xs disabled:opacity-50"
+              >
+                {auditResults.isFetching ? "جارٍ البحث…" : "ابحث"}
+              </button>
+            </form>
+
+            {auditResults.isError && (
+              <p className="text-xs font-bold text-red-500 bg-red-500/10 rounded-xl p-3">
+                {auditResults.error instanceof Error && auditResults.error.message
+                  ? auditResults.error.message
+                  : "تعذّر البحث — حاول مرة أخرى"}
+              </p>
+            )}
+
+            {auditQuery && auditResults.data && (
+              <div className="space-y-3">
+                <AuditTable
+                  title="الدورات"
+                  icon={<Dices className="w-3.5 h-3.5" />}
+                  rows={auditResults.data.spins ?? []}
+                />
+                <AuditTable
+                  title="الجوائز"
+                  icon={<Gift className="w-3.5 h-3.5" />}
+                  rows={auditResults.data.prizes ?? []}
+                />
+                <AuditTable
+                  title="مبيعات الموز المباشرة"
+                  icon={<DollarSign className="w-3.5 h-3.5" />}
+                  rows={auditResults.data.sales ?? []}
+                />
+                <AuditTable
+                  title="حركة التذاكر"
+                  icon={<Ticket className="w-3.5 h-3.5" />}
+                  rows={auditResults.data.tickets ?? []}
+                />
+              </div>
+            )}
+          </div>
         </div>
       )}
 
