@@ -21,6 +21,10 @@ on:
         description: "Stop after this many products that move (0 = no limit)"
         type: string
         default: "0"
+      sync_mirrors:
+        description: "Also settle products that show one price and charge another, on the rule's own answer"
+        type: boolean
+        default: false
   push:
     branches: [claude/gaming-platform-issues-keb1be]
     paths:
@@ -70,11 +74,13 @@ jobs:
           APPLY_INPUT: ${{ inputs.apply }}
           ONLY: ${{ inputs.only }}
           LIMIT: ${{ inputs.limit }}
+          SYNC: ${{ inputs.sync_mirrors }}
         run: |
           FLAGS=""
           if [ "$APPLY_INPUT" = "APPLY" ]; then FLAGS="$FLAGS --apply"; fi
           if [ -n "$ONLY" ]; then FLAGS="$FLAGS --only=$ONLY"; fi
           if [ -n "$LIMIT" ] && [ "$LIMIT" != "0" ]; then FLAGS="$FLAGS --limit=$LIMIT"; fi
+          if [ "$SYNC" = "true" ]; then FLAGS="$FLAGS --sync-mirrors"; fi
           node scripts/tier-reprice.mjs --json=tier-reprice.json $FLAGS
       - name: Upload the report and the undo list
         if: always()

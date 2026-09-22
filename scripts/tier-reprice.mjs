@@ -45,6 +45,27 @@ const ONLY = args.only && args.only !== "true" ? String(args.only) : null;
   «لا شيء ليُكتب» and exited 0 — a no-op reported as a success, which is the
   one thing a script that touches prices must never do.
 */
+/*
+  FINISH THE JOB: make every copy of a price agree.
+
+  The run that wrote 87 products left 13 showing one number and charging
+  another, because for each of them the shown price, the charged price and the
+  rule's own answer were three different values and choosing between them was
+  the owner's call, not mine. He has since said «اكمل كل شي من باقي الاسعار
+  للالعاب» — finish all of it.
+
+  So this mode settles them the only way that is not a guess: the RULE'S answer,
+  written to every copy. The rules are the owner's own, stated by him and
+  verified against production — they reproduced, to the dinar, a price a
+  different module had computed on forty products. Applying them is applying his
+  policy; picking the displayed number or the charged number instead would be
+  picking one of two numbers at random and calling it a decision.
+
+  Every product it touches is listed with its three before-values and the one
+  after, so any single one can be overridden in a sentence.
+*/
+const SYNC_MIRRORS = args["sync-mirrors"] === "true";
+
 let LIMIT = Infinity;
 if (args.limit && args.limit !== "true") {
   LIMIT = Number(args.limit);
@@ -619,6 +640,7 @@ if (!moving.length) {
 /* Named before the rehearsal fills it, because the report below reads it. */
 const brokenMirrorReport = [];
 const aheadReport = [];
+const syncReport = [];
 const titleOf = (id) => {
   const hit = moving.find(({ result }) => result.id === id);
   return hit ? label(hit.result) : id;
@@ -662,6 +684,35 @@ for (const { result } of moving) {
       newPrice: Number(p.newPrice),
     }));
   if (changes.length) wanted.set(result.id, changes);
+}
+
+/*
+  AND THE PRODUCTS WHOSE TIER IS ALREADY RIGHT.
+
+  A product whose offline tier already satisfies the rules never enters
+  `moving`, so a headline disagreeing with it would never be looked at —
+  ELDEN RING shows 22,000 and charges 20,000 with the rule perfectly happy at
+  20,000. Those are added here with a no-op tier change, purely so the mirror
+  logic below can see them and bring the headline to the number the till
+  charges. No tier price moves.
+*/
+if (SYNC_MIRRORS) {
+  for (const { result } of results) {
+    if (wanted.has(result.id)) continue;
+    const base = result.proposals.find((p) => p.kind === "offline_base" && !p.skipped);
+    if (!base || !(Number(base.newPrice) > 0)) continue;
+    wanted.set(result.id, [
+      {
+        index: base.index,
+        kind: base.kind,
+        id: String(base.id ?? ""),
+        name: String(base.name ?? ""),
+        cost: Number(base.cost),
+        oldPrice: Number(base.oldPrice),
+        newPrice: Number(base.newPrice),
+      },
+    ]);
+  }
 }
 
 const byId = new Map(products.map((p) => [String(p["id"] ?? ""), p]));
@@ -718,8 +769,9 @@ const mirrorsFor = (doc, changes) => {
   const scalars = new Map();
   const brokenMirrors = [];
   const alreadyAhead = [];
+  const syncedMirrors = [];
   const offline = changes.find((c) => c.kind === "offline_base");
-  if (!offline) return { scalars, brokenMirrors, alreadyAhead };
+  if (!offline) return { scalars, brokenMirrors, alreadyAhead, syncedMirrors };
 
   for (const field of ["price", "accountPrice"]) {
     if (!(field in doc)) continue;
@@ -753,9 +805,18 @@ const mirrorsFor = (doc, changes) => {
       alreadyAhead.push({ field, held, tier: offline.oldPrice });
       continue;
     }
+    if (SYNC_MIRRORS) {
+      /*
+        Three numbers, and the rule's is the one with a reason behind it.
+        Recorded before it is written so the report can show what each was.
+      */
+      syncedMirrors.push({ field, held, tier: offline.oldPrice, rule: offline.newPrice });
+      scalars.set(field, offline.newPrice);
+      continue;
+    }
     brokenMirrors.push({ field, held, tier: offline.oldPrice, rule: offline.newPrice });
   }
-  return { scalars, brokenMirrors, alreadyAhead };
+  return { scalars, brokenMirrors, alreadyAhead, syncedMirrors };
 };
 
 /** The same four fields the rules saw, read off a raw row by the same function. */
@@ -883,7 +944,8 @@ for (const [id, changes] of wanted) {
     inconsistent in a way this run did not cause; adding a second disagreement
     on top would be guessing which of two numbers the owner meant.
   */
-  const { scalars, brokenMirrors, alreadyAhead } = mirrorsFor(source, changes);
+  const { scalars, brokenMirrors, alreadyAhead, syncedMirrors } = mirrorsFor(source, changes);
+  if (syncedMirrors.length) syncReport.push({ id, title: titleOf(id), syncedMirrors });
   if (brokenMirrors.length) {
     brokenMirrorReport.push({ id, title: titleOf(id), brokenMirrors });
     continue;
@@ -975,6 +1037,7 @@ say(
 say(
   `- منتجات السعر المعروض فيها **يسبق** طبقاتها (يُعرض سعر ويُحاسَب آخر، الآن): **${aheadReport.length}**`,
 );
+say(`- منتجات سُوّيت نسخها على جواب القاعدة (\`--sync-mirrors\`): **${syncReport.length}**`);
 say();
 
 if (aheadReport.length) {
@@ -1000,6 +1063,24 @@ if (aheadReport.length) {
   say(
     `مجموع الفرق الذي يُحصَّل فوق السعر المعلن: **${money(overcharge)}** دينار على كل مجموعة مبيعات واحدة من هذه المنتجات. هذا التشغيل ينهيه: تنزل \`types\` إلى الرقم المعروض نفسه، فلا يرى الزبون أي تغيّر في السعر، ويدفع ما رآه.`,
   );
+  say();
+}
+
+if (syncReport.length) {
+  say(`### أرقام سُوّيت على جواب القاعدة`);
+  say();
+  say(
+    `كانت هذه تعرض رقمًا وتحاسب بآخر، ولا أحدهما ما تقترحه القاعدة. الآن كل النسخ — \`price\` و\`accountPrice\` و\`types\` و\`variants\` — على جواب القاعدة نفسه. راجعها: أي واحدة منها يمكن إرجاعها بكلمة.`,
+  );
+  say();
+  say(`| المنتج | الحقل | كان يُعرض | كان يُحاسَب | صار |`);
+  say(`| --- | --- | --- | --- | --- |`);
+  for (const row of syncReport.slice(0, 60)) {
+    for (const m of row.syncedMirrors) {
+      say(`| ${row.title} | \`${m.field}\` | ${money(m.held)} | ${money(m.tier)} | **${money(m.rule)}** |`);
+    }
+  }
+  if (syncReport.length > 60) say(`| … | ${syncReport.length - 60} أخرى | | | |`);
   say();
 }
 
