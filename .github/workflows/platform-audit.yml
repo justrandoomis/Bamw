@@ -131,3 +131,10 @@ jobs:
       - name: Summary
         if: always()
         run: cat platform-audit.md >> "$GITHUB_STEP_SUMMARY" || true
+
+      # Last on purpose. A run's report is long, the artifact lives on a host
+      # this session cannot reach, and the counts that decide whether to apply
+      # it were being pushed out of reach by the upload step's own chatter.
+      - name: The short version, last
+        if: always()
+        run: sed -n '/^## In short/,$p' platform-audit.md || true

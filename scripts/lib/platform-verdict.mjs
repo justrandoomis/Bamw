@@ -39,7 +39,7 @@ export const CONSOLE_BRACKET = /\s*[[(]\s*(?:nintendo\s*)?switch\s*(2?)\s*[\])]\
  * `m:ss` in square brackets. `Absolute Fear -AOONI- (最恐 -青鬼-)` keeps its
  * parenthetical, because there is no timestamp in it.
  */
-export const TIMESTAMP_BRACKET = /\s*\[\s*\d{1,2}:\d{2}(?:\s+([^\]]*?))?\s*\]\s*/;
+export const TIMESTAMP_BRACKET = /\s*\[\s*(\d{1,2}:\d{2})(?:\s+([^\]]*?))?\s*\]\s*/;
 
 /** The fragment beside a timestamp, when it is only naming the console. */
 const CONSOLE_WORD = /^(?:nintendo\s*)?switch\s*(2?)$/i;
@@ -174,7 +174,7 @@ export function titleVerdict(title, platform) {
   let leaked = "";
   const stamp = TIMESTAMP_BRACKET.exec(working);
   if (stamp) {
-    const fragment = String(stamp[1] ?? "").trim();
+    const fragment = String(stamp[2] ?? "").trim();
     const console = CONSOLE_WORD.exec(fragment);
     if (console) {
       /*
@@ -223,10 +223,30 @@ export function titleVerdict(title, platform) {
 
   if (!tidied) return { action: "keep", reason: "there would be no name left" };
   if (tidied === raw) return { action: "keep" };
+  /*
+    The lesser rename, for when the better one is refused.
+
+    `Pokémon Sword / Shield [0:10 ¥8.76]` and `Pokémon Sword / Shield [1:27
+    ¥7.78]` are two products, and taking both brackets off gives them the same
+    name on the same console — which the collision check refuses, correctly,
+    because it would merge two identities. Refusing the rename outright would
+    then leave both supplier prices on the shelf, which is the one outcome
+    worth avoiding here.
+
+    So a second, weaker form is offered: the price comes off, the timestamp
+    stays. The timestamp is meaningless but it is not a disclosure, and it
+    happens to be what tells the two products apart until a person decides
+    which of them the shop is actually selling.
+  */
+  const fallback = leaked
+    ? raw.replace(TIMESTAMP_BRACKET, ` [${stamp[1]}] `).replace(/\s+/g, " ").trim()
+    : "";
+
   return {
     action: "rename",
     to: tidied,
     ...(leaked ? { leaked } : {}),
+    ...(fallback && fallback !== tidied ? { fallback } : {}),
     reason: leaked
       ? `a scraped timestamp, and beside it "${leaked}" — supplier data, on a public name`
       : stamp
@@ -331,4 +351,58 @@ export function settleCollisions(products, proposals, keysOf) {
   }
 
   return { dropped, preexisting };
+}
+
+/**
+ * The collision check, with one second chance.
+ *
+ * A refused correction is normally the right outcome: it means the change
+ * would give two products the same identity. But where the correction existed
+ * to take a supplier's price off a public name, refusing it outright leaves
+ * the price on the shelf, and that is the one outcome here worth avoiding.
+ *
+ * `Pokémon Sword / Shield [0:10 ¥8.76]` and `Pokémon Sword / Shield [1:27
+ * ¥7.78]` are exactly that case: two products whose full renames give them the
+ * same name on the same console. The weaker form takes the price off and keeps
+ * the meaningless timestamp, which is what tells them apart until a person
+ * decides which of them the shop is actually selling.
+ *
+ * The weaker form goes THROUGH the collision check, not around it. If it
+ * collides too, the correction is dropped for good.
+ *
+ * @param weaker Map of product id → the lesser patch to try if the first fails
+ * @returns refused (with the key that refused it), rescued ids, and the
+ *          duplicates that were in the catalogue before this run
+ */
+export function settleWithFallback(products, proposals, weaker, keysOf) {
+  const intended = new Map([...proposals].map(([id, entry]) => [id, { ...entry }]));
+  const first = settleCollisions(products, proposals, keysOf);
+
+  const tried = [];
+  for (const drop of first.dropped) {
+    const lesser = weaker.get(drop.id);
+    if (!lesser) continue;
+    proposals.set(drop.id, { ...intended.get(drop.id), ...lesser });
+    tried.push(drop.id);
+  }
+  const second = tried.length
+    ? settleCollisions(products, proposals, keysOf)
+    : { dropped: [], preexisting: [] };
+
+  /*
+    Refused is simply: intended, and no longer proposed. Derived from the
+    proposals rather than assembled from the two drop lists, because a product
+    can appear in both — dropped, rescued, dropped again — and adding the lists
+    would count it twice while counting a rescued one as a refusal it is not.
+  */
+  const collisionOf = new Map();
+  for (const drop of [...first.dropped, ...second.dropped]) collisionOf.set(drop.id, drop);
+
+  return {
+    refused: [...intended.keys()]
+      .filter((id) => !proposals.has(id))
+      .map((id) => collisionOf.get(id) ?? { id, key: "(unknown)", held: [] }),
+    rescued: tried.filter((id) => proposals.has(id)),
+    preexisting: first.preexisting,
+  };
 }

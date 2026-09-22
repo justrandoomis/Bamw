@@ -16,6 +16,7 @@ import {
   declaresSwitch2Edition,
   platformVerdict,
   settleCollisions,
+  settleWithFallback,
   titleFlags,
   titleVerdict,
 } from "./lib/platform-verdict.mjs";
@@ -371,5 +372,127 @@ describe("the scraped timestamp, and what came with it", () => {
 
   it("leaves a parenthetical with no timestamp in it alone", () => {
     expect(titleVerdict("Absolute Fear -AOONI- (最恐 -青鬼-)", "switch1").action).toBe("keep");
+  });
+});
+
+describe("the second chance, for a rename that exists to remove a disclosure", () => {
+  const keysOf = (p) => {
+    const platform = String(p.platform ?? "switch1")
+      .toLowerCase()
+      .includes("2")
+      ? "switch2"
+      : "switch1";
+    return [p.title, p.titleEn]
+      .filter((t) => t && String(t).trim())
+      .map(
+        (t) =>
+          `${platform}::${String(t)
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, " ")
+            .trim()}`,
+      );
+  };
+
+  it("falls back to removing only the price when the fuller rename would collide", () => {
+    /*
+      Two products, one game, two supplier costs. Taking both brackets off
+      gives them the same name on the same console, so the collision check
+      refuses both — and refusing outright would leave `¥8.76` and `¥7.78` on
+      the shelf, which is the whole reason the rename existed.
+    */
+    const products = [
+      { id: "a", title: "Pokemon Sword Shield [0:10 ¥8.76]", platform: "switch1" },
+      { id: "b", title: "Pokemon Sword Shield [1:27 ¥7.78]", platform: "switch1" },
+    ];
+    const proposals = new Map([
+      ["a", { title: "Pokemon Sword Shield" }],
+      ["b", { title: "Pokemon Sword Shield" }],
+    ]);
+    const weaker = new Map([
+      ["a", { title: "Pokemon Sword Shield [0:10]" }],
+      ["b", { title: "Pokemon Sword Shield [1:27]" }],
+    ]);
+    const { refused, rescued } = settleWithFallback(products, proposals, weaker, keysOf);
+    expect(refused).toEqual([]);
+    expect(rescued.sort()).toEqual(["a", "b"]);
+    expect(proposals.get("a").title).toBe("Pokemon Sword Shield [0:10]");
+    expect(proposals.get("b").title).toBe("Pokemon Sword Shield [1:27]");
+    for (const id of ["a", "b"]) {
+      expect(proposals.get(id).title).not.toMatch(/¥/);
+    }
+  });
+
+  it("puts the weaker form through the same check, not around it", () => {
+    /*
+      `b` already holds the fuller name and `c` already holds the weaker one,
+      so both forms collide and the correction is dropped for good. The point
+      is that the rescue is not an escape hatch: it is a second candidate put
+      to the same rule.
+    */
+    const products = [
+      { id: "a", title: "Game [0:10 ¥1]", platform: "switch1" },
+      { id: "b", title: "Game", platform: "switch1" },
+      { id: "c", title: "Game [0:10]", platform: "switch1" },
+    ];
+    const proposals = new Map([["a", { title: "Game" }]]);
+    const weaker = new Map([["a", { title: "Game [0:10]" }]]);
+    const { refused, rescued } = settleWithFallback(products, proposals, weaker, keysOf);
+    expect(rescued).toEqual([]);
+    expect(refused.map((r) => r.id)).toEqual(["a"]);
+    expect(proposals.has("a")).toBe(false);
+  });
+
+  it("does not reach for the weaker form when the fuller one is fine", () => {
+    /*
+      `Game` and `Game [0:10]` are different keys, so nothing collides and the
+      price comes off entirely — which is the outcome to prefer.
+    */
+    const products = [
+      { id: "a", title: "Game [0:10 ¥1]", platform: "switch1" },
+      { id: "b", title: "Game [0:10]", platform: "switch1" },
+    ];
+    const proposals = new Map([["a", { title: "Game" }]]);
+    const weaker = new Map([["a", { title: "Game [0:10]" }]]);
+    const { refused, rescued } = settleWithFallback(products, proposals, weaker, keysOf);
+    expect(refused).toEqual([]);
+    expect(rescued).toEqual([]);
+    expect(proposals.get("a").title).toBe("Game");
+  });
+
+  it("keeps the rest of a rescued product's correction", () => {
+    /*
+      A rescued product may also have had its platform corrected. Replacing
+      its patch with only the weaker title would silently discard that.
+    */
+    const products = [
+      { id: "a", title: "Game [0:10 ¥1]", platform: "switch2" },
+      { id: "b", title: "Game", platform: "switch2" },
+    ];
+    const proposals = new Map([["a", { title: "Game", platform: "switch2" }]]);
+    const weaker = new Map([["a", { title: "Game [0:10]" }]]);
+    settleWithFallback(products, proposals, weaker, keysOf);
+    expect(proposals.get("a")).toEqual({ title: "Game [0:10]", platform: "switch2" });
+  });
+
+  it("counts a product dropped, rescued and dropped again exactly once", () => {
+    const products = [
+      { id: "a", title: "Game [0:10 ¥1]", platform: "switch1" },
+      { id: "b", title: "Game", platform: "switch1" },
+      { id: "c", title: "Game [0:10]", platform: "switch1" },
+    ];
+    const proposals = new Map([["a", { title: "Game" }]]);
+    const weaker = new Map([["a", { title: "Game [0:10]" }]]);
+    const { refused } = settleWithFallback(products, proposals, weaker, keysOf);
+    expect(refused).toHaveLength(1);
+  });
+
+  it("refuses nothing when there is nothing to collide with", () => {
+    const products = [{ id: "a", title: "Game [0:10 ¥1]", platform: "switch1" }];
+    const proposals = new Map([["a", { title: "Game" }]]);
+    const weaker = new Map([["a", { title: "Game [0:10]" }]]);
+    const { refused, rescued } = settleWithFallback(products, proposals, weaker, keysOf);
+    expect(refused).toEqual([]);
+    expect(rescued).toEqual([]);
+    expect(proposals.get("a").title).toBe("Game");
   });
 });

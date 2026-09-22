@@ -65,7 +65,7 @@ import { editionAwareTitle, probeGenerations } from "./lib/nintendo-store.mjs";
 import {
   declaresSwitch2Edition,
   platformVerdict,
-  settleCollisions,
+  settleWithFallback,
   titleFlags,
   titleVerdict,
 } from "./lib/platform-verdict.mjs";
@@ -277,6 +277,8 @@ const proposals = new Map(); // id -> { product, platform?, title?, titleEn?, wh
 const reports = [];
 const flags = [];
 const leaks = [];
+/* Per product, the lesser rename to fall back on if the better one collides. */
+const weaker = new Map();
 const unchanged = [];
 let asked = 0;
 let unaskable = 0;
@@ -355,6 +357,9 @@ for (const product of queue) {
         if (verdict.leaked) {
           leaks.push({ id, field, leaked: verdict.leaked, was: String(product[field] ?? "") });
         }
+        if (verdict.fallback) {
+          weaker.set(id, { ...(weaker.get(id) ?? {}), [field]: verdict.fallback });
+        }
       } else if (verdict.action === "report") {
         reports.push({ id, label, kind: field, reason: verdict.reason, detail: "" });
       }
@@ -381,8 +386,22 @@ for (const product of queue) {
   `productIdentityKeys`, so this cannot disagree with the admin save path
   about what a duplicate is.
 */
-const { dropped, preexisting } = settleCollisions(products, proposals, app.productIdentityKeys);
-for (const drop of dropped) {
+const { refused, rescued, preexisting } = settleWithFallback(
+  products,
+  proposals,
+  weaker,
+  app.productIdentityKeys,
+);
+for (const id of rescued) {
+  const entry = proposals.get(id);
+  if (!entry) continue;
+  entry.why = [
+    ...(entry.why ?? []),
+    "the fuller rename would have collided, so only the supplier's data was removed",
+  ];
+}
+
+for (const drop of refused) {
   reports.push({
     id: drop.id,
     label: String(before.get(drop.id)?.title ?? drop.id),
@@ -561,11 +580,32 @@ say(`  - moved to another console: **${platformMoves}**`);
 say(`  - renamed: **${renames}**`);
 say(`- supplier data taken out of a public name: **${leaks.length}**`);
 say(`- a supplier's price still reaching a customer elsewhere: **${publicLeaks.length}**`);
-say(`- corrections refused because they would collide: **${dropped.length}**`);
+say(`- corrections refused because they would collide: **${refused.length}**`);
+if (rescued.length) {
+  say(
+    `  - of those, rescued by removing only the supplier's data: **${rescued.filter((id) => proposals.has(id)).length}**`,
+  );
+}
 say(`- duplicates already in the catalogue, untouched: **${preexisting.length}**`);
 say(`- reported and left alone: **${reports.length}**`);
 if (stoppedEarly) say(`- **stopped on its deadline; resume with \`--offset=${OFFSET + asked}\`**`);
 say();
+if (refused.length) {
+  /*
+    Named, not just counted. Every one of these is two products the catalogue
+    believes are one game, and which of them keeps the orders is a person's
+    decision, not a script's.
+  */
+  say(`### The corrections refused, and what already holds the name`);
+  say();
+  for (const drop of refused.slice(0, 40)) {
+    say(
+      `- **${String(before.get(drop.id)?.title ?? drop.id)}** — \`${drop.key}\` is held by ${drop.held.join(", ")}`,
+    );
+  }
+  if (refused.length > 40) say(`- _…and ${refused.length - 40} more._`);
+  say();
+}
 
 if (!APPLY) {
   say(`**Dry run. Nothing was written.**`);
