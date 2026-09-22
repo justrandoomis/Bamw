@@ -282,6 +282,7 @@ export async function getSnapshot(userId?: string, range = "1D"): Promise<Banana
      ORDER BY o.created_at DESC LIMIT 100`,
   );
 
+  const nowIso = new Date().toISOString();
   const userListings: BananaListing[] = offers.map((o) => {
     const pricePer = o.quantity > 0 ? o.price_iqd / o.quantity : 0;
     return {
@@ -301,8 +302,16 @@ export async function getSnapshot(userId?: string, range = "1D"): Promise<Banana
       */
       pricePer: roundPrice(pricePer),
       total: o.price_iqd,
-      isPrivate: false,
-      isPromoted: false,
+      /*
+        The seller's own choices, read back. Both were hardcoded false, so a
+        listing published as «خاص» came back to its own seller labelled «عام» —
+        the shop contradicting the member about what they had just done.
+
+        A promotion expires: `is_promoted` stays 1 as the record of what was
+        bought, and `promoted_until` decides whether it is still in force.
+      */
+      isPrivate: Boolean(o.is_private),
+      isPromoted: Boolean(o.is_promoted) && String(o.promoted_until ?? "") > nowIso,
       isLive: false,
       diff: price > 0 ? Math.round(((pricePer - price) / price) * 1000) / 10 : 0,
       createdAt: o.created_at,
@@ -328,8 +337,18 @@ export async function getSnapshot(userId?: string, range = "1D"): Promise<Banana
     changePct: changePercent24h(config),
     volume24h: Number(volumeRow?.v ?? 0),
     rewards,
-    listings: [...bots, ...userListings.filter((l) => l.userId !== userId)].sort(
-      (a, b) => a.pricePer - b.pricePer,
+    /*
+      The public board: everyone else's listings, minus the private ones.
+
+      «خاص» has to mean something on the side that matters — a private listing
+      is reachable by its own link and by its seller, and does not sit on the
+      public board. The seller still sees it below, in `myListings`.
+
+      Promoted listings lead, and only while their window is open; price is the
+      order within each group, as it always was.
+    */
+    listings: [...bots, ...userListings.filter((l) => l.userId !== userId && !l.isPrivate)].sort(
+      (a, b) => Number(b.isPromoted) - Number(a.isPromoted) || a.pricePer - b.pricePer,
     ),
     myListings: userId ? userListings.filter((l) => l.userId === userId) : [],
     balance: bal.balance,
@@ -460,12 +479,34 @@ export async function createListing(
   await assertListingWithinBounds(data.quantity, data.pricePer);
   const total = data.quantity * data.pricePer;
 
+  /*
+    THE PROMOTION IS CHARGED, NOT JUST QUOTED.
+
+    The form prices it — «${promoHours} × 60 × promoRatePerMinute» bananas — and
+    disables the publish button when the seller cannot afford it. Then this
+    function accepted `isPromoted` and `promoteMinutes`, named neither in its
+    INSERT, and charged nothing. The seller paid nothing and got nothing, which
+    is the only reason it never became a complaint about money.
+
+    The cost is taken in the SAME debit as the listing itself: one call, so a
+    seller can never end up paying for a promotion on a listing that then failed
+    to be created. The rate comes from the shop's config, never from the
+    request — the browser sends minutes, and the price of a minute is the
+    owner's to set.
+  */
+  const config = await getMarketConfig();
+  const promoteMinutes =
+    data.isPromoted && Number.isFinite(Number(data.promoteMinutes))
+      ? Math.max(0, Math.trunc(Number(data.promoteMinutes)))
+      : 0;
+  const promoCost = Math.round(promoteMinutes * Math.max(0, config.promoRatePerMinute));
+
   // Use market functions logic: Debit balance, add to locked, create offer.
   // We delegate to the centralized balance logic for the debit part.
-  const res = await debitBananaBalance(userId, data.quantity, {
-    reason: "Market Listing Creation",
+  const res = await debitBananaBalance(userId, data.quantity + promoCost, {
+    reason: promoCost > 0 ? "Market Listing Creation + Promotion" : "Market Listing Creation",
     kind: "listing_fee",
-    meta: { pricePer: data.pricePer, total },
+    meta: { pricePer: data.pricePer, total, promoteMinutes, promoCost },
   });
 
   if (!res.success) throw new BananaError(res.error || "insufficient_balance");
@@ -488,14 +529,24 @@ export async function createListing(
       binds: [data.quantity, userId],
     },
     {
-      sql: `INSERT INTO banana_market_offers (id, user_id, quantity, price_iqd, locked_banana, status, created_at, updated_at)
-             VALUES (?, ?, ?, ?, ?, 'active', ?, ?)`,
+      /*
+        Only the listed bananas are LOCKED. The promotion's cost is spent, not
+        held: it buys placement and does not come back when the listing sells or
+        is cancelled, which is why `locked_banana` stays `data.quantity`.
+      */
+      sql: `INSERT INTO banana_market_offers
+              (id, user_id, quantity, price_iqd, locked_banana, status,
+               is_private, is_promoted, promoted_until, created_at, updated_at)
+            VALUES (?, ?, ?, ?, ?, 'active', ?, ?, ?, ?, ?)`,
       binds: [
         id,
         userId,
         data.quantity,
         total,
         data.quantity,
+        data.isPrivate ? 1 : 0,
+        promoteMinutes > 0 ? 1 : 0,
+        promoteMinutes > 0 ? new Date(Date.now() + promoteMinutes * 60_000).toISOString() : null,
         new Date().toISOString(),
         new Date().toISOString(),
       ],
@@ -1187,6 +1238,9 @@ export async function getAdminBananaData() {
       pricePer: quantity > 0 ? roundPrice(priceIqd / quantity) : 0,
       lockedBanana: Number(row.locked_banana ?? 0),
       status: String(row.status ?? ""),
+      isPrivate: Boolean(row.is_private),
+      isPromoted: Boolean(row.is_promoted),
+      promotedUntil: String(row.promoted_until ?? ""),
       buyerId: String(row.buyer_id ?? ""),
       createdAt: String(row.created_at ?? ""),
       updatedAt: String(row.updated_at ?? ""),
