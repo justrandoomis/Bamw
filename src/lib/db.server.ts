@@ -3050,9 +3050,24 @@ export async function getWalletTransactions(userId: string): Promise<WalletTrans
               correctAmount,
               tx.id,
             );
+            /*
+              ROUND THE CORRECTION, NEVER THE BALANCE.
+
+              This was `SET wallet_balance = ROUND(COALESCE(wallet_balance, 0) + ?)`,
+              which rounds the member's WHOLE balance, not the amount being put
+              right. A balance of 12,500.60 became 12,501 — and this runs inside
+              a GET that the wallet page polls every five seconds, so it happened
+              while a member was merely looking at the screen, with nothing in
+              the statement to explain the change.
+
+              The correction is a whole number already (it is parsed out of
+              «(N IQD)»), and it is rounded here before binding rather than in
+              SQL, so only the delta is ever rounded and the stored total keeps
+              whatever precision it had.
+            */
             await d1Execute(
-              `UPDATE users SET wallet_balance = ROUND(COALESCE(wallet_balance, 0) + ?) WHERE id = ?`,
-              diff,
+              `UPDATE users SET wallet_balance = COALESCE(wallet_balance, 0) + ? WHERE id = ?`,
+              Math.round(diff),
               tx.user_id,
             );
           }
