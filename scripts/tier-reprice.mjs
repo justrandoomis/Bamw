@@ -39,7 +39,22 @@ const args = Object.fromEntries(
 );
 const APPLY = args.apply === "true";
 const ONLY = args.only && args.only !== "true" ? String(args.only) : null;
-const LIMIT = args.limit && args.limit !== "true" ? Number(args.limit) : Infinity;
+/*
+  A typo in `--limit` used to be silent. `Number("five")` is NaN, `slice(0, NaN)`
+  is the empty array, and an `--apply` run then wrote nothing, printed
+  «لا شيء ليُكتب» and exited 0 — a no-op reported as a success, which is the
+  one thing a script that touches prices must never do.
+*/
+let LIMIT = Infinity;
+if (args.limit && args.limit !== "true") {
+  LIMIT = Number(args.limit);
+  if (!Number.isInteger(LIMIT) || LIMIT <= 0) {
+    console.error(`--limit=${args.limit} ليس عددًا صحيحًا موجبًا`);
+    process.exit(1);
+  }
+}
+/* Large moves are HELD unless this run says otherwise — see section 5. */
+const INCLUDE_BIG_MOVES = args["include-big-moves"] === "true";
 
 const SECRETS = [process.env.CLOUDFLARE_API_TOKEN, process.env.CLOUDFLARE_ACCOUNT_ID].filter(
   (v) => v && v.length >= 8,
@@ -122,6 +137,21 @@ const app = await import(outfile);
 
 const money = (n) => Number(n || 0).toLocaleString("en-US");
 
+/*
+  A product's name in a report column, with enough of it to tell two apart.
+
+  At 34 characters «SpongeBob SquarePants: Titans of t…» named two different
+  products identically, on adjacent rows, with different prices — so the one
+  row a reader would query was the one they could not identify. The tail of
+  the id disambiguates when the visible names still collide.
+*/
+const label = (result) => {
+  const title = String(result?.title ?? "").trim();
+  const id = String(result?.id ?? "");
+  const shown = title.length > 46 ? `${title.slice(0, 45)}…` : title || "—";
+  return `${shown} \`${id.slice(-6)}\``;
+};
+
 /* ------------------------------------------------------------ the catalogue */
 
 const reachable = await app.d1All("SELECT count(*) AS n FROM store_kv");
@@ -165,6 +195,59 @@ for (const product of products) {
   });
   results.push({ product, result });
 }
+
+/* ----------------------------------------------------- the big-move hold */
+
+/*
+  A MOVE THIS LARGE IS A QUESTION ABOUT THE COST, AND IT IS NOT MINE TO ANSWER.
+
+  Section 5 used to list these and then write them anyway — «كلها تمر من
+  البوابة» — which is a report pretending to be a gate. The owner's own words
+  on Super Smash Bros. Ultimate settled what they actually are: «السعر في
+  الsuper smash bros ultimate كان للاونلاين ، لكن التكلفه هي للاوفلاين». Its
+  online tier carries a cost of 1,750. The price of 32,000 is CORRECT; the
+  cost is not, and the rules were about to halve one of the shop's
+  best-known games on the strength of it, with every guard passing.
+
+  The ordering guard in `tierRepricing` cannot see it, and that is not a
+  fault in the guard: 1,750 is ABOVE Smash's own offline cost, so the two
+  numbers are in the right order and still the wrong numbers. No arithmetic
+  on a wrong cost produces a right price.
+
+  So the threshold that already exists for review — 35%, or 15,000 dinars —
+  becomes the threshold for holding. The other 145 moves are written; these
+  are listed with their costs, and the owner decides. Nothing is invented:
+  the rule is unchanged, the held rows keep the price they have, and
+  `--include-big-moves` writes them once a cost has been checked.
+*/
+const BIG_MOVE_RATIO = 0.35;
+const BIG_MOVE_ABSOLUTE = 15_000;
+const BIG_MOVE_HOLD = `حركة كبيرة — راجع التكلفة أولًا (${Math.round(BIG_MOVE_RATIO * 100)}% أو ${money(BIG_MOVE_ABSOLUTE)})`;
+const bigMoves = [];
+for (const { result } of results) {
+  for (const p of result.proposals) {
+    if (!p.changed) continue;
+    const from = Number(p.oldPrice);
+    const to = Number(p.newPrice);
+    if (!Number.isFinite(from) || from <= 0) continue;
+    const delta = Math.abs(to - from);
+    if (delta < BIG_MOVE_ABSOLUTE && delta / from < BIG_MOVE_RATIO) continue;
+    bigMoves.push({ result, p, delta, ratio: delta / from, proposed: to });
+    if (INCLUDE_BIG_MOVES) continue;
+    /*
+      Held in place: the proposal keeps the price the product already has, so
+      every downstream reader — section 4, the gate, the write, the digest —
+      sees a row that does not move, with no second list to keep in step.
+    */
+    p.newPrice = p.oldPrice;
+    p.changed = false;
+    p.skipped = BIG_MOVE_HOLD;
+  }
+}
+for (const { result } of results) {
+  result.changed = result.proposals.some((p) => p.changed);
+}
+bigMoves.sort((a, b) => b.ratio - a.ratio);
 
 const moving = results.filter(({ result }) => result.changed).slice(0, LIMIT);
 
@@ -295,7 +378,7 @@ if (!suspectCosts.length) {
   say(`| --- | --- | --- | --- | --- |`);
   for (const row of suspectCosts.slice(0, 40)) {
     say(
-      `| ${String(row.result.title).slice(0, 34)} | \`${row.p.kind}\` | ${money(row.baseCost)} | **${money(row.p.cost)}** | ${money(row.p.oldPrice)} |`,
+      `| ${label(row.result)} | \`${row.p.kind}\` | ${money(row.baseCost)} | **${money(row.p.cost)}** | ${money(row.p.oldPrice)} |`,
     );
   }
   if (suspectCosts.length > 40) say(`| … | ${suspectCosts.length - 40} أخرى | | | |`);
@@ -313,7 +396,7 @@ if (!moving.length) {
     for (const p of result.proposals) {
       if (!p.changed) continue;
       say(
-        `| ${String(result.title).slice(0, 34)} | \`${p.kind}\` | ${money(p.cost)} | ${money(p.oldPrice)} | **${money(p.newPrice)}** | ${money(p.newPrice - p.cost)} | ${p.reason} |`,
+        `| ${label(result)} | \`${p.kind}\` | ${money(p.cost)} | ${money(p.oldPrice)} | **${money(p.newPrice)}** | ${money(p.newPrice - p.cost)} | ${p.reason} |`,
       );
     }
   }
@@ -333,27 +416,26 @@ say();
   «الدقه اهم شي». So they are listed, with the cost that drove them, rather
   than being buried in a table of seventy rows.
 */
-const BIG_MOVE_RATIO = 0.35;
-const BIG_MOVE_ABSOLUTE = 15_000;
-const outliers = [];
-for (const { result } of moving) {
-  for (const p of result.proposals) {
-    if (!p.changed) continue;
-    const from = Number(p.oldPrice);
-    const to = Number(p.newPrice);
-    if (!Number.isFinite(from) || from <= 0) continue;
-    const delta = Math.abs(to - from);
-    if (delta >= BIG_MOVE_ABSOLUTE || delta / from >= BIG_MOVE_RATIO) {
-      outliers.push({ result, p, delta, ratio: delta / from });
-    }
-  }
-}
-outliers.sort((a, b) => b.ratio - a.ratio);
+/*
+  Computed before `moving`, above, because these rows are HELD rather than
+  merely noted — `bigMoves` carries what each one WOULD have become.
+*/
+const outliers = bigMoves;
 
-say(`## 5. حركات كبيرة — راجع التكلفة قبل اعتمادها`);
+say(
+  INCLUDE_BIG_MOVES
+    ? `## 5. حركات كبيرة — ستُكتب (\`--include-big-moves\`)`
+    : `## 5. حركات كبيرة — محجوزة، لم تُكتب`,
+);
 say();
 say(
-  `الشرط: تغيّر ${Math.round(BIG_MOVE_RATIO * 100)}% أو أكثر، أو ${money(BIG_MOVE_ABSOLUTE)} دينار أو أكثر. كلها تمر من البوابة — هذه ملاحظة على التكلفة لا على القاعدة.`,
+  `الشرط: تغيّر ${Math.round(BIG_MOVE_RATIO * 100)}% أو أكثر، أو ${money(BIG_MOVE_ABSOLUTE)} دينار أو أكثر.`,
+);
+say();
+say(
+  INCLUDE_BIG_MOVES
+    ? `هذا التشغيل يكتبها بناءً على \`--include-big-moves\`.`
+    : `القاعدة تمرّ عليها، لكن حركة بهذا الحجم سؤال عن **التكلفة** لا عن السعر: سعر Super Smash Bros. Ultimate صحيح والتكلفة المسجّلة (1,750) هي تكلفة الأوفلاين. لذلك تبقى هذه الأسعار كما هي حتى تُراجَع تكلفتها، وبقية الحركات تُكتب. بعد إصلاح التكلفة أعد التشغيل، أو استخدم \`--include-big-moves\` لاعتمادها كما هي.`,
 );
 say();
 if (!outliers.length) {
@@ -361,12 +443,12 @@ if (!outliers.length) {
 } else {
   say(`عددها: **${outliers.length}**`);
   say();
-  say(`| المنتج | الطبقة | التكلفة | من | إلى | التغيّر |`);
-  say(`| --- | --- | --- | --- | --- | --- |`);
+  say(`| المنتج | الطبقة | التكلفة | السعر الآن | القاعدة تقترح | التغيّر | الحالة |`);
+  say(`| --- | --- | --- | --- | --- | --- | --- |`);
   for (const row of outliers.slice(0, 40)) {
-    const direction = row.p.newPrice > row.p.oldPrice ? "▲" : "▼";
+    const direction = row.proposed > row.p.oldPrice ? "▲" : "▼";
     say(
-      `| ${String(row.result.title).slice(0, 34)} | \`${row.p.kind}\` | ${money(row.p.cost)} | ${money(row.p.oldPrice)} | **${money(row.p.newPrice)}** | ${direction} ${Math.round(row.ratio * 100)}% |`,
+      `| ${label(row.result)} | \`${row.p.kind}\` | ${money(row.p.cost)} | ${money(row.p.oldPrice)} | **${money(row.proposed)}** | ${direction} ${Math.round(row.ratio * 100)}% | ${INCLUDE_BIG_MOVES ? "ستُكتب" : "محجوزة"} |`,
     );
   }
   if (outliers.length > 40) say(`| … | ${outliers.length - 40} أخرى | | | | |`);
@@ -443,7 +525,9 @@ const digest = () => {
   say(`- منتجات تتحرك: **${moving.length}** من ${results.length} منتجًا يحمل طبقات`);
   say(`- طبقات تتحرك: **${payload.changes.length}**`);
   say(`- مجموع أسعارها قبل: **${money(before)}** → بعد: **${money(after)}** (${after >= before ? "+" : ""}${money(after - before)})`);
-  say(`- حركات كبيرة تستحق مراجعة التكلفة: **${outliers.length}**`);
+  say(
+    `- حركات كبيرة ${INCLUDE_BIG_MOVES ? "ستُكتب" : "**محجوزة** حتى تُراجع تكلفتها"}: **${outliers.length}**`,
+  );
   say(`- طبقات أونلاين بتكلفة تبدو للأوفلاين (لم تُسعَّر): **${suspectCosts.length}**`);
   say(`- طبقات لم تُعرَف ولن تُمَس: **${unknownTiers}**`);
 };
@@ -476,27 +560,129 @@ if (!moving.length) {
   production. A tier's COST is what this must protect above all: it is the
   owner's supplier data and the whole margin rests on it.
 */
+/*
+  WHAT TO CHANGE, CARRIED AS IDENTITY AND NOT AS A POSITION.
+
+  The tier indices come from the NORMALIZED catalogue — `getStore()` runs every
+  record through `normalizeProductRecord`, which can build `types` out of
+  `variants` when the stored document has none, and can reorder or drop rows.
+  Those indices were then applied to the RAW `store:product:<id>` document read
+  straight out of D1. When the two disagree the write is not wrong by a little:
+  a raw document with no `types` array at all had `[].map(...)` written back
+  over it as `types: []`, erasing every tier and every COST on the product.
+
+  So a change carries what the tier WAS — its id, its name, its price and its
+  cost, as `classifyTier` reads them — and the target row is found by matching
+  all four in whatever document is about to be written. Exactly one match, or
+  this run stops. An index cannot be checked; an identity can.
+*/
 const wanted = new Map();
 for (const { result } of moving) {
-  const perTier = new Map();
-  for (const p of result.proposals) if (p.changed) perTier.set(p.index, p.newPrice);
-  if (perTier.size) wanted.set(result.id, perTier);
+  const changes = result.proposals
+    .filter((p) => p.changed)
+    .map((p) => ({
+      index: p.index,
+      id: String(p.id ?? ""),
+      name: String(p.name ?? ""),
+      cost: Number(p.cost),
+      oldPrice: Number(p.oldPrice),
+      newPrice: Number(p.newPrice),
+    }));
+  if (changes.length) wanted.set(result.id, changes);
 }
 
 const byId = new Map(products.map((p) => [String(p["id"] ?? ""), p]));
 
+/** The same four fields the rules saw, read off a raw row by the same function. */
+const identity = (row) => {
+  const t = app.classifyTier(row ?? {});
+  return `${t.id}\u0000${t.name}\u0000${t.cost}\u0000${t.price}`;
+};
+
+/**
+ * Where each change lands in THIS document's `types`, or a reason it cannot.
+ *
+ * Returns a Map of index → new price. Ambiguity is a refusal, not a guess: two
+ * rows that are identical in id, name, cost and price are indistinguishable,
+ * and picking one would be picking at random which price to move.
+ */
+const resolveTargets = (id, doc, changes) => {
+  const types = Array.isArray(doc?.["types"]) ? doc["types"] : null;
+  if (!types) fail(`${id}: المستند المخزَّن بلا مصفوفة \`types\` — لن أكتب فوقه`);
+  const keys = types.map((row) => identity(row));
+  const targets = new Map();
+  for (const change of changes) {
+    const want = `${change.id}\u0000${change.name}\u0000${change.cost}\u0000${change.oldPrice}`;
+    const hits = [];
+    for (let i = 0; i < keys.length; i += 1) if (keys[i] === want) hits.push(i);
+    if (hits.length === 0) {
+      fail(
+        `${id}: لا توجد طبقة تطابق «${change.name || change.id}» بسعر ${money(change.oldPrice)} وتكلفة ${money(change.cost)} في المستند المخزَّن`,
+      );
+    }
+    if (hits.length > 1) {
+      fail(
+        `${id}: ${hits.length} طبقات متطابقة تمامًا مع «${change.name || change.id}» — لا أعرف أيّها يُقصد`,
+      );
+    }
+    if (targets.has(hits[0])) fail(`${id}: تغييران على الطبقة نفسها`);
+    targets.set(hits[0], change.newPrice);
+  }
+  return targets;
+};
+
 /** A product with the wanted tier prices applied, and nothing else changed. */
-const patchProduct = (before, perTier) => {
+const patchProduct = (before, targets) => {
   const types = (Array.isArray(before["types"]) ? before["types"] : []).map((tier, index) =>
-    perTier.has(index) ? { ...tier, price: perTier.get(index) } : tier,
+    targets.has(index) ? { ...tier, price: targets.get(index) } : tier,
   );
   return { ...before, types };
 };
 
-for (const [id, perTier] of wanted) {
-  const before = byId.get(id);
-  if (!before) fail(`${id} ليس في الكتالوج`);
-  const patched = patchProduct(before, perTier);
+/*
+  THE RAW DOCUMENTS, READ BEFORE THE REHEARSAL AND NOT DURING THE WRITE.
+
+  The rehearsal used to run against the normalized product while the write ran
+  against the raw one, so the one document that could go wrong was the one
+  never rehearsed. Every overlay row is fetched here so the rehearsal below
+  sees exactly what will be written.
+*/
+const overlayWrites = [...wanted.keys()].filter((id) => overlayIds.has(id));
+const chunkWrites = [...wanted.keys()].filter((id) => !overlayIds.has(id));
+const rawOverlay = new Map();
+for (const id of overlayWrites) {
+  const rows = await app.d1All("SELECT value FROM store_kv WHERE key = ?", `store:product:${id}`);
+  let stored = null;
+  try {
+    stored = rows?.[0]?.value ? JSON.parse(String(rows[0].value)) : null;
+  } catch {
+    stored = null;
+  }
+  if (!stored || String(stored.id ?? "") !== id) {
+    fail(`${id}: صف \`store:product:\` غير قابل للقراءة — لن أكتب فوقه`);
+  }
+  rawOverlay.set(id, stored);
+}
+
+/*
+  The rehearsal proper: patch a copy of the document that will actually be
+  written and assert that the ONLY thing that differs is `price` on the exact
+  rows named. A tier's COST is what this must protect above all — it is the
+  owner's supplier data and the whole margin rests on it.
+
+  The document is re-parsed from its own JSON first, so the comparison is
+  against an independent copy rather than against the object the patch was
+  spread from. Comparing a spread to its own source can only agree.
+*/
+const plan = new Map();
+for (const [id, changes] of wanted) {
+  const source = rawOverlay.get(id) ?? byId.get(id);
+  if (!source) fail(`${id} ليس في الكتالوج`);
+  const targets = resolveTargets(id, source, changes);
+  plan.set(id, targets);
+
+  const before = JSON.parse(JSON.stringify(source));
+  const patched = patchProduct(source, targets);
 
   for (const key of new Set([...Object.keys(before), ...Object.keys(patched)])) {
     if (key === "types") continue;
@@ -508,21 +694,26 @@ for (const [id, perTier] of wanted) {
   const beforeTiers = Array.isArray(before["types"]) ? before["types"] : [];
   const afterTiers = patched["types"];
   if (beforeTiers.length !== afterTiers.length) fail(`البروفة: ${id}.types غيّر طوله`);
+  if (!afterTiers.length) fail(`البروفة: ${id}.types صار فارغًا`);
   for (let i = 0; i < beforeTiers.length; i += 1) {
     for (const key of new Set([
       ...Object.keys(beforeTiers[i] ?? {}),
       ...Object.keys(afterTiers[i] ?? {}),
     ])) {
-      if (key === "price" && perTier.has(i)) continue;
+      if (key === "price" && targets.has(i)) continue;
       if (
         JSON.stringify(beforeTiers[i]?.[key] ?? null) !== JSON.stringify(afterTiers[i]?.[key] ?? null)
       ) {
         fail(`البروفة: ${id}.types[${i}].${key} تغيّر، وهذا السكربت لا يملك تغييره`);
       }
     }
-    if (perTier.has(i) && Number(afterTiers[i].price) !== Number(perTier.get(i))) {
+    if (targets.has(i) && Number(afterTiers[i].price) !== Number(targets.get(i))) {
       fail(`البروفة: ${id}.types[${i}].price لم يُضبط`);
     }
+  }
+  /* Every change asked for landed somewhere. */
+  if (targets.size !== changes.length) {
+    fail(`البروفة: ${id} — ${changes.length} تغييرًا مطلوبًا و${targets.size} فقط وجدت مكانها`);
   }
 }
 
@@ -537,9 +728,6 @@ for (const [id, perTier] of wanted) {
   changes nothing a shopper will ever see. So each product is written where it
   actually lives.
 */
-const overlayWrites = [...wanted.keys()].filter((id) => overlayIds.has(id));
-const chunkWrites = [...wanted.keys()].filter((id) => !overlayIds.has(id));
-
 say(`## 6. الكتابة`);
 say();
 say(`- عبر صفوف \`store:product:<id>\`: **${overlayWrites.length}**`);
@@ -547,17 +735,7 @@ say(`- عبر كتل الكتالوج: **${chunkWrites.length}**`);
 say();
 
 for (const id of overlayWrites) {
-  const rows = await app.d1All("SELECT value FROM store_kv WHERE key = ?", `store:product:${id}`);
-  let stored = null;
-  try {
-    stored = rows?.[0]?.value ? JSON.parse(String(rows[0].value)) : null;
-  } catch {
-    stored = null;
-  }
-  if (!stored || String(stored.id ?? "") !== id) {
-    fail(`${id}: صف \`store:product:\` غير قابل للقراءة — لن أكتب فوقه`);
-  }
-  const patched = patchProduct(stored, wanted.get(id));
+  const patched = patchProduct(rawOverlay.get(id), plan.get(id));
   await app.d1Run(
     "INSERT INTO store_kv (key, value, updated_at) VALUES (?, ?, ?)" +
       " ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at",
@@ -567,6 +745,16 @@ for (const id of overlayWrites) {
   );
 }
 
+/*
+  THE REVISION, AFTER AN OVERLAY WRITE.
+
+  `updateStore` writes `store_rev` inside its own transaction, so the chunk
+  path already moves the catalogue version that `/api/data` serves as
+  `catalogVersion` and as its ETag. The bare INSERT above moves nothing, so a
+  browser and the edge would go on serving the OLD price from a cache keyed on
+  a version that did not change — a write that succeeded and that nobody sees.
+*/
+if (overlayWrites.length) await app.bumpCatalogVersion();
 let written = 0;
 if (chunkWrites.length) {
   const chunkSet = new Set(chunkWrites);
@@ -582,7 +770,7 @@ if (chunkWrites.length) {
       const id = String(item?.id ?? "");
       if (!chunkSet.has(id)) return item;
       written += 1;
-      return patchProduct(item, wanted.get(id));
+      return patchProduct(item, plan.get(id));
     });
     return { ...current, products: next };
   });
@@ -602,9 +790,27 @@ const afterStore = await app.getStore();
 const afterList = Array.isArray(afterStore?.products) ? afterStore.products : [];
 const afterById = new Map(afterList.map((p) => [String(p["id"] ?? ""), p]));
 
+/*
+  VERIFIED BY IDENTITY, NOT BY POSITION.
+
+  `plan`'s indices point into the document each product was WRITTEN to — the
+  raw `store:product:<id>` row for an overlay product — while this reads the
+  normalized catalogue, where the same tier can sit somewhere else. Checking
+  index i here would compare two different rows and call it agreement.
+
+  So each change is confirmed the way it was aimed: find the row that still
+  carries this tier's id, name and cost, and require its price to be the new
+  one. Then require every OTHER row to be untouched, by comparing the full
+  before/after multiset of rows — which catches a price moved on a tier this
+  run never named, the failure a per-change check cannot see.
+*/
 const faults = [];
 let verified = 0;
-for (const [id, perTier] of wanted) {
+const rowKey = (row) => {
+  const t = app.classifyTier(row ?? {});
+  return `${t.id} ${t.name} ${t.cost}`;
+};
+for (const [id, changes] of wanted) {
   const was = byId.get(id);
   const now = afterById.get(id);
   if (!now) {
@@ -622,24 +828,63 @@ for (const [id, perTier] of wanted) {
   const wasTiers = Array.isArray(was?.["types"]) ? was["types"] : [];
   const nowTiers = Array.isArray(now["types"]) ? now["types"] : [];
   if (wasTiers.length !== nowTiers.length) {
-    faults.push(`${id}.types غيّر طوله`);
+    faults.push(`${id}.types غيّر طوله (${wasTiers.length} → ${nowTiers.length})`);
     continue;
   }
   let clean = true;
-  for (let i = 0; i < wasTiers.length; i += 1) {
-    if (perTier.has(i) && Number(nowTiers[i]?.price) !== Number(perTier.get(i))) {
-      faults.push(`${id}.types[${i}].price = ${nowTiers[i]?.price}، والمتوقع ${perTier.get(i)}`);
+
+  /* 1. Every change this run asked for is on the row it named. */
+  for (const change of changes) {
+    const want = `${change.id} ${change.name} ${change.cost}`;
+    const hits = nowTiers.filter((row) => rowKey(row) === want);
+    if (hits.length !== 1) {
+      faults.push(
+        `${id}: «${change.name || change.id}» ظهرت ${hits.length} مرة بعد الكتابة بدل مرة واحدة`,
+      );
       clean = false;
       continue;
     }
-    for (const key of new Set([...Object.keys(wasTiers[i] ?? {}), ...Object.keys(nowTiers[i] ?? {})])) {
-      if (key === "price" && perTier.has(i)) continue;
-      if (JSON.stringify(wasTiers[i]?.[key] ?? null) !== JSON.stringify(nowTiers[i]?.[key] ?? null)) {
-        faults.push(`${id}.types[${i}].${key} تغيّر، وهذا السكربت لا يملك تغييره`);
-        clean = false;
-      }
+    if (Number(app.classifyTier(hits[0]).price) !== change.newPrice) {
+      faults.push(
+        `${id}: «${change.name || change.id}» سعرها ${hits[0]?.price}، والمتوقع ${change.newPrice}`,
+      );
+      clean = false;
     }
   }
+
+  /* 2. And nothing else moved. The whole row, cost included, before vs after. */
+  const expected = new Map();
+  for (const row of wasTiers) {
+    const t = app.classifyTier(row);
+    const change = changes.find(
+      (c) => c.id === t.id && c.name === t.name && c.cost === t.cost && c.oldPrice === t.price,
+    );
+    const key = `${t.id} ${t.name} ${t.cost} ${change ? change.newPrice : t.price}`;
+    expected.set(key, (expected.get(key) ?? 0) + 1);
+  }
+  for (const row of nowTiers) {
+    const t = app.classifyTier(row);
+    const key = `${t.id} ${t.name} ${t.cost} ${t.price}`;
+    const left = expected.get(key) ?? 0;
+    if (left <= 0) {
+      faults.push(
+        `${id}: طبقة «${t.name || t.id}» بتكلفة ${money(t.cost)} وسعر ${money(t.price)} لم يطلبها هذا التشغيل`,
+      );
+      clean = false;
+      continue;
+    }
+    expected.set(key, left - 1);
+  }
+  for (const [key, left] of expected) {
+    if (left > 0) {
+      const [tid, tname, tcost, tprice] = key.split(" ");
+      faults.push(
+        `${id}: طبقة «${tname || tid}» بتكلفة ${money(tcost)} كان يجب أن تكون بسعر ${money(tprice)} واختفت`,
+      );
+      clean = false;
+    }
+  }
+
   if (clean) verified += 1;
 }
 

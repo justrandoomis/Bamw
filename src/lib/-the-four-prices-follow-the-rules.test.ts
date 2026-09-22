@@ -545,3 +545,171 @@ describe("an online tier carrying the offline account's cost", () => {
     expect(at(result, "online_base")?.skipped).toBeNull();
   });
 });
+
+/*
+  Everything below was written from an adversarial review that reproduced each
+  fault against the real module before it was believed. Each test names the
+  money the fault would have moved.
+*/
+
+describe("a device is a device on all four rows, not just the offline one", () => {
+  /*
+    `skipReason`'s 100,000 backstop used to reach `offline_base` alone, so one
+    product contradicted itself: the offline row held as «جهاز لا لعبة» while
+    the online row was cut from 300,000 to 265,000 — a console, thirty-five
+    thousand dinars off, with `tierProblem` clean because a 15,000 margin is
+    inside the online band.
+  */
+  const console_ = repriceTiers(
+    game([
+      { id: "offline_base", name: "اوفلاين", price: 300_000, cost: 250_000 },
+      { id: "online_base", name: "اونلاين", price: 300_000, cost: 250_000 },
+    ]),
+  );
+
+  it("holds both rows, and for the same reason", () => {
+    expect(at(console_, "offline_base")?.skipped).toContain("جهاز لا لعبة");
+    expect(at(console_, "online_base")?.skipped).toContain("جهاز لا لعبة");
+  });
+
+  it("moves no price at all", () => {
+    expect(console_.changed).toBe(false);
+    expect(at(console_, "online_base")?.newPrice).toBe(300_000);
+  });
+
+  it("holds the add-ons rows of a device too", () => {
+    const result = repriceTiers(
+      game([
+        { id: "offline_base", name: "اوفلاين", price: 300_000, cost: 250_000 },
+        { id: "offline_extras", name: "اوفلاين مع الاضافات", price: 340_000, cost: 260_000 },
+        { id: "online_extras", name: "اونلاين مع الاضافات", price: 380_000, cost: 280_000 },
+      ]),
+    );
+    expect(result.changed).toBe(false);
+    for (const proposal of result.proposals) expect(proposal.skipped).toBeTruthy();
+  });
+});
+
+describe("the add-ons row is never built on a base the rules declined to price", () => {
+  /*
+    The base is out of scope but its own `tierSkip` says nothing, so the
+    add-ons row used to be priced on top of the base's UNTOUCHED price — and
+    `tierProblem`'s "add-ons must beat plain" check reads `base.skipped`, so it
+    was disabled in exactly that case. The rule and its gate looked away
+    together.
+  */
+  it("holds the add-ons when the plain offline row is out of scope", () => {
+    const result = repriceTiers(
+      game([
+        { id: "offline_base", name: "اوفلاين", price: 150_000, cost: 120_000 },
+        { id: "offline_extras", name: "اوفلاين مع الاضافات", price: 160_000, cost: 125_000 },
+      ]),
+    );
+    expect(at(result, "offline_extras")?.skipped).toBeTruthy();
+    expect(at(result, "offline_extras")?.newPrice).toBe(160_000);
+  });
+});
+
+describe("a cost is read as it was written", () => {
+  it("keeps a negative sign that arrived as a string", () => {
+    const result = repriceTiers(
+      game([{ id: "online_base", name: "اونلاين", price: "26,000", cost: "-5000" }]),
+    );
+    // Stripped, "-5000" used to become 5,000 and walk past the cost <= 0 guard.
+    expect(at(result, "online_base")?.cost).toBe(-5_000);
+    expect(at(result, "online_base")?.skipped).toBe("بلا تكلفة مسجّلة");
+  });
+
+  it("reads Arabic-Indic digits as the number they are", () => {
+    const result = repriceTiers(
+      game([{ id: "offline_base", name: "اوفلاين", price: "٨٥٠٠", cost: "٢٠٠٠" }]),
+    );
+    const tier = at(result, "offline_base");
+    expect(tier?.cost).toBe(2_000);
+    expect(tier?.oldPrice).toBe(8_500);
+    expect(tier?.newPrice).toBe(8_000);
+  });
+
+  it("does not read a dash inside a number as a minus sign", () => {
+    const result = repriceTiers(
+      game([{ id: "offline_base", name: "اوفلاين", price: "8-500", cost: "2000" }]),
+    );
+    expect(at(result, "offline_base")?.cost).toBe(2_000);
+  });
+});
+
+describe("a plain account that merely mentions something is still plain", () => {
+  const plain = (name: string) =>
+    at(
+      repriceTiers(game([{ id: "t1", name, price: 8_500, cost: 2_000 }])),
+      "offline_base",
+    );
+
+  it("«حساب اوفلاين مع ضمان» is the plain account, not the add-ons edition", () => {
+    expect(plain("حساب اوفلاين مع ضمان")).toBeDefined();
+  });
+
+  it("«حساب اوفلاين معتمد» is the plain account — «مع» inside a word is not «with»", () => {
+    expect(plain("حساب اوفلاين معتمد")).toBeDefined();
+  });
+
+  it("«اوفلاين بدون اضافات» is the plain account, because it says so", () => {
+    expect(plain("اوفلاين بدون اضافات")).toBeDefined();
+  });
+
+  it("«اوفلاين لا يشمل الإضافات» is the plain account", () => {
+    expect(plain("اوفلاين لا يشمل الإضافات")).toBeDefined();
+  });
+
+  it("but «اوفلاين مع الاضافات» is still the add-ons edition", () => {
+    const result = repriceTiers(
+      game([
+        { id: "t1", name: "اوفلاين", price: 8_000, cost: 2_000 },
+        { id: "t2", name: "اوفلاين مع الاضافات", price: 15_000, cost: 7_000 },
+      ]),
+    );
+    expect(at(result, "offline_extras")?.newPrice).toBe(15_000);
+  });
+
+  it("and the singular «مع الاضافة» is too", () => {
+    const result = repriceTiers(
+      game([
+        { id: "t1", name: "اوفلاين", price: 8_000, cost: 2_000 },
+        { id: "t2", name: "اوفلاين مع الاضافة", price: 15_000, cost: 7_000 },
+      ]),
+    );
+    expect(at(result, "offline_extras")).toBeDefined();
+  });
+
+  it("«مع الاضافات وبدون ضمان» is still the add-ons edition — the negator must touch the word", () => {
+    const result = repriceTiers(
+      game([
+        { id: "t1", name: "اوفلاين", price: 8_000, cost: 2_000 },
+        { id: "t2", name: "اوفلاين مع الاضافات وبدون ضمان", price: 15_000, cost: 7_000 },
+      ]),
+    );
+    expect(at(result, "offline_extras")).toBeDefined();
+  });
+});
+
+describe("the account is recognised however it is spelled", () => {
+  const kindOf = (name: string) =>
+    repriceTiers(game([{ id: "t1", name, price: 26_000, cost: 16_000 }])).proposals[0]?.kind;
+
+  it("«أون لاين» — hamza and a space together — is the online account", () => {
+    expect(kindOf("أون لاين")).toBe("online_base");
+  });
+
+  it("«أوف لاين» is the offline account", () => {
+    expect(kindOf("أوف لاين")).toBe("offline_base");
+  });
+
+  it("the spellings already known still work", () => {
+    for (const name of ["اونلاين", "أونلاين", "اون لاين", "online", "Online Account"]) {
+      expect(kindOf(name)).toBe("online_base");
+    }
+    for (const name of ["اوفلاين", "أوفلاين", "اوف لاين", "offline"]) {
+      expect(kindOf(name)).toBe("offline_base");
+    }
+  });
+});

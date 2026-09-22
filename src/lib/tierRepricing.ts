@@ -37,6 +37,7 @@ import {
   skipReason,
   ONLINE_MAX_MARGIN,
   ONLINE_MIN_MARGIN,
+  OUTLIER,
   type RepriceProduct,
 } from "./repricing";
 import {
@@ -78,6 +79,29 @@ function tierSkip(tier: ClassifiedTier): string | null {
   if (tier.kind === "unknown") return "طبقة غير معروفة — لا تُسعَّر";
   if (!Number.isFinite(tier.cost) || tier.cost <= 0) return "بلا تكلفة مسجّلة";
   if (!Number.isFinite(tier.price) || tier.price <= 0) return "بلا سعر مسجّل";
+  /*
+    THE HUNDRED-THOUSAND BACKSTOP, PER TIER.
+
+    `skipReason` refuses anything priced or costed above 100,000 as a device
+    rather than a game, and the product-level call below cannot ask it — a
+    product has four prices, not one, so that call passes cost: 1, price: 1
+    and only the kind, the schema and the title decide anything there.
+
+    Which left the backstop reaching `offline_base` alone, through
+    `repriceOne`. A product with `kind: "game"` and a harmless title carrying
+    two tiers at cost 250,000 / price 300,000 contradicted itself inside one
+    product: the offline row held as «جهاز لا لعبة», the online row cut to
+    265,000 — thirty-five thousand dinars off a console — and `tierProblem`
+    returned null, because a 15,000 margin is inside the online band.
+
+    The backstop exists precisely because `kind` is unreliable: `repricing.ts`
+    documents an eShop card that "came through the catalogue as a game". Asked
+    here, it covers all four tiers, because `tierSkip` runs before every
+    branch.
+  */
+  if (tier.cost >= OUTLIER || tier.price >= OUTLIER) {
+    return "جهاز لا لعبة (سعر أو تكلفة فوق 100,000)";
+  }
   return null;
 }
 
@@ -161,6 +185,18 @@ export function repriceTiers(product: {
     the amount the base moved.
   */
   let newOfflineBase = offlineBase?.price ?? 0;
+  /*
+    Did the plain offline tier actually get a price from the rules?
+
+    `tierSkip` and `repriceOne`'s own `skipReason` are two different refusals,
+    and the add-ons branch used to consult only the first. When the second
+    fired, `newOfflineBase` silently stayed at the tier's CURRENT price and the
+    add-ons row was priced on top of a number the rules had declined to
+    endorse — while `tierProblem`'s "add-ons must beat plain" check, which
+    reads `base.skipped`, was disabled in exactly that case. Both the rule and
+    its gate looked away together.
+  */
+  let offlineBasePriced = false;
   if (offlineBase && !tierSkip(offlineBase)) {
     const asProduct: RepriceProduct = {
       id: product.id,
@@ -173,6 +209,7 @@ export function repriceTiers(product: {
     const decision = repriceOne(asProduct);
     if (!decision.skipped && Number.isFinite(Number(decision.newPrice))) {
       newOfflineBase = Number(decision.newPrice);
+      offlineBasePriced = true;
     }
   }
 
@@ -212,7 +249,7 @@ export function repriceTiers(product: {
         the offline account's price on a template product, and guessing here
         would guess with the owner's margin.
       */
-      if (!offlineBase || tierSkip(offlineBase)) {
+      if (!offlineBase || tierSkip(offlineBase) || !offlineBasePriced) {
         return held(tier, index, "لا توجد طبقة أوفلاين عادية تُبنى عليها");
       }
       /*

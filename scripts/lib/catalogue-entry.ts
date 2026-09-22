@@ -12,6 +12,7 @@
  */
 export { d1All, d1Run } from "@/lib/d1.server";
 export {
+  bumpCatalogVersion,
   getStore,
   invalidateStoreCache,
   isValidProductRecord,
