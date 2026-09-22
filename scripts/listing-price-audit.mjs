@@ -140,6 +140,76 @@ if (ONLY) {
   if (!games.length) fail(`لا يوجد منتج بالمعرّف «${ONLY}»`);
 }
 
+/*
+  A product's own price fields, printed in full for `--only`.
+
+  A first run measured only games carrying more than one price and found the
+  card leading with the right one every single time — which means the games the
+  owner was looking at are somewhere else entirely. So the report has to be able
+  to show ONE product completely, rather than leaving the question open.
+*/
+const dumpOne = (product) => {
+  const tiers = app.classifyTiers(app.pricingTypeRows(product));
+  const { unitPrice } = app.listingPricing(product);
+  say(`## ${String(product.titleEn || product.title || product.id)}`);
+  say();
+  say(`- المعرّف: \`${product.id}\``);
+  say(`- ما تعرضه البطاقة: **${money(unitPrice)}**`);
+  say(`- \`price\`: ${money(product.price)}`);
+  say(`- \`accountPrice\`: ${money(product.accountPrice)}`);
+  say(`- \`accountOnlineEnabled\`: ${String(product.accountOnlineEnabled)}`);
+  say(`- \`accountOnlinePrice\`: ${money(product.accountOnlinePrice)}`);
+  say(`- \`cost\`: ${money(product.cost)}`);
+  say(`- \`kind\`: ${String(product.kind ?? "")} · \`schemaId\`: ${String(product.schemaId ?? "")}`);
+  say();
+  if (!tiers.length) {
+    say("لا توجد طبقات أسعار على هذا المنتج — سعر واحد فقط.");
+  } else {
+    say("| الطبقة | الاسم | السعر | التكلفة |");
+    say("| --- | --- | ---: | ---: |");
+    for (const t of tiers) {
+      say(`| ${KIND_AR[t.kind] ?? t.kind} | ${String(t.name ?? "")} | ${money(t.price)} | ${money(t.cost)} |`);
+    }
+  }
+  say();
+};
+
+if (ONLY) {
+  say("# سعر منتج واحد، كاملًا");
+  say();
+  for (const product of games) dumpOne(product);
+  rmSync(outfile, { force: true });
+  flush();
+  process.exit(0);
+}
+
+/*
+  Games carrying exactly one price.
+
+  1,530 of these came in as name-and-price-only rows, so this is most of the
+  catalogue — and a single price cannot be "the wrong one of several". What it
+  CAN be is an online account's price standing alone with nothing cheaper beside
+  it, which looks identical on a shelf. Counted separately, and the online field
+  is checked for each.
+*/
+const singles = [];
+for (const product of games) {
+  const priced = app.classifyTiers(app.pricingTypeRows(product)).filter((t) => Number(t.price) > 0);
+  if (priced.length >= 2) continue;
+  const { unitPrice } = app.listingPricing(product);
+  const shown = Number(unitPrice) || 0;
+  if (shown <= 0) continue;
+  const onlinePrice = Number(product.accountOnlinePrice) || 0;
+  singles.push({
+    id: String(product.id),
+    title: String(product.titleEn || product.english_name || product.title || product.id),
+    shown,
+    cost: Number(product.cost) || 0,
+    onlineEnabled: Boolean(product.accountOnlineEnabled),
+    matchesOnline: onlinePrice > 0 && shown === onlinePrice,
+  });
+}
+
 const rows = [];
 for (const product of games) {
   const tiers = app.classifyTiers(app.pricingTypeRows(product));
@@ -206,6 +276,46 @@ if (sample.length) {
   say();
 }
 
+/* --------------------------------------------------- the single-price games */
+
+const BANDS = [
+  [0, 5_000],
+  [5_001, 8_000],
+  [8_001, 12_000],
+  [12_001, 20_000],
+  [20_001, 30_000],
+  [30_001, 50_000],
+  [50_001, Infinity],
+];
+say("## الألعاب ذات السعر الواحد");
+say();
+say(`- عددها: **${singles.length}**`);
+say(`- منها سعرها يساوي سعر حساب الأونلاين المسجّل: **${singles.filter((s) => s.matchesOnline).length}**`);
+say(`- منها بلا تكلفة مسجّلة: **${singles.filter((s) => s.cost <= 0).length}**`);
+say();
+say("| النطاق | عدد الألعاب |");
+say("| --- | ---: |");
+for (const [low, high] of BANDS) {
+  const n = singles.filter((s) => s.shown >= low && s.shown <= high).length;
+  say(`| ${money(low)}${high === Infinity ? " فما فوق" : ` – ${money(high)}`} | ${n} |`);
+}
+say();
+
+const dearest = singles
+  .slice()
+  .sort((a, b) => b.shown - a.shown)
+  .slice(0, Number.isFinite(LIMIT) ? LIMIT : 40);
+say(`## أغلى ${dearest.length} لعبة بسعر واحد`);
+say();
+say("| اللعبة | السعر | التكلفة | الربح |");
+say("| --- | ---: | ---: | ---: |");
+for (const r of dearest) {
+  say(
+    `| ${label(r.title)} | ${money(r.shown)} | ${r.cost > 0 ? money(r.cost) : "—"} | ${r.cost > 0 ? money(r.shown - r.cost) : "—"} |`,
+  );
+}
+say();
+
 rmSync(outfile, { force: true });
 
 say("## الخلاصة");
@@ -214,4 +324,7 @@ say(`- ألعاب متعددة الأسعار: **${rows.length}**`);
 say(`- تعرض سعر أونلاين على البطاقة: **${leadingOnline.length}**`);
 say(`- تعرض سعرًا أغلى من أرخص طبقة: **${notCheapest.length}**`);
 say(`- تعرض غير سعر الأوفلاين العادي: **${notOffline.length}**`);
+say(`- ألعاب بسعر واحد: **${singles.length}**`);
+say(`- منها فوق 20,000: **${singles.filter((s) => s.shown > 20_000).length}**`);
+say(`- منها فوق 12,000: **${singles.filter((s) => s.shown > 12_000).length}**`);
 flush();
