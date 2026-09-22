@@ -541,6 +541,32 @@ if (preexisting.length) {
   say();
 }
 
+/*
+  The recap, last.
+
+  A run's report is long — a hundred renames, a hundred and seventy names in
+  capitals — and the numbers that decide whether to apply it were in the
+  middle, where the tail of a job log cannot reach them. They are repeated
+  here so the last twenty lines of any run say what it found.
+*/
+const platformMoves = [...proposals.values()].filter((entry) => "platform" in entry).length;
+const renames = [...proposals.values()].filter(
+  (entry) => "title" in entry || "titleEn" in entry,
+).length;
+say(`## In short`);
+say();
+say(`- games looked at: **${asked}** of ${games.length}`);
+say(`- products this run would change: **${proposals.size}**`);
+say(`  - moved to another console: **${platformMoves}**`);
+say(`  - renamed: **${renames}**`);
+say(`- supplier data taken out of a public name: **${leaks.length}**`);
+say(`- a supplier's price still reaching a customer elsewhere: **${publicLeaks.length}**`);
+say(`- corrections refused because they would collide: **${dropped.length}**`);
+say(`- duplicates already in the catalogue, untouched: **${preexisting.length}**`);
+say(`- reported and left alone: **${reports.length}**`);
+if (stoppedEarly) say(`- **stopped on its deadline; resume with \`--offset=${OFFSET + asked}\`**`);
+say();
+
 if (!APPLY) {
   say(`**Dry run. Nothing was written.**`);
   finish(0);
