@@ -60,16 +60,46 @@ say();
 say(`المصدر: \`${ORIGIN}/api/data\` — ما يخدمه الموقع فعلًا، لا قاعدة البيانات.`);
 say();
 
-const res = await fetch(`${ORIGIN}/api/data`, {
-  headers: { accept: "application/json", "cache-control": "no-cache" },
-});
-if (!res.ok) {
-  say(`**فشل:** ${res.status} ${res.statusText}`);
+/*
+  A BROWSER'S HEADERS, BECAUSE THE SHOP ANSWERS BROWSERS.
+
+  The first attempt sent node's default headers and got 403 with an empty body
+  from every path — not the route refusing (its GET handler has no auth at all)
+  but Cloudflare refusing the caller. Asking as a shopper asks is the only way
+  to measure what a shopper is served.
+*/
+const BROWSER = {
+  accept: "application/json, text/plain, */*",
+  "accept-language": "ar,en;q=0.9",
+  "cache-control": "no-cache",
+  "user-agent":
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+};
+
+/* `?slim=1` first: the same prices, a fraction of the payload. */
+const ATTEMPTS = [`${ORIGIN}/api/data?slim=1`, `${ORIGIN}/api/data`];
+let doc = null;
+let served = "";
+for (const url of ATTEMPTS) {
+  const res = await fetch(url, { headers: BROWSER });
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    say(`- \`${url.replace(ORIGIN, "")}\` → **${res.status} ${res.statusText}**${body ? ` — ${body.slice(0, 200).replace(/\s+/g, " ")}` : " (بلا نص)"}`);
+    continue;
+  }
+  doc = await res.json();
+  served = url;
+  say(`- \`${url.replace(ORIGIN, "")}\` → **${res.status}** · \`x-catalog-version: ${res.headers.get("x-catalog-version") ?? "—"}\``);
+  break;
+}
+say();
+if (!doc) {
+  say(`**تعذّرت القراءة من الموقع.** لم أتحقق من الإنتاج، ولن أقول إن التحقق تم.`);
   flush();
   rmSync(outfile, { force: true });
   process.exit(1);
 }
-const doc = await res.json();
+void served;
 const store = doc?.store ?? doc;
 const products = Array.isArray(store?.products) ? store.products : [];
 say(`- منتجات يخدمها الموقع: **${products.length}**`);
