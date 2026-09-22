@@ -127,18 +127,30 @@ export function ensureRouletteSchema(): Promise<void> {
     schemaReady = (async () => {
       await ensureWheelSchema();
 
-      /* What a spin now costs, chose and ran on. */
-      for (const column of [
-        "tickets INTEGER NOT NULL DEFAULT 1",
-        "bucket TEXT",
-        "odds_snapshot TEXT",
-        "request_id TEXT",
-        "status TEXT NOT NULL DEFAULT 'settled'",
-        "settled_at TEXT",
-        "prize_id TEXT",
-      ]) {
-        await d1Run(`ALTER TABLE wheel_spins ADD COLUMN ${column}`).catch(() => undefined);
-      }
+      /*
+        What a spin now costs, chose and ran on.
+
+        Written out one statement at a time rather than looped over a list of
+        column definitions, and that is not a style choice. `schema-coverage.test.ts`
+        builds the database's shape by reading `CREATE TABLE` and `ALTER TABLE …
+        ADD COLUMN` out of the source text, and cross-checks every INSERT and
+        UPDATE in the repository against it — the guard that exists because
+        several features were dead in production writing to columns no schema
+        ever added. SQL assembled from a variable is invisible to it. A loop
+        here would have bought four lines and switched that guard off for this
+        table.
+      */
+      await d1Run(`ALTER TABLE wheel_spins ADD COLUMN tickets INTEGER NOT NULL DEFAULT 1`).catch(
+        () => undefined,
+      );
+      await d1Run(`ALTER TABLE wheel_spins ADD COLUMN bucket TEXT`).catch(() => undefined);
+      await d1Run(`ALTER TABLE wheel_spins ADD COLUMN odds_snapshot TEXT`).catch(() => undefined);
+      await d1Run(`ALTER TABLE wheel_spins ADD COLUMN request_id TEXT`).catch(() => undefined);
+      await d1Run(
+        `ALTER TABLE wheel_spins ADD COLUMN status TEXT NOT NULL DEFAULT 'settled'`,
+      ).catch(() => undefined);
+      await d1Run(`ALTER TABLE wheel_spins ADD COLUMN settled_at TEXT`).catch(() => undefined);
+      await d1Run(`ALTER TABLE wheel_spins ADD COLUMN prize_id TEXT`).catch(() => undefined);
 
       /*
         THE INDEX THAT MAKES A DOUBLE CLICK HARMLESS.
@@ -329,55 +341,63 @@ export async function spinRoulette(input: SpinInput): Promise<SpinResult> {
   const odds = resolveOdds(tickets, population, input.priceBoundary);
 
   /*
-    THE CHARGE AND THE CLAIM, IN ONE BATCH.
+    THE CLAIM FIRST, THEN THE CHARGE, AND THE LEDGER AS THE PROOF.
 
-    Statement order carries the meaning:
-      1. take the tickets, but only if they are there;
-      2. write the spin row — and if this member has already spun under this
-         request id, the unique index refuses it, the batch rolls back, and
-         statement 1 is undone. A double click costs nothing;
+    Statement order carries the meaning, and this order was chosen by a test
+    rather than by taste. The first version charged first and claimed second,
+    relying on the batch rolling back when the unique index refused a duplicate.
+    Two requests fired at the same instant then took four tickets EACH while
+    producing one spin — so the design rested on a rollback that the harness,
+    and therefore possibly some transport, did not perform.
+
+    Correctness must not rest on it. So:
+
+      1. write the spin row. A member who has already spun under this request id
+         breaks `wheel_spins_user_request_idx` here, and nothing after it runs —
+         no rollback required, because the charge has not happened yet;
+      2. take the tickets, guarded on there being enough;
       3. the ledger line, chained on `changes()`, so it can never record a
-         charge that did not happen.
+         charge that did not happen — which makes it the EVIDENCE that one did.
+
+    That evidence is what closes the new window. A claim can now exist with no
+    charge behind it (statement 2 refusing for want of tickets), and a spin
+    nobody paid for must never be drawn. So the ledger is asked, not assumed.
   */
   const spinId = randomId("spin");
+  const chargeReference = `spin:${spinId}`;
   let batchFailed = false;
   try {
     await d1BatchRun([
+      {
+        sql: `INSERT INTO wheel_spins
+                (id, user_id, product_id, product_title, product_price, weight_label,
+                 coupon_code, expires_at, created_at, tickets, bucket, odds_snapshot,
+                 request_id, status)
+              VALUES (?, ?, '', '', 0, '', NULL, NULL, ?, ?, NULL, ?, ?, 'claiming')`,
+        binds: [spinId, userId, now, tickets, JSON.stringify(odds), requestId],
+      },
       {
         sql: `UPDATE wheel_tickets SET balance = balance - ?, updated_at = ?
                WHERE user_id = ? AND balance >= ?`,
         binds: [tickets, now, userId, tickets],
       },
       {
-        sql: `INSERT INTO wheel_spins
-                (id, user_id, product_id, product_title, product_price, weight_label,
-                 coupon_code, expires_at, created_at, tickets, bucket, odds_snapshot,
-                 request_id, status)
-              SELECT ?, ?, '', '', 0, '', NULL, NULL, ?, ?, NULL, ?, ?, 'claiming'
-               WHERE changes() = 1`,
-        binds: [spinId, userId, now, tickets, JSON.stringify(odds), requestId],
-      },
-      {
         sql: `INSERT INTO wheel_ticket_ledger (id, user_id, delta, reason, reference_id, created_at)
               SELECT ?, ?, ?, 'roulette_spin', ?, ? WHERE changes() = 1`,
-        binds: [randomId("wtl"), userId, -tickets, `spin:${spinId}`, now],
+        binds: [randomId("wtl"), userId, -tickets, chargeReference, now],
       },
     ]);
   } catch {
     /*
-      The unique index refused the claim — this member has pressed the button
-      twice under one request id. The batch is atomic, so no ticket moved.
-      Which spin they already have is read below rather than assumed.
+      The unique index refused the claim: this member has pressed the button
+      twice under one request id. No ticket moved, because the charge is
+      downstream of the statement that failed.
     */
     batchFailed = true;
   }
 
   const claimed = await readSpinByRequest(userId, requestId);
   if (!claimed) {
-    /*
-      No row, and no constraint error. The only statement that can have
-      refused is the first, and it refuses for exactly one reason.
-    */
     return {
       ok: false,
       reason: batchFailed ? "failed" : "no_tickets",
@@ -387,6 +407,31 @@ export async function spinRoulette(input: SpinInput): Promise<SpinResult> {
   if (String(claimed["status"] ?? "") === "settled") {
     /* Another request won the race and finished it. Show the member that one. */
     return describeSettled(claimed, userId, true);
+  }
+
+  /*
+    WAS IT PAID FOR?
+
+    The ledger row is written only when the debit changed a row, so its
+    presence is the one fact that distinguishes "claimed and charged" from
+    "claimed and refused for want of tickets". A claim with no charge behind it
+    is deleted — it is this request's own row, still `claiming`, and nobody
+    else can be looking at it — and the member is told they have not got the
+    tickets rather than being handed a free draw.
+  */
+  const claimedId = String(claimed["id"] ?? spinId);
+  const paid = await d1First<{ n?: number }>(
+    `SELECT count(*) AS n FROM wheel_ticket_ledger
+      WHERE user_id = ? AND reference_id = ? AND delta < 0`,
+    userId,
+    `spin:${claimedId}`,
+  ).catch(() => undefined);
+  if (Number(paid?.n ?? 0) === 0) {
+    await d1RunChanges(
+      `DELETE FROM wheel_spins WHERE id = ? AND status = 'claiming'`,
+      claimedId,
+    ).catch(() => 0);
+    return { ok: false, reason: "no_tickets", ticketsLeft: await getTicketBalance(userId).catch(() => 0) };
   }
 
   /*

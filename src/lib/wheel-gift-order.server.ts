@@ -1,3 +1,4 @@
+import { d1Run } from "./d1.server";
 import { findUserById, getStore, randomId, saveOrder, saveThread } from "./db.server";
 import type { Order, OrderItem, ProductKind, Thread } from "./types";
 
@@ -188,6 +189,54 @@ export async function createWheelGiftOrder(
 
   await saveThread(thread);
   await saveOrder(order);
+
+  /*
+    THE SNAPSHOT ROW, WITHOUT WHICH THE PRIZE NEVER REACHES THE ADMIN.
+
+    This was missing, and the consequence was not a warning — it was the whole
+    feature. `ensureOrderDeliveryRecords` asks `resolveCanonicalTitle` for the
+    item's title before it writes anything, and that function reads
+    `order_items_snapshot` and THROWS `DELIVERY_PRODUCT_TITLE_MISSING` when
+    there is no row (order-delivery-items.server.ts:318). It refuses the
+    catalogue, the order document and the chat on purpose: «a missing product
+    snapshot is a data-integrity error».
+
+    Checkout writes that row (orders.server.ts:1177-1193). This path did not.
+    So every gift order the wheel has ever created threw inside the `try`
+    below, was logged, and ended up with no `order_items` row, no delivery slot
+    and no queue entry — an order the member could see and the admin could not
+    prepare.
+
+    The owner's requirement is the opposite: «الطلب يجب أن يكون Order طبيعي
+    يدخل مسار تجهيز الألعاب الرقمية» and «في Admin Queue يجب ألا يختفي الطلب».
+    So the row is written here, exactly as checkout writes it, before the
+    delivery records are asked for.
+
+    `INSERT OR IGNORE` on a deterministic id, because the import button can be
+    retried and a second snapshot for the same item would give
+    `resolveCanonicalTitle` two answers to choose between.
+  */
+  try {
+    await d1Run(
+      `INSERT OR IGNORE INTO order_items_snapshot (
+        id, order_id, product_id, title, price_iqd, quantity, options_json, image_url, created_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `snap_${item.id}`,
+      orderId,
+      item.productId,
+      title,
+      0,
+      1,
+      JSON.stringify(item.meta || {}),
+      item.image || null,
+      now,
+    );
+  } catch (error) {
+    console.error("[wheel:gift_snapshot_failed]", {
+      orderId,
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
 
   /*
     The delivery slots, so the prep tool has something to work with. Best
