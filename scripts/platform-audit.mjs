@@ -688,9 +688,16 @@ say(
   `  - round yen figures, almost all a gift card's own denomination, not counted: **${denominations}**`,
 );
 say(`- corrections refused because they would collide: **${refused.length}**`);
+/*
+  A separate line, not a sub-bullet. The rescued products are NOT a subset of
+  the refused ones — a rescue means the collision was resolved by the weaker
+  rename, so the product is no longer refused at all. Printing one under the
+  other read as "5 refused, of which 5 rescued", which is two different sets of
+  five and says the opposite of what happened.
+*/
 if (rescued.length) {
   say(
-    `  - of those, rescued by removing only the supplier's data: **${rescued.filter((id) => proposals.has(id)).length}**`,
+    `- collisions resolved by removing only the supplier's data: **${rescued.filter((id) => proposals.has(id)).length}**`,
   );
 }
 say(`- duplicates already in the catalogue, untouched: **${preexisting.length}**`);

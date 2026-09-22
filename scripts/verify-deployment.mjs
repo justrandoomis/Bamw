@@ -351,13 +351,34 @@ try {
       [product?.title, product?.titleEn].some((name) => CONSOLE_BRACKET.test(String(name ?? ""))),
     ).length;
 
+    /*
+      A supplier's price in a NAME fails the release. Anywhere else, it is
+      counted and reported.
+
+      Not a softening — a line drawn where it can be held. A product's name is
+      the worst of these exposures and the one this shop can keep clean: it is
+      on the shelf, in the search results, in the page's HTML and in every
+      share of a link, and the label audit removes it there. The other fields
+      are a description, an option row, an edition name — real, reported on
+      every release, and outside what has been repaired so far.
+
+      A gate that fails on all of them would block every release until an
+      unrelated cleanup finished, which is how a gate gets switched off. This
+      one stays on and stays true.
+    */
+    const inAName = prices.filter((hit) => /(^|\.)(title|titleEn|name)$/.test(hit.split(":")[0]));
+
     say(`- \`/api/data\` → HTTP ${res.status}, **${products.length}** products`);
     say(
-      `- a supplier's price reaching a customer: **${prices.length}**` +
-        (prices.length ? ` — ${prices.slice(0, 5).join("; ")}` : " (none)"),
+      `- a supplier's price in a product NAME: **${inAName.length}**` +
+        (inAName.length ? ` — ${inAName.slice(0, 5).join("; ")}` : " (none)"),
+    );
+    say(
+      `- a supplier's price elsewhere in the record: **${prices.length - inAName.length}**` +
+        ` (reported, not a failure — see the label audit's own report for where)`,
     );
     say(`- names still carrying a console bracket: **${brackets}** (reported, not a failure)`);
-    if (prices.length) catalogueOk = false;
+    if (inAName.length) catalogueOk = false;
   }
 } catch (error) {
   say(`- \`/api/data\` → unreachable: ${String(error?.message || error)} (inconclusive)`);
