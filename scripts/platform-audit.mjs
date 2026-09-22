@@ -753,6 +753,15 @@ for (const [id] of proposals) {
 
 let written = 0;
 await app.updateStore((current) => {
+  /*
+    Reset, because this callback can run more than once.
+
+    `updateStore` re-reads and re-applies on a revision conflict, up to four
+    times. A counter that only ever incremented would report four hundred
+    products changed where a hundred were — and a number in a report that
+    cannot be trusted is worse than no number.
+  */
+  written = 0;
   const list = Array.isArray(current?.products) ? current.products : [];
   const next = list.map((item) => {
     if (!proposals.has(String(item?.id ?? ""))) return item;

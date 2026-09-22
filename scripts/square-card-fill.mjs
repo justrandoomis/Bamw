@@ -510,6 +510,15 @@ if (APPLY && patches.size > 0) {
   }
 
   await app.updateStore((current) => {
+    /*
+      Reset, because this callback can run more than once.
+
+      `updateStore` re-reads and re-applies on a revision conflict, up to four
+      times, and a counter that only ever incremented would report four times
+      the pictures it wrote. It has never happened — no run has hit a conflict
+      — which is exactly why it would have been believed when it did.
+    */
+    written = 0;
     const list = Array.isArray(current.products) ? current.products : [];
     const next = list.map((item) => {
       const url = patches.get(String(item?.id ?? ""));
