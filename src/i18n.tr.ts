@@ -188,7 +188,6 @@ export const LEGACY_TR: Record<string, string> = {
   "تأكيد الشراء": "Satın almayı onayla",
   "تم الشراء": "Satın alındı",
   "السعر لكل موزة": "Muz başına fiyat",
-  "السعر لكل موزة (دولار)": "Muz başına fiyat (dolar)",
   "نسبة السعر مقارنة بسعر السوق": "Pazar fiyatına göre oran",
   "مقارنة بسعر السوق": "Pazar fiyatına göre",
   "سعر السوق": "Pazar fiyatı",

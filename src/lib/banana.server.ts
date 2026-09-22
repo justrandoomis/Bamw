@@ -165,9 +165,27 @@ export async function getBotListings(
     */
     pricePer = roundPrice(Math.min(config.maxPrice, Math.max(config.minPrice, pricePer)));
 
+    /*
+      The offer size is the admin's, and only the admin's.
+
+      «العدد للموز مقابل السعر غير صحيح بالنسبة لما يدخله الأدمن في إعدادات
+      البوت» — and it was not. This capped the generated quantity with
+      `max_trade_banana`, which is not an offer size at all: it is the largest
+      MEMBER offer this bot is willing to BUY, and `executeBotPurchase` uses it
+      for exactly that — `if (bot.maxTradeBanana && offer.quantity >
+      bot.maxTradeBanana) return;`. Worse, «إضافة بوت» seeds it with a random
+      multiple of 500 between 1,000 and 20,000, so the cap almost always bound
+      and the number the customer read was that random seed. The four offers on
+      the owner's screen — 19,500, 18,000, 19,000 and 12,000 — are all
+      multiples of 500 in that range, which is the seeder's fingerprint, not a
+      setting anybody chose.
+
+      So the buy-side cap stays on the buy side. The offer quantity comes from
+      «أقل كمية لعرض البوت» and «أكبر كمية لعرض البوت», which is what those two
+      fields say they are.
+    */
     const span = Math.max(0, config.botMaxQuantity - config.botMinQuantity);
     let quantity = Math.round(config.botMinQuantity + botHash(bot.id, bucket + 991) * span);
-    if (bot.max_trade_banana) quantity = Math.min(quantity, bot.max_trade_banana);
     quantity = Math.max(1, quantity);
 
     const diff = spot > 0 ? Math.round(((pricePer - spot) / spot) * 1000) / 10 : 0;

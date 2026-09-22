@@ -400,9 +400,7 @@ function BananaMarketPage() {
 
                   <div className="flex items-center gap-3">
                     <div className="flex flex-col text-left" dir="ltr">
-                      <div className="text-sm font-black leading-tight">
-                        ${l.total.toLocaleString("en-US")}
-                      </div>
+                      <div className="text-sm font-black leading-tight">{dinars(l.total)}</div>
                       <div className="mt-0.5 text-[10px] font-bold leading-tight text-foreground/60">
                         {dinars(l.pricePer)} / موزة
                       </div>
@@ -597,7 +595,7 @@ function BananaMarketPage() {
                     </div>
                     <div className="flex items-center justify-between border-t border-foreground/10 pt-2 text-base font-black">
                       <span>{tr("الإجمالي")}</span>
-                      <span dir="ltr">${buying.total.toLocaleString("en-US")}</span>
+                      <span dir="ltr">{dinars(buying.total)}</span>
                     </div>
                   </div>
 
@@ -661,14 +659,20 @@ function BananaMarketPage() {
                   />
 
                   <label className="mt-4 block text-xs font-bold text-foreground/70">
-                    {tr("السعر لكل موزة (دولار)")}
+                    {tr("السعر لكل موزة")}
                   </label>
                   <input
                     value={pricePer}
                     onChange={(e) => setPricePer(e.target.value.replace(/[^0-9.]/g, ""))}
                     inputMode="decimal"
                     dir="ltr"
-                    placeholder="0.25"
+                    /*
+                      From when a banana was worth a quarter of a dinar. The
+                      shop's base is 0.0004 today, so "0.25" in a price box
+                      reads as a suggestion to list six hundred times the
+                      market. The live price is the only honest hint.
+                    */
+                    placeholder={formatPrice(limits.minPrice)}
                     className="mt-1 w-full rounded-2xl border border-foreground/15 bg-foreground/5 px-4 py-3 text-sm font-bold outline-none focus:border-foreground/40"
                   />
 

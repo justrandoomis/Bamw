@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Check, Search, TrendingDown, TrendingUp, X } from "lucide-react";
 
+import { dinars } from "@/lib/banana-price";
 import { useBananaMarket, type BananaListing } from "@/hooks/useBananaMarket";
 import { playSound } from "@/utils/audio";
 
@@ -160,9 +161,9 @@ function BananaBuyPage() {
 
                 <div className="flex items-center gap-3">
                   <div className="flex flex-col text-left" dir="ltr">
-                    <span className="text-sm font-black">${l.total.toLocaleString("en-US")}</span>
+                    <span className="text-sm font-black">{dinars(l.total)}</span>
                     <span className="text-[10px] font-bold text-foreground/60">
-                      ${l.pricePer.toFixed(2)} / موزة
+                      {dinars(l.pricePer)} / موزة
                     </span>
                     <span className="text-[10px] font-bold">
                       {l.isLive ? (
@@ -240,11 +241,11 @@ function BananaBuyPage() {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-foreground/60">{tr("السعر لكل موزة")}</span>
-                      <span dir="ltr">${selected.pricePer.toFixed(2)}</span>
+                      <span dir="ltr">{dinars(selected.pricePer)}</span>
                     </div>
                     <div className="flex justify-between border-t border-foreground/10 pt-2 text-base font-black">
                       <span>{tr("الإجمالي")}</span>
-                      <span dir="ltr">${selected.total.toLocaleString("en-US")}</span>
+                      <span dir="ltr">{dinars(selected.total)}</span>
                     </div>
                   </div>
 
