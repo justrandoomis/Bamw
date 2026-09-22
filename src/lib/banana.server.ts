@@ -22,6 +22,8 @@ import {
   type BananaMarketConfig,
 } from "./banana-market-config.server";
 import { roundPrice } from "./banana-price";
+/* The floor a direct sale has to clear, so the snapshot can state it. */
+import { MIN_SELL_QUANTITY } from "./banana-sell.server";
 
 export { getMarketConfig, saveMarketConfig, type BananaMarketConfig };
 
@@ -451,6 +453,14 @@ function marketLimits(config: BananaMarketConfig) {
     minListingQuantity: config.minListingQuantity,
     maxListingQuantity: config.maxListingQuantity,
     promoRatePerMinute: config.promoRatePerMinute,
+    /*
+      The sell sheet needs both of these BEFORE it can offer a button: whether
+      the shop is buying at all, and the smallest sale it will accept. Sent
+      with the snapshot rather than fetched separately, so a member can never
+      be shown a sell button the server is about to refuse.
+    */
+    directSellEnabled: config.directSellEnabled !== false,
+    minSellQuantity: MIN_SELL_QUANTITY,
   };
 }
 

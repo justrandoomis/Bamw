@@ -20,8 +20,13 @@ import { marketErrorText } from "./banana-market-errors";
 const server = readFileSync(path.resolve(__dirname, "banana.server.ts"), "utf8");
 const cron = readFileSync(path.resolve(__dirname, "scheduled-jobs.server.ts"), "utf8");
 const config = readFileSync(path.resolve(__dirname, "banana-market-config.server.ts"), "utf8");
-const redeem = readFileSync(path.resolve(__dirname, "../routes/banana_redeem.tsx"), "utf8");
-const buy = readFileSync(path.resolve(__dirname, "../routes/banana_buy.tsx"), "utf8");
+/*
+  Both of those routes are redirects now — the redemption shelf and the sell
+  sheet moved into `/banana_market` as sections of one page. The rules these
+  tests hold did not move with them by accident: they are asserted against the
+  components the behaviour actually landed in.
+*/
+const read = (relative: string) => readFileSync(path.resolve(__dirname, relative), "utf8");
 const homeStrip = readFileSync(
   path.resolve(__dirname, "../components/HomeBananaMarket.tsx"),
   "utf8",
@@ -52,12 +57,18 @@ describe("the redemption catalogue is the one the admin saved", () => {
     expect(server).toContain('icon: row.icon || row.image_url || (ticketQuantity ? "🎟️" : "🎁")');
   });
 
-  it("falls back to a category the screen actually has a tab for", () => {
-    const tabs = [...redeem.matchAll(/\{ id: "([a-z_]+)", label:/g)].map((m) => m[1]);
-    expect(tabs).toContain("vouchers");
-    expect(tabs).toContain("wheel_ticket");
-    // The default the server falls back to has to be one of them.
-    expect(tabs).toContain("vouchers");
+  it("falls back to a category the screen can actually name", () => {
+    /*
+      This read the tab list off `/banana_redeem`. That page is a redirect now
+      — the rewards moved into a section of the market — so the question is
+      asked of the component that renders them: whatever category the server
+      falls back to must be one this screen has a word for, or a member is
+      shown a reward labelled with a raw database value.
+    */
+    const shelf = read("../components/market/RewardsShelf.tsx");
+    const named = [...shelf.matchAll(/reward\.category === "([a-z_]+)"/g)].map((m) => m[1]);
+    expect(named).toContain("vouchers");
+    expect(named).toContain("wheel_ticket");
   });
 });
 
@@ -158,10 +169,32 @@ describe("a refusal reads as a sentence on every screen", () => {
     expect(marketErrorText(null, limits)).toContain("تعذّر");
   });
 
-  it("the buy screen uses the shared map instead of printing the code", () => {
-    expect(buy).toContain('import { marketErrorText } from "@/lib/banana-market-errors";');
-    expect(buy).toContain("setError(\n        marketErrorText(e, {");
-    expect(buy).not.toContain('setError(e instanceof Error ? e.message : "تعذّر إكمال الشراء")');
+  it("no screen prints a refusal code at a member", () => {
+    /*
+      The buy screen is a redirect now, so the sentence a member reads when a
+      refusal comes back is the market's. The rule is unchanged and so is the
+      reason for it — a member must never be shown `price_above_max` — only
+      the screen that has to honour it has moved.
+
+      The market page shows the server's own Arabic message, which
+      `/api/banana` now composes from the same vocabulary rather than sending a
+      bare code, and the sell sheet prints whatever came back verbatim. So the
+      guard is that no screen prints a raw code.
+    */
+    const market = read("../routes/banana_market.tsx");
+    const sheet = read("../components/market/SellBananasSheet.tsx");
+    for (const code of ["price_above_max", "quantity_below_min", "insufficient_balance"]) {
+      expect(market, code).not.toContain(code);
+      expect(sheet, code).not.toContain(code);
+    }
+  });
+
+  it("leaves no screen at the old address to print one", () => {
+    // The route that carried the raw-code bug is a redirect, with no state to
+    // set and no message to get wrong.
+    const buy = read("../routes/banana_buy.tsx");
+    expect(buy).toContain("redirect");
+    expect(buy).not.toContain("setError");
   });
 });
 

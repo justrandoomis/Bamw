@@ -25,12 +25,36 @@ const read = (path: string) =>
 
 const BUY = read("src/routes/banana_buy.tsx");
 const MARKET = read("src/routes/banana_market.tsx");
+/*
+  The sheet is where a price is quoted now.
+
+  The market page used to carry the listing form, so scanning the page was
+  scanning every surface that printed a banana price. The form is gone —
+  «احذف مفهوم Marketplace بين المستخدمين بالكامل» — and selling moved into a
+  sheet of its own, so the sheet is scanned too. A rule about where dollars may
+  not appear has to follow the screens that print money.
+*/
+const SELL_SHEET = read("src/components/market/SellBananasSheet.tsx");
+const TICKETS = read("src/components/market/TicketShop.tsx");
 
 describe("no screen prints a banana price in dollars", () => {
-  it("has no `$` in front of a number on the buy screen", () => {
-    // `${` inside a template literal is legitimate; a `$` before a value is not.
+  it("has no buy screen left to print one on", () => {
+    /*
+      This asserted that `/banana_buy` printed its prices in dinars. There are
+      no prices on it any more: the member-to-member market is gone and the
+      route is a redirect into `/banana_market`, kept only because the address
+      exists in members' bookmarks and chat history.
+
+      So the assertion is stronger than it was — not «the numbers are in the
+      right currency» but «there are no numbers» — and it is still a real
+      guard: a future restoration of a listing screen at this address would
+      fail here and have to answer for itself.
+    */
+    expect(BUY).toContain("redirect");
+    expect(BUY).toContain("/banana_market");
     expect(BUY).not.toMatch(/\$\{[a-zA-Z]+\.(total|pricePer)/);
     expect(BUY).not.toContain("$0.00");
+    expect(BUY).not.toContain("pricePer");
   });
 
   it("has no `$` in front of a number on the market screen", () => {
@@ -43,19 +67,40 @@ describe("no screen prints a banana price in dollars", () => {
       fault and the more damaging one: a wrong currency is a label, a rounded
       price is a lie about the number.
     */
-    expect(BUY).not.toMatch(/pricePer\.toFixed\(2\)/);
     expect(MARKET).not.toMatch(/pricePer\.toFixed\(2\)/);
+    expect(SELL_SHEET).not.toMatch(/\.toFixed\(2\)/);
   });
 
-  it("uses the shared dinar formatter on both screens", () => {
-    expect(BUY).toContain('from "@/lib/banana-price"');
-    expect(BUY).toMatch(/dinars\(/);
-    expect(MARKET).toMatch(/dinars\(/);
+  it("has no `$` in front of a number on the sell sheet", () => {
+    expect(SELL_SHEET).not.toMatch(/\$\{[a-zA-Z]+\.(total|pricePer|proceeds)/);
+    expect(SELL_SHEET).not.toContain("$0.00");
+    expect(TICKETS).not.toContain("$0.00");
   });
 
-  it("no longer offers to label the sell price in dollars", () => {
-    expect(MARKET).not.toContain("السعر لكل موزة (دولار)");
-    expect(MARKET).toContain('tr("السعر لكل موزة")');
+  it("uses the shop's own price formatter rather than a local one", () => {
+    /*
+      `dinars` and `formatPrice` both come from `@/lib/banana-price` and both
+      know that a banana costs a fraction of a fils. Which of the two a screen
+      uses is a layout decision — one carries the «د.ع» suffix, the other does
+      not — and pinning one by name is what made this test fail on a page that
+      was doing the right thing with the other. What matters is that the number
+      goes through that module at all.
+    */
+    expect(MARKET).toContain('from "@/lib/banana-price"');
+    expect(MARKET).toMatch(/dinars\(|formatPrice\(/);
+  });
+
+  it("no longer offers to sell to another member at all", () => {
+    /*
+      This asserted that the listing form's price label was in dinars. The form
+      is gone — the market is the shop now — so the stronger statement is
+      available: there is no price-per-banana field to label, in any currency.
+      «أوقف endpoints/actions التي تسمح بإنشاء Listings جديدة.»
+    */
+    expect(MARKET).not.toContain("السعر لكل موزة");
+    expect(MARKET).not.toContain("create_listing");
+    expect(MARKET).not.toContain("update_listing");
+    expect(MARKET).not.toContain("عروضي");
   });
 
   it("does not suggest a price from when a banana was worth a quarter dinar", () => {

@@ -1,19 +1,44 @@
-import { tr } from "@/i18n";
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { Suspense, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { Check, Coins, TrendingDown, TrendingUp, X, Wallet } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Suspense, useCallback, useMemo, useRef, useState } from "react";
+import { Loader2, TrendingDown, TrendingUp } from "lucide-react";
+import { toast } from "sonner";
+
+import { RewardsShelf } from "@/components/market/RewardsShelf";
+import { SellBananasSheet } from "@/components/market/SellBananasSheet";
+import { TicketShop } from "@/components/market/TicketShop";
 import { useAuth } from "@/hooks/useAuth";
-
-import TextFlip from "@/components/TextFlip";
+import { useBananaMarket } from "@/hooks/useBananaMarket";
+import { useRoulette } from "@/hooks/useRoulette";
+import { formatPrice } from "@/lib/banana-price";
 import { lazyWithRetry } from "@/lib/lazyRetry";
-import { useBananaMarket, type BananaListing } from "@/hooks/useBananaMarket";
-import { playSound } from "@/utils/audio";
-import { PRICE_STEP, dinars, formatPrice, roundPrice } from "@/lib/banana-price";
-import { marketErrorText } from "@/lib/banana-market-errors";
 
-// recharts is the heaviest dependency on this route; keep it off the critical path.
 const BananaPriceChart = lazyWithRetry(() => import("@/components/BananaPriceChart"));
+
+/**
+ * سوق الموز — one page, three things a member can do.
+ *
+ * The owner removed the marketplace outright and made the rest a single scroll:
+ *
+ *   «سوق الموز الجديد يحتوي فقط على 3 وظائف رئيسية: بيع الموز مباشرة للنظام
+ *    بسعر السوق الحالي · شراء/استبدال الموز بتذاكر الروليت · استبدال الموز
+ *    بالهدايا والمكافآت.»
+ *
+ *   «لا تقسم تجربة سوق الموز إلى صفحات مستقلة… لا تجعل المستخدم ينتقل إلى
+ *    banana_buy أو banana_redeem أو صفحات فرعية لتنفيذ هذه العمليات.»
+ *
+ * So everything happens here. Selling opens a sheet over this page, buying
+ * tickets is inline, redeeming is a confirmation on the shelf below — and the
+ * URL never changes to do any of it. The two old routes still exist and now
+ * send a visitor to the right section of this one, because links to them are
+ * out in the world and a dead link is a worse answer than a redirect.
+ *
+ * WHAT IS GONE, AND WHAT IS ONLY CLOSED. The listing UI is gone: no offers, no
+ * «عروضي النشطة», no promotion, no private listings, no bots to buy from.
+ * `create_listing` and `update_listing` are refused by the API. But nothing is
+ * deleted — every offer ever made is still in `banana_market_offers`, and an
+ * offer still standing can still be cancelled by its owner. «لا تحذف بيانات
+ * الإنتاج بشكل أعمى.»
+ */
 
 export const Route = createFileRoute("/banana_market")({
   head: () => ({
@@ -21,758 +46,301 @@ export const Route = createFileRoute("/banana_market")({
       { title: "سوق الموز — بنانتو" },
       {
         name: "description",
-        content:
-          "سوق الموز في بنانتو: تابع سعر الموزة، اشترِ واعرض موزك للبيع، واستبدل رصيدك بمكافآت حقيقية.",
+        content: "بِع موزك للمتجر بسعر السوق، أو بدّله بتذاكر الروليت وبالهدايا.",
       },
       { property: "og:title", content: "سوق الموز — بنانتو" },
-      { property: "og:description", content: "بيع واشترِ الموز واستبدله بمكافآت داخل بنانتو." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: BananaMarketPage,
 });
 
-const CARD =
-  "overflow-hidden rounded-[24px] bg-foreground/5 backdrop-blur-3xl border-t border-l border-foreground/20 border-b border-r border-foreground/5 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] text-foreground";
+const RANGES = ["1H", "4H", "12H", "1D", "7D"] as const;
 
-/** Full timestamp with seconds, shown faintly under the price in the tooltip. */
-function stampOf(iso: string | undefined) {
-  if (!iso) return "";
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "";
-  const date = d.toLocaleDateString("ar-IQ", { day: "2-digit", month: "long" });
-  const time = d.toLocaleTimeString("ar-IQ", {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false,
-  });
-  return `${date} · ${time}`;
+const money = (n: number) => Number(n || 0).toLocaleString("en-US");
+
+/**
+ * The chart's tooltip.
+ *
+ * Recharts clones this element and passes it `active` and `payload`, so it is
+ * given as an element rather than a component — which is what the chart's own
+ * prop type asks for.
+ */
+function PriceTooltip({ active, payload }: { active?: boolean; payload?: { value?: number }[] }) {
+  if (!active || !payload?.length) return null;
+  return (
+    <div className="rounded-lg border border-border bg-card px-2 py-1 text-[11px] shadow-sm">
+      <span dir="ltr" className="font-bold tabular-nums text-foreground">
+        {formatPrice(Number(payload[0]?.value ?? 0))}
+      </span>
+      <span className="text-muted-foreground"> د.ع</span>
+    </div>
+  );
 }
-
-function CustomTooltip({ active, payload }: any) {
-  if (active && payload && payload.length) {
-    const stamp = stampOf(payload[0]?.payload?.t);
-    return (
-      <div className="rounded-xl bg-foreground px-3 py-2 text-background shadow-xl ring-1 ring-white/10">
-        <p className="text-sm font-semibold" dir="ltr">
-          {dinars(Number(payload[0].value))}
-        </p>
-        {stamp && <p className="mt-0.5 text-[10px] font-medium opacity-60">{stamp}</p>}
-      </div>
-    );
-  }
-  return null;
-}
-
-const RANGES = ["1H", "4H", "12H", "1D", "7D"];
 
 function BananaMarketPage() {
-  const navigate = useNavigate();
   const { user } = useAuth();
-  const [range, setRange] = useState("1D");
-  const { snapshot, isPending, act } = useBananaMarket(range);
-  const [modal, setModal] = useState<"none" | "sell" | "buy" | "success">("none");
-  const [editing, setEditing] = useState<BananaListing | null>(null);
-  const [buying, setBuying] = useState<BananaListing | null>(null);
+  const [range, setRange] = useState<string>("1D");
+  const { snapshot, isPending, act, refresh: refreshMarket } = useBananaMarket(range);
+  /*
+    The roulette's own state, for the ticket shop only. One ticket is the
+    cheapest question to ask of `/api/roulette`, and the ticket balance and
+    price are the same at every count.
+  */
+  const { state: roulette, refresh: refreshRoulette } = useRoulette(1);
 
-  const [quantity, setQuantity] = useState("");
-  const [pricePer, setPricePer] = useState("");
-  const [isPrivate, setIsPrivate] = useState(false);
-  const [isPromoted, setIsPromoted] = useState(false);
-  const [promoHours, setPromoHours] = useState(3);
-  const [error, setError] = useState("");
+  const [sellOpen, setSellOpen] = useState(false);
+  const rewardsRef = useRef<HTMLDivElement | null>(null);
+  const ticketsRef = useRef<HTMLDivElement | null>(null);
 
   const price = snapshot?.price ?? 0;
-  const balance = snapshot?.balance ?? 0;
+  const bananas = snapshot?.balance ?? 0;
   const changePct = snapshot?.changePct ?? 0;
-  const promoRate = snapshot?.promoRatePerMinute ?? 2;
-  const promoCost = isPromoted ? promoHours * 60 * promoRate : 0;
+  const rewards = useMemo(() => snapshot?.rewards ?? [], [snapshot?.rewards]);
 
   /*
-    The bounds the server enforces, so a refusal can name the number it refused
-    against instead of only saying no.
+    «يمكن استخدام anchors داخل الصفحة فقط عند الحاجة… الضغط على الاستبدال يعمل
+    smooth scroll إلى Rewards section» — a scroll, not a navigation, so the URL
+    stays put and the back button still means what it meant.
   */
-  const limits = {
-    minPrice: snapshot?.minPrice ?? 0,
-    maxPrice: snapshot?.maxPrice ?? 0,
-    minQty: snapshot?.minListingQuantity ?? 0,
-    maxQty: snapshot?.maxListingQuantity ?? 0,
-  };
+  const scrollTo = useCallback((ref: React.RefObject<HTMLDivElement | null>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
 
-  /** Percentage of the sell price relative to the live market price. */
-  const pricePct =
-    price > 0 && Number(pricePer) > 0 ? Math.round(((Number(pricePer) - price) / price) * 100) : 0;
-
-  /*
-    A quick-pick the server will actually accept.
-
-    This floored at 0.01 and rounded to two decimals. Against a ceiling of
-    0.0004 that made every quick-pick 0.01 — sixteen times the highest price
-    the market allows — so the slider could not produce a listable price at
-    all, and «نشر العرض» came back refused whatever the seller chose. The
-    market's own band is the floor and the ceiling now, and the rounding is
-    the engine's.
-  */
-  const applyPricePct = (pct: number) => {
-    const floor = limits.minPrice > 0 ? limits.minPrice : PRICE_STEP;
-    const ceiling = limits.maxPrice > 0 ? limits.maxPrice : Number.POSITIVE_INFINITY;
-    const next = Math.min(ceiling, Math.max(floor, roundPrice(price * (1 + pct / 100))));
-    setPricePer(String(next));
-  };
-
-  const openSell = (listing?: BananaListing) => {
-    playSound("bumper_end", 0.6);
-    setEditing(listing ?? null);
-    setQuantity(listing ? String(listing.quantity) : "");
-    setPricePer(listing ? String(listing.pricePer) : String(price || 0.24));
-    setIsPrivate(listing?.isPrivate ?? false);
-    setIsPromoted(listing?.isPromoted ?? false);
-    setPromoHours(3);
-    setError("");
-    setModal("sell");
-  };
-
-  const submitSell = async () => {
-    setError("");
-    try {
-      if (editing) {
-        await act.mutateAsync({
-          action: "update_listing",
-          id: editing.id,
-          quantity: Number(quantity),
-          pricePer: Number(pricePer),
-        });
-      } else {
-        await act.mutateAsync({
-          action: "create_listing",
-          quantity: Number(quantity),
-          pricePer: Number(pricePer),
-          isPrivate,
-          isPromoted,
-          promoteMinutes: isPromoted ? promoHours * 60 : 0,
-        });
+  const onSell = useCallback(
+    async (quantity: number, requestId: string) => {
+      try {
+        const answer = (await act.mutateAsync({
+          action: "sell_bananas",
+          quantity,
+          requestId,
+        })) as unknown as {
+          sale?: { quantity: number; pricePerBanana: number; proceeds: number };
+        };
+        const sale = answer?.sale;
+        if (!sale) return { ok: false as const, error: "تعذّر قراءة نتيجة البيع" };
+        return {
+          ok: true as const,
+          quantity: sale.quantity,
+          pricePerBanana: sale.pricePerBanana,
+          proceeds: sale.proceeds,
+        };
+      } catch (error) {
+        return {
+          ok: false as const,
+          error: error instanceof Error ? error.message : "تعذّر إتمام البيع",
+        };
       }
-      setModal("success");
-      setTimeout(() => setModal("none"), 1800);
-    } catch (e) {
-      setError(marketErrorText(e, limits));
-    }
-  };
+    },
+    [act],
+  );
 
-  const openBuy = (listing: BananaListing) => {
-    playSound("bumper_end", 0.5);
-    setBuying(listing);
-    setError("");
-    setModal("buy");
-  };
+  const onBuyTickets = useCallback(
+    async (quantity: number, requestId: string) => {
+      try {
+        const res = await fetch("/api/wheel", {
+          method: "POST",
+          credentials: "include",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ action: "buy_ticket", quantity, requestId }),
+        });
+        const data = (await res.json().catch(() => ({}))) as {
+          ok?: boolean;
+          tickets?: number;
+          error?: string;
+        };
+        if (!res.ok) return { ok: false as const, error: data.error || "تعذّر شراء التذاكر" };
+        /*
+          Both balances move on a ticket purchase — bananas out, tickets in —
+          and they live in two different queries, so both are told to refetch.
+          A screen that updated one of them would show a member paying for
+          something that never arrived.
+        */
+        refreshRoulette();
+        refreshMarket();
+        return { ok: true as const, tickets: Number(data.tickets ?? 0) };
+      } catch (error) {
+        return {
+          ok: false as const,
+          error: error instanceof Error ? error.message : "تعذّر شراء التذاكر",
+        };
+      }
+    },
+    [refreshMarket, refreshRoulette],
+  );
 
-  const submitBuy = async () => {
-    if (!buying) return;
-    setError("");
-    try {
-      await act.mutateAsync({ action: "buy_listing", id: buying.id });
-      setModal("success");
-      setTimeout(() => setModal("none"), 1800);
-    } catch (e) {
-      setError(marketErrorText(e, limits));
-    }
-  };
-
-  const cancelListing = async (id: string) => {
-    playSound("bumper_end", 0.5);
-    try {
-      await act.mutateAsync({ action: "cancel_listing", id });
-    } catch (e) {
-      setError(marketErrorText(e, limits));
-    }
-  };
+  const onRedeem = useCallback(
+    async (rewardId: string) => {
+      try {
+        await act.mutateAsync({ action: "redeem_reward", rewardId });
+        refreshRoulette();
+        return { ok: true as const };
+      } catch (error) {
+        return {
+          ok: false as const,
+          error: error instanceof Error ? error.message : "تعذّر الاستبدال",
+        };
+      }
+    },
+    [act, refreshRoulette],
+  );
 
   return (
-    <div
-      className="min-h-screen bg-background text-foreground overflow-x-hidden relative"
-      dir="rtl"
-    >
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-4 bg-background/80 backdrop-blur-md">
-        <button
-          onClick={() => void navigate({ to: "/" })}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-foreground/10 hover:bg-foreground/20 transition-colors"
-          aria-label={tr("إغلاق")}
-        >
-          <X className="h-5 w-5" />
-        </button>
-        <h1 className="text-lg font-bold tracking-tight">{tr("سوق الموز")}</h1>
-        <div className="flex items-center gap-1.5 rounded-full bg-foreground/10 px-3 py-1.5 text-sm font-bold">
-          <span>🍌</span>
-          <span dir="ltr">{(balance / 1000).toFixed(1)}k</span>
+    <div className="mx-auto w-full max-w-3xl px-4 pb-24 pt-4" dir="rtl">
+      {/* ───────────────────────────── Header ───────────────────────────── */}
+      <header className="mb-4 flex items-end justify-between gap-3">
+        <div className="min-w-0">
+          <h1 className="text-xl font-extrabold text-foreground">سوق الموز</h1>
+          <p className="mt-0.5 truncate text-xs text-muted-foreground">
+            بِع موزك للمتجر مباشرة، أو بدّله بتذاكر وهدايا.
+          </p>
+        </div>
+        <div className="shrink-0 rounded-2xl border border-amber-200 bg-amber-50/70 px-3 py-2 text-left">
+          <div className="text-[11px] text-muted-foreground">رصيدك</div>
+          <div dir="ltr" className="text-sm font-extrabold tabular-nums text-foreground">
+            🍌 {money(bananas)}
+          </div>
         </div>
       </header>
 
-      <main className="relative z-10 px-4 pt-24 pb-28 space-y-4">
-        {/* Price + chart */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className={`${CARD} p-5`}
-        >
-          <div className="flex items-start justify-between">
-            <div>
-              <div className="text-3xl font-black tracking-tight">{tr("موزة واحدة")}</div>
-              <div className="mt-1 flex items-baseline gap-3">
-                <span className="text-2xl font-black" dir="ltr">
-                  {dinars(price)}
-                </span>
-                <span
-                  className={`flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold border ${
-                    changePct < 0
-                      ? "bg-destructive/15 border-destructive/30 text-destructive"
-                      : "bg-emerald-600/15 border-emerald-600/30 text-emerald-600"
-                  }`}
-                >
-                  {changePct < 0 ? (
-                    <TrendingDown className="h-3 w-3" />
-                  ) : (
-                    <TrendingUp className="h-3 w-3" />
-                  )}
-                  <span dir="ltr">{changePct > 0 ? `+${changePct}` : changePct}%</span>
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center gap-1.5 rounded-full bg-foreground/10 border border-foreground/10 px-2 py-1 text-[10px] font-bold text-foreground/80">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+      {/* ────────────────────────── Market price ────────────────────────── */}
+      <section className="rounded-2xl border border-border/60 bg-card p-3">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <div className="text-xs text-muted-foreground">سعر موزة واحدة</div>
+            <div className="mt-0.5 flex items-baseline gap-2">
+              <span dir="ltr" className="text-lg font-extrabold tabular-nums text-foreground">
+                {formatPrice(price)}
               </span>
-              {tr("السوق مباشر")}
+              <span className="text-[11px] text-muted-foreground">د.ع</span>
+              <span
+                dir="ltr"
+                className={`inline-flex items-center gap-0.5 rounded-lg px-1.5 py-0.5 text-[11px] font-bold tabular-nums ${
+                  changePct < 0 ? "bg-red-50 text-red-600" : "bg-emerald-50 text-emerald-700"
+                }`}
+              >
+                {changePct < 0 ? (
+                  <TrendingDown className="h-3 w-3" />
+                ) : (
+                  <TrendingUp className="h-3 w-3" />
+                )}
+                {changePct > 0 ? "+" : ""}
+                {changePct}%
+              </span>
             </div>
           </div>
-
-          <div className="mt-6 flex items-center justify-between">
-            <h2 className="text-sm font-bold text-foreground/90">{tr("مخطط السعر")}</h2>
-            <div
-              className="flex gap-1 rounded-full bg-foreground/10 p-1 border border-foreground/10"
-              dir="ltr"
-            >
-              {RANGES.map((r) => (
-                <button
-                  key={r}
-                  onClick={() => {
-                    playSound("hover_s", 0.4);
-                    setRange(r);
-                  }}
-                  className={`rounded-full px-2.5 py-1 text-[10px] font-black transition-all ${
-                    range === r ? "bg-foreground text-background shadow-sm" : "text-foreground/60"
-                  }`}
-                >
-                  {r}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-6 h-[200px] w-full" dir="ltr">
-            <Suspense fallback={null}>
-              <BananaPriceChart data={snapshot?.chart ?? []} tooltip={<CustomTooltip />} />
-            </Suspense>
-          </div>
-        </motion.div>
-
-        {/* Actions */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="flex gap-2"
-        >
-          <Link
-            to="/banana_buy"
-            onPointerDown={() => playSound("bumper_end", 0.6)}
-            className="flex flex-1 flex-col items-center rounded-xl bg-foreground/5 border border-foreground/10 py-3 transition-all active:scale-95 hover:bg-foreground/10"
-          >
-            <span className="text-sm font-black leading-none text-amber-500">{tr("شراء")}</span>
-            <span className="mt-1 text-[10px] font-bold text-foreground/70">{tr("موز")}</span>
-          </Link>
-          <button
-            onClick={() => openSell()}
-            className="flex flex-1 flex-col items-center rounded-xl bg-foreground/5 border border-foreground/10 py-3 transition-all active:scale-95 hover:bg-foreground/10"
-          >
-            <span className="text-sm font-black leading-none text-emerald-600">{tr("بيع")}</span>
-            <span className="mt-1 text-[10px] font-bold text-foreground/70">{tr("موز")}</span>
-          </button>
-          <Link
-            to="/banana_redeem"
-            onPointerDown={() => playSound("bumper_end", 0.6)}
-            className="flex flex-1 flex-col items-center rounded-xl bg-foreground/5 border border-foreground/10 py-3 transition-all active:scale-95 hover:bg-foreground/10"
-          >
-            <span className="text-sm font-black leading-none">{tr("استبدال")}</span>
-            <span className="mt-1 text-[10px] font-bold text-foreground/70">{tr("موز")}</span>
-          </Link>
-        </motion.div>
-
-        {/* Listings */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className={`${CARD} pt-5 pb-2`}
-        >
-          <div className="px-5 pb-3 border-b border-foreground/10">
-            <h2 className="text-lg font-black tracking-tight">{tr("عروض السوق")}</h2>
-          </div>
-
-          {isPending ? (
-            <div className="flex justify-center py-10">
-              <div className="h-8 w-8 animate-spin rounded-full border-[3px] border-foreground/20 border-t-amber-500" />
-            </div>
-          ) : (snapshot?.listings.length ?? 0) === 0 ? (
-            <p className="py-10 text-center text-sm text-foreground/60">
-              {tr("لا توجد عروض حالياً — كن أول من يعرض موزه.")}
-            </p>
-          ) : (
-            <div className="flex flex-col">
-              {snapshot!.listings.slice(0, 10).map((l, i) => (
-                <div
-                  key={l.id}
-                  className={`flex items-center justify-between px-5 py-3 transition-colors hover:bg-foreground/5 ${
-                    i !== Math.min(9, snapshot!.listings.length - 1)
-                      ? "border-b border-foreground/10"
-                      : ""
-                  }`}
-                >
-                  <div className="flex items-center gap-2.5">
-                    <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-foreground/10 border border-foreground/10 text-xl">
-                      {l.avatar.startsWith("http") ? (
-                        <img
-                          src={l.avatar}
-                          alt=""
-                          className="h-full w-full object-cover"
-                          loading="lazy"
-                        />
-                      ) : (
-                        l.avatar
-                      )}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-1 text-sm font-bold" dir="ltr">
-                        {l.user}
-                        {l.verified && <Check className="h-3 w-3 text-emerald-600" />}
-                      </div>
-                      <div className="text-xs font-semibold text-foreground/60">
-                        <span dir="ltr">{l.quantity.toLocaleString("en-US")}</span> {tr("موزة")}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="flex flex-col text-left" dir="ltr">
-                      <div className="text-sm font-black leading-tight">{dinars(l.total)}</div>
-                      <div className="mt-0.5 text-[10px] font-bold leading-tight text-foreground/60">
-                        {dinars(l.pricePer)} / موزة
-                      </div>
-                      <div className="text-[10px] font-bold">
-                        {l.isLive ? (
-                          <span className="text-foreground/40">{tr("سعر السوق")}</span>
-                        ) : (
-                          <span className={l.diff < 0 ? "text-emerald-600" : "text-amber-500"}>
-                            {Math.abs(l.diff)}% {l.diff < 0 ? "أقل" : "أعلى"}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => openBuy(l)}
-                      className="flex h-8 items-center rounded-full bg-foreground/20 px-4 text-xs font-black transition-colors hover:bg-foreground/30 active:scale-95"
-                    >
-                      {tr("شراء")}
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          <div className="px-5 pt-3 pb-2">
-            <Link
-              to="/banana_buy"
-              onPointerDown={() => playSound("bumper_end", 0.5)}
-              className="flex w-full items-center justify-center rounded-xl bg-foreground/10 border border-foreground/10 py-3 text-sm font-black transition-colors hover:bg-foreground/20 active:scale-95"
-            >
-              {tr("عرض كل العروض")}
-            </Link>
-          </div>
-        </motion.div>
-
-        {/* My listings */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className={`${CARD} relative p-5`}
-        >
-          <div className="absolute top-0 left-0 p-5 opacity-10">
-            <Coins className="h-20 w-20" />
-          </div>
-          <div className="relative z-10">
-            <h2 className="text-xs font-black uppercase tracking-wider text-emerald-600">
-              {tr("عروضي النشطة")}
-            </h2>
-
-            <div className="mt-4 space-y-3">
-              {(snapshot?.myListings.length ?? 0) === 0 ? (
-                <p className="text-sm text-foreground/60">{tr("لا يوجد لديك عرض نشط.")}</p>
-              ) : (
-                snapshot!.myListings.map((l) => (
-                  <div
-                    key={l.id}
-                    className="flex items-center justify-between rounded-xl bg-foreground/10 border border-foreground/10 p-3"
-                  >
-                    <div>
-                      <div className="text-sm font-black">
-                        <span dir="ltr">{l.quantity.toLocaleString("en-US")}</span> 🍌
-                      </div>
-                      <div className="mt-0.5 text-[10px] font-bold text-emerald-600">
-                        <span dir="ltr">{dinars(l.pricePer)}</span> / موزة •{" "}
-                        {l.isPrivate ? "خاص" : "عام"}
-                      </div>
-                    </div>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => openSell(l)}
-                        className="h-7 rounded-full bg-foreground/20 px-3 text-xs font-bold hover:bg-foreground/30"
-                      >
-                        {tr("تعديل")}
-                      </button>
-                      <button
-                        onClick={() => void cancelListing(l.id)}
-                        className="h-7 rounded-full bg-destructive/20 px-3 text-xs font-bold text-destructive hover:bg-destructive/30"
-                      >
-                        {tr("حذف")}
-                      </button>
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-
-            <div className="mt-5 flex items-center justify-between border-t border-foreground/10 pt-4">
-              <div className="text-xs font-bold text-emerald-600">{tr("الرصيد المتاح")}</div>
-              <div className="font-black">
-                🍌 <span dir="ltr">{balance.toLocaleString("en-US")}</span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        <div className="flex justify-center pt-4 text-3xl font-black text-amber-500">
-          <TextFlip words={["اشترِ", "بِع", "استبدل", "بادل", "اعرض", "اربح"]} />
+          <span className="inline-flex shrink-0 items-center gap-1 rounded-lg bg-emerald-50 px-2 py-1 text-[11px] font-bold text-emerald-700">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> السوق مباشر
+          </span>
         </div>
 
-        {!isPending && !snapshot?.signedIn && (
-          <Link
-            to="/auth"
-            className="flex items-center justify-center rounded-2xl bg-foreground py-3 text-sm font-black text-background"
-          >
-            {tr("سجّل الدخول للمشاركة في السوق")}
-          </Link>
-        )}
-
-        {!isPending && snapshot?.signedIn && !snapshot.profileComplete && (
-          <Link
-            to="/profile"
-            onPointerDown={() => playSound("bumper_end", 0.5)}
-            className="flex flex-col items-center rounded-2xl bg-amber-500 py-3 text-background"
-          >
-            <span className="text-sm font-black">{tr("أكمل ملفك الشخصي للمشاركة في السوق")}</span>
-            <span className="mt-0.5 text-[11px] font-bold opacity-80">
-              {tr("الاسم، المعرّف، البريد، تاريخ الميلاد والجنس")}
-            </span>
-          </Link>
-        )}
-      </main>
-
-      {/* Sell / success modal */}
-      <AnimatePresence>
-        {modal !== "none" && (
-          <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setModal("none")}
-              className="absolute inset-0"
-            />
-            <motion.div
-              initial={{ opacity: 0, y: "100%" }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative z-10 w-full max-w-md rounded-t-[40px] bg-background p-6 pb-10 text-foreground shadow-2xl sm:rounded-[40px]"
+        <div className="mt-3 flex gap-1 overflow-x-auto">
+          {RANGES.map((option) => (
+            <button
+              key={option}
+              type="button"
+              onClick={() => setRange(option)}
+              aria-pressed={range === option}
+              className={`min-h-[36px] shrink-0 rounded-xl px-3 text-xs font-bold tabular-nums transition ${
+                range === option
+                  ? "bg-foreground text-background"
+                  : "bg-muted/60 text-muted-foreground"
+              }`}
             >
-              <button
-                onClick={() => setModal("none")}
-                className="absolute left-6 top-6 flex h-8 w-8 items-center justify-center rounded-full bg-foreground/10 hover:bg-foreground/20"
-                aria-label={tr("إغلاق")}
-              >
-                <X className="h-4 w-4" />
-              </button>
+              {option}
+            </button>
+          ))}
+        </div>
 
-              {modal === "success" ? (
-                <div className="flex flex-col items-center justify-center py-10 text-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-600/20 text-emerald-600">
-                    <Check className="h-8 w-8" />
-                  </div>
-                  <h3 className="mt-4 text-xl font-black">{tr("تم بنجاح")}</h3>
-                  <p className="mt-1 text-sm text-foreground/60">{tr("تم تحديث عروضك ورصيدك.")}</p>
-                </div>
-              ) : modal === "buy" && buying ? (
-                <div className="pt-2">
-                  <h3 className="text-xl font-black">{tr("شراء موز")}</h3>
-                  <p className="mt-1 text-xs text-foreground/60">
-                    {tr("من")} <span dir="ltr">{buying.user}</span>
-                  </p>
+        <div className="mt-2 h-40">
+          <Suspense
+            fallback={
+              <div className="flex h-full items-center justify-center text-muted-foreground">
+                <Loader2 className="h-4 w-4 animate-spin" />
+              </div>
+            }
+          >
+            <BananaPriceChart data={snapshot?.chart ?? []} tooltip={<PriceTooltip />} />
+          </Suspense>
+        </div>
+      </section>
 
-                  <div className="mt-5 space-y-2 rounded-2xl bg-foreground/5 px-4 py-3 text-sm font-bold">
-                    <div className="flex items-center justify-between">
-                      <span className="text-foreground/70">{tr("الكمية")}</span>
-                      <span dir="ltr">{buying.quantity.toLocaleString("en-US")} 🍌</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-foreground/70">{tr("السعر لكل موزة")}</span>
-                      <span dir="ltr">{dinars(buying.pricePer)}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-foreground/70">{tr("مقارنة بسعر السوق")}</span>
-                      <span
-                        dir="ltr"
-                        className={
-                          buying.isLive
-                            ? "text-foreground/60"
-                            : buying.diff < 0
-                              ? "text-emerald-600"
-                              : "text-amber-500"
-                        }
-                      >
-                        {buying.isLive
-                          ? "سعر السوق"
-                          : `${Math.abs(buying.diff)}% ${buying.diff < 0 ? "أقل" : "أعلى"}`}
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between border-t border-foreground/10 pt-2 text-base font-black">
-                      <span>{tr("الإجمالي")}</span>
-                      <span dir="ltr">{dinars(buying.total)}</span>
-                    </div>
-                  </div>
+      {/* ──────────────────────────── Actions ───────────────────────────── */}
+      <div className="mt-3 grid grid-cols-3 gap-2">
+        <button
+          type="button"
+          onClick={() => setSellOpen(true)}
+          className="min-h-[52px] rounded-2xl bg-foreground text-sm font-extrabold text-background"
+        >
+          بيع الموز
+        </button>
+        <button
+          type="button"
+          onClick={() => scrollTo(ticketsRef)}
+          className="min-h-[52px] rounded-2xl border border-border bg-card text-sm font-extrabold text-foreground"
+        >
+          التذاكر
+        </button>
+        <button
+          type="button"
+          onClick={() => scrollTo(rewardsRef)}
+          className="min-h-[52px] rounded-2xl border border-border bg-card text-sm font-extrabold text-foreground"
+        >
+          الاستبدال
+        </button>
+      </div>
 
-                  <div className="mt-4 flex items-center justify-between rounded-2xl bg-blue-600/10 border border-blue-600/20 px-4 py-3">
-                    <div className="flex items-center gap-2">
-                      <Wallet className="w-4 h-4 text-blue-600" />
-                      <span className="text-[11px] font-bold text-blue-800">
-                        {tr("رصيد المحفظة")}
-                      </span>
-                    </div>
-                    <span className="text-sm font-black text-blue-600" dir="ltr">
-                      {dinars(user?.walletBalance)}
-                    </span>
-                  </div>
+      {/* ───────────────────────── Tickets / roulette ───────────────────── */}
+      <div ref={ticketsRef} className="scroll-mt-4">
+        <TicketShop
+          tickets={roulette?.tickets ?? 0}
+          bananas={bananas}
+          ticketPriceBananas={roulette?.ticketPriceBananas ?? 0}
+          onBuy={onBuyTickets}
+        />
+        <Link
+          to="/wheel"
+          className="mt-2 flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-border bg-card text-sm font-extrabold text-foreground"
+        >
+          🎰 افتح الروليت
+          {roulette?.tickets ? (
+            <span dir="ltr" className="rounded-lg bg-muted px-2 py-0.5 text-xs tabular-nums">
+              {roulette.tickets} تذكرة
+            </span>
+          ) : null}
+        </Link>
+      </div>
 
-                  {user && user.walletBalance < (buying?.total || 0) && (
-                    <p className="mt-3 text-[10px] font-bold text-rose-600 bg-rose-50 p-2 rounded-xl border border-rose-100">
-                      {tr("رصيد المحفظة غير كافٍ لإتمام عملية الشراء.")}
-                    </p>
-                  )}
+      {/* ──────────────────────────── Rewards ───────────────────────────── */}
+      <div ref={rewardsRef} className="scroll-mt-4">
+        <RewardsShelf rewards={rewards} bananas={bananas} onRedeem={onRedeem} />
+      </div>
 
-                  {error && <p className="mt-3 text-xs font-bold text-destructive">{error}</p>}
+      {!user ? (
+        <p className="mt-4 rounded-2xl bg-muted/50 p-3 text-center text-xs text-muted-foreground">
+          سجّل الدخول لتتمكن من البيع والاستبدال.
+        </p>
+      ) : null}
 
-                  <div className="mt-5 flex gap-2">
-                    <button
-                      onClick={() => setModal("none")}
-                      className="flex-1 rounded-2xl bg-foreground/10 py-3.5 text-sm font-black"
-                    >
-                      {tr("إلغاء")}
-                    </button>
-                    <button
-                      onClick={() => void submitBuy()}
-                      disabled={
-                        !!(act.isPending || (user && user.walletBalance < (buying?.total || 0)))
-                      }
-                      className="flex-1 rounded-2xl bg-foreground py-3.5 text-sm font-black text-background disabled:opacity-60"
-                    >
-                      {act.isPending ? "جارٍ الشراء…" : "تأكيد الشراء"}
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div className="pt-2">
-                  <h3 className="text-xl font-black">
-                    {editing ? "تعديل العرض" : "عرض موز للبيع"}
-                  </h3>
-                  <p className="mt-1 text-xs text-foreground/60">
-                    {tr("رصيدك:")} <span dir="ltr">{balance.toLocaleString("en-US")}</span> 🍌
-                  </p>
+      {isPending && !snapshot ? (
+        <div className="mt-6 flex justify-center text-muted-foreground">
+          <Loader2 className="h-5 w-5 animate-spin" />
+        </div>
+      ) : null}
 
-                  <label className="mt-5 block text-xs font-bold text-foreground/70">
-                    {tr("الكمية")}
-                  </label>
-                  <input
-                    value={quantity}
-                    onChange={(e) => setQuantity(e.target.value.replace(/[^0-9]/g, ""))}
-                    inputMode="numeric"
-                    dir="ltr"
-                    placeholder="1000"
-                    className="mt-1 w-full rounded-2xl border border-foreground/15 bg-foreground/5 px-4 py-3 text-sm font-bold outline-none focus:border-foreground/40"
-                  />
-
-                  <label className="mt-4 block text-xs font-bold text-foreground/70">
-                    {tr("السعر لكل موزة")}
-                  </label>
-                  <input
-                    value={pricePer}
-                    onChange={(e) => setPricePer(e.target.value.replace(/[^0-9.]/g, ""))}
-                    inputMode="decimal"
-                    dir="ltr"
-                    /*
-                      From when a banana was worth a quarter of a dinar. The
-                      shop's base is 0.0004 today, so "0.25" in a price box
-                      reads as a suggestion to list six hundred times the
-                      market. The live price is the only honest hint.
-                    */
-                    placeholder={formatPrice(limits.minPrice)}
-                    className="mt-1 w-full rounded-2xl border border-foreground/15 bg-foreground/5 px-4 py-3 text-sm font-bold outline-none focus:border-foreground/40"
-                  />
-
-                  {/* نسبة السعر مقارنة بسعر السوق */}
-                  <div className="mt-3 rounded-2xl bg-foreground/5 px-4 py-3">
-                    <div className="flex items-center justify-between text-[11px] font-bold">
-                      <span className="text-foreground/70">{tr("مقارنة بسعر السوق")}</span>
-                      <span
-                        className={
-                          pricePct === 0
-                            ? "text-foreground/60"
-                            : pricePct < 0
-                              ? "text-emerald-600"
-                              : "text-amber-500"
-                        }
-                        dir="ltr"
-                      >
-                        {pricePct > 0 ? `+${pricePct}` : pricePct}% (
-                        {pricePct === 0 ? "سعر السوق" : pricePct < 0 ? "أقل" : "أعلى"})
-                      </span>
-                    </div>
-                    <input
-                      type="range"
-                      min={-50}
-                      max={50}
-                      step={1}
-                      value={Math.max(-50, Math.min(50, pricePct))}
-                      onChange={(e) => applyPricePct(Number(e.target.value))}
-                      className="mt-2 w-full accent-amber-500"
-                      dir="ltr"
-                      aria-label={tr("نسبة السعر مقارنة بسعر السوق")}
-                    />
-                    <div
-                      className="flex justify-between text-[10px] font-bold text-foreground/50"
-                      dir="ltr"
-                    >
-                      <span>-50%</span>
-                      <span>0%</span>
-                      <span>+50%</span>
-                    </div>
-                  </div>
-
-                  <div className="mt-4 flex items-center justify-between rounded-2xl bg-foreground/5 px-4 py-3">
-                    <span className="text-sm font-bold">{tr("الإجمالي المتوقع")}</span>
-                    <span className="text-sm font-black" dir="ltr">
-                      {dinars((Number(quantity) || 0) * (Number(pricePer) || 0))}
-                    </span>
-                  </div>
-
-                  {!editing && (
-                    <div className="mt-4 space-y-2">
-                      <label className="flex items-center justify-between rounded-2xl bg-foreground/5 px-4 py-3 text-sm font-bold">
-                        {tr("عرض خاص (بالرابط فقط)")}
-                        <input
-                          type="checkbox"
-                          checked={isPrivate}
-                          onChange={(e) => setIsPrivate(e.target.checked)}
-                          className="h-4 w-4 accent-amber-500"
-                        />
-                      </label>
-                      <div className="rounded-2xl bg-foreground/5 px-4 py-3">
-                        <label className="flex items-center justify-between text-sm font-bold">
-                          {tr("تمييز العرض في أعلى القائمة")}
-                          <input
-                            type="checkbox"
-                            checked={isPromoted}
-                            onChange={(e) => setIsPromoted(e.target.checked)}
-                            className="h-4 w-4 accent-amber-500"
-                          />
-                        </label>
-
-                        {isPromoted && (
-                          <div className="mt-3 border-t border-foreground/10 pt-3">
-                            <div className="flex items-center justify-between text-[11px] font-bold text-foreground/70">
-                              <span>{tr("مدة الظهور")}</span>
-                              <span dir="ltr">{promoRate} 🍌 / دقيقة</span>
-                            </div>
-                            <div className="mt-2 flex gap-1.5" dir="ltr">
-                              {[1, 3, 6, 12, 24].map((h) => (
-                                <button
-                                  key={h}
-                                  type="button"
-                                  onClick={() => setPromoHours(h)}
-                                  className={`flex-1 rounded-xl py-2 text-[11px] font-black transition-all ${
-                                    promoHours === h
-                                      ? "bg-foreground text-background"
-                                      : "bg-foreground/10 text-foreground/70"
-                                  }`}
-                                >
-                                  {h}h
-                                </button>
-                              ))}
-                            </div>
-                            <div className="mt-2 flex items-center justify-between text-[11px] font-black">
-                              <span className="text-foreground/70">
-                                تكلفة التمييز ({promoHours * 60} دقيقة)
-                              </span>
-                              <span dir="ltr">{promoCost.toLocaleString("en-US")} 🍌</span>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
-
-                  {error && <p className="mt-3 text-xs font-bold text-destructive">{error}</p>}
-
-                  <div className="mt-5 flex gap-2">
-                    <button
-                      onClick={() => setModal("none")}
-                      className="flex-1 rounded-2xl bg-foreground/10 py-3.5 text-sm font-black"
-                    >
-                      {tr("إلغاء")}
-                    </button>
-                    <button
-                      onClick={() => void submitSell()}
-                      disabled={!!(act.isPending || (isPromoted && balance < promoCost))}
-                      className="flex-1 rounded-2xl bg-foreground py-3.5 text-sm font-black text-background disabled:opacity-60"
-                    >
-                      {act.isPending ? "جارٍ التنفيذ…" : editing ? "حفظ التعديل" : "نشر العرض"}
-                    </button>
-                  </div>
-
-                  {isPromoted && balance < promoCost && (
-                    <p className="mt-3 text-[10px] font-bold text-rose-600 bg-rose-50 p-2 rounded-xl border border-rose-100">
-                      {tr("رصيد الموز غير كافٍ لتكلفة التمييز.")}
-                    </p>
-                  )}
-                </div>
-              )}
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+      <SellBananasSheet
+        open={sellOpen}
+        onClose={() => setSellOpen(false)}
+        balance={bananas}
+        pricePerBanana={price}
+        enabled={snapshot?.directSellEnabled !== false}
+        minQuantity={snapshot?.minSellQuantity ?? 100}
+        onSell={async (quantity, requestId) => {
+          const answer = await onSell(quantity, requestId);
+          if (answer.ok) toast.success("تم البيع ✅");
+          return answer;
+        }}
+      />
     </div>
   );
 }

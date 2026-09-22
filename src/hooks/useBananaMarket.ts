@@ -40,6 +40,10 @@ export type BananaSnapshot = {
   minPrice: number;
   maxPrice: number;
   minListingQuantity: number;
+  /** Whether the shop is buying bananas at all right now. */
+  directSellEnabled?: boolean;
+  /** The smallest direct sale the server will accept. */
+  minSellQuantity?: number;
   maxListingQuantity: number;
 
   price: number;
@@ -94,5 +98,17 @@ export function useBananaMarket(range = "1D") {
     },
   });
 
-  return { snapshot: query.data, isPending: query.isPending, error: query.error, act };
+  /*
+    A way to say "that number moved" without going through `act`.
+
+    Buying a ticket spends bananas through `/api/wheel`, not `/api/banana`, so
+    the market's own snapshot has no idea it happened — and a member watching
+    their balance sit still after paying for something has been shown a lie by
+    omission.
+  */
+  const refresh = () => {
+    void queryClient.invalidateQueries({ queryKey: ["banana"] });
+  };
+
+  return { snapshot: query.data, isPending: query.isPending, error: query.error, act, refresh };
 }
