@@ -419,15 +419,20 @@ if (proposals.size === 0) {
   say(`Nothing. Every game this run looked at is already filed and named correctly,`);
   say(`or the evidence did not settle the question.`);
 } else {
-  say(`| product | field | from | to | why |`);
-  say(`| --- | --- | --- | --- | --- |`);
+  /*
+    The id is here so a first apply can be aimed at one product with `--only`,
+    verified on the live shop, and only then widened. A report that names only
+    titles cannot be acted on that way.
+  */
+  say(`| id | product | field | from | to | why |`);
+  say(`| --- | --- | --- | --- | --- | --- |`);
   for (const [id, entry] of proposals) {
     const product = entry.product;
     for (const field of WRITABLE) {
       if (!(field in entry)) continue;
       const cell = (v) => String(v ?? "").replace(/\|/g, "\\|");
       say(
-        `| ${cell(product.title ?? id)} | ${field} | ${cell(product[field])} | ${cell(entry[field])} | ${cell((entry.why ?? []).find((w) => w.startsWith(`${field} `)) ?? "")} |`,
+        `| \`${id}\` | ${cell(product.title ?? id)} | ${field} | ${cell(product[field])} | ${cell(entry[field])} | ${cell((entry.why ?? []).find((w) => w.startsWith(`${field} `)) ?? "")} |`,
       );
     }
   }
