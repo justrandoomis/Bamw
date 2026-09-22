@@ -53,7 +53,11 @@ export const Route = createFileRoute("/api/admin/banana")({
 
       POST: async ({ request }) =>
         guard(async () => {
-          await requireAdmin(request);
+          /*
+            Named, not just checked. A popularity tier moves which prizes a
+            member can win, so the row it writes carries the admin who set it.
+          */
+          const admin = await requireAdmin(request);
           const data = await body<any>(request);
           const action = String(data.action ?? "");
 
@@ -182,6 +186,14 @@ export const Route = createFileRoute("/api/admin/banana")({
               patch[key] = value;
             }
             if (c["botsEnabled"] !== undefined) patch["botsEnabled"] = Boolean(c["botsEnabled"]);
+            /*
+              The switch on direct selling — «تعطيل/تفعيل البيع المباشر عند
+              الحاجة». A boolean, so it is coerced rather than validated: there
+              is no invalid value, only on and off.
+            */
+            if (c["directSellEnabled"] !== undefined) {
+              patch["directSellEnabled"] = Boolean(c["directSellEnabled"]);
+            }
 
             /*
               One set of rules, shared with `save_settings` above, so the two
@@ -376,6 +388,149 @@ export const Route = createFileRoute("/api/admin/banana")({
             const { setTicketOffer } = await import("@/lib/wheel.server");
             await setTicketOffer(offerId, quantity);
             return json({ success: true, offerId, ticketQuantity: quantity });
+          }
+
+          /* ---------------------------- the roulette --------------------------- */
+
+          /*
+            A game's popularity tier, and whether it is in the prize pool.
+            «إدارة Popularity tier للألعاب عند الحاجة» and «استبعاد لعبة من
+            Prize Pool بدون حذفها من المتجر».
+
+            Neither touches the catalogue. They are the roulette's own facts
+            about a product and they live in the roulette's own table — the
+            shop's commercial record is not written to in order to say how
+            famous a game is. See `roulette-pool.server.ts`.
+          */
+          if (action === "set_game_flags") {
+            const productId = String(data.productId ?? "").trim();
+            if (!productId) return json({ error: "معرّف المنتج مطلوب" }, { status: 400 });
+
+            const rawTier = data.popularity;
+            let popularity: "low" | "medium" | "high" | undefined;
+            if (rawTier !== undefined) {
+              const tier = String(rawTier).toLowerCase();
+              if (!["low", "medium", "high"].includes(tier)) {
+                return json({ error: "تصنيف الشهرة غير صالح" }, { status: 400 });
+              }
+              popularity = tier as "low" | "medium" | "high";
+            }
+            const excluded = data.excluded === undefined ? undefined : Boolean(data.excluded);
+            if (popularity === undefined && excluded === undefined) {
+              return json({ error: "لا يوجد شيء لتغييره" }, { status: 400 });
+            }
+
+            const { setGameFlags } = await import("@/lib/roulette-pool.server");
+            await setGameFlags({
+              productId,
+              ...(popularity === undefined ? {} : { popularity }),
+              ...(excluded === undefined ? {} : { excluded }),
+              updatedBy: admin.id,
+            });
+            return json({ success: true, productId, popularity, excluded });
+          }
+
+          /*
+            What the roulette actually pays out, at every ticket count.
+
+            «عرض النسبة الفعلية النهائية بعد normalization وليس weights مبهمة»
+            — so this returns the real percentages, the count of eligible games
+            behind each one, and which buckets are empty and therefore giving
+            their share away. Read-only: the curve is the engine's and is not
+            editable by typing over it, which is the point of having solved it
+            rather than tabulated it.
+          */
+          if (action === "roulette_odds") {
+            const [{ getStore }, poolModule, oddsModule] = await Promise.all([
+              import("@/lib/db.server"),
+              import("@/lib/roulette-pool.server"),
+              import("@/lib/roulette-odds"),
+            ]);
+            const store = await getStore();
+            const flags = await poolModule.readGameFlags();
+            const boundary = Number(data.priceBoundary ?? oddsModule.DEFAULT_PRICE_BOUNDARY);
+            const built = poolModule.buildPool(
+              (store.products ?? []) as Record<string, unknown>[],
+              flags,
+              boundary > 0 ? boundary : oddsModule.DEFAULT_PRICE_BOUNDARY,
+            );
+            const population = poolModule.populationOf(built.games);
+
+            const curve: {
+              tickets: number;
+              rows: ReturnType<typeof oddsModule.oddsRows>;
+              emptied: string[];
+            }[] = [];
+            for (let tickets = 1; tickets <= oddsModule.MAX_TICKETS_PER_SPIN; tickets += 1) {
+              const resolved = oddsModule.resolveOdds(tickets, population, boundary);
+              curve.push({
+                tickets,
+                rows: oddsModule.oddsRows(resolved.probabilities, population),
+                emptied: resolved.emptied,
+              });
+            }
+
+            return json({
+              success: true,
+              priceBoundary: boundary > 0 ? boundary : oddsModule.DEFAULT_PRICE_BOUNDARY,
+              poolSize: built.games.length,
+              skipped: built.skipped,
+              population,
+              curve,
+            });
+          }
+
+          /*
+            The audit search: «البحث بالمستخدم، بـSpin ID، بـPrize ID، بـOrder ID».
+
+            One action rather than four, because the admin has one box to type
+            into and does not know in advance which kind of id they are holding.
+            Every branch is bounded and read-only.
+          */
+          if (action === "roulette_audit") {
+            const query = String(data.query ?? "").trim().slice(0, 100);
+            if (!query) return json({ error: "اكتب معرّفًا للبحث عنه" }, { status: 400 });
+
+            const { d1All } = await import("@/lib/d1.server");
+            const [spins, prizes, sales, tickets] = await Promise.all([
+              d1All(
+                `SELECT id, user_id, tickets, bucket, product_id, product_title, product_price,
+                        status, created_at, settled_at, prize_id, request_id
+                   FROM wheel_spins
+                  WHERE id = ? OR user_id = ? OR prize_id = ?
+                  ORDER BY created_at DESC LIMIT 50`,
+                query,
+                query,
+                query,
+              ).catch(() => []),
+              d1All(
+                `SELECT * FROM roulette_prizes
+                  WHERE id = ? OR user_id = ? OR spin_id = ? OR order_id = ?
+                  ORDER BY won_at DESC LIMIT 50`,
+                query,
+                query,
+                query,
+                query,
+              ).catch(() => []),
+              d1All(
+                `SELECT id, user_id, quantity, price_per_banana, proceeds_iqd, status, created_at
+                   FROM banana_direct_sales
+                  WHERE id = ? OR user_id = ?
+                  ORDER BY created_at DESC LIMIT 50`,
+                query,
+                query,
+              ).catch(() => []),
+              d1All(
+                `SELECT id, user_id, delta, reason, reference_id, created_at
+                   FROM wheel_ticket_ledger
+                  WHERE user_id = ? OR reference_id = ?
+                  ORDER BY created_at DESC LIMIT 100`,
+                query,
+                query,
+              ).catch(() => []),
+            ]);
+
+            return json({ success: true, query, spins, prizes, sales, tickets });
           }
 
           if (action === "adjust_balance") {
