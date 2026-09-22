@@ -60,7 +60,28 @@ export interface BananaSnapshot {
   maxListingQuantity: number;
 
   price: number;
+  /*
+    Whether the member reading this is signed in.
+
+    `useBananaMarket` has declared this field the whole time and the market page
+    gates its footer on it, so an absent one read as "signed out": every member
+    saw «سجّل الدخول للمشاركة في السوق» underneath a market they were already
+    trading in, and the profile-completion prompt beside it could never appear.
+    A market that works and says it does not is indistinguishable from a dead
+    one, which is what it was reported as.
+  */
+  signedIn: boolean;
   change24h: number;
+  /*
+    The same number under the name the page reads.
+
+    The server has always sent `change24h`; the hook and the page have always
+    read `changePct`. So the 24-hour badge printed «0%» with a green up-arrow
+    whatever the market did. Both names are carried rather than either side
+    renamed: between them they are read from four places, and a rename that
+    misses one restores the fault silently.
+  */
+  changePct: number;
   volume24h: number;
   listings: BananaListing[];
   myListings: BananaListing[];
@@ -223,7 +244,25 @@ export async function getSnapshot(userId?: string, range = "1D"): Promise<Banana
   if (!(await d1Ready())) {
     return {
       price,
+      /*
+        THE TWO NAMES THE SCREEN READS.
+
+        `signedIn` is declared by `useBananaMarket` and was never in this
+        object, so `!snapshot?.signedIn` was permanently true and every signed-in
+        member read «سجّل الدخول للمشاركة في السوق» at the bottom of a market
+        they were already signed into. That is what «السوق ميت» looks like from
+        the outside: it works, and it tells you it does not.
+
+        `changePct` is the same fault one line up — the server has always sent
+        `change24h` and the page has always read `changePct`, so the 24-hour
+        badge printed «0%» with a green arrow whatever the market did. Both
+        names are sent rather than either side being renamed, because the two
+        are read from four places between them and a rename that misses one puts
+        the fault straight back.
+      */
+      signedIn: Boolean(userId),
       change24h: changePercent24h(config),
+      changePct: changePercent24h(config),
       volume24h: 0,
       listings: [],
       myListings: [],
@@ -283,7 +322,10 @@ export async function getSnapshot(userId?: string, range = "1D"): Promise<Banana
 
   return {
     price,
+    // See the offline branch above for why both names are sent.
+    signedIn: Boolean(userId),
     change24h: changePercent24h(config),
+    changePct: changePercent24h(config),
     volume24h: Number(volumeRow?.v ?? 0),
     rewards,
     listings: [...bots, ...userListings.filter((l) => l.userId !== userId)].sort(
@@ -608,10 +650,44 @@ async function buyBotListing(userId: string, listingId: string) {
   if (!buyer || buyer.wallet_balance < listing.total) throw new BananaError("insufficient_funds");
 
   const now = new Date().toISOString();
+  /*
+    ONE BOT OFFER, ONE SALE.
+
+    A bot offer's id is derived from its five-minute bucket, nothing recorded
+    that it had been sold, and the bot's budget is INCREMENTED on a sale — so it
+    could never run out. Reproduced: the same `botoffer_<bot>_<bucket>` bought
+    three times in a row by one member, a bot whose stored budget was 0 selling
+    8,004 bananas. Bananas minted at will, which is a currency this shop then
+    has to honour.
+
+    The log row is the claim. It is the first statement rather than the last,
+    its id is derived from the offer and the buyer instead of the clock, and
+    everything after it is chained to `changes() = 1` — so a second buy of the
+    same bucket collides on the primary key, inserts nothing, and no money
+    moves. That also retires the collision the old `bal_${Date.now()}` caused
+    between two sales in one millisecond, which used to abort a whole purchase
+    with a raw database error.
+  */
   await d1BatchRun([
     {
-      sql: `UPDATE users SET wallet_balance = CASE WHEN wallet_balance >= ? THEN wallet_balance - ? ELSE NULL END WHERE id = ?`,
-      binds: [listing.total, listing.total, userId],
+      sql: `INSERT OR IGNORE INTO bot_activity_logs (id, bot_id, action, details, created_at)
+            VALUES (?, ?, 'sale', ?, ?)`,
+      binds: [
+        `bal_${listingId}_${userId}`,
+        botId,
+        JSON.stringify({ buyerId: userId, quantity: listing.quantity, total: listing.total }),
+        now,
+      ],
+    },
+    {
+      /*
+        The condition in the WHERE clause, not in a CASE — see `buyListing`.
+        Also chained on the claim above, so a repeat buy of one bucket cannot
+        reach the member's wallet.
+      */
+      sql: `UPDATE users SET wallet_balance = wallet_balance - ?
+            WHERE id = ? AND wallet_balance >= ? AND changes() = 1`,
+      binds: [listing.total, userId, listing.total],
     },
     {
       /*
@@ -637,23 +713,26 @@ async function buyBotListing(userId: string, listingId: string) {
       ],
     },
     {
-      sql: `UPDATE banana_bots SET budget_iqd = budget_iqd + ?, updated_at = ? WHERE id = ?`,
+      sql: `UPDATE banana_bots SET budget_iqd = budget_iqd + ?, updated_at = ?
+            WHERE id = ? AND changes() = 1`,
       binds: [listing.total, now, botId],
     },
-    {
-      sql: `INSERT INTO bot_activity_logs (id, bot_id, action, details, created_at) VALUES (?, ?, 'sale', ?, ?)`,
-      binds: [
-        `bal_${Date.now()}`,
-        botId,
-        JSON.stringify({ buyerId: userId, quantity: listing.quantity, total: listing.total }),
-        now,
-      ],
-    },
   ]);
+
+  /*
+    Did the claim actually win? A second buy of the same bucket inserts nothing,
+    so nothing downstream ran either and there is no sale to credit.
+  */
+  const sold = await d1First<{ n: number }>(
+    `SELECT count(*) AS n FROM bot_activity_logs WHERE id = ?`,
+    `bal_${listingId}_${userId}`,
+  );
+  if (!Number(sold?.n)) throw new BananaError("listing_expired");
 
   await creditBananaBalance(userId, listing.quantity, {
     reason: `Market Purchase (bot): ${botId}`,
     kind: "trade",
+    idempotencyKey: `buybot:${listingId}:${userId}`,
     meta: { botId, price: listing.total, pricePer: listing.pricePer },
   });
 
@@ -679,11 +758,53 @@ export async function buyListing(userId: string, listingId: string) {
     Math.round(offer.price_iqd * (Math.max(0, config.commissionPercent) / 100) * 100) / 100;
   const sellerPayout = Math.max(0, Math.round((offer.price_iqd - commission) * 100) / 100);
 
+  /*
+    CLAIM THE LISTING BEFORE ANY MONEY MOVES.
+
+    The read above tests `status = 'active'`, and then the batch below marked it
+    sold with `WHERE id = ?` — no status in the condition at all. Two buyers who
+    both passed the read both completed the whole batch. Reproduced against the
+    repo's own SQLite harness: one 10,000-banana listing sold twice, the seller
+    paid 1,900 IQD twice, both buyers credited 10,000 bananas, four
+    `wallet_transactions` rows for one sale. Ten thousand bananas minted from
+    nothing.
+
+    It went unnoticed because an unrelated constraint was half-catching it: the
+    locked-banana release wrote NULL through a CASE and `users.banana_locked` is
+    NOT NULL, so the second buyer aborted — but ONLY when the seller had no
+    other listing locking bananas. A seller with two listings, and both buys
+    succeeded.
+
+    So the claim is its own statement, first, and it is the thing that decides
+    who won: `status = 'active'` in the WHERE, and `changes()` read. This is the
+    shape `executeBotPurchase` already uses on this same table, and the one
+    `orders.server.ts` documents at length for the wallet debit.
+  */
+  const claimedAt = new Date().toISOString();
+  const claimed = await d1RunChanges(
+    `UPDATE banana_market_offers SET status = 'sold', buyer_id = ?, updated_at = ?
+     WHERE id = ? AND status = 'active'`,
+    userId,
+    claimedAt,
+    listingId,
+  );
+  if (claimed !== 1) throw new BananaError("listing_not_found");
+
   await d1BatchRun([
     // Money transfer
     {
-      sql: `UPDATE users SET wallet_balance = CASE WHEN wallet_balance >= ? THEN wallet_balance - ? ELSE NULL END WHERE id = ?`,
-      binds: [offer.price_iqd, offer.price_iqd, userId],
+      /*
+        The condition belongs in the WHERE clause, not in a CASE.
+
+        `CASE WHEN … ELSE NULL END` leaned on `wallet_balance` being NOT NULL to
+        abort, so an overdraw surfaced as a raw database error rather than
+        «الرصيد غير كافٍ» — and it made the `WHERE changes() = 1` on the ledger
+        row below meaningless, because SQLite counts a row as changed whenever
+        the UPDATE matched it, whichever branch of the CASE ran. Exactly the
+        defect `orders.server.ts` carries the long explanation for.
+      */
+      sql: `UPDATE users SET wallet_balance = wallet_balance - ? WHERE id = ? AND wallet_balance >= ?`,
+      binds: [offer.price_iqd, userId, offer.price_iqd],
     },
     {
       /* The buyer's side of the statement — see `buyBotListing` above. */
@@ -709,26 +830,42 @@ export async function buyListing(userId: string, listingId: string) {
         `wtx_bnm_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`,
         offer.user_id,
         sellerPayout,
-        `بيع ${offer.quantity} موزة${commission > 0 ? ` (بعد عمولة ${commission})` : ""}`.slice(0, 180),
+        `بيع ${offer.quantity} موزة${commission > 0 ? ` (بعد عمولة ${commission})` : ""}`.slice(
+          0,
+          180,
+        ),
         new Date().toISOString(),
       ],
     },
-    // Locked banana reduction for seller
+    /*
+      Locked banana reduction for seller — floored, not NULLed.
+
+      This was the same `CASE … ELSE NULL END`, and because `banana_locked` is
+      NOT NULL it was the accidental half-guard described above: it aborted the
+      batch for a seller with nothing else locked and let it through for a
+      seller with a second listing. The claim above is the guard now, so this
+      can be what it should always have been. `MAX(0, COALESCE(…))` is the form
+      `cancelListing` and the cron already use on this same column.
+    */
     {
-      sql: `UPDATE users SET banana_locked = CASE WHEN banana_locked >= ? THEN banana_locked - ? ELSE NULL END WHERE id = ?`,
-      binds: [offer.quantity, offer.quantity, offer.user_id],
-    },
-    // Status update
-    {
-      sql: `UPDATE banana_market_offers SET status = 'sold', updated_at = ? WHERE id = ?`,
-      binds: [new Date().toISOString(), listingId],
+      sql: `UPDATE users SET banana_locked = MAX(0, COALESCE(banana_locked, 0) - ?) WHERE id = ?`,
+      binds: [offer.quantity, offer.user_id],
     },
   ]);
 
-  // Banana credit for buyer
+  /*
+    The bananas the buyer paid for.
+
+    Outside the batch, which is where it has always been, so the idempotency key
+    matters: the wallet debit, the payout and the sold flag have already
+    committed by the time this runs, and a retry without a key would credit the
+    bananas twice for one sale. Keyed on the listing, which can only be sold
+    once now that the claim above decides it.
+  */
   await creditBananaBalance(userId, offer.quantity, {
     reason: `Market Purchase: ${listingId}`,
     kind: "trade",
+    idempotencyKey: `buy:${listingId}`,
     meta: { sellerId: offer.user_id, price: offer.price_iqd, commission },
   });
 
@@ -966,12 +1103,76 @@ export async function getAdminBananaData() {
   )
     .map(toAdminReward)
     .map((reward) => ({ ...reward, ticketQuantity: Number(ticketOffers[reward.id] ?? 0) }));
-  const redemptions = await d1All<any>(
-    `SELECT r.*, u.name as user_name FROM banana_redemptions r JOIN users u ON r.user_id = u.id ORDER BY r.created_at DESC LIMIT 100`,
-  );
-  const listings = await d1All<any>(
-    `SELECT o.*, u.name as user_name FROM banana_market_offers o JOIN users u ON o.user_id = u.id ORDER BY o.created_at DESC LIMIT 100`,
-  );
+  /*
+    TRANSLATED, LIKE THE REWARDS BESIDE THEM.
+
+    Both of these handed raw D1 rows to a screen that reads camelCase, and the
+    screen rendered exactly what that produces: every redemption row showed
+    «مستخدم» with no name, a blank reward, «—» for the delivery code and
+    `Invalid Date`, and all four of the admin's search boxes matched nothing.
+    The listings table printed `NaN د.ع` in both price columns, because it reads
+    `price_per` — a column `banana_market_offers` does not have. The stored
+    column is `price_iqd`, and it is the TOTAL, not the unit price, so the unit
+    price has to be divided out here rather than guessed at in the component.
+
+    `toAdminReward` two calls above already does this for rewards. These follow
+    it, and the phone comes from the join rather than from a column on the
+    offer, which never existed either.
+  */
+  const redemptions = (
+    await d1All<any>(
+      /*
+        The reward's name and icon are on `banana_rewards`, not on the
+        redemption — the redemption stores only `reward_id`. LEFT, so a reward
+        the admin has since deleted still shows its redemption rather than
+        dropping the row out of the list entirely.
+      */
+      `SELECT r.*, u.name AS user_name, u.phone AS user_phone,
+              w.title AS reward_title, w.icon AS reward_icon
+       FROM banana_redemptions r
+       JOIN users u ON r.user_id = u.id
+       LEFT JOIN banana_rewards w ON w.id = r.reward_id
+       ORDER BY r.created_at DESC LIMIT 100`,
+    )
+  ).map((row) => ({
+    id: String(row.id ?? ""),
+    userId: String(row.user_id ?? ""),
+    userName: String(row.user_name ?? "") || "مستخدم",
+    userPhone: String(row.user_phone ?? ""),
+    rewardId: String(row.reward_id ?? ""),
+    rewardTitle: String(row.reward_title ?? ""),
+    rewardIcon: String(row.reward_icon ?? ""),
+    cost: Number(row.cost ?? 0),
+    status: String(row.status ?? ""),
+    deliveryCode: String(row.delivery_code ?? ""),
+    adminNotes: String(row.admin_notes ?? ""),
+    createdAt: String(row.created_at ?? ""),
+  }));
+  const listings = (
+    await d1All<any>(
+      `SELECT o.*, u.name AS user_name, u.phone AS user_phone
+       FROM banana_market_offers o JOIN users u ON o.user_id = u.id
+       ORDER BY o.created_at DESC LIMIT 100`,
+    )
+  ).map((row) => {
+    const quantity = Number(row.quantity ?? 0);
+    const priceIqd = Number(row.price_iqd ?? 0);
+    return {
+      id: String(row.id ?? ""),
+      userId: String(row.user_id ?? ""),
+      userName: String(row.user_name ?? "") || "مستخدم",
+      userPhone: String(row.user_phone ?? ""),
+      quantity,
+      priceIqd,
+      // The unit price the table's own column header promises.
+      pricePer: quantity > 0 ? roundPrice(priceIqd / quantity) : 0,
+      lockedBanana: Number(row.locked_banana ?? 0),
+      status: String(row.status ?? ""),
+      buyerId: String(row.buyer_id ?? ""),
+      createdAt: String(row.created_at ?? ""),
+      updatedAt: String(row.updated_at ?? ""),
+    };
+  });
   const bots = await d1All<any>(`SELECT * FROM banana_bots ORDER BY created_at ASC`);
   const topUsers = await d1All<any>(
     `SELECT id, name, username, phone, banana_balance, banana_locked FROM users

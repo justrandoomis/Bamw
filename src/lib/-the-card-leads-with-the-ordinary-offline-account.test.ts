@@ -34,6 +34,11 @@ import { listingPricing, ordinaryOfflineRow, resolveUnitPrice } from "./productP
 
 const dialogs = readFileSync(path.resolve(__dirname, "../hub/gamehub/Dialogs.tsx"), "utf8");
 const gameCard = readFileSync(path.resolve(__dirname, "../components/cards/GameCard.tsx"), "utf8");
+const hub = readFileSync(path.resolve(__dirname, "hub.ts"), "utf8");
+const category = readFileSync(
+  path.resolve(__dirname, "../routes/category.$categoryId.tsx"),
+  "utf8",
+);
 
 /** The shape the 65 actually have: one online row, the account in `price`. */
 const onlineOnly = {
@@ -171,5 +176,28 @@ describe("the card and the till agree", () => {
     expect(gameCard).toContain('import { listingPricing } from "@/lib/productPricing";');
     expect(gameCard).toContain("const { unitPrice: price } = listingPricing(product);");
     expect(gameCard).not.toContain("const price = Number(product.price) || 0;");
+  });
+
+  /*
+    THE TWO SURFACES THIS CHANGE WOULD OTHERWISE HAVE BROKEN.
+
+    Leading the card with the offline TIER means the card's number is no longer
+    `product.price` — so anything still reading `product.price` now disagrees
+    with the card instead of agreeing with it. Both of these were found by an
+    adversarial review of this change, not by the original report.
+  */
+  it("the product page's own offer reads the offline tier too", () => {
+    expect(hub).toContain("const offlineTier = ordinaryOfflineRow(pricingTypeRows(p));");
+    expect(hub).toContain(
+      'num(offlineTier?.["price"]) || num(p["accountPrice"]) || num(p["price"])',
+    );
+  });
+
+  it("cheapest-first sorts by the number the card prints", () => {
+    expect(category).toContain(
+      "new Map(filtered.map((p: any) => [p, listingPricing(p).unitPrice || 0]))",
+    );
+    expect(category).not.toContain("return (Number(a.price) || 0) - (Number(b.price) || 0);");
+    expect(category).not.toContain("return (Number(b.price) || 0) - (Number(a.price) || 0);");
   });
 });

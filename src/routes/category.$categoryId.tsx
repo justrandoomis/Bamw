@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import AppShell from "@/components/AppShell";
 import { picturedFirst } from "@/lib/listingOrder";
 import { UNRANKED, bestSellerRank } from "@/lib/bestSellers";
+import { listingPricing } from "@/lib/productPricing";
 import { freshnessScore, releaseTime } from "@/lib/listingSort";
 import { useStoreData } from "@/hooks/useStoreData";
 import { ProductCard } from "@/components/ProductCard";
@@ -310,6 +311,20 @@ function CategoryPage() {
       name keep the order they had before — this puts a head on the shelf, it
       does not reshuffle the tail.
     */
+    /*
+      «السعر: من الأقل» has to sort by the number ON the card.
+
+      It sorted by `product.price`, which since the card started leading with
+      the ordinary offline account is not what any of these cards print — a
+      product whose offline tier is a row has a `price` no customer sees. A
+      cheapest-first shelf that disagrees with its own visible prices is worse
+      than no sort at all. Computed once per product, like every other key here.
+    */
+    const priced =
+      sortBy === "price_asc" || sortBy === "price_desc"
+        ? new Map(filtered.map((p: any) => [p, listingPricing(p).unitPrice || 0]))
+        : null;
+
     const ranked =
       sortBy === "best_sellers"
         ? new Map(
@@ -330,9 +345,9 @@ function CategoryPage() {
           return String(b.id || "").localeCompare(String(a.id || ""));
         }
         case "price_asc":
-          return (Number(a.price) || 0) - (Number(b.price) || 0);
+          return (priced?.get(a) ?? 0) - (priced?.get(b) ?? 0);
         case "price_desc":
-          return (Number(b.price) || 0) - (Number(a.price) || 0);
+          return (priced?.get(b) ?? 0) - (priced?.get(a) ?? 0);
         case "rating":
           return (Number(b.metacriticRating) || 0) - (Number(a.metacriticRating) || 0);
         default: {

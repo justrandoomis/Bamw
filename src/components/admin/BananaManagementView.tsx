@@ -1287,40 +1287,51 @@ export function BananaManagementView() {
                         </div>
                         {listing.user_phone && (
                           <div className="text-[11px] text-muted-foreground" dir="ltr">
-                            {listing.user_phone}
+                            {listing.userPhone}
                           </div>
                         )}
                       </td>
                       <td className="p-3.5 font-bold text-amber-500 text-sm">
                         🍌 {Number(listing.quantity).toLocaleString("en-US")}
                       </td>
+                      {/*
+                        `price_per` is a column this table does not have, so
+                        both of these printed «NaN د.ع» on every row. The stored
+                        column is `price_iqd` and it is the TOTAL; the server
+                        divides the unit price out of it now and sends both.
+                      */}
                       <td className="p-3.5 font-semibold text-foreground">
-                        {Number(listing.price_per).toLocaleString("en-US", {
-                          maximumFractionDigits: 3,
+                        {Number(listing.pricePer).toLocaleString("en-US", {
+                          maximumFractionDigits: 6,
                         })}{" "}
                         د.ع
                       </td>
                       <td className="p-3.5 font-bold text-emerald-600">
-                        {Math.round(
-                          Number(listing.quantity) * Number(listing.price_per),
-                        ).toLocaleString("en-US")}{" "}
-                        د.ع
+                        {Math.round(Number(listing.priceIqd)).toLocaleString("en-US")} د.ع
                       </td>
                       <td className="p-3.5">
+                        {/*
+                          `is_promoted` and `is_private` are columns the table
+                          does not have either, so this could only ever print
+                          «عادي». The listing's own status is the thing that is
+                          actually recorded, so that is what is shown until the
+                          two flags are either stored or dropped.
+                        */}
                         <div className="flex items-center gap-1.5 flex-wrap">
-                          {listing.is_promoted === 1 && (
-                            <span className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 font-bold text-[10px]">
-                              مميز ⭐
+                          <span className="text-muted-foreground text-[11px]">
+                            {listing.status === "sold"
+                              ? "مُباع"
+                              : listing.status === "cancelled"
+                                ? "ملغى"
+                                : listing.status === "processing"
+                                  ? "قيد البيع"
+                                  : "معروض"}
+                          </span>
+                          {listing.buyerId ? (
+                            <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold text-[10px]">
+                              اشتراه {listing.buyerId.slice(-6)}
                             </span>
-                          )}
-                          {listing.is_private === 1 && (
-                            <span className="px-2 py-0.5 rounded bg-muted text-muted-foreground font-bold text-[10px]">
-                              خاص 🔒
-                            </span>
-                          )}
-                          {!listing.is_promoted && !listing.is_private && (
-                            <span className="text-muted-foreground text-[11px]">عادي</span>
-                          )}
+                          ) : null}
                         </div>
                       </td>
                       <td className="p-3.5">

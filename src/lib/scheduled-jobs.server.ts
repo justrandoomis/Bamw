@@ -135,8 +135,24 @@ async function executeBotPurchase(bot: BananaBot, offer: BananaMarketOffer, now:
     return; // Already taken
   }
 
+  /*
+    A GUARD NOTHING WAS CHAINED TO IS NOT A GUARD.
+
+    Statement 0 deducts the bot's budget under `AND budget_iqd >= ?`. When that
+    matched no rows — the bot is out of money — the other five statements ran
+    anyway: the seller was paid, the bananas released and the offer closed, with
+    money the bot does not have. `bot.budgetIqd` is read once for the whole run,
+    so it is stale for every offer after the first, and the batch result was
+    thrown away.
+
+    Reproduced: a bot with a budget of 1 IQD bought two 1-IQD offers. Seller
+    wallet 2, bot budget floored at 0, both offers sold, two deposit rows.
+
+    Every statement after the guard is chained to it now, and the result is
+    read — the pattern `orders.server.ts` uses for the wallet debit.
+  */
   try {
-    await d1Batch([
+    const paid = await d1Batch([
       // Bot Deduct Budget
       {
         sql: `UPDATE banana_bots SET budget_iqd = budget_iqd - ?, updated_at = ? WHERE id = ? AND budget_iqd >= ?`,
@@ -144,13 +160,14 @@ async function executeBotPurchase(bot: BananaBot, offer: BananaMarketOffer, now:
       },
       // Seller Add IQD (Wallet)
       {
-        sql: `UPDATE users SET wallet_balance = COALESCE(wallet_balance, 0) + ? WHERE id = ?`,
+        sql: `UPDATE users SET wallet_balance = COALESCE(wallet_balance, 0) + ?
+              WHERE id = ? AND changes() = 1`,
         params: [offer.priceIqd, offer.userId],
       },
       // Financial Ledger - Seller IQD
       {
         sql: `INSERT INTO wallet_transactions (id, user_id, kind, amount, description, created_at, reference_type, reference_id)
-               VALUES (?, ?, 'deposit', ?, ?, ?, 'banana_market', ?)`,
+               SELECT ?, ?, 'deposit', ?, ?, ?, 'banana_market', ? WHERE changes() = 1`,
         params: [
           randomId("wtx"),
           offer.userId,
@@ -171,18 +188,20 @@ async function executeBotPurchase(bot: BananaBot, offer: BananaMarketOffer, now:
         instead of poisoning.
       */
       {
-        sql: `UPDATE users SET banana_locked = MAX(0, COALESCE(banana_locked, 0) - ?) WHERE id = ?`,
+        sql: `UPDATE users SET banana_locked = MAX(0, COALESCE(banana_locked, 0) - ?)
+              WHERE id = ? AND changes() = 1`,
         params: [offer.lockedBanana, offer.userId],
       },
       // Close Offer
       {
-        sql: `UPDATE banana_market_offers SET status = 'sold', updated_at = ? WHERE id = ? AND status = 'processing'`,
-        params: [now, offer.id],
+        sql: `UPDATE banana_market_offers SET status = 'sold', buyer_id = ?, updated_at = ?
+              WHERE id = ? AND status = 'processing' AND changes() = 1`,
+        params: [bot.id, now, offer.id],
       },
       // Bot Log
       {
         sql: `INSERT INTO bot_activity_logs (id, bot_id, action, details, created_at)
-              VALUES (?, ?, 'purchase', ?, ?)`,
+              SELECT ?, ?, 'purchase', ?, ? WHERE changes() = 1`,
         params: [
           randomId("bal"),
           bot.id,
@@ -191,6 +210,14 @@ async function executeBotPurchase(bot: BananaBot, offer: BananaMarketOffer, now:
         ],
       },
     ]);
+    /*
+      The budget did not cover it. Nothing downstream ran, so there is nothing
+      to undo beyond the claim — and the `catch` below is the one place that
+      releases it.
+    */
+    if (Number(paid?.[0]?.meta?.changes ?? 0) !== 1) {
+      throw new Error("bot_budget_exhausted");
+    }
   } catch (err) {
     // Revert claim on failure
     await d1Run(`UPDATE banana_market_offers SET status = 'active' WHERE id = ?`, offer.id);
