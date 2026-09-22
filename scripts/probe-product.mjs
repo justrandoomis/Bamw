@@ -162,6 +162,53 @@ if (sameTitle.length) {
   say();
 }
 
+/*
+  The other place a product can live.
+
+  `loadStore` reads the chunked catalogue AND any `store:product:<id>` rows,
+  and its own comment says which wins: "Deduplicate: granular products
+  overwrite chunked products". `persistStore` writes only the chunks. So a
+  product that has a granular row is frozen at whatever that row says, and
+  no amount of writing the catalogue will move it — the write lands, the
+  read overlays it, and the run reports a success.
+
+  This counts them: for this product, and for the shop.
+*/
+say("## الصفوف الفردية `store:product:<id>`");
+say();
+const granularAll = await app.d1All(
+  "SELECT count(*) AS n FROM store_kv WHERE key LIKE 'store:product:%'",
+);
+say(`- صفوف فردية في المتجر كله: **${Number(granularAll?.[0]?.n ?? 0).toLocaleString("en-US")}**`);
+const mine = await app.d1All(
+  "SELECT value FROM store_kv WHERE key = ? LIMIT 1",
+  `store:product:${ID}`,
+);
+if (!mine.length) {
+  say("- لهذا المنتج: **لا يوجد**");
+} else {
+  let parsedRow = null;
+  try {
+    parsedRow = JSON.parse(String(mine[0].value));
+  } catch (error) {
+    say(`- لهذا المنتج: صفّ موجود لكنه لا يُحلَّل — ${String(error).split("\n")[0]}`);
+  }
+  if (parsedRow) {
+    say(
+      `- لهذا المنتج: **موجود**، \`price\` = **${JSON.stringify(parsedRow.price)}**، ` +
+        `\`accountPrice\` = ${JSON.stringify(parsedRow.accountPrice)}، ` +
+        `\`_deleted\` = ${JSON.stringify(parsedRow._deleted)}`,
+    );
+    say();
+    say(
+      Number(parsedRow.price) === NEW_PRICE
+        ? "**الصفّ الفردي محدَّث أيضًا.**"
+        : "**هذا هو السبب: الصفّ الفردي يحمل السعر القديم، والقارئ يُقدّمه على الأجزاء.**",
+    );
+  }
+}
+say();
+
 if (WRITE) {
   say(`## كتابة ${NEW_PRICE} ثم قراءة من قاعدة البيانات`);
   say();
@@ -205,55 +252,6 @@ if (WRITE) {
     A single id in two chunks would explain all of it: the loader returns one
     copy, the mutator patches that one, and the reader keeps finding the other.
   */
-  /*
-    The other place a product can live.
-
-    `loadStore` reads the chunked catalogue AND any `store:product:<id>` rows,
-    and its own comment says which wins: "Deduplicate: granular products
-    overwrite chunked products". `persistStore` writes only the chunks. So a
-    product that has a granular row is frozen at whatever that row says, and
-    no amount of writing the catalogue will move it — the write lands, the
-    read overlays it, and the run reports a success.
-
-    This counts them: for this product, and for the shop.
-  */
-  say("## الصفوف الفردية `store:product:<id>`");
-  say();
-  const granularAll = await app.d1All(
-    "SELECT count(*) AS n FROM store_kv WHERE key LIKE 'store:product:%'",
-  );
-  say(
-    `- صفوف فردية في المتجر كله: **${Number(granularAll?.[0]?.n ?? 0).toLocaleString("en-US")}**`,
-  );
-  const mine = await app.d1All(
-    "SELECT value FROM store_kv WHERE key = ? LIMIT 1",
-    `store:product:${ID}`,
-  );
-  if (!mine.length) {
-    say("- لهذا المنتج: **لا يوجد**");
-  } else {
-    let parsedRow = null;
-    try {
-      parsedRow = JSON.parse(String(mine[0].value));
-    } catch (error) {
-      say(`- لهذا المنتج: صفّ موجود لكنه لا يُحلَّل — ${String(error).split("\n")[0]}`);
-    }
-    if (parsedRow) {
-      say(
-        `- لهذا المنتج: **موجود**، \`price\` = **${JSON.stringify(parsedRow.price)}**، ` +
-          `\`accountPrice\` = ${JSON.stringify(parsedRow.accountPrice)}، ` +
-          `\`_deleted\` = ${JSON.stringify(parsedRow._deleted)}`,
-      );
-      say();
-      say(
-        Number(parsedRow.price) === NEW_PRICE
-          ? "**الصفّ الفردي محدَّث أيضًا.**"
-          : "**هذا هو السبب: الصفّ الفردي يحمل السعر القديم، والقارئ يُقدّمه على الأجزاء.**",
-      );
-    }
-  }
-  say();
-
   say("## الصفوف الخام في `store_kv`");
   say();
   const rows = await app.d1All(
