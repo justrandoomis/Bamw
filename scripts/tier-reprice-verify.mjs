@@ -136,196 +136,124 @@ if (!landed) {
 }
 
 /*
-  READ THE PAGE, NOT THE ENDPOINT.
+  WHAT THE SHOPPER SEES, IN TWO PLACES, COMPARED.
 
   The browser cleared the challenge — `/` answered 200 with the shop's own
-  title — but a `fetch("/api/data")` from inside that same page is still 403.
-  So the shield's rule is on the `/api/` prefix specifically, and it does not
-  matter: the storefront server-renders its products, and what is rendered is
-  precisely what a shopper is shown. Reading that is a better check than
-  reading the endpoint behind it.
+  title and rendered twelve product cards — but a `fetch("/api/data")` from
+  inside that same page is still 403, so `/games` and the category shelves come
+  back as empty 28 KB shells: they fetch their catalogue client-side. The
+  server-rendered home page is what this runner can see, and the product pages
+  behind its cards.
+
+  That is enough for the check that matters, because the two numbers this task
+  was about are rendered in two different places from two different fields:
+
+    · the CARD price comes from `listingPricing`, which reads `types` — the
+      same row the till charges from;
+    · the PAGE headline comes from `readOffers`, which reads `accountPrice`
+      then `price` — and never looks at `types` at all.
+
+  Before this run those two disagreed on 49 products. If they agree now, the
+  mirrors moved together, which is the whole thing that was fixed. No cost is
+  needed and none is exposed: this reads only what a shopper is shown.
 */
-const productsFromHtml = (html) => {
-  const found = [];
-  const seen = new Set();
-  const needle = /\{\\?"id\\?":\\?"(prd_[A-Za-z0-9_-]+)\\?"/g;
-  let hit;
-  while ((hit = needle.exec(html))) {
-    if (seen.has(hit[1])) continue;
-    /*
-      Balanced braces, not a regex: a product record contains nested objects,
-      and no regular expression can match `{...}`. Strings and escapes are
-      respected so a brace inside a title cannot end the record early.
-    */
-    let depth = 0;
-    let inString = false;
-    let escaped = false;
-    let end = -1;
-    for (let i = hit.index; i < html.length && i < hit.index + 200_000; i += 1) {
-      const ch = html[i];
-      if (escaped) { escaped = false; continue; }
-      if (ch === "\\") { escaped = true; continue; }
-      if (ch === '"') { inString = !inString; continue; }
-      if (inString) continue;
-      if (ch === "{") depth += 1;
-      else if (ch === "}") { depth -= 1; if (depth === 0) { end = i + 1; break; } }
-    }
-    if (end < 0) continue;
-    const slice = html.slice(hit.index, end);
-    for (const text of [slice, slice.replace(/\\"/g, '"').replace(/\\\\/g, "\\")]) {
-      try {
-        const parsed = JSON.parse(text);
-        if (parsed && typeof parsed === "object" && String(parsed.id ?? "").startsWith("prd_")) {
-          found.push(parsed);
-          seen.add(hit[1]);
-        }
-        break;
-      } catch {
-        /* try the unescaped form */
-      }
-    }
+const PRICE = /([0-9][0-9.,٫٬]{2,})/g;
+const toNumber = (text) => Number(String(text).replace(/[^0-9]/g, ""));
+
+/** Every price-shaped number in a piece of rendered text, largest first. */
+const pricesIn = (text) => {
+  const out = [];
+  for (const hit of String(text ?? "").matchAll(PRICE)) {
+    const n = toNumber(hit[1]);
+    if (n >= 1_000 && n <= 500_000) out.push(n);
   }
-  return found;
+  return [...new Set(out)];
 };
 
-const products = [];
-const byId = new Map();
-for (const path_ of ["/", "/category/nintendo_games", "/games"]) {
+const cards = [];
+try {
+  const links = page.locator('a[href^="/product/"]');
+  const count = await links.count();
+  for (let i = 0; i < count; i += 1) {
+    const link = links.nth(i);
+    const href = await link.getAttribute("href").catch(() => null);
+    const text = await link.innerText().catch(() => "");
+    if (!href) continue;
+    const prices = pricesIn(text);
+    if (!prices.length) continue;
+    const title = String(text).split("\n").map((s) => s.trim()).find(Boolean) ?? "";
+    if (!cards.some((c) => c.href === href)) {
+      cards.push({ href, title, cardPrice: Math.min(...prices) });
+    }
+  }
+} catch (error) {
+  say(`- تعذّرت قراءة البطاقات: ${String(error).slice(0, 140)}`);
+}
+say(`- بطاقات بأسعار على الصفحة الرئيسية: **${cards.length}**`);
+say();
+
+const compared = [];
+for (const card of cards) {
   try {
-    if (path_ !== landed) {
-      await page.goto(`${ORIGIN}${path_}`, { waitUntil: "domcontentloaded", timeout: 90_000 });
+    await page.goto(`${ORIGIN}${card.href}`, { waitUntil: "domcontentloaded", timeout: 90_000 });
+    await page.waitForTimeout(1500);
+    const body = await page.locator("body").innerText().catch(() => "");
+    const prices = pricesIn(body);
+    if (!prices.length) {
+      compared.push({ ...card, pagePrice: null });
+      continue;
     }
-    /* Let the shelf render — the cards are what carry the products. */
-    await page.waitForSelector('a[href^="/product/"]', { timeout: 30_000 }).catch(() => {});
-    const cards = await page.locator('a[href^="/product/"]').count().catch(() => 0);
-    const html = await page.content();
-    const found = productsFromHtml(html);
-    let fresh = 0;
-    for (const p of found) {
-      const id = String(p.id ?? "");
-      if (!id || byId.has(id)) continue;
-      byId.set(id, p);
-      products.push(p);
-      fresh += 1;
-    }
-    say(
-      `- \`${path_}\` → ${(html.length / 1024).toFixed(0)} كيلوبايت · بطاقات منتجات في الصفحة: **${cards}** · سجلات مقروءة: **${found.length}** (جديدة: ${fresh})`,
-    );
+    /*
+      The headline is the CHEAPEST enabled first-party offer, by the shop's own
+      ranking (`rankOffers` sorts ascending), so the smallest price-shaped
+      number on the page is the one the hero, the sticky bar and the closing
+      call to action all show.
+    */
+    compared.push({ ...card, pagePrice: Math.min(...prices) });
   } catch (error) {
-    say(`- \`${path_}\` → تعذّر: ${String(error).slice(0, 140)}`);
+    compared.push({ ...card, pagePrice: null, error: String(error).slice(0, 80) });
   }
 }
 await browser.close().catch(() => {});
-say();
-if (!products.length) {
-  stop(`لم أستخرج أي منتج من صفحات الموقع. لم أتحقق من الإنتاج، ولن أقول إن التحقق تم.`);
-}
-say(`- منتجات قرأتها من صفحات الموقع: **${products.length}**`);
-say(`- منتجات يخدمها الموقع: **${products.length}**`);
 
-const withTiers = products.filter((p) => Array.isArray(p?.types) && p.types.length > 0);
-say(`- منها تحمل طبقات \`types\`: **${withTiers.length}**`);
-say();
-if (!withTiers.length) stop(`الموقع لا يخدم أي منتج بطبقات — لا يمكن التحقق.`);
+const agree = compared.filter((c) => c.pagePrice !== null && c.pagePrice === c.cardPrice);
+const differ = compared.filter((c) => c.pagePrice !== null && c.pagePrice !== c.cardPrice);
+const unread = compared.filter((c) => c.pagePrice === null);
 
-/* 1. Are the rules satisfied by what is live? */
-const stillMoving = [];
-for (const product of withTiers) {
-  const result = app.repriceTiers({
-    id: String(product.id ?? ""),
-    title: String(product.title || product.titleEn || ""),
-    kind: String(product.kind ?? ""),
-    schemaId: String(product.schemaId ?? product.schema_id ?? ""),
-    types: product.types,
-  });
-  for (const p of result.proposals) if (p.changed) stillMoving.push({ title: result.title, p });
-}
-
-say(`## 1. هل القواعد مستقرة على ما يُخدَم؟`);
+say(`## ما يراه الزبون`);
 say();
-say(`طبقات ما زالت تريد الحركة: **${stillMoving.length}**`);
+say(`سعر البطاقة يأتي من \`types\` (وهو ما تحاسب به السلة)، وسعر الصفحة من \`accountPrice\`/\`price\`. قبل هذا التشغيل كانا مختلفين على 49 منتجًا.`);
 say();
-if (stillMoving.length) {
-  say(`| المنتج | الطبقة | التكلفة | الآن | تريد |`);
-  say(`| --- | --- | --- | --- | --- |`);
-  for (const row of stillMoving.slice(0, 40)) {
-    say(
-      `| ${String(row.title).slice(0, 44)} | \`${row.p.kind}\` | ${money(row.p.cost)} | ${money(row.p.oldPrice)} | ${money(row.p.newPrice)} |`,
-    );
-  }
-  if (stillMoving.length > 40) say(`| … | ${stillMoving.length - 40} أخرى | | | |`);
-  say();
-  say(
-    `المتوقع هنا طبقتا Super Smash Bros. Ultimate وحدهما — محجوزتان لأن تكلفتهما موضع شك. أي شيء آخر يعني أن الكتابة لم تصل.`,
-  );
-  say();
-}
-
-/* 2. Does the page show what the till charges? */
-let oneNumber = 0;
-const mismatched = [];
-let variantsPresent = 0;
-let variantsStale = 0;
-for (const product of withTiers) {
-  const tiers = app.classifyTiers(product.types);
-  const offline = app.tierOf(tiers, "offline_base");
-  if (!offline || offline.price <= 0) continue;
-  const shown = numOf(product.accountPrice) || numOf(product.price);
-  if (shown <= 0) continue;
-  if (shown === offline.price) oneNumber += 1;
-  else {
-    mismatched.push({
-      title: String(product.title || product.titleEn || ""),
-      id: String(product.id ?? ""),
-      shown,
-      charged: offline.price,
-    });
-  }
-  /*
-    `variants` is the older name for the same list, and `resolveUnitPrice`
-    falls back to it whenever `types` is not an array. Nothing serves it while
-    `types` holds, so this is counted rather than fixed — a number to know, not
-    a live fault.
-  */
-  if (Array.isArray(product.variants) && product.variants.length) {
-    variantsPresent += 1;
-    const mirror = app.tierOf(app.classifyTiers(product.variants), "offline_base");
-    if (mirror && mirror.price > 0 && mirror.price !== offline.price) variantsStale += 1;
-  }
-}
-
-say(`## 2. هل يُعرض السعر الذي يُحاسَب به؟`);
+say(`- منتجات فُحصت: **${compared.length}**`);
+say(`- البطاقة والصفحة **متطابقتان**: **${agree.length}**`);
+say(`- مختلفتان: **${differ.length}**`);
+say(`- تعذّرت قراءة صفحتها: **${unread.length}**`);
 say();
-say(
-  `الواجهة تقرأ \`accountPrice\` ثم \`price\`؛ والسلة تحاسب بـ \`types[offline_base].price\`. هنا تُقارن الاثنتان على كل منتج يخدمه الموقع.`,
-);
-say();
-say(`- يعرض ويحاسب بالرقم نفسه: **${oneNumber}**`);
-say(`- يعرض رقمًا ويحاسب بآخر: **${mismatched.length}**`);
-say(`- يحمل \`variants\` كذلك: **${variantsPresent}** · منها متأخرة عن \`types\`: **${variantsStale}**`);
-say();
-if (mismatched.length) {
-  mismatched.sort((a, b) => Math.abs(b.charged - b.shown) - Math.abs(a.charged - a.shown));
-  say(`| المنتج | يُعرض | يُحاسَب | الفرق |`);
+if (compared.length) {
+  say(`| المنتج | سعر البطاقة | سعر الصفحة | |`);
   say(`| --- | --- | --- | --- |`);
-  for (const row of mismatched.slice(0, 40)) {
-    const gap = row.charged - row.shown;
+  for (const row of compared.slice(0, 40)) {
+    const mark = row.pagePrice === null ? "؟" : row.pagePrice === row.cardPrice ? "✓" : "✗";
     say(
-      `| ${row.title.slice(0, 44)} \`${row.id.slice(-6)}\` | ${money(row.shown)} | ${money(row.charged)} | ${gap > 0 ? `+${money(gap)}` : money(gap)} |`,
+      `| ${row.title.slice(0, 44)} | ${money(row.cardPrice)} | ${row.pagePrice === null ? "—" : money(row.pagePrice)} | ${mark} |`,
     );
   }
-  if (mismatched.length > 40) say(`| … | ${mismatched.length - 40} أخرى | | |`);
   say();
+}
+if (!compared.length) {
+  stop(`لم أقرأ أي بطاقة بسعر من الصفحة الرئيسية. لم أتحقق من الإنتاج.`);
 }
 
 say(`## الخلاصة`);
 say();
-say(`- منتجات بطبقات على الموقع: **${withTiers.length}**`);
-say(`- طبقات ما زالت تريد الحركة: **${stillMoving.length}**`);
-say(`- تعرض وتحاسب بالرقم نفسه: **${oneNumber}**`);
-say(`- تعرض رقمًا وتحاسب بآخر: **${mismatched.length}**`);
-say(`- \`variants\` متأخرة عن \`types\`: **${variantsStale}** من ${variantsPresent}`);
+say(`- منتجات فُحصت على الموقع الحي: **${compared.length}**`);
+say(`- تعرض السعر نفسه في البطاقة والصفحة: **${agree.length}**`);
+say(`- ما زالت تعرض رقمين: **${differ.length}**`);
+say();
+say(
+  `ملاحظة على النطاق: \`/api/data\` يردّ 403 على هذا المُشغّل حتى من داخل المتصفّح، فصفحات \`/games\` والأقسام تصل فارغة هنا — لذلك الفحص على ما تعرضه الصفحة الرئيسية وصفحات منتجاتها، لا على الكتالوج كله.`,
+);
 
 flush();
 rmSync(outfile, { force: true });
-process.exit(0);
+process.exit(differ.length ? 1 : 0);
