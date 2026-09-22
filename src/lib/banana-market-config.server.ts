@@ -245,9 +245,25 @@ export function changePercent24h(config: BananaMarketConfig, at: number = Date.n
   return Math.round(((now - before) / before) * 1000) / 10;
 }
 
+/*
+  Every range the market screen actually offers, plus the ones only the engine
+  knew about.
+
+  The buttons read 1H · 4H · 12H · 1D · 7D. This table held 1H · 1D · 1W · 1M ·
+  1Y, and the lookup falls back to 1D for anything it does not recognise — so
+  three of the five buttons redrew the identical chart and said nothing. A
+  control that changes nothing is worse than one that is not there: it makes the
+  member think the price has been flat.
+
+  `7D` and `1W` are the same week under two names, kept both ways so neither the
+  screen nor any older caller has to be the one that changes.
+*/
 const RANGES: Record<string, { hours: number; points: number }> = {
   "1H": { hours: 1, points: 12 },
+  "4H": { hours: 4, points: 24 },
+  "12H": { hours: 12, points: 36 },
   "1D": { hours: 24, points: 48 },
+  "7D": { hours: 24 * 7, points: 56 },
   "1W": { hours: 24 * 7, points: 56 },
   "1M": { hours: 24 * 30, points: 60 },
   "1Y": { hours: 24 * 365, points: 73 },

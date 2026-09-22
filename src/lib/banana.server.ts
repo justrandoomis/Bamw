@@ -355,10 +355,22 @@ async function readRedeemOffers(): Promise<BananaRedeemOffer[]> {
       title: string;
       description: string | null;
       image_url: string | null;
+      icon: string | null;
+      category: string | null;
       banana_price: number;
       stock: number | null;
     }>(
-      `SELECT id, title, description, image_url, banana_price, stock
+      /*
+        `icon` and `category` are what the ADMIN saves, and this read asked for
+        neither. It selected `image_url` — a column the admin panel never writes
+        — and then replaced the category with the literal «reward».
+
+        The redeem screen's tabs are `wheel_ticket`, `vouchers`, `digital`,
+        `physical` and `perks`. Nothing ever carried any of those four, so four
+        of the six tabs were permanently empty and every non-ticket reward
+        showed 🎁, whatever the owner had chosen for it.
+      */
+      `SELECT id, title, description, image_url, icon, category, banana_price, stock
        FROM banana_redemption_offers
        WHERE is_active = 1
          AND (stock IS NULL OR stock < 0 OR stock > 0)
@@ -381,8 +393,15 @@ async function readRedeemOffers(): Promise<BananaRedeemOffer[]> {
         title: row.title,
         cost: Number(row.banana_price) || 0,
         stock: Number(row.stock ?? -1),
-        icon: row.image_url || (ticketQuantity ? "🎟️" : "🎁"),
-        category: ticketQuantity ? "wheel_ticket" : "reward",
+        icon: row.icon || row.image_url || (ticketQuantity ? "🎟️" : "🎁"),
+        /*
+          Tickets keep their own tab — it is listed first on the redeem screen
+          precisely because «they are the one reward that leads somewhere else».
+          Everything else goes where the owner put it, and a row written before
+          the column existed falls back to the same default the admin form
+          itself starts on, so it lands where a new one would.
+        */
+        category: ticketQuantity ? "wheel_ticket" : row.category || "vouchers",
         ...(row.description ? { description: row.description } : {}),
         ...(ticketQuantity ? { ticketQuantity } : {}),
       };
