@@ -413,6 +413,22 @@ export function titleAlternatives(title) {
   return out;
 }
 
+/**
+ * Do these two titles name the same game?
+ *
+ * EQUALITY, under the same normalisation the url-key path compares with, and
+ * across each side's `titleAlternatives` so a two-game row can agree with
+ * either half. Never containment: «Toki» is a substring of «Harukanaru Toki no
+ * Naka de 7» and they are not the same game — that exact pair is one of the
+ * wrong matches this exists to refuse.
+ */
+export function titlesAgree(a, b) {
+  const left = titleAlternatives(a).map(normalizeTitle).filter(Boolean);
+  const right = titleAlternatives(b).map(normalizeTitle).filter(Boolean);
+  if (!left.length || !right.length) return false;
+  return left.some((one) => right.includes(one));
+}
+
 export function candidateKeys(doc) {
   const title = String(doc.title ?? doc.name ?? "");
   const two = isSwitch2(`${doc.platform ?? ""} ${title} ${doc.slug ?? ""}`);

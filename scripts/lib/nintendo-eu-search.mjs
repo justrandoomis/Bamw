@@ -35,7 +35,7 @@
  * chain every other candidate goes through.
  */
 
-import { normalizeTitle, titleAlternatives } from "./nintendo-store.mjs";
+import { normalizeTitle, titleAlternatives, titlesAgree } from "./nintendo-store.mjs";
 
 const ENDPOINT = "https://search.nintendo-europe.com/en/select";
 
@@ -243,7 +243,24 @@ export async function searchEuropeSquare(title, wantTwo, fetchJson, storeUrl = "
   */
   if (storeUrl) {
     const byId = await europeRowByStoreUrl(storeUrl, fetchJson);
-    if (byId.ok) {
+    /*
+      AND THE ROW MUST STILL BE THIS GAME.
+
+      The store link comes from the same supplier sheet, matched by the same
+      importer, as the nsuid an adversarial review destroyed — and the sheet is
+      demonstrably wrong about some rows: «Railway Nippon! Real Pro» is given
+      the store page for «Nippon Marathon», «Fate/EXTELLA» the page for
+      «Fate/EXTELLA LINK», «Guilty Gear -Strive-» the 1998 «GUILTY GEAR».
+      Following the link without checking would fetch the wrong game's art with
+      complete confidence.
+
+      What the id DOES buy, and it is real, is the removal of the ranking: no
+      relevance ordering decides anything, and two editions sharing a title no
+      longer make the answer ambiguous. The title still has to agree, and it is
+      checked against NINTENDO's live row rather than against the sheet's own
+      note about it.
+    */
+    if (byId.ok && titlesAgree(byId.rows[0]?.title, title)) {
       const row = byId.rows[0];
       const square = String(row?.image_url_sq_s ?? "").trim();
       if (square) {

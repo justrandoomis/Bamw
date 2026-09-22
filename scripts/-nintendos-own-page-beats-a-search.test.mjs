@@ -110,7 +110,7 @@ describe("the row is accepted for its own url, not for ranking first", () => {
 
 describe("the store link goes ahead of the title search", () => {
   it("answers from Nintendo's own page, with provenance that says so", async () => {
-    const hit = await searchEuropeSquare("A shelf title that matches nothing", false, fetchJson, SCARLET);
+    const hit = await searchEuropeSquare("Pokémon Scarlet", false, fetchJson, SCARLET);
     expect(hit.ok).toBe(true);
     expect(hit.url).toBe("https://assets/1x1_scarlet.jpg");
     expect(hit.provenance).toContain("store page");
@@ -119,9 +119,21 @@ describe("the store link goes ahead of the title search", () => {
   it("does not need the generation to agree, because nothing was ranked", async () => {
     // The title route refuses a Switch 1 row for a Switch 2 line unless it is
     // the only one. An exact page id is not a guess, so that rule is not needed.
-    const hit = await searchEuropeSquare("anything", true, fetchJson, SCARLET);
+    const hit = await searchEuropeSquare("Pokémon Scarlet", true, fetchJson, SCARLET);
     expect(hit.ok).toBe(true);
     expect(hit.matchedTitle).toBe("Pokémon Scarlet");
+  });
+
+  it("REFUSES the linked page when it is a different game", async () => {
+    /*
+      The store link comes from the same sheet, matched by the same importer,
+      as the nsuid an adversarial review destroyed — and the sheet really does
+      point «Railway Nippon! Real Pro» at «Nippon Marathon» and «Fate/EXTELLA»
+      at «Fate/EXTELLA LINK». The id removes the ranking; it does not make the
+      importer right, so Nintendo's own row title must still agree with ours.
+    */
+    const hit = await searchEuropeSquare("Railway Nippon! Real Pro", false, fetchJson, SCARLET);
+    expect(hit.ok).toBe(false);
   });
 
   it("falls back to the title search when there is no store link", async () => {
@@ -152,6 +164,6 @@ describe("the filler hands both new keys down", () => {
     expect(fill).toContain("sheetCover: product.coverImage");
     expect(fill).toContain("officialStoreUrl: product.officialStoreUrl");
     expect(pipeline).toContain("identity.officialStoreUrl");
-    expect(pipeline).toContain("sheetSquareCover(identity.sheetCover)");
+    expect(pipeline).toContain("sheetSquareCover(identity.sheetCover, identity.title)");
   });
 });

@@ -141,7 +141,7 @@ export async function buildMedia(
     MEASURES it. A directory name is a claim, not a measurement.
   */
   if (wanted.includes("nintendoCardImage") && !patch.nintendoCardImage) {
-    const sheet = sheetSquareCover(identity.sheetCover);
+    const sheet = sheetSquareCover(identity.sheetCover, identity.title);
     if (sheet) {
       const verdict = await validateCandidate(sheet, "nintendoCardImage", sharp);
       if (verdict.ok && verdict.shapeOk) {
