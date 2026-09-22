@@ -31,7 +31,7 @@
  * would be guessing with the owner's margin.
  */
 import {
-  dlcIncreaseFor,
+  dlcPriceFor,
   onlinePriceFor,
   repriceOne,
   ONLINE_MAX_MARGIN,
@@ -183,8 +183,13 @@ export function repriceTiers(product: {
         */
         return held(tier, index, "فرق تكلفة الإضافات غير موجب — راجع التكلفة");
       }
-      const increase = dlcIncreaseFor(gap);
-      const next = newOfflineBase + increase;
+      /*
+        Through `dlcPriceFor`, not `base + dlcIncreaseFor(gap)` spelled out
+        again here. It is the same arithmetic plus the rounding to a whole
+        thousand, and two copies of one rule is how they come to disagree.
+      */
+      const next = dlcPriceFor(newOfflineBase, gap);
+      const increase = next - newOfflineBase;
       return {
         kind: tier.kind,
         index,

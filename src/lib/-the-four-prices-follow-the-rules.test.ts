@@ -267,3 +267,86 @@ describe("running the rules twice changes nothing the second time", () => {
     }
   });
 });
+
+/*
+  The fault the pre-write gate caught on the live catalogue, before a byte was
+  written. Kept as a test so it cannot come back.
+*/
+describe("every add-ons price is a whole thousand", () => {
+  it("rounds down a price the cost gap would otherwise land on a five hundred", () => {
+    /*
+      The supplier's costs are quarter-thousands — 1,250, 2,750, 18,500 — so a
+      real gap is very often 1,250, and `2 × gap` then gives 2,500. Mario Kart
+      8 Deluxe was proposed at 14,500 on exactly this, and the gate refused
+      the whole run.
+    */
+    const result = repriceTiers(
+      game([
+        { id: "offline_base", price: 12_000, cost: 1_500 },
+        { id: "offline_extras", price: 15_000, cost: 2_750 },
+      ]),
+    );
+    const extras = at(result, "offline_extras")!;
+    expect(extras.newPrice % 1_000).toBe(0);
+    expect(extras.newPrice).toBe(14_000);
+    expect(tierProblem(extras, result)).toBeNull();
+  });
+
+  it("is a whole thousand for every quarter-thousand gap there is", () => {
+    for (const extrasCost of [1_250, 1_500, 1_750, 2_000, 2_250, 2_500, 2_750, 6_500, 9_250]) {
+      const result = repriceTiers(
+        game([
+          { id: "offline_base", price: 8_000, cost: 1_000 },
+          { id: "offline_extras", price: 30_000, cost: extrasCost },
+        ]),
+      );
+      const extras = at(result, "offline_extras")!;
+      expect(extras.newPrice % 1_000, `cost ${extrasCost} → ${extras.newPrice}`).toBe(0);
+      expect(tierProblem(extras, result), `cost ${extrasCost}`).toBeNull();
+    }
+  });
+
+  it("never rounds the add-ons back down to the plain edition's price", () => {
+    /*
+      The one way flooring could do harm. It cannot: the increase is at least
+      1,000 and a plain price is itself a whole thousand, so what survives the
+      rounding is at least a thousand above it.
+    */
+    for (const extrasCost of [1_050, 1_100, 1_250, 1_333]) {
+      const result = repriceTiers(
+        game([
+          { id: "offline_base", price: 8_000, cost: 1_000 },
+          { id: "offline_extras", price: 9_500, cost: extrasCost },
+        ]),
+      );
+      const base = at(result, "offline_base")!;
+      const extras = at(result, "offline_extras")!;
+      expect(extras.newPrice, `cost ${extrasCost}`).toBeGreaterThanOrEqual(base.newPrice + 1_000);
+    }
+  });
+
+  it("leaves all six of the owner's own anchors exactly where they were", () => {
+    /*
+      The rounding must not move a single number the owner has quoted. It does
+      not: every gap they named is a whole thousand, so the sum already landed
+      on one.
+    */
+    const anchors: Array<[number, number]> = [
+      [300, 1_000],
+      [1_000, 2_000],
+      [2_000, 4_000],
+      [3_000, 5_000],
+      [5_000, 7_000],
+      [10_000, 12_000],
+    ];
+    for (const [gap, increase] of anchors) {
+      const result = repriceTiers(
+        game([
+          { id: "offline_base", price: 8_000, cost: 2_000 },
+          { id: "offline_extras", price: 1, cost: 2_000 + gap },
+        ]),
+      );
+      expect(at(result, "offline_extras")?.newPrice, `gap ${gap}`).toBe(8_000 + increase);
+    }
+  });
+});

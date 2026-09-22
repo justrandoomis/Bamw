@@ -335,9 +335,29 @@ export function dlcIncreaseFor(costDiff: number): number {
   return Math.max(1_000, Math.min(2 * diff, diff + 2_000));
 }
 
-/** The edition's price: the plain price plus what the add-ons are worth. */
+/**
+ * The edition's price: the plain price plus what the add-ons are worth,
+ * rounded DOWN to a whole thousand.
+ *
+ * The rounding is not decoration. The supplier's costs are quarter-thousands
+ * — 1,250, 2,750, 18,500 — so a real cost gap is very often 1,250 or 4,500,
+ * and `2 × gap` then lands on a five hundred: an 8,000 game with a 1,250 gap
+ * priced at 10,500. Every price the owner has ever quoted is a whole thousand,
+ * and «لتكون ولتبدو ارخص للزبون» says which way to round.
+ *
+ * Found by the pre-write gate on the live catalogue, not by me: fourteen
+ * add-ons editions were proposed at a price ending in 500, and `tierProblem`
+ * refused the whole run. None of the owner's six anchors move, because every
+ * gap they name is a whole thousand and was already landing on one.
+ *
+ * The floor can never take the price back to the plain edition's: the
+ * increase is at least 1,000 and a plain price is itself a whole thousand, so
+ * what is left after rounding down is at least a thousand above it.
+ */
 export function dlcPriceFor(offlinePrice: number, costDiff: number): number {
   const base = Number(offlinePrice);
   if (!Number.isFinite(base) || base <= 0) return 0;
-  return base + dlcIncreaseFor(costDiff);
+  const increase = dlcIncreaseFor(costDiff);
+  if (increase <= 0) return base;
+  return floorThousand(base + increase);
 }
