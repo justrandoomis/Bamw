@@ -48,12 +48,20 @@
     a fixture, and how a checker that could not tell a slow page from a broken
     one got to be the thing that judged it.
 
-    With this on, every uploaded version gets its own hostname —
-    `<version>-pixel-cart-cloud.<subdomain>.workers.dev` — running that exact
-    code against the production bindings. The deploy job opens it, reads the
-    screens, and then says nothing about where it was: the URL is masked out of
-    the log, because this repository is public and that address answers with a
-    live copy of the shop.
+    IT IS SET, AND IT IS NOT WORKING YET. With this on, an uploaded version is
+    meant to get its own hostname — `<version>-pixel-cart-cloud.<subdomain>
+    .workers.dev` — running that exact code against the production bindings.
+    Wrangler still printed no such URL on the run after this line was added, so
+    the account has no workers.dev subdomain registered, or Preview URLs are off
+    for this Worker in the dashboard. That is a button in Cloudflare that I have
+    no way to press from here, and `deploy.yml` now fails loudly and says so
+    rather than passing a preview nothing read.
+
+    The line stays because it is the half that belongs in the repository: the
+    moment the subdomain exists, previews work with no further change. When one
+    does appear, the deploy job opens it, reads the screens, and then says
+    nothing about where it was — the URL is masked out of the log, because this
+    repository is public and that address answers with a live copy of the shop.
 
     WHAT THIS DOES NOT DO: it does not enable `workers_dev`. There is no stable
     `pixel-cart-cloud.<subdomain>.workers.dev` alias for production — banan.to

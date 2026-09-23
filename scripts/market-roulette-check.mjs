@@ -128,6 +128,34 @@ try {
 }
 
 /*
+  WHICH COMMIT IS THIS?
+
+  Every run of this file used to report on «الإنتاج» without ever establishing
+  which build «الإنتاج» was. That sounds like a detail and it is not: a second
+  deploy path was putting commits live about fifty seconds after a push to
+  `main`, so a report could describe one build while I reasoned about another —
+  and for twenty minutes, it did.
+
+  Read from the page's own origin, so it is the same deployment that rendered
+  the screens below. A build with no stamp says «unknown», and that is printed
+  as-is rather than smoothed over: an unstamped build is exactly the one whose
+  provenance nobody can check.
+*/
+const liveBuild = await page
+  .evaluate(async () => {
+    try {
+      const res = await fetch("/api/health", { headers: { accept: "application/json" } });
+      if (!res.ok) return `HTTP ${res.status}`;
+      const body = await res.json();
+      return typeof body?.build === "string" ? body.build : "الحقل غير موجود";
+    } catch (error) {
+      return `تعذّرت القراءة (${String(error).slice(0, 60)})`;
+    }
+  })
+  .catch(() => "تعذّرت القراءة");
+say(`- البناء الذي يخدم: \`${liveBuild}\``);
+
+/*
   In-app navigation, not a fresh document request.
 
   Cloudflare answers this runner 403 on several paths while answering `/` with
@@ -160,11 +188,20 @@ const routeTo = async (to, settled) => {
     what was actually on the screen, so the next reader does not have to guess
     the way I did.
   */
+  /*
+    `settled` is a string when one sentence means «this screen has its data»,
+    and a RegExp when several different sentences all do — a signed-out prompt
+    and a signed-in strip are both settled states, and insisting on one of them
+    would fail honest renderings of the other.
+  */
+  const arrived = (text) =>
+    !settled || (settled instanceof RegExp ? settled.test(text) : text.includes(settled));
+
   const deadline = Date.now() + WAIT_MS;
   let seen = "";
   while (Date.now() < deadline) {
     seen = (await page.locator("body").innerText().catch(() => "")) || "";
-    if (!settled || seen.includes(settled)) return { ok: true, text: seen, waited: true };
+    if (arrived(seen)) return { ok: true, text: seen, waited: true };
     await page.waitForTimeout(250);
   }
   return { ok: !settled, text: seen, waited: false };
@@ -237,7 +274,22 @@ const stillThere = REMOVED.filter((w) => market.includes(w));
 check("لا سوق بين الأعضاء", stillThere.length === 0, stillThere.join(" / "));
 
 // ─── 3. The roulette ──────────────────────────────────────────────────────
-const wheelLanded = await routeTo("/wheel", "روليت بنانتو");
+/*
+  SETTLE ON THE SECTION, NOT ON THE TITLE.
+
+  «روليت بنانتو» is the `<h1>`. It is on screen the instant the route mounts,
+  before `/api/roulette` has said a word — so waiting for it was waiting for
+  nothing, and the run that read this page caught the prize section mid-spinner
+  and reported «لا شريط ولا رسالة فراغ»: a failure that was really a stopwatch.
+  Exactly the fault the market half of this file already had fixed, one screen
+  along, unnoticed because that screen was passing.
+
+  So the wait is for whatever the section RESOLVES to, whichever it is — the
+  sign-in prompt for a visitor with no session, the empty-pool sentence, or the
+  strip's own first card. A regex, because any of the three means the answer
+  has landed and none of them means the page is broken.
+*/
+const wheelLanded = await routeTo("/wheel", /سجّل الدخول لتشغيل الروليت|لا توجد ألعاب متاحة في الروليت|ابدأ —/);
 const wheel = wheelLanded.text;
 if (!wheel.trim()) {
   fail("صفحة الروليت لم تُقرأ — لم أتحقق من الإنتاج");
@@ -280,17 +332,31 @@ const strip = await page
   .catch(() => 0);
 if (strip > 0) {
   check("شريط الروليت موجود", true, `${strip} عنصر`);
+} else if (wheel.includes("سجّل الدخول لتشغيل الروليت")) {
+  /*
+    THE CORRECT SIGNED-OUT RENDERING, and the one this checker used to read as
+    a fault.
+
+    `/api/roulette` answers 401 without a session, so this visitor was never
+    going to see a strip. What matters is what the screen says instead, and the
+    screen used to say «لا توجد ألعاب متاحة في الروليت الآن» — the shop's stock
+    is empty — to someone whose only problem was that they were not logged in.
+    That sentence is now reserved for a pool that really is empty, and this is a
+    PASS for saying the true thing, with the strip skipped rather than failed.
+  */
+  check("الروليت يطلب تسجيل الدخول بدل ادّعاء أن المجمّع فارغ", true);
+  needsSession("شريط الروليت", "لا جلسة — الشريط لا يُرسم لزائر");
 } else if (wheel.includes("لا توجد ألعاب متاحة في الروليت")) {
   /*
-    The pool is empty for a visitor with no session, and the page says so in
-    its own words rather than drawing a blank box. That IS the correct
-    signed-out rendering, so it is a pass for the section and a skip for the
-    strip — not a silent success for either.
+    A genuinely empty pool, said in the page's own words rather than drawn as a
+    blank box. Recorded as its own line so it can never be mistaken for the
+    signed-out case above — those two look identical on screen and mean
+    completely different things about the shop.
   */
   check("قسم الروليت يرسم حالته الفارغة بنصّها", true);
-  needsSession("شريط الروليت", "المجمّع فارغ بدون جلسة");
+  needsSession("شريط الروليت", "المجمّع فارغ");
 } else {
-  check("شريط الروليت موجود", false, "لا شريط ولا رسالة فراغ");
+  check("شريط الروليت موجود", false, "لا شريط ولا رسالة — الصفحة لم تحسم حالتها");
 }
 
 // ─── 4. The two old addresses ─────────────────────────────────────────────

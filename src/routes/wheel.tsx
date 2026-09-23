@@ -15,6 +15,7 @@ import {
   type RoulettePrizeData,
   type SpinResponse,
 } from "@/hooks/useRoulette";
+import { useAuth } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
 import { playSound } from "@/utils/audio";
 
@@ -422,6 +423,22 @@ function OddsPanel({
 export function RoulettePage() {
   const [tickets, setTickets] = useState(1);
   const { state, isPending, spin, importPrize, refresh } = useRoulette(tickets);
+  /*
+    WHY THIS PAGE NEEDS TO KNOW WHO IS LOOKING.
+
+    `/api/roulette` answers 401 to a visitor with no session — `requireUser`
+    throws before the pool is ever read. So a signed-out visitor's `state` is
+    null not because there is nothing to show, but because nobody asked them
+    who they were. The screen could not tell those two apart, and picked the
+    wrong one: it fell through to «لا توجد ألعاب متاحة في الروليت الآن» — a
+    sentence about the shop's stock, told to someone whose only problem is that
+    they are not logged in. There are games. They just cannot see them yet.
+
+    Telling a visitor the shelf is bare when it is full is the kind of wrong
+    answer that loses a customer quietly, so the session is read here and the
+    signed-out case gets its own branch below.
+  */
+  const { user } = useAuth();
 
   /*
     The outcome the strip is running to, and the popup that follows it.
@@ -512,7 +529,28 @@ export function RoulettePage() {
       />
 
       <section className="rounded-2xl border border-border/60 bg-card p-3">
-        {isPending && !state ? (
+        {/*
+          Signed out FIRST, ahead of the spinner: the answer for this visitor is
+          already known — the request they are waiting on will come back 401 —
+          so making them watch it spin, and then telling them the roulette is
+          empty, is two wrong answers in a row.
+        */}
+        {!user ? (
+          <div className="flex flex-col items-center gap-3 py-9 text-center">
+            <Ticket className="h-7 w-7 text-muted-foreground" aria-hidden="true" />
+            <p className="text-sm font-black text-foreground">سجّل الدخول لتشغيل الروليت.</p>
+            <p className="max-w-[24rem] text-[12.5px] text-muted-foreground">
+              الألعاب والاحتمالات تظهر بمجرد دخولك، وتذاكرك تُشترى من سوق الموز.
+            </p>
+            <Link
+              to="/auth"
+              data-ui-sound="klick"
+              className="min-h-11 rounded-2xl bg-foreground px-5 py-3 text-[13px] font-black text-background transition-transform active:scale-[0.98]"
+            >
+              تسجيل الدخول
+            </Link>
+          </div>
+        ) : isPending && !state ? (
           <div className="flex h-40 items-center justify-center text-muted-foreground">
             <Loader2 className="h-5 w-5 animate-spin" />
           </div>
@@ -551,12 +589,21 @@ export function RoulettePage() {
             <>
               ابدأ — <span dir="ltr" className="tabular-nums">{tickets}</span> تذكرة
             </>
+          ) : /*
+              A signed-out visitor owns no tickets, so `affordable` is false and
+              this button used to tell them «لا تملك هذا العدد من التذاكر» — and
+              the link under it sent them off to buy tickets they cannot buy
+              either. Neither sentence was true of them. They have no account
+              yet; that is the whole of it.
+            */
+          !user ? (
+            "سجّل الدخول لتشغيل الروليت"
           ) : (
             "لا تملك هذا العدد من التذاكر"
           )}
         </button>
 
-        {!affordable ? (
+        {!user ? null : !affordable ? (
           <Link
             to="/banana_market"
             data-ui-sound="klick"

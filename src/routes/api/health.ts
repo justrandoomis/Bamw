@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { buildCommit } from "@/lib/build-commit";
 import { getBinding, isProductionEnvironment, env } from "@/lib/env.server";
 import { getD1 } from "@/lib/d1.server";
 import { getStore } from "@/lib/db.server";
@@ -68,6 +69,17 @@ export const Route = createFileRoute("/api/health")({
           totalLatencyMs,
           timestamp: new Date().toISOString(),
           appEnv: env("APP_ENV") || (isProductionEnvironment() ? "production" : "development"),
+          /*
+            THE COMMIT THIS WORKER WAS BUILT FROM.
+
+            The one fact this endpoint used to be missing, and the reason
+            «production is serving X» was a belief rather than a reading. It is
+            a public git SHA of a public repository — it identifies code, never
+            a customer — and it is what lets a deploy be verified instead of
+            assumed, and a second deploy path be SEEN rather than inferred from
+            the timing of somebody else's deployment list.
+          */
+          build: buildCommit(),
         });
       },
     },
