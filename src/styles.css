@@ -78,6 +78,19 @@
   --color-ink-600: color-mix(in oklab, var(--muted) 80%, var(--foreground));
   --color-ink-500: var(--muted-foreground);
 
+  /* ---- Banana market palette ----------------------------------------------
+   * Four hues and nothing else, so the market reads as one thing: the banana
+   * accent, the peel it presses into, and the two verdicts — leaf for a gain,
+   * rind for a loss or a refusal. `banana-ink` is the existing dark brown, kept
+   * fixed across packs because the accent it sits on does not change with the
+   * surface. Values live on :root below; these only expose them as utilities.
+   */
+  --color-banana: var(--banana);
+  --color-peel: var(--peel);
+  --color-leaf: var(--leaf);
+  --color-rind: var(--rind);
+  --color-banana-ink: var(--banana-ink);
+
   --radius-panel: 18px;
   --shadow-soft: 0 8px 24px -16px color-mix(in oklab, var(--foreground) 45%, transparent);
   --shadow-lift: 0 18px 40px -24px color-mix(in oklab, var(--foreground) 55%, transparent);
@@ -332,12 +345,31 @@
   --cart-shell: #1c1c1c;
   --cart-shell-2: #1a1a1a;
   --admin-ink: #222222;
-  --banana: #f6d84a;
-  --leaf: #b9d8a8;
+  /* The banana market's four hues. `--banana` was already the chart's line and
+     `--leaf` its gradient foot; both are now the market's own values, and peel
+     and rind join them so a press and a loss have a colour of their own. */
+  --banana: #f5c518;
+  --peel: #e8a317;
+  --leaf: #3f7d58;
+  --rind: #c2543d;
+  --banana-ink: #2c1a15;
   --gray-1: #f1f3f5;
   --gray-2: #d8dbde;
   --gray-3: #9ba4ab;
   --gray-4: #88929a;
+}
+
+/* The same four hues on a dark surface: lifted until they carry, never
+   swapped for another colour. `--banana-ink` is deliberately absent — the
+   accent stays yellow in every pack, so the ink on it stays dark brown. */
+.dark,
+[data-theme="midnight"],
+[data-theme="space"],
+[data-theme="cyber"] {
+  --banana: #ffd84d;
+  --peel: #f2b53f;
+  --leaf: #6dbd8c;
+  --rind: #e28a74;
 }
 
 /* Dark packs share one recipe: surfaces/ink follow the pack's own palette. */
