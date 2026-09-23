@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Suspense, useCallback, useMemo, useRef, useState } from "react";
-import { ArrowLeft, Loader2, TrendingDown, TrendingUp } from "lucide-react";
+import { Loader2, TrendingDown, TrendingUp } from "lucide-react";
 import { toast } from "sonner";
 
 import { RewardsShelf } from "@/components/market/RewardsShelf";
@@ -11,7 +11,6 @@ import { useBananaMarket } from "@/hooks/useBananaMarket";
 import { useRoulette } from "@/hooks/useRoulette";
 import { formatPrice } from "@/lib/banana-price";
 import { lazyWithRetry } from "@/lib/lazyRetry";
-import { playSound } from "@/utils/audio";
 
 const BananaPriceChart = lazyWithRetry(() => import("@/components/BananaPriceChart"));
 
@@ -39,16 +38,6 @@ const BananaPriceChart = lazyWithRetry(() => import("@/components/BananaPriceCha
  * deleted — every offer ever made is still in `banana_market_offers`, and an
  * offer still standing can still be cancelled by its owner. «لا تحذف بيانات
  * الإنتاج بشكل أعمى.»
- *
- * ## The shape of the page
- *
- * One thing is loud and everything else is quiet. The price is the market —
- * it is the only number that changes on its own, the only one a member opens
- * this page to look at — so it gets the size, the chart gets a frame it can
- * actually fill, and the three actions below it are one row of equal
- * segments rather than three buttons arguing about which is the important
- * one. Under that, one card per section and air between them. Nothing here
- * is nested inside anything else it does not belong to.
  */
 
 export const Route = createFileRoute("/banana_market")({
@@ -80,8 +69,8 @@ const money = (n: number) => Number(n || 0).toLocaleString("en-US");
 function PriceTooltip({ active, payload }: { active?: boolean; payload?: { value?: number }[] }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-xl border border-border bg-card px-2.5 py-1.5 text-[11px] shadow-lg">
-      <span dir="ltr" className="font-black tabular-nums tracking-tight text-foreground">
+    <div className="rounded-lg border border-border bg-card px-2 py-1 text-[11px] shadow-sm">
+      <span dir="ltr" className="font-bold tabular-nums text-foreground">
         {formatPrice(Number(payload[0]?.value ?? 0))}
       </span>
       <span className="text-muted-foreground"> د.ع</span>
@@ -108,7 +97,6 @@ function BananaMarketPage() {
   const bananas = snapshot?.balance ?? 0;
   const changePct = snapshot?.changePct ?? 0;
   const rewards = useMemo(() => snapshot?.rewards ?? [], [snapshot?.rewards]);
-  const down = changePct < 0;
 
   /*
     «يمكن استخدام anchors داخل الصفحة فقط عند الحاجة… الضغط على الاستبدال يعمل
@@ -161,10 +149,7 @@ function BananaMarketPage() {
           tickets?: number;
           error?: string;
         };
-        if (!res.ok) {
-          playSound("error", 0.5);
-          return { ok: false as const, error: data.error || "تعذّر شراء التذاكر" };
-        }
+        if (!res.ok) return { ok: false as const, error: data.error || "تعذّر شراء التذاكر" };
         /*
           Both balances move on a ticket purchase — bananas out, tickets in —
           and they live in two different queries, so both are told to refetch.
@@ -173,10 +158,8 @@ function BananaMarketPage() {
         */
         refreshRoulette();
         refreshMarket();
-        playSound("turn_on", 0.55);
         return { ok: true as const, tickets: Number(data.tickets ?? 0) };
       } catch (error) {
-        playSound("error", 0.5);
         return {
           ok: false as const,
           error: error instanceof Error ? error.message : "تعذّر شراء التذاكر",
@@ -191,10 +174,8 @@ function BananaMarketPage() {
       try {
         await act.mutateAsync({ action: "redeem_reward", rewardId });
         refreshRoulette();
-        playSound("turn_on", 0.55);
         return { ok: true as const };
       } catch (error) {
-        playSound("error", 0.5);
         return {
           ok: false as const,
           error: error instanceof Error ? error.message : "تعذّر الاستبدال",
@@ -207,188 +188,143 @@ function BananaMarketPage() {
   return (
     <div className="mx-auto w-full max-w-3xl px-4 pb-24 pt-4" dir="rtl">
       {/* ───────────────────────────── Header ───────────────────────────── */}
-      <header className="flex items-center justify-between gap-3">
+      <header className="mb-4 flex items-end justify-between gap-3">
         <div className="min-w-0">
-          <h1 className="text-[19px] font-black tracking-[-0.02em] text-foreground">سوق الموز</h1>
-          <p className="mt-0.5 truncate text-[12px] text-muted-foreground">
+          <h1 className="text-xl font-extrabold text-foreground">سوق الموز</h1>
+          <p className="mt-0.5 truncate text-xs text-muted-foreground">
             بِع موزك للمتجر مباشرة، أو بدّله بتذاكر وهدايا.
           </p>
         </div>
-        <p className="flex shrink-0 items-center gap-1.5 rounded-full border border-banana/30 bg-banana/15 px-3 py-1.5 text-[13px] font-black text-foreground">
-          <span aria-hidden="true">🍌</span>
-          <span dir="ltr" className="tabular-nums">
-            {money(bananas)}
-          </span>
-        </p>
+        <div className="shrink-0 rounded-2xl border border-amber-200 bg-amber-50/70 px-3 py-2 text-left">
+          <div className="text-[11px] text-muted-foreground">رصيدك</div>
+          <div dir="ltr" className="text-sm font-extrabold tabular-nums text-foreground">
+            🍌 {money(bananas)}
+          </div>
+        </div>
       </header>
 
-      {/* ──────────────────────── The price, in full ─────────────────────
-          The one element on the page worth being loud about: the number, what
-          it did, that it is live, and the shape it made getting here. */}
-      <section
-        aria-labelledby="market-price-title"
-        className="mt-4 rounded-3xl border border-border bg-card p-4 shadow-soft"
-      >
+      {/* ────────────────────────── Market price ────────────────────────── */}
+      <section className="rounded-2xl border border-border/60 bg-card p-3">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <h2 id="market-price-title" className="text-[12px] font-bold text-muted-foreground">
-              سعر موزة واحدة
-            </h2>
-            <div className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-              <span
-                dir="ltr"
-                className="text-[32px] font-black leading-none tracking-[-0.04em] tabular-nums text-foreground"
-              >
+            <div className="text-xs text-muted-foreground">سعر موزة واحدة</div>
+            <div className="mt-0.5 flex items-baseline gap-2">
+              <span dir="ltr" className="text-lg font-extrabold tabular-nums text-foreground">
                 {formatPrice(price)}
               </span>
-              <span className="text-[12px] font-bold text-muted-foreground">د.ع</span>
+              <span className="text-[11px] text-muted-foreground">د.ع</span>
               <span
                 dir="ltr"
-                className={`inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[11px] font-black tabular-nums ${
-                  down ? "bg-rind/15 text-rind" : "bg-leaf/15 text-leaf"
+                className={`inline-flex items-center gap-0.5 rounded-lg px-1.5 py-0.5 text-[11px] font-bold tabular-nums ${
+                  changePct < 0 ? "bg-red-50 text-red-600" : "bg-emerald-50 text-emerald-700"
                 }`}
               >
-                {down ? (
-                  <TrendingDown className="h-3 w-3" aria-hidden="true" />
+                {changePct < 0 ? (
+                  <TrendingDown className="h-3 w-3" />
                 ) : (
-                  <TrendingUp className="h-3 w-3" aria-hidden="true" />
+                  <TrendingUp className="h-3 w-3" />
                 )}
                 {changePct > 0 ? "+" : ""}
                 {changePct}%
               </span>
             </div>
           </div>
-          <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-leaf/10 px-2.5 py-1 text-[11px] font-black text-leaf">
-            <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-leaf opacity-60 motion-reduce:hidden" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-leaf" />
-            </span>
-            السوق مباشر
+          <span className="inline-flex shrink-0 items-center gap-1 rounded-lg bg-emerald-50 px-2 py-1 text-[11px] font-bold text-emerald-700">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> السوق مباشر
           </span>
         </div>
 
-        {/* A frame the line can fill, rather than a tall box with a line in it. */}
-        <div className="-mx-1 mt-3 h-[132px]">
-          <Suspense
-            fallback={
-              <div className="flex h-full items-center justify-center text-muted-foreground">
-                <Loader2 className="h-4 w-4 animate-spin motion-reduce:animate-none" />
-              </div>
-            }
-          >
-            <BananaPriceChart data={snapshot?.chart ?? []} tooltip={<PriceTooltip />} />
-          </Suspense>
-        </div>
-
-        {/* One control with five segments, not five pills that drift apart. */}
-        <div
-          role="group"
-          aria-label="مدة الرسم البياني"
-          className="mt-3 flex gap-0.5 rounded-2xl bg-muted/70 p-1"
-        >
+        <div className="mt-3 flex gap-1 overflow-x-auto">
           {RANGES.map((option) => (
             <button
               key={option}
               type="button"
-              onClick={() => {
-                playSound("klick", 0.4);
-                setRange(option);
-              }}
+              onClick={() => setRange(option)}
               aria-pressed={range === option}
-              className={`min-h-11 flex-1 rounded-xl text-[12px] font-black tabular-nums transition-colors ${
+              className={`min-h-[36px] shrink-0 rounded-xl px-3 text-xs font-bold tabular-nums transition ${
                 range === option
-                  ? "bg-card text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-foreground text-background"
+                  : "bg-muted/60 text-muted-foreground"
               }`}
             >
               {option}
             </button>
           ))}
         </div>
+
+        <div className="mt-2 h-40">
+          <Suspense
+            fallback={
+              <div className="flex h-full items-center justify-center text-muted-foreground">
+                <Loader2 className="h-4 w-4 animate-spin" />
+              </div>
+            }
+          >
+            <BananaPriceChart data={snapshot?.chart ?? []} tooltip={<PriceTooltip />} />
+          </Suspense>
+        </div>
       </section>
 
-      {/* ──────────────────────────── Actions ────────────────────────────
-          Three doors of equal width and equal weight. The one that spends
-          nothing and earns dinars is filled rather than shaped differently. */}
-      <div
-        role="group"
-        aria-label="إجراءات السوق"
-        className="mt-4 grid grid-cols-3 gap-1 rounded-2xl border border-border bg-card p-1"
-      >
+      {/* ──────────────────────────── Actions ───────────────────────────── */}
+      <div className="mt-3 grid grid-cols-3 gap-2">
         <button
           type="button"
-          onClick={() => {
-            playSound("klick", 0.45);
-            setSellOpen(true);
-          }}
-          className="min-h-12 rounded-xl bg-banana text-[13px] font-black text-banana-ink transition-colors active:bg-peel"
+          onClick={() => setSellOpen(true)}
+          className="min-h-[52px] rounded-2xl bg-foreground text-sm font-extrabold text-background"
         >
           بيع الموز
         </button>
         <button
           type="button"
-          onClick={() => {
-            playSound("klick", 0.45);
-            scrollTo(ticketsRef);
-          }}
-          className="min-h-12 rounded-xl text-[13px] font-black text-foreground transition-colors hover:bg-muted/70"
+          onClick={() => scrollTo(ticketsRef)}
+          className="min-h-[52px] rounded-2xl border border-border bg-card text-sm font-extrabold text-foreground"
         >
           التذاكر
         </button>
         <button
           type="button"
-          onClick={() => {
-            playSound("klick", 0.45);
-            scrollTo(rewardsRef);
-          }}
-          className="min-h-12 rounded-xl text-[13px] font-black text-foreground transition-colors hover:bg-muted/70"
+          onClick={() => scrollTo(rewardsRef)}
+          className="min-h-[52px] rounded-2xl border border-border bg-card text-sm font-extrabold text-foreground"
         >
           الاستبدال
         </button>
       </div>
 
       {/* ───────────────────────── Tickets / roulette ───────────────────── */}
-      <div ref={ticketsRef} className="mt-7 scroll-mt-4">
+      <div ref={ticketsRef} className="scroll-mt-4">
         <TicketShop
           tickets={roulette?.tickets ?? 0}
           bananas={bananas}
           ticketPriceBananas={roulette?.ticketPriceBananas ?? 0}
           onBuy={onBuyTickets}
         />
-        {/* A way out of the section, not a fourth card competing with it. */}
         <Link
           to="/wheel"
-          data-ui-sound="klick"
-          className="mt-2 flex min-h-12 items-center justify-center gap-2 rounded-2xl text-[13px] font-black text-foreground transition-colors hover:bg-muted/60"
+          className="mt-2 flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-border bg-card text-sm font-extrabold text-foreground"
         >
           🎰 افتح الروليت
           {roulette?.tickets ? (
-            /* The count reads LTR; the word it counts stays in the sentence. */
-            <span className="rounded-lg bg-muted px-2 py-0.5 text-[12px] font-bold">
-              <span dir="ltr" className="tabular-nums">
-                {roulette.tickets}
-              </span>{" "}
-              تذكرة
+            <span dir="ltr" className="rounded-lg bg-muted px-2 py-0.5 text-xs tabular-nums">
+              {roulette.tickets} تذكرة
             </span>
           ) : null}
-          <ArrowLeft className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
         </Link>
       </div>
 
       {/* ──────────────────────────── Rewards ───────────────────────────── */}
-      <div ref={rewardsRef} className="mt-7 scroll-mt-4">
+      <div ref={rewardsRef} className="scroll-mt-4">
         <RewardsShelf rewards={rewards} bananas={bananas} onRedeem={onRedeem} />
       </div>
 
       {!user ? (
-        <p className="mt-6 text-center text-[12px] font-bold text-muted-foreground">
+        <p className="mt-4 rounded-2xl bg-muted/50 p-3 text-center text-xs text-muted-foreground">
           سجّل الدخول لتتمكن من البيع والاستبدال.
         </p>
       ) : null}
 
       {isPending && !snapshot ? (
         <div className="mt-6 flex justify-center text-muted-foreground">
-          <Loader2 className="h-5 w-5 animate-spin motion-reduce:animate-none" />
+          <Loader2 className="h-5 w-5 animate-spin" />
         </div>
       ) : null}
 
@@ -401,12 +337,7 @@ function BananaMarketPage() {
         minQuantity={snapshot?.minSellQuantity ?? 100}
         onSell={async (quantity, requestId) => {
           const answer = await onSell(quantity, requestId);
-          if (answer.ok) {
-            playSound("bumper_end", 0.6);
-            toast.success("تم البيع ✅");
-          } else {
-            playSound("error", 0.5);
-          }
+          if (answer.ok) toast.success("تم البيع ✅");
           return answer;
         }}
       />

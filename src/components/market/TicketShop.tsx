@@ -14,8 +14,7 @@ import { tr } from "@/i18n";
  *
  * 1. It offered a purchase only to a member holding zero tickets, and only one
  *    at a time. So the balance is shown first, always, and the quantity is the
- *    member's to choose — the stepper for a nudge, three presets for the
- *    amounts anyone actually buys, the field for everything up to 100.
+ *    member's to choose — 1..10 in one tap, anything up to 100 by typing.
  * 2. The cap is 100 because `buyTickets` in `src/lib/wheel.server.ts` refuses
  *    anything above it. A field that lets a member ask for 500 is a field that
  *    invites a refusal the shop could have prevented.
@@ -42,16 +41,8 @@ export interface TicketShopProps {
 /** The ceiling `buyTickets` enforces; asking for more is a guaranteed refusal. */
 const MAX_PER_PURCHASE = 100;
 
-/**
- * The amounts worth one tap.
- *
- * This was every number from one to ten: a five-by-two wall of identical
- * buttons above a stepper that could already reach all ten. Ten choices is not
- * a choice, it is a wall — and «7» is nobody's intention. One, five and ten are
- * the amounts a person means; everything between them is a nudge on the
- * stepper, and everything above is typed.
- */
-const QUICK_QUANTITIES = [1, 5, 10] as const;
+/** One tap for the common amounts, the field for everything else. */
+const QUICK_QUANTITIES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const;
 
 /** Same reasoning as the sell sheet: one id per press, and no dependency on `crypto.randomUUID`. */
 function newRequestId(): string {
@@ -137,7 +128,7 @@ export function TicketShop({ tickets, bananas, ticketPriceBananas, onBuy }: Tick
     <section
       dir="rtl"
       aria-labelledby={`${inputId}-title`}
-      className="rounded-3xl border border-border bg-card p-4 text-foreground sm:p-5"
+      className="rounded-2xl border border-border bg-card p-4 text-foreground sm:p-5"
     >
       <header className="flex flex-wrap items-center justify-between gap-2">
         <div className="min-w-0">
@@ -156,8 +147,8 @@ export function TicketShop({ tickets, bananas, ticketPriceBananas, onBuy }: Tick
           Balance حقيقي» — the screen it replaces showed a purchase button and
           left the member to guess how many tickets they were holding.
         */}
-        <p className="flex shrink-0 items-center gap-1.5 rounded-full border border-banana/30 bg-banana/15 px-3 py-1.5 text-[12px] font-black text-foreground">
-          <Ticket className="h-4 w-4 text-peel" aria-hidden="true" />
+        <p className="flex shrink-0 items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1.5 text-[12px] font-black text-foreground">
+          <Ticket className="h-4 w-4 text-amber-500" aria-hidden="true" />
           <span dir="ltr" className="tabular-nums">
             {tickets.toLocaleString("en-US")}
           </span>
@@ -166,7 +157,7 @@ export function TicketShop({ tickets, bananas, ticketPriceBananas, onBuy }: Tick
       </header>
 
       {!forSale ? (
-        <p className="mt-4 text-[12.5px] font-bold leading-relaxed text-muted-foreground">
+        <p className="mt-4 rounded-2xl border border-border bg-muted/40 p-4 text-[12.5px] font-bold leading-relaxed text-muted-foreground">
           {tr(
             "لم يحدّد المتجر سعر التذكرة بعد، فالشراء مغلق حالياً. تابع الصفحة — سيظهر السعر هنا فور تحديده.",
           )}
@@ -200,7 +191,6 @@ export function TicketShop({ tickets, bananas, ticketPriceBananas, onBuy }: Tick
                 type="button"
                 onClick={() => step(-1)}
                 disabled={pending}
-                data-ui-sound="klick"
                 aria-label={tr("إنقاص")}
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-border bg-muted/40 text-foreground transition-transform active:scale-95 disabled:opacity-50"
               >
@@ -216,13 +206,12 @@ export function TicketShop({ tickets, bananas, ticketPriceBananas, onBuy }: Tick
                 autoComplete="off"
                 dir="ltr"
                 aria-invalid={problem !== ""}
-                className="h-12 min-w-0 flex-1 rounded-2xl border border-border bg-background px-3 text-center text-[17px] font-black tabular-nums text-foreground outline-none focus:border-banana disabled:opacity-60"
+                className="h-12 min-w-0 flex-1 rounded-2xl border border-border bg-background px-3 text-center text-[17px] font-black tabular-nums text-foreground outline-none focus:border-amber-500 disabled:opacity-60"
               />
               <button
                 type="button"
                 onClick={() => step(1)}
                 disabled={pending}
-                data-ui-sound="klick"
                 aria-label={tr("زيادة")}
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-border bg-muted/40 text-foreground transition-transform active:scale-95 disabled:opacity-50"
               >
@@ -231,20 +220,19 @@ export function TicketShop({ tickets, bananas, ticketPriceBananas, onBuy }: Tick
             </div>
           </div>
 
-          {/* Three amounts a person actually means, in one row at 320px. */}
-          <div className="grid grid-cols-3 gap-2">
+          {/* Five per row at 320px: ten chips that never push the page sideways. */}
+          <div className="grid grid-cols-5 gap-2">
             {QUICK_QUANTITIES.map((count) => (
               <button
                 key={count}
                 type="button"
                 disabled={pending}
-                data-ui-sound="klick"
                 onClick={() => changeQuantity(String(count))}
                 aria-pressed={valid && quantity === count}
                 className={`min-h-11 rounded-2xl border px-1 text-[13px] font-black tabular-nums transition-transform active:scale-95 disabled:opacity-50 ${
                   valid && quantity === count
-                    ? "border-banana bg-banana/15 text-foreground"
-                    : "border-border bg-muted/40 text-foreground hover:border-banana/60"
+                    ? "border-amber-500 bg-amber-500/15 text-foreground"
+                    : "border-border bg-muted/40 text-foreground hover:border-amber-500/60"
                 }`}
               >
                 {count}
@@ -253,35 +241,31 @@ export function TicketShop({ tickets, bananas, ticketPriceBananas, onBuy }: Tick
           </div>
 
           {problem ? (
-            <p className="text-[12px] font-bold leading-relaxed text-rind">{problem}</p>
+            <p className="text-[12px] font-bold leading-relaxed text-red-500">{problem}</p>
           ) : null}
 
-          {/*
-            The total, live, in the currency this shop actually charges: bananas.
-            A hairline rather than a card: this is the bottom of the same
-            thought, not a second one sitting inside it.
-          */}
+          {/* The total, live, in the currency this shop actually charges: bananas. */}
           {valid && quantity !== null ? (
-            <div aria-live="polite" className="border-t border-border pt-3">
-              <p className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 text-[13px] font-bold text-foreground">
-                <span className="text-muted-foreground">{tr("الإجمالي")}</span>
-                <span className="flex flex-wrap items-center gap-x-1.5">
-                  <span dir="ltr" className="tabular-nums">
-                    {quantity.toLocaleString("en-US")}
-                  </span>
-                  <span>{tr("تذكرة")}</span>
-                  <span aria-hidden="true">×</span>
-                  <span dir="ltr" className="tabular-nums">
-                    {ticketPriceBananas.toLocaleString("en-US")}
-                  </span>
-                  <span aria-hidden="true">=</span>
-                  <span dir="ltr" className="tabular-nums text-[15px] font-black">
-                    {cost.toLocaleString("en-US")}
-                  </span>
-                  <span>{tr("موزة")}</span>
+            <div
+              aria-live="polite"
+              className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-3.5"
+            >
+              <p className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-center text-[13px] font-bold text-foreground">
+                <span dir="ltr" className="tabular-nums">
+                  {quantity.toLocaleString("en-US")}
                 </span>
+                <span>{tr("تذكرة")}</span>
+                <span>×</span>
+                <span dir="ltr" className="tabular-nums">
+                  {ticketPriceBananas.toLocaleString("en-US")}
+                </span>
+                <span>=</span>
+                <span dir="ltr" className="tabular-nums font-black">
+                  {cost.toLocaleString("en-US")}
+                </span>
+                <span>{tr("موزة")}</span>
               </p>
-              <p className="mt-1.5 text-[12px] font-bold text-muted-foreground">
+              <p className="mt-2 border-t border-amber-500/20 pt-2 text-center text-[12px] font-bold text-muted-foreground">
                 {affordable ? (
                   <>
                     {tr("رصيدك بعد الشراء")}{" "}
@@ -291,7 +275,7 @@ export function TicketShop({ tickets, bananas, ticketPriceBananas, onBuy }: Tick
                     {tr("موزة")}
                   </>
                 ) : (
-                  <span className="font-bold text-rind">
+                  <span className="font-bold text-red-500">
                     {tr("رصيد الموز لا يكفي — ينقصك")}{" "}
                     <span dir="ltr" className="tabular-nums font-black">
                       {short.toLocaleString("en-US")}
@@ -304,7 +288,7 @@ export function TicketShop({ tickets, bananas, ticketPriceBananas, onBuy }: Tick
           ) : null}
 
           {bought ? (
-            <p className="text-[12.5px] font-bold leading-relaxed text-leaf">
+            <p className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-3 text-[12.5px] font-bold leading-relaxed text-emerald-700 dark:text-emerald-300">
               {tr("تمت إضافة")}{" "}
               <span dir="ltr" className="tabular-nums">
                 {bought.quantity.toLocaleString("en-US")}
@@ -318,15 +302,16 @@ export function TicketShop({ tickets, bananas, ticketPriceBananas, onBuy }: Tick
           ) : null}
 
           {error ? (
-            <p className="text-[12px] font-bold leading-relaxed text-rind">{error}</p>
+            <p className="rounded-2xl border border-red-500/30 bg-red-500/10 p-3 text-[12px] font-bold leading-relaxed text-red-600 dark:text-red-300">
+              {error}
+            </p>
           ) : null}
 
           <button
             type="button"
             onClick={() => void submit()}
             disabled={!canBuy}
-            data-ui-sound="klick"
-            className="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-banana px-4 py-3 text-[14px] font-black text-banana-ink transition-colors active:bg-peel disabled:opacity-50"
+            className="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-foreground px-4 py-3 text-[14px] font-black text-background transition-transform active:scale-[0.98] disabled:opacity-50"
           >
             {pending ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : null}
             {tr("اشترِ التذاكر")}

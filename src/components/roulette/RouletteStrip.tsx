@@ -4,7 +4,6 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { tr } from "@/i18n";
 import { cdnImage } from "@/lib/img";
 import { cn } from "@/lib/utils";
-import { playSound } from "@/utils/audio";
 
 /**
  * الروليت الأفقي — the case-opening strip that replaces the circular wheel.
@@ -66,23 +65,6 @@ import { playSound } from "@/utils/audio";
  * lands on identical pixels, so the loop has no visible beginning or end — and
  * a pool of four hundred games still mounts about twenty tiles and requests
  * about twenty pictures.
- *
- * ## The sound is the geometry, not a soundtrack
- *
- * There is no spin sample and none is invented: the reel is scored out of the
- * shop's existing UI library. One `klick` as each card's centre crosses the
- * pointer — which is a fact the run already knows, since the offset and the
- * step are both in hand every frame — and one `loading` on a channel of its
- * own so the verdict can take that channel and cut the hum off under itself.
- *
- * Two rules hold it in place. It is never awaited and never gates a frame:
- * `playSound` returns immediately and swallows its own failures, so a browser
- * with no AudioContext animates exactly as one with speakers. And a reader who
- * asked for less motion gets no travel, therefore no crossings, therefore
- * silence — the reduced-motion path returns before a flight exists, so there
- * is nothing to make a noise about. The engine's own 40ms global gate and 35ms
- * per-name dedupe are left alone: a fast reel simply thins its own ticks out,
- * which is what a real ratchet does anyway.
  */
 
 export interface RouletteCard {
@@ -128,37 +110,6 @@ const PROVISIONAL_VISIBLE = 5;
 /** Cards held beyond the visible run, so neither edge of the strip is ever bare. */
 const MARGIN_CARDS = 6;
 
-/**
- * The channel the run's hum owns.
- *
- * Exported because the verdict has to land on the SAME channel: playing there
- * is the only way to stop what is already playing, and a win chime over a
- * still-running hum is two sounds where the member expects one.
- */
-export const ROULETTE_SOUND_CHANNEL = "roulette-run";
-/** Quiet on purpose — dozens of these fire in one run. */
-const TICK_VOLUME = 0.25;
-/** The hum under the travel; it is background, not an event. */
-const RUN_VOLUME = 0.35;
-/**
- * Ticks stop before the reel does.
- *
- * The last stretch of `easeOutQuint` crawls, so a crossing there would land
- * inside the engine's 40ms global gate and eat the verdict that follows it.
- * The reel is barely moving by then and the silence reads as the stop.
- */
-const TICK_UNTIL_PROGRESS = 0.9;
-
-/**
- * The fade at both ends, as a mask rather than a pair of gradient plates.
- *
- * A plate painted in the track's own colour only works while the track has one
- * flat colour behind it; a mask removes the pixels, so cards enter and leave
- * whatever the surface underneath happens to be in the member's theme pack.
- */
-const EDGE_FADE =
-  "linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%)";
-
 type Phase = "idle" | "running" | "settled";
 
 interface StripMetrics {
@@ -192,18 +143,6 @@ interface FlightPlan {
   from: number;
   to: number;
   startedAt: number | null;
-  /**
-   * The geometry the ticking needs, frozen at the moment the run was planned —
-   * the same measurement the landing was derived from, so a card is counted as
-   * crossed by exactly the arithmetic that decides where it stops.
-   */
-  step: number;
-  /** Offset at which card 0 sits on the pointer; crossings count down from it. */
-  origin: number;
-  /** The last card index counted past, so one crossing makes one sound. */
-  tick: number;
-  /** False when the run made no noise to begin with — reduced motion. */
-  sound: boolean;
 }
 
 const INITIAL_METRICS: StripMetrics = {
@@ -423,20 +362,6 @@ export function RouletteStrip({
           return;
         }
         offsetRef.current = flight.from + (flight.to - flight.from) * easeOutQuint(progress);
-
-        /*
-          One card, one klick. `origin - offset` is how far the ribbon has
-          travelled past the pointer in pixels; divided by the step it is the
-          index standing on the pointer, and it only ever goes up.
-        */
-        if (flight.sound && flight.step > 0 && progress < TICK_UNTIL_PROGRESS) {
-          const crossed = Math.floor((flight.origin - offsetRef.current) / flight.step);
-          if (crossed !== flight.tick) {
-            flight.tick = crossed;
-            // Fire-and-forget by contract: never awaited, never allowed to throw.
-            playSound("klick", TICK_VOLUME);
-          }
-        }
       } else {
         if (lastFrameRef.current === null) lastFrameRef.current = timestamp;
         // Clamped, so a backgrounded tab does not resume with one enormous jump.
@@ -583,26 +508,7 @@ export function RouletteStrip({
       return;
     }
 
-    /*
-      The same three numbers the landing was computed from, kept so the ticking
-      counts the cards the run is actually passing rather than a re-measurement
-      taken mid-flight.
-    */
-    const step = measured.step > 0 ? measured.step : FALLBACK_STEP_PX;
-    const origin = measured.container / 2 - measured.lead - measured.card / 2;
-
-    flightRef.current = {
-      runId: outcome.runId,
-      from,
-      to: plan.target,
-      startedAt: null,
-      step,
-      origin,
-      tick: Math.floor((origin - from) / step),
-      sound: true,
-    };
-    // The hum starts with the travel and is cut off by whatever verdict follows.
-    playSound("loading", RUN_VOLUME, false, ROULETTE_SOUND_CHANNEL);
+    flightRef.current = { runId: outcome.runId, from, to: plan.target, startedAt: null };
     setPhase("running");
   }, [outcome, applyOffset, finish]);
 
@@ -625,107 +531,84 @@ export function RouletteStrip({
         dir="ltr"
         aria-label={tr("شريط الجوائز")}
         role="img"
-        /*
-          An inset track rather than another card. The ribbon is a slot the page
-          looks INTO — a raised panel of the same colour as everything around it
-          gave the cards nothing to sit in, which is half of why the reel read
-          as a loose row of pictures.
-        */
-        className={cn(
-          "relative w-full max-w-full overflow-hidden rounded-2xl border bg-muted/40 py-3 transition-colors",
-          phase === "settled" && run?.prize ? "border-peel" : "border-border",
-        )}
-        /*
-          A flat alpha rather than a themed token: an inset well is a shadow in
-          every pack, and `--ink` flips to a light colour on the dark ones,
-          where it would have lit the track from the inside instead.
-        */
-        style={{ boxShadow: "inset 0 2px 10px -4px rgb(0 0 0 / 0.22)" }}
+        className="relative w-full max-w-full overflow-hidden rounded-2xl border border-border bg-card py-3"
       >
-        {/*
-          The mask lives on a wrapper, never on the track: a mask on the track
-          would travel with its transform and the fade would slide off the edge.
-        */}
         <div
-          className="relative overflow-hidden"
-          style={{ maskImage: EDGE_FADE, WebkitMaskImage: EDGE_FADE }}
-        >
-          <div
-            ref={trackRef}
-            data-roulette-track=""
-            className={cn(
-              "flex w-max gap-2.5 will-change-transform motion-reduce:transition-opacity motion-reduce:duration-200",
-              landing ? "opacity-60" : "opacity-100",
-            )}
-          >
-            {sequence.map((card, index) => {
-              const hasPicture = card.image !== null && !broken[card.id];
-              const isPrize = index === prizeIndex;
-              return (
-                <div
-                  key={`${index}-${card.id}`}
-                  data-roulette-card=""
-                  data-card-id={card.id}
-                  data-card-index={index}
-                  className="w-[84px] shrink-0 sm:w-[104px] md:w-[116px]"
-                >
-                  <div
-                    className={cn(
-                      "aspect-square w-full overflow-hidden rounded-xl border bg-card shadow-sm",
-                      isPrize ? "border-peel ring-2 ring-banana/60" : "border-border/70",
-                    )}
-                  >
-                    {hasPicture ? (
-                      <img
-                        src={cdnImage(card.image, { width: 240 })}
-                        alt=""
-                        loading="lazy"
-                        decoding="async"
-                        draggable={false}
-                        onError={() => setBroken((current) => ({ ...current, [card.id]: true }))}
-                        className="h-full w-full object-cover"
-                      />
-                    ) : (
-                      /*
-                        «لا تعرض صورة لعبة أخرى» — a game with no artwork gets its
-                        own name on a plain tile and nothing else. Borrowing a
-                        neighbour's picture would be the strip telling the member
-                        they are looking at a game they are not. It is a designed
-                        tile rather than a hole: same square, same corners, the
-                        name set as the whole of it.
-                      */
-                      <span className="flex h-full w-full items-center justify-center bg-secondary px-1.5 text-center">
-                        <span className="line-clamp-3 text-[10.5px] font-bold leading-tight text-foreground/75">
-                          {card.title}
-                        </span>
-                      </span>
-                    )}
-                  </div>
-                  {/*
-                    «اسم اللعبة أسفلها». The tile already carries the name when it
-                    had no picture to show, so the slot is held open rather than
-                    printing it twice — the cards stay the same height either way.
-                  */}
-                  <p className="mt-1.5 h-[14px] truncate text-center text-[10.5px] font-bold leading-[14px] text-foreground">
-                    {hasPicture ? card.title : ""}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-card to-transparent sm:w-12"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-card to-transparent sm:w-12"
+        />
+
+        {/* المؤشر الثابت في الوسط. Decorative: the answer is the card, not the arrow. */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-1/2 z-20">
+          <span className="absolute left-1/2 top-0 h-0 w-0 -translate-x-1/2 border-x-[7px] border-t-[9px] border-x-transparent border-t-amber-500" />
+          <span className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 rounded-full bg-amber-500/60" />
+          <span className="absolute bottom-0 left-1/2 h-0 w-0 -translate-x-1/2 border-x-[7px] border-b-[9px] border-x-transparent border-b-amber-500" />
         </div>
 
-        {/*
-          المؤشر الثابت في الوسط — a solid marker top and bottom and a window
-          the width of one card between them, painted over the mask rather than
-          under it. A hairline was easy to miss on a moving ribbon, which is the
-          other half of why the reel read as unframed. Decorative throughout:
-          the answer is the card, not the arrow.
-        */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-1/2 z-20">
-          <span className="absolute inset-y-1.5 left-1/2 w-[92px] -translate-x-1/2 rounded-xl border-2 border-banana/70 sm:w-[112px] md:w-[124px]" />
-          <span className="absolute left-1/2 top-0 h-0 w-0 -translate-x-1/2 border-x-[9px] border-t-[12px] border-x-transparent border-t-peel" />
-          <span className="absolute bottom-0 left-1/2 h-0 w-0 -translate-x-1/2 border-x-[9px] border-b-[12px] border-x-transparent border-b-peel" />
+        <div
+          ref={trackRef}
+          data-roulette-track=""
+          className={cn(
+            "flex w-max gap-2.5 will-change-transform motion-reduce:transition-opacity motion-reduce:duration-200",
+            landing ? "opacity-60" : "opacity-100",
+          )}
+        >
+          {sequence.map((card, index) => {
+            const hasPicture = card.image !== null && !broken[card.id];
+            const isPrize = index === prizeIndex;
+            return (
+              <div
+                key={`${index}-${card.id}`}
+                data-roulette-card=""
+                data-card-id={card.id}
+                data-card-index={index}
+                className="w-[84px] shrink-0 sm:w-[104px] md:w-[116px]"
+              >
+                <div
+                  className={cn(
+                    "aspect-square w-full overflow-hidden rounded-xl border bg-muted/40",
+                    isPrize ? "border-amber-500 ring-2 ring-amber-500/40" : "border-border",
+                  )}
+                >
+                  {hasPicture ? (
+                    <img
+                      src={cdnImage(card.image, { width: 240 })}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      draggable={false}
+                      onError={() => setBroken((current) => ({ ...current, [card.id]: true }))}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    /*
+                      «لا تعرض صورة لعبة أخرى» — a game with no artwork gets its
+                      own name on a plain tile and nothing else. Borrowing a
+                      neighbour's picture would be the strip telling the member
+                      they are looking at a game they are not.
+                    */
+                    <span className="flex h-full w-full items-center justify-center px-1.5 text-center">
+                      <span className="line-clamp-3 text-[10.5px] font-bold leading-tight text-muted-foreground">
+                        {card.title}
+                      </span>
+                    </span>
+                  )}
+                </div>
+                {/*
+                  «اسم اللعبة أسفلها». The tile already carries the name when it
+                  had no picture to show, so the slot is held open rather than
+                  printing it twice — the cards stay the same height either way.
+                */}
+                <p className="mt-1.5 h-[14px] truncate text-center text-[10.5px] font-bold leading-[14px] text-foreground">
+                  {hasPicture ? card.title : ""}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
