@@ -250,11 +250,31 @@ const FAMOUS = (() => {
   return [...source.matchAll(/^\s*"([a-z0-9 ]+)",/gm)].map((m) => m[1]);
 })();
 
-/* The same shape `comparableTitle` reduces a title to, so `includes` matches. */
+/*
+  The same shape `comparableTitle` reduces a title to, so `includes` matches.
+
+  THE DIACRITIC IS NOT A DETAIL. The first version lowercased and replaced
+  anything outside `[a-z0-9]` with a space, which turns «Pokémon» into
+  «pok mon» — so three of the most famous games on the shelf came back
+  «not on the best-seller list» while sitting in exactly the right place in it.
+  The site folds `é` to `e` before comparing; a checker that does not will
+  always undercount, and an undercount reads as a fault in the shelf.
+
+  `switch 1` and the edition suffixes go the same way `comparableTitle` sends
+  them: they are shop bookkeeping, not part of a game's name.
+*/
 const comparable = (text) =>
   String(text)
     .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[̀-ͯ]/g, "")
     .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\bnintendo switch 2 edition\b|\bnintendo switch edition\b/g, " ")
+    .replace(/\bswitch 2 edition\b|\bswitch edition\b/g, " ")
+    .replace(/\bnintendo switch 2\b|\bnintendo switch\b/g, " ")
+    .replace(/\bswitch 2\b|\bswitch 1\b|\bswitch\b/g, " ")
+    .replace(/\bthe legend of zelda\b/g, "zelda")
+    .replace(/\s+/g, " ")
     .trim();
 
 const shelf = await (async () => {
@@ -294,15 +314,24 @@ if (FAMOUS.length === 0) {
   }
   say("");
   /*
-    Two of twelve. About a hundred of the catalogue's ~1,712 games are on the
-    list, so a shelf in a random order would be expected to show under one —
-    two is a signal, and it is low enough not to fail over a day when the
-    owner's own square-image coverage moves the head around. The titles are
-    printed above either way, because the number is not the interesting part.
+    Four of twelve, chosen after measuring rather than before.
+
+    The first reading of the real shelf was TWELVE of twelve — Mario Kart 8
+    Deluxe, Smash Ultimate, both Breath of the Wilds, Odyssey, Sword/Shield,
+    Scarlet, both Tears of the Kingdoms, and the two Mario Partys — which is
+    Nintendo's published sales order, in order. About a hundred of the
+    catalogue's ~1,712 games are on the list, so a shelf in a random order
+    would be expected to show under one.
+
+    Four is therefore three times what a broken sort produces and a third of
+    what a working one does: a regression fails, and a day when square-image
+    coverage reshuffles the head does not. The titles are printed above
+    whatever the number says, because the names are the part a person can
+    actually judge.
   */
   check(
     `شريط Switch يقود بألعاب مشهورة (${ranked.length} من ${head.length})`,
-    ranked.length >= 2,
+    ranked.length >= 4,
     ranked.length ? ranked[0].replace(/\s+/g, " ").trim() : "لا شيء منها على القائمة",
   );
 }
