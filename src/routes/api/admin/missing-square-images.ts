@@ -7,7 +7,67 @@ import { SQUARE_CARD_FIELDS } from "@/lib/nintendoImages";
 import { isGameProduct } from "@/lib/productSection";
 import { requireAdmin } from "@/lib/session.server";
 import { resolveProductImage } from "@/lib/productImages";
+import { hasObject } from "@/lib/storage.server";
 import type { StoreDoc } from "@/lib/types";
+
+/**
+ * Is there actually a file at this URL?
+ *
+ * «بالرغم من رفع الأدمن الصورة المربعة من القسم إلا أنه يظهر في الشاشة
+ *  الرئيسية بدون صورة مربعة» — the owner, describing a picture he had saved
+ * and that the shop would not show.
+ *
+ * The cause is that a stored URL was the only evidence anyone asked for.
+ * `hasNintendoSquareCard` answers "is a URL stored", not "is the file there",
+ * and a row holding a URL that 404s is therefore a row WITH a picture: it
+ * leaves this queue, it sorts to the FRONT of the cartridge shelf ahead of the
+ * games that really have one, and then the card prints «لم يتم إضافة الصورة
+ * بعد». One dead link produces all three symptoms.
+ *
+ * `square-card-verify.mjs` clears the ones already stored. This stops the next
+ * one being stored at all.
+ *
+ * The two kinds of URL are asked in the two different ways that actually
+ * answer:
+ *
+ *   - one this shop serves resolves to an R2 key, so the bucket is asked
+ *     directly — no subrequest, and no chance of a self-call being the thing
+ *     that fails;
+ *   - an external one is asked with a HEAD, briefly. It is given the benefit of
+ *     the doubt on a timeout or a 403: a host that dislikes our HEAD is not the
+ *     same as a missing file, and refusing the admin's work on that would be
+ *     the worse error.
+ *
+ * @returns the reason it cannot be accepted, or null when it can.
+ */
+async function reasonImageIsMissing(imageUrl: string): Promise<string | null> {
+  const local = /^(?:https?:\/\/[^/]+)?\/api\/files\/(.+)$/i.exec(imageUrl);
+  if (local) {
+    const key = `files/${(local[1] ?? "").split(/[?#]/, 1)[0]}`;
+    return (await hasObject(key)) ? null : "الملف غير موجود في التخزين — أعد رفع الصورة";
+  }
+
+  if (!/^https?:\/\//i.test(imageUrl)) {
+    /* A shop-relative path that is not `/api/files/` — nothing here can prove
+       it either way, and inventing a verdict is worse than not having one. */
+    return null;
+  }
+
+  try {
+    const response = await fetch(imageUrl, {
+      method: "HEAD",
+      redirect: "follow",
+      signal: AbortSignal.timeout(6_000),
+    });
+    if (response.status === 404 || response.status === 410) {
+      return `الرابط يجيب ${response.status} — لا توجد صورة هناك`;
+    }
+    return null;
+  } catch {
+    /* Unreachable is not absent. See above. */
+    return null;
+  }
+}
 
 /**
  * The games still waiting for a square card, and a way to give them one.
@@ -103,6 +163,14 @@ export const Route = createFileRoute("/api/admin/missing-square-images")({
           if (!/^(https?:\/\/|\/)/i.test(imageUrl)) {
             return json({ error: "رابط الصورة غير صالح" }, { status: 400 });
           }
+          /*
+            And it must be THERE. A URL that answers 404 is worse than no URL
+            at all — it takes the game off this queue, where somebody would
+            have fixed it, and puts it at the front of the shelf claiming a
+            picture it has not got.
+          */
+          const missing = await reasonImageIsMissing(imageUrl);
+          if (missing) return json({ error: missing }, { status: 400 });
 
           let found = false;
           await updateStore((current: StoreDoc) => {

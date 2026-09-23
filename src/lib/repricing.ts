@@ -99,10 +99,39 @@ export const CHEAP_CEILING = 9_000;
 /** How well known a game is, in the three steps the ladder actually has. */
 export type FameBand = "famous" | "known" | "obscure";
 
+/**
+ * Families the owner priced by name, as `comparableTitle` folds them.
+ *
+ * «دونكي كونك ب٨ الف» names a FAMILY, and `NAMED_PRICES` below deliberately
+ * anchors only one member of it — Bananza — on the reasoning that the sentence
+ * was about Switch 2 games. That reasoning came with a promise, written into
+ * the comment there: the two Switch 1 Donkey Kong titles «settle at 7,000 —
+ * which is his own figure for a Switch 1 game».
+ *
+ * The fame ladder broke that promise. Donkey Kong Country Returns HD and Mario
+ * vs. Donkey Kong are not on `bestSellers.ts`, so they read as «غير مشهورة»
+ * and fall to 5,000 — a game the owner named at 8,000, priced at the bottom
+ * rung. That is the very complaint that produced the ladder, reintroduced by
+ * it.
+ *
+ * So a family he named is not «غير مشهورة» in his shop. This promotes fame,
+ * never price: the rung is still chosen by `cheapRungFor`, the cost split still
+ * outranks it, and the two games land on 7,000 — exactly what the comment
+ * promised. Tropical Freeze is untouched (it is already ranked, and its cost
+ * carries it to 8,000); Bananza is untouched (it is anchored at 8,000).
+ *
+ * A promotion and never a demotion: a game the world's sales already call
+ * famous cannot be pulled down to «معروفة» by appearing here.
+ */
+const OWNER_NAMED_FAMILIES: readonly string[] = ["donkey kong"];
+
 /** The shop's one fame answer, named for what the price ladder calls it. */
 export function fameBandFor(title: unknown, slug?: unknown): FameBand {
   const tier = fameTier(title, slug);
-  return tier === "high" ? "famous" : tier === "medium" ? "known" : "obscure";
+  const band: FameBand = tier === "high" ? "famous" : tier === "medium" ? "known" : "obscure";
+  if (band !== "obscure") return band;
+  const text = comparableTitle(title);
+  return text && OWNER_NAMED_FAMILIES.some((family) => text.includes(family)) ? "known" : "obscure";
 }
 
 /**
@@ -157,6 +186,13 @@ export interface NamedPrice {
  * is what «دونكي كونك ب٨ الف» names in a sentence about Switch 2 games.
  * Tropical Freeze reaches 8,000 on its own cost, and the two Switch 1 titles
  * settle at 7,000 — which is his own figure for a Switch 1 game.
+ *
+ * That last clause is load-bearing, and the fame ladder briefly broke it: the
+ * two Switch 1 titles are not on `bestSellers.ts` and fell to 5,000. They are
+ * held at 7,000 by `OWNER_NAMED_FAMILIES` above rather than by an anchor here,
+ * because an anchor overrides the COST SPLIT — and a `switch1: 7_000` anchor on
+ * the family would drag Tropical Freeze, which costs 2,574, down to 7,000 and
+ * sell it below the owner's own minimum profit.
  */
 export const NAMED_PRICES: Readonly<Record<string, NamedPrice>> = {
   "mario kart world": { both: 9_000 },

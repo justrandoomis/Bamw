@@ -1,0 +1,100 @@
+# Every stored square-card URL, asked whether the file is actually there.
+#
+# Dry run unless `apply` is ticked. Even then the script clears only a URL
+# proved absent twice — a 404 or 410 from a HEAD and again from a GET — refuses
+# the whole run if more than a tenth of everything probed fails to answer
+# properly, and compares every other field of every touched product byte for
+# byte before and after the write.
+#
+# A push runs the dry run only: `apply` is a dispatch input and there is no path
+# from a push to a write.
+name: Square card links
+
+run-name: Square card links — ${{ inputs.apply && 'APPLY' || 'dry run' }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Clear the dead links. Leave off for a dry run."
+        type: boolean
+        default: false
+      only:
+        description: "One product id, to try a single row first"
+        type: string
+        default: ""
+      limit:
+        description: "Check at most this many products (blank = all)"
+        type: string
+        default: ""
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/square-card-verify.yml
+      - scripts/square-card-verify.mjs
+      - scripts/lib/square-card-verify-entry.ts
+
+permissions:
+  contents: read
+
+# Never two at once, and never cancelled half-way: a cancelled run could leave
+# the store document written and the read-back verification unperformed.
+concurrency:
+  group: square-card-verify
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+
+      # The verdict rules decide what gets erased. A run that would clear links
+      # while their own tests fail is a run that must not start.
+      - name: The verdict rules must pass their tests first
+        run: npx vitest run "scripts/-a-dead-link-is-not-a-blocked-runner.test.mjs"
+
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+
+      - name: Verify
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          APPLY: ${{ inputs.apply && '--apply' || '' }}
+          ONLY: ${{ inputs.only }}
+          LIMIT: ${{ inputs.limit }}
+        run: |
+          node scripts/square-card-verify.mjs $APPLY \
+            ${ONLY:+--only "$ONLY"} \
+            ${LIMIT:+--limit "$LIMIT"} \
+            --json square-card-verify.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: square-card-verify
+          path: square-card-verify.json
+
+      # LAST in the log, deliberately — the same reason `reprice.yml` ends this
+      # way. A job log is read as a tail, and the upload step prints thirty
+      # lines of its own after the script finishes, so the table of dead links
+      # and the counts scrolled out of reach.
+      - name: The numbers, last in the log
+        if: always()
+        run: tail -c 8000 "$GITHUB_STEP_SUMMARY" || true

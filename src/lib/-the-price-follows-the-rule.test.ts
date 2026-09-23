@@ -297,18 +297,37 @@ describe("«بحد اقصى ٩ الف» — the ceiling the owner lowered", () =
       one of the four Donkey Kong titles is his, and the other three are the
       rules' business.
 
-      THE NUMBERS UNDER THE RULES MOVED, and only for the two that the sales
-      list does not rank. They used to take the flat Switch 1 figure of 7,000,
-      because generation was the only thing the band could see; under «٥ اغلبها
-      وأكثرها ... ٧ متوسط» they are «أغلب», so 5,000. Tropical Freeze is rank 30
-      and is in the dear band anyway: its cost of 2,574 still requires 8,000, and
-      its fame rung of 7,000 cannot pull that down — «اجعل الربح اقل شي هو 5000»
-      outranks fame in that band.
+      ## ADAPTED TWICE, AND THE SECOND TIME WAS A CORRECTION OF THE FIRST
+
+      When the fame ladder landed, this test was changed to expect 5,000 for the
+      two titles the sales list does not rank, reasoning that under «٥ اغلبها
+      وأكثرها ... ٧ متوسط» they are «أغلب». The dry run against the live
+      catalogue is what showed that to be wrong, and it is worth stating plainly
+      rather than quietly editing the number back:
+
+        | Donkey Kong Country Returns HD | دونكي كونك — ٨ | 7,000 | 5,000 |
+        | Mario vs. Donkey Kong          | دونكي كونك — ٨ | 7,000 | 5,000 |
+
+      Two games the owner had named at ٨، on their way DOWN to the bottom rung,
+      in the very change whose purpose was «ألعاب ... مشهورة جدا لكن سعرها خمسة
+      آلاف بدل ٨ و ٧». The rule had reproduced the complaint it was written to
+      answer.
+
+      `NAMED_PRICES` had also promised, in its own comment, that these two
+      «settle at 7,000 — which is his own figure for a Switch 1 game». They are
+      held there now by `OWNER_NAMED_FAMILIES`, which raises FAME and never
+      price: a family he priced by name is not «غير مشهورة» in his shop. It is
+      not an anchor, because an anchor overrides the cost split and would have
+      dragged Tropical Freeze down to 7,000 — below his own minimum profit.
+
+      Tropical Freeze is rank 30 and is in the dear band anyway: its cost of
+      2,574 still requires 8,000, and its fame rung of 7,000 cannot pull that
+      down — «اجعل الربح اقل شي هو 5000» outranks fame in that band.
     */
     expect(priceOf({ title: "Donkey Kong Country Returns HD", cost: 1_927.2, price: 11_000 })).toBe(
-      5_000,
+      7_000,
     );
-    expect(priceOf({ title: "Mario vs. Donkey Kong", cost: 1_500, price: 11_000 })).toBe(5_000);
+    expect(priceOf({ title: "Mario vs. Donkey Kong", cost: 1_500, price: 11_000 })).toBe(7_000);
     expect(
       priceOf({ title: "Donkey Kong Country: Tropical Freeze", cost: 2_574, price: 12_000 }),
     ).toBe(8_000);

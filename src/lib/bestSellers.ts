@@ -163,9 +163,35 @@ const THIRD_PARTY: readonly string[] = [
  *
  * `normalize` is the search engine's own function, so a title folds here
  * exactly as it folds when a customer types it.
+ *
+ * ## THE APOSTROPHE IS REMOVED FIRST, AND SIX OF THE BIGGEST GAMES DEPENDED ON IT
+ *
+ * `normalize` turns everything that is not a letter or a digit into a SPACE.
+ * That is right for a search box — «Mario+Rabbids» and «Mario Rabbids» are the
+ * same query — and it is wrong inside a word: «Luigi's Mansion 3» folded to
+ * «luigi s mansion 3», which does not contain the list's «luigis mansion 3».
+ *
+ * So the key never matched, and the fourth best-selling exclusive in this shop
+ * was ranked UNRANKED. Six keys were dead this way, every one of them in the
+ * head of the list: Let's Go Pikachu (~16.0M), Let's Go Eevee, Luigi's Mansion
+ * 3 (~14.7M), Bowser's Fury (~14.0M), Link's Awakening (~6.3M) and Yoshi's
+ * Crafted World (~3.0M).
+ *
+ * That is not a cosmetic miss. This function decides the home shelf's order,
+ * the roulette's odds and — since the fame ladder — the PRICE. The owner
+ * reported the symptom before anyone found the cause: «هنالك ألعاب قوية وسعرها
+ * غالي وفي نفس الوقت مشهورة جدا لكن سعرها خمسة آلاف». Luigi's Mansion 3 at
+ * 5,000 is exactly that sentence.
+ *
+ * Removed rather than replaced with a space, because an apostrophe inside an
+ * English word is not a word boundary. `normalize` itself is left alone: it
+ * backs the persisted search index, and changing it would need a reindex.
  */
+/** Every apostrophe a title is typed with — straight, curly, modifier, accent. */
+const APOSTROPHES = /['\u2018\u2019\u02BC\u00B4`\uFF07]/g;
+
 export function comparableTitle(title: unknown): string {
-  return normalize(String(title ?? ""))
+  return normalize(String(title ?? "").replace(APOSTROPHES, ""))
     .replace(/\bnintendo switch 2 edition\b/g, " ")
     .replace(/\bnintendo switch edition\b/g, " ")
     .replace(/\bswitch 2 edition\b/g, " ")
