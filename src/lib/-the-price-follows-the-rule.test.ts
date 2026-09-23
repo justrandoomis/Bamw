@@ -336,11 +336,47 @@ describe("«لتكون ولتبدو ارخص للزبون» — the prices that 
     expect(priceOf({ price: 6_250 })).toBe(5_000);
     expect(priceOf({ price: 5_900 })).toBe(5_000);
     expect(priceOf({ title: FAMOUS, price: 6_250 })).toBe(7_000);
-    for (const title of ["لعبة", KNOWN, FAMOUS]) {
+    /*
+      THE EXACT ANSWER, NOT «IT IS A WHOLE THOUSAND».
+
+      The first version of this grid asserted
+      `Number(priceOf({title, price})) % 1_000 === 0`, and an adversarial read
+      of it found two holes at once. `Number(null)` is 0 and `0 % 1000 === 0`,
+      so a `newPrice` that came back null satisfied every cell — the wrapper
+      swallowed exactly the case the raw value would have caught. And the exact
+      answer was available for free and not asserted, so a regression that sent
+      a KNOWN title to 8,000 passed here silently.
+
+      Each band's rung is named instead. It costs nothing and it is the whole
+      claim.
+    */
+    const rungs: Array<[string, number]> = [
+      ["لعبة", 5_000],
+      [KNOWN, 7_000],
+      [FAMOUS, 7_000],
+    ];
+    for (const [title, rung] of rungs) {
       for (const price of [5_500, 6_250, 8_750, 9_900, 11_999]) {
-        expect(Number(priceOf({ title, price })) % 1_000).toBe(0);
+        expect(priceOf({ title, price }), `${title} @ ${price}`).toBe(rung);
       }
     }
+  });
+
+  /*
+    THE FOURTH CELL OF THE NARROWED «اتركها».
+
+    Three of the four are pinned elsewhere: a famous Switch 1 game at 7,000 and
+    an obscure Switch 1 game at 5,000 both come back unchanged, and an obscure
+    Switch 1 game at 7,000 comes down. The fourth — an obscure SWITCH 2 game
+    already sitting on its own 7,000 rung — was only ever reached from a
+    different old price, so nothing said it must be left alone. It must: the
+    narrowing was «leave 5,000 and 7,000 where they are the right answer», and
+    here 7,000 is the right answer.
+  */
+  it("leaves an unknown Switch 2 game at 7,000, which is its own rung", () => {
+    const decision = repriceOne(game({ price: 7_000, isSwitch2: true }));
+    expect(decision.newPrice).toBe(7_000);
+    expect(decision.changed).toBe(false);
   });
 
   it("settles 14,750 onto the rung, for a game nobody has heard of", () => {
@@ -729,7 +765,7 @@ describe("«الزياده على العادي حسب فرقها عن العاد
 });
 
 describe("the owner's worked example, end to end", () => {
-  it("prices all four lines of one game exactly as the owner priced them", async () => {
+  it("prices all four lines from the rules, keeping every figure he gave by name", async () => {
     /*
       «سعر اللعبه اوفلاين عادي ٨٠٠٠ تكلفه ٢٠٠٠
        سعر اللعبه اوفلاين مع الاضافات ١٥٠٠٠ تكلفه ٧٠٠٠ (فرق ٥٠٠٠)
