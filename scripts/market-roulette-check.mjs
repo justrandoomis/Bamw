@@ -55,7 +55,8 @@ const args = Object.fromEntries(
 );
 const ORIGIN = String(args.origin ?? process.env.ORIGIN ?? "https://banan.to").replace(/\/$/, "");
 const NAV_MS = Number(args.nav ?? 45) * 1_000;
-const SETTLE_MS = Number(args.settle ?? 3_000);
+/** How long a screen may take to bring its data back before we call it late. */
+const WAIT_MS = Number(args.wait ?? 25) * 1_000;
 
 const lines = [];
 const say = (t = "") => {
@@ -135,14 +136,39 @@ try {
   the screen under test is the real one, rendered by the real deployed code,
   with nothing for Cloudflare to refuse.
 */
-const routeTo = async (to) => {
+const routeTo = async (to, settled) => {
   await page.evaluate((target) => {
     window.history.pushState({}, "", target);
     window.dispatchEvent(new PopStateEvent("popstate"));
   }, to);
-  await page.waitForTimeout(SETTLE_MS);
+
+  /*
+    WAIT FOR THE PAGE, DO NOT GUESS AT IT.
+
+    This used to be a flat `waitForTimeout(SETTLE_MS)` — three seconds — and
+    that is not a wait, it is a bet. `/api/health` on this shop reports
+    `productsLatencyMs` around 2,700ms, so three seconds is a coin flip against
+    its own backend, and both screens render a spinner until their data lands.
+
+    A run that lost the toss reported a page of ~160 characters and every
+    assertion on it failed. That reads exactly like a broken page and is not
+    one, which is the worst kind of wrong: I acted on it.
+
+    So the caller names a string that only appears once the screen has its
+    data, and this polls for it. The timeout is generous because a slow answer
+    is not a failure — and when it DOES expire, the report says so and prints
+    what was actually on the screen, so the next reader does not have to guess
+    the way I did.
+  */
+  const deadline = Date.now() + WAIT_MS;
+  let seen = "";
+  while (Date.now() < deadline) {
+    seen = (await page.locator("body").innerText().catch(() => "")) || "";
+    if (!settled || seen.includes(settled)) return { ok: true, text: seen, waited: true };
+    await page.waitForTimeout(250);
+  }
+  return { ok: !settled, text: seen, waited: false };
 };
-const bodyText = async () => (await page.locator("body").innerText().catch(() => "")) || "";
 const here = async () => await page.evaluate(() => window.location.pathname);
 
 let failures = 0;
@@ -166,12 +192,25 @@ const needsSession = (name, detail = "") => {
 };
 
 // ─── 1 & 2. The market ────────────────────────────────────────────────────
-await routeTo("/banana_market");
-const market = await bodyText();
+const marketLanded = await routeTo("/banana_market", "سوق الموز");
+const market = marketLanded.text;
 if (!market.trim()) {
   fail("صفحة سوق الموز لم تُقرأ — لم أتحقق من الإنتاج");
 }
-say(`- طول نص سوق الموز: ${market.length} حرفًا`);
+say(`- طول نص سوق الموز: ${market.length} حرفًا${marketLanded.waited ? "" : " — **لم تكتمل خلال المهلة**"}`);
+if (!marketLanded.waited) {
+  /*
+    Print what was on the screen. A length alone cannot tell a spinner from a
+    crash, and that distinction is the whole difference between «the page is
+    broken» and «the shop was slow».
+  */
+  say();
+  say("النص الذي ظهر فعلًا:");
+  say("```");
+  say(market.slice(0, 400) || "(فارغ)");
+  say("```");
+  say();
+}
 
 check("العنوان «سوق الموز»", market.includes("سوق الموز"));
 check(
@@ -198,12 +237,12 @@ const stillThere = REMOVED.filter((w) => market.includes(w));
 check("لا سوق بين الأعضاء", stillThere.length === 0, stillThere.join(" / "));
 
 // ─── 3. The roulette ──────────────────────────────────────────────────────
-await routeTo("/wheel");
-const wheel = await bodyText();
+const wheelLanded = await routeTo("/wheel", "روليت بنانتو");
+const wheel = wheelLanded.text;
 if (!wheel.trim()) {
   fail("صفحة الروليت لم تُقرأ — لم أتحقق من الإنتاج");
 }
-say(`- طول نص الروليت: ${wheel.length} حرفًا`);
+say(`- طول نص الروليت: ${wheel.length} حرفًا${wheelLanded.waited ? "" : " — **لم تكتمل خلال المهلة**"}`);
 
 check("العنوان «روليت بنانتو»", wheel.includes("روليت بنانتو"));
 check("قسم الاحتمالات", wheel.includes("فرصك بـ"));
@@ -256,7 +295,7 @@ if (strip > 0) {
 
 // ─── 4. The two old addresses ─────────────────────────────────────────────
 for (const old of ["/banana_buy", "/banana_redeem"]) {
-  await routeTo(old);
+  await routeTo(old, "سوق الموز");
   const landed = await here();
   check(`${old} ← ${landed}`, landed === "/banana_market", landed);
 }
