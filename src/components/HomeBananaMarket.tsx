@@ -1,201 +1,205 @@
-import React from "react";
+import { Suspense } from "react";
 import { Link } from "@tanstack/react-router";
-import { useBananaMarket } from "@/hooks/useBananaMarket";
+import { ArrowLeft, Gift, Loader2, Ticket, TrendingDown, TrendingUp } from "lucide-react";
+
 import { BananaIcon } from "@/components/Icons";
-import { Trophy, Gift, ArrowLeft } from "lucide-react";
+import { useBananaMarket } from "@/hooks/useBananaMarket";
+import { formatPrice } from "@/lib/banana-price";
+import { lazyWithRetry } from "@/lib/lazyRetry";
 import { useI18n } from "../i18n";
 
+const BananaPriceChart = lazyWithRetry(() => import("@/components/BananaPriceChart"));
+
+/**
+ * The market, as the home page shows it.
+ *
+ * ## WHAT THIS USED TO BE, AND WHY IT HAD TO GO
+ *
+ * «احذف مفهوم Marketplace بين المستخدمين بالكامل» was carried out on
+ * `/banana_market` and nowhere else. This component was never migrated, so the
+ * home page kept drawing the deleted shop: «أحدث العروض (Top 10)», a row of
+ * cards for «بوت 1 … بوت 4» each labelled «متداول نشط» with a quantity and a
+ * per-banana price. A member landing on banan.to was being shown a
+ * member-to-member market that the market page itself refuses to let anyone
+ * trade in — `create_listing` answers «سوق العروض بين الأعضاء أُغلق».
+ *
+ * The server still returns `listings`, and that is correct: only creation was
+ * closed, nothing was deleted, and an offer still standing can still be
+ * cancelled by its owner. «لا تحذف بيانات الإنتاج بشكل أعمى.» The fault was
+ * that one client surface still read a field the product no longer offers.
+ *
+ * ## WHAT IT IS NOW
+ *
+ * The same thing `/banana_market` leads with, in miniature: the price, what it
+ * did, that it is live, and the shape it made getting there. One loud number
+ * and a way in — a home strip is a shop window, not a second market.
+ *
+ * Under it, the three things the market actually does, as one row of equal
+ * segments rather than three buttons arguing about which is the important one.
+ * All three go to the same page, because that page is where all three happen.
+ */
 export function HomeBananaMarket() {
   const { snapshot, isPending } = useBananaMarket("1D");
   const { t } = useI18n();
 
-  const listings = snapshot?.listings || [];
-  const topListings = listings.slice(0, 10);
-
-  const rewards = snapshot?.rewards || [];
-  const latestRewards = rewards.slice(0, 5);
+  const price = snapshot?.price ?? 0;
+  const changePct = snapshot?.changePct ?? 0;
+  const down = changePct < 0;
+  const rewards = Array.isArray(snapshot?.rewards) ? snapshot.rewards.slice(0, 5) : [];
 
   if (isPending && !snapshot) {
-    return <div className="animate-pulse p-4 text-center">{t("جاري تحميل العروض...")}</div>;
+    return (
+      <div className="flex justify-center py-8 text-muted-foreground">
+        <Loader2 className="h-5 w-5 animate-spin motion-reduce:animate-none" />
+      </div>
+    );
   }
 
   return (
-    <div className="space-y-8 w-full max-w-full overflow-hidden">
-      {/* Top 10 Listings */}
-      <section className="mt-8 bg-gradient-to-b from-yellow-500/10 via-yellow-500/5 to-transparent pt-6 pb-2 relative overflow-hidden w-full max-w-full">
-        {/* Decorative background element */}
-        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-48 h-48 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="flex items-center justify-between gap-2 mb-6 px-4 sm:px-8 relative z-10">
-          <div>
-            <div className="flex items-center gap-1.5 mb-1">
-              <BananaIcon className="w-5 h-5 text-yellow-500 drop-shadow-sm" solid />
-              <h3 className="text-lg font-black text-foreground tracking-tight">
-                {t("سوق الموز")}
-              </h3>
-            </div>
-            <p className="text-muted-foreground text-xs max-w-[200px] leading-tight">
-              {t("اكتشف أحدث العروض وأبرز المتداولين في السوق.")}
-            </p>
+    <div className="w-full max-w-full space-y-8 overflow-hidden">
+      <section className="mt-8 w-full max-w-full px-4 sm:px-8">
+        <div className="mb-3 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5">
+            <BananaIcon className="h-5 w-5 text-banana drop-shadow-sm" solid />
+            <h3 className="text-lg font-black tracking-tight text-foreground">{t("سوق الموز")}</h3>
           </div>
           <Link
             to="/banana_market"
-            className="flex items-center gap-1 text-[10px] font-bold text-yellow-600 bg-yellow-500/10 hover:bg-yellow-500/20 px-3 py-1.5 rounded-full transition-colors shrink-0"
+            data-ui-sound="klick"
+            className="flex shrink-0 items-center gap-1 rounded-full border border-banana/30 bg-banana/15 px-3 py-1.5 text-[11px] font-black text-foreground transition-colors hover:bg-banana/25"
           >
             {t("دخول السوق")}
-            <ArrowLeft className="w-3 h-3" />
+            <ArrowLeft className="h-3 w-3" aria-hidden="true" />
           </Link>
         </div>
 
-        <div className="relative z-10">
-          <div className="flex items-center justify-between px-4 sm:px-8 mb-3">
-            <h4 className="text-xs font-bold text-foreground flex items-center gap-1.5">
-              <Trophy className="w-3.5 h-3.5 text-yellow-500" />
-              {t("أحدث العروض (Top 10)")}
-            </h4>
+        {/* The one number worth being loud about, exactly as the market page shows it. */}
+        <div className="rounded-3xl border border-border bg-card p-4 shadow-soft">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h4 className="text-[12px] font-bold text-muted-foreground">
+                {t("سعر موزة واحدة")}
+              </h4>
+              <div className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                <span
+                  dir="ltr"
+                  className="text-[28px] font-black leading-none tracking-[-0.04em] tabular-nums text-foreground"
+                >
+                  {formatPrice(price)}
+                </span>
+                <span className="text-[12px] font-bold text-muted-foreground">{t("د.ع")}</span>
+                <span
+                  dir="ltr"
+                  className={`inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[11px] font-black tabular-nums ${
+                    down ? "bg-rind/15 text-rind" : "bg-leaf/15 text-leaf"
+                  }`}
+                >
+                  {down ? (
+                    <TrendingDown className="h-3 w-3" aria-hidden="true" />
+                  ) : (
+                    <TrendingUp className="h-3 w-3" aria-hidden="true" />
+                  )}
+                  {changePct > 0 ? "+" : ""}
+                  {changePct}%
+                </span>
+              </div>
+            </div>
+            <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-leaf/10 px-2.5 py-1 text-[11px] font-black text-leaf">
+              <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-leaf opacity-60 motion-reduce:hidden" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-leaf" />
+              </span>
+              {t("السوق مباشر")}
+            </span>
           </div>
-          <div className="flex gap-3 overflow-x-auto no-scrollbar pb-4 snap-x px-4 sm:px-8 w-full max-w-full">
-            {topListings.map((listing, i) => (
-              <div
-                key={listing.id || i}
-                className="min-w-[160px] bg-card p-3 rounded-2xl border border-border shrink-0 snap-start shadow-sm cursor-pointer hover:shadow-md hover:border-yellow-500/30 transition-all group relative overflow-hidden flex flex-col"
+
+          {/*
+            The same lazy chart the market page uses, so recharts is fetched
+            once for both and the home page's initial payload does not carry it.
+          */}
+          <div className="-mx-1 mt-3 h-[96px]">
+            <Suspense
+              fallback={
+                <div className="flex h-full items-center justify-center text-muted-foreground">
+                  <Loader2 className="h-4 w-4 animate-spin motion-reduce:animate-none" />
+                </div>
+              }
+            >
+              <BananaPriceChart data={snapshot?.chart ?? []} tooltip={<span />} />
+            </Suspense>
+          </div>
+
+          {/* The three things the market does. All one page, so all one link. */}
+          <div className="mt-3 flex gap-0.5 rounded-2xl bg-muted/70 p-1">
+            {[
+              { label: t("بيع الموز"), icon: BananaIcon },
+              { label: t("تذاكر"), icon: Ticket },
+              { label: t("جوائز"), icon: Gift },
+            ].map((entry) => (
+              <Link
+                key={entry.label}
+                to="/banana_market"
+                data-ui-sound="klick"
+                className="flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-xl text-[12px] font-black text-foreground transition-colors hover:bg-card"
               >
-                {/* Number Badge */}
-                <div className="absolute top-0 right-0 w-6 h-6 bg-yellow-500/10 flex items-center justify-center rounded-bl-xl font-black text-yellow-500/50 text-[10px]">
-                  #{i + 1}
-                </div>
-
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="relative">
-                    {/*
-                      A bot's avatar is «🤖» and a member's can be empty, and
-                      both were fed straight into `src` — so every bot offer on
-                      the home strip rendered a broken image. Both full-screen
-                      market pages already branch on this; this one did not.
-                    */}
-                    {listing.avatar?.startsWith("http") ? (
-                      <img
-                        src={listing.avatar}
-                        alt={listing.user}
-                        className="w-8 h-8 rounded-full object-cover bg-muted ring-1 ring-background shadow-sm"
-                      />
-                    ) : (
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-base ring-1 ring-background shadow-sm">
-                        {listing.avatar || "🍌"}
-                      </span>
-                    )}
-                    {listing.verified && (
-                      <div className="absolute -bottom-0.5 -right-0.5 bg-blue-500 text-white rounded-full p-[1px] border border-card shadow-sm">
-                        <svg
-                          className="w-2 h-2"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={3}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex-1 overflow-hidden">
-                    <h5 className="font-bold text-xs truncate text-foreground group-hover:text-yellow-600 transition-colors">
-                      {listing.user}
-                    </h5>
-                    <p className="text-[9px] text-muted-foreground truncate">{t("متداول نشط")}</p>
-                  </div>
-                </div>
-
-                <div className="flex justify-between items-end mt-auto pt-3 border-t border-border/50">
-                  <div className="flex flex-col">
-                    <span className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider mb-0.5">
-                      {t("الكمية")}
-                    </span>
-                    <span className="font-black text-sm text-foreground leading-none">
-                      {listing.quantity}
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-end">
-                    <span className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider mb-0.5">
-                      {t("السعر")}
-                    </span>
-                    <div className="flex items-center gap-1 bg-yellow-500/10 text-yellow-600 px-2 py-0.5 rounded-md">
-                      <span className="font-bold text-xs">{listing.pricePer}</span>
-                      <BananaIcon className="w-3 h-3 drop-shadow-sm" solid />
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <entry.icon className="h-3.5 w-3.5" aria-hidden="true" />
+                {entry.label}
+              </Link>
             ))}
-            {topListings.length === 0 && (
-              <div className="w-full text-center py-6 border-2 border-dashed border-border rounded-2xl bg-muted/30">
-                <p className="text-muted-foreground text-xs font-medium">
-                  {t("لا توجد عروض حالياً")}
-                </p>
-              </div>
-            )}
           </div>
         </div>
       </section>
 
-      {/* Rewards / Redeem Section */}
-      <section className="pb-8 w-full max-w-full overflow-hidden">
-        <div className="flex items-center justify-between gap-2 mb-6 px-4 sm:px-8">
-          <div>
-            <div className="flex items-center gap-1.5 mb-1">
-              <Gift className="w-5 h-5 text-green-500 drop-shadow-sm" />
-              <h3 className="text-lg font-black text-foreground tracking-tight">
-                {t("جوائز الاستبدال")}
-              </h3>
-            </div>
-            <p className="text-muted-foreground text-xs max-w-[200px] leading-tight">
-              {t("استبدل الموز بجوائز قيمة.")}
-            </p>
+      {/* ─────────────────────────── Rewards ──────────────────────────────
+          Kept, because it is the one part of the old section that was never
+          about the deleted marketplace — it reads `snapshot.rewards`, which is
+          the same array `/banana_market` feeds its own shelf. The «عرض الكل»
+          link moves off `/banana_redeem`, which is now only a redirect. */}
+      <section className="w-full max-w-full overflow-hidden pb-8">
+        <div className="mb-4 flex items-center justify-between gap-2 px-4 sm:px-8">
+          <div className="flex items-center gap-1.5">
+            <Gift className="h-5 w-5 text-leaf drop-shadow-sm" aria-hidden="true" />
+            <h3 className="text-lg font-black tracking-tight text-foreground">
+              {t("جوائز الاستبدال")}
+            </h3>
           </div>
           <Link
-            to="/banana_redeem"
-            className="flex items-center gap-1 text-[10px] font-bold text-green-600 bg-green-500/10 hover:bg-green-500/20 px-3 py-1.5 rounded-full transition-colors shrink-0"
+            to="/banana_market"
+            data-ui-sound="klick"
+            className="flex shrink-0 items-center gap-1 rounded-full border border-leaf/30 bg-leaf/10 px-3 py-1.5 text-[11px] font-black text-foreground transition-colors hover:bg-leaf/20"
           >
             {t("عرض الكل")}
-            <ArrowLeft className="w-3 h-3" />
+            <ArrowLeft className="h-3 w-3" aria-hidden="true" />
           </Link>
         </div>
 
-        <div className="flex gap-3 overflow-x-auto no-scrollbar pb-4 snap-x px-4 sm:px-8 w-full max-w-full">
-          {latestRewards.map((reward, i) => (
+        <div className="flex w-full max-w-full snap-x gap-3 overflow-x-auto px-4 pb-4 no-scrollbar sm:px-8">
+          {rewards.map((reward, i) => (
             <Link
-              to="/banana_redeem"
+              to="/banana_market"
               key={reward.id || i}
-              className="min-w-[140px] bg-card p-4 rounded-2xl border border-border shrink-0 snap-start shadow-sm hover:shadow-md hover:border-green-500/30 hover:-translate-y-0.5 transition-all group relative overflow-hidden flex flex-col items-center text-center"
+              data-ui-sound="klick"
+              className="group flex min-w-[140px] shrink-0 snap-start flex-col items-center rounded-2xl border border-border bg-card p-4 text-center shadow-sm transition-all hover:-translate-y-0.5 hover:border-leaf/30 hover:shadow-md"
             >
-              {/* Decorative background glow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-green-500/5 rounded-full blur-xl pointer-events-none group-hover:bg-green-500/10 transition-colors"></div>
-
-              <div className="text-3xl mb-3 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 drop-shadow-sm">
+              <div className="mb-3 text-3xl transition-transform duration-300 group-hover:scale-110">
                 {reward.icon}
               </div>
-              <h5 className="font-bold text-xs mb-1 text-foreground group-hover:text-green-600 transition-colors leading-tight">
+              <h5 className="mb-1 text-xs font-bold leading-tight text-foreground">
                 {reward.title}
               </h5>
-
-              <div className="mt-auto pt-2 w-full flex items-center justify-center gap-1 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 text-yellow-600 px-2.5 py-1.5 rounded-lg border border-yellow-500/20 group-hover:shadow-inner transition-all">
-                <span className="font-black text-sm">{reward.cost}</span>
-                <BananaIcon className="w-3.5 h-3.5 drop-shadow-sm" solid />
+              <div className="mt-auto flex w-full items-center justify-center gap-1 rounded-lg border border-banana/20 bg-banana/10 px-2.5 py-1.5 pt-2 text-foreground">
+                <span className="text-sm font-black tabular-nums">{reward.cost}</span>
+                <BananaIcon className="h-3.5 w-3.5 drop-shadow-sm" solid />
               </div>
             </Link>
           ))}
-          {latestRewards.length === 0 && (
-            <div className="w-full text-center py-6 border-2 border-dashed border-border rounded-2xl bg-muted/30">
-              <p className="text-muted-foreground text-xs font-medium">
+          {rewards.length === 0 ? (
+            <div className="w-full rounded-2xl border-2 border-dashed border-border bg-muted/30 py-6 text-center">
+              <p className="text-xs font-medium text-muted-foreground">
                 {t("لا توجد جوائز حالياً")}
               </p>
             </div>
-          )}
+          ) : null}
         </div>
       </section>
     </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { CheckCircle2, ImageOff, Loader2, Search } from "lucide-react";
+import { CheckCircle2, Copy, ImageOff, Loader2, Search } from "lucide-react";
+import { copySilently } from "./inbox/SupplierNameCopy";
 import { toast } from "sonner";
 
 import { api } from "@/lib/api";
@@ -23,6 +24,24 @@ interface QueueRow {
   price: number;
   currentImage: string | null;
   hidden: boolean;
+}
+
+/**
+ * Google Images for one game cover, opened in a new tab.
+ *
+ * «زر عند الضغط عليه يذهب الى محرك جوجل لكي يبحث اللعبة بشكل يدوي عن صورة
+ *  مربعة للعبة». Every row in this queue is a Switch game — the endpoint
+ * filters on `isGameProduct` — so the platform words are a constant rather
+ * than a guess, and they earn their place: without them a title like «Split
+ * Fiction» returns stock photography instead of cover art.
+ *
+ * Exported and pure so the query can be tested without rendering anything.
+ */
+export function googleImagesUrl(title: string): string {
+  const query = `${String(title ?? "").trim()} Nintendo Switch cover art`;
+  /* `udm=2` is Google's images tab today; `tbm=isch` is the older spelling and
+     is still honoured, so sending both survives either. */
+  return `https://www.google.com/search?udm=2&tbm=isch&q=${encodeURIComponent(query)}`;
 }
 
 export default function MissingSquareImagesView() {
@@ -59,6 +78,24 @@ export default function MissingSquareImagesView() {
       toast.error(error instanceof Error ? error.message : "تعذر حفظ الصورة");
     },
   });
+
+  /*
+    «عند الضغط على اسم اللعبة ينسخ». The clipboard helper is the one the
+    supplier-name copy already uses — `navigator.clipboard` first, then an
+    off-screen textarea, because a hidden element cannot be selected and that
+    is why the obvious version of this silently does nothing on Safari. It
+    reports whether it worked, so the toast only claims what happened.
+  */
+  const copyTitle = async (title: string) => {
+    const name = String(title ?? "").trim();
+    if (!name) return;
+    const ok = await copySilently(name);
+    if (!ok) {
+      toast.error("تعذّر النسخ — انسخ الاسم يدويًا");
+      return;
+    }
+    toast.success("تم نسخ اسم اللعبة");
+  };
 
   const rows = data?.products ?? [];
 
@@ -136,10 +173,38 @@ export default function MissingSquareImagesView() {
                       </span>
                     )}
                     <div className="min-w-0 flex-1">
-                      <h3 className="truncate text-xs font-bold text-foreground">{row.title}</h3>
-                      <p className="font-mono text-[10px] text-muted-foreground">
-                        {row.price.toLocaleString()} د.ع{row.hidden ? " • مخفي" : ""}
-                      </p>
+                      <h3 className="min-w-0 text-xs font-bold text-foreground">
+                        <button
+                          type="button"
+                          onClick={() => void copyTitle(row.title)}
+                          aria-label={`نسخ اسم اللعبة ${row.title}`}
+                          title="اضغط لنسخ الاسم"
+                          className="flex min-h-11 w-full cursor-pointer items-center gap-1.5 text-start"
+                        >
+                          <span className="truncate">{row.title}</span>
+                          <Copy aria-hidden="true" className="h-3 w-3 shrink-0 text-muted-foreground" />
+                        </button>
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <p className="font-mono text-[10px] text-muted-foreground">
+                          {row.price.toLocaleString()} د.ع{row.hidden ? " • مخفي" : ""}
+                        </p>
+                        {/*
+                          A real link, not a scripted `window.open`: the admin
+                          can long-press it, and `noopener` keeps the new tab
+                          from reaching back into this one.
+                        */}
+                        <a
+                          href={googleImagesUrl(row.title)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`ابحث في صور جوجل عن ${row.title}`}
+                          className="inline-flex min-h-11 items-center gap-1 rounded-lg px-2 text-[10.5px] font-bold text-primary underline"
+                        >
+                          <Search aria-hidden="true" className="h-3 w-3" />
+                          صور جوجل
+                        </a>
+                      </div>
                     </div>
                   </div>
 

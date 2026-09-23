@@ -200,11 +200,54 @@ describe("a refusal reads as a sentence on every screen", () => {
 
 describe("a bot's face is not a broken image", () => {
   /*
-    A bot's avatar is «🤖» and a member's can be empty. Both full-screen market
-    pages branch on that; the home strip fed either straight into `src`.
+    ADAPTED, NOT DELETED — and the reason is the whole point.
+
+    This used to assert that the home strip branched on `listing.avatar`
+    starting with "http" before putting it in an `src`, because a bot's avatar
+    is «🤖» and a member's can be empty, and feeding either straight into an
+    `<img>` draws a broken-image icon on the front page.
+
+    That test was right, and it was also pinning the deleted marketplace onto
+    the home page. «احذف مفهوم Marketplace بين المستخدمين بالكامل» was carried
+    out on `/banana_market` and never on `HomeBananaMarket`, so banan.to kept
+    showing «أحدث العروض (Top 10)» and cards for «بوت 1 … بوت 4» — a market
+    nobody is allowed to trade in, since `create_listing` answers «سوق العروض
+    بين الأعضاء أُغلق». The owner reported it as fault one of five.
+
+    So the assertion is inverted rather than removed: an avatar cannot be
+    rendered wrongly by a screen that renders no avatars. What the check
+    protects now is that the removal STAYS done — a future edit that puts a
+    trader, a bot or an offer back on the home page fails here, and the message
+    says which word gave it away.
   */
-  it("renders an emoji as text on the home strip", () => {
-    expect(homeStrip).toContain('listing.avatar?.startsWith("http") ? (');
-    expect(homeStrip).toContain('{listing.avatar || "🍌"}');
+  it("draws no trader, bot or offer on the home page at all", () => {
+    /*
+      Comments stripped first, because the claim is about what the screen
+      DRAWS, not about what the file may say. The replacement's own header
+      explains what «متداول نشط» was and why it went — and the first version of
+      this check failed on that explanation, which would have left the choice
+      between a vaguer comment and a weaker test. Neither is necessary.
+    */
+    const drawn = homeStrip.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/\/\/[^\n]*/g, " ");
+    for (const gone of [
+      "listing.avatar",
+      "topListings",
+      "snapshot?.listings",
+      "متداول نشط",
+      "أحدث العروض",
+      "لا توجد عروض حالياً",
+    ]) {
+      expect(drawn, `«${gone}» belongs to the marketplace that was removed`).not.toContain(gone);
+    }
+  });
+
+  /*
+    And what replaced it is the market page's own opening, so the two cannot
+    drift into telling a member two different prices.
+  */
+  it("leads with the live price instead, and links into the one market page", () => {
+    expect(homeStrip).toContain("سعر موزة واحدة");
+    expect(homeStrip).toContain("formatPrice(price)");
+    expect(homeStrip).toContain('to="/banana_market"');
   });
 });

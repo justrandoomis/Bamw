@@ -48,8 +48,6 @@ const args = Object.fromEntries(
 );
 const ORIGIN = String(args.origin ?? process.env.ORIGIN ?? "https://banan.to").replace(/\/$/, "");
 const NAV_MS = Number(args.nav ?? 60) * 1_000;
-/** How many distinct stored URLs to actually try loading. */
-const SAMPLE = Number(args.sample ?? 120);
 
 const lines = [];
 const say = (t = "") => {
@@ -126,164 +124,104 @@ const build = await page
   .catch(() => "تعذّرت القراءة");
 say(`- البناء الذي يخدم: \`${build}\``);
 
-/* ─── 1. What the catalogue STORES ──────────────────────────────────────── */
+/* ─── 1. What the SHELVES actually drew ────────────────────────────────── */
 /*
-  The same five field names, in the same order, that
-  `getNintendoMedia(product, "square-card")` reads — copied rather than
-  imported because this runs inside the page, where the app's modules are not
-  reachable by name.
+  Read from the DOM, not from `/api/data`.
+
+  The first version of this fetched `/api/data?slim=1` from inside the page and
+  got HTTP 403: Cloudflare refuses that request from this runner even though it
+  serves the page itself, which the app then renders perfectly well from its own
+  fetch. Asking a second time, from a script, is asking a different question of
+  the WAF — and the answer to that question is not the one being measured.
+
+  It is also unnecessary. Everything that separates (أ) from (ب) is on screen:
+  a card either was handed a URL or it was not, and a URL either drew or it did
+  not. `naturalWidth === 0` on a complete `<img>` is the browser saying it was
+  given an address and could not draw it — which no count of stored rows can
+  tell you.
 */
-const stored = await page.evaluate(async () => {
-  const FIELDS = [
-    "nintendoCardImage",
-    "nintendo_card_image",
-    "squareGameImage",
-    "squareImage",
-    "square_card_image",
-  ];
-  const res = await fetch("/api/data?slim=1", { headers: { accept: "application/json" } });
-  if (!res.ok) return { error: `HTTP ${res.status}` };
-  const data = await res.json();
-  const products = Array.isArray(data?.products) ? data.products : [];
-  const urls = [];
-  let withUrl = 0;
-  for (const p of products) {
-    let hit = "";
-    for (const field of FIELDS) {
-      const value = p?.[field];
-      if (typeof value === "string" && value.trim()) {
-        hit = value.trim();
-        break;
-      }
-    }
-    if (!hit) continue;
-    withUrl += 1;
-    urls.push({ title: String(p?.title ?? p?.titleEn ?? ""), url: hit });
-  }
-  return { total: products.length, withUrl, urls };
-});
-
-if (stored?.error) fail(`تعذّرت قراءة الكتالوج: ${stored.error}`);
-say(`- منتجات في الحمولة المختصرة: **${stored.total}**`);
-say(`- منها تحمل رابط صورة مربعة مخزّنًا: **${stored.withUrl}**`);
-say(`- بلا رابط مخزّن: **${stored.total - stored.withUrl}**`);
-
-/* ─── 2. Do those URLs load? ────────────────────────────────────────────── */
-/*
-  Loaded the way the card loads them — an `<img>` and its `naturalWidth` —
-  rather than with `fetch`, because that is the exact signal `NintendoCover`
-  reacts to. A `fetch` can succeed on a response the decoder then refuses.
-*/
-const unique = [...new Map(stored.urls.map((row) => [row.url, row])).values()];
-const sample = unique.slice(0, SAMPLE);
-say(`- روابط مميّزة: **${unique.length}** — سأجرّب تحميل **${sample.length}** منها`);
-
-const loadResults = await page.evaluate(async (rows) => {
-  const tryOne = (url) =>
-    new Promise((resolve) => {
-      const img = new Image();
-      const done = (ok, why) => resolve({ url, ok, why, width: img.naturalWidth || 0 });
-      const timer = setTimeout(() => done(false, "timeout"), 12_000);
-      img.onload = () => {
-        clearTimeout(timer);
-        done(img.naturalWidth > 0, img.naturalWidth > 0 ? "" : "decoded to zero width");
-      };
-      img.onerror = () => {
-        clearTimeout(timer);
-        done(false, "error");
-      };
-      img.referrerPolicy = "no-referrer";
-      img.src = url;
-    });
-
-  const out = [];
-  const queue = [...rows];
-  const workers = Array.from({ length: 6 }, async () => {
-    for (;;) {
-      const row = queue.shift();
-      if (!row) return;
-      const result = await tryOne(row.url);
-      out.push({ ...result, title: row.title });
-    }
-  });
-  await Promise.all(workers);
-  return out;
-}, sample);
-
-const broken = loadResults.filter((r) => !r.ok);
-const okCount = loadResults.length - broken.length;
-
-/* ─── 3. What the shelf actually shows ──────────────────────────────────── */
-let shelf = [];
-try {
-  for (let i = 0; i < 10; i += 1) {
-    const found = await page.locator('[aria-label="Nintendo Switch cartridges"]').count();
+const readShelf = async (label) => {
+  for (let i = 0; i < 14; i += 1) {
+    const found = await page.locator(`[aria-label="${label}"]`).count();
     if (found > 0) break;
     await page.mouse.wheel(0, 900);
     await page.waitForTimeout(500);
   }
-  await page.waitForTimeout(2_000);
-  shelf = await page.evaluate(() => {
-    const strip = document.querySelector('[aria-label="Nintendo Switch cartridges"]');
+  /* Give the cards time to try their images — a failure takes a round trip. */
+  await page.waitForTimeout(6_000);
+  return await page.evaluate((name) => {
+    const strip = document.querySelector(`[aria-label="${name}"]`);
     if (!strip) return [];
     return [...strip.children].slice(0, 12).map((card) => {
       const text = (card.textContent || "").replace(/\s+/g, " ").trim();
       const img = card.querySelector("img");
       return {
-        text: text.slice(0, 60),
+        text: text.slice(0, 54),
         placeholderCaption: text.includes("لم يتم إضافة الصورة بعد"),
-        src: img ? img.currentSrc || img.src || "" : "",
+        src: img ? img.currentSrc || img.getAttribute("src") || "" : "",
         complete: img ? img.complete : false,
         width: img ? img.naturalWidth || 0 : -1,
       };
     });
-  });
-} catch {
-  shelf = [];
-}
+  }, label);
+};
 
-/* ─── The verdict, last in the log because a job log is read as a tail ──── */
-say();
-say("## ما يعرضه رفّ الكارتلج فعلًا");
-say();
-if (shelf.length === 0) {
-  say("- الرفّ لم يظهر لهذا القارئ — لا حكم عليه.");
-} else {
-  say("| # | البطاقة | «لم تُضف الصورة» | للصورة رابط | عرضها |");
+const cartridges = await readShelf("Nintendo Switch cartridges");
+const squares = await readShelf("Nintendo Switch games");
+
+const table = (rows, title) => {
+  say();
+  say(`## ${title}`);
+  say();
+  if (rows.length === 0) {
+    say("- لم يظهر لهذا القارئ — لا حكم عليه.");
+    return;
+  }
+  say("| # | البطاقة | «لم تُضف الصورة» | رابط الصورة | عرضها |");
   say("| --- | --- | :---: | :---: | ---: |");
-  shelf.forEach((card, i) => {
+  rows.forEach((card, i) => {
+    const where = card.src ? `\`${String(card.src).slice(0, 48)}…\`` : "—";
     say(
-      `| ${i + 1} | ${card.text || "—"} | ${card.placeholderCaption ? "نعم" : "لا"} | ${
-        card.src ? "نعم" : "لا"
-      } | ${card.width} |`,
+      `| ${i + 1} | ${card.text || "—"} | ${card.placeholderCaption ? "نعم" : "لا"} | ${where} | ${card.width} |`,
     );
   });
-}
+};
+
+/* ─── The verdict, last in the log because a job log is read as a tail ──── */
+table(cartridges, "رفّ الكارتلج «ألعاب نينتندو سويتش»");
+table(squares, "الرفّ المربّع «Nintendo Switch games» — للمقارنة");
+
+const head = cartridges.slice(0, 8);
+const withSrc = head.filter((c) => c.src);
+const brokenHead = head.filter((c) => c.src && c.complete && c.width === 0);
+const captioned = head.filter((c) => c.placeholderCaption);
 
 say();
 say("## الحكم");
 say();
-const withStored = stored.withUrl;
-const brokenShare = loadResults.length ? Math.round((broken.length / loadResults.length) * 100) : 0;
-say(`- مخزّن: **${withStored}** من **${stored.total}**`);
-say(`- جُرّب تحميلها: **${loadResults.length}** — نجحت **${okCount}**، فشلت **${broken.length}** (${brokenShare}%)`);
-if (broken.length) {
-  say();
-  say("أمثلة على روابط مخزّنة لا تُحمَّل:");
-  for (const row of broken.slice(0, 10)) {
-    say(`  - ${row.title || "—"} → \`${String(row.url).slice(0, 110)}\` (${row.why})`);
-  }
-}
-say();
-if (withStored < stored.total * 0.25) {
-  say("**(أ)**: الكتالوج نفسه بلا روابط مربعة تقريبًا — الفرز ينهار لأنه لا شيء ليفصله.");
-} else if (broken.length > loadResults.length * 0.25) {
-  say(
-    "**(ب)**: الروابط مخزّنة ولا تُحمَّل. الفرز يرفع الأعطال إلى صدر الرفّ، " +
-      "لأن الشرط يسأل «هل هناك رابط؟» بينما البطاقة تسأل «هل ظهر؟».",
-  );
+if (head.length === 0) {
+  say("- رفّ الكارتلج لم يظهر — لا حكم.");
 } else {
-  say("لا (أ) ولا (ب): الروابط مخزّنة وتُحمَّل — فالخلل في مكان آخر، وهذا التقرير يستبعده.");
+  say(`- أول **${head.length}** بطاقة في رفّ الكارتلج`);
+  say(`- منها تحمل رابط صورة: **${withSrc.length}**`);
+  say(`- منها رابطٌ اكتمل تحميله بعرض صفر (أي فشل الرسم): **${brokenHead.length}**`);
+  say(`- منها تكتب «لم يتم إضافة الصورة بعد»: **${captioned.length}**`);
+  say();
+  if (brokenHead.length >= 2) {
+    say(
+      "**(ب)**: الروابط مخزّنة ولا تُرسم. الفرز يرفع الأعطال إلى صدر الرفّ، " +
+        "لأن الشرط يسأل «هل هناك رابط؟» بينما البطاقة تسأل «هل ظهر؟».",
+    );
+  } else if (withSrc.length === 0) {
+    say("**(أ)**: بطاقات الصدارة بلا رابط أصلًا — الفرز ينهار لأنه لا شيء ليفصله.");
+  } else if (captioned.length === 0) {
+    say("لا (أ) ولا (ب): صدر الرفّ يعرض صورًا سليمة — الخلل ليس هنا الآن.");
+  } else {
+    say(
+      "غير حاسم: هناك تسمية «لم تُضف الصورة» بلا فشل تحميل مؤكَّد. " +
+        "الجدول أعلاه هو الدليل، ولا أبني عليه استنتاجًا.",
+    );
+  }
 }
 
 flush();
