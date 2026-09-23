@@ -43,7 +43,7 @@
  * anything — reporting it as a pass would be the exact lie the owner's rule
  * exists to prevent.
  */
-import { existsSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { chromium } from "playwright-core";
 
 const args = Object.fromEntries(
@@ -154,6 +154,85 @@ const liveBuild = await page
   })
   .catch(() => "تعذّرت القراءة");
 say(`- البناء الذي يخدم: \`${liveBuild}\``);
+
+/*
+  ─── THE HOME SHELF ──────────────────────────────────────────────────────
+
+  «الشريط الذي تحت خدمات المتجر يجب أن يعرض الالعاب المشهورة وليس العشوائية».
+
+  That ask was shipped and then never verified anywhere a customer can see. It
+  is the easiest of the four to get wrong silently, too: nothing crashes when a
+  shelf is in the wrong order, so a broken sort looks exactly like a working
+  one until somebody opens the page and does not recognise a single game.
+
+  The list of world best-sellers is read out of `src/lib/bestSellers.ts` rather
+  than copied here, so there is ONE list. A copy would drift, and a drifted copy
+  would eventually pass this check against a shelf the owner would still call
+  random.
+*/
+const FAMOUS = (() => {
+  if (!existsSync("src/lib/bestSellers.ts")) return [];
+  const source = readFileSync("src/lib/bestSellers.ts", "utf8");
+  /* The entries are plain lowercase strings, already in comparable form. */
+  return [...source.matchAll(/^\s*"([a-z0-9 ]+)",/gm)].map((m) => m[1]);
+})();
+
+/* The same shape `comparableTitle` reduces a title to, so `includes` matches. */
+const comparable = (text) =>
+  String(text)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
+const shelf = await (async () => {
+  try {
+    /* The section is lazy — it does not exist until it is scrolled to. */
+    for (let i = 0; i < 8; i += 1) {
+      const found = await page.locator('[aria-label="Nintendo Switch games"] h3').count();
+      if (found > 0) break;
+      await page.mouse.wheel(0, 900);
+      await page.waitForTimeout(500);
+    }
+    return await page.locator('[aria-label="Nintendo Switch games"] h3').allInnerTexts();
+  } catch {
+    return [];
+  }
+})();
+
+if (FAMOUS.length === 0) {
+  check("قائمة الأكثر مبيعًا قُرئت", false, "تعذّرت قراءة src/lib/bestSellers.ts");
+} else if (shelf.length === 0) {
+  /*
+    Not a pass and not a failure: the shelf never appeared for this reader, and
+    a shelf that was not seen cannot be judged. Said plainly rather than
+    counted either way.
+  */
+  needsSession("ترتيب شريط ألعاب Switch", "الشريط لم يظهر لهذا القارئ");
+} else {
+  const head = shelf.slice(0, 12);
+  const ranked = head.filter((title) =>
+    FAMOUS.some((entry) => comparable(title).includes(entry)),
+  );
+  say("");
+  say(`أول ${head.length} بطاقة في شريط ألعاب Switch (منها ${ranked.length} على قائمة الأكثر مبيعًا):`);
+  for (const title of head) {
+    const known = FAMOUS.some((entry) => comparable(title).includes(entry));
+    say(`  ${known ? "★" : "·"} ${title.replace(/\s+/g, " ").trim()}`);
+  }
+  say("");
+  /*
+    Two of twelve. About a hundred of the catalogue's ~1,712 games are on the
+    list, so a shelf in a random order would be expected to show under one —
+    two is a signal, and it is low enough not to fail over a day when the
+    owner's own square-image coverage moves the head around. The titles are
+    printed above either way, because the number is not the interesting part.
+  */
+  check(
+    `شريط Switch يقود بألعاب مشهورة (${ranked.length} من ${head.length})`,
+    ranked.length >= 2,
+    ranked.length ? ranked[0].replace(/\s+/g, " ").trim() : "لا شيء منها على القائمة",
+  );
+}
 
 /*
   In-app navigation, not a fresh document request.
