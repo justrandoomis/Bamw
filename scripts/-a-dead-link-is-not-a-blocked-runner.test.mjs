@@ -26,7 +26,11 @@ import {
   absoluteUrl,
   DEFAULT_MAX_DEAD_SHARE,
   isBlanketFailure,
+  r2VerdictFor,
+  SERVING_BUCKET,
+  storageKeyFor,
   verdictFor,
+  WRITING_BUCKET,
 } from "./lib/square-link-verdict.mjs";
 
 const gone404 = { ok: false, kind: "http-error", status: 404 };
@@ -160,5 +164,88 @@ describe("making a stored value addressable", () => {
   it("survives a value that is not a string", () => {
     expect(absoluteUrl(null, "https://banan.to")).toBe("");
     expect(absoluteUrl(undefined, "https://banan.to")).toBe("");
+  });
+});
+
+describe("this shop's own files, asked of R2 rather than of the website", () => {
+  /*
+    THE FIRST RUN OF THIS SCRIPT CALLED 94.3% OF THE SHOP'S PICTURES MISSING.
+
+    It asked `https://banan.to/api/files/...` with a HEAD. `src/routes/api/files/$.ts`
+    registers a GET handler and no HEAD one, so the router answers 404 to every
+    HEAD — for a file that is there exactly as loudly as for one that is not.
+    The cheap question was not a question at all, and the blanket guard is the
+    only reason the answer did not reach the catalogue.
+
+    R2 is asked now: no router, no edge, no cache, and a status that means what
+    it says.
+  */
+  it("reads the storage key out of one of our URLs", () => {
+    expect(storageKeyFor("/api/files/products/prd_x/square-card-abc.webp")).toBe(
+      "files/products/prd_x/square-card-abc.webp",
+    );
+    expect(storageKeyFor("https://banan.to/api/files/products/prd_x/a.webp")).toBe(
+      "files/products/prd_x/a.webp",
+    );
+  });
+
+  /* `?w=600` is a resize instruction to the route, not part of the object key. */
+  it("drops the route's own query before asking storage", () => {
+    expect(storageKeyFor("/api/files/products/prd_x/a.webp?w=600&q=85")).toBe(
+      "files/products/prd_x/a.webp",
+    );
+  });
+
+  it("has no key for a URL that is not ours", () => {
+    expect(storageKeyFor("https://assets.nintendo.com/a.png")).toBe(null);
+    expect(storageKeyFor("/images/a.png")).toBe(null);
+    expect(storageKeyFor("")).toBe(null);
+    expect(storageKeyFor(null)).toBe(null);
+  });
+
+  it("is alive when the bucket the site reads from has it", () => {
+    expect(r2VerdictFor(200, null)).toBe("alive");
+    expect(r2VerdictFor(206, null)).toBe("alive");
+  });
+
+  it("is dead only when BOTH buckets answered 404", () => {
+    expect(r2VerdictFor(404, 404)).toBe("dead");
+  });
+
+  /*
+    THE VERDICT THIS WHOLE SECOND BUCKET EXISTS FOR. `square-card-fill.mjs`
+    writes to `CLOUDFLARE_R2_BUCKET_NAME || "bananto"` and stores a URL the site
+    serves out of `bananto-private`. Whether those are the same bucket depends
+    on a secret this repository cannot read. If they are not, the picture EXISTS
+    — and clearing its URL would destroy real work to fix a routing mistake.
+  */
+  it("will not call a file missing when it is merely in the other bucket", () => {
+    expect(r2VerdictFor(404, 200)).toBe("misplaced");
+  });
+
+  it("names the two buckets it is talking about", () => {
+    expect(SERVING_BUCKET).toBe("bananto-private");
+    expect(WRITING_BUCKET).toBe("bananto");
+  });
+
+  it.each([401, 403, 429, 500, 503])("never clears when the API answered %i", (status) => {
+    expect(r2VerdictFor(status, null)).toBe("unknown");
+    expect(r2VerdictFor(404, status)).toBe("unknown");
+  });
+
+  it("never clears when a request did not complete", () => {
+    expect(r2VerdictFor(null, null)).toBe("unknown");
+    expect(r2VerdictFor(404, null)).toBe("unknown");
+  });
+
+  /*
+    A misplaced file is an ANSWER, not a failure to see. Both buckets replied
+    and agreed where the object is. Counting it against the guard would make a
+    real finding about the shop look like a broken checker and abort the run
+    that found it.
+  */
+  it("does not let a misplaced file trip the blocked-runner guard", () => {
+    expect(isBlanketFailure({ alive: 10, dead: 0, unknown: 0, misplaced: 590 })).toBe(false);
+    expect(isBlanketFailure({ alive: 10, dead: 0, unknown: 590, misplaced: 0 })).toBe(true);
   });
 });

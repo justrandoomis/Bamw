@@ -67,7 +67,11 @@ import {
   absoluteUrl,
   DEFAULT_MAX_DEAD_SHARE,
   isBlanketFailure,
+  r2VerdictFor,
+  SERVING_BUCKET,
+  storageKeyFor,
   verdictFor,
+  WRITING_BUCKET,
 } from "./lib/square-link-verdict.mjs";
 import {
   bumpAfterOverlayWrites,
@@ -86,8 +90,9 @@ const args = Object.fromEntries(
 const APPLY = args.apply === "true";
 const ONLY = args.only && args.only !== "true" ? String(args.only) : null;
 const LIMIT = args.limit && args.limit !== "true" ? Number(args.limit) : Infinity;
-const ORIGIN = (args.origin && args.origin !== "true" ? String(args.origin) : "https://banan.to")
-  .replace(/\/+$/, "");
+const ORIGIN = (
+  args.origin && args.origin !== "true" ? String(args.origin) : "https://banan.to"
+).replace(/\/+$/, "");
 /*
   How many probes may fail before the whole run is refused.
 
@@ -101,18 +106,45 @@ const MAX_DEAD_SHARE = Number(
     : DEFAULT_MAX_DEAD_SHARE,
 );
 /** An absolute cap, for the case where the share is met but the count is absurd. */
-const MAX_CLEAR = Number(args["max-clear"] && args["max-clear"] !== "true" ? args["max-clear"] : 60);
+const MAX_CLEAR = Number(
+  args["max-clear"] && args["max-clear"] !== "true" ? args["max-clear"] : 60,
+);
 /** How many probes are in flight at once. */
 const CONCURRENCY = 8;
+const R2_ACCOUNT = process.env.CLOUDFLARE_ACCOUNT_ID;
+const R2_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
+
+/** Where the report is left for the workflow's last step to print. */
+const REPORT_FILE =
+  args.report && args.report !== "true" ? String(args.report) : "square-card-verify.md";
 
 const lines = [];
 const say = (t = "") => {
   lines.push(t);
   console.log(t);
 };
+/**
+ * Write the report where both the job summary and the LOG can find it.
+ *
+ * The log file is not decoration. A job log is read as a tail, and the upload
+ * step prints thirty lines of its own after this script finishes, so the table
+ * this run exists to produce scrolls out of reach. The workflow's last step
+ * prints this file.
+ *
+ * It is a file and not `$GITHUB_STEP_SUMMARY` because that variable points at a
+ * DIFFERENT, empty file in every step — so the `tail` that was supposed to
+ * guarantee the numbers survive printed nothing at all, silently, on every run
+ * of this workflow and of `reprice.yml`.
+ */
 const flush = () => {
+  const text = lines.join("\n");
   if (process.env.GITHUB_STEP_SUMMARY) {
-    writeFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n"), { flag: "a" });
+    writeFileSync(process.env.GITHUB_STEP_SUMMARY, text, { flag: "a" });
+  }
+  try {
+    writeFileSync(REPORT_FILE, text);
+  } catch {
+    /* The report is a convenience; failing to write it must not fail the run. */
   }
 };
 const fail = (message) => {
@@ -123,20 +155,71 @@ const fail = (message) => {
 };
 
 /**
+ * What R2 says about one object, as a bare status.
+ *
+ * A ranged GET rather than a HEAD, which is what `r2-store.mjs` already does
+ * for the same question and for the same reason: it costs one byte and it is
+ * the request the API is happiest with. `null` means the request never
+ * completed, which the verdict reads as `unknown`.
+ */
+const r2Status = async (bucket, key) => {
+  if (!R2_ACCOUNT || !R2_TOKEN) return null;
+  const path = key.split("/").map(encodeURIComponent).join("/");
+  try {
+    const res = await fetch(
+      `https://api.cloudflare.com/client/v4/accounts/${R2_ACCOUNT}/r2/buckets/${bucket}/objects/${path}`,
+      {
+        method: "GET",
+        headers: { authorization: `Bearer ${R2_TOKEN}`, range: "bytes=0-0" },
+        signal: AbortSignal.timeout(20_000),
+      },
+    );
+    return res.status;
+  } catch {
+    return null;
+  }
+};
+
+/**
  * Is this URL there?
  *
- * Three verdicts, and the difference between the last two is the whole point:
+ * ## WHY THIS DOES NOT ASK THE WEBSITE
  *
- *   - `alive`   — it answered, and the bytes are an image.
- *   - `dead`    — it answered 404 or 410, twice, from two different methods.
- *   - `unknown` — anything else. A 403, a 5xx, a timeout, a body that is not an
- *                 image. Never cleared.
+ * The first version did, with a HEAD to `https://banan.to/api/files/...`, and
+ * it called 94.3% of the shop's pictures missing. Two faults of its own, and
+ * the blanket guard is the only reason neither reached the catalogue:
  *
- * The confirming GET is only paid for the handful that look dead, and it is not
- * optional: a HEAD is the cheap question and a destructive answer deserves the
- * expensive one.
+ *   1. `src/routes/api/files/$.ts` registers a GET handler and no HEAD one, so
+ *      the router answers 404 to every HEAD — for files that are there as much
+ *      as for files that are not. The cheap question was not a question.
+ *   2. And the edge answers these runners 403 on paths it does not like, which
+ *      the report could not even show because the detail line printed the
+ *      failure KIND without its status.
+ *
+ * So for this shop's own files it asks R2, which is the thing that actually
+ * holds them: no router, no edge, no cache, and a status that means what it
+ * says. Both buckets are asked, because whether the image scripts write to the
+ * bucket the site reads from depends on a secret this repository cannot see —
+ * and a picture in the wrong bucket is a picture that EXISTS.
+ *
+ * An external URL is still asked over HTTP: those hosts answer HEAD properly,
+ * and R2 knows nothing about them.
  */
 const probe = async (url) => {
+  const key = storageKeyFor(url);
+  if (key) {
+    const serving = await r2Status(SERVING_BUCKET, key);
+    /* Only asked when the serving bucket says no: it is the only case whose
+       answer can change the verdict. */
+    const writing = serving === 404 ? await r2Status(WRITING_BUCKET, key) : null;
+    const verdict = r2VerdictFor(serving, writing);
+    const detail =
+      writing === null
+        ? `R2 ${SERVING_BUCKET} ${serving ?? "no answer"}`
+        : `R2 ${SERVING_BUCKET} ${serving}, ${WRITING_BUCKET} ${writing}`;
+    return { verdict, detail, url };
+  }
+
   const target = absoluteUrl(url, ORIGIN);
   if (!target) return { verdict: "unknown", detail: "not addressable", url };
 
@@ -156,7 +239,13 @@ const probe = async (url) => {
   const needsProof = head === 404 || head === 410;
   const got = needsProof ? await fetchImage(target, { timeoutMs: 20_000 }) : null;
   const verdict = verdictFor(head, got);
-  const detail = got ? `HEAD ${head}, GET ${got.ok ? got.status : got.kind}` : `HEAD ${head}`;
+  /*
+    The STATUS, always, not just the kind. The first run of this script printed
+    «GET http-error» for every failure, which named the shape of the answer and
+    withheld the one number that would have said whether the shop was broken or
+    the runner was blocked.
+  */
+  const detail = got ? `HEAD ${head}, GET ${got.status ?? "—"} (${got.kind})` : `HEAD ${head}`;
   return { verdict, detail, url };
 };
 
@@ -271,13 +360,40 @@ const byUrl = new Map(urls.map((url, i) => [url, results[i]]));
 const alive = results.filter((r) => r.verdict === "alive").length;
 const dead = results.filter((r) => r.verdict === "dead").length;
 const unknown = results.filter((r) => r.verdict === "unknown").length;
+const misplaced = results.filter((r) => r.verdict === "misplaced").length;
 
 say("| الحالة | روابط |");
 say("|---|---:|");
 say(`| موجودة | ${alive.toLocaleString("en-US")} |`);
-say(`| مفقودة (404/410 مرتين) | ${dead.toLocaleString("en-US")} |`);
+say(`| مفقودة تمامًا | ${dead.toLocaleString("en-US")} |`);
+say(
+  `| موجودة لكن في \`${WRITING_BUCKET}\` بدل \`${SERVING_BUCKET}\` — لن تُمسّ | ` +
+    `${misplaced.toLocaleString("en-US")} |`,
+);
 say(`| غير محسومة — لن تُمسّ | ${unknown.toLocaleString("en-US")} |`);
 say();
+
+/*
+  THE MISPLACED ONES ARE A DIFFERENT FAULT AND A DIFFERENT REPAIR.
+
+  The picture exists. It is in the bucket the image scripts write to and not in
+  the bucket the site reads from, so a shopper gets a 404 for a file this shop
+  owns. Erasing the URL would throw the picture away to fix a routing mistake.
+  Named here so the repair — copy the object, or point the scripts at the right
+  bucket — is somebody's to make.
+*/
+if (misplaced) {
+  say(`## موجودة في الحاوية الخطأ — ${misplaced}`);
+  say();
+  say(`الصورة موجودة فعلًا في \`${WRITING_BUCKET}\`، والموقع يقرأ من \`${SERVING_BUCKET}\`.`);
+  say("لن يمسّ هذا السكربت أيًّا منها: الإصلاح نسخ الملف، لا حذف الرابط.");
+  say();
+  for (const row of results.filter((r) => r.verdict === "misplaced").slice(0, 25)) {
+    say(`- \`${row.url}\``);
+  }
+  if (misplaced > 25) say(`- … و${misplaced - 25} غيرها`);
+  say();
+}
 
 /*
   THE BLANKET REFUSAL.
@@ -287,7 +403,7 @@ say();
   count would sail straight past the one failure it exists to catch.
 */
 const share = urls.length ? (dead + unknown) / urls.length : 0;
-if (isBlanketFailure({ alive, dead, unknown }, MAX_DEAD_SHARE)) {
+if (isBlanketFailure({ alive, dead, unknown, misplaced }, MAX_DEAD_SHARE)) {
   say(
     `**${(share * 100).toFixed(1)}% من الروابط لم تُجب إجابة سليمة، والحد ${(MAX_DEAD_SHARE * 100).toFixed(0)}%.** ` +
       `هذا شكل جهاز محجوب، لا شكل كتالوج معطوب. لم يُكتب شيء.`,
@@ -329,6 +445,8 @@ const payload = {
   alive,
   dead,
   unknown,
+  misplaced,
+  misplacedUrls: results.filter((r) => r.verdict === "misplaced").map((r) => r.url),
   broken: broken.map((row) => ({
     id: row.id,
     title: row.title,
