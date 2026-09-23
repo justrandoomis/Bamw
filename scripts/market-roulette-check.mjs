@@ -156,6 +156,79 @@ const liveBuild = await page
 say(`- البناء الذي يخدم: \`${liveBuild}\``);
 
 /*
+  In-app navigation, not a fresh document request.
+
+  Cloudflare answers this runner 403 on several paths while answering `/` with
+  200. A single-page app does not need a second request to change screens, and
+  `pushState` + `popstate` is the transition TanStack Router listens for — so
+  the screen under test is the real one, rendered by the real deployed code,
+  with nothing for Cloudflare to refuse.
+*/
+const routeTo = async (to, settled) => {
+  await page.evaluate((target) => {
+    window.history.pushState({}, "", target);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+  }, to);
+
+  /*
+    WAIT FOR THE PAGE, DO NOT GUESS AT IT.
+
+    This used to be a flat `waitForTimeout(SETTLE_MS)` — three seconds — and
+    that is not a wait, it is a bet. `/api/health` on this shop reports
+    `productsLatencyMs` around 2,700ms, so three seconds is a coin flip against
+    its own backend, and both screens render a spinner until their data lands.
+
+    A run that lost the toss reported a page of ~160 characters and every
+    assertion on it failed. That reads exactly like a broken page and is not
+    one, which is the worst kind of wrong: I acted on it.
+
+    So the caller names a string that only appears once the screen has its
+    data, and this polls for it. The timeout is generous because a slow answer
+    is not a failure — and when it DOES expire, the report says so and prints
+    what was actually on the screen, so the next reader does not have to guess
+    the way I did.
+  */
+  /*
+    `settled` is a string when one sentence means «this screen has its data»,
+    and a RegExp when several different sentences all do — a signed-out prompt
+    and a signed-in strip are both settled states, and insisting on one of them
+    would fail honest renderings of the other.
+  */
+  const arrived = (text) =>
+    !settled || (settled instanceof RegExp ? settled.test(text) : text.includes(settled));
+
+  const deadline = Date.now() + WAIT_MS;
+  let seen = "";
+  while (Date.now() < deadline) {
+    seen = (await page.locator("body").innerText().catch(() => "")) || "";
+    if (arrived(seen)) return { ok: true, text: seen, waited: true };
+    await page.waitForTimeout(250);
+  }
+  return { ok: !settled, text: seen, waited: false };
+};
+const here = async () => await page.evaluate(() => window.location.pathname);
+
+let failures = 0;
+let skipped = 0;
+const results = [];
+/** One assertion, recorded either way, so the table shows the whole picture. */
+const check = (name, ok, detail = "") => {
+  results.push({ name, ok, detail });
+  if (!ok) failures += 1;
+};
+/**
+ * Something only a signed-in member can see.
+ *
+ * Recorded and shown, but not counted as a failure — and never as a pass. The
+ * summary names how many there were, so a run that verified less than it
+ * looks like cannot be mistaken for a full one.
+ */
+const needsSession = (name, detail = "") => {
+  results.push({ name, skip: true, detail });
+  skipped += 1;
+};
+
+/*
   ─── THE HOME SHELF ──────────────────────────────────────────────────────
 
   «الشريط الذي تحت خدمات المتجر يجب أن يعرض الالعاب المشهورة وليس العشوائية».
@@ -233,79 +306,6 @@ if (FAMOUS.length === 0) {
     ranked.length ? ranked[0].replace(/\s+/g, " ").trim() : "لا شيء منها على القائمة",
   );
 }
-
-/*
-  In-app navigation, not a fresh document request.
-
-  Cloudflare answers this runner 403 on several paths while answering `/` with
-  200. A single-page app does not need a second request to change screens, and
-  `pushState` + `popstate` is the transition TanStack Router listens for — so
-  the screen under test is the real one, rendered by the real deployed code,
-  with nothing for Cloudflare to refuse.
-*/
-const routeTo = async (to, settled) => {
-  await page.evaluate((target) => {
-    window.history.pushState({}, "", target);
-    window.dispatchEvent(new PopStateEvent("popstate"));
-  }, to);
-
-  /*
-    WAIT FOR THE PAGE, DO NOT GUESS AT IT.
-
-    This used to be a flat `waitForTimeout(SETTLE_MS)` — three seconds — and
-    that is not a wait, it is a bet. `/api/health` on this shop reports
-    `productsLatencyMs` around 2,700ms, so three seconds is a coin flip against
-    its own backend, and both screens render a spinner until their data lands.
-
-    A run that lost the toss reported a page of ~160 characters and every
-    assertion on it failed. That reads exactly like a broken page and is not
-    one, which is the worst kind of wrong: I acted on it.
-
-    So the caller names a string that only appears once the screen has its
-    data, and this polls for it. The timeout is generous because a slow answer
-    is not a failure — and when it DOES expire, the report says so and prints
-    what was actually on the screen, so the next reader does not have to guess
-    the way I did.
-  */
-  /*
-    `settled` is a string when one sentence means «this screen has its data»,
-    and a RegExp when several different sentences all do — a signed-out prompt
-    and a signed-in strip are both settled states, and insisting on one of them
-    would fail honest renderings of the other.
-  */
-  const arrived = (text) =>
-    !settled || (settled instanceof RegExp ? settled.test(text) : text.includes(settled));
-
-  const deadline = Date.now() + WAIT_MS;
-  let seen = "";
-  while (Date.now() < deadline) {
-    seen = (await page.locator("body").innerText().catch(() => "")) || "";
-    if (arrived(seen)) return { ok: true, text: seen, waited: true };
-    await page.waitForTimeout(250);
-  }
-  return { ok: !settled, text: seen, waited: false };
-};
-const here = async () => await page.evaluate(() => window.location.pathname);
-
-let failures = 0;
-let skipped = 0;
-const results = [];
-/** One assertion, recorded either way, so the table shows the whole picture. */
-const check = (name, ok, detail = "") => {
-  results.push({ name, ok, detail });
-  if (!ok) failures += 1;
-};
-/**
- * Something only a signed-in member can see.
- *
- * Recorded and shown, but not counted as a failure — and never as a pass. The
- * summary names how many there were, so a run that verified less than it
- * looks like cannot be mistaken for a full one.
- */
-const needsSession = (name, detail = "") => {
-  results.push({ name, skip: true, detail });
-  skipped += 1;
-};
 
 // ─── 1 & 2. The market ────────────────────────────────────────────────────
 const marketLanded = await routeTo("/banana_market", "سوق الموز");

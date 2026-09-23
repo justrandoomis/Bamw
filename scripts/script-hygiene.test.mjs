@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
+import { parse } from "espree";
 import { describe, expect, it } from "vitest";
 
 /**
@@ -10,93 +11,159 @@ import { describe, expect, it } from "vitest";
  * exactly how a merge script that writes to production got as far as being
  * dispatched with `--apply` before failing. These scripts are run against real
  * data from a workflow, so the cheapest place to catch it is here.
- */
-
-/**
- * Comments, string bodies and regex literals, blanked.
  *
- * Prose about a helper is not a use of it, and neither is a name that happens
- * to appear inside a pattern — `/(banan\.to|r2\.dev)/` is not a reference to a
- * const called `r2`, which an earlier version of this test insisted it was.
+ * ## THIS FILE USED A REGULAR EXPRESSION, AND IT MISSED ONE
+ *
+ * The first version compared only lines starting at column zero, on the
+ * reasoning that «module-level statements start at column zero». They do not.
+ * A top-level `if`/`else`, `for` or `try` runs at module level too, and its
+ * body is INDENTED — so a call inside one was invisible here. I put a `check(…)`
+ * inside such an `else` in the production checker, `node --check` said the file
+ * parsed, this test said the file was clean, and the run died on the runner
+ * with «Cannot access 'check' before initialization» after it had already read
+ * the shelf it was sent to read.
+ *
+ * So it parses now, with the parser ESLint itself uses, and walks the tree:
+ *
+ *   - a reference inside a FUNCTION is not a hazard. The function body runs
+ *     when it is called, which is normally after everything is initialised —
+ *     this is the case the regex was written to avoid and the reason this was
+ *     never just `no-use-before-define`, which flags twelve of these across
+ *     four scripts that are all perfectly correct;
+ *   - a reference anywhere else runs top to bottom, whatever its indentation;
+ *   - a name redeclared by an inner block is that block's own, not the module's;
+ *   - and `import { present as presentCell }` mentions `present` without
+ *     referring to anything at all.
+ *
+ * The last two are not hypothetical: the first tree-walking version I wrote
+ * reported both as hazards, in `db-console.mjs` and `deployment-state.mjs`, and
+ * neither was one.
  */
-const strip = (source) =>
-  source
-    .replace(/\/\*[\s\S]*?\*\//g, (m) => " ".repeat(m.length))
-    .replace(/(^|[^:])\/\/[^\n]*/g, (m) => " ".repeat(m.length))
-    .replace(/`(?:[^`\\]|\\.)*`/g, (m) => " ".repeat(m.length))
-    .replace(/"(?:[^"\\]|\\.)*"/g, (m) => " ".repeat(m.length))
-    .replace(/'(?:[^'\\]|\\.)*'/g, (m) => " ".repeat(m.length))
-    .replace(/(^|[=(,:[!&|?{;+\s])\/(?![/*])(?:[^/\\\n[]|\\.|\[(?:[^\]\\]|\\.)*\])+\/[gimsuy]*/g, (m) =>
-      " ".repeat(m.length),
-    );
 
-/*
-  Only module-level lines are compared.
+/** Node types whose body executes only when somebody calls them. */
+const FUNCTIONS = new Set([
+  "FunctionDeclaration",
+  "FunctionExpression",
+  "ArrowFunctionExpression",
+]);
 
-  A name used inside a function body may be that function's own parameter or
-  local, and telling those apart needs real scope analysis rather than a
-  regular expression — the first version of this test called every such
-  shadowed name a hazard. Module-level statements in these scripts start at
-  column zero, and it is only the module level that runs top to bottom, so that
-  is where a const used above its definition actually throws.
-*/
-function hazards(source) {
-  const src = strip(source);
-  const lines = src.split("\n");
-  const offsets = [];
-  let at = 0;
-  for (const line of lines) {
-    offsets.push(at);
-    at += line.length + 1;
+/** Node types that open a scope a `const`/`let` can be private to. */
+const BLOCKS = new Set([
+  "BlockStatement",
+  "ForStatement",
+  "ForOfStatement",
+  "ForInStatement",
+  "SwitchStatement",
+  "StaticBlock",
+]);
+
+/** The `const`/`let` names a node declares directly, without descending. */
+const namesDeclaredIn = (node) => {
+  const names = [];
+  const add = (id) => {
+    if (!id) return;
+    if (id.type === "Identifier") names.push(id.name);
+    else if (id.type === "ObjectPattern") id.properties.forEach((p) => add(p.value ?? p.argument));
+    else if (id.type === "ArrayPattern") id.elements.forEach((e) => add(e));
+    else if (id.type === "AssignmentPattern") add(id.left);
+    else if (id.type === "RestElement") add(id.argument);
+  };
+  const statements =
+    node.type === "SwitchStatement"
+      ? node.cases.flatMap((c) => c.consequent)
+      : (node.body ?? []);
+  for (const statement of Array.isArray(statements) ? statements : []) {
+    if (statement.type !== "VariableDeclaration") continue;
+    if (statement.kind !== "const" && statement.kind !== "let") continue;
+    statement.declarations.forEach((d) => add(d.id));
   }
-  const topLevel = (index) => {
-    let lo = 0;
-    let hi = offsets.length - 1;
-    while (lo < hi) {
-      const mid = Math.ceil((lo + hi) / 2);
-      if (offsets[mid] <= index) lo = mid;
-      else hi = mid - 1;
+  /* A `for (const x of …)` head belongs to the loop, not to the module. */
+  if (node.left?.type === "VariableDeclaration") node.left.declarations.forEach((d) => add(d.id));
+  if (node.init?.type === "VariableDeclaration") node.init.declarations.forEach((d) => add(d.id));
+  return names;
+};
+
+export function hazards(source) {
+  let tree;
+  try {
+    tree = parse(source, { ecmaVersion: "latest", sourceType: "module", range: true, loc: true });
+  } catch {
+    /* A file that will not parse fails elsewhere, loudly. Not this file's job. */
+    return [];
+  }
+
+  /** Module-level `const`/`let`, and where each one is initialised. */
+  const declared = new Map();
+  for (const node of tree.body) {
+    if (node.type !== "VariableDeclaration") continue;
+    if (node.kind !== "const" && node.kind !== "let") continue;
+    for (const d of node.declarations) {
+      if (d.id.type === "Identifier" && !declared.has(d.id.name)) {
+        declared.set(d.id.name, { start: node.range[0], line: node.loc.start.line });
+      }
     }
-    return !/^\s/.test(lines[lo] ?? "");
+  }
+
+  const found = [];
+  const reported = new Set();
+
+  const visit = (node, inFunction, shadowed) => {
+    if (!node || typeof node.type !== "string") return;
+
+    if (FUNCTIONS.has(node.type)) inFunction = true;
+    if (!inFunction && BLOCKS.has(node.type)) {
+      const own = namesDeclaredIn(node);
+      if (own.length) shadowed = new Set([...shadowed, ...own]);
+    }
+
+    if (!inFunction && node.type === "Identifier" && !shadowed.has(node.name)) {
+      const decl = declared.get(node.name);
+      if (decl && node.range[0] < decl.start && !reported.has(node.name)) {
+        reported.add(node.name);
+        found.push({ name: node.name, useLine: node.loc.start.line, defLine: decl.line });
+      }
+    }
+
+    for (const key of Object.keys(node)) {
+      if (key === "range" || key === "loc" || key === "parent") continue;
+      /* `a.b` mentions `b`; it does not reference a variable called `b`. */
+      if (node.type === "MemberExpression" && key === "property" && !node.computed) continue;
+      if (node.type === "Property" && key === "key" && !node.computed) continue;
+      /* `import { present as presentCell }` names the EXPORT, not a variable. */
+      if (node.type === "ImportSpecifier" && key === "imported") continue;
+      if ((node.type === "ExportSpecifier" || node.type === "ImportSpecifier") && key === "exported")
+        continue;
+      const value = node[key];
+      if (Array.isArray(value)) value.forEach((child) => visit(child, inFunction, shadowed));
+      else if (value && typeof value === "object") visit(value, inFunction, shadowed);
+    }
   };
 
-  const declared = [
-    ...source.matchAll(/^(?:const|let)\s+([A-Za-z_$][\w$]*)\s*=/gm),
-  ].map((m) => m[1]);
-  const found = [];
-  for (const name of [...new Set(declared)]) {
-    const def = src.search(new RegExp(`^(?:const|let)\\s+${name}\\s*=`, "m"));
-    if (def < 0) continue;
-    /*
-      Only calls count.
-
-      `.find(` is a method, and a bare name at module level is as likely to be a
-      function parameter on a `function f(raw)` line as a reference to the
-      const. Calling a not-yet-initialised const is the shape that actually
-      threw here — `await step(...)` above `const step = ...` — and it is
-      unambiguous, so that is what this looks for.
-    */
-    const uses = [...src.matchAll(new RegExp(`(^|[^.\\w$])${name}\\s*\\(`, "g"))]
-      .map((m) => m.index)
-      .filter((i) => i < def && topLevel(i));
-    if (uses.length) {
-      found.push({
-        name,
-        useLine: source.slice(0, uses[0]).split("\n").length,
-        defLine: source.slice(0, def).split("\n").length,
-      });
-    }
-  }
+  visit(tree, false, new Set());
   return found;
 }
 
 const dir = path.resolve("scripts");
 const files = readdirSync(dir).filter((f) => f.endsWith(".mjs") && !f.endsWith(".test.mjs"));
+const libDir = path.join(dir, "lib");
+const libFiles = readdirSync(libDir)
+  .filter((f) => f.endsWith(".mjs") && !f.endsWith(".test.mjs"))
+  .map((f) => path.join("lib", f));
 
 describe("scripts have no temporal dead zone hazards", () => {
   it("finds the pattern it exists to catch", () => {
     const broken = `const out = await step("x", work);\nconst step = async (l, w) => w();\n`;
     expect(hazards(broken).map((h) => h.name)).toEqual(["step"]);
+  });
+
+  /*
+    THE ONE THE OLD VERSION MISSED, and the reason this file was rewritten. The
+    call is indented because it is inside a top-level `else`; it still runs at
+    module level, before the line that defines what it calls.
+  */
+  it("finds one inside a top-level block, where the indentation lied", () => {
+    const broken = `if (process.argv[2]) {\n  check("a", true);\n}\nconst check = () => {};\n`;
+    expect(hazards(broken).map((h) => h.name)).toEqual(["check"]);
   });
 
   it("does not mistake a method call for a reference", () => {
@@ -119,7 +186,27 @@ describe("scripts have no temporal dead zone hazards", () => {
     expect(hazards(fine)).toEqual([]);
   });
 
-  it.each(files)("%s", (file) => {
+  /*
+    A body that runs later is the whole reason this is not `no-use-before-define`:
+    that rule reports twelve of these across four scripts, every one correct.
+  */
+  it("allows a helper defined above the const it will use when called", () => {
+    const fine = `const run = () => later();\nconst later = () => 1;\nrun();\n`;
+    expect(hazards(fine)).toEqual([]);
+  });
+
+  /* Both of these were false alarms from the first tree-walking version. */
+  it("does not mistake an inner block's own name for the module's", () => {
+    const fine = `for (const x of [1]) {\n  const versions = x;\n  use(versions);\n}\nconst versions = 2;\n`;
+    expect(hazards(fine)).toEqual([]);
+  });
+
+  it("does not mistake an import alias for a reference", () => {
+    const fine = `import { present as presentCell } from "./m.mjs";\nconst present = presentCell;\n`;
+    expect(hazards(fine)).toEqual([]);
+  });
+
+  it.each([...files, ...libFiles])("%s", (file) => {
     const found = hazards(readFileSync(path.join(dir, file), "utf8"));
     expect(
       found.map((h) => `${h.name}: used line ${h.useLine}, defined line ${h.defLine}`),
