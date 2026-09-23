@@ -151,7 +151,7 @@ export function RewardsShelf({ rewards, bananas, onRedeem }: RewardsShelfProps) 
             {tr("مكافآت حقيقية مقابل رصيدك من الموز.")}
           </p>
         </div>
-        <p className="flex shrink-0 items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1.5 text-[12px] font-black text-foreground">
+        <p className="flex shrink-0 items-center gap-1.5 rounded-full border border-banana/30 bg-banana/15 px-3 py-1.5 text-[12px] font-black text-foreground">
           <span aria-hidden="true">🍌</span>
           <span dir="ltr" className="tabular-nums">
             {bananas.toLocaleString("en-US")}
@@ -161,7 +161,7 @@ export function RewardsShelf({ rewards, bananas, onRedeem }: RewardsShelfProps) 
       </header>
 
       {rewards.length === 0 ? (
-        <p className="mt-4 rounded-2xl border border-border bg-card p-5 text-center text-[12.5px] font-bold text-muted-foreground">
+        <p className="mt-4 rounded-3xl border border-border bg-card p-6 text-center text-[12.5px] font-bold text-muted-foreground">
           {tr("لا توجد مكافآت معروضة حالياً.")}
         </p>
       ) : (
@@ -174,7 +174,7 @@ export function RewardsShelf({ rewards, bananas, onRedeem }: RewardsShelfProps) 
             return (
               <li
                 key={reward.id}
-                className={`flex flex-col justify-between rounded-2xl border border-border bg-card p-4 ${
+                className={`flex flex-col justify-between rounded-3xl border border-border bg-card p-4 ${
                   suspended || soldOut ? "opacity-70" : ""
                 }`}
               >
@@ -212,7 +212,7 @@ export function RewardsShelf({ rewards, bananas, onRedeem }: RewardsShelfProps) 
                     how many, or the member is buying a number they cannot see.
                   */}
                   {reward.ticketQuantity && reward.ticketQuantity > 0 ? (
-                    <p className="mt-2 w-fit rounded-lg bg-amber-500/10 px-2 py-0.5 text-[11px] font-black text-amber-700 dark:text-amber-300">
+                    <p className="mt-2 w-fit rounded-lg bg-banana/20 px-2 py-0.5 text-[11px] font-black text-foreground">
                       {tr("يمنحك")}{" "}
                       <span dir="ltr" className="tabular-nums">
                         {reward.ticketQuantity.toLocaleString("en-US")}
@@ -224,7 +224,7 @@ export function RewardsShelf({ rewards, bananas, onRedeem }: RewardsShelfProps) 
 
                 <div className="mt-3 flex items-end justify-between gap-3 border-t border-border pt-3">
                   <div className="min-w-0">
-                    <p className="text-[13px] font-black text-amber-600 dark:text-amber-400">
+                    <p className="text-[14px] font-black text-foreground">
                       <span aria-hidden="true">🍌</span>{" "}
                       <span dir="ltr" className="tabular-nums">
                         {reward.cost.toLocaleString("en-US")}
@@ -242,9 +242,7 @@ export function RewardsShelf({ rewards, bananas, onRedeem }: RewardsShelfProps) 
                     </p>
                     <p
                       className={`mt-0.5 text-[11px] font-black ${
-                        suspended || soldOut
-                          ? "text-muted-foreground"
-                          : "text-emerald-600 dark:text-emerald-400"
+                        suspended || soldOut ? "text-muted-foreground" : "text-leaf"
                       }`}
                     >
                       {suspended ? tr("موقوفة") : soldOut ? tr("نفد المخزون") : tr("متاحة")}
@@ -253,12 +251,13 @@ export function RewardsShelf({ rewards, bananas, onRedeem }: RewardsShelfProps) 
                   <button
                     type="button"
                     disabled={!redeemable}
+                    data-ui-sound="klick"
                     onClick={() => {
                       setError("");
                       setDone(false);
                       setConfirming(reward);
                     }}
-                    className="min-h-11 shrink-0 rounded-2xl bg-foreground px-4 text-[12.5px] font-black text-background transition-transform active:scale-[0.98] disabled:opacity-40"
+                    className="min-h-11 shrink-0 rounded-2xl border border-banana/40 bg-banana/15 px-4 text-[12.5px] font-black text-foreground transition-transform active:scale-[0.98] disabled:opacity-40"
                   >
                     {tr("استبدال")}
                   </button>
@@ -307,10 +306,7 @@ export function RewardsShelf({ rewards, bananas, onRedeem }: RewardsShelfProps) 
             >
               {done ? (
                 <div className="space-y-3 text-center">
-                  <CheckCircle2
-                    className="mx-auto h-9 w-9 text-emerald-600 dark:text-emerald-400"
-                    aria-hidden="true"
-                  />
+                  <CheckCircle2 className="mx-auto h-9 w-9 text-leaf" aria-hidden="true" />
                   <h3 id={dialogTitleId} className="text-[16px] font-black text-foreground">
                     {tr("تم الاستبدال")}
                   </h3>
@@ -320,6 +316,7 @@ export function RewardsShelf({ rewards, bananas, onRedeem }: RewardsShelfProps) 
                   <button
                     type="button"
                     data-initial-focus
+                    data-ui-sound="klick"
                     onClick={close}
                     className="min-h-11 w-full rounded-2xl bg-foreground px-4 py-3 text-[13px] font-black text-background"
                   >
@@ -338,7 +335,8 @@ export function RewardsShelf({ rewards, bananas, onRedeem }: RewardsShelfProps) 
                     {confirming.title}
                   </p>
 
-                  <dl className="space-y-2 rounded-2xl bg-muted/40 p-3.5 text-[13px]">
+                  {/* Rows with hairlines, not a panel inside a panel. */}
+                  <dl className="space-y-2 border-y border-border py-3 text-[13px]">
                     <div className="flex items-center justify-between gap-3">
                       <dt className="font-bold text-muted-foreground">{tr("السعر")}</dt>
                       <dd className="font-black tabular-nums text-foreground">
@@ -370,13 +368,13 @@ export function RewardsShelf({ rewards, bananas, onRedeem }: RewardsShelfProps) 
                   </dl>
 
                   {confirmingBlocked ? (
-                    <p className="text-center text-[12px] font-bold text-red-500">
+                    <p className="text-center text-[12px] font-bold text-rind">
                       {confirmingBlocked}
                     </p>
                   ) : null}
 
                   {error ? (
-                    <p className="text-center text-[12px] font-bold text-red-500">{error}</p>
+                    <p className="text-center text-[12px] font-bold text-rind">{error}</p>
                   ) : null}
 
                   <div className="flex gap-2.5">
@@ -384,6 +382,7 @@ export function RewardsShelf({ rewards, bananas, onRedeem }: RewardsShelfProps) 
                       type="button"
                       onClick={close}
                       disabled={pending}
+                      data-ui-sound="klick"
                       className="min-h-11 flex-1 rounded-2xl border border-border bg-background px-4 py-3 text-[13px] font-bold text-foreground disabled:opacity-50"
                     >
                       {tr("إلغاء")}
@@ -391,9 +390,10 @@ export function RewardsShelf({ rewards, bananas, onRedeem }: RewardsShelfProps) 
                     <button
                       type="button"
                       data-initial-focus
+                      data-ui-sound="klick"
                       onClick={() => void redeem()}
                       disabled={pending || confirmingBlocked !== ""}
-                      className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-2xl bg-amber-500 px-4 py-3 text-[13px] font-black text-amber-950 transition-transform active:scale-[0.98] disabled:opacity-50"
+                      className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-2xl bg-banana px-4 py-3 text-[13px] font-black text-banana-ink transition-colors active:bg-peel disabled:opacity-50"
                     >
                       {pending ? (
                         <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
