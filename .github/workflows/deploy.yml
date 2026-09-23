@@ -157,15 +157,42 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npx wrangler d1 migrations apply bananto --remote --config wrangler.jsonc
 
+      # A preview that nobody can open is only half a preview.
+      #
+      # This step used to upload the version and say nothing about where it
+      # lives. Wrangler prints a preview URL; not capturing it meant the only
+      # way to see a change running against REAL data was to release it to
+      # customers — which is how a redesign reached banan.to on the strength of
+      # tests that had only ever seen a fixture.
+      #
+      # The URL goes into the job summary and into an output, so the
+      # market-and-roulette checker can be pointed straight at it.
       - name: Upload a version (no traffic)
+        id: preview
         if: ${{ env.MODE == 'preview' && !inputs.rollback_to }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
+          set -o pipefail
           npx wrangler versions upload \
             --config wrangler.jsonc \
-            --message "${{ github.sha }} from ${{ github.ref_name }}"
+            --message "${{ github.sha }} from ${{ github.ref_name }}" | tee preview.log
+          url="$(grep -oiE 'https://[a-z0-9-]+\.[a-z0-9-]+\.workers\.dev' preview.log | tail -1)"
+          if [ -n "$url" ]; then
+            echo "url=$url" >> "$GITHUB_OUTPUT"
+            echo "- preview: $url" >> "$GITHUB_STEP_SUMMARY"
+            echo "preview URL: $url"
+          else
+            echo "wrangler printed no preview URL — check whether workers.dev is enabled" >&2
+            echo "- preview: **no URL printed**" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      # LAST in this half of the log, so a tail of the job shows where to look.
+      - name: The preview URL, last in the log
+        if: ${{ env.MODE == 'preview' && !inputs.rollback_to }}
+        run: |
+          echo "preview URL: ${{ steps.preview.outputs.url || 'none' }}"
 
       # Upload the version, then give it the traffic — the two halves of a
       # deploy, run as two commands.
