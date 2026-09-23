@@ -145,8 +145,15 @@ export const Route = createFileRoute("/api/admin/products/$productId")({
           if (Array.isArray(productToSave.types)) productToSave.variants = productToSave.types;
 
           if (productSection(productToSave, currentStore.categories || []) === "game") {
+            /*
+              `allowUnstarted` — this is an admin editing a product that already
+              exists. A supplier listing that is still a name and a price has no
+              performance table because nobody has written one, and refusing the
+              save meant a misspelt title could never be corrected.
+            */
             const performanceIssues = validateGameDevicePerformance(
               productToSave as Record<string, unknown>,
+              { allowUnstarted: true },
             ).filter((i) => i.severity === "error");
             if (performanceIssues.length) {
               return json(

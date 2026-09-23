@@ -7,6 +7,9 @@
  * are only an indexed/history projection of this data.
  */
 
+import { hasRealDescription } from "./bareListing";
+import { CATALOGUE_SOURCE } from "./catalogueImport";
+
 export type VerificationStatus = "verified" | "official" | "technical_analysis" | "unverified";
 export type PerformanceInformationStatus = "available" | "not_published" | "not_tested";
 
@@ -440,6 +443,29 @@ export function productSupportsSwitch2(product: Record_ | null | undefined): boo
   });
 }
 
+/**
+ * Is this a page a customer reads, or a line on a price list?
+ *
+ * The same floor `publishGate.ts` waives for the supplier catalogue, reused
+ * rather than restated. Two definitions of «still only a name and a price»
+ * would drift, and then the save gate and the publish gate would disagree
+ * about which products are the special case.
+ */
+function stillAPriceListEntry(product: Record_): boolean {
+  if (product["catalogueSource"] === CATALOGUE_SOURCE) return true;
+  return !hasRealDescription(product as Record<string, unknown>);
+}
+
+/**
+ * Nothing at all has been entered — as opposed to somebody having started.
+ *
+ * All four fields absent is an untouched table. Three absent means a person
+ * filled one in and stopped, and THAT is the fault this validator exists to
+ * catch: a game claiming 1080p with no frame rate is worse than a game
+ * claiming nothing. So the waiver below is deliberately all-or-nothing.
+ */
+const BLANK_TABLE_FIELDS = 4;
+
 function modeMissing(mode: DeviceModePerformance | undefined, prefix: string): string[] {
   if (mode?.supported === false) return [];
   const missing: string[] = [];
@@ -451,7 +477,23 @@ function modeMissing(mode: DeviceModePerformance | undefined, prefix: string): s
 
 export function validateGameDevicePerformance(
   product: Record_ | null | undefined,
-  options?: { strict?: boolean },
+  options?: {
+    strict?: boolean;
+    /**
+     * Allow a table nobody has started yet, on a listing nobody has written.
+     *
+     * Granted by the ADMIN SAVE paths and by nothing else, because only they
+     * know the context: an import is someone supplying a game record on
+     * purpose, and requiring the data there is the whole point. Editing an
+     * existing price-list entry is the opposite — the owner is correcting a
+     * title, and refusing that until he has measured the frame rate is a trap.
+     *
+     * Inferring this from the product's shape was the first thing I tried and
+     * it was wrong: it silently relaxed the importer too, and three of its
+     * tests said so.
+     */
+    allowUnstarted?: boolean;
+  },
 ): PerformanceValidationIssue[] {
   if (!product || typeof product !== "object") return [];
   const source = product["devicePerformance"] ?? product["device_performance"];
@@ -488,7 +530,14 @@ export function validateGameDevicePerformance(
   if (!record) {
     issues.push({
       key: "device_performance",
-      severity: "error",
+      /*
+        A listing that is still a name and a price has no table because nobody
+        has written one, and refusing the SAVE on that made the owner unable to
+        correct a typo in a title. Reported, so the gap stays visible — but not
+        blocking. `publishGate.ts` waives the picture and the description for
+        these same listings, for the same reason.
+      */
+      severity: options?.allowUnstarted && stillAPriceListEntry(product) ? "warning" : "error",
       message: `${requiredDevice.name} performance information is required. Please provide Handheld resolution/FPS and TV resolution/FPS, or mark an unsupported mode as Not Supported.`,
     });
     return issues;
@@ -511,9 +560,27 @@ export function validateGameDevicePerformance(
 
   const missing = [...modeMissing(record.handheld, "handheld"), ...modeMissing(record.tv, "tv")];
   if (missing.length) {
+    /*
+      Blank versus half-finished, and the difference decides whether a save is
+      refused.
+
+      All four fields absent is a table nobody has started, on a listing nobody
+      has described — the fifteen hundred supplier titles that go on sale as a
+      name and a price on purpose. Blocking their save means the shop cannot
+      fix a misspelt title without first researching resolutions and frame
+      rates, which is a trap rather than a guard.
+
+      Anything less than all four means a person filled something in and
+      stopped. That stays an error: a game claiming a resolution with no frame
+      rate is the exact defect this check was written for.
+    */
+    const untouched = missing.length === BLANK_TABLE_FIELDS;
     issues.push({
       key: "device_performance",
-      severity: "error",
+      severity:
+        options?.allowUnstarted && untouched && stillAPriceListEntry(product)
+          ? "warning"
+          : "error",
       message: `Import validation error: ${requiredDevice.name} performance data is required. Missing: ${missing.join(", ")}. If a mode is not supported, mark it as Not Supported.`,
     });
   }

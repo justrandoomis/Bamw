@@ -693,7 +693,10 @@ export default function AdminProductEditor({
     }
 
     if (isGameCategory) {
-      const performanceIssues = validateGameDevicePerformance(formData);
+      /* Same waiver the server grants, so the button and the API agree. */
+      const performanceIssues = validateGameDevicePerformance(formData, {
+        allowUnstarted: true,
+      });
       const blockingIssues = performanceIssues.filter((i) => i.severity === "error");
       if (blockingIssues.length) {
         toast.error(blockingIssues.map((issue) => issue.message).join("\n"), {

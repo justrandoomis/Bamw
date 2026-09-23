@@ -65,9 +65,10 @@ function productSection(product: Partial<Product>, categories: Record<string, un
 
 function performanceValidation(product: Partial<Product>, categories: Record<string, unknown>[]) {
   return productSection(product, categories) === "game"
-    ? validateGameDevicePerformance(product as Record<string, unknown>).filter(
-        (issue) => issue.severity === "error",
-      )
+    ? validateGameDevicePerformance(product as Record<string, unknown>, {
+        // An admin saving from the panel, not an import. See the option's note.
+        allowUnstarted: true,
+      }).filter((issue) => issue.severity === "error")
     : [];
 }
 
