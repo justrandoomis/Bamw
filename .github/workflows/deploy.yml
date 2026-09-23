@@ -157,17 +157,30 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npx wrangler d1 migrations apply bananto --remote --config wrangler.jsonc
 
-      # A preview that nobody can open is only half a preview.
+      # The browser that reads the preview, installed before the upload so a
+      # slow apt-get is not sitting between an uploaded version and the only
+      # thing that can judge it.
+      - name: Install Chromium
+        if: ${{ env.MODE == 'preview' && !inputs.rollback_to }}
+        run: npx --yes playwright@1.62.1 install --with-deps chromium
+
+      # A preview that nobody can open is only half a preview — and a preview
+      # URL printed into a public repository's log is a live copy of the shop
+      # with a public address. This step does the whole thing itself: upload,
+      # open, read, report. The URL never leaves the step.
       #
-      # This step used to upload the version and say nothing about where it
-      # lives. Wrangler prints a preview URL; not capturing it meant the only
-      # way to see a change running against REAL data was to release it to
-      # customers — which is how a redesign reached banan.to on the strength of
-      # tests that had only ever seen a fixture.
+      # It used to upload the version and say nothing about where it lives, so
+      # the only way to see a change running against REAL data was to release it
+      # to customers — which is how a redesign reached banan.to on the strength
+      # of tests that had only ever seen a fixture.
       #
-      # The URL goes into the job summary and into an output, so the
-      # market-and-roulette checker can be pointed straight at it.
-      - name: Upload a version (no traffic)
+      # THE FALLBACK USED TO BE UNREACHABLE. The `else` below said «wrangler
+      # printed no preview URL», and the first run that hit that case never got
+      # there: `grep` exits 1 when it matches nothing, the step's shell is
+      # `bash -e` with `pipefail`, so the assignment killed the step. The
+      # version had already uploaded fine. `|| true` is what makes the message
+      # I wrote for this case actually appear.
+      - name: Upload a version, then read it (no traffic)
         id: preview
         if: ${{ env.MODE == 'preview' && !inputs.rollback_to }}
         env:
@@ -178,21 +191,29 @@ jobs:
           npx wrangler versions upload \
             --config wrangler.jsonc \
             --message "${{ github.sha }} from ${{ github.ref_name }}" | tee preview.log
-          url="$(grep -oiE 'https://[a-z0-9-]+\.[a-z0-9-]+\.workers\.dev' preview.log | tail -1)"
-          if [ -n "$url" ]; then
-            echo "url=$url" >> "$GITHUB_OUTPUT"
-            echo "- preview: $url" >> "$GITHUB_STEP_SUMMARY"
-            echo "preview URL: $url"
-          else
-            echo "wrangler printed no preview URL — check whether workers.dev is enabled" >&2
-            echo "- preview: **no URL printed**" >> "$GITHUB_STEP_SUMMARY"
+          url="$(grep -oiE 'https://[a-z0-9-]+\.[a-z0-9-]+\.workers\.dev' preview.log | tail -1 || true)"
+          if [ -z "$url" ]; then
+            echo "wrangler printed no preview URL." >&2
+            echo "Preview URLs need a workers.dev subdomain on the account and" >&2
+            echo "\`preview_urls\` on the Worker. The version uploaded; nothing read it." >&2
+            echo "- preview: **no URL printed — the version was not read**" >> "$GITHUB_STEP_SUMMARY"
+            exit 1
           fi
+          # Public repository. Everything below prints `***` in place of the
+          # address, including whatever the checker writes into its own report.
+          echo "::add-mask::$url"
+          echo "uploaded=yes" >> "$GITHUB_OUTPUT"
+          echo "- preview: uploaded and read (address withheld — public repo)" >> "$GITHUB_STEP_SUMMARY"
 
-      # LAST in this half of the log, so a tail of the job shows where to look.
-      - name: The preview URL, last in the log
-        if: ${{ env.MODE == 'preview' && !inputs.rollback_to }}
-        run: |
-          echo "preview URL: ${{ steps.preview.outputs.url || 'none' }}"
+          # The real checker, against the real bindings this version is wired
+          # to: the production D1 and R2. It signs in to nothing and spins
+          # nothing, so it creates no commercial data — it only reads screens.
+          rc=0
+          node scripts/market-roulette-check.mjs --origin "$url" || rc=$?
+          echo
+          echo "─── what the preview actually rendered ───"
+          tail -c 2500 market-roulette-check.md || true
+          exit $rc
 
       # Upload the version, then give it the traffic — the two halves of a
       # deploy, run as two commands.

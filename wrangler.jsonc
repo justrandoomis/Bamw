@@ -38,6 +38,31 @@
   },
 
   /*
+    PREVIEW URLS — how a change gets measured before a customer sees it.
+
+    `wrangler versions upload` uploads a version and shifts no traffic, which is
+    the safe half of a deploy. But a version nobody can open proves nothing: the
+    only way left to exercise a change against the REAL `/api/banana` and the
+    REAL catalogue was to release it to banan.to and watch. That is how a
+    redesign reached production on the strength of tests that had only ever seen
+    a fixture, and how a checker that could not tell a slow page from a broken
+    one got to be the thing that judged it.
+
+    With this on, every uploaded version gets its own hostname —
+    `<version>-pixel-cart-cloud.<subdomain>.workers.dev` — running that exact
+    code against the production bindings. The deploy job opens it, reads the
+    screens, and then says nothing about where it was: the URL is masked out of
+    the log, because this repository is public and that address answers with a
+    live copy of the shop.
+
+    WHAT THIS DOES NOT DO: it does not enable `workers_dev`. There is no stable
+    `pixel-cart-cloud.<subdomain>.workers.dev` alias for production — banan.to
+    stays the only address a customer has, served through the routes below, and
+    a per-version URL exists only for a version somebody uploaded.
+  */
+  "preview_urls": true,
+
+  /*
     The CPU ceiling, and why this line is the most important one in the file.
 
     Roughly half of every-minute cron firings and nine catalogue-import batches
