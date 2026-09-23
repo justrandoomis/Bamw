@@ -650,5 +650,31 @@ if (faults.length) {
 }
 
 if (args.json && args.json !== "true") writeFileSync(args.json, JSON.stringify(payload, null, 2));
+
+/*
+  THE VERDICT, LAST, because a report that ends with four hundred table rows is
+  a report whose numbers nobody can find.
+
+  A job log is read as a tail, and the table of moved prices above is the
+  longest thing this script prints — so the counts, which are the only lines
+  that say whether the run did what it meant to, were the ones that scrolled
+  out of reach. Repeated here rather than moved, because the tables above are
+  where the run is CHECKED and these five lines are where it is judged.
+*/
+say("## الخلاصة");
+say();
+say(`- ${APPLY ? "**تطبيق**" : "تشغيل جاف"}`);
+say(`- أسعار تحرّكت: **${moving.length}**`);
+say(`- نسخ \`accountPrice\` قديمة أُصلحت: **${staleMirrors.length}**`);
+say(`- كُتبت: **${written}**`);
+say(`- تُحقّق منها من قاعدة البيانات حقلًا بحقل: **${verified}**`);
+say(`- أخطاء: **${faults.length}**`);
+say();
+say(
+  faults.length
+    ? "**انتهى بأخطاء. اقرأ «أخطاء بعد الكتابة» أعلاه.**"
+    : "**تم. كل سعر كُتب قُرئ من قاعدة البيانات، ولم يتغيّر أي حقل آخر.**",
+);
+
 flush();
 process.exit(faults.length ? 1 : 0);

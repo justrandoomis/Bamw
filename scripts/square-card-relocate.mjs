@@ -62,6 +62,7 @@ import { readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { sniffImage } from "./lib/image-probe.mjs";
+import { pacedFetch } from "./lib/cloudflare-pace.mjs";
 import { commonPrefix, listPrefix } from "./lib/r2-listing.mjs";
 import { SERVING_BUCKET, storageKeyFor, WRITING_BUCKET } from "./lib/square-link-verdict.mjs";
 
@@ -137,7 +138,7 @@ const inBatches = async (items, worker) => {
 const copyOne = async (key) => {
   let bytes;
   try {
-    const res = await fetch(objectUrl(WRITING_BUCKET, key), {
+    const res = await pacedFetch(objectUrl(WRITING_BUCKET, key), {
       headers: { authorization: `Bearer ${R2_TOKEN}` },
       signal: AbortSignal.timeout(60_000),
     });
@@ -155,7 +156,7 @@ const copyOne = async (key) => {
   if (!kind) return { key, ok: false, why: "المصدر ليس صورة" };
 
   try {
-    const res = await fetch(objectUrl(SERVING_BUCKET, key), {
+    const res = await pacedFetch(objectUrl(SERVING_BUCKET, key), {
       method: "PUT",
       headers: { authorization: `Bearer ${R2_TOKEN}`, "content-type": kind },
       body: bytes,
@@ -172,7 +173,7 @@ const copyOne = async (key) => {
 
   /* Read back from the DESTINATION. A put nobody re-read is not a copy. */
   try {
-    const res = await fetch(objectUrl(SERVING_BUCKET, key), {
+    const res = await pacedFetch(objectUrl(SERVING_BUCKET, key), {
       headers: { authorization: `Bearer ${R2_TOKEN}` },
       signal: AbortSignal.timeout(60_000),
     });

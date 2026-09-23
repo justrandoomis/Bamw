@@ -64,7 +64,8 @@ jobs:
         run: |
           npx vitest run \
             "scripts/-a-dead-link-is-not-a-blocked-runner.test.mjs" \
-            "scripts/-a-half-read-listing-is-not-an-answer.test.mjs"
+            "scripts/-a-half-read-listing-is-not-an-answer.test.mjs" \
+            "scripts/-a-429-is-ask-me-later-not-no.test.mjs"
 
       - name: Mask identifiers
         env:

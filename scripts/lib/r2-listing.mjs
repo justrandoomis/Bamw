@@ -26,6 +26,8 @@
  * would look absent, which is exactly the verdict that erases things.
  */
 
+import { pacedFetch } from "./cloudflare-pace.mjs";
+
 const API = "https://api.cloudflare.com/client/v4";
 
 /** How many 1,000-key pages to read before refusing to keep going. */
@@ -60,7 +62,7 @@ export function commonPrefix(keys) {
  * listing that was still truncated at the page cap. An empty Set is a real
  * answer and means the folder is empty; the two are never conflated.
  */
-export async function listPrefix(bucket, prefix, { account, token, fetchImpl = fetch } = {}) {
+export async function listPrefix(bucket, prefix, { account, token, fetchImpl = pacedFetch } = {}) {
   if (!account || !token) return null;
   const keys = new Set();
   let cursor = "";
