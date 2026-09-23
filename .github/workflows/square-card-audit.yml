@@ -1,0 +1,71 @@
+# Do the stored square covers actually load?
+#
+# The owner reported that a square image he saves never reaches the storefront,
+# and that the cartridge shelf leads with «لم يتم إضافة الصورة بعد». Two
+# incompatible explanations fit, and this session has already paid once for
+# guessing between two readings instead of measuring.
+#
+# READ-ONLY and needing no secrets: it opens the public site in a real mobile
+# browser, reads the catalogue's own slim payload, tries to LOAD the stored
+# square URLs the way a card loads them, and reports what the shelf is showing.
+# It signs in to nothing and writes nothing anywhere.
+name: Square card audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: "Origin to read"
+        type: string
+        default: "https://banan.to"
+      sample:
+        description: "How many distinct stored URLs to try loading"
+        type: string
+        default: "120"
+  # A new or edited audit runs itself, so it can be trusted before it is relied
+  # on. It reads and never writes, so a push trigger risks nothing.
+  push:
+    branches: ["claude/**"]
+    paths:
+      - scripts/square-card-audit.mjs
+      - .github/workflows/square-card-audit.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: square-card-audit
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+      - name: Install Chromium
+        run: npx --yes playwright@1.62.1 install --with-deps chromium
+      - name: Try to load the covers
+        env:
+          ORIGIN: ${{ inputs.origin }}
+          SAMPLE: ${{ inputs.sample }}
+        run: node scripts/square-card-audit.mjs --origin "${ORIGIN:-https://banan.to}" --sample "${SAMPLE:-120}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: square-card-audit
+          path: square-card-audit.md
+          if-no-files-found: warn
+      # LAST in the log, deliberately: a job log is read as a tail and the
+      # upload step prints thirty lines of its own after the script finishes.
+      - name: The verdict, last in the log
+        if: always()
+        run: tail -c 3000 square-card-audit.md || true

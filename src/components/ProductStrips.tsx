@@ -34,6 +34,12 @@ export function CartridgeStrip({
     <div
       className="flex gap-3.5 overflow-x-auto pt-2 px-4 sm:px-8 no-scrollbar snap-x relative z-10 items-end w-full max-w-full"
       dir="ltr"
+      /*
+        Named, because two different shelves on the home page carry the same
+        heading — «ألعاب نينتندو سويتش» — and a reader that cannot tell them
+        apart cannot report on either. The other one is `Nintendo Switch games`.
+      */
+      aria-label="Nintendo Switch cartridges"
     >
       {visible.map((game, i) => (
         <StaggerItem key={game.id} className="shrink-0" delay={delayFor(i)}>

@@ -68,6 +68,7 @@ export default tseslint.config(
       "scripts/cheapest-option-check.mjs",
       "scripts/market-roulette-check.mjs",
       "scripts/search-live-check.mjs",
+      "scripts/square-card-audit.mjs",
       "scripts/tier-reprice-verify.mjs",
       "scripts/ui-restoration-visual.mjs",
     ],
