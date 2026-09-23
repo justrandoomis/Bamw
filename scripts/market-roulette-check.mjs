@@ -337,7 +337,27 @@ if (FAMOUS.length === 0) {
 }
 
 // ─── 1 & 2. The market ────────────────────────────────────────────────────
-const marketLanded = await routeTo("/banana_market", "سوق الموز");
+/*
+  THE SETTLE STRING WAS NEVER WAITING FOR ANYTHING.
+
+  This said «سوق الموز», which is the market page's `<h1>` — and also the label
+  of the market tab in `BottomNav`, which is on EVERY page of this shop. So the
+  first poll matched on whatever page the browser happened to be showing, and
+  the twenty-five second wait I added after the revert returned at zero
+  milliseconds, every run, from the day I wrote it.
+
+  It went unnoticed because the router usually swapped fast enough that the
+  first read caught the market anyway. Then the shelf check above started
+  scrolling the home page — which renders all its lazy sections — and the read
+  caught 6,217 characters of HOME, «سوق الموز» among them from the nav, with
+  every market assertion failing on a page that was perfectly healthy.
+
+  That is the third time tonight a check has reported a fault that was its own.
+  So the string is one that exists on the destination and NOWHERE else: the
+  price card's heading, which only `banana_market.tsx` renders.
+*/
+const MARKET_SETTLED = "سعر موزة واحدة";
+const marketLanded = await routeTo("/banana_market", MARKET_SETTLED);
 const market = marketLanded.text;
 if (!market.trim()) {
   fail("صفحة سوق الموز لم تُقرأ — لم أتحقق من الإنتاج");
@@ -469,7 +489,7 @@ if (strip > 0) {
 
 // ─── 4. The two old addresses ─────────────────────────────────────────────
 for (const old of ["/banana_buy", "/banana_redeem"]) {
-  await routeTo(old, "سوق الموز");
+  await routeTo(old, MARKET_SETTLED);
   const landed = await here();
   check(`${old} ← ${landed}`, landed === "/banana_market", landed);
 }
