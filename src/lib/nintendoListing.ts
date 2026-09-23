@@ -1,3 +1,4 @@
+import { bestSellerRank } from "./bestSellers";
 import { getNintendoMedia, NINTENDO_IMAGE_PLACEHOLDER } from "@/lib/nintendoImages";
 import { normalizeProductPlatform } from "@/lib/product-identity";
 
@@ -119,10 +120,32 @@ export function sortNintendoGamesForHome<T extends NintendoListingProduct>(produ
       index,
       hasSquareCard: hasNintendoSquareCard(product),
       sales: nintendoProductSales(product),
+      /*
+        Worldwide fame, from `bestSellers.ts` — 57 first-party titles carrying
+        Nintendo's own published unit figures and 45 third-party ones below
+        them. Lower is more famous; everything unlisted shares `UNRANKED`.
+      */
+      fame: bestSellerRank(product["title"] ?? product["titleEn"]),
     }))
     .sort(
       (a, b) =>
-        Number(b.hasSquareCard) - Number(a.hasSquareCard) || b.sales - a.sales || a.index - b.index,
+        /*
+          A card with no picture still never leads the shelf, however famous
+          the game — «لم يتم إضافة الصورة بعد» at the front looks broken.
+
+          Then fame, which is the fix. This used to fall straight through to
+          THIS SHOP's sales, and with barely any of seventeen hundred
+          catalogue titles ever sold that was almost always a tie — so the
+          shelf ended up in arrival order, which reads as alphabetical.
+
+          The shop's own till still breaks ties among equally famous games,
+          and arrival order still breaks ties among the unheard-of, so nothing
+          reshuffles without a reason.
+        */
+        Number(b.hasSquareCard) - Number(a.hasSquareCard) ||
+        a.fame - b.fame ||
+        b.sales - a.sales ||
+        a.index - b.index,
     )
     .map(({ product }) => product);
 }

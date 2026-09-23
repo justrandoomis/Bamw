@@ -42,6 +42,7 @@
  * «يجب ألا يؤدي عدم وجود popularity إلى حذف اللعبة أو كسر Prize Pool».
  */
 
+import { fameTier } from "./roulette-fame";
 import { d1All, d1Run, getD1 } from "./d1.server";
 import {
   DEFAULT_PRICE_BOUNDARY,
@@ -329,7 +330,15 @@ export function buildPool(
       skip("no_price");
       continue;
     }
-    const popularity = flag?.popularity ?? DEFAULT_POPULARITY;
+    /*
+      The admin's own tier wins when there is one. Otherwise the game's fame is
+      DERIVED rather than assumed: the fallback used to be a flat `low`, so all
+      1,707 eligible games landed in «غير مشهورة» and four of the six buckets
+      showed 0.000% — not a classification, but the absence of one shown as
+      though it were a finding.
+    */
+    const popularity =
+      flag?.popularity ?? fameTier(product["titleEn"] ?? product["title"], product["slug"]);
     games.push({
       id,
       title: String(product["titleEn"] ?? product["title"] ?? id),

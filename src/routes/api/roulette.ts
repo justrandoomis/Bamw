@@ -1,3 +1,4 @@
+import { bestSellerRank } from "@/lib/bestSellers";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { getUserBananaBalance } from "@/lib/banana-balance.server";
@@ -73,11 +74,33 @@ async function buildState(tickets: number) {
  * fallback نظيف يحتوي اسم اللعبة فقط».
  */
 const stripOf = (games: { id: string; title: string; squareImage: string | null }[]) =>
-  games.slice(0, 80).map((game) => ({
-    id: game.id,
-    title: game.title,
-    image: game.squareImage,
-  }));
+  /*
+    Which eighty, and why not the first eighty.
+
+    «جعل الصور التي تظهر في الروليت الالعاب المشهوره عالميه». The sample used
+    to be `slice(0, 80)` of the pool in catalogue order, so the ribbon scrolled
+    past Alan Wake, Alien, Assassin's Creed, ASTRAL CHAIN — alphabetical, and
+    mostly cards with no picture at all. A roulette whose reel is a column of
+    grey placeholders looks broken whatever it is about to award.
+
+    So the sample leads with games that HAVE a cover and that somebody would
+    recognise. This is decoration only: the winner is chosen by the bucket
+    engine on the server long before any card is under the pointer, and the
+    winning card is spliced in by the client from that answer. Reordering the
+    ribbon cannot move a single percentage point.
+  */
+  [...games]
+    .sort(
+      (a, b) =>
+        Number(Boolean(b.squareImage)) - Number(Boolean(a.squareImage)) ||
+        bestSellerRank(a.title) - bestSellerRank(b.title),
+    )
+    .slice(0, 80)
+    .map((game) => ({
+      id: game.id,
+      title: game.title,
+      image: game.squareImage,
+    }));
 
 export const Route = createFileRoute("/api/roulette")({
   server: {
