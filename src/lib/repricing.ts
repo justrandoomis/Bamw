@@ -25,6 +25,7 @@
  */
 
 import { comparableTitle } from "@/lib/bestSellers";
+import { fameTier } from "@/lib/roulette-fame";
 
 /** IQD. Below this a game must not be sold, whatever it cost. */
 export const CHEAP_FLOOR = 5_000;
@@ -64,6 +65,57 @@ export const CHEAP_CEILING = 9_000;
  * Breath of the Wild higher. Rather than invent a ranking that produces the
  * answer he gave, the top rung holds only titles he has named.
  * ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------
+ * AND THE FAME DIMENSION, PUT BACK.
+ *
+ * The ladder above was read as generation-only — «the generation, not the
+ * fame, is what lifts a price above 7,000» — because all four games the owner
+ * had named happened to be Switch 2 titles. That reading dropped half of his
+ * own sentence. He wrote «٥ اغلبها وأكثرها، ٧ متوسط، ٨ العاب قويه»: most,
+ * middling, strong. Those are not generations. They are how well known a game
+ * is, and with fame removed the rungs had nothing left to sort by, so the band
+ * collapsed onto cost — which is why he is now looking at the exact inversion:
+ *
+ *   «أغلب الألعاب تكون غير معروفة وغير مشهورة لكن سعرها سبعة وثمانية بدل ٥،
+ *    بينما هنالك ألعاب قوية وسعرها غالي وفي نفس الوقت مشهورة جدا لكن سعرها
+ *    خمسة آلاف بدل ٨ و ٧.»
+ *
+ * Fame is NOT redefined here. `fameTier` is the shop's one answer to «how well
+ * known is this game», already used by the roulette and the home shelf: the
+ * worldwide sales rank first, and the admin's own demand tier allowed to
+ * promote only when it was actually set rather than defaulted. A second
+ * definition would drift from it, and the two would eventually disagree about
+ * the same game on two screens.
+ *
+ * WHY FAMOUS AND KNOWN SHARE A RUNG ON SWITCH 1. The owner's own figure for
+ * Breath of the Wild — the fourth best-selling Switch game in the world — is
+ * «٧ الف سويتش ١». So 8,000 stays Switch 2 territory rather than becoming
+ * something fame alone can reach, and no rung here contradicts a number he has
+ * personally given. 9,000 remains anchor-only for the same reason it always
+ * was.
+ * ------------------------------------------------------------------ */
+
+/** How well known a game is, in the three steps the ladder actually has. */
+export type FameBand = "famous" | "known" | "obscure";
+
+/** The shop's one fame answer, named for what the price ladder calls it. */
+export function fameBandFor(title: unknown, slug?: unknown): FameBand {
+  const tier = fameTier(title, slug);
+  return tier === "high" ? "famous" : tier === "medium" ? "known" : "obscure";
+}
+
+/**
+ * The rung a game belongs on, by fame and generation.
+ *
+ * |                | Switch 1 | Switch 2 |
+ * | famous / known |  7,000   |  8,000   |
+ * | obscure        |  5,000   |  7,000   |
+ */
+export function cheapRungFor(fame: FameBand, isSwitch2?: boolean): number {
+  if (fame === "obscure") return isSwitch2 ? CHEAP_MIDDLE : CHEAP_FLOOR;
+  return isSwitch2 ? CHEAP_SWITCH2 : CHEAP_MIDDLE;
+}
 
 /** IQD. A Switch 2 title the owner has not singled out. */
 export const CHEAP_SWITCH2 = 8_000;
@@ -197,6 +249,13 @@ export interface RepriceProduct {
    * a cost. It is the ONE thing that lifts a cheap-band game above 7,000.
    */
   isSwitch2?: boolean;
+  /** Used only to let an admin's hand-set demand tier promote this game. */
+  slug?: string;
+  /**
+   * How well known the game is. Computed from the title and slug when absent,
+   * so every caller gets the fame rule without having to know it exists.
+   */
+  fame?: FameBand;
 }
 
 export interface RepriceDecision {
@@ -267,6 +326,12 @@ export function repriceOne(product: RepriceProduct): RepriceDecision {
 
   const cost = Number(product.cost);
   const price = Number(product.price);
+  /*
+    Computed here rather than demanded from every caller, so a screen or a
+    script that knows nothing about fame still prices by it. A caller that has
+    already worked it out may pass it and save the lookup.
+  */
+  const fame: FameBand = product.fame ?? fameBandFor(product.title, product.slug);
 
   /*
     A GAME THE OWNER PRICED HIMSELF.
@@ -294,57 +359,51 @@ export function repriceOne(product: RepriceProduct): RepriceDecision {
   }
 
   if (cost <= COST_SPLIT) {
-    // «اذا كان سعر اللعبه ٥ او ٧ اتركها» — said outright, so it is checked first.
-    if (LEAVE_ALONE.has(price)) {
+    const rung = cheapRungFor(fame, product.isSwitch2);
+
+    /*
+      «اذا كان سعر اللعبه ٥ او ٧ اتركها» — NARROWED, and the narrowing is the
+      whole correction.
+
+      That sentence was obeyed literally: any game already at 5,000 or 7,000 was
+      returned untouched, first, before any rule ran. It is also exactly what
+      produced both halves of what the owner is now looking at. A famous game
+      sitting at 5,000 was frozen there by this line; an obscure one at 7,000
+      was frozen there by the same line. «اتركها» meant «those two figures are
+      fine», not «those two figures are fine on any game» — and he has now said
+      which games they are fine on.
+
+      So it still leaves 5,000 and 7,000 alone, on the games whose rung they
+      already are. Where fame disagrees, the rung wins.
+    */
+    if (LEAVE_ALONE.has(price) && price === rung) {
       return {
         ...base,
         newPrice: price,
         changed: false,
-        reason: "سعر 5 أو 7 — تُترك",
+        reason: `سعر ${price.toLocaleString("en-US")} يوافق درجته — تُترك`,
         skipped: null,
       };
     }
 
-    const notes: string[] = [];
-    let next = price;
-
-    // «لتكون ولتبدو ارخص للزبون» — 10,250 and 8,500 are currency-conversion
-    // leftovers, not decisions, and they are the ones that read as expensive.
-    if (!isThousand(next)) {
-      next = floorThousand(next);
-      notes.push("تقريب لأقرب ألف للأسفل");
-    }
-
     /*
-      THE CEILING IS THE LADDER'S RUNG FOR THIS GAME.
+      THE RUNG IS A TARGET NOW, NOT A CEILING.
 
-      8,000 for a Switch 2 title, 7,000 for everything else, and 9,000 only for
-      a game the owner has named — which the branch above has already answered.
-
-      It can only ever LOWER a price: the owner asked for cheaper, and raising a
-      game to its rung would be reading «بحد اقصى» as a target instead of a
-      limit. A game already below its rung is a judgement he made and this
-      keeps.
+      It used to only ever lower a price, on the reading that «بحد اقصى» is a
+      limit and that a game already below its rung was a judgement to keep. The
+      owner has since named the case that reading cannot fix: «ألعاب قوية
+      ومشهورة جدا لكن سعرها خمسة آلاف بدل ٨ و ٧». A ceiling can never raise
+      those, so as long as it was one, that complaint had no answer.
     */
-    const rung = product.isSwitch2 ? CHEAP_SWITCH2 : CHEAP_MIDDLE;
-    if (next > rung) {
-      next = rung;
-      notes.push(
-        product.isSwitch2
-          ? `سقف ${CHEAP_SWITCH2.toLocaleString("en-US")} لسويتش 2`
-          : `سقف ${CHEAP_MIDDLE.toLocaleString("en-US")}`,
-      );
-    }
-    if (next < CHEAP_FLOOR) {
-      next = CHEAP_FLOOR;
-      notes.push(`أرضية ${CHEAP_FLOOR.toLocaleString("en-US")}`);
-    }
+    const next = Math.max(CHEAP_FLOOR, rung);
+    const label =
+      fame === "famous" ? "مشهورة" : fame === "known" ? "معروفة" : "غير مشهورة";
 
     return {
       ...base,
       newPrice: next,
       changed: next !== price,
-      reason: notes.join(" · ") || "داخل النطاق أصلاً",
+      reason: `${label}${product.isSwitch2 ? " · سويتش 2" : ""} → درجة ${next.toLocaleString("en-US")}`,
       skipped: null,
     };
   }
@@ -366,7 +425,21 @@ export function repriceOne(product: RepriceProduct): RepriceDecision {
     `DEAR_FLOOR` is no longer a backstop that never binds: at a cost of 2,001
     the nearest thousand to 7,001 is 7,000, which is the floor exactly.
   */
-  const required = Math.max(DEAR_FLOOR, roundHalfDownThousand(cost + MIN_MARGIN));
+  /*
+    FAME MAY RAISE THIS. IT MAY NOT LOWER IT.
+
+    Above a cost of 2,000 the margin rule is not a preference, it is what keeps
+    a sale from being a loss — «اجعل الربح اقل شي هو 5000». So an obscure game
+    that costs 3,000 does NOT fall to 5,000 however unknown it is: its rung is
+    below what it cost to buy, and the cost wins. A famous Switch 2 title whose
+    cost only requires 7,000 does rise to its 8,000 rung, which is the half of
+    the owner's complaint this band can answer.
+  */
+  const required = Math.max(
+    DEAR_FLOOR,
+    roundHalfDownThousand(cost + MIN_MARGIN),
+    cheapRungFor(fame, product.isSwitch2),
+  );
 
   /*
     AND THE COST NOW DECIDES THE PRICE, IN BOTH DIRECTIONS.
