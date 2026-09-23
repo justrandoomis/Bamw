@@ -16,6 +16,8 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
+import { REMEMBERED_REASONS, verdictForNoPage } from "./lib/square-card-verdict.mjs";
+
 const strip = (text) =>
   text.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/^\s*\/\/.*$/gm, " ");
 
@@ -68,11 +70,17 @@ describe("what the fill is allowed to write", () => {
   it("refuses to report a pass whose tallies do not add up", () => {
     /*
       Every game in the slice is accounted for by exactly one outcome —
-      filled, no listing, no square asset, or never reached because the
-      deadline stopped the loop. A run that loses rows must not exit 0.
+      filled, no listing, no square asset, the picture we could not read, or
+      never reached because the deadline stopped the loop. A run that loses
+      rows must not exit 0.
+
+      `assetUnreachable` is the fifth, added when the no-asset branch learned
+      to tell «this game has no square art» from «our own fetch or R2 failed».
+      This guard caught its absence the moment that branch was written, which
+      is the entire reason to keep a tally you cannot satisfy by accident.
     */
     expect(FILL).toMatch(
-      /filled \+ noPage \+ noSquare \+ stoppedEarly !== missing\.length/,
+      /filled \+ noPage \+ noSquare \+ assetUnreachable \+ stoppedEarly !== missing\.length/,
     );
   });
 
@@ -114,8 +122,18 @@ describe("successive runs make forward progress", () => {
       reached the ones it had never seen.
     */
     expect(FILL).toContain("square_card_attempts");
-    expect(FILL).toMatch(/await remember\(id, "no_listing_404"\)/);
-    expect(FILL).toMatch(/await remember\(id, "no_square_asset"\)/);
+    /*
+      The reason strings moved out of this file and into
+      `lib/square-card-verdict.mjs`, so the script now writes whatever the
+      verdict hands it — `await remember(id, reason)` — rather than naming each
+      one at the call site. The rule is unchanged and so is what it protects:
+      an answered game is remembered, so a later run does not spend its budget
+      re-asking. What is asserted is that both real answers still exist as
+      outcomes, which is now a question for the module.
+    */
+    expect(FILL).toMatch(/await remember\(id, reason\)/);
+    expect(REMEMBERED_REASONS).toContain("no_listing_404");
+    expect(REMEMBERED_REASONS).toContain("no_square_asset");
   });
 
   it("does not remember a game whose every request failed in transport", () => {
@@ -126,10 +144,31 @@ describe("successive runs make forward progress", () => {
       for a month without ever having been asked. The fourth apply run has
       `Prison Architect` in its report reading `HTTP 0 · HTTP 0`.
     */
-    expect(FILL).toMatch(/everyKeyUnreachable/);
-    expect(FILL).toMatch(/\/→ HTTP 0\\b\//);
-    const branch = FILL.slice(FILL.indexOf("} else if (everyKeyUnreachable) {"));
-    expect(branch.slice(0, branch.indexOf("} else {"))).not.toContain("remember(");
+    /*
+      ## THIS TEST PASSED FOR MONTHS WHILE THE THING IT NAMES WAS DEAD CODE
+
+      It used to assert three things about the SOURCE: that the identifier
+      `everyKeyUnreachable` appeared, that the `→ HTTP 0` regex literal
+      appeared, and that the branch body did not call `remember`. All three
+      were true the whole time, and the branch was unreachable — the predicate
+      split the WHOLE note on "; ", and every note this caller builds ends with
+      "; europe: <reason>", which has no arrow in it. `.every()` was false on
+      every run the script has ever made.
+
+      A grep cannot tell a live branch from a dead one. So the predicate is a
+      real function now and the assertion CALLS it, with the note production
+      actually produced for the game named above. The wiring — that the script
+      asks the module rather than deciding for itself — is what is left to
+      check here; the behaviour is checked in
+      `-a-blacklist-needs-an-answer-not-a-silence.test.mjs`.
+    */
+    const prisonArchitect =
+      "no Nintendo store page resolved (prison-architect-switch → HTTP 0; " +
+      "prison-architect → HTTP 0); europe: no comparable title";
+    expect(verdictForNoPage(prisonArchitect).remember).toBeNull();
+
+    expect(FILL).toMatch(/verdictForNoPage\(note\)/);
+    expect(FILL).toMatch(/if \(reason\) await remember\(id, reason\)/);
   });
 
   it("skips only the outcomes that are answers, so the old generic rows retire", () => {
@@ -139,7 +178,19 @@ describe("successive runs make forward progress", () => {
       about again, and are recorded properly — no migration needed to undo a
       mistake.
     */
-    expect(FILL).toMatch(/outcome IN \('no_listing_404', 'no_square_asset'\)/);
+    /*
+      The list is built from `REMEMBERED_REASONS` now rather than spelled into
+      the SQL, because a third outcome joined it — `identity_rejected`, for a
+      page that was found and refused because this shop calls the game a
+      Switch 2 edition. Hard-coding the list in two places is how a new reason
+      gets written and then never skipped.
+
+      The original point stands and is asserted directly: a row written under
+      the old generic `no_listing` does not match, so it retires by itself.
+    */
+    expect(FILL).toMatch(/outcome IN \(\$\{REMEMBERED_REASONS/);
+    expect(REMEMBERED_REASONS).not.toContain("no_listing");
+    expect(new Set(REMEMBERED_REASONS).size).toBe(REMEMBERED_REASONS.length);
   });
 
   it("does not remember a request that simply failed", () => {
