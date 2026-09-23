@@ -34,26 +34,97 @@ const game = (over: Partial<RepriceProduct> = {}): RepriceProduct => ({
 
 const priceOf = (over: Partial<RepriceProduct>) => repriceOne(game(over)).newPrice;
 
-describe("«اذا كان سعر اللعبه ٥ او ٧ اتركها»", () => {
-  it("leaves 5,000 exactly where it is", () => {
+/*
+  THE FAME BANDS, AS TITLES THE SHOP ALREADY RANKS.
+
+  Fame is not redefined here any more than it is in the engine: these are
+  titles `fameTier` — the roulette's and the home shelf's one answer to «how
+  well known is this game» — already places, so a test that says «مشهورة»
+  means by it what every other screen means.
+
+    FAMOUS   Super Mario Odyssey, rank 5 on the worldwide sales list, and NOT
+             one of the four games the owner anchored by name, so it exercises
+             the rung rather than an anchor.
+    KNOWN    Metroid Dread, rank 38 — on the list, outside its top twenty.
+    obscure  «لعبة», the default title above: unranked, like the long tail of
+             the 1,712 and like «أغلب الألعاب» in the owner's complaint.
+*/
+const FAMOUS = "Super Mario Odyssey";
+const KNOWN = "Metroid Dread";
+
+/*
+  NARROWED — BY THE OWNER, AND THIS IS THE CORRECTION HE ASKED FOR.
+
+  «اذا كان سعر اللعبه ٥ او ٧ اتركها» was obeyed exactly as written: a game
+  already at 5,000 or 7,000 was returned untouched, whatever game it was. He
+  has now said what that produced, and it is both halves of one sentence:
+
+    «أغلب الألعاب تكون غير معروفة وغير مشهورة لكن سعرها سبعة وثمانية بدل ٥،
+     بينما هنالك ألعاب قوية وسعرها غالي وفي نفس الوقت مشهورة جدا لكن سعرها
+     خمسة آلاف بدل ٨ و ٧.»
+
+  «اتركها» is what froze the unknown game at 7,000 AND the famous one at 5,000:
+  a sentence that leaves both of those alone can never fix either. So it now
+  reads «those two figures are fine» — on the games whose rung they are — and
+  not «fine on any game». The tests below keep this describe block's intent, that
+  a price already right is never churned, and move the number to the game.
+*/
+describe("«اذا كان سعر اللعبه ٥ او ٧ اتركها» — on the game whose rung it is", () => {
+  it("leaves 5,000 exactly where it is, on the game whose rung 5,000 is", () => {
+    // «٥ اغلبها وأكثرها» — an unknown Switch 1 game, which is most of the
+    // catalogue. Unchanged: this is the case «اتركها» was always really about.
     const decision = repriceOne(game({ price: 5_000 }));
     expect(decision.newPrice).toBe(5_000);
     expect(decision.changed).toBe(false);
   });
 
-  it("leaves 7,000 exactly where it is", () => {
-    const decision = repriceOne(game({ price: 7_000 }));
-    expect(decision.newPrice).toBe(7_000);
-    expect(decision.changed).toBe(false);
+  it("leaves 7,000 where it is on a famous Switch 1 game — and only there", () => {
+    // «٧ الف سويتش ١» is his own figure for a game as famous as Breath of the
+    // Wild, so 7,000 on a famous Switch 1 title is still «اتركها», untouched.
+    const famous = repriceOne(game({ title: FAMOUS, price: 7_000 }));
+    expect(famous.newPrice).toBe(7_000);
+    expect(famous.changed).toBe(false);
+
+    /*
+      SUPERSEDED. The same 7,000 on an unknown game used to be left alone by
+      «اذا كان سعر اللعبه ٥ او ٧ اتركها». It is now the first half of his
+      complaint — «أغلب الألعاب تكون غير معروفة وغير مشهورة لكن سعرها سبعة
+      وثمانية بدل ٥» — so it comes down to that game's own rung. The
+      expectation moved because he asked for it to, not to make a test pass.
+    */
+    const obscure = repriceOne(game({ price: 7_000 }));
+    expect(obscure.newPrice).toBe(5_000);
+    expect(obscure.changed).toBe(true);
   });
 
-  it("leaves them alone even though 985 and 206 games sit there", () => {
-    // The two largest price groups in the shop. A rule that moved these would
-    // reprice two thirds of the catalogue on a sentence that says not to.
+  it("still does not churn the 985 at 5,000, and does move the 206 at 7,000", () => {
+    /*
+      The two largest price groups in the shop. The 5,000 group is unknown
+      Switch 1 games sitting on their own rung and must NOT move — repricing two
+      thirds of the catalogue would be the same mistake pointing the other way.
+      The 7,000 group is «سعرها سبعة وثمانية بدل ٥» itself, and moves.
+    */
     const many = Array.from({ length: 50 }, (_, i) =>
       game({ id: `p${i}`, price: i % 2 === 0 ? 5_000 : 7_000 }),
     );
-    expect(repriceAll(many).every((d) => d.changed === false)).toBe(true);
+    const decisions = repriceAll(many);
+    expect(
+      decisions.filter((d) => d.oldPrice === 5_000).every((d) => d.changed === false),
+    ).toBe(true);
+    expect(
+      decisions
+        .filter((d) => d.oldPrice === 7_000)
+        .every((d) => d.changed === true && d.newPrice === 5_000),
+    ).toBe(true);
+    // And every one of them lands on the rung exactly, never between rungs.
+    expect(decisions.every((d) => d.newPrice === 5_000)).toBe(true);
+
+    // A shelf of famous games at 7,000 is still left entirely alone, which is
+    // the half of «اتركها» that survives untouched.
+    const famousShelf = Array.from({ length: 10 }, (_, i) =>
+      game({ id: `f${i}`, title: FAMOUS, price: 7_000 }),
+    );
+    expect(repriceAll(famousShelf).every((d) => d.changed === false)).toBe(true);
   });
 });
 
@@ -71,29 +142,66 @@ describe("«اذا كان سعر اللعبه ٥ او ٧ اتركها»", () => 
     «زيلدا botw او totk تكون ٨ الف سويتش ٢ ،و ٧ الف سويتش ١
      ماريو كارت ورلد ب٩ الف · دونكي كونك ب٨ الف»
 
-  Every 8,000 and 9,000 he named is a SWITCH 2 title, and his only Switch 1
-  figure is 7,000 — for Breath of the Wild, the fourth best-selling Switch game
-  there is. So the GENERATION is what lifts a price above 7,000, not the fame.
+  That was read as generation-only — every 8,000 and 9,000 he named is a SWITCH
+  2 title, and his only Switch 1 figure is 7,000 — and the reading dropped half
+  of his own sentence. «٥ اغلبها وأكثرها، ٧ متوسط، ٨ العاب قويه» is not a list
+  of generations, it is how well known a game is; with fame gone the rungs had
+  nothing to sort by and the band collapsed onto cost. Which is what he is now
+  looking at:
+
+    «أغلب الألعاب تكون غير معروفة وغير مشهورة لكن سعرها سبعة وثمانية بدل ٥،
+     بينما هنالك ألعاب قوية ... مشهورة جدا لكن سعرها خمسة آلاف بدل ٨ و ٧.»
+
+  So FAME AND GENERATION together now decide the rung, and the rung is a TARGET
+  in both directions rather than a ceiling:
+
+    |                | Switch 1 | Switch 2 |
+    | famous / known |  7,000   |  8,000   |
+    | obscure        |  5,000   |  7,000   |
+
+  Famous and known share the Switch 1 rung because his own figure for Breath of
+  the Wild — the fourth best-selling Switch game there is — is «٧ الف سويتش ١»,
+  so no rung here contradicts a number he has personally given.
 
   The old «من ٩ إلى ٨» rule is gone with the old ceiling: 9,000 is no longer a
   price to talk down from, it is the top rung, and nothing reaches it but a
   game he has named.
 */
 describe("«بحد اقصى ٩ الف» — the ceiling the owner lowered", () => {
-  it("caps a Switch 1 game at 7,000", () => {
-    expect(priceOf({ price: 12_000 })).toBe(7_000);
-    expect(priceOf({ price: 40_000 })).toBe(7_000);
+  it("brings a Switch 1 game down to its rung: 7,000 known, 5,000 unknown", () => {
+    /*
+      SUPERSEDED, IN PART. «الالعاب الاقل من ٢ الف تكون بحد اقصى ٩ الف» still
+      forbids anything above the ceiling, so an overpriced cheap-band game still
+      comes down — that intent is untouched and both old numbers survive, on the
+      games they were always about. What moved is WHICH game gets 7,000: «٧
+      متوسط» against «٥ اغلبها وأكثرها», now that fame is back to tell them
+      apart. An unknown game landing at 7,000 is exactly «أغلب الألعاب ... غير
+      مشهورة لكن سعرها سبعة وثمانية بدل ٥».
+    */
+    expect(priceOf({ title: FAMOUS, price: 12_000 })).toBe(7_000);
+    expect(priceOf({ title: KNOWN, price: 40_000 })).toBe(7_000);
+    expect(priceOf({ price: 12_000 })).toBe(5_000);
+    expect(priceOf({ price: 40_000 })).toBe(5_000);
   });
 
-  it("caps a Switch 2 game at 8,000", () => {
-    expect(priceOf({ price: 12_000, isSwitch2: true })).toBe(8_000);
-    expect(priceOf({ price: 40_000, isSwitch2: true })).toBe(8_000);
+  it("brings a Switch 2 game down to its rung: 8,000 known, 7,000 unknown", () => {
+    // Same correction on the Switch 2 column: 8,000 is «٨ العاب قويه» and is
+    // kept for a game that is actually one, while an unknown Switch 2 title
+    // settles at 7,000 — «سعرها ثمانية بدل ٥» read the other way round.
+    expect(priceOf({ title: FAMOUS, price: 12_000, isSwitch2: true })).toBe(8_000);
+    expect(priceOf({ title: KNOWN, price: 40_000, isSwitch2: true })).toBe(8_000);
+    expect(priceOf({ price: 12_000, isSwitch2: true })).toBe(7_000);
+    expect(priceOf({ price: 40_000, isSwitch2: true })).toBe(7_000);
   });
 
   it("never reaches 9,000 except for a game the owner named", () => {
-    for (const isSwitch2 of [false, true]) {
-      for (const price of [9_000, 10_000, 12_000, 40_000]) {
-        expect(priceOf({ price, isSwitch2 })).toBeLessThanOrEqual(8_000);
+    // Widened with the fame bands: 9,000 is «قويه جدا» and stays anchor-only,
+    // so no amount of fame may reach it now that fame moves prices at all.
+    for (const title of ["لعبة", KNOWN, FAMOUS]) {
+      for (const isSwitch2 of [false, true]) {
+        for (const price of [5_000, 9_000, 10_000, 12_000, 40_000]) {
+          expect(priceOf({ title, price, isSwitch2 })).toBeLessThanOrEqual(8_000);
+        }
       }
     }
     expect(priceOf({ title: "Mario Kart World [Switch 2]", cost: 1_750, price: 45_000 })).toBe(
@@ -101,11 +209,36 @@ describe("«بحد اقصى ٩ الف» — the ceiling the owner lowered", () =
     );
   });
 
-  it("never RAISES a game to its rung — «بحد اقصى» is a limit, not a target", () => {
-    // A game the owner put at 5,000 is a judgement, and cheaper is what he
-    // asked for. The rung can only ever bring a price down.
-    expect(priceOf({ price: 5_000, isSwitch2: true })).toBe(5_000);
-    expect(priceOf({ price: 6_000, isSwitch2: true })).toBe(6_000);
+  it("DOES raise a game to its rung — the rung is a target now, not a ceiling", () => {
+    /*
+      INVERTED, AND DELIBERATELY KEPT SO THE CEILING CANNOT COME BACK UNNOTICED.
+
+      This test used to read «never RAISES a game to its rung — «بحد اقصى» is a
+      limit, not a target», on the reading that a game the owner had put at
+      5,000 was a judgement and that cheaper is always what he wants. He has
+      since named the case that reading cannot fix:
+
+        «هنالك ألعاب قوية وسعرها غالي وفي نفس الوقت مشهورة جدا لكن سعرها خمسة
+         آلاف بدل ٨ و ٧.»
+
+      A ceiling can never lift those, so while the rung was only a limit his
+      complaint had no answer at all. The assertions below are the same cases
+      with the opposite expectation, and they would fail the moment the rung
+      went back to being «بحد اقصى» only.
+    */
+    expect(priceOf({ title: FAMOUS, price: 5_000 })).toBe(7_000);
+    expect(priceOf({ title: KNOWN, price: 5_000 })).toBe(7_000);
+    expect(priceOf({ title: FAMOUS, price: 5_000, isSwitch2: true })).toBe(8_000);
+    expect(priceOf({ title: FAMOUS, price: 6_000, isSwitch2: true })).toBe(8_000);
+    // An unknown Switch 2 game rises too — its rung is 7,000, not the floor.
+    expect(priceOf({ price: 5_000, isSwitch2: true })).toBe(7_000);
+    expect(priceOf({ price: 6_000, isSwitch2: true })).toBe(7_000);
+    // And «بحد اقصى» still holds above: nothing in this band passes 9,000.
+    for (const title of [FAMOUS, KNOWN, "لعبة"]) {
+      for (const isSwitch2 of [false, true]) {
+        expect(priceOf({ title, price: 5_000, isSwitch2 })).toBeLessThanOrEqual(CHEAP_CEILING);
+      }
+    }
   });
 
   it("prices the four games the owner named, exactly as he named them", () => {
@@ -159,9 +292,38 @@ describe("«بحد اقصى ٩ الف» — the ceiling the owner lowered", () =
   });
 
   it("anchors only Bananza of the Donkey Kong games, and leaves the others to the rules", () => {
-    // «دونكي كونك ب٨ الف» in a sentence about Switch 2 games. The Switch 1
-    // titles take his own Switch 1 figure, and Tropical Freeze earns 8,000 on
-    // its own cost rather than on the anchor.
+    /*
+      «دونكي كونك ب٨ الف» in a sentence about Switch 2 games. Unchanged intent:
+      one of the four Donkey Kong titles is his, and the other three are the
+      rules' business.
+
+      ## ADAPTED TWICE, AND THE SECOND TIME WAS A CORRECTION OF THE FIRST
+
+      When the fame ladder landed, this test was changed to expect 5,000 for the
+      two titles the sales list does not rank, reasoning that under «٥ اغلبها
+      وأكثرها ... ٧ متوسط» they are «أغلب». The dry run against the live
+      catalogue is what showed that to be wrong, and it is worth stating plainly
+      rather than quietly editing the number back:
+
+        | Donkey Kong Country Returns HD | دونكي كونك — ٨ | 7,000 | 5,000 |
+        | Mario vs. Donkey Kong          | دونكي كونك — ٨ | 7,000 | 5,000 |
+
+      Two games the owner had named at ٨، on their way DOWN to the bottom rung,
+      in the very change whose purpose was «ألعاب ... مشهورة جدا لكن سعرها خمسة
+      آلاف بدل ٨ و ٧». The rule had reproduced the complaint it was written to
+      answer.
+
+      `NAMED_PRICES` had also promised, in its own comment, that these two
+      «settle at 7,000 — which is his own figure for a Switch 1 game». They are
+      held there now by `OWNER_NAMED_FAMILIES`, which raises FAME and never
+      price: a family he priced by name is not «غير مشهورة» in his shop. It is
+      not an anchor, because an anchor overrides the cost split and would have
+      dragged Tropical Freeze down to 7,000 — below his own minimum profit.
+
+      Tropical Freeze is rank 30 and is in the dear band anyway: its cost of
+      2,574 still requires 8,000, and its fame rung of 7,000 cannot pull that
+      down — «اجعل الربح اقل شي هو 5000» outranks fame in that band.
+    */
     expect(priceOf({ title: "Donkey Kong Country Returns HD", cost: 1_927.2, price: 11_000 })).toBe(
       7_000,
     );
@@ -169,25 +331,96 @@ describe("«بحد اقصى ٩ الف» — the ceiling the owner lowered", () =
     expect(
       priceOf({ title: "Donkey Kong Country: Tropical Freeze", cost: 2_574, price: 12_000 }),
     ).toBe(8_000);
+    // And Bananza itself is still the anchored one, at the figure he gave.
+    expect(
+      priceOf({ title: "Donkey Kong Bananza", cost: 1_927.2, price: 11_000, isSwitch2: true }),
+    ).toBe(8_000);
   });
 });
 
 describe("«لتكون ولتبدو ارخص للزبون» — the prices that are not whole thousands", () => {
-  it("rounds down to a whole thousand before the rung is applied", () => {
-    // Below the rung, the rounding is the only thing that moves the price.
-    expect(priceOf({ price: 6_250 })).toBe(6_000);
+  it("lands on the rung exactly, so a half-thousand old price cannot survive", () => {
+    /*
+      INVERTED. This used to be «rounds down to a whole thousand before the rung
+      is applied», and it was the round-down step that guaranteed the customer
+      never saw 6,250 — the rung was a ceiling, so a price under it was kept and
+      the rounding was the only thing that touched it.
+
+      The rung is a target now, so the old price no longer reaches the answer at
+      all and the rounding step it protected is gone as unreachable. The
+      guarantee «لتكون ولتبدو ارخص للزبون» was really making — a whole thousand,
+      and never above what was there — is what these assertions pin instead, and
+      they would fail if a non-thousand price ever leaked through again.
+    */
+    expect(priceOf({ price: 6_250 })).toBe(5_000);
     expect(priceOf({ price: 5_900 })).toBe(5_000);
+    expect(priceOf({ title: FAMOUS, price: 6_250 })).toBe(7_000);
+    /*
+      THE EXACT ANSWER, NOT «IT IS A WHOLE THOUSAND».
+
+      The first version of this grid asserted
+      `Number(priceOf({title, price})) % 1_000 === 0`, and an adversarial read
+      of it found two holes at once. `Number(null)` is 0 and `0 % 1000 === 0`,
+      so a `newPrice` that came back null satisfied every cell — the wrapper
+      swallowed exactly the case the raw value would have caught. And the exact
+      answer was available for free and not asserted, so a regression that sent
+      a KNOWN title to 8,000 passed here silently.
+
+      Each band's rung is named instead. It costs nothing and it is the whole
+      claim.
+    */
+    const rungs: Array<[string, number]> = [
+      ["لعبة", 5_000],
+      [KNOWN, 7_000],
+      [FAMOUS, 7_000],
+    ];
+    for (const [title, rung] of rungs) {
+      for (const price of [5_500, 6_250, 8_750, 9_900, 11_999]) {
+        expect(priceOf({ title, price }), `${title} @ ${price}`).toBe(rung);
+      }
+    }
   });
 
-  it("rounds down and then caps, for 14,750", () => {
-    // Monster Hunter Stories 3, cost 2,000: 14,750 → 14,000 → the Switch 1 rung.
-    expect(priceOf({ price: 14_750, cost: 2_000 })).toBe(7_000);
+  /*
+    THE FOURTH CELL OF THE NARROWED «اتركها».
+
+    Three of the four are pinned elsewhere: a famous Switch 1 game at 7,000 and
+    an obscure Switch 1 game at 5,000 both come back unchanged, and an obscure
+    Switch 1 game at 7,000 comes down. The fourth — an obscure SWITCH 2 game
+    already sitting on its own 7,000 rung — was only ever reached from a
+    different old price, so nothing said it must be left alone. It must: the
+    narrowing was «leave 5,000 and 7,000 where they are the right answer», and
+    here 7,000 is the right answer.
+  */
+  it("leaves an unknown Switch 2 game at 7,000, which is its own rung", () => {
+    const decision = repriceOne(game({ price: 7_000, isSwitch2: true }));
+    expect(decision.newPrice).toBe(7_000);
+    expect(decision.changed).toBe(false);
   });
 
-  it("never rounds up in the cheap band, because up is not cheaper", () => {
+  it("settles 14,750 onto the rung, for a game nobody has heard of", () => {
+    /*
+      Monster Hunter Stories 3, cost 2,000. It used to go 14,750 → 14,000 → the
+      flat Switch 1 rung of 7,000; it is unranked on the sales list, so «٥ اغلبها
+      وأكثرها» now claims it and it goes to 5,000 in one step. A game anyone
+      would recognise, at the same price and cost, keeps the 7,000.
+    */
+    expect(priceOf({ price: 14_750, cost: 2_000 })).toBe(5_000);
+    expect(priceOf({ title: FAMOUS, price: 14_750, cost: 2_000 })).toBe(7_000);
+  });
+
+  it("never rounds up an unknown game, because up is not cheaper for «أغلب الألعاب»", () => {
+    /*
+      NARROWED to the games it was ever true of. «لتكون ولتبدو ارخص للزبون» is
+      about the long tail — and for the long tail nothing here moves a price up.
+      For «ألعاب قوية ... مشهورة جدا» he has asked for the opposite, «بدل ٨ و ٧»,
+      so the rise is asserted rather than forbidden, and it stops at the rung.
+    */
     for (const price of [5_500, 6_250, 8_750, 9_900, 11_999]) {
       expect(priceOf({ price })).toBeLessThanOrEqual(price);
     }
+    expect(priceOf({ title: FAMOUS, price: 5_500 })).toBe(7_000);
+    expect(priceOf({ title: FAMOUS, price: 8_750 })).toBe(7_000);
   });
 });
 
@@ -551,7 +784,7 @@ describe("«الزياده على العادي حسب فرقها عن العاد
 });
 
 describe("the owner's worked example, end to end", () => {
-  it("prices all four lines of one game exactly as the owner priced them", async () => {
+  it("prices all four lines from the rules, keeping every figure he gave by name", async () => {
     /*
       «سعر اللعبه اوفلاين عادي ٨٠٠٠ تكلفه ٢٠٠٠
        سعر اللعبه اوفلاين مع الاضافات ١٥٠٠٠ تكلفه ٧٠٠٠ (فرق ٥٠٠٠)
@@ -561,11 +794,19 @@ describe("the owner's worked example, end to end", () => {
       Four prices, given as a whole product rather than as rules, and the
       rules have to land on all four or they are not the owner's rules.
 
-      THE FIRST LINE HAS SINCE MOVED, on the owner's own instruction. He later
-      capped this band at 9,000 and put every figure above 7,000 behind a Switch
-      2 badge: «٧ الف سويتش ١» even for Breath of the Wild. So a plain offline
-      account on a Switch 1 game is 7,000 now, not the 8,000 of this example,
-      and the add-ons line that is built on it follows it down.
+      THE FIRST LINE HAS MOVED TWICE, both times on his own instruction, and
+      this is the second. He first capped this band at 9,000 and said «٧ الف
+      سويتش ١» even for Breath of the Wild, which took the example's 8,000 down
+      to 7,000. He has now said that most of the catalogue should not be at 7,000
+      either:
+
+        «أغلب الألعاب تكون غير معروفة وغير مشهورة لكن سعرها سبعة وثمانية بدل ٥.»
+
+      The game in this example has no title and no fame — it is the «أغلب» of
+      that sentence exactly — so the plain offline line is 5,000, and the add-ons
+      line built on top of it follows it down again. Both the earlier numbers are
+      kept below as the answers for a game that IS known, so nothing he has
+      personally quoted is lost: 7,000 on Switch 1, 8,000 on Switch 2.
 
       The other three lines are untouched, because the online band and the
       add-ons arithmetic are exactly what they were — «قاعده الاونلاين تبقى كما
@@ -573,7 +814,7 @@ describe("the owner's worked example, end to end", () => {
     */
     const { dlcPriceFor, onlinePriceFor, repriceOne } = await import("@/lib/repricing");
 
-    // Offline, plain: a Switch 1 game in the cheap band now tops out at 7,000.
+    // Offline, plain: an unnamed, unranked game — «أغلب الألعاب» — is 5,000.
     const offline = repriceOne({
       id: "p",
       title: "لعبة",
@@ -581,10 +822,17 @@ describe("the owner's worked example, end to end", () => {
       cost: 2_000,
       price: 8_000,
     });
-    expect(offline.newPrice).toBe(7_000);
+    expect(offline.newPrice).toBe(5_000);
     expect(offline.changed).toBe(true);
 
-    // The same game as a Switch 2 edition keeps the owner's original 8,000.
+    // A game people actually ask for, at the same cost, is his «٧ الف سويتش ١»
+    // on Switch 1 and his «٨ الف سويتش ٢» on Switch 2 — the two figures he gave
+    // by name, still reachable, now that fame is what reaches them.
+    const known = { id: "p", title: FAMOUS, kind: "game", cost: 2_000, price: 8_000 } as const;
+    expect(repriceOne({ ...known }).newPrice).toBe(7_000);
+    expect(repriceOne({ ...known, isSwitch2: true }).newPrice).toBe(8_000);
+
+    // And the Switch 2 edition of the unknown game sits between them, at 7,000.
     expect(
       repriceOne({
         id: "p",
@@ -594,12 +842,14 @@ describe("the owner's worked example, end to end", () => {
         price: 8_000,
         isSwitch2: true,
       }).newPrice,
-    ).toBe(8_000);
+    ).toBe(7_000);
 
     // Offline with the add-ons: a 5,000 cost gap still adds 7,000, on top of
-    // whichever plain price the game now carries.
+    // whichever plain price the game now carries — the add-ons edition is more
+    // expensive than the plain line at every one of them, which is the point.
     expect(dlcPriceFor(8_000, 7_000 - 2_000)).toBe(15_000);
     expect(dlcPriceFor(7_000, 7_000 - 2_000)).toBe(14_000);
+    expect(dlcPriceFor(5_000, 7_000 - 2_000)).toBe(12_000);
 
     // Online, plain: cost 16,000 priced at 26,000 is a profit of exactly 10,000.
     expect(onlinePriceFor(16_000, 26_000)).toBe(26_000);

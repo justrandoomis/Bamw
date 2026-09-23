@@ -12,21 +12,43 @@
  * fitted to them afterwards — `dlcIncreaseFor` and `onlinePriceFor` were
  * derived from the sentences and then checked against these numbers.
  *
- * THE FIRST LINE HAS SINCE BEEN OVERRULED BY ITS AUTHOR:
+ * THE FIRST LINE HAS SINCE BEEN OVERRULED BY ITS AUTHOR — TWICE.
+ *
+ * FIRST, the ceiling and the four games he priced by name:
  *
  *   «اجعل السعر يعرض بحد اقصى ٩ الف بدلا من ١٢ ...
  *    مثلا لعبه زيلدا botw او totk تكون ٨ الف سويتش ٢ ،و ٧ الف سويتش ١»
  *
- * Every 8,000 and 9,000 he has now named belongs to a Switch 2 title, and his
- * only Switch 1 figure is 7,000 — for Breath of the Wild, the fourth
- * best-selling Switch game there is. So the plain offline account of this
- * example, which carries no Switch 2 marking, comes down to 7,000, and the
- * add-ons edition built on it comes down with it. The two online lines are
- * untouched: «قاعده الاونلاين تبقى كما هي».
+ * which was read as generation-only, because all four games he happened to name
+ * were Switch 2 titles. That reading dropped half of his ladder — «٥ اغلبها
+ * وأكثرها، ٧ متوسط، ٨ العاب قويه», which is fame, not generation — and
+ * with fame gone the rungs had nothing left to sort by.
  *
- * Each test below that moved says so above itself, and the Switch 2 version of
- * the same example — where 8,000 and 15,000 still stand — is asserted beside
- * it, so the example is not lost, only told which generation it was about.
+ * SECOND, and this is the correction the numbers below carry, he said what that
+ * cost him:
+ *
+ *   «أغلب الألعاب تكون غير معروفة وغير مشهورة لكن سعرها سبعة وثمانية بدل ٥،
+ *    بينما هنالك ألعاب قوية وسعرها غالي وفي نفس الوقت مشهورة جدا لكن سعرها
+ *    خمسة آلاف بدل ٨ و ٧.»
+ *
+ * So the cheap band's rung is now fame AND generation (`cheapRungFor`):
+ *
+ *   famous / known   7,000 on Switch 1   ·   8,000 on Switch 2
+ *   obscure          5,000 on Switch 1   ·   7,000 on Switch 2
+ *
+ * The product these tests price is titled «Game»: on no worldwide-sales list
+ * and in no demand table, so the shop calls it «غير مشهورة». It is exactly
+ * the game of the first half of his complaint, so its plain offline row now
+ * settles at 5,000 on Switch 1 and 7,000 on Switch 2 — not the 7,000 and 8,000
+ * of the generation-only reading — and every add-ons edition built on it comes
+ * down with it. The two online lines are untouched: «قاعده الاونلاين تبقى
+ * كما هي».
+ *
+ * HIS OWN 8,000 AND 15,000 ARE NOT LOST. They are asserted below on
+ * `famousGame` — a famous Switch 2 title, which is the one shape that rung was
+ * ever about — where the example still passes line for line without a single
+ * price moving. Each test that moved says above itself which sentence
+ * superseded which.
  *
  * The rest of the file is about the cases the example does not cover, which
  * is where money is actually lost: a tier that cannot be identified, an
@@ -38,7 +60,32 @@ import { describe, expect, it } from "vitest";
 
 import { repriceTiers, tierProblem } from "./tierRepricing";
 
+/*
+  «Game» is on no worldwide-sales list and in no demand table, so `fameTier`
+  answers `low` and `fameBandFor` answers «غير مشهورة». That used to be an
+  irrelevant detail and is now load-bearing: this is the game the owner was
+  complaining about — «أغلب الألعاب تكون غير معروفة وغير مشهورة لكن
+  سعرها سبعة وثمانية بدل ٥» — so its cheap-band rung is 5,000 on Switch 1
+  and 7,000 on Switch 2.
+*/
 const game = (types: unknown) => ({ id: "p1", title: "Game", kind: "game", types });
+
+/*
+  The other half of the same sentence: «ألعاب قوية ... مشهورة جدا لكن
+  سعرها خمسة آلاف بدل ٨ و ٧».
+
+  Mario Kart 8 Deluxe is rank 1 on the shop's own worldwide-sales list, so
+  `fameBandFor` answers «مشهورة» — and it is deliberately NOT one of the four
+  games the owner priced by name, so nothing asserted through it is secretly
+  testing `namedPriceFor` instead of the ladder. Its rung is 7,000 on Switch 1
+  — his own figure «٧ الف سويتش ١» — and 8,000 on Switch 2.
+*/
+const famousGame = (types: unknown) => ({
+  id: "p1",
+  title: "Mario Kart 8 Deluxe",
+  kind: "game",
+  types,
+});
 
 /** The proposal for one kind, or undefined. */
 const at = (result: ReturnType<typeof repriceTiers>, kind: string) =>
@@ -53,36 +100,87 @@ const OWNERS_EXAMPLE = [
 
 describe("the owner's worked example, line by line", () => {
   const result = repriceTiers(game(OWNERS_EXAMPLE));
-  /* The same four rows, on the generation whose figures they still are. */
+  /* The same four rows on Switch 2, still on the obscure title. */
   const switch2 = repriceTiers({ ...game(OWNERS_EXAMPLE), isSwitch2: true });
+  /*
+    And the same four rows on the shape his 8,000 was always about: a famous
+    Switch 2 title. This is where the example survives untouched, so his own
+    numbers are still asserted somewhere rather than only explained away.
+  */
+  const famousSwitch2 = repriceTiers({ ...famousGame(OWNERS_EXAMPLE), isSwitch2: true });
 
   /*
-    «مثلا لعبه زيلدا botw او totk تكون ٨ الف سويتش ٢ ،و ٧ الف سويتش ١»
+    SUPERSEDED, AND BY WHOM.
 
-    A Switch 1 game caps at 7,000 however famous it is — that is his own
-    figure for Breath of the Wild. This example says nothing about its
-    generation, so it is a Switch 1 game and it moves.
+    Was: 7,000, on «مثلا لعبه زيلدا botw او totk تكون ٨ الف سويتش ٢ ،و ٧
+    الف سويتش ١» read as "Switch 1 is 7,000, whatever the game".
+
+    Now: 5,000, on «أغلب الألعاب تكون غير معروفة وغير مشهورة لكن سعرها
+    سبعة وثمانية بدل ٥». «Game» is one of those — unknown, Switch 1 — and 7,000
+    on it is the precise complaint. His «٧ الف سويتش ١» is not contradicted:
+    it was said about Breath of the Wild, a famous game, and a famous Switch 1
+    game still gets exactly 7,000 — asserted two tests below.
+
+    The INTENT is unchanged: this row is over-priced for what it is and comes
+    down. Only how far it comes down moved.
   */
-  it("brings the plain offline account down to 7,000 on a cost of 2,000", () => {
+  it("brings the plain offline account down to 5,000 on a cost of 2,000", () => {
     const tier = at(result, "offline_base");
+    expect(tier?.newPrice).toBe(5_000);
+    expect(tier?.changed).toBe(true);
+  });
+
+  /*
+    INVERTED, deliberately.
+
+    This test's whole subject was the generation-only ladder: that being a
+    Switch 2 title was by itself enough to hold a game at 8,000. It is not, and
+    the owner said why — «أغلب الألعاب تكون غير معروفة ... لكن سعرها
+    سبعة وثمانية بدل ٥». An unknown Switch 2 game sits on the obscure
+    rung, which on Switch 2 is 7,000. So the test now pins the opposite and
+    would fail the moment generation alone could reach 8,000 again.
+  */
+  it("does NOT hold an unknown game at 8,000 merely for being Switch 2", () => {
+    const tier = at(switch2, "offline_base");
     expect(tier?.newPrice).toBe(7_000);
     expect(tier?.changed).toBe(true);
   });
 
-  it("holds the very same example at 8,000 when the game IS a Switch 2 title", () => {
-    const tier = at(switch2, "offline_base");
+  /* And his 8,000 is exactly where he put it: a famous Switch 2 title. */
+  it("holds the very same example at 8,000 when the game is famous AND Switch 2", () => {
+    const tier = at(famousSwitch2, "offline_base");
     expect(tier?.newPrice).toBe(8_000);
     expect(tier?.changed).toBe(false);
   });
 
-  it("brings the add-ons edition to 14,000 — 7,000 plus 7,000 for a 5,000 cost gap", () => {
+  /* «٧ الف سويتش ١» — his own figure, on his own kind of game. */
+  it("puts a famous SWITCH 1 title on his 7,000, not on the obscure 5,000", () => {
+    const tier = at(repriceTiers(famousGame(OWNERS_EXAMPLE)), "offline_base");
+    expect(tier?.newPrice).toBe(7_000);
+  });
+
+  /*
+    Superseded by the row above it, and by nothing else: the add-ons edition is
+    the plain price PLUS the increase for the cost gap, and the increase has not
+    changed. Gap 5,000 → 7,000, exactly as «فرق ٥٠٠٠» always gave. What moved
+    is the 7,000 it used to be added to, which is now 5,000.
+  */
+  it("brings the add-ons edition to 12,000 — 5,000 plus 7,000 for a 5,000 cost gap", () => {
     const tier = at(result, "offline_extras");
+    expect(tier?.newPrice).toBe(12_000);
+    expect(tier?.changed).toBe(true);
+  });
+
+  /* Same increase, on the Switch 2 obscure rung of 7,000. */
+  it("brings it to 14,000 on an unknown Switch 2 title — 7,000 plus the same 7,000", () => {
+    const tier = at(switch2, "offline_extras");
     expect(tier?.newPrice).toBe(14_000);
     expect(tier?.changed).toBe(true);
   });
 
-  it("holds the add-ons edition at 15,000 on Switch 2 — 8,000 plus the same 7,000", () => {
-    const tier = at(switch2, "offline_extras");
+  /* And his own 15,000, still standing, where his 8,000 stands. */
+  it("holds the add-ons edition at 15,000 on a famous Switch 2 title — 8,000 plus 7,000", () => {
+    const tier = at(famousSwitch2, "offline_extras");
     expect(tier?.newPrice).toBe(15_000);
     expect(tier?.changed).toBe(false);
   });
@@ -106,27 +204,108 @@ describe("the owner's worked example, line by line", () => {
     ]);
   });
 
-  it("proposes no change at all on Switch 2, which is the point of the example", () => {
-    expect(switch2.changed).toBe(false);
+  /*
+    INVERTED, same reason as the 8,000 row above.
+
+    "No change on Switch 2" was the old ladder's own summary of itself: the
+    example's numbers WERE the Switch 2 answer, for any game. The example is
+    now the answer for a FAMOUS Switch 2 game, so that is where nothing moves —
+    and on an unknown Switch 2 game the offline pair must move, because
+    «سعرها سبعة وثمانية بدل ٥» is a complaint about exactly that price
+    standing still. Both halves are asserted so neither can quietly return.
+  */
+  it("proposes no change at all on a famous Switch 2 title — the example intact", () => {
+    expect(famousSwitch2.changed).toBe(false);
   });
 
-  it("passes its own last gate on every tier, on both generations", () => {
+  it("does move the offline pair of an unknown Switch 2 title, which is the complaint", () => {
+    expect(switch2.changed).toBe(true);
+    expect(switch2.proposals.filter((p) => p.changed).map((p) => p.kind)).toEqual([
+      "offline_base",
+      "offline_extras",
+    ]);
+  });
+
+  it("passes its own last gate on every tier, on both generations and both fames", () => {
     for (const proposal of result.proposals) {
       expect(tierProblem(proposal, result), `${proposal.kind}`).toBeNull();
     }
     for (const proposal of switch2.proposals) {
       expect(tierProblem(proposal, switch2), `switch2 ${proposal.kind}`).toBeNull();
     }
+    for (const proposal of famousSwitch2.proposals) {
+      expect(tierProblem(proposal, famousSwitch2), `famous switch2 ${proposal.kind}`).toBeNull();
+    }
+  });
+});
+
+/*
+  THE RUNG IS A TARGET IN BOTH DIRECTIONS NOW, NOT A CEILING.
+
+  Two readings used to keep a cheap-band price from ever rising: «بحد اقصى»
+  taken as a limit rather than a target, and «اذا كان سعر اللعبه ٥ او ٧
+  اتركها» obeyed on every game rather than on the games those figures
+  belong to. Between them they froze both halves of what the owner is now
+  looking at:
+
+    «أغلب الألعاب تكون غير معروفة وغير مشهورة لكن سعرها سبعة وثمانية
+     بدل ٥، بينما هنالك ألعاب قوية ... مشهورة جدا لكن سعرها خمسة آلاف
+     بدل ٨ و ٧.»
+
+  A ceiling can lower the first half and can never raise the second, so as long
+  as it was one, half that sentence had no answer at all. Both directions are
+  asserted here, and this block would fail the moment the ceiling came back.
+*/
+describe("the cheap band's rung moves a price in BOTH directions", () => {
+  it("RAISES a famous game that «اتركها» used to freeze at 5,000", () => {
+    const result = repriceTiers(famousGame([{ id: "offline_base", price: 5_000, cost: 1_500 }]));
+    expect(at(result, "offline_base")?.newPrice).toBe(7_000);
+    expect(at(result, "offline_base")?.changed).toBe(true);
+  });
+
+  it("RAISES a famous Switch 2 game all the way to the 8,000 rung", () => {
+    const result = repriceTiers({
+      ...famousGame([{ id: "offline_base", price: 5_000, cost: 1_500 }]),
+      isSwitch2: true,
+    });
+    expect(at(result, "offline_base")?.newPrice).toBe(8_000);
+    expect(at(result, "offline_base")?.changed).toBe(true);
+  });
+
+  it("LOWERS an obscure game that the same sentence used to freeze at 7,000", () => {
+    const result = repriceTiers(game([{ id: "offline_base", price: 7_000, cost: 1_500 }]));
+    expect(at(result, "offline_base")?.newPrice).toBe(5_000);
+    expect(at(result, "offline_base")?.changed).toBe(true);
+  });
+
+  it("still leaves 5,000 and 7,000 alone on the games whose rung they already are", () => {
+    /*
+      «اتركها» was NARROWED, not dropped. It still holds a price that is
+      already its game's rung — which is what he meant by those two figures
+      being fine — and it no longer holds one that is some other game's.
+    */
+    const obscure = repriceTiers(game([{ id: "offline_base", price: 5_000, cost: 1_500 }]));
+    expect(at(obscure, "offline_base")?.changed).toBe(false);
+    const famousSwitch1 = repriceTiers(
+      famousGame([{ id: "offline_base", price: 7_000, cost: 1_500 }]),
+    );
+    expect(at(famousSwitch1, "offline_base")?.changed).toBe(false);
   });
 });
 
 describe("the add-ons edition is priced from the plain one AFTER it moves", () => {
   it("adds the increase to the NEW base price, not the old", () => {
     /*
-      The base is 10,250 — a currency-conversion leftover — and the rules floor
-      it to 10,000 and then cut it to the 7,000 rung. The add-ons edition must
-      then be 7,000 + increase, not 10,250 + increase, or the two are
-      inconsistent by exactly the amount the base moved.
+      The base is 10,250 — a currency-conversion leftover — and the rules put it
+      on its rung, which for this unknown Switch 1 game is 5,000. The add-ons
+      edition must then be 5,000 + increase, not 10,250 + increase, or the two
+      are inconsistent by exactly the amount the base moved. THAT is what this
+      test is about, and it is untouched; only the rung under it moved, from the
+      generation-only 7,000 to the 5,000 of «غير معروفة وغير مشهورة».
+
+      The intermediate flooring to 10,000 is gone from the description because
+      it is gone from the rule: the rung is an exact thousand, so rounding a
+      price down before replacing it could never change the answer.
     */
     const result = repriceTiers(
       game([
@@ -134,9 +313,9 @@ describe("the add-ons edition is priced from the plain one AFTER it moves", () =
         { id: "offline_extras", price: 99_000, cost: 4_000 },
       ]),
     );
-    expect(at(result, "offline_base")?.newPrice).toBe(7_000);
-    // gap 2,000 → increase max(1000, min(4000, 4000)) = 4,000.
-    expect(at(result, "offline_extras")?.newPrice).toBe(11_000);
+    expect(at(result, "offline_base")?.newPrice).toBe(5_000);
+    // gap 2,000 → increase max(1000, min(4000, 4000)) = 4,000. Unchanged.
+    expect(at(result, "offline_extras")?.newPrice).toBe(9_000);
   });
 
   it("brings an over-priced add-ons edition DOWN, which is what was asked for", () => {
@@ -147,8 +326,10 @@ describe("the add-ons edition is priced from the plain one AFTER it moves", () =
       ]),
     );
     // gap 300 → increase 1,000. «اذا كان ١٧٠٠ عادي و ٢٠٠٠ مع الاضافات ... الزياده ١٠٠٠»
-    // On the base's new 7,000 rung, so 8,000 and not the 9,000 of the old ceiling.
-    expect(at(result, "offline_extras")?.newPrice).toBe(8_000);
+    // His increase is untouched. The base is now on the obscure 5,000 rung
+    // rather than the generation-only 7,000, so 6,000 — and the point of the
+    // test, that 40,000 comes DOWN, is only made harder.
+    expect(at(result, "offline_extras")?.newPrice).toBe(6_000);
     expect(at(result, "offline_extras")?.changed).toBe(true);
   });
 
@@ -278,13 +459,19 @@ describe("the gate that stops a run", () => {
 
   it("rejects an add-ons edition that does not cost more than the plain one", () => {
     /*
-      Run on Switch 2, where the plain row settles at 8,000 — above the add-ons
-      row's own cost of 7,000. On Switch 1 the plain row now settles at 7,000,
-      which IS that cost, so every price this check would refuse is already
-      refused by the cost check one line earlier and this rule could not be
-      reached at all.
+      The check needs a plain row that settles ABOVE the add-ons row's own cost
+      of 7,000, or the refusal it is testing is already handled by the
+      cost check one line earlier and this rule is never reached.
+
+      That used to be "any Switch 2 game", because generation alone put the
+      plain row at 8,000. Under «أغلب الألعاب ... غير مشهورة لكن سعرها
+      سبعة وثمانية بدل ٥» an unknown Switch 2 game settles at 7,000, so the
+      8,000 rung now needs the fame the owner attached to it. Same product, same
+      assertion, on the game that rung was always about — the subject here is
+      the GATE, not the ladder.
     */
-    const s2 = repriceTiers({ ...game(OWNERS_EXAMPLE), isSwitch2: true });
+    const s2 = repriceTiers({ ...famousGame(OWNERS_EXAMPLE), isSwitch2: true });
+    expect(at(s2, "offline_base")?.newPrice).toBe(8_000);
     const bad = { ...at(s2, "offline_extras")!, newPrice: 8_000 };
     expect(tierProblem(bad, s2)).toContain("لا يزيد على العادي");
   });
@@ -344,8 +531,10 @@ describe("every add-ons price is a whole thousand", () => {
     );
     const extras = at(result, "offline_extras")!;
     expect(extras.newPrice % 1_000).toBe(0);
-    // Base 12,000 → floored to the 7,000 rung; gap 1,250 → increase 2,500 → 9,500 → 9,000.
-    expect(extras.newPrice).toBe(9_000);
+    // Base 12,000 → cut to the obscure 5,000 rung (it was the generation-only
+    // 7,000); gap 1,250 → increase 2,500 → 7,500 → 7,000. The five hundred the
+    // test exists for is still there and is still rounded away.
+    expect(extras.newPrice).toBe(7_000);
     expect(tierProblem(extras, result)).toBeNull();
   });
 
@@ -403,8 +592,14 @@ describe("every add-ons price is a whole thousand", () => {
           { id: "offline_extras", price: 1, cost: 2_000 + gap },
         ]),
       );
-      // Built on the base's new 7,000 rung, not the 8,000 it used to keep.
-      expect(at(result, "offline_extras")?.newPrice, `gap ${gap}`).toBe(7_000 + increase);
+      /*
+        Every INCREASE above is exactly the figure the owner gave, and not one
+        of them moved — which is the whole subject of this test. What moved is
+        the base they are added to: «Game» is unknown and Switch 1, so its rung
+        is 5,000 under «أغلب الألعاب ... غير مشهورة لكن سعرها سبعة
+        وثمانية بدل ٥», where it used to be the generation-only 7,000.
+      */
+      expect(at(result, "offline_extras")?.newPrice, `gap ${gap}`).toBe(5_000 + increase);
     }
   });
 });
@@ -495,10 +690,11 @@ describe("each add-ons row is priced from its OWN cost gap", () => {
     const rows = result.proposals.filter((p) => p.kind === "offline_extras");
     expect(rows).toHaveLength(2);
 
-    // Gap 300 → increase 1,000 → 8,000, on the base's new 7,000 rung.
-    expect(rows[0]!.newPrice).toBe(8_000);
-    // Gap 10,000 → increase 12,000 → 19,000. NOT 8,000.
-    expect(rows[1]!.newPrice).toBe(19_000);
+    // Gap 300 → increase 1,000 → 6,000, on the base's obscure 5,000 rung.
+    expect(rows[0]!.newPrice).toBe(6_000);
+    // Gap 10,000 → increase 12,000 → 17,000. NOT 6,000 — which is the whole
+    // point of the test, and the gap between the two answers only grew.
+    expect(rows[1]!.newPrice).toBe(17_000);
 
     // And neither is ever priced below its own cost.
     for (const row of rows) {
@@ -687,8 +883,15 @@ describe("a cost is read as it was written", () => {
     const tier = at(result, "offline_base");
     expect(tier?.cost).toBe(2_000);
     expect(tier?.oldPrice).toBe(8_500);
-    // 8,500 → floored to 8,000 → cut to the 7,000 rung.
-    expect(tier?.newPrice).toBe(7_000);
+    /*
+      8,500 → the game's rung, which for an unknown Switch 1 title is 5,000
+      — «أغلب الألعاب ... غير مشهورة لكن سعرها سبعة وثمانية بدل ٥».
+      There is no longer an intermediate floor to 8,000, because the rung is an
+      exact thousand and rounding before replacing could never change it. What
+      this test is actually about — that «٨٥٠٠» was READ as 8,500 and «٢٠٠٠»
+      as 2,000 — is asserted above and untouched.
+    */
+    expect(tier?.newPrice).toBe(5_000);
   });
 
   it("does not read a dash inside a number as a minus sign", () => {
@@ -729,7 +932,14 @@ describe("a plain account that merely mentions something is still plain", () => 
         { id: "t2", name: "اوفلاين مع الاضافات", price: 15_000, cost: 7_000 },
       ]),
     );
-    expect(at(result, "offline_extras")?.newPrice).toBe(14_000);
+    /*
+      The subject here is the CLASSIFIER — that this row is recognised as the
+      add-ons edition at all. Its price follows from that, and it is 5,000 (the
+      obscure Switch 1 rung, under «أغلب الألعاب ... غير مشهورة لكن سعرها
+      سبعة وثمانية بدل ٥») plus his unchanged 7,000 for a 5,000 cost gap,
+      where it used to be the generation-only 7,000 plus the same 7,000.
+    */
+    expect(at(result, "offline_extras")?.newPrice).toBe(12_000);
   });
 
   it("and the singular «مع الاضافة» is too", () => {
@@ -805,9 +1015,16 @@ describe("a deluxe edition is not the ordinary offline account", () => {
         { ...ultimate, price: 30_000, cost: 7_000 },
       ]),
     );
-    expect(at(result, "offline_base")?.newPrice).toBe(7_000);
-    // 7,000 + 7,000 for a 5,000 cost gap — his worked example, on the new rung.
-    expect(at(result, "offline_extras")?.newPrice).toBe(14_000);
+    /*
+      The subject here is that «النسخة الفاخرة Ultimate» is the add-ons
+      edition and is priced from the cost gap rather than handed the plain
+      account's rules. Both numbers below follow from the rung the plain row
+      lands on, and that rung moved from the generation-only 7,000 to the 5,000
+      of «أغلب الألعاب ... غير مشهورة لكن سعرها سبعة وثمانية بدل ٥».
+    */
+    expect(at(result, "offline_base")?.newPrice).toBe(5_000);
+    // 5,000 + 7,000 for a 5,000 cost gap — his increase, on the fame rung.
+    expect(at(result, "offline_extras")?.newPrice).toBe(12_000);
   });
 
   it("reads the preset's description when the name alone is ambiguous", () => {
@@ -817,13 +1034,28 @@ describe("a deluxe edition is not the ordinary offline account", () => {
         { id: "b", name: "اوفلاين", description: "اللعبة مع الإضافات", price: 15_000, cost: 7_000 },
       ]),
     );
-    expect(at(result, "offline_extras")?.newPrice).toBe(14_000);
+    /*
+      The subject here is the CLASSIFIER — that this row is recognised as the
+      add-ons edition at all. Its price follows from that, and it is 5,000 (the
+      obscure Switch 1 rung, under «أغلب الألعاب ... غير مشهورة لكن سعرها
+      سبعة وثمانية بدل ٥») plus his unchanged 7,000 for a 5,000 cost gap,
+      where it used to be the generation-only 7,000 plus the same 7,000.
+    */
+    expect(at(result, "offline_extras")?.newPrice).toBe(12_000);
   });
 
   it("still says «بدون» means without, whatever the edition words say", () => {
     const result = repriceTiers(
       game([{ id: "t", name: "اوفلاين قياسي بدون الإضافات", price: 8_500, cost: 2_000 }]),
     );
-    expect(at(result, "offline_base")?.newPrice).toBe(7_000);
+    /*
+      The subject is «بدون»: this row is the PLAIN account, so it is priced by
+      the plain account's rule — the rung. The rung itself moved to 5,000 for an
+      unknown Switch 1 game under «أغلب الألعاب ... غير مشهورة لكن سعرها
+      سبعة وثمانية بدل ٥», and a 7,000 here would now be the add-ons
+      edition's own answer — so this assertion tells the two apart more sharply
+      than it did before, not less.
+    */
+    expect(at(result, "offline_base")?.newPrice).toBe(5_000);
   });
 });

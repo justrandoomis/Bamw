@@ -53,12 +53,30 @@ const say = (t = "") => {
   lines.push(t);
   console.log(t);
 };
+/**
+ * Write the report where both the job summary and the LOG can find it.
+ *
+ * `$GITHUB_STEP_SUMMARY` points at a DIFFERENT, empty file in every step. So
+ * the last step of `reprice.yml` — added precisely to guarantee the price-shape
+ * table and the owner's named games survive a log read as a tail — was tailing
+ * an empty file and printing nothing, silently, on every run since it was
+ * written. The workflow prints this file now.
+ */
+const flush = () => {
+  const text = lines.join("\n");
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    writeFileSync(process.env.GITHUB_STEP_SUMMARY, text, { flag: "a" });
+  }
+  try {
+    writeFileSync("reprice.md", text);
+  } catch {
+    /* The report is a convenience; failing to write it must not fail the run. */
+  }
+};
 const fail = (message) => {
   say();
   say(`**توقف: ${message}**`);
-  if (process.env.GITHUB_STEP_SUMMARY) {
-    writeFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n"), { flag: "a" });
-  }
+  flush();
   process.exit(1);
 };
 
@@ -395,9 +413,7 @@ if (!APPLY) {
   say("**تشغيل جاف. لم يُكتب شيء.**");
   rmSync(outfile, { force: true });
   if (args.json && args.json !== "true") writeFileSync(args.json, JSON.stringify(payload, null, 2));
-  if (process.env.GITHUB_STEP_SUMMARY) {
-    writeFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n"), { flag: "a" });
-  }
+  flush();
   process.exit(0);
 }
 
@@ -634,7 +650,31 @@ if (faults.length) {
 }
 
 if (args.json && args.json !== "true") writeFileSync(args.json, JSON.stringify(payload, null, 2));
-if (process.env.GITHUB_STEP_SUMMARY) {
-  writeFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n"), { flag: "a" });
-}
+
+/*
+  THE VERDICT, LAST, because a report that ends with four hundred table rows is
+  a report whose numbers nobody can find.
+
+  A job log is read as a tail, and the table of moved prices above is the
+  longest thing this script prints — so the counts, which are the only lines
+  that say whether the run did what it meant to, were the ones that scrolled
+  out of reach. Repeated here rather than moved, because the tables above are
+  where the run is CHECKED and these five lines are where it is judged.
+*/
+say("## الخلاصة");
+say();
+say(`- ${APPLY ? "**تطبيق**" : "تشغيل جاف"}`);
+say(`- أسعار تحرّكت: **${moving.length}**`);
+say(`- نسخ \`accountPrice\` قديمة أُصلحت: **${staleMirrors.length}**`);
+say(`- كُتبت: **${written}**`);
+say(`- تُحقّق منها من قاعدة البيانات حقلًا بحقل: **${verified}**`);
+say(`- أخطاء: **${faults.length}**`);
+say();
+say(
+  faults.length
+    ? "**انتهى بأخطاء. اقرأ «أخطاء بعد الكتابة» أعلاه.**"
+    : "**تم. كل سعر كُتب قُرئ من قاعدة البيانات، ولم يتغيّر أي حقل آخر.**",
+);
+
+flush();
 process.exit(faults.length ? 1 : 0);
