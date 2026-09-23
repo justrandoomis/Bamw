@@ -147,8 +147,34 @@ const readShelf = async (label) => {
     await page.mouse.wheel(0, 900);
     await page.waitForTimeout(500);
   }
-  /* Give the cards time to try their images — a failure takes a round trip. */
-  await page.waitForTimeout(6_000);
+
+  /*
+    SCROLL THE STRIP SIDEWAYS FIRST, or the answer is about lazy loading.
+
+    Only the first three cards are `loading="eager"` (`PRIORITY_CARDS` in
+    src/components/ProductStrips.tsx); the rest are lazy and a lazy image that
+    has never been on screen has not been REQUESTED. Its `naturalWidth` is 0 for
+    the same reason a photograph nobody took is blank.
+
+    The first run of this file read exactly that and I nearly called it proof of
+    a broken URL: three absolute `https://banan.to/api/files/...` at width 744
+    and 768, then nine at width 0 — a pattern that looks like a fault and is a
+    scroll position. `complete` is what separates them, so it is both used below
+    and PRINTED, and every card is dragged through the viewport first.
+  */
+  await page.evaluate(async (name) => {
+    const strip = document.querySelector(`[aria-label="${name}"]`);
+    if (!strip) return;
+    const step = Math.max(200, strip.clientWidth - 40);
+    for (let x = 0; x <= strip.scrollWidth; x += step) {
+      strip.scrollLeft = x;
+      await new Promise((r) => setTimeout(r, 400));
+    }
+    strip.scrollLeft = 0;
+  }, label);
+
+  /* Then time to finish: a failure costs a round trip, not a frame. */
+  await page.waitForTimeout(8_000);
   return await page.evaluate((name) => {
     const strip = document.querySelector(`[aria-label="${name}"]`);
     if (!strip) return [];
@@ -177,12 +203,25 @@ const table = (rows, title) => {
     say("- لم يظهر لهذا القارئ — لا حكم عليه.");
     return;
   }
-  say("| # | البطاقة | «لم تُضف الصورة» | رابط الصورة | عرضها |");
-  say("| --- | --- | :---: | :---: | ---: |");
+  say("| # | البطاقة | «لم تُضف الصورة» | رابط | اكتمل | عرضها | الحال |");
+  say("| --- | --- | :---: | :---: | :---: | ---: | --- |");
   rows.forEach((card, i) => {
-    const where = card.src ? `\`${String(card.src).slice(0, 48)}…\`` : "—";
+    const where = card.src ? `\`${String(card.src).slice(-42)}\`` : "—";
+    /*
+      Three states, and only one of them is a fault. «لم يُطلب» is a lazy image
+      that was never on screen; «فشل» is a request that came back undrawable.
+    */
+    const state = !card.src
+      ? "بلا رابط"
+      : !card.complete
+        ? "لم يُطلب"
+        : card.width > 0
+          ? "رُسمت"
+          : "**فشل**";
     say(
-      `| ${i + 1} | ${card.text || "—"} | ${card.placeholderCaption ? "نعم" : "لا"} | ${where} | ${card.width} |`,
+      `| ${i + 1} | ${card.text || "—"} | ${card.placeholderCaption ? "نعم" : "لا"} | ${where} | ${
+        card.complete ? "نعم" : "لا"
+      } | ${card.width} | ${state} |`,
     );
   });
 };
