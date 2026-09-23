@@ -61,7 +61,10 @@ jobs:
       # The verdict rules decide what gets erased. A run that would clear links
       # while their own tests fail is a run that must not start.
       - name: The verdict rules must pass their tests first
-        run: npx vitest run "scripts/-a-dead-link-is-not-a-blocked-runner.test.mjs"
+        run: |
+          npx vitest run \
+            "scripts/-a-dead-link-is-not-a-blocked-runner.test.mjs" \
+            "scripts/-a-half-read-listing-is-not-an-answer.test.mjs"
 
       - name: Mask identifiers
         env:

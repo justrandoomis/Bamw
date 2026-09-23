@@ -1,0 +1,96 @@
+# Puts the shop's pictures in the bucket the shop reads from.
+#
+# `media-pipeline.mjs` writes to `CLOUDFLARE_R2_BUCKET_NAME || "bananto"`;
+# `storage.server.ts` serves `/api/files/...` from `BANANTO_PRIVATE_BUCKET`,
+# which is `bananto-private`. The square-card checker measured the consequence:
+# `R2 bananto-private 404, bananto 200`, 563 times.
+#
+# The copy is additive. Nothing is deleted from either bucket, and no catalogue
+# field is written — the bundled entry point does not even export `updateStore`.
+#
+# Dry run unless `apply` is ticked. A push runs the dry run only.
+name: Relocate product images
+
+run-name: Relocate product images — ${{ inputs.apply && 'APPLY' || 'dry run' }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Copy the files. Leave off for a dry run."
+        type: boolean
+        default: false
+      limit:
+        description: "Copy at most this many (blank = all)"
+        type: string
+        default: ""
+      square_only:
+        description: "Square cards only, rather than every referenced picture"
+        type: boolean
+        default: false
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/square-card-relocate.yml
+      - scripts/square-card-relocate.mjs
+      - scripts/lib/bucket-relocate-entry.ts
+
+permissions:
+  contents: read
+
+# Never two at once, and never cancelled half-way.
+concurrency:
+  group: square-card-relocate
+  cancel-in-progress: false
+
+jobs:
+  relocate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+
+      - name: The bucket rules must pass their tests first
+        run: |
+          npx vitest run \
+            "scripts/-a-dead-link-is-not-a-blocked-runner.test.mjs" \
+            "scripts/-a-half-read-listing-is-not-an-answer.test.mjs"
+
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+
+      - name: Relocate
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          APPLY: ${{ inputs.apply && '--apply' || '' }}
+          SQUARE_ONLY: ${{ inputs.square_only && '--square-only' || '' }}
+          LIMIT: ${{ inputs.limit }}
+        run: |
+          node scripts/square-card-relocate.mjs $APPLY $SQUARE_ONLY \
+            ${LIMIT:+--limit "$LIMIT"} \
+            --json square-card-relocate.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: square-card-relocate
+          path: square-card-relocate.json
+
+      - name: The numbers, last in the log
+        if: always()
+        run: cat square-card-relocate.md || true

@@ -63,11 +63,11 @@ import { readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { fetchImage } from "./lib/image-probe.mjs";
+import { commonPrefix, listPrefix } from "./lib/r2-listing.mjs";
 import {
   absoluteUrl,
   DEFAULT_MAX_DEAD_SHARE,
   isBlanketFailure,
-  prefixFor,
   r2ListVerdictFor,
   SERVING_BUCKET,
   storageKeyFor,
@@ -156,54 +156,6 @@ const fail = (message) => {
 };
 
 /**
- * Every key R2 holds under one prefix, or null when the question failed.
- *
- * A LISTING and not a per-object request, because the REST object endpoint
- * sends the bytes: the first version of this asked for one object at a time
- * with `range: bytes=0-0`, and thirteen minutes into the run it was still
- * downloading the catalogue's square cards. A listing returns keys, costs
- * nothing to transfer, and answers for every picture a product owns at once.
- *
- * `null` is not an empty folder. It means the request never completed or the
- * API refused it, and the verdict reads that as `unknown` for every key under
- * the prefix — a folder we could not read is not a folder with nothing in it.
- */
-const listPrefix = async (bucket, prefix) => {
-  if (!R2_ACCOUNT || !R2_TOKEN) return null;
-  const keys = new Set();
-  let cursor = "";
-  for (let page = 0; page < 20; page += 1) {
-    const url =
-      `https://api.cloudflare.com/client/v4/accounts/${R2_ACCOUNT}/r2/buckets/${bucket}/objects` +
-      `?prefix=${encodeURIComponent(prefix)}&per_page=1000${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ""}`;
-    let body;
-    try {
-      const res = await fetch(url, {
-        headers: { authorization: `Bearer ${R2_TOKEN}` },
-        signal: AbortSignal.timeout(30_000),
-      });
-      if (!res.ok) return null;
-      body = await res.json();
-    } catch {
-      return null;
-    }
-    if (!body?.success) return null;
-    for (const row of body.result ?? []) if (row?.key) keys.add(String(row.key));
-    cursor = String(body.result_info?.cursor ?? "");
-    if (!cursor || !body.result_info?.is_truncated) break;
-  }
-  return keys;
-};
-
-/** One listing per prefix per bucket, however many products share it. */
-const listingCache = new Map();
-const listingFor = async (bucket, prefix) => {
-  const cacheKey = `${bucket}\u0000${prefix}`;
-  if (!listingCache.has(cacheKey)) listingCache.set(cacheKey, listPrefix(bucket, prefix));
-  return listingCache.get(cacheKey);
-};
-
-/**
  * Is this URL there?
  *
  * ## WHY THIS DOES NOT ASK THE WEBSITE
@@ -231,17 +183,11 @@ const listingFor = async (bucket, prefix) => {
 const probe = async (url) => {
   const key = storageKeyFor(url);
   if (key) {
-    const prefix = prefixFor(key);
-    const serving = await listingFor(SERVING_BUCKET, prefix);
-    /* The second bucket is only asked when the first says no — the one case
-       whose answer can still change the verdict. */
-    const writing = serving && !serving.has(key) ? await listingFor(WRITING_BUCKET, prefix) : null;
-    const verdict = r2ListVerdictFor(key, serving, writing);
-    const seen = serving ? `${serving.size} ملف` : "لم تُقرأ";
+    const verdict = r2ListVerdictFor(key, servingKeys, writingKeys);
     const detail =
       verdict === "misplaced"
         ? `في \`${WRITING_BUCKET}\` وليس في \`${SERVING_BUCKET}\``
-        : `R2 ${SERVING_BUCKET} ${prefix} — ${seen}`;
+        : `R2 ${SERVING_BUCKET}: ${servingKeys ? "قُرئت" : "لم تُقرأ"}`;
     return { verdict, detail, url };
   }
 
@@ -377,6 +323,26 @@ say(`- ألعاب تدّعي صورة مربعة: **${claims.length.toLocaleStri
 
 const urls = [...new Set(claims.flatMap((c) => c.fields.map((f) => f.value)))];
 say(`- روابط مختلفة للفحص: **${urls.length.toLocaleString("en-US")}**`);
+say();
+
+/*
+  ONE listing per bucket, over the folder the keys share.
+
+  The previous version listed `files/products/<id>/` per product — about twelve
+  hundred authenticated calls inside a minute, against an API with a per-account
+  rate limit. Listings started coming back empty or not at all, and pictures
+  that are sitting in R2 right now came back `unknown` because the folder they
+  live in could not be read. Six requests now.
+*/
+const ownKeys = urls.map((url) => storageKeyFor(url)).filter(Boolean);
+const root = commonPrefix(ownKeys);
+const r2 = { account: R2_ACCOUNT, token: R2_TOKEN };
+const servingKeys = ownKeys.length ? await listPrefix(SERVING_BUCKET, root, r2) : new Set();
+const writingKeys = ownKeys.length ? await listPrefix(WRITING_BUCKET, root, r2) : new Set();
+say(
+  `- \`${root}\` في \`${SERVING_BUCKET}\`: **${servingKeys ? `${servingKeys.size} ملف` : "لم تُقرأ"}**، ` +
+    `وفي \`${WRITING_BUCKET}\`: **${writingKeys ? `${writingKeys.size} ملف` : "لم تُقرأ"}**`,
+);
 say();
 
 const results = await inBatches(urls, probe);
