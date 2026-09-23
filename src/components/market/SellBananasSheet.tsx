@@ -341,8 +341,8 @@ export function SellBananasSheet({
               Numbers read LTR inside an RTL sentence, so 75,215 is not
               reassembled backwards by the bidi algorithm.
             */}
-            <dl className="mt-4 grid grid-cols-2 gap-2">
-              <div className="min-w-0 rounded-2xl border border-border bg-muted/40 p-3">
+            <dl className="mt-4 grid grid-cols-2 gap-4 border-y border-border py-3">
+              <div className="min-w-0">
                 <dt className="text-[11px] font-bold text-muted-foreground">{tr("رصيدك")}</dt>
                 <dd className="mt-0.5 break-words text-[15px] font-black text-foreground">
                   <span dir="ltr" className="tabular-nums">
@@ -351,7 +351,7 @@ export function SellBananasSheet({
                   <span className="text-[11px] font-bold text-muted-foreground">{tr("موزة")}</span>
                 </dd>
               </div>
-              <div className="min-w-0 rounded-2xl border border-border bg-muted/40 p-3">
+              <div className="min-w-0 border-s border-border ps-4">
                 <dt className="text-[11px] font-bold text-muted-foreground">{tr("سعر السوق")}</dt>
                 <dd className="mt-0.5 break-words text-[15px] font-black text-foreground">
                   <span dir="ltr" className="tabular-nums">
@@ -372,14 +372,14 @@ export function SellBananasSheet({
                 that the door is shut, and the balance is stated so nobody
                 suspects their bananas went with it.
               */
-              <p className="mt-4 rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4 text-[12.5px] font-bold leading-relaxed text-amber-900 dark:text-amber-200">
+              <p className="mt-4 rounded-2xl border border-banana/40 bg-banana/10 p-4 text-[12.5px] font-bold leading-relaxed text-foreground">
                 {tr(
                   "البيع المباشر متوقف مؤقتاً من الإدارة. رصيدك من الموز كما هو، وسيعود البيع فور إعادة تفعيله.",
                 )}
               </p>
             ) : receipt ? (
               <div className="mt-4 space-y-3">
-                <div className="flex items-center gap-2 text-[14px] font-black text-emerald-600 dark:text-emerald-400">
+                <div className="flex items-center gap-2 text-[14px] font-black text-leaf">
                   <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
                   {tr("تم تنفيذ البيع")}
                 </div>
@@ -391,7 +391,7 @@ export function SellBananasSheet({
                 */}
                 <dl
                   data-testid="sell-receipt"
-                  className="space-y-2 rounded-2xl border border-border bg-muted/40 p-3.5"
+                  className="space-y-2 border-y border-border py-3"
                 >
                   <Line label={tr("الكمية المنفَّذة")}>
                     <span dir="ltr" className="tabular-nums">
@@ -406,10 +406,7 @@ export function SellBananasSheet({
                   </Line>
                   <div className="border-t border-border pt-2">
                     <Line label={tr("المبلغ المستلم")}>
-                      <span
-                        dir="ltr"
-                        className="tabular-nums text-emerald-600 dark:text-emerald-400"
-                      >
+                      <span dir="ltr" className="tabular-nums text-leaf">
                         {formatIQDPrice(receipt.proceeds)}
                       </span>
                     </Line>
@@ -419,7 +416,7 @@ export function SellBananasSheet({
                 {priceMoved ? (
                   <p
                     data-testid="sell-price-moved"
-                    className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-3 text-[12px] font-bold leading-relaxed text-amber-900 dark:text-amber-200"
+                    className="rounded-2xl border border-banana/40 bg-banana/10 p-3 text-[12px] font-bold leading-relaxed text-foreground"
                   >
                     {tr("تغيّر السعر بين العرض والتنفيذ: المعروض كان")}{" "}
                     <span dir="ltr" className="tabular-nums">
@@ -436,6 +433,7 @@ export function SellBananasSheet({
                 <div className="flex gap-2.5">
                   <button
                     type="button"
+                    data-ui-sound="klick"
                     onClick={() => {
                       setReceipt(null);
                       setRaw("");
@@ -449,6 +447,7 @@ export function SellBananasSheet({
                   <button
                     type="button"
                     data-initial-focus
+                    data-ui-sound="klick"
                     onClick={onClose}
                     className="min-h-11 flex-1 rounded-2xl bg-foreground px-4 py-3 text-[13px] font-black text-background transition-transform active:scale-[0.98]"
                   >
@@ -483,7 +482,7 @@ export function SellBananasSheet({
                     dir="ltr"
                     placeholder={String(minQuantity)}
                     aria-invalid={problem !== ""}
-                    className="mt-2 h-12 w-full rounded-2xl border border-border bg-background px-4 text-center text-[17px] font-black tabular-nums text-foreground outline-none placeholder:font-bold placeholder:text-muted-foreground focus:border-amber-500 disabled:opacity-60"
+                    className="mt-2 h-12 w-full rounded-2xl border border-border bg-background px-4 text-center text-[17px] font-black tabular-nums text-foreground outline-none placeholder:font-bold placeholder:text-muted-foreground focus:border-banana disabled:opacity-60"
                   />
                 </div>
 
@@ -494,8 +493,9 @@ export function SellBananasSheet({
                       key={percent}
                       type="button"
                       disabled={pending || !(balance > 0)}
+                      data-ui-sound="klick"
                       onClick={() => changeQuantity(String(quickQuantity(balance, percent)))}
-                      className="min-h-11 rounded-2xl border border-border bg-muted/40 px-1 text-[13px] font-black tabular-nums text-foreground transition-transform active:scale-95 hover:border-amber-500/60 disabled:opacity-50"
+                      className="min-h-11 rounded-2xl border border-border bg-muted/40 px-1 text-[13px] font-black tabular-nums text-foreground transition-transform active:scale-95 hover:border-banana/60 disabled:opacity-50"
                     >
                       {percent}%
                     </button>
@@ -503,7 +503,7 @@ export function SellBananasSheet({
                 </div>
 
                 {problem ? (
-                  <p className="text-[12px] font-bold leading-relaxed text-red-500">{problem}</p>
+                  <p className="text-[12px] font-bold leading-relaxed text-rind">{problem}</p>
                 ) : null}
 
                 {/*
@@ -518,7 +518,7 @@ export function SellBananasSheet({
                   <div
                     data-testid="sell-preview"
                     aria-live="polite"
-                    className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-3.5"
+                    className="border-t border-border pt-3"
                   >
                     <p className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-center text-[13px] font-bold text-foreground">
                       <span dir="ltr" className="tabular-nums">
@@ -534,7 +534,7 @@ export function SellBananasSheet({
                         {dinars(gross)}
                       </span>
                     </p>
-                    <p className="mt-2 flex flex-wrap items-center justify-center gap-x-1.5 border-t border-amber-500/20 pt-2 text-center text-[12.5px] font-bold text-foreground">
+                    <p className="mt-2 flex flex-wrap items-center justify-center gap-x-1.5 pt-1 text-center text-[12.5px] font-bold text-foreground">
                       <span className="text-muted-foreground">{tr("يُدفع لك")}</span>
                       <span dir="ltr" className="tabular-nums text-[14px] font-black">
                         {formatIQDPrice(payable)}
@@ -555,7 +555,7 @@ export function SellBananasSheet({
                       have taken.
                     */}
                     {payable <= 0 ? (
-                      <p className="mt-1 text-center text-[11px] font-bold text-amber-700 dark:text-amber-300">
+                      <p className="mt-1 text-center text-[11px] font-bold text-peel">
                         {tr("بهذه الكمية لا يبلغ العائد ديناراً واحداً بالسعر الحالي.")}
                       </p>
                     ) : null}
@@ -563,16 +563,15 @@ export function SellBananasSheet({
                 ) : null}
 
                 {error ? (
-                  <p className="rounded-2xl border border-red-500/30 bg-red-500/10 p-3 text-[12px] font-bold leading-relaxed text-red-600 dark:text-red-300">
-                    {error}
-                  </p>
+                  <p className="text-[12px] font-bold leading-relaxed text-rind">{error}</p>
                 ) : null}
 
                 <button
                   type="button"
                   onClick={() => void submit()}
                   disabled={!canSell}
-                  className="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-amber-500 px-4 py-3 text-[14px] font-black text-amber-950 transition-transform active:scale-[0.98] disabled:opacity-50"
+                  data-ui-sound="klick"
+                  className="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-banana px-4 py-3 text-[14px] font-black text-banana-ink transition-colors active:bg-peel disabled:opacity-50"
                 >
                   {pending ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : null}
                   {tr("بيع الآن")}
