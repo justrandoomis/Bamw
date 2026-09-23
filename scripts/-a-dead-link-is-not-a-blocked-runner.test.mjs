@@ -26,6 +26,8 @@ import {
   absoluteUrl,
   DEFAULT_MAX_DEAD_SHARE,
   isBlanketFailure,
+  prefixFor,
+  r2ListVerdictFor,
   r2VerdictFor,
   SERVING_BUCKET,
   storageKeyFor,
@@ -247,5 +249,58 @@ describe("this shop's own files, asked of R2 rather than of the website", () => 
   it("does not let a misplaced file trip the blocked-runner guard", () => {
     expect(isBlanketFailure({ alive: 10, dead: 0, unknown: 0, misplaced: 590 })).toBe(false);
     expect(isBlanketFailure({ alive: 10, dead: 0, unknown: 590, misplaced: 0 })).toBe(true);
+  });
+});
+
+describe("one listing instead of one request per picture", () => {
+  /*
+    The first R2 version asked for each object with `range: bytes=0-0`. The
+    REST object endpoint sends the BYTES, and thirteen minutes into the run it
+    was still downloading the catalogue's square cards. A prefix listing costs
+    one request per folder and transfers keys.
+  */
+  it("takes the folder an object should be in", () => {
+    expect(prefixFor("files/products/prd_x/square-card-abc.webp")).toBe("files/products/prd_x/");
+    expect(prefixFor("files/a.webp")).toBe("files/");
+  });
+
+  it("has no prefix for a key with no folder", () => {
+    expect(prefixFor("a.webp")).toBe("");
+    expect(prefixFor("")).toBe("");
+    expect(prefixFor(null)).toBe("");
+  });
+
+  const KEY = "files/products/prd_x/square-card-abc.webp";
+
+  it("is alive when the serving bucket's folder holds it", () => {
+    expect(r2ListVerdictFor(KEY, new Set([KEY]), null)).toBe("alive");
+  });
+
+  it("is dead when neither folder holds it", () => {
+    expect(r2ListVerdictFor(KEY, new Set(), new Set())).toBe("dead");
+    expect(r2ListVerdictFor(KEY, new Set(["files/products/prd_x/front-box-1.webp"]), new Set())).toBe(
+      "dead",
+    );
+  });
+
+  it("is misplaced when only the bucket the scripts write to holds it", () => {
+    expect(r2ListVerdictFor(KEY, new Set(), new Set([KEY]))).toBe("misplaced");
+  });
+
+  /*
+    THE ONE THAT MATTERS, and it is the same distinction as everywhere else in
+    this file: a folder that could not be READ is not a folder with nothing in
+    it. `null` must never become `dead`.
+  */
+  it("never calls a picture missing because a listing failed", () => {
+    expect(r2ListVerdictFor(KEY, null, null)).toBe("unknown");
+    expect(r2ListVerdictFor(KEY, null, new Set([KEY]))).toBe("unknown");
+    expect(r2ListVerdictFor(KEY, new Set(), null)).toBe("unknown");
+  });
+
+  /* An empty Set is a real answer — the folder is there and it is empty. */
+  it("does distinguish an empty folder from an unreadable one", () => {
+    expect(r2ListVerdictFor(KEY, new Set(), new Set())).toBe("dead");
+    expect(r2ListVerdictFor(KEY, null, new Set())).toBe("unknown");
   });
 });

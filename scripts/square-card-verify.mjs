@@ -67,7 +67,8 @@ import {
   absoluteUrl,
   DEFAULT_MAX_DEAD_SHARE,
   isBlanketFailure,
-  r2VerdictFor,
+  prefixFor,
+  r2ListVerdictFor,
   SERVING_BUCKET,
   storageKeyFor,
   verdictFor,
@@ -155,29 +156,51 @@ const fail = (message) => {
 };
 
 /**
- * What R2 says about one object, as a bare status.
+ * Every key R2 holds under one prefix, or null when the question failed.
  *
- * A ranged GET rather than a HEAD, which is what `r2-store.mjs` already does
- * for the same question and for the same reason: it costs one byte and it is
- * the request the API is happiest with. `null` means the request never
- * completed, which the verdict reads as `unknown`.
+ * A LISTING and not a per-object request, because the REST object endpoint
+ * sends the bytes: the first version of this asked for one object at a time
+ * with `range: bytes=0-0`, and thirteen minutes into the run it was still
+ * downloading the catalogue's square cards. A listing returns keys, costs
+ * nothing to transfer, and answers for every picture a product owns at once.
+ *
+ * `null` is not an empty folder. It means the request never completed or the
+ * API refused it, and the verdict reads that as `unknown` for every key under
+ * the prefix — a folder we could not read is not a folder with nothing in it.
  */
-const r2Status = async (bucket, key) => {
+const listPrefix = async (bucket, prefix) => {
   if (!R2_ACCOUNT || !R2_TOKEN) return null;
-  const path = key.split("/").map(encodeURIComponent).join("/");
-  try {
-    const res = await fetch(
-      `https://api.cloudflare.com/client/v4/accounts/${R2_ACCOUNT}/r2/buckets/${bucket}/objects/${path}`,
-      {
-        method: "GET",
-        headers: { authorization: `Bearer ${R2_TOKEN}`, range: "bytes=0-0" },
-        signal: AbortSignal.timeout(20_000),
-      },
-    );
-    return res.status;
-  } catch {
-    return null;
+  const keys = new Set();
+  let cursor = "";
+  for (let page = 0; page < 20; page += 1) {
+    const url =
+      `https://api.cloudflare.com/client/v4/accounts/${R2_ACCOUNT}/r2/buckets/${bucket}/objects` +
+      `?prefix=${encodeURIComponent(prefix)}&per_page=1000${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ""}`;
+    let body;
+    try {
+      const res = await fetch(url, {
+        headers: { authorization: `Bearer ${R2_TOKEN}` },
+        signal: AbortSignal.timeout(30_000),
+      });
+      if (!res.ok) return null;
+      body = await res.json();
+    } catch {
+      return null;
+    }
+    if (!body?.success) return null;
+    for (const row of body.result ?? []) if (row?.key) keys.add(String(row.key));
+    cursor = String(body.result_info?.cursor ?? "");
+    if (!cursor || !body.result_info?.is_truncated) break;
   }
+  return keys;
+};
+
+/** One listing per prefix per bucket, however many products share it. */
+const listingCache = new Map();
+const listingFor = async (bucket, prefix) => {
+  const cacheKey = `${bucket}\u0000${prefix}`;
+  if (!listingCache.has(cacheKey)) listingCache.set(cacheKey, listPrefix(bucket, prefix));
+  return listingCache.get(cacheKey);
 };
 
 /**
@@ -208,15 +231,17 @@ const r2Status = async (bucket, key) => {
 const probe = async (url) => {
   const key = storageKeyFor(url);
   if (key) {
-    const serving = await r2Status(SERVING_BUCKET, key);
-    /* Only asked when the serving bucket says no: it is the only case whose
-       answer can change the verdict. */
-    const writing = serving === 404 ? await r2Status(WRITING_BUCKET, key) : null;
-    const verdict = r2VerdictFor(serving, writing);
+    const prefix = prefixFor(key);
+    const serving = await listingFor(SERVING_BUCKET, prefix);
+    /* The second bucket is only asked when the first says no — the one case
+       whose answer can still change the verdict. */
+    const writing = serving && !serving.has(key) ? await listingFor(WRITING_BUCKET, prefix) : null;
+    const verdict = r2ListVerdictFor(key, serving, writing);
+    const seen = serving ? `${serving.size} ملف` : "لم تُقرأ";
     const detail =
-      writing === null
-        ? `R2 ${SERVING_BUCKET} ${serving ?? "no answer"}`
-        : `R2 ${SERVING_BUCKET} ${serving}, ${WRITING_BUCKET} ${writing}`;
+      verdict === "misplaced"
+        ? `في \`${WRITING_BUCKET}\` وليس في \`${SERVING_BUCKET}\``
+        : `R2 ${SERVING_BUCKET} ${prefix} — ${seen}`;
     return { verdict, detail, url };
   }
 
@@ -408,9 +433,17 @@ if (isBlanketFailure({ alive, dead, unknown, misplaced }, MAX_DEAD_SHARE)) {
     `**${(share * 100).toFixed(1)}% من الروابط لم تُجب إجابة سليمة، والحد ${(MAX_DEAD_SHARE * 100).toFixed(0)}%.** ` +
       `هذا شكل جهاز محجوب، لا شكل كتالوج معطوب. لم يُكتب شيء.`,
   );
-  const sample = results.filter((r) => r.verdict !== "alive").slice(0, 10);
+  /*
+    The sample must be the ones that CAUSED the refusal. The first version
+    listed everything that was not `alive`, so a run tripped by dead and
+    unknown links printed ten misplaced ones instead and said nothing about why
+    it had stopped.
+  */
+  const sample = results
+    .filter((r) => r.verdict === "dead" || r.verdict === "unknown")
+    .slice(0, 15);
   say();
-  for (const row of sample) say(`- \`${row.url}\` — ${row.detail}`);
+  for (const row of sample) say(`- ${row.verdict}: \`${row.url}\` — ${row.detail}`);
   rmSync(outfile, { force: true });
   flush();
   process.exit(1);

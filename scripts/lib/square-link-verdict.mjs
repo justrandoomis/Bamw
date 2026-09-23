@@ -141,3 +141,33 @@ export function absoluteUrl(url, origin) {
   if (text.startsWith("/")) return `${String(origin ?? "").replace(/\/+$/, "")}${text}`;
   return "";
 }
+
+/**
+ * The R2 prefix an object key lives under — its directory, with the slash.
+ *
+ * Asking R2 for one object at a time means one authenticated request per
+ * picture, and the REST object endpoint sends the BYTES: the first run of this
+ * checker was still downloading the catalogue's square cards thirteen minutes
+ * in. Listing a prefix returns keys and no bytes, and one listing answers for
+ * every picture a product owns — which is usually all of them, since
+ * `media-pipeline.mjs` keys them `files/products/<id>/<role>-<hash>.webp`.
+ */
+export function prefixFor(key) {
+  const text = String(key ?? "").trim();
+  const cut = text.lastIndexOf("/");
+  return cut > 0 ? text.slice(0, cut + 1) : "";
+}
+
+/**
+ * The verdict for one key, given what each bucket's listing contained.
+ *
+ * `null` for a listing means it never completed — which is `unknown` for every
+ * key under it, not "the folder is empty". The distinction is the same one the
+ * rest of this file is about: a question we could not ask is not an answer.
+ */
+export function r2ListVerdictFor(key, servingKeys, writingKeys) {
+  if (!servingKeys) return "unknown";
+  if (servingKeys.has(key)) return "alive";
+  if (!writingKeys) return "unknown";
+  return writingKeys.has(key) ? "misplaced" : "dead";
+}
