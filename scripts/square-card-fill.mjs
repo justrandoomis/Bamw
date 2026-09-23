@@ -59,6 +59,12 @@ import path from "node:path";
 
 import { buildMedia } from "./lib/media-pipeline.mjs";
 import { createR2 } from "./lib/r2-store.mjs";
+import {
+  keysOf,
+  REMEMBERED_REASONS,
+  verdictForNoAsset,
+  verdictForNoPage,
+} from "./lib/square-card-verdict.mjs";
 
 /** The one role this script exists to fill. */
 const ROLE = "nintendoCardImage";
@@ -233,7 +239,9 @@ if (!RETRY_FAILED) {
     (
       await app.d1All(
         `SELECT product_id FROM square_card_attempts
-         WHERE outcome IN ('no_listing_404', 'no_square_asset') AND attempted_at > ?`,
+          WHERE outcome IN (${REMEMBERED_REASONS.map(() => "?").join(", ")})
+            AND attempted_at > ?`,
+        ...REMEMBERED_REASONS,
         cutoff,
       )
     ).map((row) => String(row.product_id)),
@@ -335,6 +343,13 @@ let stoppedEarly = 0;
 let allKeys404 = 0;
 let foundButRejected = 0;
 let unreachable = 0;
+/*
+  Pages we DID resolve whose picture we then failed to read or store —
+  our fault, not the game's, and so never remembered. Counted because a
+  run where this number is large is a run that should be repeated rather
+  than believed.
+*/
+let assetUnreachable = 0;
 /* Of the cards stored, how many the US store could not have given us. */
 let fromEurope = 0;
 /* Games neither Nintendo store has a Switch 2 row for, though we call them one. */
@@ -439,7 +454,14 @@ for (const [index, product] of missing.entries()) {
         how `HTTP 0)` reached the report.
       */
       const note = String(media.note);
-      const keysPart = /resolved \(([\s\S]*?)\)(?:; europe: |$)/.exec(note)?.[1] ?? note;
+      /*
+        Parsed by the same function the verdict uses, so the report and the
+        decision can never disagree about where the keys end. The fallback is
+        the empty string rather than the whole note: falling back to the note
+        is exactly how the europe suffix got mixed in with the keys and killed
+        the transport guard below.
+      */
+      const keysPart = keysOf(note) ?? "";
       const europePart = /; europe: ([\s\S]*)$/.exec(note)?.[1] ?? "";
       const tried = [
         ...keysPart.split("; ").slice(-2),
@@ -475,29 +497,44 @@ for (const [index, product] of missing.entries()) {
         "Nintendo has nothing" and skipped for a month. `Prison Architect`
         is in the fourth run's report reading `HTTP 0 · HTTP 0`.
       */
-      const keyLines = String(media.note).split("; ");
-      const rejected404 = /, rejected:/.test(String(media.note));
-      const everyKeyUnreachable =
-        keyLines.length > 0 && keyLines.every((line) => /→ HTTP 0\b/.test(line));
+      const { verdict, remember: reason } = verdictForNoPage(note);
 
-      if (rejected404) {
+      if (verdict === "identity_rejected") {
         foundButRejected += 1;
-        await remember(id, "no_listing_404");
-      } else if (everyKeyUnreachable) {
-        unreachable += 1;
-        // Not remembered. We never actually asked.
-      } else {
+      } else if (verdict === "no_listing") {
         allKeys404 += 1;
-        await remember(id, "no_listing_404");
+      } else {
+        // unreachable, no_keys_tried, unparsed — all of them silences.
+        unreachable += 1;
       }
+      if (reason) await remember(id, reason);
     } else {
-      noSquare += 1;
-      rows.push({
-        id,
-        title,
-        outcome: rejected ? `no square asset — ${rejected.reason}` : "no square asset on the page",
-      });
-      await remember(id, "no_square_asset");
+      /*
+        The page was found. Whether the MISSING PICTURE is a fact about the
+        game or a fact about our bad minute is the whole question here, and it
+        used to go unasked: an R2 write that failed, or a CDN 503, was written
+        down as «Nintendo has no square card for this game» and the game went
+        uncovered for a month.
+      */
+      const { verdict, remember: reason } = verdictForNoAsset(rejected?.reason);
+      if (reason) {
+        noSquare += 1;
+        rows.push({
+          id,
+          title,
+          outcome: rejected
+            ? `no square asset — ${rejected.reason}`
+            : "no square asset on the page",
+        });
+      } else {
+        assetUnreachable += 1;
+        rows.push({
+          id,
+          title,
+          outcome: `asset not read — ${rejected?.reason ?? verdict} (will ask again)`,
+        });
+      }
+      if (reason) await remember(id, reason);
     }
     continue;
   }
@@ -588,6 +625,11 @@ say(
     `though this catalogue calls them a Switch 2 edition: **${europeNoSwitch2}**`,
 );
 say(`- listing found, no square asset: **${noSquare}**`);
+say(
+  `- listing found but its picture could not be read or stored — our fault, ` +
+    `not the game's, so nothing was remembered and it will be asked again: ` +
+    `**${assetUnreachable}**`,
+);
 say(`- written to the catalogue: **${written}**`);
 say(`- still without one after this run: **${totalMissing - written}**`);
 if (stoppedEarly > 0) {
@@ -599,7 +641,12 @@ if (stoppedEarly > 0) {
 say();
 if (!APPLY) say(`Nothing was written. Re-run with \`apply\` to store these.`);
 
-if (filled + noPage + noSquare + stoppedEarly !== missing.length) {
+/*
+  `assetUnreachable` is a fourth outcome, so it joins the tally. This guard
+  caught its absence the moment the branch was added, which is exactly what
+  it is for: a run that quietly loses rows would otherwise report a pass.
+*/
+if (filled + noPage + noSquare + assetUnreachable + stoppedEarly !== missing.length) {
   say(`**The tallies do not add up to the number of games — refusing to report a pass that lost rows.**`);
   finish(1);
 }

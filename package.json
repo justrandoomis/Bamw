@@ -14,6 +14,8 @@
     "test": "vitest run",
     "format": "prettier --write .",
     "cf:migrate": "wrangler d1 migrations apply bananto --remote --config wrangler.jsonc",
+    "cf:build": "npm run typecheck && npx vitest run && npx eslint . && npm run build",
+    "cf:release": "node scripts/cloudflare-release.mjs",
     "cf:deploy": "npm run cf:migrate && npm run check && wrangler deploy --config wrangler.jsonc",
     "cf:tail": "wrangler tail",
     "legacy:link:dry": "node scripts/link-legacy-cloudflare.mjs",
