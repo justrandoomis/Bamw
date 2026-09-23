@@ -59,6 +59,7 @@ import path from "node:path";
 
 import { buildMedia } from "./lib/media-pipeline.mjs";
 import { createR2 } from "./lib/r2-store.mjs";
+import { SERVING_BUCKET } from "./lib/r2-buckets.mjs";
 import {
   keysOf,
   REMEMBERED_REASONS,
@@ -108,7 +109,17 @@ const ONLY = flag("only", "")
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
-const BUCKET = process.env.CLOUDFLARE_R2_BUCKET_NAME || "bananto";
+/*
+  THE BUCKET THE SHOP READS FROM, and not a secret that can disagree with it.
+
+  This was `process.env.CLOUDFLARE_R2_BUCKET_NAME || "bananto"`, and it is why
+  849 of the catalogue's 1,428 square cards were invisible on 2026-09-23: this
+  script uploaded each one, read it back from the bucket it had just written to
+  — so its own verification passed — stored `/api/files/...`, and the shopper
+  got a 404, because `storage.server.ts` answers that URL from the binding in
+  `wrangler.jsonc`. Every one of the 849 was a `square-card-*.webp`, which is
+  the only thing this script makes.
+*/
 
 const SECRETS = [process.env.CLOUDFLARE_API_TOKEN, process.env.CLOUDFLARE_ACCOUNT_ID].filter(
   (v) => v && v.length >= 8,
@@ -321,7 +332,7 @@ async function euSearch(url) {
   return { ok: false, status: 0 };
 }
 
-const r2 = createR2(BUCKET, { tmpDir: ".square-card-tmp", log: () => {} });
+const r2 = createR2(SERVING_BUCKET, { tmpDir: ".square-card-tmp", log: () => {} });
 const patches = new Map(); // product id -> square card URL
 const rows = [];
 let filled = 0;

@@ -57,6 +57,7 @@
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
+import { SERVING_BUCKET } from "./lib/r2-buckets.mjs";
 
 import {
   isReadOnly,
@@ -133,7 +134,7 @@ async function d1(sql, params = []) {
 /* R2                                                                  */
 /* ------------------------------------------------------------------ */
 
-const BUCKET = process.env.CLOUDFLARE_R2_BUCKET_NAME || "bananto";
+const BUCKET = SERVING_BUCKET;
 
 async function r2List(prefix, limit) {
   const url = new URL(

@@ -19,19 +19,22 @@
  * file that is not in THIS bucket does not reach a shopper, whatever other
  * bucket it may be sitting in.
  */
-export const SERVING_BUCKET = "bananto-private";
+export { SERVING_BUCKET } from "./r2-buckets.mjs";
 
 /**
  * The other bucket the image scripts write to.
  *
- * `square-card-fill.mjs` puts objects in `CLOUDFLARE_R2_BUCKET_NAME || "bananto"`
- * and stores the URL `/api/files/...`, which is served from the bucket above.
- * Whether those are the same bucket depends on a secret this repository cannot
- * read, so the checker asks BOTH and reports which one answered rather than
- * assuming. A picture in the wrong bucket is not a missing picture, and
- * clearing its URL would throw away work that exists.
+ * `square-card-fill.mjs` USED TO put objects in `CLOUDFLARE_R2_BUCKET_NAME ||
+ * "bananto"` while storing `/api/files/...`, which is served from the bucket
+ * above. Every writer now takes its bucket from `r2-buckets.mjs`, which reads
+ * the app's own binding, so nothing new can land in the wrong one.
+ *
+ * The checker still asks BOTH, because the strays it found once can come back
+ * from a restored backup or an older script run off a branch — and a picture in
+ * the wrong bucket is not a missing picture: clearing its URL would throw away
+ * work that exists.
  */
-export const WRITING_BUCKET = "bananto";
+export { LEGACY_BUCKET as WRITING_BUCKET } from "./r2-buckets.mjs";
 
 /** Below this share of clean answers, the checker is the broken thing. */
 export const DEFAULT_MAX_DEAD_SHARE = 0.1;

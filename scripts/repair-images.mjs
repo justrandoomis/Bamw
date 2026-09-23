@@ -22,11 +22,17 @@
 
 import { execFileSync } from "node:child_process";
 import { existsSync, writeFileSync } from "node:fs";
+import { SERVING_BUCKET } from "./lib/r2-buckets.mjs";
 
 const DB_NAME = "bananto";
 const CONFIG = "wrangler.jsonc";
-const PUBLIC_BUCKET = process.env.CLOUDFLARE_R2_BUCKET_NAME || "bananto";
-const PRIVATE_BUCKET = "bananto-private";
+/*
+  `PUBLIC_BUCKET` used to be declared here, from `CLOUDFLARE_R2_BUCKET_NAME ||
+  "bananto"`, and nothing ever read it. A named bucket nothing uses is a trap:
+  the next edit that needs one reaches for the name already sitting there, which
+  is how `square-card-fill.mjs` hid 849 pictures.
+*/
+const PRIVATE_BUCKET = SERVING_BUCKET;
 
 const APPLY = process.argv.includes("--apply");
 const BATCH_SIZE = Number(

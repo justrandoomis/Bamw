@@ -35,9 +35,10 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { createR2 } from "./lib/r2-store.mjs";
+import { SERVING_BUCKET } from "./lib/r2-buckets.mjs";
 
 const APPLY = process.argv.includes("--apply");
-const BUCKET = process.env.CLOUDFLARE_R2_BUCKET_NAME || "bananto";
+/* One place names the bucket — see `lib/r2-buckets.mjs` and the 849 it hid. */
 const PUBLIC_HOST = process.env.PUBLIC_ASSET_HOST || "https://assets.banan.to";
 const WORK_DIR = ".store-media-repair";
 
@@ -159,7 +160,7 @@ if (!APPLY) {
 }
 
 /* ---- move each one, and prove it landed ---- */
-const r2 = createR2(BUCKET, { tmpDir: WORK_DIR, log: (t) => say(`  ${redact(t)}`) });
+const r2 = createR2(SERVING_BUCKET, { tmpDir: WORK_DIR, log: (t) => say(`  ${redact(t)}`) });
 say(`## Uploading (R2 mode: ${r2.mode})`);
 say();
 

@@ -48,6 +48,7 @@ import {
 import { keyArtCandidates, isKeyArt } from "./lib/keyart.mjs";
 import { priceVariants, checkPricing } from "./lib/batch-pricing.mjs";
 import { createR2 } from "./lib/r2-store.mjs";
+import { SERVING_BUCKET } from "./lib/r2-buckets.mjs";
 
 const APPLY = process.argv.includes("--apply");
 const only = (() => {
@@ -66,7 +67,7 @@ const say = (t = "") => console.log(redact(t));
 
 const CONFIG = "wrangler.jsonc";
 const DB_NAME = "bananto";
-const BUCKET = "bananto-private";
+/* One place names the bucket — see `lib/r2-buckets.mjs`. */
 const WORK_DIR = path.resolve(".game-create-tmp");
 mkdirSync(WORK_DIR, { recursive: true });
 
@@ -92,7 +93,7 @@ function d1Write(sql) {
   return wrangler(["d1", "execute", DB_NAME, "--remote", "--json", "--yes", "--config", CONFIG, "--command", sql]);
 }
 
-const r2 = createR2(BUCKET, { tmpDir: WORK_DIR, log: () => {} });
+const r2 = createR2(SERVING_BUCKET, { tmpDir: WORK_DIR, log: () => {} });
 
 /* ---------------------------------------------------------------- imagery */
 

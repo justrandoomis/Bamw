@@ -20,10 +20,11 @@ import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { SERVING_BUCKET } from "./lib/r2-buckets.mjs";
 
 const DB_NAME = "bananto";
 const CONFIG = "wrangler.jsonc";
-const BUCKET = "bananto-private";
+const BUCKET = SERVING_BUCKET;
 const BACKUP_DIR = "media-backup";
 
 const APPLY = process.argv.includes("--apply");

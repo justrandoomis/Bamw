@@ -40,10 +40,11 @@ import {
   resolveProduct,
 } from "./lib/nintendo-store.mjs";
 import { createR2 } from "./lib/r2-store.mjs";
+import { SERVING_BUCKET } from "./lib/r2-buckets.mjs";
 
 const DB_NAME = "bananto";
 const CONFIG = "wrangler.jsonc";
-const BUCKET = "bananto-private";
+/* One place names the bucket — see `lib/r2-buckets.mjs`. */
 const WORK_DIR = "research-import";
 
 const APPLY = process.argv.includes("--apply");
@@ -270,7 +271,7 @@ say(`Run at ${new Date().toISOString()}. Batch size ${BATCH_SIZE}, offset ${OFFS
 say();
 
 mkdirSync(WORK_DIR, { recursive: true });
-const r2 = createR2(BUCKET, { tmpDir: WORK_DIR, log: note });
+const r2 = createR2(SERVING_BUCKET, { tmpDir: WORK_DIR, log: note });
 const sharp = (await import("sharp")).default;
 
 const live = loadCatalogue();
