@@ -15,10 +15,11 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { SERVING_BUCKET } from "./lib/r2-buckets.mjs";
 
 const DB_NAME = "bananto";
 const CONFIG = "wrangler.jsonc";
-const PRIVATE_BUCKET = "bananto-private";
+const PRIVATE_BUCKET = SERVING_BUCKET;
 const TEMPLATE_DIR = "import-sources/nintendo-2026-08";
 const SCHEMA_FILE = "src/lib/gameImportSchema.ts";
 

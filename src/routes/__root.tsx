@@ -219,13 +219,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://assets.banan.to/Images/Services/Hang_Banner.webp",
         type: "image/webp",
       },
-      // Nintendo and Brand branding assets
-      {
-        rel: "preload",
-        as: "image",
-        href: "https://assets.banan.to/Images/Brand/bananto_logo.webp",
-        type: "image/webp",
-      },
+      /*
+        THE LOGO IS NOT PRELOADED FROM `assets.banan.to`, and there used to be a
+        line here that did.
+
+        It asked for `Images/Brand/bananto_logo.webp` as an image on every page.
+        A browser audit of banan.to on 2026-09-23 found it was the ONLY failing
+        image request on the site:
+
+          net::ERR_BLOCKED_BY_ORB — https://assets.banan.to/Images/Brand/bananto_logo.webp
+
+        Chrome's Opaque Response Blocking refuses a cross-origin subresource
+        whose body is not the kind that was asked for — an HTML error page
+        served where a WebP was requested. `Images/Services/Hang_Banner.webp`
+        from the same host answers 200, so the host is fine and that one object
+        is not there.
+
+        And the request was pointless even had it worked: every screen that
+        draws the mascot imports the BUNDLED copy — `AuthPieces`,
+        `TelegramLayout`, `AdminDashboard`, `telegram/index` all import
+        `@/assets/bananto_logo.webp.asset.json`, which is same-origin and
+        content-hashed. Nothing anywhere renders the `assets.banan.to` URL. So
+        this preload warmed nothing, could not have been used if it had loaded,
+        and printed a console error on every page view.
+      */
       // Start the catalogue request while the HTML is still parsing.
       { rel: "preload", as: "fetch", href: "/api/data?slim=1", crossOrigin: "use-credentials" },
     ],

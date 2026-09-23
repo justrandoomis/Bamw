@@ -27,6 +27,7 @@ import { buildMedia } from "./lib/media-pipeline.mjs";
 import { createR2 } from "./lib/r2-store.mjs";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { SERVING_BUCKET } from "./lib/r2-buckets.mjs";
 
 const WORK_DIR = "zip-import";
 
@@ -60,7 +61,7 @@ const say = (t = "") => {
 /* ---------------------------------------------- the application's own code */
 
 mkdirSync(WORK_DIR, { recursive: true });
-const r2 = createR2("bananto-private", { tmpDir: WORK_DIR, log: (t) => process.stderr.write(`${t}\n`) });
+const r2 = createR2(SERVING_BUCKET, { tmpDir: WORK_DIR, log: (t) => process.stderr.write(`${t}\n`) });
 const sharp = (await import("sharp")).default;
 
 const outfile = path.resolve(".zip-import-bundle.mjs");

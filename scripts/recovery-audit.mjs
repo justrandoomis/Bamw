@@ -13,11 +13,12 @@
 
 import { execFileSync } from "node:child_process";
 import { appendFileSync, existsSync, writeFileSync } from "node:fs";
+import { LEGACY_BUCKET, SERVING_BUCKET } from "./lib/r2-buckets.mjs";
 
 const DB_NAME = "bananto";
 const CONFIG = "wrangler.jsonc";
-const PUBLIC_BUCKET = process.env.CLOUDFLARE_R2_BUCKET_NAME || "bananto";
-const PRIVATE_BUCKET = "bananto-private";
+const PUBLIC_BUCKET = LEGACY_BUCKET;
+const PRIVATE_BUCKET = SERVING_BUCKET;
 
 /* ------------------------------------------------------------------ safety */
 

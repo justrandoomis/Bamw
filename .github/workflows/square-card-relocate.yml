@@ -1,9 +1,12 @@
 # Puts the shop's pictures in the bucket the shop reads from.
 #
-# `media-pipeline.mjs` writes to `CLOUDFLARE_R2_BUCKET_NAME || "bananto"`;
-# `storage.server.ts` serves `/api/files/...` from `BANANTO_PRIVATE_BUCKET`,
-# which is `bananto-private`. The square-card checker measured the consequence:
-# `R2 bananto-private 404, bananto 200`, 563 times.
+# `square-card-fill.mjs` USED TO write to `CLOUDFLARE_R2_BUCKET_NAME ||
+# "bananto"` while `storage.server.ts` serves `/api/files/...` from
+# `BANANTO_PRIVATE_BUCKET`. The checker measured the consequence — 849 pictures
+# answering `R2 bananto-private 404, bananto 200` — and they have been copied.
+#
+# The source is fixed; this stays for strays a restored backup or an older
+# script run from a branch can still leave behind.
 #
 # The copy is additive. Nothing is deleted from either bucket, and no catalogue
 # field is written — the bundled entry point does not even export `updateStore`.
