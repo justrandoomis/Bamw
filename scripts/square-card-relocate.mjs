@@ -62,12 +62,8 @@ import { readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { sniffImage } from "./lib/image-probe.mjs";
-import {
-  prefixFor,
-  SERVING_BUCKET,
-  storageKeyFor,
-  WRITING_BUCKET,
-} from "./lib/square-link-verdict.mjs";
+import { commonPrefix, listPrefix } from "./lib/r2-listing.mjs";
+import { SERVING_BUCKET, storageKeyFor, WRITING_BUCKET } from "./lib/square-link-verdict.mjs";
 
 const args = Object.fromEntries(
   process.argv
@@ -118,48 +114,6 @@ const fail = (message) => {
 const objectUrl = (bucket, key) =>
   `https://api.cloudflare.com/client/v4/accounts/${R2_ACCOUNT}/r2/buckets/${bucket}/objects/` +
   key.split("/").map(encodeURIComponent).join("/");
-
-/**
- * Every key R2 holds under one prefix, or null when the question failed.
- *
- * `null` is not an empty folder — see `square-card-verify.mjs`, where that
- * distinction is the whole safety story. Here it is milder but it still
- * matters: an unreadable folder must not look like a folder that needs
- * filling.
- */
-const listPrefix = async (bucket, prefix) => {
-  if (!R2_ACCOUNT || !R2_TOKEN) return null;
-  const keys = new Set();
-  let cursor = "";
-  for (let page = 0; page < 20; page += 1) {
-    const url =
-      `https://api.cloudflare.com/client/v4/accounts/${R2_ACCOUNT}/r2/buckets/${bucket}/objects` +
-      `?prefix=${encodeURIComponent(prefix)}&per_page=1000${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ""}`;
-    let body;
-    try {
-      const res = await fetch(url, {
-        headers: { authorization: `Bearer ${R2_TOKEN}` },
-        signal: AbortSignal.timeout(30_000),
-      });
-      if (!res.ok) return null;
-      body = await res.json();
-    } catch {
-      return null;
-    }
-    if (!body?.success) return null;
-    for (const row of body.result ?? []) if (row?.key) keys.add(String(row.key));
-    cursor = String(body.result_info?.cursor ?? "");
-    if (!cursor || !body.result_info?.is_truncated) break;
-  }
-  return keys;
-};
-
-const listingCache = new Map();
-const listingFor = (bucket, prefix) => {
-  const cacheKey = `${bucket}\u0000${prefix}`;
-  if (!listingCache.has(cacheKey)) listingCache.set(cacheKey, listPrefix(bucket, prefix));
-  return listingCache.get(cacheKey);
-};
 
 /** Run `worker` over `items`, a few at a time, in order. */
 const inBatches = async (items, worker) => {
@@ -324,27 +278,44 @@ for (const product of products) {
 }
 say(`- ملفات يشير إليها الكتالوج: **${wantedKeys.size.toLocaleString("en-US")}**`);
 
-const prefixes = [...new Set([...wantedKeys.keys()].map(prefixFor))].filter(Boolean);
-say(`- مجلدات للفحص: **${prefixes.length.toLocaleString("en-US")}**`);
+/*
+  ONE listing per bucket, over the folder the keys share.
+
+  THIS SCRIPT ALREADY MADE THE MISTAKE ONCE, on its first real run, and its
+  numbers are how it was caught: 894 present, 428 to copy — and 656 «مجلد
+  تعذّرت قراءته». Six hundred and fifty-six files it could not decide about,
+  because listing `files/products/<id>/` per product is about twelve hundred
+  authenticated calls inside a minute and the API's rate limit refused them.
+  The checker had been fixed for exactly this and the fix was never applied
+  here; the commit that fixed it claimed both scripts had it.
+
+  The folder count that used to be printed above is gone with it. It measured
+  the instrument, not the shop.
+*/
+const root = commonPrefix([...wantedKeys.keys()]);
+const r2 = { account: R2_ACCOUNT, token: R2_TOKEN };
+const serving = await listPrefix(SERVING_BUCKET, root, r2);
+const writing = await listPrefix(WRITING_BUCKET, root, r2);
+say(
+  `- \`${root}\` في \`${SERVING_BUCKET}\`: **${serving ? `${serving.size} ملف` : "لم تُقرأ"}**، ` +
+    `وفي \`${WRITING_BUCKET}\`: **${writing ? `${writing.size} ملف` : "لم تُقرأ"}**`,
+);
 say();
 
-await inBatches(prefixes, async (prefix) => {
-  await listingFor(SERVING_BUCKET, prefix);
-  await listingFor(WRITING_BUCKET, prefix);
-});
+/*
+  Either listing failing stops the whole run rather than skipping rows. A copy
+  decided from half a listing would be a copy decided from a guess, and the
+  count printed afterwards would not add up to the catalogue.
+*/
+if (!serving || !writing) {
+  rmSync(outfile, { force: true });
+  fail("تعذّرت قراءة إحدى الحاويتين — لن أنقل شيئًا بناءً على قائمة ناقصة");
+}
 
-let unreadable = 0;
 let present = 0;
 let absentEverywhere = 0;
 const toCopy = [];
 for (const row of wantedKeys.values()) {
-  const prefix = prefixFor(row.key);
-  const serving = await listingFor(SERVING_BUCKET, prefix);
-  const writing = await listingFor(WRITING_BUCKET, prefix);
-  if (!serving || !writing) {
-    unreadable += 1;
-    continue;
-  }
   if (serving.has(row.key)) {
     present += 1;
     continue;
@@ -358,18 +329,7 @@ say("|---|---:|");
 say(`| موجودة في \`${SERVING_BUCKET}\` | ${present.toLocaleString("en-US")} |`);
 say(`| في \`${WRITING_BUCKET}\` فقط — تُنقل | ${toCopy.length.toLocaleString("en-US")} |`);
 say(`| ليست في أي حاوية | ${absentEverywhere.toLocaleString("en-US")} |`);
-say(`| مجلد تعذّرت قراءته | ${unreadable.toLocaleString("en-US")} |`);
 say();
-
-/*
-  A folder that could not be read is not a finding, it is a hole in the
-  measurement, and a run that quietly skipped some is a run whose numbers do
-  not add up to the catalogue.
-*/
-if (unreadable > 0) {
-  say(`**${unreadable} ملفًا لم يُحسم لأن مجلده لم يُقرأ.** لن أنقلها، والعدد أعلاه ليس كاملًا.`);
-  say();
-}
 
 const chosen = toCopy.slice(0, Number.isFinite(LIMIT) ? LIMIT : toCopy.length);
 const payload = {
@@ -378,7 +338,6 @@ const payload = {
   present,
   toCopy: toCopy.length,
   absentEverywhere,
-  unreadable,
   keys: chosen.map((row) => row.key),
 };
 if (args.json && args.json !== "true") writeFileSync(args.json, JSON.stringify(payload, null, 2));
