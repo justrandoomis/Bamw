@@ -99,6 +99,34 @@ const context = await browser.newContext({
 });
 const page = await context.newPage();
 
+/*
+  WATCH THE NETWORK, BECAUSE THE COMPONENT HEALS THE DOM BEFORE I CAN READ IT.
+
+  The previous run read every captioned card as «رُسمت» at 108 pixels wide, from
+  `illustrations/cover-placeholder.svg`. That is not a card without a URL and it
+  is not a card whose URL failed — it is `NintendoCover` having ALREADY replaced
+  a failed URL with the placeholder, which then loads perfectly. By the time the
+  `<img>` is inspected the evidence has been tidied away, so «did it fail?» is
+  unanswerable from the DOM on principle, not by accident.
+
+  The request itself cannot be tidied away. Every image response the browser
+  received is recorded here, so a 404 on a stored square card is visible whatever
+  the component does about it afterwards.
+*/
+const imageFailures = [];
+const imageOk = new Set();
+page.on("response", (response) => {
+  const url = response.url();
+  if (!/\.(webp|jpe?g|png|avif|svg)(\?|$)/i.test(url) && !url.includes("/api/files/")) return;
+  if (response.status() >= 400) imageFailures.push({ url, status: response.status() });
+  else imageOk.add(url);
+});
+page.on("requestfailed", (request) => {
+  const url = request.url();
+  if (!/\.(webp|jpe?g|png|avif|svg)(\?|$)/i.test(url) && !url.includes("/api/files/")) return;
+  imageFailures.push({ url, status: request.failure()?.errorText || "requestfailed" });
+});
+
 try {
   const res = await page.goto(`${ORIGIN}/`, { waitUntil: "domcontentloaded", timeout: NAV_MS });
   await page
@@ -230,6 +258,20 @@ const table = (rows, title) => {
 table(cartridges, "رفّ الكارتلج «ألعاب نينتندو سويتش»");
 table(squares, "الرفّ المربّع «Nintendo Switch games» — للمقارنة");
 
+say();
+say("## ما رفضته الشبكة فعلًا");
+say();
+say(`- طلبات صور نجحت: **${imageOk.size}**`);
+say(`- طلبات صور فشلت: **${imageFailures.length}**`);
+if (imageFailures.length) {
+  say();
+  say("| الحالة | العنوان |");
+  say("| --- | --- |");
+  for (const row of imageFailures.slice(0, 25)) {
+    say(`| ${row.status} | \`${String(row.url).slice(-72)}\` |`);
+  }
+}
+
 const head = cartridges.slice(0, 8);
 const withSrc = head.filter((c) => c.src);
 const brokenHead = head.filter((c) => c.src && c.complete && c.width === 0);
@@ -243,10 +285,10 @@ if (head.length === 0) {
 } else {
   say(`- أول **${head.length}** بطاقة في رفّ الكارتلج`);
   say(`- منها تحمل رابط صورة: **${withSrc.length}**`);
-  say(`- منها رابطٌ اكتمل تحميله بعرض صفر (أي فشل الرسم): **${brokenHead.length}**`);
+  say(`- منها رابطٌ اكتمل تحميله بعرض صفر: **${brokenHead.length}** (البطاقة تستبدل الرابط الفاشل بالعنصر النائب، فهذا الرقم لا يرى الفشل)`);
   say(`- منها تكتب «لم يتم إضافة الصورة بعد»: **${captioned.length}**`);
   say();
-  if (brokenHead.length >= 2) {
+  if (imageFailures.length >= 2) {
     say(
       "**(ب)**: الروابط مخزّنة ولا تُرسم. الفرز يرفع الأعطال إلى صدر الرفّ، " +
         "لأن الشرط يسأل «هل هناك رابط؟» بينما البطاقة تسأل «هل ظهر؟».",

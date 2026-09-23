@@ -34,26 +34,97 @@ const game = (over: Partial<RepriceProduct> = {}): RepriceProduct => ({
 
 const priceOf = (over: Partial<RepriceProduct>) => repriceOne(game(over)).newPrice;
 
-describe("«اذا كان سعر اللعبه ٥ او ٧ اتركها»", () => {
-  it("leaves 5,000 exactly where it is", () => {
+/*
+  THE FAME BANDS, AS TITLES THE SHOP ALREADY RANKS.
+
+  Fame is not redefined here any more than it is in the engine: these are
+  titles `fameTier` — the roulette's and the home shelf's one answer to «how
+  well known is this game» — already places, so a test that says «مشهورة»
+  means by it what every other screen means.
+
+    FAMOUS   Super Mario Odyssey, rank 5 on the worldwide sales list, and NOT
+             one of the four games the owner anchored by name, so it exercises
+             the rung rather than an anchor.
+    KNOWN    Metroid Dread, rank 38 — on the list, outside its top twenty.
+    obscure  «لعبة», the default title above: unranked, like the long tail of
+             the 1,712 and like «أغلب الألعاب» in the owner's complaint.
+*/
+const FAMOUS = "Super Mario Odyssey";
+const KNOWN = "Metroid Dread";
+
+/*
+  NARROWED — BY THE OWNER, AND THIS IS THE CORRECTION HE ASKED FOR.
+
+  «اذا كان سعر اللعبه ٥ او ٧ اتركها» was obeyed exactly as written: a game
+  already at 5,000 or 7,000 was returned untouched, whatever game it was. He
+  has now said what that produced, and it is both halves of one sentence:
+
+    «أغلب الألعاب تكون غير معروفة وغير مشهورة لكن سعرها سبعة وثمانية بدل ٥،
+     بينما هنالك ألعاب قوية وسعرها غالي وفي نفس الوقت مشهورة جدا لكن سعرها
+     خمسة آلاف بدل ٨ و ٧.»
+
+  «اتركها» is what froze the unknown game at 7,000 AND the famous one at 5,000:
+  a sentence that leaves both of those alone can never fix either. So it now
+  reads «those two figures are fine» — on the games whose rung they are — and
+  not «fine on any game». The tests below keep this describe block's intent, that
+  a price already right is never churned, and move the number to the game.
+*/
+describe("«اذا كان سعر اللعبه ٥ او ٧ اتركها» — on the game whose rung it is", () => {
+  it("leaves 5,000 exactly where it is, on the game whose rung 5,000 is", () => {
+    // «٥ اغلبها وأكثرها» — an unknown Switch 1 game, which is most of the
+    // catalogue. Unchanged: this is the case «اتركها» was always really about.
     const decision = repriceOne(game({ price: 5_000 }));
     expect(decision.newPrice).toBe(5_000);
     expect(decision.changed).toBe(false);
   });
 
-  it("leaves 7,000 exactly where it is", () => {
-    const decision = repriceOne(game({ price: 7_000 }));
-    expect(decision.newPrice).toBe(7_000);
-    expect(decision.changed).toBe(false);
+  it("leaves 7,000 where it is on a famous Switch 1 game — and only there", () => {
+    // «٧ الف سويتش ١» is his own figure for a game as famous as Breath of the
+    // Wild, so 7,000 on a famous Switch 1 title is still «اتركها», untouched.
+    const famous = repriceOne(game({ title: FAMOUS, price: 7_000 }));
+    expect(famous.newPrice).toBe(7_000);
+    expect(famous.changed).toBe(false);
+
+    /*
+      SUPERSEDED. The same 7,000 on an unknown game used to be left alone by
+      «اذا كان سعر اللعبه ٥ او ٧ اتركها». It is now the first half of his
+      complaint — «أغلب الألعاب تكون غير معروفة وغير مشهورة لكن سعرها سبعة
+      وثمانية بدل ٥» — so it comes down to that game's own rung. The
+      expectation moved because he asked for it to, not to make a test pass.
+    */
+    const obscure = repriceOne(game({ price: 7_000 }));
+    expect(obscure.newPrice).toBe(5_000);
+    expect(obscure.changed).toBe(true);
   });
 
-  it("leaves them alone even though 985 and 206 games sit there", () => {
-    // The two largest price groups in the shop. A rule that moved these would
-    // reprice two thirds of the catalogue on a sentence that says not to.
+  it("still does not churn the 985 at 5,000, and does move the 206 at 7,000", () => {
+    /*
+      The two largest price groups in the shop. The 5,000 group is unknown
+      Switch 1 games sitting on their own rung and must NOT move — repricing two
+      thirds of the catalogue would be the same mistake pointing the other way.
+      The 7,000 group is «سعرها سبعة وثمانية بدل ٥» itself, and moves.
+    */
     const many = Array.from({ length: 50 }, (_, i) =>
       game({ id: `p${i}`, price: i % 2 === 0 ? 5_000 : 7_000 }),
     );
-    expect(repriceAll(many).every((d) => d.changed === false)).toBe(true);
+    const decisions = repriceAll(many);
+    expect(
+      decisions.filter((d) => d.oldPrice === 5_000).every((d) => d.changed === false),
+    ).toBe(true);
+    expect(
+      decisions
+        .filter((d) => d.oldPrice === 7_000)
+        .every((d) => d.changed === true && d.newPrice === 5_000),
+    ).toBe(true);
+    // And every one of them lands on the rung exactly, never between rungs.
+    expect(decisions.every((d) => d.newPrice === 5_000)).toBe(true);
+
+    // A shelf of famous games at 7,000 is still left entirely alone, which is
+    // the half of «اتركها» that survives untouched.
+    const famousShelf = Array.from({ length: 10 }, (_, i) =>
+      game({ id: `f${i}`, title: FAMOUS, price: 7_000 }),
+    );
+    expect(repriceAll(famousShelf).every((d) => d.changed === false)).toBe(true);
   });
 });
 
