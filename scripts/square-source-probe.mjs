@@ -34,7 +34,7 @@
  * filler then rejects would be a measurement of nothing.
  */
 import { build } from "esbuild";
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 
@@ -74,6 +74,29 @@ const finish = (code) => {
   process.exit(code);
 };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/*
+  The D1 id, from the repo when the secret is not set.
+
+  `CLOUDFLARE_D1_DATABASE_ID` is referenced by 37 workflows and is NOT actually
+  configured on this repository — which is why the first run of this probe read
+  an empty catalogue and, correctly, refused to measure anything. The id is not
+  a secret: it is committed in `wrangler.jsonc` and worthless without the API
+  token. Every other script here already falls back to it; this one did not,
+  and that omission was mine.
+*/
+if (!process.env["D1_DATABASE_ID"] && !process.env["CLOUDFLARE_D1_DATABASE_ID"]) {
+  try {
+    const config = readFileSync(path.resolve("wrangler.jsonc"), "utf8");
+    const found = config.match(/"database_id"\s*:\s*"([0-9a-fA-F-]{36})"/);
+    if (found) process.env["D1_DATABASE_ID"] = found[1];
+  } catch {
+    /* Reported by the empty-catalogue guard below, which is the real check. */
+  }
+}
+if (!process.env["D1_DATABASE_ID"] && process.env["CLOUDFLARE_D1_DATABASE_ID"]) {
+  process.env["D1_DATABASE_ID"] = process.env["CLOUDFLARE_D1_DATABASE_ID"];
+}
 
 const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
