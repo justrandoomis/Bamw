@@ -194,9 +194,15 @@ export async function frameCover(app, bytes, storedTrim) {
   if (Math.max(box.width, box.height) > MAX_SIDE) {
     pipeline = pipeline.resize(box.height >= box.width ? { height: MAX_SIDE } : { width: MAX_SIDE });
   }
+  /*
+    Quality 85, not 90: at 90 the 159 covers of the first run came to 30.8 MB,
+    just over the 30 MB a chat upload takes, and 85 is 25 MB with no visible
+    difference at this size. Chroma stays 4:4:4 — box art is red banners and
+    white type, exactly where subsampling fringes.
+  */
   const jpeg = await pipeline
     .flatten({ background: "#ffffff" })
-    .jpeg({ quality: 90, mozjpeg: true, chromaSubsampling: "4:4:4" })
+    .jpeg({ quality: 85, mozjpeg: true, chromaSubsampling: "4:4:4" })
     .toBuffer();
   const out = await sharp(jpeg).metadata();
   return {
