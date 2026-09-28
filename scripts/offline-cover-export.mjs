@@ -54,6 +54,7 @@ import {
   englishTitle,
   filesKey,
   fold,
+  foldArabic,
   frameCover,
   matchRequested,
   offlineOf,
@@ -262,6 +263,9 @@ const census = products.map((product) => {
     title,
     titleAr: arabicTitle(product),
     folded: fold(title),
+    slugFolded: fold(product.slug),
+    arabicFolded: foldArabic(arabicTitle(product)),
+    rawPlatform: String(product.platform ?? "").trim(),
     switch2: app.isNintendoSwitch2Product(product),
     platform: app.isNintendoSwitch2Product(product) ? "Nintendo Switch 2" : "Nintendo Switch",
     hidden: app.isProductHidden(product),
@@ -609,8 +613,14 @@ for (const { ask, hits } of requested) {
         : "لا تُباع أوفلاين";
     const online = onlineOf(app, h.product);
     const cover = coverFileById.has(h.id) ? "في الملف" : h.cover ? "مخزّن ولم يدخل الملف" : "لا يوجد";
+    const flags = [
+      h.titleAr ? `«${cell(h.titleAr)}»` : "",
+      h.rawPlatform ? `platform=${cell(h.rawPlatform)}` : "",
+      h.hidden ? "**مخفية**" : "",
+      h.game ? "" : "**ليست في قسم الألعاب**",
+    ].filter(Boolean);
     named.push(
-      `- ${cell(h.title)} · ${h.platform}${h.hidden ? " · **مخفية**" : ""} · أوفلاين: ${offline}` +
+      `- ${cell(h.title)} · ${h.platform}${flags.length ? ` · ${flags.join(" · ")}` : ""} · أوفلاين: ${offline}` +
         `${online ? ` · أونلاين: ${money(online)}` : ""} · الغلاف: ${cover} · \`${h.id}\``,
     );
   }

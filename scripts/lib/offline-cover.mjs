@@ -226,44 +226,67 @@ export const safeName = (title) =>
     .slice(0, 90)
     .trim() || "game";
 
+/**
+ * Arabic folded for matching: no harakat or tatweel, one alef, one yaa, and
+ * taa marbuta as haa — «أسطورة زيلدا» and «اسطوره زيلدا» are one name.
+ */
+export const foldArabic = (s) =>
+  String(s ?? "")
+    .replace(/[ً-ٰٟـ]/g, "")
+    .replace(/[أإآٱ]/g, "ا")
+    .replace(/ى/g, "ي")
+    .replace(/ة/g, "ه")
+    .replace(/\s+/g, " ")
+    .trim();
+
 /*
   The owner's two lists, as he wrote them. `want` is the platform he named;
   where he named none the Switch 1 game is the natural reading, and any Switch 2
   Edition that also exists is printed beside it rather than silently dropped.
+
+  `match` is tried against the English title and the slug, `ar` against the
+  Arabic title — a product can carry its name in only one of the three, and
+  «not in the shop» is not an answer to give from one field.
 */
 const NINTENDO = "ألعاب نينتندو";
 const PUBLISHERS = "ناشرون آخرون";
 export const REQUESTED = [
-  { group: NINTENDO, label: "Zelda Breath of the Wild", match: /breath of the wild/, want: "switch1" },
-  { group: NINTENDO, label: "Mario Kart World (Switch 2)", match: /mario kart world/, want: "switch2" },
-  { group: NINTENDO, label: "Donkey Kong Bananza (Switch 2)", match: /donkey kong bananza/, want: "switch2" },
-  { group: NINTENDO, label: "Pokémon Legends Z-A (Switch 2 Edition)", match: /pokemon legends z a/, want: "switch2" },
-  { group: NINTENDO, label: "Super Smash Bros. Ultimate", match: /smash bros ultimate/, want: "switch1" },
-  { group: NINTENDO, label: "Splatoon Raiders (Switch 2)", match: /splatoon raiders/, want: "switch2" },
-  { group: NINTENDO, label: "Super Mario Party Jamboree (Switch 2 Edition)", match: /mario party jamboree/, want: "switch2" },
-  { group: NINTENDO, label: "Zelda Ocarina of Time (Switch 2)", match: /ocarina of time/, want: "switch2" },
-  { group: NINTENDO, label: "Luigi's Mansion 3", match: /luigi ?s mansion 3/, want: "switch1" },
-  { group: NINTENDO, label: "Metroid Dread", match: /metroid dread/, want: "switch1" },
-  { group: NINTENDO, label: "Pokémon Scarlet", match: /pokemon scarlet/, want: "switch1" },
-  { group: NINTENDO, label: "Mario Kart 8 Deluxe", match: /mario kart 8 deluxe/, want: "switch1" },
-  { group: PUBLISHERS, label: "Resident Evil Requiem (Switch 2)", match: /resident evil requiem/, want: "switch2" },
-  { group: PUBLISHERS, label: "Cyberpunk 2077 (Switch 2)", match: /cyberpunk 2077/, want: "switch2" },
-  { group: PUBLISHERS, label: "Final Fantasy VII Remake (Switch 2)", match: /final fantasy (vii|7) remake/, want: "switch2" },
-  { group: PUBLISHERS, label: "Pragmata (Switch 2)", match: /pragmata/, want: "switch2" },
-  { group: PUBLISHERS, label: "Minecraft (Switch 2)", match: /^minecraft(?! (dungeons|legends|story|blast))/, want: "switch2" },
+  { group: NINTENDO, label: "Zelda Breath of the Wild", match: /breath of the wild/, ar: /بريث اوف ذا وايلد|نفس البريه/, want: "switch1" },
+  { group: NINTENDO, label: "Mario Kart World (Switch 2)", match: /mario kart world/, ar: /ماريو كارت (وورلد|ورلد)/, want: "switch2" },
+  { group: NINTENDO, label: "Donkey Kong Bananza (Switch 2)", match: /donkey kong bananza/, ar: /(دونكي|دونكى) كونج? ب(و|ا)?نانزا/, want: "switch2" },
+  { group: NINTENDO, label: "Pokémon Legends Z-A (Switch 2 Edition)", match: /pokemon legends z a/, ar: /(اساطير|ليجندز).{0,20}(z-?a|زد)/i, want: "switch2" },
+  { group: NINTENDO, label: "Super Smash Bros. Ultimate", match: /smash bros ultimate/, ar: /سماش بروس/, want: "switch1" },
+  { group: NINTENDO, label: "Splatoon Raiders (Switch 2)", match: /splatoon raiders/, ar: /سبلاتون رايدرز/, want: "switch2" },
+  { group: NINTENDO, label: "Super Mario Party Jamboree (Switch 2 Edition)", match: /mario party jamboree/, ar: /جامبوري/, want: "switch2" },
+  { group: NINTENDO, label: "Zelda Ocarina of Time (Switch 2)", match: /ocarina of time/, ar: /اوكارينا/, want: "switch2" },
+  { group: NINTENDO, label: "Luigi's Mansion 3", match: /luigi ?s mansion 3/, ar: /(لويجي|لويجيز) (مانشن|قصر) ?(3|٣)|قصر لويجي (3|٣)/, want: "switch1" },
+  { group: NINTENDO, label: "Metroid Dread", match: /metroid dread/, ar: /ميترويد دريد/, want: "switch1" },
+  { group: NINTENDO, label: "Pokémon Scarlet", match: /pokemon scarlet/, ar: /سكارليت/, want: "switch1" },
+  { group: NINTENDO, label: "Mario Kart 8 Deluxe", match: /mario kart 8 deluxe/, ar: /ماريو كارت (8|٨) ديلوكس/, want: "switch1" },
+  { group: PUBLISHERS, label: "Resident Evil Requiem (Switch 2)", match: /resident evil requiem/, ar: /ريزدنت ايفل ريكويم|ريكويم/, want: "switch2" },
+  { group: PUBLISHERS, label: "Cyberpunk 2077 (Switch 2)", match: /cyberpunk 2077/, ar: /سايبر ?بانك/, want: "switch2" },
+  { group: PUBLISHERS, label: "Final Fantasy VII Remake (Switch 2)", match: /final fantasy (vii|7) remake/, ar: /فاينل فانتا?زي.{0,12}ريميك/, want: "switch2" },
+  { group: PUBLISHERS, label: "Pragmata (Switch 2)", match: /pragmata/, ar: /براغماتا|براجماتا/, want: "switch2" },
+  { group: PUBLISHERS, label: "Minecraft (Switch 2)", match: /^minecraft(?! (dungeons|legends|story|blast))/, ar: /^ماين ?كرافت(?! (دانجنز|ليجندز))/, want: "switch2" },
 ];
 
 /**
- * Every product a named game could be, best first: on sale before hidden, sold
- * offline before not, the platform he named before the other, and the plainest
- * title before a bundle or an edition that merely contains the name.
+ * Every product a named game could be, best first: a game before anything
+ * else, on sale before hidden, sold offline before not, the platform he named
+ * before the other, and the plainest title before a bundle or an edition that
+ * merely contains the name.
  */
 export function matchRequested(ask, rows) {
+  const hit = (row) =>
+    ask.match.test(row.folded) ||
+    (row.slugFolded ? ask.match.test(row.slugFolded) : false) ||
+    (ask.ar && row.arabicFolded ? ask.ar.test(row.arabicFolded) : false);
   return rows
-    .filter((row) => row.game && ask.match.test(row.folded))
+    .filter(hit)
     .map((row) => ({
       row,
       rank: [
+        row.game ? 0 : 1,
         row.hidden ? 1 : 0,
         row.offline?.price > 0 ? 0 : 1,
         ask.want === "any" || (ask.want === "switch2") === row.switch2 ? 0 : 1,

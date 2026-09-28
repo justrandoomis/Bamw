@@ -25,6 +25,7 @@ import {
   REQUESTED,
   filesKey,
   fold,
+  foldArabic,
   frameCover,
   matchRequested,
   offlineOf,
@@ -209,6 +210,29 @@ describe("the games the owner named", () => {
     const hits = matchRequested(byLabel("Mario Kart World"), rows);
     expect(hits[0]).toBe(rows[2]);
     expect(hits.at(-1)).toBe(rows[0]);
+  });
+
+  /*
+    «Not in the shop» is an answer about the shop, so it is not given from one
+    field: a product can carry the name only in its slug or its Arabic title.
+  */
+  it("finds a game by its slug or its Arabic title, and ranks a non-game last", () => {
+    const base = { game: true, hidden: false, switch2: true, offline: { price: 9000 } };
+    const bySlug = { ...base, title: "ماريو بارتي", folded: "", slugFolded: fold("super-mario-party-jamboree-switch-2-edition") };
+    const byArabic = { ...base, title: "x", folded: "x", arabicFolded: foldArabic("سوبر ماريو بارتي جامبوري — إصدار سويتش 2") };
+    const merch = { ...base, game: false, title: "Super Mario Party Jamboree Poster", folded: fold("Super Mario Party Jamboree Poster") };
+    const unrelated = { ...base, title: "Mario Party Superstars", folded: fold("Mario Party Superstars") };
+    const hits = matchRequested(byLabel("Super Mario Party Jamboree"), [merch, unrelated, bySlug, byArabic]);
+    expect(hits).toContain(bySlug);
+    expect(hits).toContain(byArabic);
+    expect(hits).not.toContain(unrelated);
+    expect(hits.at(-1)).toBe(merch);
+  });
+
+  it("folds the Arabic spellings of one name together", () => {
+    expect(foldArabic("أُوكارينا")).toBe(foldArabic("اوكارينا"));
+    expect(byLabel("Zelda Ocarina").ar.test(foldArabic("أسطورة زيلدا: أوكارينا الزمن"))).toBe(true);
+    expect(byLabel("Minecraft").ar.test(foldArabic("ماين كرافت دانجنز"))).toBe(false);
   });
 });
 
