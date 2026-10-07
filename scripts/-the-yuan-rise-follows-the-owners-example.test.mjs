@@ -236,6 +236,11 @@ describe("the fields the catalogue keeps a price in", () => {
     expect(HANDLED_PATTERNS.has("accountOnlinePrice")).toBe(true);
     expect(HANDLED_PATTERNS.has("lendPrice")).toBe(false);
     expect(NOT_YUAN_PRICED.has("discPrice")).toBe(true);
+    /* Found by the first live dry run: reference prices, not prices the shop sells. */
+    for (const key of ["price_usd", "store_offer_bonus_iqd", "switch2UpgradePrice"]) {
+      expect(HANDLED_PATTERNS.has(key)).toBe(false);
+      expect(NOT_YUAN_PRICED.get(key)).toMatch(/ليس/);
+    }
   });
 
   it("compares two documents by content, whatever order their keys are in", () => {

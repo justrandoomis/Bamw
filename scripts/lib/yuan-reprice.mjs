@@ -33,12 +33,19 @@ export const ROW_COST_KEYS = ["cost"];
 const COMPARE_AT = "originalPrice";
 
 /**
- * Prices this rise leaves alone on purpose, because they are not a yuan
- * account: a physical cartridge lent or sold inside Iraq, and what the shop
- * pays for a disc traded in. Named so the report can say so, rather than
- * listing them as fields nobody looked at.
+ * Price-like fields this rise leaves alone on purpose, each with the reason,
+ * because none is a yuan account the shop sells. The first live dry run found
+ * the last three in the catalogue; they are named here so the report can say
+ * why they did not move, rather than listing them as fields nobody looked at.
  */
-export const NOT_YUAN_PRICED = new Set(["lendPrice", "discPrice", "trade_value_iqd"]);
+export const NOT_YUAN_PRICED = new Map([
+  ["lendPrice", "إقراض كارتلج داخل العراق — ليس حسابًا باليوان"],
+  ["discPrice", "قرص فعلي داخل العراق — ليس حسابًا باليوان"],
+  ["trade_value_iqd", "ما يدفعه المتجر عند استبدال قرص — ليس سعر بيع"],
+  ["store_offer_bonus_iqd", "مكافأة رصيد المتجر عند الاستبدال — ليس سعر بيع"],
+  ["price_usd", "سعر نينتندو الرسمي بالدولار من بيانات الاستيراد — ليس سعر بيع"],
+  ["switch2UpgradePrice", "سعر حزمة ترقية Switch 2 الرسمي، يُعرض محوّلًا من الدولار — ليس سعر بيع"],
+]);
 
 /** Written on every product this rise touched, so it can never touch it twice. */
 export const MARK_KEY = "priceRevision";

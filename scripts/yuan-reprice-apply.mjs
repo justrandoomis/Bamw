@@ -243,11 +243,15 @@ const headline = (doc) => {
   const rows = app.pricingTypeRows(doc);
   const offlineRow = app.ordinaryOfflineRow(rows);
   let online = amountOf(doc?.accountOnlinePrice);
-  if (!online && Array.isArray(rows)) {
-    for (const row of rows) {
+  /*
+    The online account is a tier row on most games and an OPTION on others —
+    Mario Kart World sells it as the option «حساب أونلاين». Both are asked.
+  */
+  for (const list of [rows, doc?.options]) {
+    if (online || !Array.isArray(list)) continue;
+    for (const row of list) {
       if (!row || typeof row !== "object") continue;
-      const tier = app.classifyTier(row);
-      if (tier.kind === "online_base" && amountOf(row.price)) {
+      if (app.classifyTier(row).kind === "online_base" && amountOf(row.price)) {
         online = amountOf(row.price);
         break;
       }
@@ -468,8 +472,9 @@ for (const bundle of bundles) {
 const unknownPatterns = [...patterns]
   .filter(([pattern]) => !HANDLED_PATTERNS.has(pattern))
   .sort((a, b) => b[1] - a[1]);
+const leafOf = (pattern) => pattern.split(".").pop().replace(/\[\]$/, "");
 const blockingPatterns = unknownPatterns.filter(
-  ([pattern]) => !NOT_YUAN_PRICED.has(pattern.split(".").pop().replace(/\[\]$/, "")),
+  ([pattern]) => !NOT_YUAN_PRICED.has(leafOf(pattern)),
 );
 
 /* ---------------------------------------------------------------- the plan */
@@ -532,22 +537,62 @@ for (const e of marioKartWorld) {
 }
 say();
 
-say(`## 4. الأكثر طلبًا — «خصوصا التي ترى عليها طلب حتى لو قليل»`);
+say(`## 4. ما عليه طلب — «خصوصا التي ترى عليها طلب حتى لو قليل»`);
 say();
-const bySales = [...planned].sort(
-  (a, b) => (amountOf(b.product.sales) ?? 0) - (amountOf(a.product.sales) ?? 0),
-);
-const withDemand = bySales.filter((e) => (amountOf(e.product.sales) ?? 0) > 0);
-say(`${withDemand.length} لعبة عليها مبيعات مسجّلة، وكلها في الخطة. أعلى ٣٠:`);
-say();
-say(`| اللعبة | المبيعات | أوفلاين قبل → بعد | أونلاين قبل → بعد |`);
-say(`| --- | ---: | ---: | ---: |`);
-for (const e of bySales.slice(0, 30)) {
-  const a = headline(e.product);
-  const b = headline(e.expected);
-  say(
-    `| ${label(e.product)} | ${money(e.product.sales)} | ${money(a.offline)} → ${money(b.offline)} | ${a.online ? `${money(a.online)} → ${money(b.online)}` : "—"} |`,
+/*
+  Demand is read from the ORDERS, not from a product's \`sales\` field: the
+  first live dry run found that field at 0 on every game, so a ranking by it
+  ranked nothing. Every non-cancelled order counts, however small.
+
+  Only the ranking is printed, never a count — this log is public, and how
+  many copies of a game the shop sells is the owner's business.
+*/
+const demand = new Map();
+let demandRead = true;
+try {
+  const rows = await app.d1All(
+    `SELECT json_extract(item.value, '$.productId') AS product_id,
+            COUNT(DISTINCT o.id) AS orders
+       FROM orders o, json_each(o.doc, '$.items') AS item
+      WHERE o.cancelled_at IS NULL
+      GROUP BY product_id`,
   );
+  for (const row of rows ?? []) {
+    if (row.product_id !== null && row.product_id !== undefined) {
+      demand.set(String(row.product_id), Number(row.orders) || 0);
+    }
+  }
+} catch {
+  demandRead = false;
+}
+const plannedIds = new Set(planned.map((e) => e.id));
+const demanded = [...planned]
+  .filter((e) => (demand.get(e.id) ?? 0) > 0)
+  .sort((a, b) => (demand.get(b.id) ?? 0) - (demand.get(a.id) ?? 0));
+const demandedLeftOut = [...demand.keys()]
+  .filter((id) => !plannedIds.has(id) && beforeById.has(id))
+  .map((id) => beforeById.get(id));
+if (!demandRead) {
+  say(`تعذّرت قراءة الطلبات — القسم فارغ، والخطة نفسها لا تعتمد عليه: كل لعبة تُرفع.`);
+} else {
+  say(
+    `**${demanded.length}** لعبة عليها طلب واحد على الأقل، وكلها في الخطة. خارج الخطة منها: **${demandedLeftOut.length}**${demandedLeftOut.length ? " (أدناه)" : ""}.`,
+  );
+  say();
+  say(`مرتبة من الأكثر طلبًا (الترتيب فقط، بلا أعداد — هذا السجل عام):`);
+  say();
+  say(`| # | اللعبة | أوفلاين قبل → بعد | أونلاين قبل → بعد |`);
+  say(`| ---: | --- | ---: | ---: |`);
+  demanded.slice(0, 40).forEach((e, i) => {
+    const a = headline(e.product);
+    const b = headline(e.expected);
+    say(
+      `| ${i + 1} | ${label(e.product)} | ${money(a.offline)} → ${money(b.offline)} | ${a.online ? `${money(a.online)} → ${money(b.online)}` : "—"} |`,
+    );
+  });
+  for (const p of demandedLeftOut.slice(0, 20)) {
+    say(`- خارج الخطة وعليها طلب: ${label(p)} · ${money(p.price)}`);
+  }
 }
 say();
 
@@ -607,9 +652,9 @@ if (!unknownPatterns.length) {
   say(`| الحقل | عدد المرات | |`);
   say(`| --- | ---: | --- |`);
   for (const [pattern, n] of unknownPatterns) {
-    const known = !blockingPatterns.some(([p]) => p === pattern);
+    const why = NOT_YUAN_PRICED.get(leafOf(pattern));
     say(
-      `| \`${pattern}\` | ${n} | ${known ? "يُترك عمدًا: ليس حسابًا باليوان (قرص أو إقراض أو استبدال)" : "**غير معروف — يمنع التطبيق**"} |`,
+      `| \`${pattern}\` | ${n} | ${why ? `يُترك عمدًا: ${why}` : "**غير معروف — يمنع التطبيق**"} |`,
     );
   }
 }
