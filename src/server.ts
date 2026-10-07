@@ -1,10 +1,8 @@
-import {
-  createStartHandler,
-  defaultStreamHandler,
-} from "@tanstack/react-start/server";
+import { createStartHandler, defaultStreamHandler } from "@tanstack/react-start/server";
 import { ChatRealtimeDO } from "./lib/chat-realtime.server";
 import { publishEnv } from "./lib/env.server";
 import { handleQueueBatch, type CloudflareMessageBatch } from "./lib/queue-consumer.server";
+import { withSecurityHeaders } from "./lib/security.server";
 import {
   processAutoScheduledTasks,
   processBotTrading,
@@ -38,18 +36,18 @@ export default {
         const isStaticAsset =
           !pathname.startsWith("/api/") &&
           (pathname.startsWith("/assets/") ||
-          pathname.startsWith("/illustrations/") ||
-          pathname.startsWith("/textures/") ||
-          pathname.startsWith("/templates/") ||
-          pathname === "/favicon.png" ||
-          pathname === "/favicon.ico" ||
-          pathname === "/robots.txt" ||
-          pathname === "/sw.js" ||
-          pathname === "/manifest.webmanifest" ||
-          pathname === "/latest.rss" ||
-          /\.(?:js|css|png|jpg|jpeg|webp|svg|ico|json|woff2?|ttf|eot|wasm|map|txt)$/i.test(
-            pathname,
-          ));
+            pathname.startsWith("/illustrations/") ||
+            pathname.startsWith("/textures/") ||
+            pathname.startsWith("/templates/") ||
+            pathname === "/favicon.png" ||
+            pathname === "/favicon.ico" ||
+            pathname === "/robots.txt" ||
+            pathname === "/sw.js" ||
+            pathname === "/manifest.webmanifest" ||
+            pathname === "/latest.rss" ||
+            /\.(?:js|css|png|jpg|jpeg|webp|svg|ico|json|woff2?|ttf|eot|wasm|map|txt)$/i.test(
+              pathname,
+            ));
 
         if (isStaticAsset) {
           const assetResponse = await env.ASSETS.fetch(request);
@@ -69,9 +67,21 @@ export default {
         only. The value is right and the runtime contract is real; the cast
         says so rather than pretending the bindings are optional.
       */
-      return await fetchHandler(request, {
+      const response = await fetchHandler(request, {
         context: { env, ctx } as unknown as { nonce?: string },
       });
+      /*
+        Every page and every API answer leaves with the shop's security
+        headers. `withSecurityHeaders` was written for exactly this and never
+        called, so banan.to sent none of them. A fault in the headers must
+        never cost the member the page: the answer goes out as it was.
+      */
+      try {
+        return withSecurityHeaders(response, new URL(request.url));
+      } catch (error) {
+        console.warn("[worker:security_headers_error]", error);
+        return response;
+      }
     } catch (error: any) {
       console.error("[worker:fetch_error]", error?.stack || error);
       return new Response("Internal Server Error", {
@@ -132,11 +142,7 @@ export default {
           // it judges each row with the same function the UI filters by.
           processExpiredBotThreads(),
         ]
-      : [
-          processAutoScheduledTasks(),
-          processDigitalDeliveryMaintenance(),
-          processBotTrading(),
-        ];
+      : [processAutoScheduledTasks(), processDigitalDeliveryMaintenance(), processBotTrading()];
 
     const results = await Promise.allSettled(tasks);
     for (const result of results) {

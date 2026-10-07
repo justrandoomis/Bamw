@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 
 import {
   rejectCrossSiteMutation,
@@ -62,6 +64,82 @@ describe("request security boundaries", () => {
       new Response("{}", { headers: { "content-type": "application/json" } }),
     );
     expect(json.headers.get("cache-control")).toBeNull();
+  });
+
+  it("sends the browser's own referrer policy, which YouTube embeds need", () => {
+    // `no-referrer` makes every embedded trailer fail with YouTube's error 153.
+    const html = withSecurityHeaders(
+      new Response("<!doctype html>", { headers: { "content-type": "text/html" } }),
+      new URL("https://banan.to/product/x"),
+    );
+    expect(html.headers.get("referrer-policy")).toBe("strict-origin-when-cross-origin");
+    expect(html.headers.get("x-content-type-options")).toBe("nosniff");
+    expect(html.headers.get("cross-origin-opener-policy")).toBe("same-origin-allow-popups");
+  });
+
+  it("keeps the microphone for voice notes and switches off what the site never uses", () => {
+    const policy = withSecurityHeaders(new Response("{}")).headers.get("permissions-policy");
+    expect(policy).toContain("microphone=(self)");
+    expect(policy).toContain("camera=()");
+    expect(policy).toContain("geolocation=()");
+  });
+
+  it("pins HTTPS and bans framing the dashboard on the shop's own addresses only", () => {
+    const live = withSecurityHeaders(
+      new Response("<p/>"),
+      new URL("https://banan.to/admin/orders"),
+    );
+    expect(live.headers.get("strict-transport-security")).toBe("max-age=31536000");
+    expect(live.headers.get("x-frame-options")).toBe("DENY");
+
+    // Not every subdomain: a browser cannot be told to forget for a year.
+    expect(live.headers.get("strict-transport-security")).not.toContain("includeSubDomains");
+
+    // A preview frames the app on its own address, the dashboard included.
+    const preview = withSecurityHeaders(
+      new Response("<p/>"),
+      new URL("https://preview.example.dev/admin/orders"),
+    );
+    expect(preview.headers.get("x-frame-options")).toBeNull();
+    expect(preview.headers.get("strict-transport-security")).toBeNull();
+
+    // The storefront is framed by Telegram as a Mini App, so never there.
+    const shop = withSecurityHeaders(new Response("<p/>"), new URL("https://banan.to/telegram"));
+    expect(shop.headers.get("x-frame-options")).toBeNull();
+  });
+
+  it("leaves every cookie a route set exactly as it was", () => {
+    const headers = new Headers();
+    headers.append("set-cookie", "session=abc; Path=/; HttpOnly; Secure");
+    headers.append("set-cookie", "bananto_lang=ar; Path=/");
+    const response = withSecurityHeaders(
+      new Response("{}", { headers }),
+      new URL("https://banan.to/api/auth"),
+    );
+    expect(response.headers.getSetCookie()).toEqual([
+      "session=abc; Path=/; HttpOnly; Secure",
+      "bananto_lang=ar; Path=/",
+    ]);
+  });
+
+  it("copies a response whose headers are locked instead of failing it", () => {
+    const redirect = withSecurityHeaders(
+      Response.redirect("https://banan.to/wallet", 302),
+      new URL("https://banan.to/old"),
+    );
+    expect(redirect.status).toBe(302);
+    expect(redirect.headers.get("location")).toBe("https://banan.to/wallet");
+    expect(redirect.headers.get("x-content-type-options")).toBe("nosniff");
+  });
+
+  it("hands a WebSocket handshake back untouched", () => {
+    const handshake = { status: 101, headers: new Headers() } as unknown as Response;
+    expect(withSecurityHeaders(handshake)).toBe(handshake);
+  });
+
+  it("is applied to every answer the worker gives", () => {
+    const server = readFileSync(resolve(process.cwd(), "src/server.ts"), "utf8");
+    expect(server).toContain("return withSecurityHeaders(response, new URL(request.url));");
   });
 
   it("rejects private, local, and credentialed image targets", () => {

@@ -79,19 +79,36 @@ function isDocumentResponse(headers: Headers): boolean {
   return (headers.get("content-type") ?? "").toLowerCase().includes("text/html");
 }
 
-export function withSecurityHeaders(response: Response, url?: URL): Response {
-  const headers = new Headers(response.headers);
+/**
+ * The shop's own addresses. HSTS and the dashboard's framing ban are for these
+ * alone: a preview — Lovable's editor shows the app inside a frame of its own
+ * on an address of its own — must still be able to draw every page.
+ */
+const PRODUCTION_HOSTS = new Set(["banan.to", "www.banan.to"]);
+
+function applySecurityHeaders(headers: Headers, status: number, url?: URL): void {
   headers.set("x-content-type-options", "nosniff");
-  headers.set("referrer-policy", "no-referrer");
+  /*
+    The browser's own default, said out loud — not `no-referrer`.
+
+    A product page embeds its trailer from youtube.com, and YouTube refuses to
+    play an embed that arrives with no Referer at all («Error 153 — video
+    player configuration error»). `no-referrer` here would have taken every
+    trailer in the shop off the air. This sends the origin alone to other
+    sites, never the path or the query, and the full address only to this one.
+  */
+  headers.set("referrer-policy", "strict-origin-when-cross-origin");
   /*
     The microphone is the site's own: the chat records voice notes. `()` here
-    would switch `getUserMedia` off for every page this header reaches.
+    would switch `getUserMedia` off for every page this header reaches. Nothing
+    here uses the camera (a photo is picked through the system's own sheet),
+    the location or the Payment Request API, so those stay off.
   */
   headers.set("permissions-policy", "camera=(), microphone=(self), geolocation=(), payment=()");
   // Do not set X-Frame-Options globally: Telegram Web embeds Mini Apps. Pages
   // that must not be framed should use a route-specific CSP instead.
   headers.set("cross-origin-opener-policy", "same-origin-allow-popups");
-  if (!headers.has("cache-control") && response.status >= 400) {
+  if (!headers.has("cache-control") && status >= 400) {
     headers.set("cache-control", "no-store");
   }
   // Documents must never be reused without asking us first. The HTML carries
@@ -103,15 +120,36 @@ export function withSecurityHeaders(response: Response, url?: URL): Response {
   if (!headers.has("cache-control") && isDocumentResponse(headers)) {
     headers.set("cache-control", "private, no-cache, must-revalidate");
   }
-  if (env("APP_ENV") === "production") {
-    headers.set("strict-transport-security", "max-age=31536000; includeSubDomains; preload");
+  if (url && PRODUCTION_HOSTS.has(url.hostname)) {
+    /*
+      HTTPS only, remembered for a year — for these two addresses, not every
+      subdomain. `includeSubDomains` would bind any subdomain the shop ever
+      points elsewhere for a year, and a browser cannot be told to forget.
+    */
+    headers.set("strict-transport-security", "max-age=31536000");
+    applyAdminHeaders(headers, url.pathname);
   }
-  if (url) applyAdminHeaders(headers, url.pathname);
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers,
-  });
+}
+
+/**
+ * The response with the shop's security headers on it.
+ *
+ * Set in place where the headers can be changed — a response the app built
+ * itself, which is nearly every one — so every `Set-Cookie` on it stays exactly
+ * as the route wrote it. A response whose headers are locked (one passed
+ * through from `fetch`) is copied the way the Workers runtime documents for
+ * this. A WebSocket handshake is returned untouched: it cannot be rebuilt.
+ */
+export function withSecurityHeaders(response: Response, url?: URL): Response {
+  if (response.status === 101 || (response as { webSocket?: unknown }).webSocket) return response;
+  try {
+    applySecurityHeaders(response.headers, response.status, url);
+    return response;
+  } catch {
+    const copy = new Response(response.body, response);
+    applySecurityHeaders(copy.headers, copy.status, url);
+    return copy;
+  }
 }
 
 function isPrivateIpv4(host: string): boolean {
@@ -144,7 +182,11 @@ export function safeRemoteImageUrl(raw: string): URL | undefined {
     (url.protocol !== "https:" && url.protocol !== "http:") ||
     url.username ||
     url.password ||
-    (url.port && url.port !== "443" && url.port !== "80" && url.port !== "8080" && url.port !== "8443")
+    (url.port &&
+      url.port !== "443" &&
+      url.port !== "80" &&
+      url.port !== "8080" &&
+      url.port !== "8443")
   ) {
     return undefined;
   }
