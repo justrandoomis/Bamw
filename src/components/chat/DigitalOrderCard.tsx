@@ -15,7 +15,6 @@ import {
   Calendar,
   Sparkles,
   AlertCircle,
-  HelpCircle,
 } from "lucide-react";
 import { tr } from "@/i18n";
 import { motion, AnimatePresence } from "framer-motion";
@@ -121,9 +120,15 @@ export function DigitalOrderCard({
     }
   }, [createdAt, isAr]);
 
+  /*
+    One invoice, not two: the chat opens its own when it offers one, and this
+    card's is only for where nobody else does. Both used to open at once, one
+    stacked over the other.
+  */
   const handleOpenInvoice = () => {
     if (onOpenInvoice) {
       onOpenInvoice(orderId);
+      return;
     }
     setShowInvoiceModal(true);
   };
@@ -222,249 +227,196 @@ export function DigitalOrderCard({
 
   return (
     <>
+      {/*
+        The order, at a glance, in the space of a message.
+
+        It was five stacked panels — a header, a queue box holding two tiles,
+        an item list with thumbnails, a confirmation block and a footer — and
+        on a 360×640 phone it filled the screen before the conversation began.
+        One header line, one status line, a line per game and a footer now say
+        the same things; the details stay a tap away on the invoice.
+      */}
       <div
         id={`digital-order-card-${code}`}
         dir={isAr ? "rtl" : "ltr"}
-        className="w-full max-w-lg my-2.5 rounded-[22px] border border-[var(--line)] bg-card text-[var(--ink)] p-3 shadow-xs transition-all animate-in fade-in slide-in-from-bottom-2 duration-300 sm:my-3 sm:p-5"
+        className="my-2 w-[min(28rem,calc(100vw-2.5rem))] max-w-full overflow-hidden rounded-[20px] border border-[var(--line)] bg-card text-[var(--ink)] shadow-xs animate-in fade-in slide-in-from-bottom-2 duration-300"
       >
-        {/* Top Header: Order Code, Status badge & Copy */}
-        <div className="flex items-center justify-between gap-3 pb-3 border-b border-[var(--line)]">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="h-9 w-9 rounded-xl bg-[var(--surface-3)] text-[var(--ink)] flex items-center justify-center font-bold shrink-0 border border-[var(--line)]">
-              <Package className="h-4.5 w-4.5 text-amber-600 dark:text-amber-400" />
-            </div>
-            <div className="min-w-0">
-              <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="text-[11px] font-mono font-bold tracking-wider text-[var(--muted-ink)] uppercase">
+        {/* Header: what, which, and how it stands. */}
+        <div className="flex items-center gap-2.5 px-3.5 pt-3">
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-amber-500/12 text-amber-600 dark:text-amber-400">
+            <Package className="h-4.5 w-4.5" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="text-sm font-black text-[var(--ink)]">
+                {isAr ? "طلب" : "Order"}{" "}
+                <span className="font-mono tracking-wide" dir="ltr">
                   {code}
                 </span>
-                <span
-                  className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${statusBadge.className}`}
-                >
-                  <span className={`h-1.5 w-1.5 rounded-full ${statusBadge.dot}`} />
-                  {statusBadge.label}
-                </span>
-              </div>
-              <div className="text-xs text-[var(--muted-ink)] flex items-center gap-1 mt-0.5">
-                <Calendar className="h-3 w-3" />
-                <span>{formattedDate}</span>
-              </div>
+              </span>
+              <span
+                className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold ${statusBadge.className}`}
+              >
+                <span className={`h-1.5 w-1.5 rounded-full ${statusBadge.dot}`} />
+                {statusBadge.label}
+              </span>
+            </div>
+            <div className="mt-0.5 flex items-center gap-1 text-[11px] text-[var(--muted-ink)]">
+              <Calendar className="h-3 w-3 shrink-0" />
+              <span className="truncate">{formattedDate}</span>
             </div>
           </div>
-
-          {/* Copy Order Code */}
           <button
             type="button"
             onClick={onCopy}
             title={isAr ? "نسخ رقم الطلب" : "Copy Order ID"}
             aria-label={`Copy order code ${code}`}
-            className="shrink-0 flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-[var(--surface-2)] hover:bg-[var(--surface-3)] border border-[var(--line)] text-xs font-mono font-bold text-[var(--ink)] transition-all active:scale-95 cursor-pointer"
+            className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-[var(--muted-ink)] transition-colors hover:bg-[var(--surface-3)] hover:text-[var(--ink)] active:scale-95 cursor-pointer"
           >
             {copied ? (
-              <>
-                <Check className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
-                <span className="text-emerald-600 dark:text-emerald-400 text-[11px]">
-                  {isAr ? "تم النسخ" : "Copied"}
-                </span>
-              </>
+              <Check className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
             ) : (
-              <>
-                <Copy className="h-3.5 w-3.5 text-[var(--muted-ink)]" />
-                <span className="text-[11px]">{isAr ? "نسخ" : "Copy"}</span>
-              </>
+              <Copy className="h-4 w-4" />
             )}
           </button>
         </div>
 
-        {/* Dynamic Queue & Admin Status Card (Replacing the old static 3-step stepper) */}
-        <div className="my-3 rounded-xl bg-[var(--surface-2)]/80 border border-[var(--line)] p-2.5 space-y-2.5">
-          {/*
-            `flex-wrap` and `min-w-0`: the heading and the availability pill sat
-            in a row that could not wrap, on a card already four levels of
-            padding deep inside a 360px screen. Neither side could give way, so
-            the row pushed the card wider than the pane holding it.
-          */}
-          <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
-            <div className="flex min-w-0 items-center gap-1.5 text-xs font-bold text-[var(--ink)]">
-              <Sparkles className="h-3.5 w-3.5 shrink-0 text-amber-600 dark:text-amber-400" />
-              <span className="truncate">
-                {isAr ? "حالة الطابور والتجهيز" : "Queue & Fulfillment Status"}
-              </span>
-            </div>
-
-            {/* Admin Availability Indicator */}
-            <div className="flex shrink-0 items-center gap-1 text-[11px] font-medium">
-              <span
-                className={`h-2 w-2 rounded-full ${
-                  adminStatus === "available"
-                    ? "bg-emerald-500 shadow-xs shadow-emerald-500/50"
-                    : adminStatus === "busy"
-                      ? "bg-amber-500"
-                      : "bg-stone-400"
-                }`}
-              />
-              <span className="text-[var(--muted-ink)]">
-                {adminStatus === "available"
-                  ? isAr
-                    ? "المشرف متاح الآن"
-                    : "Admin Online"
-                  : adminStatus === "busy"
-                    ? isAr
-                      ? "المشرف مشغول بالتجهيز"
-                      : "Admin Busy"
-                    : isAr
-                      ? "خارج أوقات العمل"
-                      : "Admin Offline"}
-              </span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 gap-2 text-xs sm:grid-cols-2">
-            {/* Position in Queue */}
-            <div className="flex items-center gap-2 p-2 rounded-lg bg-card border border-[var(--line)]">
-              <div className="h-7 w-7 rounded-lg bg-amber-500/10 text-amber-700 dark:text-amber-400 flex items-center justify-center shrink-0">
-                <Zap className="h-3.5 w-3.5" />
-              </div>
-              <div className="min-w-0">
-                <div className="text-[10px] text-[var(--muted-ink)] font-medium">
-                  {isAr ? "الدور في الطابور" : "Queue Position"}
-                </div>
-                <div className="font-bold text-[var(--ink)] truncate text-[11.5px]">
-                  {queueLabel}
-                </div>
-              </div>
-            </div>
-
-            {/* Estimated Time */}
-            <div className="flex items-center gap-2 p-2 rounded-lg bg-card border border-[var(--line)]">
-              <div className="h-7 w-7 rounded-lg bg-blue-500/10 text-blue-700 dark:text-blue-400 flex items-center justify-center shrink-0">
-                <Clock className="h-3.5 w-3.5" />
-              </div>
-              <div className="min-w-0">
-                <div className="text-[10px] text-[var(--muted-ink)] font-medium">
-                  {isAr ? "الوقت التقديري" : "Estimated Time"}
-                </div>
-                <div className="font-bold text-[var(--ink)] truncate text-[11.5px]">
+        {/* Where it is in the queue, and roughly when. */}
+        {!isCompleted && (
+          <div className="mx-3.5 mt-3 flex items-center gap-2.5 rounded-xl bg-[var(--surface-3)]/60 px-3 py-2">
+            <Zap className="h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" />
+            <div className="min-w-0 flex-1">
+              <div className="truncate text-[12.5px] font-bold text-[var(--ink)]">{queueLabel}</div>
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-[var(--muted-ink)]">
+                <span className="inline-flex items-center gap-1">
+                  <Clock className="h-3 w-3" />
                   {estimatedTimeLabel}
-                </div>
+                </span>
+                <span className="inline-flex items-center gap-1">
+                  <span
+                    className={`h-1.5 w-1.5 rounded-full ${
+                      adminStatus === "available"
+                        ? "bg-emerald-500"
+                        : adminStatus === "busy"
+                          ? "bg-amber-500"
+                          : "bg-stone-400"
+                    }`}
+                  />
+                  {adminStatus === "available"
+                    ? isAr
+                      ? "المشرف متاح"
+                      : "Admin online"
+                    : adminStatus === "busy"
+                      ? isAr
+                        ? "المشرف مشغول بالتجهيز"
+                        : "Admin busy"
+                      : isAr
+                        ? "خارج أوقات العمل"
+                        : "Admin offline"}
+                </span>
               </div>
-            </div>
-          </div>
-
-          {/* Optional notice / working hours note */}
-          {adminStatus === "offline" && workingHoursText && (
-            <div className="text-[11px] text-[var(--muted-ink)] bg-stone-500/10 border border-stone-500/20 rounded-lg p-2 flex items-start gap-1.5">
-              <Clock className="h-3.5 w-3.5 text-stone-600 dark:text-stone-400 shrink-0 mt-0.5" />
-              <span className="leading-snug">{workingHoursText}</span>
-            </div>
-          )}
-        </div>
-
-        {/* Ordered Items List */}
-        {items.length > 0 && (
-          <div className="space-y-2 mb-3">
-            <div className="text-[11px] font-bold tracking-wider text-[var(--muted-ink)] uppercase flex items-center justify-between">
-              <span>{isAr ? "المنتجات / الألعاب" : "Ordered Items"}</span>
-              <span className="text-[10px] font-normal">
-                {items.length} {isAr ? "عنصر" : "item(s)"}
-              </span>
-            </div>
-            <div className="space-y-1.5">
-              {items.map((item, idx) => (
-                <div
-                  key={item.id || `${item.title}-${idx}`}
-                  className="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-[var(--surface-2)]/60 border border-[var(--line)] text-xs"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    {item.image ? (
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="h-9 w-9 rounded-lg object-cover bg-neutral-900 shrink-0 border border-[var(--line)]"
-                        referrerPolicy="no-referrer"
-                      />
-                    ) : (
-                      <div className="h-9 w-9 rounded-lg bg-[var(--surface-3)] text-[var(--ink)] flex items-center justify-center shrink-0 border border-[var(--line)]">
-                        <Gamepad2 className="h-4.5 w-4.5 text-[var(--muted-ink)]" />
-                      </div>
-                    )}
-                    <div className="min-w-0">
-                      <div className="font-bold text-[var(--ink)] truncate text-xs">
-                        {item.title}
-                      </div>
-                      <div className="text-[10px] text-[var(--muted-ink)] flex items-center gap-1">
-                        <span>
-                          {item.kind === "digital_code"
-                            ? isAr
-                              ? "رمز رقمي"
-                              : "Digital Code"
-                            : isAr
-                              ? "حساب رقمي Nintendo Switch"
-                              : "Nintendo Switch Account"}
-                        </span>
-                        {item.quantity && item.quantity > 1 && (
-                          <span className="font-bold text-amber-600 dark:text-amber-400">
-                            × {item.quantity}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {typeof item.unitPrice === "number" && (
-                    <div className="shrink-0 font-bold text-[var(--ink)] font-mono text-xs">
-                      {(item.unitPrice * (item.quantity || 1)).toLocaleString()}{" "}
-                      <span className="text-[10px] text-[var(--muted-ink)] font-normal">
-                        {currency}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              ))}
             </div>
           </div>
         )}
+        {!isCompleted && adminStatus === "offline" && workingHoursText && (
+          <p className="mx-3.5 mt-2 text-[11px] leading-snug text-[var(--muted-ink)]">
+            {workingHoursText}
+          </p>
+        )}
 
-        {/* Delivery Completion / Confirmation Block */}
+        {/* The games, a line each. */}
+        {items.length > 0 && (
+          <ul className="mt-2.5 divide-y divide-[var(--line)] border-y border-[var(--line)]">
+            {items.map((item, idx) => (
+              <li
+                key={item.id || `${item.title}-${idx}`}
+                className="flex items-center gap-2.5 px-3.5 py-2"
+              >
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    alt=""
+                    className="h-8 w-8 shrink-0 rounded-lg border border-[var(--line)] bg-[var(--surface-3)] object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                ) : (
+                  <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[var(--surface-3)] text-[var(--muted-ink)]">
+                    <Gamepad2 className="h-4 w-4" />
+                  </div>
+                )}
+                <div className="min-w-0 flex-1">
+                  <div className="truncate text-[12.5px] font-bold text-[var(--ink)]" dir="auto">
+                    {item.title}
+                  </div>
+                  <div className="text-[10.5px] text-[var(--muted-ink)]">
+                    {item.kind === "digital_code"
+                      ? isAr
+                        ? "رمز رقمي"
+                        : "Digital code"
+                      : isAr
+                        ? "حساب Nintendo Switch"
+                        : "Nintendo Switch account"}
+                    {item.quantity && item.quantity > 1 && (
+                      <span className="ms-1 font-bold text-amber-600 dark:text-amber-400">
+                        × {item.quantity}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                {typeof item.unitPrice === "number" && (
+                  <div
+                    className="shrink-0 text-[12px] font-bold tabular-nums text-[var(--ink)]"
+                    dir="ltr"
+                  >
+                    {(item.unitPrice * (item.quantity || 1)).toLocaleString("en-US")}{" "}
+                    <span className="text-[10px] font-normal text-[var(--muted-ink)]">
+                      {currency}
+                    </span>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {/* Everything delivered: confirm, or say what is wrong. */}
         {canConfirmReceived && status !== "completed" && (
-          <div className="mt-3 p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-foreground space-y-2">
+          <div className="mx-3.5 mt-3 space-y-2 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-3">
             <div className="flex items-center gap-2 text-xs font-bold text-emerald-700 dark:text-emerald-300">
-              <Sparkles className="w-4 h-4 text-emerald-500 shrink-0" />
+              <Sparkles className="h-4 w-4 shrink-0" />
               <span>
-                {isAr
-                  ? "تم تسليم كافة حسابات/أكواد الطلب بنجاح!"
-                  : "All order credentials/codes delivered!"}
+                {isAr ? "وصلتك كل حسابات الطلب وأكواده" : "All order credentials/codes delivered"}
               </span>
             </div>
-            <p className="text-[11px] text-muted-foreground leading-relaxed">
+            <p className="text-[11px] leading-relaxed text-[var(--muted-ink)]">
               {isAr
-                ? "يرجى التحقق من بيانات الدخول والأكواد، ثم الضغط على الزر أدناه لتأكيد الاستلام وإنهاء الطلب:"
-                : "Please check your accounts/codes and click below to confirm receipt:"}
+                ? "تأكد أن كل شيء يعمل، ثم أكّد الاستلام لإنهاء الطلب."
+                : "Check everything works, then confirm receipt to finish the order."}
             </p>
             <button
               type="button"
               onClick={onConfirmReceived}
               disabled={isConfirmingReceived}
-              className="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white rounded-xl text-xs font-black shadow-sm flex items-center justify-center gap-2 transition-all active:scale-98 cursor-pointer"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-xs font-black text-white shadow-sm transition-all hover:bg-emerald-700 active:scale-98 disabled:opacity-50 cursor-pointer"
             >
               {isConfirmingReceived ? (
-                <Clock className="w-4 h-4 animate-spin" />
+                <Clock className="h-4 w-4 animate-spin" />
               ) : (
-                <Check className="w-4 h-4" />
+                <Check className="h-4 w-4" />
               )}
-              <span>{isAr ? "✅ تم استلام الطلب بنجاح" : "Confirm Order Received"}</span>
+              <span>{isAr ? "تم استلام الطلب" : "Confirm order received"}</span>
             </button>
             {onReportIssue && (
               <button
                 type="button"
                 onClick={onReportIssue}
                 disabled={isReportingIssue || isConfirmingReceived}
-                className="w-full py-2 px-4 bg-red-500/10 hover:bg-red-500/15 disabled:opacity-50 text-red-700 dark:text-red-300 border border-red-500/25 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-red-500/25 bg-red-500/10 px-4 py-2 text-xs font-bold text-red-700 transition-colors hover:bg-red-500/15 disabled:opacity-50 dark:text-red-300 cursor-pointer"
               >
                 {isReportingIssue ? (
-                  <Clock className="w-4 h-4 animate-spin" />
+                  <Clock className="h-4 w-4 animate-spin" />
                 ) : (
-                  <AlertCircle className="w-4 h-4" />
+                  <AlertCircle className="h-4 w-4" />
                 )}
                 <span>{isAr ? "لدي مشكلة في التسليم" : "Report a delivery issue"}</span>
               </button>
@@ -473,54 +425,46 @@ export function DigitalOrderCard({
         )}
 
         {status === "delivery_issue" && (
-          <div className="mt-3 p-2.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-800 dark:text-red-300 text-xs font-bold flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0" />
+          <div className="mx-3.5 mt-3 flex items-center gap-2 rounded-xl border border-red-500/20 bg-red-500/10 p-2.5 text-xs font-bold text-red-800 dark:text-red-300">
+            <AlertCircle className="h-4 w-4 shrink-0" />
             <span>
               {isAr
-                ? "تم إيقاف الإكمال التلقائي وتحويل الطلب للمراجعة."
+                ? "أوقفنا الإكمال التلقائي وحوّلنا الطلب للمراجعة."
                 : "Auto-completion is paused while support reviews the issue."}
             </span>
           </div>
         )}
 
         {status === "completed" && (
-          <div className="mt-3 p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs font-bold flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
-            <span>
-              {isAr ? "تم اكتمال الطلب واستلامه بنجاح ✅" : "Order Completed & Received ✅"}
-            </span>
+          <div className="mx-3.5 mt-3 flex items-center gap-2 rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-2.5 text-xs font-bold text-emerald-800 dark:text-emerald-300">
+            <ShieldCheck className="h-4 w-4 shrink-0" />
+            <span>{isAr ? "اكتمل الطلب واستلمته ✅" : "Order completed & received ✅"}</span>
           </div>
         )}
 
-        {/* Footer: Payment summary & Invoice Details Button */}
-        <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[var(--line)] text-xs">
-          {/* Total & Payment method */}
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-[11px] font-bold">
-              <Wallet className="h-3 w-3" />
-              <span>{paymentMethod}</span>
-              {isPaid && <span>✅</span>}
-            </div>
-
-            <div className="flex items-baseline gap-1">
-              <span className="text-[var(--muted-ink)] text-[11px]">
-                {isAr ? "المجموع:" : "Total:"}
-              </span>
-              <span className="font-black text-[var(--ink)] font-mono text-sm">
-                {calculatedItemsTotal.toLocaleString()}
-              </span>
-              <span className="text-[10px] text-[var(--muted-ink)]">{currency}</span>
-            </div>
-          </div>
-
-          {/* Invoice Details Button */}
+        {/* Paid how, how much, and the invoice. */}
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 px-3.5 py-2.5 text-xs">
+          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 dark:text-emerald-400">
+            <Wallet className="h-3.5 w-3.5" />
+            {paymentMethod}
+            {isPaid && <Check className="h-3 w-3" />}
+          </span>
+          <span className="inline-flex items-baseline gap-1">
+            <span className="text-[11px] text-[var(--muted-ink)]">
+              {isAr ? "المجموع" : "Total"}
+            </span>
+            <span className="font-black tabular-nums text-[var(--ink)]" dir="ltr">
+              {calculatedItemsTotal.toLocaleString("en-US")}
+            </span>
+            <span className="text-[10px] text-[var(--muted-ink)]">{currency}</span>
+          </span>
           <button
             type="button"
             onClick={handleOpenInvoice}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--surface-3)] hover:bg-[var(--ink)] hover:text-white border border-[var(--line)] text-xs font-bold text-[var(--ink)] transition-all active:scale-95 cursor-pointer shadow-2xs ms-auto"
+            className="ms-auto inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-bold text-[var(--ink)] transition-colors hover:bg-[var(--surface-3)] active:scale-95 cursor-pointer"
           >
             <Receipt className="h-3.5 w-3.5" />
-            <span>{isAr ? "تفاصيل الفاتورة" : "Invoice Details"}</span>
+            <span>{isAr ? "الفاتورة" : "Invoice"}</span>
             <ChevronRight className="h-3 w-3 rtl:rotate-180" />
           </button>
         </div>
@@ -678,7 +622,7 @@ export function DigitalOrderCard({
                 <button
                   type="button"
                   onClick={() => setShowInvoiceModal(false)}
-                  className="flex-1 py-2.5 rounded-xl bg-[var(--ink)] text-white text-xs font-bold hover:bg-[var(--ink-strong)] transition-colors cursor-pointer"
+                  className="flex-1 py-2.5 rounded-xl bg-[var(--ink)] text-[var(--page)] text-xs font-bold hover:bg-[var(--ink-strong)] transition-colors cursor-pointer"
                 >
                   {isAr ? "إغلاق" : "Close"}
                 </button>

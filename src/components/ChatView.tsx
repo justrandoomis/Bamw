@@ -199,7 +199,7 @@ function OrderSelectionView({
               </span>
               <button
                 onClick={() => onSend(order)}
-                className="rounded-xl bg-[var(--surface-3)] px-4 py-2 text-sm font-bold text-[var(--ink)] transition-colors hover:bg-[var(--ink)] hover:text-white cursor-pointer"
+                className="rounded-xl bg-[var(--surface-3)] px-4 py-2 text-sm font-bold text-[var(--ink)] transition-colors hover:bg-[var(--ink)] hover:text-[var(--page)] cursor-pointer"
               >
                 {tr("اختيار")}
               </button>
@@ -296,7 +296,7 @@ function ProductSelectionView({
             onClick={() => setTab(t.id)}
             className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-bold transition-all cursor-pointer ${
               tab === t.id
-                ? "bg-[var(--ink)] text-white shadow-xs"
+                ? "bg-[var(--ink)] text-[var(--page)] shadow-xs"
                 : "bg-[var(--surface-3)] text-[var(--ink)] hover:bg-[var(--line)]"
             }`}
           >
@@ -351,7 +351,7 @@ function ProductSelectionView({
             </div>
             <button
               onClick={() => onSend(product)}
-              className="shrink-0 rounded-xl bg-[var(--surface-3)] p-3 text-[var(--ink)] transition-colors hover:bg-[var(--ink)] hover:text-white cursor-pointer"
+              className="shrink-0 rounded-xl bg-[var(--surface-3)] p-3 text-[var(--ink)] transition-colors hover:bg-[var(--ink)] hover:text-[var(--page)] cursor-pointer"
             >
               <Send className="h-4 w-4" />
             </button>
@@ -418,7 +418,7 @@ function LocationSelectionView({
           onClick={() => newLocation.trim() && onSend(newLocation.trim())}
           className={`w-full rounded-xl py-3 font-bold transition-colors cursor-pointer ${
             newLocation.trim()
-              ? "bg-[var(--ink)] text-white hover:bg-[var(--ink-strong)]"
+              ? "bg-[var(--ink)] text-[var(--page)] hover:bg-[var(--ink-strong)]"
               : "cursor-not-allowed bg-[var(--line)] text-white"
           }`}
         >
@@ -435,7 +435,7 @@ function LocationSelectionView({
     >
       <h2 className="mb-4 text-xl font-bold text-[var(--ink)]">{tr("إرسال موقع")}</h2>
       <div className="relative mb-4 flex h-32 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface-3)] shadow-inner">
-        <div className="relative z-10 flex items-center gap-2 rounded-full border border-white/60 bg-card/80 px-4 py-2 shadow-xs backdrop-blur-sm">
+        <div className="relative z-10 flex items-center gap-2 rounded-full border border-[var(--line)] bg-card px-4 py-2 shadow-xs">
           <div className="h-2 w-2 rounded-full bg-green-500" />
           <span className="text-sm font-bold text-[var(--ink)]">
             {tr("عناوين التوصيل الخاصة بك")}
@@ -466,7 +466,7 @@ function LocationSelectionView({
 
         <button
           onClick={() => setMode("new")}
-          className="mt-4 flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--ink)] p-4 text-white shadow-xs transition-colors hover:bg-[var(--ink-strong)] cursor-pointer"
+          className="mt-4 flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--ink)] p-4 text-[var(--page)] shadow-xs transition-colors hover:bg-[var(--ink-strong)] cursor-pointer"
         >
           <MapPin className="h-5 w-5" />
           <span className="text-[14px] font-bold">{tr("موقع جديد...")}</span>
@@ -556,7 +556,7 @@ function WalletView({
 
       <div className="relative mb-6 shrink-0 overflow-hidden rounded-2xl bg-gradient-to-br from-[var(--ink)] to-[var(--ink-strong)] p-6 text-[var(--surface)] shadow-lg">
         <div className="absolute right-0 top-0 -mr-10 -mt-10 h-32 w-32 rounded-full bg-card/5 blur-xl" />
-        <div className="absolute bottom-0 left-0 -mb-8 -ml-8 h-24 w-24 rounded-full bg-[#B497CF]/20 blur-lg" />
+        <div className="absolute bottom-0 left-0 -mb-8 -ml-8 h-24 w-24 rounded-full bg-primary/15 blur-lg" />
 
         <div className="relative z-10 flex items-start justify-between">
           <div>
@@ -669,7 +669,7 @@ function WalletView({
             </button>
             <button
               onClick={() => onSend(amount)}
-              className="h-[50px] flex-[2] rounded-xl bg-[var(--ink)] font-bold text-white transition-colors hover:bg-[var(--ink-strong)] cursor-pointer"
+              className="h-[50px] flex-[2] rounded-xl bg-[var(--ink)] font-bold text-[var(--page)] transition-colors hover:bg-[var(--ink-strong)] cursor-pointer"
             >
               {tr("إرسال الطلب")}
             </button>
@@ -2292,11 +2292,11 @@ export default function ChatView({
 
   return (
     <div
-      className="relative flex h-full w-full flex-col overflow-hidden bg-gradient-to-b from-[#FCF9F5] via-[#F8EAE0] to-[var(--peach)] text-[var(--ink)]"
+      className="relative flex h-full w-full flex-col overflow-hidden bg-[var(--page)] text-[var(--ink)]"
       dir={isRtl ? "rtl" : "ltr"}
     >
       {/* 1. Modern Compact Sticky Header */}
-      <div className="sticky top-0 z-30 flex items-center justify-between border-b border-white/40 bg-[var(--surface-5)]/85 px-3.5 py-2.5 shadow-xs backdrop-blur-md transition-all">
+      <div className="sticky top-0 z-30 flex items-center justify-between gap-2 border-b border-[var(--line)] bg-[var(--page)] px-3 py-2 transition-all">
         {/*
           `shrink-0` on both ends and `min-w-0` in the middle. A flex item's
           default minimum width is its content, so the untruncated title in the
@@ -2308,21 +2308,24 @@ export default function ChatView({
         <button
           onClick={onBack}
           aria-label={tr("رجوع")}
-          className="flex h-9 shrink-0 items-center gap-1.5 rounded-full border border-white/40 bg-card/90 px-2.5 text-[13px] font-bold text-[var(--ink)] shadow-xs transition-all hover:bg-[var(--surface-3)] active:scale-95 cursor-pointer"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--line)] bg-card text-[var(--ink)] transition-all hover:bg-[var(--surface-3)] active:scale-95 cursor-pointer"
         >
           <ArrowRight
             className="h-4 w-4 rtl:rotate-0 ltr:rotate-180 text-[var(--ink)]"
             strokeWidth={2.2}
           />
-          <span className="hidden text-[12px] font-bold min-[360px]:inline">{tr("رجوع")}</span>
+          <span className="sr-only">{tr("رجوع")}</span>
         </button>
 
         {/* Thread Info & Live Status Badge */}
         <div className="flex min-w-0 flex-1 flex-col items-center justify-center px-1.5 text-center">
-          <div className="flex min-w-0 max-w-full items-center gap-1.5" dir={isRtl ? "rtl" : "ltr"}>
-            <span className="truncate text-[13.5px] font-bold tracking-[-0.01em] text-[var(--ink)]">
+          <div
+            className="flex min-w-0 max-w-full flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5"
+            dir={isRtl ? "rtl" : "ltr"}
+          >
+            <span className="max-w-full truncate text-[13.5px] font-bold tracking-[-0.01em] text-[var(--ink)]">
               {isOrderMode
-                ? `${tr("محادثة تجهيز الطلب")} ${currentOrder?.code ? `(${currentOrder.code})` : ""}`
+                ? `${tr("تجهيز طلب")} ${currentOrder?.code ?? ""}`.trim()
                 : isAutomatedThread
                   ? tr("الدعم الآلي")
                   : currentThread?.subject || tr("محادثة الإدارة")}
@@ -2365,7 +2368,7 @@ export default function ChatView({
         </div>
 
         {/* Actions (Search + History) */}
-        <div className="flex shrink-0 items-center gap-1.5">
+        <div className="flex shrink-0 items-center gap-1">
           {/*
             The guides, one tap from the conversation that needs them.
 
@@ -2383,7 +2386,7 @@ export default function ChatView({
               rel="noopener noreferrer"
               title={tr("شرح الحسابات وطرق تسجيل الدخول")}
               aria-label={tr("شرح الحسابات وطرق تسجيل الدخول")}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-card/80 text-[var(--ink)] shadow-xs transition-colors hover:bg-[var(--surface-3)] cursor-pointer"
+              className="flex h-9 w-9 items-center justify-center rounded-full text-[var(--ink)] transition-colors hover:bg-[var(--surface-3)] cursor-pointer"
             >
               <BookOpen className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
             </a>
@@ -2391,10 +2394,10 @@ export default function ChatView({
           {isHumanChat && (
             <button
               onClick={() => setIsSearching(!isSearching)}
-              className={`flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-[var(--ink)] shadow-xs transition-colors cursor-pointer ${
+              className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors cursor-pointer ${
                 isSearching
-                  ? "bg-[var(--ink)] text-white"
-                  : "bg-card/80 hover:bg-[var(--surface-3)]"
+                  ? "bg-[var(--ink)] text-[var(--page)]"
+                  : "text-[var(--ink)] hover:bg-[var(--surface-3)]"
               }`}
               title={tr("بحث في المحادثة...")}
             >
@@ -2405,13 +2408,13 @@ export default function ChatView({
             onClick={() => setShowHistory(true)}
             // The label is icon-only below `sm`, so it needs an accessible name.
             aria-label={tr("المحادثات السابقة")}
-            className="flex h-9 items-center gap-1.5 rounded-full border border-white/30 bg-card/80 px-3 text-[12px] font-bold text-[var(--ink)] shadow-xs transition-colors hover:bg-[var(--surface-3)] cursor-pointer"
+            className="relative flex h-9 min-w-9 items-center justify-center gap-1.5 rounded-full px-2 text-[12px] font-bold text-[var(--ink)] transition-colors hover:bg-[var(--surface-3)] cursor-pointer"
             dir={isRtl ? "rtl" : "ltr"}
           >
-            <Clock className="h-3.5 w-3.5" strokeWidth={1.75} />
+            <Clock className="h-4 w-4" strokeWidth={1.75} />
             <span className="hidden sm:inline">{tr("المحادثات السابقة")}</span>
             {threads.length > 0 && (
-              <span className="flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[var(--ink)] px-1 text-[9px] font-extrabold text-white">
+              <span className="absolute -top-0.5 -end-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[var(--ink)] px-1 text-[9px] font-extrabold text-[var(--page)] sm:static">
                 {threads.length}
               </span>
             )}
@@ -2422,7 +2425,7 @@ export default function ChatView({
       {/* Live Realtime Status / Notice Banner for Orders */}
       {isOrderMode && currentOrder?.status !== "completed" && (
         <div
-          className={`relative z-20 border-b px-4 py-2 text-xs backdrop-blur-sm shadow-xs transition-all ${
+          className={`relative z-20 border-b px-3.5 py-2 text-xs transition-all ${
             liveQueueMetrics?.deliveryStage === "awaiting_login_proof"
               ? "border-amber-500/30 bg-amber-500/10 text-amber-950 dark:text-amber-200"
               : liveQueueMetrics?.deliveryStage === "proof_received"
@@ -2433,7 +2436,7 @@ export default function ChatView({
           }`}
           dir={isRtl ? "rtl" : "ltr"}
         >
-          <div className="flex flex-wrap items-center justify-between gap-2.5">
+          <div className="flex items-center justify-between gap-2.5">
             <div className="flex items-center gap-2 min-w-0">
               <span className="flex h-2.5 w-2.5 relative shrink-0">
                 <span
@@ -2456,15 +2459,13 @@ export default function ChatView({
                 />
               </span>
 
-              <div className="min-w-0 font-bold">
+              <div className="min-w-0 line-clamp-2 font-bold leading-snug">
                 {liveQueueMetrics?.deliveryStage === "awaiting_login_proof" ? (
-                  <span>📷 تم إرسال بيانات الحساب — يرجى تسجيل الدخول وإرفاق صورة الإثبات</span>
+                  <span>{tr("وصلتك بيانات الحساب — سجّل الدخول وأرفق صورة الإثبات")}</span>
                 ) : liveQueueMetrics?.deliveryStage === "proof_received" ? (
-                  <span>
-                    ✅ تم استلام صورة إثبات تسجيل الدخول — بانتظار إرسال كود التحقق (OTP) من المشرف
-                  </span>
+                  <span>{tr("وصل إثبات الدخول — بانتظار كود التحقق من المشرف")}</span>
                 ) : liveQueueMetrics?.deliveryStage === "otp_sent" ? (
-                  <span>🔑 تم إرسال كود التحقق OTP — يرجى إدخال الكود لتأكيد تشغيل اللعبة</span>
+                  <span>{tr("وصلك كود التحقق — أدخله لتشغيل اللعبة")}</span>
                 ) : (
                   <>
                     {(liveQueueMetrics?.position || currentQueueIndex) <= 1
@@ -2489,17 +2490,17 @@ export default function ChatView({
                   type="button"
                   onClick={() => pickLoginProof()}
                   disabled={deliveryBusy}
-                  className="flex items-center gap-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white px-3 py-1 text-xs font-bold shadow-xs transition-all cursor-pointer disabled:opacity-50 active:scale-95"
+                  className="flex items-center gap-1.5 whitespace-nowrap rounded-xl bg-amber-600 hover:bg-amber-700 text-white px-3 py-1.5 text-xs font-bold shadow-xs transition-all cursor-pointer disabled:opacity-50 active:scale-95"
                 >
                   <Camera className="h-3.5 w-3.5" />
-                  <span>📷 إرفاق إثبات تسجيل الدخول</span>
+                  <span>{tr("إرفاق الإثبات")}</span>
                 </button>
               ) : liveQueueMetrics?.deliveryStage === "proof_received" ? (
                 <button
                   type="button"
                   onClick={() => pickLoginProof()}
                   disabled={deliveryBusy}
-                  className="flex items-center gap-1 rounded-lg border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-700 dark:text-blue-300 px-2.5 py-1 text-[11px] font-bold transition-all cursor-pointer disabled:opacity-50"
+                  className="flex items-center gap-1 whitespace-nowrap rounded-lg border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-700 dark:text-blue-300 px-2.5 py-1 text-[11px] font-bold transition-all cursor-pointer disabled:opacity-50"
                 >
                   <Camera className="h-3 w-3" />
                   <span>تعديل الصورة</span>
@@ -2804,7 +2805,7 @@ export default function ChatView({
                   setThreadLoadError(null);
                   setThreadReloadKey((k) => k + 1);
                 }}
-                className="rounded-xl bg-[var(--ink)] px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[var(--ink-strong)] cursor-pointer"
+                className="rounded-xl bg-[var(--ink)] px-4 py-2 text-xs font-bold text-[var(--page)] transition-colors hover:bg-[var(--ink-strong)] cursor-pointer"
               >
                 {tr("إعادة المحاولة")}
               </button>
@@ -3120,7 +3121,7 @@ export default function ChatView({
                       </div>
                       <a
                         href={`/product/${String(msg.payload["id"] ?? "")}`}
-                        className="mt-1 w-full rounded-xl bg-[var(--ink)] py-2 text-center text-[13px] font-bold text-white transition-colors hover:bg-[var(--ink-strong)]"
+                        className="mt-1 w-full rounded-xl bg-[var(--ink)] py-2 text-center text-[13px] font-bold text-[var(--page)] transition-colors hover:bg-[var(--ink-strong)]"
                       >
                         {tr("عرض التفاصيل")}
                       </a>
@@ -3148,7 +3149,7 @@ export default function ChatView({
                     <div
                       className="relative w-64 max-w-[85%] overflow-hidden rounded-3xl p-5 shadow-lg"
                       style={{
-                        background: "linear-gradient(135deg, #4A2B25 0%, var(--ink-strong) 100%)",
+                        background: "linear-gradient(135deg, #4A2B25 0%, #2c1a15 100%)",
                       }}
                     >
                       <div className="pointer-events-none absolute right-0 top-0 h-32 w-32 -translate-y-1/2 translate-x-1/4 rounded-full bg-card/5 blur-xl" />
@@ -3195,7 +3196,7 @@ export default function ChatView({
                       <button
                         type="button"
                         onClick={handleSwitchToAutomatedSupport}
-                        className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[var(--ink)] text-white font-bold text-xs hover:bg-[var(--ink-strong)] transition-all shadow-xs cursor-pointer"
+                        className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[var(--ink)] text-[var(--page)] font-bold text-xs hover:bg-[var(--ink-strong)] transition-all shadow-xs cursor-pointer"
                       >
                         <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                         <span>الانتقال إلى الرد الآلي</span>
@@ -3212,13 +3213,19 @@ export default function ChatView({
                       className="flex max-w-[80%] flex-col gap-1 sm:max-w-[85%]"
                     >
                       <div
-                        dir="auto"
+                        /*
+                          Right to left in Arabic, whatever the first word is.
+                          `auto` took the direction from the first strong
+                          letter, so «Mario Kart World اشتغل عندي» was laid out
+                          left to right and read backwards.
+                        */
+                        dir={isRtl ? "rtl" : "auto"}
                         className={`overflow-hidden break-words whitespace-pre-wrap rounded-2xl px-3 py-2 text-[13.5px] font-medium leading-[1.45] shadow-xs sm:px-4 sm:py-2.5 sm:text-[14.5px] ${bubbleSide(
                           isMine,
                         )} ${startsRun ? bubbleTail(isMine) : ""} ${
                           isMine
                             ? "bg-[var(--ink)] text-[var(--surface-2)]"
-                            : "border border-white/50 bg-card/85 text-[var(--ink)] backdrop-blur-xs"
+                            : "border border-[var(--line)] bg-card text-[var(--ink)]"
                         }`}
                       >
                         {msg.sender === "ai" ? (
@@ -3291,7 +3298,7 @@ export default function ChatView({
               <div
                 className={`flex max-w-[85%] items-center gap-1.5 rounded-2xl ${bubbleTail(
                   false,
-                )} ${bubbleSide(false)} border border-white/50 bg-card/80 px-4 py-3 text-[var(--ink)] shadow-xs backdrop-blur-xs`}
+                )} ${bubbleSide(false)} border border-[var(--line)] bg-card px-4 py-3 text-[var(--ink)] shadow-xs`}
               >
                 <span className="text-[12px] font-medium text-[var(--muted-ink)]">
                   {isAutomatedThread ? "المساعد الآلي يفكر" : "الدعم يكتب"}
@@ -3324,7 +3331,7 @@ export default function ChatView({
               setShowScrollBottomPill(false);
               setUnreadCountBelow(0);
             }}
-            className="absolute bottom-24 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/40 bg-[var(--ink)] px-4 py-2 text-xs font-bold text-white shadow-lg backdrop-blur-md transition-transform hover:scale-105 cursor-pointer"
+            className="absolute bottom-24 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--ink)] px-4 py-2 text-xs font-bold text-[var(--page)] shadow-lg backdrop-blur-md transition-transform hover:scale-105 cursor-pointer"
           >
             <ChevronDown className="h-4 w-4" />
             <span>{tr("رسائل جديدة بالأسفل")}</span>
@@ -3365,7 +3372,7 @@ export default function ChatView({
         the conversation reads as continuing underneath rather than stopping at
         a wall.
       */}
-      <div className="relative z-10 mx-auto flex w-full shrink-0 flex-col gap-1.5 rounded-t-[28px] border-t border-white/80 bg-[var(--surface)]/92 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 shadow-[0_-10px_40px_rgba(150,130,120,0.15)] backdrop-blur-xl sm:px-6">
+      <div className="relative z-10 mx-auto flex w-full shrink-0 flex-col gap-1.5 rounded-t-[28px] border-t border-[var(--line)] bg-[var(--surface)]/92 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 shadow-[0_-12px_32px_-18px_color-mix(in_oklab,var(--ink)_45%,transparent)] backdrop-blur-xl sm:px-6">
         {/* 30-second Human Support Request Countdown Banner */}
         <AnimatePresence>
           {supportCountdown?.active && (
@@ -3436,7 +3443,7 @@ export default function ChatView({
               </button>
               <button
                 onClick={() => void sendVoiceNote()}
-                className="flex items-center justify-center gap-1.5 rounded-[14px] bg-[var(--ink)] px-4 py-1.5 text-[12px] font-medium text-white shadow-xs transition-colors hover:bg-[var(--ink-strong)] cursor-pointer"
+                className="flex items-center justify-center gap-1.5 rounded-[14px] bg-[var(--ink)] px-4 py-1.5 text-[12px] font-medium text-[var(--page)] shadow-xs transition-colors hover:bg-[var(--ink-strong)] cursor-pointer"
               >
                 <span>{tr("إرسال")}</span>
                 <Send className="ms-0.5 h-3.5 w-3.5 rtl:-scale-x-100" />
@@ -3454,18 +3461,26 @@ export default function ChatView({
                 overflow: "hidden",
                 transition: { duration: 0.2 },
               }}
-              className="relative z-10 flex flex-wrap gap-1.5 justify-start"
+              className="relative z-10"
             >
-              {activeSuggestions.map((suggestion, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleSuggestionClick(suggestion)}
-                  className="rounded-[14px] border border-[var(--surface-4)] bg-[var(--surface-2)] px-3 py-1 text-[12px] font-medium text-[var(--ink)] shadow-xs transition-colors hover:bg-card active:scale-95 cursor-pointer"
-                  dir={isRtl ? "rtl" : "ltr"}
-                >
-                  {tr(suggestion)}
-                </button>
-              ))}
+              {/*
+                One row that scrolls sideways. Wrapped, four replies took three
+                rows of a 640px phone during an order — on top of the header,
+                the banner and the composer — and left the conversation itself
+                a strip in the middle.
+              */}
+              <div className="-mx-1 flex flex-nowrap justify-start gap-1.5 overflow-x-auto px-1 pb-0.5 no-scrollbar">
+                {activeSuggestions.map((suggestion, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleSuggestionClick(suggestion)}
+                    className="shrink-0 whitespace-nowrap rounded-[14px] border border-[var(--line)] bg-card px-3 py-1.5 text-[12px] font-medium text-[var(--ink)] shadow-xs transition-colors hover:bg-[var(--surface-3)] active:scale-95 cursor-pointer"
+                    dir={isRtl ? "rtl" : "ltr"}
+                  >
+                    {tr(suggestion)}
+                  </button>
+                ))}
+              </div>
             </motion.div>
           ) : null}
         </AnimatePresence>
@@ -3531,7 +3546,7 @@ export default function ChatView({
             </button>
           </div>
 
-          <div className="relative flex h-[42px] flex-1 items-center overflow-hidden rounded-full border border-[var(--surface-4)] bg-[var(--surface-2)] shadow-xs transition-all focus-within:border-[#D4C3B3]">
+          <div className="relative flex h-[42px] flex-1 items-center overflow-hidden rounded-full border border-[var(--surface-4)] bg-[var(--surface-2)] shadow-xs transition-all focus-within:border-[var(--ink-mute)]">
             {recordingState !== "idle" ? (
               <div
                 className="absolute inset-0 flex items-center justify-between px-4"
@@ -3597,14 +3612,14 @@ export default function ChatView({
                     ? tr("إرسال")
                     : tr("تسجيل رسالة صوتية")
               }
-              className={`absolute ${"start-1"} z-20 flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-[var(--ink)] transition-colors hover:bg-[var(--ink-strong)] cursor-pointer`}
+              className={`absolute ${"start-1"} z-20 flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary/90 cursor-pointer`}
             >
               {recordingState !== "idle" ? (
-                <X className="h-4 w-4 text-white" strokeWidth={1.5} />
+                <X className="h-4 w-4" strokeWidth={1.75} />
               ) : inputText.length > 0 ? (
-                <Send className="h-3.5 w-3.5 text-white" strokeWidth={2} />
+                <Send className="h-3.5 w-3.5 rtl:-scale-x-100" strokeWidth={2} />
               ) : (
-                <Mic className="h-4 w-4 text-white" strokeWidth={1.5} />
+                <Mic className="h-4 w-4" strokeWidth={1.75} />
               )}
             </button>
           </div>
@@ -3679,7 +3694,7 @@ export default function ChatView({
                     }}
                     className="group relative flex w-full max-w-[76px] min-w-0 flex-col items-center justify-end gap-1 text-[var(--ink)] cursor-pointer"
                   >
-                    <div className="flex h-[44px] w-[44px] items-center justify-center rounded-full bg-[var(--ink)] text-white shadow-md transition-colors group-hover:bg-[var(--ink-strong)]">
+                    <div className="flex h-[44px] w-[44px] items-center justify-center rounded-full bg-[var(--ink)] text-[var(--page)] shadow-md transition-colors group-hover:bg-[var(--ink-strong)]">
                       <Headset className="h-5 w-5" />
                     </div>
                     <span className="w-full text-center text-[10px] sm:text-[11px] font-bold tracking-tight truncate leading-tight">
@@ -3757,7 +3772,7 @@ export default function ChatView({
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="absolute bottom-0 left-0 right-0 z-50 flex h-[75vh] max-h-[600px] flex-col overflow-hidden rounded-t-[28px] bg-card shadow-2xl"
             >
-              <div className="flex h-full flex-col overflow-hidden rounded-t-[28px] border-t border-white/80 bg-[var(--surface)] p-6 pb-8">
+              <div className="flex h-full flex-col overflow-hidden rounded-t-[28px] border-t border-[var(--line)] bg-[var(--surface)] p-6 pb-8">
                 <div className="mx-auto mb-6 h-1.5 w-12 shrink-0 rounded-full bg-[var(--line-2)]" />
 
                 <div className="flex-1 overflow-hidden">
@@ -3891,7 +3906,7 @@ export default function ChatView({
               className="absolute bottom-0 right-0 top-0 z-[50] flex w-[85%] flex-col bg-[var(--surface)] text-[var(--ink)] shadow-2xl sm:w-[320px]"
             >
               <div
-                className="flex h-full flex-col space-y-4 overflow-y-auto border-l border-white/50 p-6"
+                className="flex h-full flex-col space-y-4 overflow-y-auto border-l border-[var(--line)] p-6"
                 dir="rtl"
               >
                 <motion.div
@@ -4165,7 +4180,7 @@ export default function ChatView({
                 <button
                   type="button"
                   onClick={() => setSelectedInvoiceOrder(null)}
-                  className="flex-1 py-2.5 rounded-xl bg-[var(--ink)] text-white text-xs font-bold hover:bg-[var(--ink-strong)] transition-colors cursor-pointer"
+                  className="flex-1 py-2.5 rounded-xl bg-[var(--ink)] text-[var(--page)] text-xs font-bold hover:bg-[var(--ink-strong)] transition-colors cursor-pointer"
                 >
                   {isAr ? "إغلاق" : "Close"}
                 </button>
