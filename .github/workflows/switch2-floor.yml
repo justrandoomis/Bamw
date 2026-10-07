@@ -1,0 +1,74 @@
+# The Switch 2 floor: flagship Switch 2 games at 12,000, and the rest of the
+# Switch 2 games in demand or dear to buy from 10,000. Prices only go up.
+#
+# «ليس كل نسخ سويتش ٢ لكن الاسعار الغاليه والتي عليها طلب عالي تبدأ من ١٠
+#  الف للسويتش ٢ · مثلا زيلدا سويتش ٢ بسعر ١٢ الف · دونكي كونك بنانزا ب١٢ الف»
+#
+# A push runs it DRY against the live catalogue. It writes only when the pushed
+# commit carries an unspent token in `scripts/switch2-floor.apply-token`,
+# claimed in `console_runs` before the first write. Public outputs carry prices
+# only — this repository is public — and no Telegram token is passed.
+name: Switch 2 floor
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["claude/**"]
+    paths:
+      - scripts/switch2-floor.mjs
+      - scripts/switch2-floor.apply-token
+      - scripts/lib/switch2-floor.mjs
+      - scripts/lib/switch2-floor-entry.ts
+      - .github/workflows/switch2-floor.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: switch2-floor
+  # Never cancel a run that may be writing prices; a second one waits.
+  cancel-in-progress: false
+
+jobs:
+  floor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # The runner's default npm 10 refuses this lockfile on Linux.
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+      - name: The rule's tests
+        run: npx vitest run scripts/-switch-2-games-in-demand-start-at-10000.test.mjs
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+      - name: Hold Switch 2 games to their floor (dry unless the commit carries an unspent token)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: node scripts/switch2-floor.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: switch2-floor
+          path: |
+            switch2-floor.md
+            switch2-floor.json
+          if-no-files-found: warn
+      # LAST in the log: a job log is read as a tail.
+      - name: The summary, last in the log
+        if: always()
+        run: tail -c 8000 switch2-floor.md || true
