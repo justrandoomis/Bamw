@@ -554,6 +554,13 @@ const report = {
     title: titleOf(l.product),
     tier: l.tier,
     rank: l.rank,
+    card: seen(l.product).card,
+  })),
+  switch1Badged: switch1Badged.map((p) => ({
+    id: String(p.id),
+    title: titleOf(p),
+    badge: badgeWhy(p),
+    card: seen(p).card,
   })),
   held: held.map((h) => ({ id: String(h.product.id), title: titleOf(h.product), why: h.why })),
 };
