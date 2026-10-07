@@ -10,6 +10,7 @@ import {
 import { getSessionUser, requireUser } from "@/lib/session.server";
 import type { User } from "@/lib/types";
 import { body } from "@/lib/http.server";
+import { isUnderMaintenance, maintenanceError } from "@/lib/maintenance";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 
 /** A member may trade once name/username/email/birth date/gender are filled in. */
@@ -56,6 +57,20 @@ export const Route = createFileRoute("/api/banana")({
         const input = await body<Record<string, unknown>>(request);
         const action = String(input["action"] ?? "");
         const range = String(input["range"] ?? "1D");
+
+        /*
+          Under maintenance nothing here moves a banana: selling to the shop
+          and trading listings belong to the market, redeeming a reward to the
+          bananas themselves. The GET above stays open — the profile reads it
+          to know which themes a member already unlocked.
+        */
+        const gated =
+          action === "redeem_reward"
+            ? "bananas"
+            : action === "sell_bananas" || action === "buy_listing" || action === "cancel_listing"
+              ? "bananaMarket"
+              : null;
+        if (gated && isUnderMaintenance(gated)) return json(maintenanceError(gated), 503);
 
         try {
           if (action === "sell_bananas") {

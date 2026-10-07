@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { getUserBananaBalance } from "@/lib/banana-balance.server";
 import { getD1 } from "@/lib/d1.server";
 import { body, guard, json } from "@/lib/http.server";
+import { isUnderMaintenance, maintenanceError } from "@/lib/maintenance";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 import { wheelCandidates } from "@/lib/wheel-pool.server";
 import { requireUser } from "@/lib/session.server";
@@ -103,6 +104,13 @@ export const Route = createFileRoute("/api/wheel")({
       POST: async ({ request }) =>
         guard(async () => {
           const user = await requireUser(request);
+          /*
+            Both things this route does spend — a ticket on the old spin, bananas
+            on a ticket — so under maintenance it takes neither.
+          */
+          if (isUnderMaintenance("roulette")) {
+            return json(maintenanceError("roulette"), { status: 503 });
+          }
           /*
             Its own budget. The banana endpoint is capped at 30 mutations a
             minute and is shared with market trading; a member spinning through

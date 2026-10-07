@@ -23,6 +23,7 @@ import { readGuideMessage } from "@/lib/guideMessage";
 import { isAccountKind, type ChatMessage, type Order, type OrderItem } from "@/lib/types";
 import OrderReviewModal from "@/components/OrderReviewModal";
 import { AccountBatchPanel } from "@/components/admin/AccountBatchPanel";
+import { isUnderMaintenance } from "@/lib/maintenance";
 
 function Bubble({ message, children }: { message: ChatMessage; children: React.ReactNode }) {
   const mine = message.senderRole === "user";
@@ -739,7 +740,7 @@ export default function OrderChat({
                 className="inline-flex items-center gap-1 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 hover:bg-amber-500/25 px-3 py-1 text-xs font-bold transition-colors"
               >
                 <Sparkles className="h-3 w-3" />
-                <span>تقييم وكود الخصم</span>
+                <span>{isUnderMaintenance("reviewReward") ? "تقييم الطلب" : "تقييم وكود الخصم"}</span>
               </button>
             </div>
           )}

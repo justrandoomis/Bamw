@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Sparkles, Star } from "lucide-react";
 
 import OrderReviewSheet from "@/components/reviews/OrderReviewSheet";
+import { isUnderMaintenance } from "@/lib/maintenance";
 
 export interface RatingCardProps {
   orderId?: string;
@@ -49,9 +50,13 @@ export function RatingCard({
             </div>
             <div>
               <h4 className="text-xs font-bold text-foreground">
-                {isAr
-                  ? "يرجى التقييم للحصول على كود خصم ألف دينار"
-                  : "Review your order for a 1,000 IQD code"}
+                {isUnderMaintenance("reviewReward")
+                  ? isAr
+                    ? "يسعدنا تقييمك لطلبك"
+                    : "We'd love your review of this order"
+                  : isAr
+                    ? "يرجى التقييم للحصول على كود خصم ألف دينار"
+                    : "Review your order for a 1,000 IQD code"}
               </h4>
               {orderCode ? (
                 <span className="font-mono text-[10px] font-semibold text-muted-foreground">

@@ -6,11 +6,13 @@ import { toast } from "sonner";
 import { RewardsShelf } from "@/components/market/RewardsShelf";
 import { SellBananasSheet } from "@/components/market/SellBananasSheet";
 import { TicketShop } from "@/components/market/TicketShop";
+import { MarketMaintenance } from "@/components/market/MarketMaintenance";
 import { useAuth } from "@/hooks/useAuth";
 import { useBananaMarket } from "@/hooks/useBananaMarket";
 import { useRoulette } from "@/hooks/useRoulette";
 import { formatPrice } from "@/lib/banana-price";
 import { lazyWithRetry } from "@/lib/lazyRetry";
+import { isUnderMaintenance } from "@/lib/maintenance";
 import { playSound } from "@/utils/audio";
 
 const BananaPriceChart = lazyWithRetry(() => import("@/components/BananaPriceChart"));
@@ -63,8 +65,20 @@ export const Route = createFileRoute("/banana_market")({
       { property: "og:type", content: "website" },
     ],
   }),
-  component: BananaMarketPage,
+  component: BananaMarketRoute,
 });
+
+/**
+ * Under maintenance the market is one sentence, decided before the page's
+ * own hooks run — so nothing on it polls the price, offers a sale or opens the
+ * ticket shop, and the server would refuse each of those anyway.
+ */
+function BananaMarketRoute() {
+  if (isUnderMaintenance("bananaMarket") || isUnderMaintenance("bananas")) {
+    return <MarketMaintenance />;
+  }
+  return <BananaMarketPage />;
+}
 
 const RANGES = ["1H", "4H", "12H", "1D", "7D"] as const;
 

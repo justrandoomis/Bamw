@@ -42,6 +42,7 @@ import { getUserTelegramChatId } from "./telegram-notifications.server";
 import { escapeHtml, sendTelegramMessage, telegramMiniAppDeepLink } from "./telegram.server";
 import type { Order } from "./types";
 import { memberAllowsNotification } from "./notification-preferences.server";
+import { isUnderMaintenance } from "./maintenance";
 
 /** What the code is worth, in Iraqi dinars. */
 export const REWARD_AMOUNT_IQD = 1000;
@@ -486,18 +487,35 @@ export async function sendReviewInvitation(
       The steps describe the popup, because that is where the code is earned.
       No code appears in this message: there is none to show yet.
     */
-    const lines = [
-      "🎉 <b>تم اكتمال طلبك بنجاح!</b>",
-      "",
-      `🔖 <b>رقم الطلب:</b> <code>${escapeHtml(String(order.code ?? ""))}</code>`,
-      "",
-      `⭐ <b>يرجى التقييم للحصول على كود خصم ${REWARD_AMOUNT_IQD.toLocaleString()} دينار</b>`,
-      "",
-      "1️⃣ اضغط الزر بالأسفل لفتح طلبك.",
-      "2️⃣ اكتب رأيك بتسليم المنتجات وأرفق صورة أو مقطعاً.",
-      "3️⃣ علّق على منشور الإنستغرام المثبّت، وأرفق صورة تعليقك.",
-      "4️⃣ بعد موافقة الإدارة يصلك الكود.",
-    ];
+    /*
+      Under maintenance the message still says the order is done and how to
+      rate it — that part is not a promotion — but it promises no code.
+    */
+    const lines = isUnderMaintenance("reviewReward")
+      ? [
+          "🎉 <b>تم اكتمال طلبك بنجاح!</b>",
+          "",
+          `🔖 <b>رقم الطلب:</b> <code>${escapeHtml(String(order.code ?? ""))}</code>`,
+          "",
+          "⭐ <b>يسعدنا تقييمك لطلبك</b>",
+          "",
+          "1️⃣ اضغط الزر بالأسفل لفتح طلبك.",
+          "2️⃣ اكتب رأيك بتسليم المنتجات وأرفق صورة أو مقطعاً.",
+          "",
+          "ℹ️ كود خصم التقييم متوقف مؤقتاً للصيانة.",
+        ]
+      : [
+          "🎉 <b>تم اكتمال طلبك بنجاح!</b>",
+          "",
+          `🔖 <b>رقم الطلب:</b> <code>${escapeHtml(String(order.code ?? ""))}</code>`,
+          "",
+          `⭐ <b>يرجى التقييم للحصول على كود خصم ${REWARD_AMOUNT_IQD.toLocaleString()} دينار</b>`,
+          "",
+          "1️⃣ اضغط الزر بالأسفل لفتح طلبك.",
+          "2️⃣ اكتب رأيك بتسليم المنتجات وأرفق صورة أو مقطعاً.",
+          "3️⃣ علّق على منشور الإنستغرام المثبّت، وأرفق صورة تعليقك.",
+          "4️⃣ بعد موافقة الإدارة يصلك الكود.",
+        ];
 
     const res = await sendTelegramMessage(chatId, lines.join("\n"), {
       parse_mode: "HTML",
@@ -544,6 +562,7 @@ export const REWARD_COOLDOWN_DAYS = 7;
 export type ApprovedRewardOutcome =
   | { ok: true; reward: ReviewReward; alreadyIssued: boolean }
   | { ok: false; reason: "cooldown"; lastIssuedAt: string; nextEligibleAt: string }
+  | { ok: false; reason: "maintenance" }
   | { ok: false; reason: "failed" };
 
 /** Seven days after `iso`, which is when that customer may earn again. */
@@ -590,6 +609,13 @@ export async function issueApprovedReviewReward(
       const reward = await issueReviewReward(order, { now });
       return reward ? { ok: true, reward, alreadyIssued: true } : { ok: false, reason: "failed" };
     }
+
+    /*
+      Under maintenance nothing new is minted, and the customer's week is not
+      spent: the cooldown claim below never runs. A code already issued was
+      returned just above and still works at checkout — it was promised.
+    */
+    if (isUnderMaintenance("reviewReward")) return { ok: false, reason: "maintenance" };
 
     const cutoff = new Date(
       Date.parse(now) - REWARD_COOLDOWN_DAYS * 24 * 60 * 60 * 1000,

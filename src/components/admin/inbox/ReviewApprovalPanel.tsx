@@ -5,6 +5,7 @@ import { toast } from "sonner";
 
 import { api } from "@/lib/api";
 import { isVideoUrl } from "@/lib/uploads";
+import { isUnderMaintenance } from "@/lib/maintenance";
 
 /**
  * The submissions waiting for a person, and the decision itself.
@@ -88,6 +89,15 @@ export function ReviewApprovalPanel() {
             result.cooldown.nextEligibleAt,
           )}`,
         );
+        return;
+      }
+      if (isUnderMaintenance("reviewReward")) {
+        /*
+          Approved and published, and no code — because the review discount is
+          under maintenance, not because anything failed. Saying which is what
+          keeps the admin from approving it a second time.
+        */
+        toast.info("تمت الموافقة ونُشر التقييم. لم يُصدر كود لأن خصم التقييم تحت الصيانة.");
         return;
       }
       toast.success("تمت الموافقة على التقييم");

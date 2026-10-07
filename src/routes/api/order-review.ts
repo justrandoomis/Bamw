@@ -12,6 +12,7 @@ import {
   submitOrderReviewGroup,
 } from "@/lib/reviews.server";
 import { requireUser } from "@/lib/session.server";
+import { isUnderMaintenance } from "@/lib/maintenance";
 import type { StoreDoc } from "@/lib/types";
 
 /**
@@ -179,7 +180,9 @@ export const Route = createFileRoute("/api/order-review")({
               ok: true,
               groupId: result.groupId,
               products: result.products,
-              message: "تم إرسال تقييمك. بعد موافقة الإدارة يصلك كود الخصم.",
+              message: isUnderMaintenance("reviewReward")
+                ? "تم إرسال تقييمك، شكراً لك. كود خصم التقييم متوقف مؤقتاً للصيانة."
+                : "تم إرسال تقييمك. بعد موافقة الإدارة يصلك كود الخصم.",
             });
           }
 

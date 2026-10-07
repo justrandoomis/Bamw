@@ -66,6 +66,16 @@ vi.mock("./d1.server", () => ({
   ensureCouponsSchema: async () => undefined,
 }));
 
+/*
+  These tests are about the feature while it is OPEN — the rules it has to
+  keep the day it comes back. Maintenance itself is held by
+  `-the-closed-features-stay-closed.test.ts`.
+*/
+vi.mock("./maintenance", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("./maintenance")>()),
+  isUnderMaintenance: () => false,
+}));
+
 let telegramChatId: string | null = "555000111";
 vi.mock("./telegram-notifications.server", () => ({
   getUserTelegramChatId: async () => telegramChatId,

@@ -31,6 +31,7 @@ import {
 } from "./admin-availability";
 import { dedupeDevicePerformance, getDevicePerformanceList } from "./devicePerformance";
 import { normalizeProductOption, normalizeProductType } from "./productOptionDescriptions";
+import { isUnderMaintenance } from "./maintenance";
 export {
   isOwnerAccount,
   isOwnerEmail,
@@ -3579,7 +3580,11 @@ export async function consumeBananCode(
     const dinarPerBanana = Number(store.settings?.["dinarPerBanana"] || 1000);
     if (dinarPerBanana > 0) {
       const bananasEarned = Math.floor(bc.value / dinarPerBanana);
-      if (bananasEarned > 0) await addBananaBalance(userId, bananasEarned);
+      // The wallet credit above is the money the code is worth; the bananas
+      // are a bonus, and under maintenance the bonus is paused.
+      if (bananasEarned > 0 && !isUnderMaintenance("bananas")) {
+        await addBananaBalance(userId, bananasEarned);
+      }
     }
 
     return { success: true, amount: bc.value, currency: "IQD" };
@@ -3616,7 +3621,9 @@ export async function consumeBananCode(
   const dinarPerBanana = Number(store.settings?.["dinarPerBanana"] || 1000);
   if (dinarPerBanana > 0) {
     const bananasEarned = Math.floor(targetCode.value / dinarPerBanana);
-    if (bananasEarned > 0) await addBananaBalance(userId, bananasEarned);
+    if (bananasEarned > 0 && !isUnderMaintenance("bananas")) {
+      await addBananaBalance(userId, bananasEarned);
+    }
   }
 
   return { success: true, amount: targetCode.value, currency: "IQD" };

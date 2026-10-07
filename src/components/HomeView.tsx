@@ -32,6 +32,7 @@ import { HomeBananaMarket } from "./HomeBananaMarket";
 import { HomeGameZone } from "./HomeGameZone";
 import { StoreServices } from "./StoreServices";
 import { SectionErrorBoundary } from "./SectionErrorBoundary";
+import { isUnderMaintenance } from "@/lib/maintenance";
 
 preloadSound("hover");
 preloadSound("hover_s");
@@ -658,28 +659,37 @@ export default function HomeView({
           </LazySection>
         </SectionErrorBoundary>
 
-        {/* Section 9: Banana Market */}
-        <SectionErrorBoundary sectionName="BananaMarket">
-          <LazySection>
-            <Suspense
-              fallback={
-                <div className="h-40 animate-pulse animate-skeleton-shimmer bg-muted/10 rounded-3xl mx-4" />
-              }
-            >
-              <HomeBananaMarket />
-            </Suspense>
-          </LazySection>
-        </SectionErrorBoundary>
+        {/*
+          Section 9: Banana Market. Not shown while the market is under
+          maintenance: a home page should not invite a member into a door that
+          is closed. The page itself explains, for anyone who arrives by link.
+        */}
+        {isUnderMaintenance("bananaMarket") || isUnderMaintenance("bananas") ? null : (
+          <SectionErrorBoundary sectionName="BananaMarket">
+            <LazySection>
+              <Suspense
+                fallback={
+                  <div className="h-40 animate-pulse animate-skeleton-shimmer bg-muted/10 rounded-3xl mx-4" />
+                }
+              >
+                <HomeBananaMarket />
+              </Suspense>
+            </LazySection>
+          </SectionErrorBoundary>
+        )}
 
         {/*
           Section 9.5: Games & Prizes — «فوق الأخبار وتحت سوق الموز», exactly
-          where the owner put it.
+          where the owner put it. Hidden while the roulette is under maintenance,
+          for the same reason as the market above.
         */}
-        <SectionErrorBoundary sectionName="HomeGameZone">
-          <LazySection>
-            <HomeGameZone />
-          </LazySection>
-        </SectionErrorBoundary>
+        {isUnderMaintenance("roulette") ? null : (
+          <SectionErrorBoundary sectionName="HomeGameZone">
+            <LazySection>
+              <HomeGameZone />
+            </LazySection>
+          </SectionErrorBoundary>
+        )}
 
         {/* Section 10: News */}
         <SectionErrorBoundary sectionName="NintendoNews">

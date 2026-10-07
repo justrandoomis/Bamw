@@ -15,6 +15,7 @@ import { toast } from "sonner";
 import { api, uploadFileWithProgress } from "@/lib/api";
 import { prepareServableImage } from "@/lib/imageForUpload";
 import { isVideoUrl } from "@/lib/uploads";
+import { isUnderMaintenance } from "@/lib/maintenance";
 
 /**
  * The review that earns the code, in the two steps the owner described.
@@ -495,8 +496,9 @@ export function OrderReviewSheet({ orderId, isOpen, onClose, onSubmitted }: Orde
                       />
 
                       <p className="text-[11.5px] leading-relaxed text-muted-foreground">
-                        بعد موافقة الإدارة يصلك كود خصم ١٠٠٠ دينار صالح ٧ أيام. الكود مرة واحدة كل
-                        أسبوع لكل عميل.
+                        {isUnderMaintenance("reviewReward")
+                          ? "كود خصم التقييم متوقف مؤقتاً للصيانة. يُنشر تقييمك بعد موافقة الإدارة."
+                          : "بعد موافقة الإدارة يصلك كود خصم ١٠٠٠ دينار صالح ٧ أيام. الكود مرة واحدة كل أسبوع لكل عميل."}
                       </p>
                     </>
                   )}
@@ -617,9 +619,13 @@ function SubmittedState({ approved }: { approved: boolean }) {
         {approved ? "تمت الموافقة على تقييمك" : "وصل تقييمك"}
       </h3>
       <p className="mx-auto max-w-xs text-[12.5px] leading-relaxed text-muted-foreground">
-        {approved
-          ? "شكراً لك. إن كنت مؤهلاً هذا الأسبوع فقد وصلك كود الخصم في محادثتك."
-          : "بانتظار موافقة الإدارة. بعدها يصلك كود خصم ١٠٠٠ دينار صالح ٧ أيام — مرة واحدة كل أسبوع لكل عميل."}
+        {isUnderMaintenance("reviewReward")
+          ? approved
+            ? "شكراً لك على تقييمك."
+            : "بانتظار موافقة الإدارة لنشر تقييمك. كود خصم التقييم متوقف مؤقتاً للصيانة."
+          : approved
+            ? "شكراً لك. إن كنت مؤهلاً هذا الأسبوع فقد وصلك كود الخصم في محادثتك."
+            : "بانتظار موافقة الإدارة. بعدها يصلك كود خصم ١٠٠٠ دينار صالح ٧ أيام — مرة واحدة كل أسبوع لكل عميل."}
       </p>
     </div>
   );

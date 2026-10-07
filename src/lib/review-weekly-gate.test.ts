@@ -35,6 +35,16 @@ vi.mock("./notification-preferences.server", () => ({
   memberAllowsNotification: async () => true,
 }));
 
+/*
+  These tests are about the feature while it is OPEN — the rules it has to
+  keep the day it comes back. Maintenance itself is held by
+  `-the-closed-features-stay-closed.test.ts`.
+*/
+vi.mock("./maintenance", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("./maintenance")>()),
+  isUnderMaintenance: () => false,
+}));
+
 const DAY = 24 * 60 * 60 * 1000;
 const T0 = Date.parse("2026-09-01T00:00:00.000Z");
 const at = (days: number) => new Date(T0 + days * DAY).toISOString();

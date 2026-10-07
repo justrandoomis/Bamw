@@ -16,6 +16,8 @@ import {
   type SpinResponse,
 } from "@/hooks/useRoulette";
 import { useAuth } from "@/hooks/useAuth";
+import { MaintenanceNotice } from "@/components/MaintenanceNotice";
+import { isUnderMaintenance } from "@/lib/maintenance";
 import { cn } from "@/lib/utils";
 import { playSound } from "@/utils/audio";
 
@@ -528,6 +530,16 @@ export function RoulettePage() {
         ready={available.length}
       />
 
+      {/*
+        UNDER MAINTENANCE the spinner, the ticket picker and the odds give way
+        to one sentence. The wallet above and the prize shelf below stay: a
+        member's tickets are still theirs, and a game already won can still be
+        imported — the server keeps `import_prize` open for exactly that.
+      */}
+      {isUnderMaintenance("roulette") ? (
+        <MaintenanceNotice feature="roulette" />
+      ) : (
+        <>
       <section className="rounded-2xl border border-border/60 bg-card p-3">
         {/*
           Signed out FIRST, ahead of the spinner: the answer for this visitor is
@@ -615,6 +627,8 @@ export function RoulettePage() {
       </section>
 
       <OddsPanel tickets={tickets} rows={state?.odds ?? []} emptied={state?.emptied ?? []} />
+        </>
+      )}
 
       <PrizeShelf
         prizes={state?.prizes ?? []}

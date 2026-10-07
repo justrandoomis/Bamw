@@ -9,6 +9,7 @@ import {
 } from "./db.server";
 import type { BananaBot, BananaMarketOffer, Thread } from "./types";
 import { hasExpired } from "./thread-lifecycle";
+import { isUnderMaintenance } from "./maintenance";
 import {
   toBananaBot,
   toBananaMarketOffer,
@@ -21,6 +22,12 @@ import {
  * To be called by a Cloudflare Worker CRON.
  */
 export async function processBotTrading() {
+  /*
+    The bots trade whatever `botsEnabled` says — that flag only hides their
+    listings — so maintenance is asked here, where the trading itself starts.
+    A market under maintenance does not move its own price.
+  */
+  if (isUnderMaintenance("bananaMarket")) return;
   const now = new Date().toISOString();
 
   /*

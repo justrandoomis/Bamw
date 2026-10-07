@@ -60,6 +60,16 @@ vi.mock("@/utils/audio", () => ({
 vi.mock("sonner", () => ({ toast: { success: vi.fn(), error: vi.fn() } }));
 
 /*
+  These tests are about the feature while it is OPEN — the rules it has to
+  keep the day it comes back. Maintenance itself is held by
+  `-the-closed-features-stay-closed.test.ts`.
+*/
+vi.mock("@/lib/maintenance", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/maintenance")>()),
+  isUnderMaintenance: () => false,
+}));
+
+/*
   The strip draws itself with rAF and real measurements; none of that is what
   this file is about. A stand-in keeps the accessible name the page relies on,
   so «did the strip render» is still a real question here.

@@ -25,6 +25,7 @@ import {
   type SupportReply,
 } from "./types";
 import type { SupportHint } from "./understand.server";
+import { isUnderMaintenance } from "../maintenance";
 
 /**
  * `pending` is an order that has not been prepared yet — it says nothing about
@@ -700,10 +701,19 @@ export function supportAnswer(
           );
         }
 
+        /*
+          Under maintenance the bot must not advertise what the shop has
+          paused: it says the balance is kept and the feature is coming back.
+        */
+        const bananasPaused = isUnderMaintenance("bananas") || isUnderMaintenance("bananaMarket");
         lines.push(
-          lang === "en"
-            ? "Bananas are earned on every order and can be redeemed for discounts or traded in the Banana Market."
-            : "تُجمع الموز من كل طلب، ويمكن استبدالها بخصومات أو تداولها في سوق الموز.",
+          bananasPaused
+            ? lang === "en"
+              ? "Bananas and the Banana Market are under maintenance for now; your balance is kept in full and will be usable again soon."
+              : "الموز وسوق الموز تحت الصيانة حالياً؛ رصيدك محفوظ بالكامل وسيعود استخدامه قريباً."
+            : lang === "en"
+              ? "Bananas are earned on every order and can be redeemed for discounts or traded in the Banana Market."
+              : "تُجمع الموز من كل طلب، ويمكن استبدالها بخصومات أو تداولها في سوق الموز.",
         );
 
         return build(lines.join(" "), {
@@ -713,9 +723,13 @@ export function supportAnswer(
       }
 
       const text =
-        lang === "en"
-          ? "Banana Wallet is our reward points system: earn Bananas on every order, redeem them for discounts and perks, or trade them in the live peer-to-peer Banana Market!"
-          : "محفظة الموز (Banana Wallet) هي نظام المكافآت الحصري: تجمع الموز من مشترياتك وتستبدله بخصومات ومكافآت، أو تتداول به في «سوق الموز» الحي وفق أسعار العرض والطلب.";
+        isUnderMaintenance("bananas") || isUnderMaintenance("bananaMarket")
+          ? lang === "en"
+            ? "Banana Wallet is our reward points system. Bananas and the Banana Market are under maintenance for now; every balance is kept in full."
+            : "محفظة الموز هي نظام المكافآت في المتجر. الموز وسوق الموز تحت الصيانة حالياً، وكل الأرصدة محفوظة بالكامل."
+          : lang === "en"
+            ? "Banana Wallet is our reward points system: earn Bananas on every order, redeem them for discounts and perks, or trade them in the live peer-to-peer Banana Market!"
+            : "محفظة الموز (Banana Wallet) هي نظام المكافآت الحصري: تجمع الموز من مشترياتك وتستبدله بخصومات ومكافآت، أو تتداول به في «سوق الموز» الحي وفق أسعار العرض والطلب.";
       return build(text, {
         suggestions: SUGGESTIONS_I18N[lang]?.default ?? SUGGESTIONS_I18N.ar.default,
         reason: "faq_banana",

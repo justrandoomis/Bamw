@@ -6,6 +6,7 @@ import { getMarketConfig, spotPriceAt } from "@/lib/banana-market-config.server"
 import { getStore } from "@/lib/db.server";
 import { getD1 } from "@/lib/d1.server";
 import { body, guard, json } from "@/lib/http.server";
+import { isUnderMaintenance, maintenanceError } from "@/lib/maintenance";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 import { requireUser } from "@/lib/session.server";
 import {
@@ -166,6 +167,15 @@ export const Route = createFileRoute("/api/roulette")({
             () => ({}) as Record<string, unknown>,
           );
           const action = String(sent["action"] ?? "spin");
+
+          /*
+            Under maintenance the roulette takes no new spin. Claiming a prize
+            already won (`import_prize`) stays open: that game is owed, and a
+            prize can expire while the roulette is closed.
+          */
+          if (action === "spin" && isUnderMaintenance("roulette")) {
+            return json(maintenanceError("roulette"), { status: 503 });
+          }
 
           /*
             A budget per ACTION, not one for the page.

@@ -42,6 +42,7 @@ import { memberAllowsNotification } from "./notification-preferences.server";
 import { isFullyDigitalOrder } from "./delivery-kinds";
 import { resolveDeliveryPrice } from "./delivery-fee";
 import { cashOnDeliveryAllowed, resolvePaymentMethod } from "./payment-method";
+import { isUnderMaintenance } from "./maintenance";
 import type {
   Address,
   Order,
@@ -1212,7 +1213,12 @@ export async function createOrderForUser(
   // Reward Banana Calculation (Safe)
   try {
     const bananaEligible = items.every((item) => !["hardware", "device"].includes(item.kind));
-    if (bananaEligible && order.paymentStatus === "paid") {
+    /*
+      Under maintenance a purchase earns no bananas: earning is half of the
+      banana feature, and a balance that grows while it cannot be spent is a
+      debt that lands all at once on the day it reopens.
+    */
+    if (bananaEligible && order.paymentStatus === "paid" && !isUnderMaintenance("bananas")) {
       /*
         The rate the admin actually typed.
 
