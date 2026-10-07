@@ -73,24 +73,35 @@ const headerBar = await page
   .count()
   .catch(() => 0);
 
-/* The chat renders for a visitor who is not signed in, composer and all. */
+/*
+  The chat renders for a visitor who is not signed in, composer and all.
+
+  Reached inside the app, by `pushState` + `popstate` — the transition
+  TanStack Router listens for — not as a second page load. The edge lets a
+  runner's browser in once and answers its next document request 403, which
+  is what the first run of this probe read: «/chat HTTP 403», a verdict on the
+  edge and none on the build. `maintenance-live-check.mjs` found the same.
+*/
 let chatAttach = 0;
-let chatStatus = 0;
-try {
-  const chat = await page.goto(`${ORIGIN}/chat`, {
-    waitUntil: "domcontentloaded",
-    timeout: 60_000,
-  });
-  chatStatus = chat?.status() ?? 0;
+let chatRefused = 0;
+page.on("response", (res) => {
+  if (res.status() === 403) chatRefused += 1;
+});
+if (!challenged) {
+  await page
+    .evaluate(() => {
+      window.history.pushState({}, "", "/chat");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    })
+    .catch(() => {});
   chatAttach = await page
     .locator('button[aria-label="إرفاق صورة"], button[aria-label="Attach a photo"]')
     .first()
-    .waitFor({ timeout: 20_000 })
+    .waitFor({ state: "attached", timeout: 30_000 })
     .then(() => 1)
     .catch(() => 0);
-} catch {
-  chatAttach = 0;
 }
+const chatPath = await page.evaluate(() => location.pathname).catch(() => "—");
 
 const probes = [
   { name: "header-bar", live: headerBar > 0, seen: `${headerBar} element(s)` },
@@ -102,7 +113,7 @@ const probes = [
   {
     name: "chat-attach",
     live: chatAttach > 0,
-    seen: `/chat HTTP ${chatStatus || "—"} · ${chatAttach ? "labelled paperclip" : "no labelled paperclip"}`,
+    seen: `in-app ${chatPath} · ${chatAttach ? "labelled paperclip" : "no labelled paperclip"}${chatRefused ? ` · ${chatRefused} request(s) refused 403` : ""}`,
   },
 ];
 
