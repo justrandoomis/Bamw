@@ -110,37 +110,79 @@ const context = await browser.newContext({
     "(KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
 });
 const page = await context.newPage();
+
+/*
+  THE STOREFRONT'S OWN REQUEST, NOT ONE OF MINE.
+
+  The first run of this asked \`/api/data\` itself from the page and the edge
+  answered 403 with a challenge page — the catalogue is the thing a scraper
+  wants, and a request the app never makes is treated like one. So the check
+  listens for the request the app DOES make while the home page loads, and
+  reads that response: by definition the bytes a shopper's browser gets.
+*/
+const isCatalogue = (response) => {
+  try {
+    return (
+      new URL(response.url()).pathname === "/api/data" && response.request().method() === "GET"
+    );
+  } catch {
+    return false;
+  }
+};
+const appRequest = page.waitForResponse(isCatalogue, { timeout: 60_000 }).catch(() => null);
 const home = await page
   .goto(`${ORIGIN}/`, { waitUntil: "domcontentloaded", timeout: 60_000 })
   .catch((error) => fail(`تعذّر فتح ${ORIGIN} (${String(error).split("\n")[0].slice(0, 120)})`));
 await page
-  .waitForFunction(() => !/just a moment|checking your browser/i.test(document.title || ""), undefined, {
-    timeout: 30_000,
-  })
+  .waitForFunction(
+    () => !/just a moment|checking your browser/i.test(document.title || ""),
+    undefined,
+    {
+      timeout: 30_000,
+    },
+  )
   .catch(() => {});
 if (!home || home.status() >= 400) fail(`الصفحة الرئيسية ردّت ${home ? home.status() : "بلا رد"}`);
 
-const served = await page.evaluate(async () => {
-  const res = await fetch("/api/data", { headers: { accept: "application/json" }, cache: "no-store" });
-  return {
-    status: res.status,
-    version: res.headers.get("x-catalog-version"),
-    cache: res.headers.get("x-cache-status"),
-    body: await res.text(),
+let served = null;
+const response = await appRequest;
+if (response) {
+  served = {
+    how: "طلب المتجر نفسه",
+    url: new URL(response.url()).pathname + new URL(response.url()).search,
+    status: response.status(),
+    version: response.headers()["x-catalog-version"] ?? null,
+    cache: response.headers()["x-cache-status"] ?? null,
+    body: await response.text().catch(() => ""),
   };
-});
+} else {
+  /* The page asked nothing within a minute: ask exactly as the app asks. */
+  served = await page.evaluate(async () => {
+    const res = await fetch("/api/data?slim=1", { credentials: "include" });
+    return {
+      how: "طلب بنفس صيغة المتجر",
+      url: "/api/data?slim=1",
+      status: res.status,
+      version: res.headers.get("x-catalog-version"),
+      cache: res.headers.get("x-cache-status"),
+      body: await res.text(),
+    };
+  });
+}
 await browser.close();
 
 let data;
 try {
   data = JSON.parse(served.body);
 } catch {
-  fail(`\`/api/data\` ردّ ${served.status} بغير JSON (${served.body.length} حرفًا)`);
+  fail(`\`${served.url}\` ردّ ${served.status} بغير JSON (${served.body.length} حرفًا)`);
 }
 const products = Array.isArray(data?.products) ? data.products : [];
 const bundles = Array.isArray(data?.bundles) ? data.bundles : [];
 
-say(`- \`/api/data\`: HTTP ${served.status} · نسخة الكتالوج ${served.version ?? "—"} · ${served.cache ?? "—"}`);
+say(
+  `- \`${served.url}\` (${served.how}): HTTP ${served.status} · نسخة الكتالوج ${served.version ?? "—"} · ${served.cache ?? "—"}`,
+);
 say(`- منتجات ظاهرة للزبون: **${products.length}** · حزم: ${bundles.length}`);
 say();
 
@@ -166,7 +208,8 @@ if (EXPECT.size) {
   say(`| | السعر المعروض | المتوقع | الأونلاين | |`);
   say(`| --- | ---: | ---: | ---: | :---: |`);
   for (const [id, want] of EXPECT) {
-    const item = products.find((p) => String(p?.id) === id) ?? bundles.find((b) => String(b?.id) === id);
+    const item =
+      products.find((p) => String(p?.id) === id) ?? bundles.find((b) => String(b?.id) === id);
     if (!item) {
       misses.push(`${id}: ليس في ما يستلمه الزبون`);
       say(`| \`${id}\` | — | ${money(want)} | — | ✗ |`);
