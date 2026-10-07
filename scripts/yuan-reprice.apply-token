@@ -1,8 +1,6 @@
 # One line: the token. Claimed in `console_runs` before the first write, so this
 # file writes once however many times it is pushed. Removed after the run.
 #
-# Stage 1 of the yuan rise: three products, one per write path — Mario Kart
-# World (its own `store:product:` row), Mario Kart 8 Deluxe (the catalogue
-# chunks) and the Hades bundle — before the other 1,707 games and 12 bundles.
-yuan-220-280-stage-1
-only=prd_34be2de35cbe4d6b,prd_5e7f25795b9c47eb,bnd_1789671536472
+# Stage 2 of the yuan rise: everything stage 1 did not write. The three it did
+# carry `priceRevision: "yuan-220-280"` and are skipped, not raised twice.
+yuan-220-280-stage-2
