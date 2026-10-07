@@ -12,7 +12,11 @@
  *  - `header-height` — the page reserves the bar's own height plus the phone's
  *                    notch (`--header-h`), which the same change added;
  *  - `chat-attach` — the chat's composer attaches with one labelled paperclip
- *                    («إرفاق صورة»), where it had an unlabelled lightning bolt.
+ *                    («إرفاق صورة»), where it had an unlabelled lightning bolt;
+ *  - `security-headers` — the home page arrives with the shop's security
+ *                    headers (none were sent before), the referrer policy
+ *                    YouTube embeds need, and no framing ban, which would shut
+ *                    the Telegram Mini App out.
  *
  * It signs in as nobody and presses nothing.
  *
@@ -65,6 +69,14 @@ for (let attempt = 1; attempt <= 3; attempt += 1) {
   if (!challenged) break;
 }
 
+const documentHeaders = (await response?.allHeaders().catch(() => ({}))) ?? {};
+const securityHeaders = {
+  nosniff: documentHeaders["x-content-type-options"] === "nosniff",
+  referrer: documentHeaders["referrer-policy"] === "strict-origin-when-cross-origin",
+  microphone: /microphone=\(self\)/.test(documentHeaders["permissions-policy"] ?? ""),
+  frameable: !documentHeaders["x-frame-options"],
+};
+
 const headerHeight = await page
   .evaluate(() => getComputedStyle(document.documentElement).getPropertyValue("--header-h").trim())
   .catch(() => "");
@@ -114,6 +126,13 @@ const probes = [
     name: "chat-attach",
     live: chatAttach > 0,
     seen: `in-app ${chatPath} · ${chatAttach ? "labelled paperclip" : "no labelled paperclip"}${chatRefused ? ` · ${chatRefused} request(s) refused 403` : ""}`,
+  },
+  {
+    name: "security-headers",
+    live: Object.values(securityHeaders).every(Boolean),
+    seen: Object.entries(securityHeaders)
+      .map(([what, ok]) => `${what} ${ok ? "✓" : "✗"}`)
+      .join(" · "),
   },
 ];
 
