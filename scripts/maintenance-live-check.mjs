@@ -33,8 +33,8 @@ const OUT = "maintenance-live-check.md";
 
 /** Each closed screen, and the words its notice must carry. */
 const SCREENS = [
-  { path: "/", feature: "discTrade", words: "تحت الصيانة", what: "بطاقة الاستبدال في الرئيسية" },
   { path: "/disc_trade", feature: "discTrade", words: "استبدال الأقراص تحت الصيانة" },
+  { path: "/", feature: "discTrade", words: "تحت الصيانة", what: "بطاقة الاستبدال في الرئيسية" },
   { path: "/wheel", feature: "roulette", words: "الروليت تحت الصيانة" },
   { path: "/banana_market", feature: "bananaMarket", words: "سوق الموز تحت الصيانة" },
 ];
@@ -125,9 +125,26 @@ const open = (path) =>
   the app, by `pushState` + `popstate`, the transition TanStack Router listens
   for, with nothing new for the edge to refuse.
 */
-await open("/");
+/* Every request the edge or the server refused, so a refusal is named as one. */
+const refused = [];
+page.on("response", (response) => {
+  if (response.status() < 400) return;
+  try {
+    refused.push(`${response.status()} ${new URL(response.url()).pathname}`);
+  } catch {
+    refused.push(`${response.status()}`);
+  }
+});
+
+/*
+  The trade page is the one real load, because it is the one screen with a
+  loader: reached in-app, its data is a server-function request of its own,
+  which the edge answered this runner 403 — and the router drew «This page
+  didn't load». Loaded as the document, its data arrives inside the page.
+*/
+await open(SCREENS[0].path);
 await waitOutChallenge(30);
-const homeChallenged = await looksChallenged();
+const firstChallenged = await looksChallenged();
 
 /* The build the site says it is, so the screens below can be tied to a commit. */
 const build = await page
@@ -175,7 +192,7 @@ const routeTo = (to) =>
 const results = [];
 for (const screen of SCREENS) {
   const label = screen.what ?? screen.path;
-  if (homeChallenged) {
+  if (firstChallenged) {
     results.push({
       label,
       ok: false,
@@ -184,7 +201,8 @@ for (const screen of SCREENS) {
     });
     continue;
   }
-  if (screen.path !== "/") await routeTo(screen.path).catch(() => {});
+  const refusedBefore = refused.length;
+  if (screen !== SCREENS[0]) await routeTo(screen.path).catch(() => {});
   /*
     Waited for, not read at once: the screen is drawn by the client, and a
     notice that has not rendered YET is not a notice that is missing.
@@ -197,7 +215,7 @@ for (const screen of SCREENS) {
   */
   const selector =
     screen.path === "/"
-      ? `[data-maintenance="${screen.feature}"]`
+      ? `[data-maintenance="${screen.feature}"]:not([role="status"])`
       : `[role="status"][data-maintenance="${screen.feature}"]`;
   const notice = page.locator(selector).filter({ hasText: screen.words }).first();
   const seen = await notice
@@ -216,6 +234,20 @@ for (const screen of SCREENS) {
         .replace(/\s+/g, " ")
         .trim()
         .slice(0, 80);
+  /*
+    A screen that did not draw because a request was refused by the EDGE says
+    nothing about the code: it is inconclusive, and named with the request.
+  */
+  const blocked = refused.slice(refusedBefore).filter((r) => r.startsWith("403"));
+  if (!seen && blocked.length) {
+    results.push({
+      label,
+      ok: false,
+      skipped: true,
+      detail: `طلب رفضته حماية الحافة (${blocked.slice(0, 2).join("، ")}) — غير حاسم`,
+    });
+    continue;
+  }
   results.push({
     label,
     ok: seen && text.includes(screen.words),
