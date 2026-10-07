@@ -1,0 +1,80 @@
+# What the owner's pricing rules say every game should cost at the new yuan
+# rate. READ-ONLY: a proposal, not a repricing.
+#
+# «التكلفه صعدت من ٢٢٠ لليوان الى ٢٨٠ لليوان … هل نزيد بهذه النسبه ام ماهو
+#  الانسب ؟»
+#
+# It reads the catalogue and writes nothing. No price, cost, stock, hidden flag,
+# option, type, trade-in value, display order or sales figure is written by
+# anything this runs. The per-game table it uploads carries cost beside price,
+# the same shape as the cost report's artifact.
+name: Yuan reprice proposal
+
+on:
+  workflow_dispatch:
+    inputs:
+      old_rate:
+        description: "Dinars per yuan the stored costs were bought at"
+        default: "220"
+      new_rate:
+        description: "Dinars per yuan now"
+        default: "280"
+  # A new or edited proposal runs itself on the branch. It reads and never
+  # writes, so a push trigger risks nothing.
+  push:
+    branches: ["claude/**"]
+    paths:
+      - scripts/yuan-reprice-proposal.mjs
+      - scripts/lib/yuan-reprice-entry.ts
+      - .github/workflows/yuan-reprice-proposal.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: yuan-reprice-proposal
+  cancel-in-progress: true
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # The runner's default npm 10 refuses this lockfile on Linux.
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+      - name: Re-run the pricing rules on costs at the new rate
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          OLD_RATE: ${{ inputs.old_rate }}
+          NEW_RATE: ${{ inputs.new_rate }}
+        run: node scripts/yuan-reprice-proposal.mjs --old "${OLD_RATE:-220}" --new "${NEW_RATE:-280}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: yuan-reprice
+          path: |
+            yuan-reprice.json
+            yuan-reprice.md
+          if-no-files-found: warn
+      # LAST in the log: a job log is read as a tail.
+      - name: The summary, last in the log
+        if: always()
+        run: cat yuan-reprice.md || true
