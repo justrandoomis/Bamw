@@ -1,0 +1,70 @@
+# The prices a shopper's browser actually receives from banan.to. READ ONLY.
+#
+# Every other price check reads D1. This one opens the live site in a real
+# browser and reads `/api/data` from the page — through the Worker's own
+# catalogue cache — so a price right in the database and stale on screen is
+# caught. It signs in as nobody, presses nothing, and needs no secret.
+name: Live price check
+
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: "Origin to read"
+        type: string
+        default: "https://banan.to"
+      expect:
+        description: "id=price pairs the live shop must serve, comma-separated"
+        type: string
+        default: "prd_34be2de35cbe4d6b=12000"
+  # A new or edited checker runs itself. It reads and never writes.
+  push:
+    branches: ["claude/**"]
+    paths:
+      - scripts/live-price-check.mjs
+      - .github/workflows/live-price-check.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-price-check
+  cancel-in-progress: true
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # The runner's default npm 10 refuses this lockfile on Linux.
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+      # `playwright-core` carries no installer, so the browser comes from the
+      # `playwright` CLI, pinned to the version the other checkers pin.
+      - name: Install Chromium
+        run: npx --yes playwright@1.62.1 install --with-deps chromium
+      - name: Read the live prices
+        env:
+          ORIGIN: ${{ inputs.origin }}
+          # The yuan rise: Mario Kart World (the owner's own example), Mario
+          # Kart 8 Deluxe and the Hades bundle from stage one; Metroid Dread
+          # (its own row), Donkey Kong Bananza, Resident Evil Requiem, Pokémon
+          # Legends Z-A and Smash from stage two.
+          EXPECT: ${{ inputs.expect || 'prd_34be2de35cbe4d6b=12000,prd_5e7f25795b9c47eb=9000,bnd_1789671536472=12000,prd_316788014ee14877=7000,prd_9c97bcae3d9e4162=10000,prd_7037e22716fa4681=15000,prd_cat_pok-mon-legends-z-a=9000,prd_b9c50887a24849fa=9000' }}
+        run: node scripts/live-price-check.mjs --origin "${ORIGIN:-https://banan.to}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-price-check
+          path: live-price-check.md
+          if-no-files-found: warn
+      - name: The prices, last in the log
+        if: always()
+        run: tail -c 3000 live-price-check.md || true

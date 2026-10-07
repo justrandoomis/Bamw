@@ -1,6 +1,0 @@
-# One line: the token. Claimed in `console_runs` before the first write, so this
-# file writes once however many times it is pushed. Removed after the run.
-#
-# Stage 2 of the yuan rise: everything stage 1 did not write. The three it did
-# carry `priceRevision: "yuan-220-280"` and are skipped, not raised twice.
-yuan-220-280-stage-2
