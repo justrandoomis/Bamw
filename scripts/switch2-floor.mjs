@@ -212,6 +212,20 @@ rmSync(outfile, { force: true });
 
 const isOrdinaryOffline = (row) => app.classifyTier(row).kind === "offline_base";
 const isOfflineExtras = (row) => app.classifyTier(row).kind === "offline_extras";
+/**
+ * What the game's own online account sells for — the nearest thing in the
+ * catalogue to what the game itself costs, and a public price.
+ */
+const onlinePrice = (doc) => {
+  const lists = ["types", "variants", "options"].flatMap((list) =>
+    Array.isArray(doc?.[list]) ? doc[list] : [],
+  );
+  const row = lists.find(
+    (r) =>
+      r && typeof r === "object" && app.classifyTier(r).kind === "online_base" && amountOf(r.price),
+  );
+  return amountOf(row?.price) ?? amountOf(doc?.accountOnlinePrice) ?? 0;
+};
 /** The yuan an ordinary offline account costs: its row's cost, else the game's. */
 const offlineYuan = (doc) => {
   const lists = ["types", "variants", "options"].flatMap((list) =>
@@ -548,6 +562,14 @@ const report = {
     overlay: e.overlay,
     changes: e.plan.changes,
     card: { now: e.now.card, after: e.after.card },
+    online: onlinePrice(e.product),
+  })),
+  atFloor: already.map((a) => ({
+    id: String(a.product.id),
+    title: titleOf(a.product),
+    why: a.floor.why,
+    card: seen(a.product).card,
+    online: onlinePrice(a.product),
   })),
   left: left.map((l) => ({
     id: String(l.product.id),
@@ -555,12 +577,14 @@ const report = {
     tier: l.tier,
     rank: l.rank,
     card: seen(l.product).card,
+    online: onlinePrice(l.product),
   })),
   switch1Badged: switch1Badged.map((p) => ({
     id: String(p.id),
     title: titleOf(p),
     badge: badgeWhy(p),
     card: seen(p).card,
+    online: onlinePrice(p),
   })),
   held: held.map((h) => ({ id: String(h.product.id), title: titleOf(h.product), why: h.why })),
 };
