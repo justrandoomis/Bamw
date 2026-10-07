@@ -33,11 +33,19 @@ const OUT = "maintenance-live-check.md";
 
 /** Each closed screen, and the words its notice must carry. */
 const SCREENS = [
-  { path: "/disc_trade", feature: "discTrade", words: "استبدال الأقراص تحت الصيانة" },
   { path: "/", feature: "discTrade", words: "تحت الصيانة", what: "بطاقة الاستبدال في الرئيسية" },
+  { path: "/disc_trade", feature: "discTrade", words: "استبدال الأقراص تحت الصيانة" },
   { path: "/wheel", feature: "roulette", words: "الروليت تحت الصيانة" },
   { path: "/banana_market", feature: "bananaMarket", words: "سوق الموز تحت الصيانة" },
 ];
+
+/*
+  The edge's bot challenge, by every name it answers with. A challenge is not a
+  verdict on the page: Cloudflare refusing a runner's IP says nothing about
+  what a customer is shown.
+*/
+const CHALLENGE =
+  /just a moment|checking your browser|security verification|attention required|cf-chl|challenge-platform/i;
 
 const lines = [];
 const say = (t = "") => {
@@ -90,14 +98,51 @@ const context = await browser.newContext({
 });
 const page = await context.newPage();
 
+const looksChallenged = async () =>
+  CHALLENGE.test(await page.title().catch(() => "")) ||
+  CHALLENGE.test((await page.content().catch(() => "")).slice(0, 20_000));
+/** Up to `seconds` for a challenge to clear, the way a visitor's browser waits. */
+const waitOutChallenge = async (seconds) => {
+  for (let i = 0; i < seconds && (await looksChallenged()); i += 1)
+    await page.waitForTimeout(1_000);
+  return !(await looksChallenged());
+};
+const open = (path) =>
+  page
+    .goto(`${ORIGIN}${path}`, { waitUntil: "domcontentloaded", timeout: 60_000 })
+    .catch((error) => ({ error }));
+
+/*
+  THE HOME PAGE FIRST, AND THE CHALLENGE LEFT TO CLEAR.
+
+  The first run of this went straight to `/disc_trade` and was answered 403 on
+  every page after it, `/api/health` included — the edge scoring a runner that
+  never lets its challenge finish. A visitor lands, the challenge runs, and the
+  clearance cookie carries every page after; so does this.
+*/
+await open("/");
+await waitOutChallenge(30);
+
 const results = [];
 for (const screen of SCREENS) {
   const label = screen.what ?? screen.path;
-  const res = await page
-    .goto(`${ORIGIN}${screen.path}`, { waitUntil: "domcontentloaded", timeout: 60_000 })
-    .catch((error) => ({ error }));
+  let res = await open(screen.path);
+  if (!res?.error && (await looksChallenged())) {
+    if (await waitOutChallenge(20)) res = await open(screen.path);
+  }
+  if (!res?.error && (await looksChallenged())) {
+    results.push({
+      label,
+      ok: false,
+      skipped: true,
+      detail: "حماية الحافة اعترضت المتصفح — غير حاسم",
+    });
+    continue;
+  }
   if (res?.error || !res || res.status() >= 400) {
-    const why = res?.error ? String(res.error).split("\n")[0].slice(0, 100) : `HTTP ${res?.status?.()}`;
+    const why = res?.error
+      ? String(res.error).split("\n")[0].slice(0, 100)
+      : `HTTP ${res?.status?.()}`;
     results.push({ label, ok: false, detail: why });
     continue;
   }
@@ -111,11 +156,10 @@ for (const screen of SCREENS) {
     .then(() => true)
     .catch(() => false);
   const text = seen ? (await notice.innerText().catch(() => "")).replace(/\s+/g, " ").trim() : "";
-  const challenged = /just a moment|checking your browser/i.test(await page.title().catch(() => ""));
   results.push({
     label,
     ok: seen && text.includes(screen.words),
-    detail: challenged ? "حماية الحافة اعترضت المتصفح — غير حاسم" : text.slice(0, 90) || "لا إشعار صيانة",
+    detail: text.slice(0, 90) || "لا إشعار صيانة",
   });
 }
 
@@ -157,7 +201,8 @@ const quote = await page
   .catch(() => ({ status: 0, code: null, feature: null }));
 await browser.close();
 
-const quoteClosed = quote.status === 503 && quote.code === "maintenance" && quote.feature === "discTrade";
+const quoteClosed =
+  quote.status === 503 && quote.code === "maintenance" && quote.feature === "discTrade";
 const quoteChallenged = quote.status === 403 && !quote.code;
 results.push({
   label: "طلب تسعير استبدال عبر الخادم",
@@ -172,10 +217,19 @@ say(`- البناء الذي يخدم: \`${build}\``);
 say();
 say(`| الفحص | النتيجة | ما ظهر |`);
 say(`| --- | :---: | --- |`);
-for (const r of results) say(`| ${r.label} | ${r.skipped ? "—" : r.ok ? "✓" : "✗"} | ${r.detail} |`);
+for (const r of results)
+  say(`| ${r.label} | ${r.skipped ? "—" : r.ok ? "✓" : "✗"} | ${r.detail} |`);
 say();
 
 const failed = results.filter((r) => !r.ok && !r.skipped);
-if (failed.length) fail(`${failed.length} فحصًا لم يجد الإغلاق: ${failed.map((r) => r.label).join("، ")}`);
-say(`**كل ميزة مغلقة تظهر مغلقة على ${ORIGIN}.**`);
+if (failed.length)
+  fail(`${failed.length} فحصًا لم يجد الإغلاق: ${failed.map((r) => r.label).join("، ")}`);
+/* A run in which nothing reached a verdict proved nothing, and must not read as a pass. */
+if (!results.some((r) => r.ok)) fail(`لم يصل أي فحص إلى حكم — حماية الحافة اعترضت كل طلب`);
+const unsure = results.filter((r) => r.skipped).length;
+say(
+  unsure
+    ? `**كل فحص وصل إلى حكم وجد الإغلاق على ${ORIGIN}** — و${unsure} غير حاسم بسبب حماية الحافة.`
+    : `**كل ميزة مغلقة تظهر مغلقة على ${ORIGIN}.**`,
+);
 flush();
