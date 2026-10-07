@@ -11,6 +11,7 @@ import {
   FLAGSHIP_PRICE,
   IN_DEMAND_FLOOR,
   floorFor,
+  planCorrection,
   planFloor,
 } from "./lib/switch2-floor.mjs";
 import { diffPaths } from "./lib/yuan-reprice.mjs";
@@ -99,5 +100,51 @@ describe("one game held to its floor", () => {
     const before = JSON.stringify(bananza);
     planFloor(bananza, opts(12_000));
     expect(JSON.stringify(bananza)).toBe(before);
+  });
+});
+
+describe("taking back a price this rule wrote", () => {
+  /* Hollow Knight: Silksong, as the flagship step left it. */
+  const silksong = {
+    id: "prd_silk",
+    price: 12_000,
+    types: [
+      { id: "standard_offline", name: "حساب أوفلاين", price: 12_000 },
+      { id: "standard_online", name: "حساب أونلاين", price: 33_000 },
+    ],
+  };
+  const back = { from: 12_000, to: 10_000, isOrdinaryOffline };
+
+  it("sets every copy of the offline price to the step it belongs on, and nothing else", () => {
+    const plan = planCorrection(silksong, back);
+    expect(plan.base).toBe(10_000);
+    expect(plan.next.price).toBe(10_000);
+    expect(plan.next.types[0].price).toBe(10_000);
+    expect(plan.next.types[1].price).toBe(33_000);
+    expect(new Set(diffPaths(silksong, plan.next))).toEqual(
+      new Set(plan.changes.map((c) => c.path)),
+    );
+  });
+
+  it("never undoes a price somebody set since", () => {
+    const repriced = { ...silksong, price: 11_000 };
+    expect(planCorrection(repriced, back)).toBeNull();
+  });
+
+  it("has nothing to do once the game is back on its step", () => {
+    const { next } = planCorrection(silksong, back);
+    const again = planCorrection(next, back);
+    expect(again.changes).toEqual([]);
+    expect(again.next).toBe(next);
+  });
+
+  it("leaves an add-ons edition where it stands, above the new price", () => {
+    const withExtras = {
+      ...silksong,
+      types: [...silksong.types, { id: "dlc_offline", name: "أوفلاين مع الإضافات", price: 14_000 }],
+    };
+    const { next, changes } = planCorrection(withExtras, back);
+    expect(next.types[2].price).toBe(14_000);
+    expect(changes.map((c) => c.path).sort()).toEqual(["price", "types[0].price"]);
   });
 });

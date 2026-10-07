@@ -8,28 +8,42 @@
  *    الف للسويتش ٢ · ركز على سويتش ٢ · مثلا زيلدا سويتش ٢ بسعر ١٢ الف ·
  *    دونكي كونك بنانزا ب١٢ الف وغيرها»
  *
- * Which games are Switch 2: the shop's own `isNintendoSwitch2Product`, the
- * function the card's badge asks. Which are in demand: the shop's own demand
- * tiers (flagship, major), the most-ordered Switch 2 games, and those whose
- * offline account costs at least `--expensive-yuan` yuan to buy. Every other
- * Switch 2 game, and every Switch 1 game, is left exactly as it is.
+ * Which games are Switch 2: the ones the card badges that ARE Switch 2 games
+ * (`isSwitch2Game` below). Which are in demand or dear: the shop's own demand
+ * tiers (flagship, major), the most-ordered Switch 2 games, those whose
+ * offline account costs at least `--expensive-yuan` yuan to buy, and those
+ * whose own online account sells for at least `--expensive-online` — what the
+ * in-demand games on the 10,000 step sell for online. Every other Switch 2
+ * game, and every Switch 1 game, is left exactly as it is.
+ *
+ * Then the owner's «طبق ما ترى مناسبا»: a short list of games decided one by
+ * one, each with its reason (`JUDGED`).
  *
  * Dry run unless the commit carries an unspent token in
  * `scripts/switch2-floor.apply-token`, or `--apply` is passed by hand; the
  * write path is the one the yuan rise and the offline-copies repair were
- * verified on. Prices only go UP. Public outputs carry prices and ranks only —
- * never a cost, never an order count: this repository is public.
+ * verified on. Prices only go UP, but for a price this rule itself wrote that
+ * `JUDGED` takes back. Public outputs carry prices and ranks only — never a
+ * cost, never an order count: this repository is public.
  *
  * Usage:
  *   node scripts/switch2-floor.mjs [--apply] [--only id1,id2]
  *                                  [--top-ordered 10] [--expensive-yuan 15]
+ *                                  [--expensive-online 44000]
  */
 import { build } from "esbuild";
 import { existsSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { offlineCopies } from "./lib/offline-price-copies.mjs";
-import { EXTRAS_STEP, FLAGSHIP_PRICE, floorFor, planFloor } from "./lib/switch2-floor.mjs";
+import {
+  EXTRAS_STEP,
+  FLAGSHIP_PRICE,
+  IN_DEMAND_FLOOR,
+  floorFor,
+  planCorrection,
+  planFloor,
+} from "./lib/switch2-floor.mjs";
 import {
   overlayProductIds,
   readOverlayProduct,
@@ -51,6 +65,12 @@ const OUT_JSON = "switch2-floor.json";
 const TOP_ORDERED = Number(args["top-ordered"] ?? 10);
 /* An offline account dearer than this, in yuan, is «غالي». */
 const EXPENSIVE_YUAN = Number(args["expensive-yuan"] ?? 15);
+/*
+  A game whose own online account sells for this much is «غالي» too: 44,000
+  is what Yoshi and the Mysterious Book and Mario Tennis Fever — in-demand
+  games already on the 10,000 step — sell for online.
+*/
+const EXPENSIVE_ONLINE = Number(args["expensive-online"] ?? 44_000);
 /* The rate the costs are stored at since the yuan rise. */
 const RATE = 280;
 /* A game's own price at or above this is a console filed as a game. */
@@ -66,6 +86,30 @@ const NAMED = [
   ["Zelda Switch 2", (title) => /zelda/i.test(title) && /switch\W*2/i.test(title)],
   ["Donkey Kong Bananza", (title) => /donkey\s*kong\s*bananza/i.test(title)],
 ];
+
+/*
+  Decided one by one at the owner's «اكمل وطبق ما ترى مناسبا». `step` is the
+  price the game belongs on; `correctFrom`, the price this rule wrote that it
+  is taken back from — and only while every copy still carries exactly that.
+*/
+const JUDGED = new Map([
+  /*
+    Hollow Knight: Silksong. In demand, but its online account sells for
+    33,000 where every other game on 12,000 sells for 48,000 to 58,000: it
+    belongs with the in-demand games on 10,000, where it stood before this
+    rule's flagship step lifted it.
+  */
+  [
+    "prd_ebcb11cda2854251",
+    { step: IN_DEMAND_FLOOR, correctFrom: FLAGSHIP_PRICE, why: "judged-step" },
+  ],
+  /*
+    Sonic X Shadow Generations, listed twice: this copy at 9,000 and
+    `prd_cat_sonic-x-shadow-generations-0-39-switch-2` at 10,000. One game,
+    one price — the higher, as in the offline-copies repair.
+  */
+  ["prd_8404c32e2c544ea4", { step: IN_DEMAND_FLOOR, why: "twin" }],
+]);
 
 const SECRETS = [process.env.CLOUDFLARE_API_TOKEN, process.env.CLOUDFLARE_ACCOUNT_ID].filter(
   (v) => v && v.length >= 8,
@@ -90,6 +134,16 @@ const fail = (message) => {
   process.exit(1);
 };
 const money = (n) => (Number(n) > 0 ? Number(n).toLocaleString("en-US") : "—");
+/* Why a game's price moves, as the report says it. */
+const WHY = {
+  flagship: "رئيسية",
+  major: "مطلوبة",
+  orders: "من الأكثر طلبًا",
+  cost: "غالية باليوان",
+  online: `غالية: أونلاين ≥ ${money(EXPENSIVE_ONLINE)}`,
+  "judged-step": "تصحيح: في الطلب، وثمنها أقل من ألعاب الـ12,000",
+  twin: "نسخة مكررة: بسعر نسختها الأخرى",
+};
 
 const ONLY = args.only && args.only !== "true" ? new Set(String(args.only).split(",")) : null;
 
@@ -328,10 +382,13 @@ say(
   `- ألعاب سويتش ٢ «الرئيسية» (flagship في قائمة الطلب): **${FLAGSHIP_PRICE.toLocaleString("en-US")}**`,
 );
 say(
-  `- ألعاب سويتش ٢ المطلوبة (major، أو من أكثر ${TOP_ORDERED} طلبًا، أو تكلفتها ≥ ¥${EXPENSIVE_YUAN}): **تبدأ من 10,000**`,
+  `- ألعاب سويتش ٢ المطلوبة (major، أو من أكثر ${TOP_ORDERED} طلبًا، أو تكلفتها ≥ ¥${EXPENSIVE_YUAN}، أو سعرها أونلاين ≥ ${money(EXPENSIVE_ONLINE)}): **تبدأ من 10,000**`,
 );
 say(
-  `- سعر الحساب الأوفلاين العادي فقط، بكل نسخه، ولا يُخفَّض شيء. «مع الإضافات» يبقى أعلى بـ${EXTRAS_STEP.toLocaleString("en-US")} على الأقل. الأونلاين كما هو.`,
+  `- سعر الحساب الأوفلاين العادي فقط، بكل نسخه، ولا يُخفَّض شيء إلا سعرًا رفعه هذا التشغيل نفسه ويصحّحه قرار مسمّى أدناه. «مع الإضافات» يبقى أعلى بـ${EXTRAS_STEP.toLocaleString("en-US")} على الأقل. الأونلاين كما هو.`,
+);
+say(
+  `- قرارات لعبة بلعبة («طبق ما ترى مناسبا»): ${[...JUDGED].map(([id, j]) => `\`${id.slice(-6)}\` ${WHY[j.why]}`).join(" · ")}`,
 );
 if (SCOPE) say(`- النطاق: ${[...SCOPE].map((id) => `\`${id}\``).join("، ")} فقط.`);
 say();
@@ -399,12 +456,19 @@ for (const product of switch2) {
   const yuan = offlineYuan(product);
   for (const step of Object.keys(yuanBuckets))
     if (yuan !== null && yuan >= Number(step)) yuanBuckets[step] += 1;
-  const floor = floorFor({
-    isSwitch2: true,
-    tier,
-    inDemand: rank !== null && rank <= TOP_ORDERED,
-    expensive: yuan !== null && yuan >= EXPENSIVE_YUAN,
-  });
+  const dearInYuan = yuan !== null && yuan >= EXPENSIVE_YUAN;
+  /* Not a game the shop judged niche: no price brings those buyers. */
+  const dearOnline = tier !== "niche" && onlinePrice(product) >= EXPENSIVE_ONLINE;
+  const judged = JUDGED.get(id) ?? null;
+  let floor = judged
+    ? { target: judged.step, why: judged.why }
+    : floorFor({
+        isSwitch2: true,
+        tier,
+        inDemand: rank !== null && rank <= TOP_ORDERED,
+        expensive: dearInYuan || dearOnline,
+      });
+  if (floor?.why === "cost" && !dearInYuan) floor = { ...floor, why: "online" };
   if (!floor) {
     left.push({ product, tier, rank });
     continue;
@@ -416,8 +480,16 @@ for (const product of switch2) {
     held.push({ product, why: "صف `store:product:` غير قابل للقراءة" });
     continue;
   }
-  const opts = { target: floor.target, isOrdinaryOffline, isOfflineExtras };
-  const plan = planFloor(source, opts);
+  /* The same plan for the row as read now, as read again before the write, and as served. */
+  const replan = judged?.correctFrom
+    ? (doc) =>
+        planCorrection(doc, { from: judged.correctFrom, to: floor.target, isOrdinaryOffline })
+    : (doc) => planFloor(doc, { target: floor.target, isOrdinaryOffline, isOfflineExtras });
+  const plan = replan(source);
+  if (plan === null) {
+    held.push({ product, why: "سعره تغيّر منذ أن رفعه هذا التشغيل — التصحيح لا يمسّه" });
+    continue;
+  }
   if (plan.base === null) {
     held.push({ product, why: "لا سعر أوفلاين عادي فيها" });
     continue;
@@ -432,7 +504,11 @@ for (const product of switch2) {
     held.push({ product, why: `البروفة غيّرت ما لم تقله: ${moved.join(", ")}` });
     continue;
   }
-  const expectedPlan = planFloor(product, opts);
+  const expectedPlan = replan(product);
+  if (expectedPlan === null) {
+    held.push({ product, why: "النسخة التي يعرضها المتجر لا تحمل السعر الذي يُصحَّح" });
+    continue;
+  }
   const expected = strip(expectedPlan.changes.length ? expectedPlan.next : product);
   const served = strip(app.normalizeProductRecord(JSON.parse(JSON.stringify(plan.next))));
   if (!sameJson(priceLeaves(expected), priceLeaves(served))) {
@@ -446,7 +522,7 @@ for (const product of switch2) {
     source,
     plan,
     floor,
-    opts,
+    replan,
     expected,
     now: seen(product),
     after: seen(expected),
@@ -466,19 +542,13 @@ for (const [family, matches] of NAMED) {
 
 /* ---------------------------------------------------------------- the report */
 
-const WHY = {
-  flagship: "رئيسية",
-  major: "مطلوبة",
-  orders: "من الأكثر طلبًا",
-  cost: "غالية باليوان",
-};
 say(`## 1. الخلاصة`);
 say();
 say(`| | العدد |`);
 say(`| --- | ---: |`);
 say(`| ألعاب سويتش ٢ | ${switch2.length} |`);
 say(`| ألعاب سويتش ١ تحمل شارة سويتش ٢ (تعمل عليه فقط) — خارج القاعدة | ${switch1Badged.length} |`);
-say(`| **سترتفع** | **${planned.length}** |`);
+say(`| **يتغيّر سعرها** | **${planned.length}** |`);
 for (const why of Object.keys(WHY)) {
   const n = planned.filter((e) => e.floor.why === why).length;
   if (n) say(`| — ${WHY[why]} | ${n} |`);
@@ -492,7 +562,7 @@ say(
 );
 say();
 
-say(`## 2. كل لعبة سترتفع — ${planned.length}`);
+say(`## 2. كل لعبة يتغيّر سعرها — ${planned.length}`);
 say();
 say(`| اللعبة | السبب | الأوفلاين | مع الإضافات | البطاقة |`);
 say(`| --- | --- | ---: | ---: | ---: |`);
@@ -644,7 +714,7 @@ const skipped = [];
 const writtenIds = new Set();
 for (const entry of planned.filter((e) => e.overlay)) {
   const fresh = await readOverlayProduct(app, entry.id);
-  const again = fresh ? planFloor(fresh, entry.opts) : null;
+  const again = fresh ? entry.replan(fresh) : null;
   if (!again || canonical(again.changes) !== canonical(entry.plan.changes)) {
     skipped.push({ entry, why: "تغيّرت أسعاره أثناء التشغيل" });
     continue;
@@ -668,8 +738,8 @@ if (chunkPlan.size) {
         chunkSkipped.push({ entry, why: "صار له صف منفصل أثناء التشغيل" });
         return item;
       }
-      const again = planFloor(item, entry.opts);
-      if (canonical(again.changes) !== canonical(entry.plan.changes)) {
+      const again = entry.replan(item);
+      if (!again || canonical(again.changes) !== canonical(entry.plan.changes)) {
         chunkSkipped.push({ entry, why: "تغيّرت أسعاره أثناء التشغيل" });
         return item;
       }
