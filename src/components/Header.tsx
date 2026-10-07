@@ -101,6 +101,29 @@ export default function Header({
   useEffect(() => setHydrated(true), []);
 
   /*
+    A solid bar, except over the home page's banner.
+
+    The bar was transparent on every page — styled for the dark banner at the
+    top of the home page — so on every other page, and on the home page once
+    scrolled, text ran behind it and showed through its see-through search box
+    and buttons. Now it is the page's own colour with a hairline under it, in
+    every theme pack; only the home page, at the very top, still lets its
+    banner run under a transparent bar.
+  */
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    if (!isHome || typeof window === "undefined") return;
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
+  const overlay = isHome && !scrolled;
+  const chip = overlay
+    ? "bg-black/20 text-white backdrop-blur-md border border-white/20"
+    : "bg-card text-foreground border border-border";
+
+  /*
     The dropdown used to be `title.includes(q) || titleEn.includes(q)`, and
     production made that worthless: every product has the same English string
     in both fields, so the test ran twice on one value, and the Arabic name —
@@ -313,175 +336,198 @@ export default function Header({
         }`}
       >
         <div
-          className="mx-auto max-w-6xl px-4 pt-6 pb-4 flex items-center gap-3 w-full [&>*]:pointer-events-auto relative"
-          dir="ltr"
+          data-header-bar={overlay ? "overlay" : "solid"}
+          className={`w-full pt-[env(safe-area-inset-top)] transition-colors duration-200 ${
+            overlay
+              ? "border-b border-transparent bg-transparent"
+              : "pointer-events-auto border-b border-border bg-[var(--page)]"
+          }`}
         >
-          {!isHome && (
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                playSound("bumper_end", 0.6);
-                onBack();
-              }}
-              className="p-2 rounded-full bg-black/20 text-white backdrop-blur-md shadow-sm border border-white/20 active:scale-95 transition-transform shrink-0"
-              aria-label="Back"
-            >
-              <ChevronRight className="w-5 h-5 rtl:rotate-180" />
-            </button>
-          )}
-
-          {showSearch ? (
-            <div
-              className={`flex-1 relative transition-all duration-300 z-0 ${isMenuOpen ? "opacity-30 blur-sm !pointer-events-none [&_*]:!pointer-events-none" : "opacity-100"}`}
-            >
-              <form
-                role="search"
-                onSubmit={(e) => {
+          <div
+            className="mx-auto max-w-6xl px-4 h-16 flex items-center gap-3 w-full [&>*]:pointer-events-auto relative"
+            dir="ltr"
+          >
+            {!isHome && (
+              <button
+                onClick={(e) => {
                   e.preventDefault();
-                  showAllResults();
+                  e.stopPropagation();
+                  playSound("bumper_end", 0.6);
+                  onBack();
+                }}
+                className={`p-2 rounded-full shadow-sm active:scale-95 transition-transform shrink-0 ${chip}`}
+                aria-label="Back"
+              >
+                <ChevronRight className="w-5 h-5 rtl:rotate-180" />
+              </button>
+            )}
+
+            {showSearch ? (
+              <div
+                className={`flex-1 relative transition-all duration-300 z-0 ${isMenuOpen ? "opacity-30 blur-sm !pointer-events-none [&_*]:!pointer-events-none" : "opacity-100"}`}
+              >
+                <form
+                  role="search"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    showAllResults();
+                  }}
+                >
+                  <input
+                    ref={searchInputRef}
+                    type="search"
+                    inputMode="search"
+                    enterKeyHint="search"
+                    autoComplete="off"
+                    role="combobox"
+                    aria-expanded={isSearchFocused && searchResults.length > 0}
+                    aria-controls={
+                      isSearchFocused && searchQuery.trim() ? "header-search-results" : undefined
+                    }
+                    aria-activedescendant={
+                      activeIndex >= 0 ? `header-search-option-${activeIndex}` : undefined
+                    }
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onFocus={() => {
+                      setIsSearchFocused(true);
+                      // Builds the index, once, the first time anyone means to search.
+                      setSearchArmed(true);
+                    }}
+                    /* The delay lets a click on a result land before the list unmounts. */
+                    onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
+                    onKeyDown={onSearchKeyDown}
+                    placeholder={t("بحث ذكي عن الألعاب...")}
+                    aria-label={t("بحث ذكي عن الألعاب...")}
+                    suppressHydrationWarning
+                    className={`w-full h-10 rounded-full outline-none px-4 ps-10 text-sm transition-all shadow-sm ${
+                      overlay
+                        ? "bg-black/20 border border-white/20 text-white backdrop-blur-md placeholder-white/70 focus:border-white focus:bg-black/40"
+                        : "bg-card border border-border text-foreground placeholder:text-muted-foreground focus:border-primary/60"
+                    }`}
+                  />
+                </form>
+                <Search
+                  className={`absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none ${
+                    overlay ? "text-white" : "text-muted-foreground"
+                  }`}
+                />
+
+                {isSearchFocused && searchQuery.trim().length > 0 && (
+                  <div
+                    id="header-search-results"
+                    role="listbox"
+                    className="absolute top-full mt-2 left-0 right-0 bg-popover text-popover-foreground border border-border rounded-2xl overflow-hidden shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200 z-50"
+                  >
+                    {searchResults.map((p, index) => (
+                      <button
+                        key={p.id}
+                        id={`header-search-option-${index}`}
+                        role="option"
+                        aria-selected={index === activeIndex}
+                        type="button"
+                        onPointerEnter={() => setActiveIndex(index)}
+                        onClick={() => openProduct(p)}
+                        className={`w-full flex items-center gap-3 p-3 transition-colors border-b border-border last:border-0 text-left ${
+                          index === activeIndex ? "bg-muted" : "hover:bg-muted/70"
+                        }`}
+                      >
+                        <NintendoCover
+                          product={p as Record<string, unknown>}
+                          usage="listing-card"
+                          ratio={1}
+                          className="w-10 h-10 rounded-lg bg-muted shrink-0"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <div className="text-foreground font-bold text-sm truncate" dir="ltr">
+                            {p.titleEn || p.english_name || p.title}
+                          </div>
+                          {/* The name they typed, when it is not the name shown above. */}
+                          {p.titleAr && p.titleAr !== (p.titleEn || p.title) && (
+                            <div className="text-muted-foreground text-[11px] truncate" dir="rtl">
+                              {p.titleAr}
+                            </div>
+                          )}
+                        </div>
+                      </button>
+                    ))}
+
+                    {searchResults.length === 0 ? (
+                      <div className="p-4 text-center text-xs font-bold text-muted-foreground">
+                        {t("لا توجد نتائج")}
+                      </div>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={showAllResults}
+                        className="w-full p-3 text-center text-xs font-bold text-foreground/80 hover:bg-muted transition-colors border-t border-border"
+                      >
+                        {t("عرض كل النتائج")}
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="flex-1" />
+            )}
+
+            {isHome && user?.isAdmin && (
+              <button
+                onPointerDown={() => {
+                  playSound("bumper_end", 0.6);
+                  navigate({ to: "/admin" });
+                }}
+                className={`w-10 h-10 rounded-full flex items-center justify-center shadow-sm transition-colors shrink-0 ${chip}`}
+                title={t("لوحة الإدارة")}
+                suppressHydrationWarning
+              >
+                <Shield className="w-5 h-5" />
+              </button>
+            )}
+
+            {showProfile && (
+              <FlowerMenu
+                className="z-[60] shrink-0"
+                menuItems={menuItems}
+                startAngle={90}
+                endAngle={180}
+                togglerSize={48}
+                itemSize={40}
+                petalGap={24}
+                backgroundColor="rgba(0, 0, 0, 0.55)"
+                iconColor="white"
+                onOpenChange={(isOpen) => {
+                  setIsMenuOpen(isOpen);
+                  if (isOpen) playSound("bumper_end", 0.6);
                 }}
               >
-                <input
-                  ref={searchInputRef}
-                  type="search"
-                  inputMode="search"
-                  enterKeyHint="search"
-                  autoComplete="off"
-                  role="combobox"
-                  aria-expanded={isSearchFocused && searchResults.length > 0}
-                  aria-controls={
-                    isSearchFocused && searchQuery.trim() ? "header-search-results" : undefined
-                  }
-                  aria-activedescendant={
-                    activeIndex >= 0 ? `header-search-option-${activeIndex}` : undefined
-                  }
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onFocus={() => {
-                    setIsSearchFocused(true);
-                    // Builds the index, once, the first time anyone means to search.
-                    setSearchArmed(true);
-                  }}
-                  /* The delay lets a click on a result land before the list unmounts. */
-                  onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
-                  onKeyDown={onSearchKeyDown}
-                  placeholder={t("بحث ذكي عن الألعاب...")}
-                  aria-label={t("بحث ذكي عن الألعاب...")}
-                  suppressHydrationWarning
-                  className="w-full h-10 rounded-full outline-none px-4 ps-10 text-sm transition-all bg-black/20 border border-white/20 text-white backdrop-blur-md placeholder-white/70 focus:border-white focus:bg-black/40 shadow-sm"
-                />
-              </form>
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white pointer-events-none" />
-
-              {isSearchFocused && searchQuery.trim().length > 0 && (
                 <div
-                  id="header-search-results"
-                  role="listbox"
-                  className="absolute top-full mt-2 left-0 right-0 bg-black/60 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200 z-50"
+                  className={`h-12 w-12 rounded-full overflow-hidden border-2 shrink-0 shadow-md relative group flex items-center justify-center ${
+                    overlay ? "border-white/25 bg-white/10" : "border-border bg-muted"
+                  }`}
                 >
-                  {searchResults.map((p, index) => (
-                    <button
-                      key={p.id}
-                      id={`header-search-option-${index}`}
-                      role="option"
-                      aria-selected={index === activeIndex}
-                      type="button"
-                      onPointerEnter={() => setActiveIndex(index)}
-                      onClick={() => openProduct(p)}
-                      className={`w-full flex items-center gap-3 p-3 transition-colors border-b border-white/5 last:border-0 text-left ${
-                        index === activeIndex ? "bg-white/15" : "hover:bg-white/10"
-                      }`}
-                    >
-                      <NintendoCover
-                        product={p as Record<string, unknown>}
-                        usage="listing-card"
-                        ratio={1}
-                        className="w-10 h-10 rounded-lg bg-white/10 shrink-0"
-                      />
-                      <div className="flex-1 min-w-0">
-                        <div className="text-white font-bold text-sm truncate" dir="ltr">
-                          {p.titleEn || p.english_name || p.title}
-                        </div>
-                        {/* The name they typed, when it is not the name shown above. */}
-                        {p.titleAr && p.titleAr !== (p.titleEn || p.title) && (
-                          <div className="text-white/60 text-[11px] truncate" dir="rtl">
-                            {p.titleAr}
-                          </div>
-                        )}
-                      </div>
-                    </button>
-                  ))}
-
-                  {searchResults.length === 0 ? (
-                    <div className="p-4 text-center text-xs font-bold text-white/70">
-                      {t("لا توجد نتائج")}
-                    </div>
+                  {user?.avatar ? (
+                    <img
+                      src={user.avatar}
+                      alt={user.name || "Profile"}
+                      className="w-full h-full object-cover transition-transform group-hover:scale-110"
+                    />
                   ) : (
-                    <button
-                      type="button"
-                      onClick={showAllResults}
-                      className="w-full p-3 text-center text-xs font-bold text-white/80 hover:bg-white/10 transition-colors border-t border-white/10"
-                    >
-                      {t("عرض كل النتائج")}
-                    </button>
+                    <User
+                      className={`w-6 h-6 ${overlay ? "text-white/50" : "text-muted-foreground"}`}
+                    />
                   )}
+
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="text-[10px] font-bold text-white uppercase">
+                      {hydrated ? lang : ""}
+                    </span>
+                  </div>
                 </div>
-              )}
-            </div>
-          ) : (
-            <div className="flex-1" />
-          )}
-
-          {isHome && user?.isAdmin && (
-            <button
-              onPointerDown={() => {
-                playSound("bumper_end", 0.6);
-                navigate({ to: "/admin" });
-              }}
-              className="w-10 h-10 rounded-full flex items-center justify-center bg-black/20 text-white backdrop-blur-md shadow-sm border border-white/20 hover:bg-black/30 transition-colors shrink-0"
-              title={t("لوحة الإدارة")}
-              suppressHydrationWarning
-            >
-              <Shield className="w-5 h-5" />
-            </button>
-          )}
-
-          {showProfile && (
-            <FlowerMenu
-              className="z-[60] shrink-0"
-              menuItems={menuItems}
-              startAngle={90}
-              endAngle={180}
-              togglerSize={48}
-              itemSize={40}
-              petalGap={24}
-              backgroundColor="rgba(0, 0, 0, 0.55)"
-              iconColor="white"
-              onOpenChange={(isOpen) => {
-                setIsMenuOpen(isOpen);
-                if (isOpen) playSound("bumper_end", 0.6);
-              }}
-            >
-              <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-white/25 shrink-0 bg-white/10 shadow-md relative group flex items-center justify-center">
-                {user?.avatar ? (
-                  <img
-                    src={user.avatar}
-                    alt={user.name || "Profile"}
-                    className="w-full h-full object-cover transition-transform group-hover:scale-110"
-                  />
-                ) : (
-                  <User className="w-6 h-6 text-white/50" />
-                )}
-
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="text-[10px] font-bold text-white uppercase">
-                    {hydrated ? lang : ""}
-                  </span>
-                </div>
-              </div>
-            </FlowerMenu>
-          )}
+              </FlowerMenu>
+            )}
+          </div>
         </div>
       </header>
 

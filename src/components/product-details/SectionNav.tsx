@@ -27,7 +27,7 @@ export function SectionNav({ sections }: { sections: SectionDef[] }) {
   return (
     <nav
       aria-label={t("product.sections.overview")}
-      className="sticky top-14 z-20 -mx-4 mb-2 border-b border-border/60 bg-[var(--page,var(--background))]/95 px-4 py-2 backdrop-blur sm:top-16"
+      className="sticky top-[var(--header-h)] z-20 -mx-4 mb-2 border-b border-border/60 bg-[var(--page,var(--background))]/95 px-4 py-2 backdrop-blur"
     >
       <div className="w-full min-w-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <ul className="flex w-max gap-1.5">

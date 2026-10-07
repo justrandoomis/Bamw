@@ -189,7 +189,7 @@ export default function BinanceTopUpSection({ onBalanceUpdated }: BinanceTopUpSe
 
   if (isLoading) {
     return (
-      <div className="p-8 text-center bg-card rounded-3xl border border-border">
+      <div className="py-10 text-center">
         <RefreshCw className="w-6 h-6 animate-spin mx-auto text-amber-500 mb-2" />
         <p className="text-xs text-muted-foreground font-medium">جاري فحص خدمة التعبئة...</p>
       </div>
@@ -197,7 +197,7 @@ export default function BinanceTopUpSection({ onBalanceUpdated }: BinanceTopUpSe
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 pt-1">
       {/* Kill Switch Banner */}
       {isServiceDisabled && (
         <div className="bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800/60 p-4 rounded-2xl flex items-center gap-3 text-amber-900 dark:text-amber-200">
@@ -208,25 +208,11 @@ export default function BinanceTopUpSection({ onBalanceUpdated }: BinanceTopUpSe
         </div>
       )}
 
-      {/* Featured Header Badge */}
-      <div className="bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent p-4 rounded-2xl border border-amber-500/20 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-amber-400 text-black flex items-center justify-center font-black shadow-sm shrink-0">
-            <Zap className="w-5 h-5 fill-black" />
-          </div>
-          <div>
-            <h3 className="font-black text-sm text-foreground flex items-center gap-1.5">
-              تعبئة فورية وتلقائية عبر Binance
-              <span className="bg-amber-400/20 text-amber-800 dark:text-amber-300 text-[10px] px-2 py-0.5 rounded-full font-black">
-                فوري 24/7
-              </span>
-            </h3>
-            <p className="text-[11px] text-muted-foreground font-medium">
-              تحقق آلي مباشر من المعاملة بدون انتظار الموافقة اليدوية
-            </p>
-          </div>
-        </div>
-      </div>
+      {/* What this method is, in one line — the sheet's title already names it. */}
+      <p className="flex items-start gap-2 text-sm text-muted-foreground">
+        <Zap className="mt-0.5 size-4 shrink-0 fill-amber-400 text-amber-500" />
+        <span>حوّل USDT عبر Binance Pay ويُضاف الرصيد تلقائيًا فور التحقق، بلا انتظار مراجعة.</span>
+      </p>
 
       {/* Success Notification Card */}
       {successResult && (
@@ -267,7 +253,7 @@ export default function BinanceTopUpSection({ onBalanceUpdated }: BinanceTopUpSe
 
       {/* State A: Active Pending Intent */}
       {activeIntent && activeIntent.status === "pending" ? (
-        <div className="bg-card rounded-3xl p-6 border border-border shadow-sm space-y-6">
+        <div className="space-y-5">
           <div className="flex items-center justify-between border-b border-border pb-4">
             <div>
               <span className="text-[11px] font-bold text-muted-foreground uppercase">
@@ -414,7 +400,7 @@ export default function BinanceTopUpSection({ onBalanceUpdated }: BinanceTopUpSe
         </div>
       ) : (
         /* State B: Create Intent Form */
-        <div className="bg-card rounded-3xl p-6 border border-border shadow-sm space-y-6">
+        <div className="space-y-5">
           <div className="space-y-2">
             <label className="text-xs font-bold text-foreground">
               حدد المبلغ المراد شحنه (USDT)

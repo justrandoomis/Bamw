@@ -41,7 +41,7 @@ function SupportComponent() {
     <div className="min-h-screen bg-background pb-24" dir={dir}>
       <PageHeader />
       {/* Hero Section */}
-      <div className="relative pt-32 pb-20 px-4">
+      <div className="relative pt-12 pb-20 px-4">
         <div className="absolute top-0 left-0 w-full h-full bg-primary/5 -skew-y-3 origin-top-left -z-10" />
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-6">

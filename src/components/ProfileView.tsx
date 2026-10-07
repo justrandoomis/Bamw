@@ -104,7 +104,7 @@ export default function ProfileView() {
 
   if (isLoading) {
     return (
-      <div className="p-4 sm:p-6 pb-24 h-full flex flex-col items-center justify-center max-w-3xl mx-auto pt-24">
+      <div className="p-4 sm:p-6 pb-24 h-full flex flex-col items-center justify-center max-w-3xl mx-auto pt-6">
         <div className="w-24 h-24 rounded-full bg-muted animate-pulse mb-4" />
         <div className="h-6 w-48 bg-muted animate-pulse rounded mb-2" />
         <div className="h-4 w-64 bg-muted animate-pulse rounded" />
@@ -135,7 +135,7 @@ export default function ProfileView() {
   };
 
   return (
-    <div className="p-4 sm:p-6 pb-24 h-full flex flex-col max-w-3xl mx-auto animate-in fade-in duration-300 pt-24">
+    <div className="p-4 sm:p-6 pb-24 h-full flex flex-col max-w-3xl mx-auto animate-in fade-in duration-300 pt-6">
       <div className="flex flex-col items-center mb-8">
         <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-lg mb-4 relative group cursor-pointer">
           {user?.avatar ? (

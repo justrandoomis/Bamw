@@ -613,7 +613,7 @@ export function HardwareProductDetails({
 
   return (
     <div
-      className="mx-auto max-w-7xl px-4 pt-20 pb-20 sm:pt-24 sm:px-6 lg:px-8 [overflow-wrap:anywhere]"
+      className="mx-auto max-w-7xl px-4 pt-4 pb-20 sm:pt-6 sm:px-6 lg:px-8 [overflow-wrap:anywhere]"
       dir={dir}
     >
       <div className="grid grid-cols-1 gap-6 py-6 lg:grid-cols-2 lg:gap-10">
@@ -703,7 +703,7 @@ export function HardwareProductDetails({
         </div>
       </div>
 
-      <nav className="sticky top-16 z-20 my-4 overflow-x-auto rounded-2xl border border-border bg-background/95 p-1.5 shadow-sm backdrop-blur no-scrollbar">
+      <nav className="sticky top-[calc(var(--header-h)+0.5rem)] z-20 my-4 overflow-x-auto rounded-2xl border border-border bg-background/95 p-1.5 shadow-sm backdrop-blur no-scrollbar">
         <div className="flex min-w-max gap-1">
           {nav
             .filter(([, , visible]) => visible)
@@ -1091,7 +1091,7 @@ export function HardwareProductDetails({
         </main>
 
         <aside className="hidden lg:block">
-          <div className="sticky top-16 rounded-2xl border border-border bg-card p-5 shadow-sm">
+          <div className="sticky top-[calc(var(--header-h)+0.5rem)] rounded-2xl border border-border bg-card p-5 shadow-sm">
             <h2 className="flex items-center gap-2 font-black">
               <ShieldCheck className="h-5 w-5 text-primary" />
               Quick Specifications

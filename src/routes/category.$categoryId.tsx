@@ -420,7 +420,7 @@ function CategoryPage() {
       <div className="min-h-screen bg-[var(--page)] pb-24" dir={direction}>
         {/* Header Section / Banner Slideshow */}
         <div
-          className={`relative pt-20 pb-10 px-6 overflow-hidden min-h-[260px] sm:min-h-[300px] flex items-center justify-center ${categoryInfo.bgColor}`}
+          className={`relative pt-10 pb-10 px-6 overflow-hidden min-h-[260px] sm:min-h-[300px] flex items-center justify-center ${categoryInfo.bgColor}`}
         >
           {/* Background Game Slideshow */}
           <div className="absolute inset-0 z-0 select-none overflow-hidden">
@@ -433,7 +433,7 @@ function CategoryPage() {
         </div>
 
         {/* Sticky Toolbar Section on Mobile Only */}
-        <div className="md:hidden sticky top-0 z-40 bg-[var(--page)]/95 backdrop-blur-xl border-b border-border shadow-sm transition-all">
+        <div className="md:hidden sticky top-[var(--header-h)] z-40 bg-[var(--page)]/95 backdrop-blur-xl border-b border-border shadow-sm transition-all">
           <div className="max-w-7xl mx-auto px-4 py-2.5 flex flex-col gap-2">
             {/* Top Toolbar Row: Sort, Period, Platform, and Filter Count */}
             <div className="flex items-center justify-between gap-3">

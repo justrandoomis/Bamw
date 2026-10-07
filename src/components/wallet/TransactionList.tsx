@@ -1,23 +1,21 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
-  ArrowDownLeft,
-  ArrowUpRight,
-  Copy,
+  ArrowDownToLine,
   Check,
-  Hash,
-  Receipt,
+  ChevronDown,
   Clock,
-  CheckCircle2,
-  XCircle,
+  Copy,
   Image as ImageIcon,
-  CreditCard,
-  Zap,
-  Gift,
-  Coins,
+  Receipt,
+  RotateCcw,
+  ShoppingBag,
+  XCircle,
 } from "lucide-react";
-import { tr } from "@/i18n";
-import { useCurrency } from "@/context/CurrencyContext";
 import { toast } from "sonner";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { useCurrency } from "@/context/CurrencyContext";
+import { methodInfo } from "@/components/wallet/methods";
+import { cn } from "@/lib/utils";
 
 export interface Transaction {
   id: string;
@@ -49,449 +47,311 @@ interface TransactionListProps {
   transactions: Transaction[];
   rechargeRequests?: RechargeRequest[];
   isLoading?: boolean;
+  /** Controlled filter, so the balance card can open «قيد المراجعة» directly. */
+  filter?: Filter;
+  onFilterChange?: (filter: Filter) => void;
 }
 
-const METHOD_DETAILS: Record<string, { label: string; icon: any }> = {
-  zain_cash: { label: "زين كاش", icon: CreditCard },
-  rafidain: { label: "ماستركارد الرافدين", icon: CreditCard },
-  crypto: { label: "عملات رقمية", icon: Coins },
-  eshop_card: { label: "Nintendo Gift Card", icon: Gift },
-  banan_code: { label: "كود بنانتو", icon: Gift },
-  binance: { label: "Binance Pay", icon: Zap },
-};
+export type Filter = "all" | "pending" | "deposit" | "purchase";
 
-function formatDate(dateStr?: string | number) {
-  if (!dateStr) return "";
-  try {
-    const d =
-      typeof dateStr === "number" ? new Date(dateStr) : new Date(String(dateStr).replace(" ", "T"));
-    if (isNaN(d.getTime())) {
-      const num = Number(dateStr);
-      if (!isNaN(num) && num > 0) {
-        const d2 = new Date(num > 1e11 ? num : num * 1000);
-        if (!isNaN(d2.getTime())) {
-          return d2.toLocaleDateString("ar-IQ", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-          });
-        }
-      }
-      return "";
-    }
-    return d.toLocaleDateString("ar-IQ", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  } catch {
-    return "";
-  }
+const FILTERS: { key: Filter; label: string }[] = [
+  { key: "all", label: "الكل" },
+  { key: "pending", label: "قيد المراجعة" },
+  { key: "deposit", label: "إيداع" },
+  { key: "purchase", label: "شراء" },
+];
+
+/** One line of the history: a ledger movement, or a top-up still with a person. */
+interface Item {
+  id: string;
+  at: number;
+  title: string;
+  method?: string;
+  amount: string;
+  /** Money in (true), out (false). */
+  incoming: boolean;
+  status?: "pending" | "rejected";
+  icon: typeof Clock;
+  proofUrl?: string;
+  notes?: string;
+  orderId?: string;
 }
 
+function toMillis(value?: string | number): number {
+  if (value == null || value === "") return 0;
+  if (typeof value === "number") return value > 1e11 ? value : value * 1000;
+  const parsed = new Date(String(value).replace(" ", "T")).getTime();
+  if (!Number.isNaN(parsed)) return parsed;
+  const num = Number(value);
+  return Number.isFinite(num) && num > 0 ? (num > 1e11 ? num : num * 1000) : 0;
+}
+
+function formatDate(ms: number) {
+  if (!ms) return "";
+  return new Date(ms).toLocaleDateString("ar-IQ", {
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+/**
+ * The wallet's history as one list, newest first: top-ups still being checked
+ * or turned down, and every movement of the balance. A row says what happened,
+ * when and for how much; tapping it shows the rest — the reference to quote
+ * to support, the proof sent, the reason for a refusal.
+ */
 export function TransactionList({
   transactions = [],
   rechargeRequests = [],
+  filter: controlledFilter,
+  onFilterChange,
 }: TransactionListProps) {
-  const [filter, setFilter] = useState<"all" | "pending" | "deposit" | "purchase">("all");
+  const [ownFilter, setOwnFilter] = useState<Filter>("all");
+  const filter = controlledFilter ?? ownFilter;
+  const setFilter = onFilterChange ?? setOwnFilter;
+  const [openId, setOpenId] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [selectedProof, setSelectedProof] = useState<string | null>(null);
   const { formatIQDPrice } = useCurrency();
 
-  const handleCopy = (id: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    navigator.clipboard.writeText(id);
-    setCopiedId(id);
-    toast.success("تم نسخ رقم الحركة");
-    setTimeout(() => setCopiedId(null), 2000);
+  const pendingCount = rechargeRequests.filter((r) => r.status === "pending").length;
+
+  const items = useMemo(() => {
+    const requestItems: Item[] = rechargeRequests
+      .filter((req) => {
+        if (req.status === "approved") return false; // credited: it is in the ledger now
+        if (filter === "purchase") return false;
+        if (filter === "pending" || filter === "deposit") return req.status === "pending";
+        return true;
+      })
+      .map((req) => {
+        const info = methodInfo(req.method);
+        const dollars = info?.dollars ?? false;
+        return {
+          id: req.id,
+          at: toMillis(req.createdAt),
+          title: req.status === "pending" ? "طلب شحن قيد المراجعة" : "طلب شحن مرفوض",
+          method: info?.label ?? req.method,
+          amount: `+${dollars ? `$${Number(req.amount).toFixed(2)}` : formatIQDPrice(Number(req.amount))}`,
+          incoming: true,
+          status: req.status === "pending" ? "pending" : "rejected",
+          icon: req.status === "pending" ? Clock : XCircle,
+          proofUrl: req.proofUrl,
+          notes: req.adminNotes,
+        };
+      });
+
+    const ledgerItems: Item[] =
+      filter === "pending"
+        ? []
+        : transactions
+            .filter((tx) => {
+              const incoming = tx.kind === "deposit" || tx.kind === "refund" || tx.amount > 0;
+              if (filter === "deposit") return incoming;
+              if (filter === "purchase") return !incoming;
+              return true;
+            })
+            .map((tx) => {
+              const incoming = tx.kind === "deposit" || tx.kind === "refund" || tx.amount > 0;
+              return {
+                id: tx.id,
+                at: toMillis(tx.createdAt),
+                title:
+                  tx.description ||
+                  (tx.kind === "refund" ? "استرجاع" : incoming ? "إيداع رصيد" : "شراء"),
+                amount: `${incoming ? "+" : "−"}${formatIQDPrice(Math.abs(tx.amount))}`,
+                incoming,
+                icon: tx.kind === "refund" ? RotateCcw : incoming ? ArrowDownToLine : ShoppingBag,
+                orderId: tx.orderId,
+              };
+            });
+
+    return [...requestItems, ...ledgerItems].sort((a, b) => b.at - a.at);
+  }, [transactions, rechargeRequests, filter, formatIQDPrice]);
+
+  const handleCopy = async (id: string) => {
+    try {
+      await navigator.clipboard.writeText(id);
+      setCopiedId(id);
+      toast.success("تم نسخ رقم العملية");
+      setTimeout(() => setCopiedId(null), 2000);
+    } catch {
+      toast.error("تعذّر النسخ");
+    }
   };
 
-  const pendingRequests = rechargeRequests.filter((r) => r.status === "pending");
-  const nonApprovedRequests = rechargeRequests.filter(
-    (r) => r.status === "pending" || r.status === "rejected",
-  );
-
-  const depositCount = transactions.filter(
-    (tx) => tx.kind === "deposit" || tx.kind === "refund" || tx.amount > 0,
-  ).length;
-
-  const purchaseCount = transactions.filter(
-    (tx) => tx.kind === "purchase" || tx.kind === "withdrawal" || tx.amount < 0,
-  ).length;
-
-  const pendingCount = pendingRequests.length;
-  const totalItemsCount = transactions.length + nonApprovedRequests.length;
-
-  const filteredTransactions = transactions.filter((tx) => {
-    if (filter === "all") return true;
-    if (filter === "deposit") {
-      return tx.kind === "deposit" || tx.kind === "refund" || tx.amount > 0;
-    }
-    if (filter === "purchase") {
-      return tx.kind === "purchase" || tx.kind === "withdrawal" || tx.amount < 0;
-    }
-    return false;
-  });
-
-  const displayRequests = rechargeRequests.filter((req) => {
-    if (filter === "pending") return true;
-    if (filter === "all") return req.status === "pending" || req.status === "rejected";
-    if (filter === "deposit") return req.status === "pending";
-    return false;
-  });
-
-  const totalVisibleCount =
-    filter === "pending"
-      ? displayRequests.length
-      : filteredTransactions.length + displayRequests.length;
-
   return (
-    <div className="space-y-4">
-      {/* Proof Image Preview Modal */}
-      {selectedProof && (
-        <div
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
-          onClick={() => setSelectedProof(null)}
-        >
-          <div
-            className="relative max-w-lg w-full bg-background rounded-2xl p-2 overflow-hidden shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={selectedProof}
-              alt="Payment Proof"
-              className="w-full h-auto max-h-[80vh] object-contain rounded-xl"
-            />
-            <button
-              onClick={() => setSelectedProof(null)}
-              className="mt-3 w-full py-2 bg-zinc-900 text-white font-bold rounded-xl"
-            >
-              إغلاق
-            </button>
-          </div>
-        </div>
-      )}
+    <section className="space-y-3" aria-labelledby="wallet-history-title">
+      <h2 id="wallet-history-title" className="px-1 text-base font-black text-foreground">
+        سجل المحفظة
+      </h2>
 
-      <div className="flex items-center justify-between">
-        <h2 className="text-lg font-black">{tr("آخر العمليات")}</h2>
-        <span className="text-xs font-bold text-muted-foreground">
-          {totalVisibleCount} {totalVisibleCount === 1 ? "عملية" : "عمليات"}
-        </span>
+      {/* One row of choices; the active one is filled. */}
+      <div
+        role="tablist"
+        aria-label="تصفية السجل"
+        className="flex gap-1 rounded-2xl bg-muted/70 p-1"
+      >
+        {FILTERS.map((f) => (
+          <button
+            key={f.key}
+            type="button"
+            role="tab"
+            aria-selected={filter === f.key}
+            onClick={() => setFilter(f.key)}
+            className={cn(
+              "flex h-9 flex-auto cursor-pointer items-center justify-center gap-1 whitespace-nowrap rounded-xl px-2.5 text-xs font-bold transition-colors",
+              filter === f.key
+                ? "bg-card text-foreground shadow-sm"
+                : "text-muted-foreground hover:text-foreground",
+            )}
+          >
+            <span>{f.label}</span>
+            {f.key === "pending" && pendingCount > 0 && (
+              <span className="grid min-w-5 place-items-center rounded-full bg-amber-500 px-1 text-[10px] font-black leading-5 text-white">
+                {pendingCount}
+              </span>
+            )}
+          </button>
+        ))}
       </div>
 
-      {/* Filter Tabs */}
-      <div className="flex gap-2 pb-1 overflow-x-auto no-scrollbar">
-        <button
-          onClick={() => setFilter("all")}
-          className={`px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
-            filter === "all"
-              ? "bg-zinc-900 text-white shadow-sm"
-              : "bg-muted/70 text-muted-foreground hover:bg-muted"
-          }`}
-        >
-          <span>{tr("الكل")}</span>
-          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-white/20 font-mono">
-            {totalItemsCount}
-          </span>
-        </button>
-
-        {/* Dedicated Pending Review Filter */}
-        <button
-          onClick={() => setFilter("pending")}
-          className={`px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
-            filter === "pending"
-              ? "bg-amber-500 text-black font-black shadow-sm"
-              : pendingCount > 0
-                ? "bg-amber-500/20 text-amber-700 dark:text-amber-400 border border-amber-500/30 hover:bg-amber-500/30 font-bold"
-                : "bg-muted/70 text-muted-foreground hover:bg-muted"
-          }`}
-        >
-          <Clock className="w-3.5 h-3.5" />
-          <span>{tr("قيد المراجعة")}</span>
-          <span
-            className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono ${
-              filter === "pending"
-                ? "bg-black/20 text-black font-black"
-                : pendingCount > 0
-                  ? "bg-amber-500 text-white font-bold"
-                  : "bg-muted-foreground/20"
-            }`}
-          >
-            {pendingCount}
-          </span>
-        </button>
-
-        <button
-          onClick={() => setFilter("deposit")}
-          className={`px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
-            filter === "deposit"
-              ? "bg-emerald-700 text-white shadow-sm"
-              : "bg-muted/70 text-muted-foreground hover:bg-muted"
-          }`}
-        >
-          <span>{tr("إيداع")}</span>
-          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-white/20 font-mono">
-            {depositCount}
-          </span>
-        </button>
-
-        <button
-          onClick={() => setFilter("purchase")}
-          className={`px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
-            filter === "purchase"
-              ? "bg-zinc-900 text-white shadow-sm"
-              : "bg-muted/70 text-muted-foreground hover:bg-muted"
-          }`}
-        >
-          <span>{tr("شراء")}</span>
-          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-white/20 font-mono">
-            {purchaseCount}
-          </span>
-        </button>
-      </div>
-
-      {totalVisibleCount === 0 ? (
-        <div className="flex flex-col items-center justify-center py-12 px-4 text-center rounded-2xl bg-muted/20 border border-dashed border-border/60">
-          <Receipt className="w-10 h-10 text-muted-foreground/40 mb-2" />
-          <p className="font-bold text-sm text-muted-foreground">
+      {items.length === 0 ? (
+        <div className="flex flex-col items-center gap-2 rounded-3xl border border-dashed border-border px-6 py-12 text-center">
+          <Receipt className="size-9 text-muted-foreground/50" />
+          <p className="text-sm font-bold text-muted-foreground">
             {filter === "pending"
-              ? "لا توجد طلبات شحن قيد المراجعة حالياً"
+              ? "لا توجد طلبات شحن قيد المراجعة"
               : filter === "deposit"
-                ? "لا توجد عمليات إيداع حتى الآن"
+                ? "لا توجد عمليات إيداع بعد"
                 : filter === "purchase"
-                  ? "لا توجد عمليات شراء حتى الآن"
-                  : "لا توجد أي حركات في المحفظة بعد"}
+                  ? "لا توجد مشتريات بعد"
+                  : "لا توجد حركات في محفظتك بعد"}
           </p>
         </div>
       ) : (
-        <div className="space-y-3">
-          {/* Render Recharge Requests (Pending / Under Review) */}
-          {displayRequests.map((req) => {
-            const methodInfo = METHOD_DETAILS[req.method] || {
-              label: req.method,
-              icon: CreditCard,
-            };
-            const formattedDate = formatDate(req.createdAt);
-            const isPending = req.status === "pending";
-            const isRejected = req.status === "rejected";
-            const isApproved = req.status === "approved";
-
+        <ul className="overflow-hidden rounded-3xl border border-border bg-card">
+          {items.map((item, index) => {
+            const open = openId === item.id;
+            const Icon = item.icon;
             return (
-              <div
-                key={req.id}
-                className={`flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl border transition-all shadow-sm ${
-                  isPending
-                    ? "bg-amber-500/5 border-amber-500/30 hover:border-amber-500/50"
-                    : isRejected
-                      ? "bg-rose-500/5 border-rose-500/30 hover:border-rose-500/50"
-                      : "bg-card border-border/70"
-                }`}
+              <li
+                key={`${item.status ? "req" : "tx"}-${item.id}`}
+                className={cn(index > 0 && "border-t border-border")}
               >
-                <div className="flex items-start gap-3 min-w-0">
-                  <div
-                    className={`w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center mt-0.5 ${
-                      isPending
+                <button
+                  type="button"
+                  onClick={() => setOpenId(open ? null : item.id)}
+                  aria-expanded={open}
+                  className="flex w-full cursor-pointer items-center gap-3 px-4 py-3.5 text-start transition-colors hover:bg-muted/40"
+                >
+                  <span
+                    className={cn(
+                      "grid size-10 shrink-0 place-items-center rounded-2xl",
+                      item.status === "pending"
                         ? "bg-amber-500/15 text-amber-600 dark:text-amber-400"
-                        : isRejected
+                        : item.status === "rejected"
                           ? "bg-rose-500/15 text-rose-600 dark:text-rose-400"
-                          : "bg-emerald-500/15 text-emerald-600"
-                    }`}
-                  >
-                    {isPending ? (
-                      <Clock className="w-5 h-5 animate-pulse" />
-                    ) : isRejected ? (
-                      <XCircle className="w-5 h-5" />
-                    ) : (
-                      <CheckCircle2 className="w-5 h-5" />
+                          : item.incoming
+                            ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+                            : "bg-muted text-muted-foreground",
                     )}
-                  </div>
-
-                  <div className="min-w-0 flex-1 space-y-1.5">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <p className="font-black text-sm text-foreground">
-                        {tr("طلب شحن")} - {methodInfo.label}
-                      </p>
-
-                      {/* Status Badges */}
-                      {isPending && (
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30 flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {tr("قيد المراجعة")}
-                        </span>
-                      )}
-
-                      {isRejected && (
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/30 flex items-center gap-1">
-                          <XCircle className="w-3 h-3" />
-                          {tr("مرفوض")}
-                        </span>
-                      )}
-
-                      {isApproved && (
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
-                          <CheckCircle2 className="w-3 h-3" />
-                          {tr("مكتمل")}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Reference and details */}
-                    <div className="flex items-center gap-2 flex-wrap text-[11px] text-muted-foreground font-medium">
-                      <div className="flex items-center gap-1 bg-muted/60 px-2 py-0.5 rounded-md font-mono text-[10px]">
-                        <Hash className="w-3 h-3 text-muted-foreground" />
-                        <span className="font-semibold select-all text-foreground/80">
-                          {req.id}
-                        </span>
-                        <button
-                          onClick={(e) => handleCopy(req.id, e)}
-                          className="p-0.5 hover:text-foreground text-muted-foreground transition-colors ml-0.5"
-                          title="نسخ رقم الطلب"
-                        >
-                          {copiedId === req.id ? (
-                            <Check className="w-3 h-3 text-emerald-600" />
-                          ) : (
-                            <Copy className="w-3 h-3" />
-                          )}
-                        </button>
-                      </div>
-
-                      {formattedDate && <span>{formattedDate}</span>}
-
-                      {req.proofUrl && (
-                        <button
-                          onClick={() => setSelectedProof(req.proofUrl || null)}
-                          className="flex items-center gap-1 text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md hover:bg-blue-500/20 transition-colors"
-                        >
-                          <ImageIcon className="w-3 h-3" />
-                          <span>{tr("صورة الإثبات")}</span>
-                        </button>
-                      )}
-                    </div>
-
-                    {/* Admin rejection notes if any */}
-                    {isRejected && req.adminNotes && (
-                      <div className="text-[11px] font-medium text-rose-600 dark:text-rose-400 bg-rose-500/10 border border-rose-500/20 p-2 rounded-xl mt-1">
-                        <span className="font-bold">ملاحظة الإدارة: </span>
-                        {req.adminNotes}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="text-left sm:text-right flex flex-row sm:flex-col items-center sm:items-end justify-between border-t sm:border-t-0 pt-2 sm:pt-0 border-border/40">
-                  <p
-                    className={`font-black text-base ${
-                      isPending
-                        ? "text-amber-600 dark:text-amber-400"
-                        : isRejected
-                          ? "text-rose-600 dark:text-rose-400"
-                          : "text-emerald-600 dark:text-emerald-400"
-                    }`}
-                    dir="ltr"
                   >
-                    +
-                    {req.method === "eshop_card" || req.method === "crypto"
-                      ? `$${Number(req.amount).toFixed(2)}`
-                      : formatIQDPrice(Number(req.amount))}
-                  </p>
-                  <span className="text-[10px] text-muted-foreground font-bold">
-                    {methodInfo.label}
+                    <Icon className="size-5" />
                   </span>
-                </div>
-              </div>
-            );
-          })}
-
-          {/* Render Ledger Transactions */}
-          {filteredTransactions.map((tx) => {
-            const isDeposit = tx.kind === "deposit" || tx.kind === "refund" || tx.amount > 0;
-            const formattedDate = formatDate(tx.createdAt);
-
-            return (
-              <div
-                key={tx.id}
-                className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-card border border-border/70 hover:border-border transition-colors shadow-sm"
-              >
-                <div className="flex items-start gap-3 min-w-0">
-                  <div
-                    className={`w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center mt-0.5 ${
-                      isDeposit
-                        ? "bg-emerald-500/10 text-emerald-600"
-                        : "bg-rose-500/10 text-rose-600"
-                    }`}
-                  >
-                    {isDeposit ? (
-                      <ArrowDownLeft className="w-5 h-5" />
-                    ) : (
-                      <ArrowUpRight className="w-5 h-5" />
-                    )}
-                  </div>
-
-                  <div className="min-w-0 flex-1 space-y-1">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <p className="font-black text-sm text-foreground truncate">
-                        {tx.description || (isDeposit ? "إيداع رصيد" : "شراء")}
-                      </p>
-                      <span
-                        className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                          isDeposit
-                            ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20"
-                            : "bg-rose-500/10 text-rose-700 dark:text-rose-400 border border-rose-500/20"
-                        }`}
-                      >
-                        {isDeposit ? "إيداع" : "شراء"}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-2 flex-wrap text-[11px] text-muted-foreground font-medium">
-                      <div className="flex items-center gap-1 bg-muted/60 px-2 py-0.5 rounded-md font-mono text-[10px]">
-                        <Hash className="w-3 h-3 text-muted-foreground" />
-                        <span className="font-semibold select-all text-foreground/80">{tx.id}</span>
-                        <button
-                          onClick={(e) => handleCopy(tx.id, e)}
-                          className="p-0.5 hover:text-foreground text-muted-foreground transition-colors ml-0.5"
-                          title="نسخ رقم الحركة"
-                        >
-                          {copiedId === tx.id ? (
-                            <Check className="w-3 h-3 text-emerald-600" />
-                          ) : (
-                            <Copy className="w-3 h-3" />
-                          )}
-                        </button>
-                      </div>
-
-                      {formattedDate && <span>{formattedDate}</span>}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="text-left sm:text-right flex flex-row sm:flex-col items-center sm:items-end justify-between border-t sm:border-t-0 pt-2 sm:pt-0 border-border/40">
-                  <p
-                    className={`font-black text-base ${
-                      isDeposit
-                        ? "text-emerald-600 dark:text-emerald-400"
-                        : "text-rose-600 dark:text-rose-400"
-                    }`}
-                    dir="ltr"
-                  >
-                    {isDeposit ? "+" : "-"}
-                    {formatIQDPrice(Math.abs(tx.amount))}
-                  </p>
-                  {tx.orderId && (
-                    <span className="text-[10px] text-muted-foreground font-mono">
-                      طلب #{tx.orderId.slice(-6)}
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm font-bold text-foreground">
+                      {item.title}
                     </span>
-                  )}
-                </div>
-              </div>
+                    <span className="mt-0.5 block truncate text-xs text-muted-foreground">
+                      {[formatDate(item.at), item.method].filter(Boolean).join(" · ")}
+                    </span>
+                  </span>
+                  <span className="flex shrink-0 flex-col items-end gap-1">
+                    <span
+                      dir="ltr"
+                      className={cn(
+                        "text-sm font-black tabular-nums",
+                        item.status === "rejected"
+                          ? "text-muted-foreground line-through"
+                          : item.status === "pending"
+                            ? "text-amber-600 dark:text-amber-400"
+                            : item.incoming
+                              ? "text-emerald-600 dark:text-emerald-400"
+                              : "text-foreground",
+                      )}
+                    >
+                      {item.amount}
+                    </span>
+                    <ChevronDown
+                      className={cn(
+                        "size-3.5 text-muted-foreground transition-transform",
+                        open && "rotate-180",
+                      )}
+                    />
+                  </span>
+                </button>
+
+                {open && (
+                  <div className="space-y-2.5 px-4 pb-4 ps-[4.25rem] text-xs">
+                    {item.status === "rejected" && item.notes && (
+                      <p className="rounded-xl bg-rose-500/10 p-2.5 font-medium leading-relaxed text-rose-700 dark:text-rose-300">
+                        <span className="font-bold">سبب الرفض: </span>
+                        {item.notes}
+                      </p>
+                    )}
+                    <div className="flex flex-wrap items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => void handleCopy(item.id)}
+                        className="flex cursor-pointer items-center gap-1.5 rounded-lg bg-muted px-2.5 py-1.5 font-mono text-[11px] text-foreground/80 hover:text-foreground"
+                        title="نسخ رقم العملية"
+                      >
+                        {copiedId === item.id ? (
+                          <Check className="size-3.5 text-emerald-600 dark:text-emerald-400" />
+                        ) : (
+                          <Copy className="size-3.5" />
+                        )}
+                        <span dir="ltr">{item.id}</span>
+                      </button>
+                      {item.proofUrl && (
+                        <button
+                          type="button"
+                          onClick={() => setSelectedProof(item.proofUrl ?? null)}
+                          className="flex cursor-pointer items-center gap-1.5 rounded-lg bg-muted px-2.5 py-1.5 font-bold text-foreground hover:bg-muted/70"
+                        >
+                          <ImageIcon className="size-3.5" />
+                          صورة الإثبات
+                        </button>
+                      )}
+                      {item.orderId && (
+                        <span className="rounded-lg bg-muted px-2.5 py-1.5 font-mono text-[11px] text-muted-foreground">
+                          طلب #{item.orderId.slice(-6)}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </li>
             );
           })}
-        </div>
+        </ul>
       )}
-    </div>
+
+      <Dialog open={Boolean(selectedProof)} onOpenChange={(o) => !o && setSelectedProof(null)}>
+        <DialogContent className="max-w-lg rounded-3xl p-3" aria-describedby={undefined}>
+          <DialogTitle className="sr-only">صورة الإثبات</DialogTitle>
+          {selectedProof && (
+            <img
+              src={selectedProof}
+              alt="صورة الإثبات"
+              className="max-h-[80vh] w-full rounded-2xl object-contain"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
+    </section>
   );
 }

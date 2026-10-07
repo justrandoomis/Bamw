@@ -61,7 +61,7 @@ function OrdersPage() {
 
   return (
     <AppShell currentView="orders">
-      <div className="mx-auto max-w-2xl px-4 pt-20 pb-10">
+      <div className="mx-auto max-w-2xl px-4 pt-6 pb-10">
         <div className="mb-8">
           <h1 className="text-3xl font-black text-foreground mb-2">{tr("طلباتي")}</h1>
           <p className="text-sm text-muted-foreground font-bold">

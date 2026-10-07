@@ -843,7 +843,7 @@ function CartPage() {
   return (
     <AppShell currentView="cart">
       {/* Top Header */}
-      <header className="shrink-0 bg-[var(--card)]/90 backdrop-blur-md sticky top-0 px-4 py-3.5 flex items-center justify-between z-20 border-b border-border">
+      <header className="shrink-0 bg-[var(--card)]/90 backdrop-blur-md sticky top-[var(--header-h)] px-4 py-3.5 flex items-center justify-between z-20 border-b border-border">
         <div className="flex items-center gap-3">
           <button
             id="cart-header-back-btn"

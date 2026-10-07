@@ -2,7 +2,7 @@ import { Reveal } from "@/components/motion/reveal";
 
 export function Hero({ problemCount }: { problemCount: number }) {
   return (
-    <section className="relative pt-14 pb-8 text-center sm:pt-20 sm:pb-10">
+    <section className="relative pt-6 pb-8 text-center sm:pt-10 sm:pb-10">
       <Reveal className="mx-auto max-w-3xl">
         <span className="inline-flex items-center gap-2 rounded-pill border border-primary/50 bg-primary/20 px-4 py-1.5 text-sm font-bold text-muted-foreground">
           <span aria-hidden>🍌</span>

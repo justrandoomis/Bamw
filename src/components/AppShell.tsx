@@ -98,7 +98,16 @@ export default function AppShell({
           products={store?.products ?? []}
         />
       )}
-      <main className={`relative flex-1 ${!hideNav && !isTelegramMiniApp ? "pb-[72px]" : ""}`}>
+      {/*
+        The header is fixed, so it takes no room: the page starts exactly its
+        height below the top, or the first lines sit behind it. The home page
+        alone runs its banner under the bar, which is transparent there.
+      */}
+      <main
+        className={`relative flex-1 ${!hideNav && !isTelegramMiniApp ? "pb-[72px]" : ""} ${
+          !isTelegramMiniApp && currentView !== "home" ? "pt-[var(--header-h)]" : ""
+        }`}
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={pathname}

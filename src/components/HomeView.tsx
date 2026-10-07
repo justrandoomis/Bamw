@@ -164,7 +164,7 @@ export default function HomeView({
   };
 
   const defaultHeroFallback = (
-    <div className="w-full h-full flex flex-col justify-center items-center text-center p-6 bg-gradient-to-br from-[#E60012] via-[#C40010] to-[#80000A] text-white select-none">
+    <div className="w-full h-full flex flex-col justify-center items-center text-center p-6 pt-[calc(var(--header-h)+0.25rem)] sm:pt-6 bg-gradient-to-br from-[#E60012] via-[#C40010] to-[#80000A] text-white select-none">
       <div className="flex items-center gap-2 mb-2">
         <span className="bg-white/20 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
           Banana Store

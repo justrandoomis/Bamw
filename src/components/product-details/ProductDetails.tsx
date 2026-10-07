@@ -233,7 +233,7 @@ function DetailsBody({
 
   return (
     <div
-      className="mx-auto w-full min-w-0 max-w-6xl px-4 pt-20 pb-16 sm:px-6 sm:pt-24 lg:px-8 [overflow-wrap:anywhere]"
+      className="mx-auto w-full min-w-0 max-w-6xl px-4 pt-4 pb-16 sm:px-6 sm:pt-6 lg:px-8 [overflow-wrap:anywhere]"
       dir={dir}
     >
       {/* ------------------------------ hero ------------------------------ */}

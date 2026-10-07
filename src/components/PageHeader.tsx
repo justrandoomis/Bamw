@@ -15,8 +15,9 @@ const viewToPath: Record<string, string> = {
 };
 
 /**
- * Floating back + profile menu for pages that are not wrapped in AppShell.
- * The header itself is pointer-events-none, so it never blocks page content.
+ * The site header for pages that are not wrapped in AppShell, and the room it
+ * needs: the bar is fixed, so a spacer of its height keeps the page's first
+ * lines from sitting behind it.
  */
 export default function PageHeader({ view = "page" }: { view?: string }) {
   const navigate = useNavigate();
@@ -51,11 +52,14 @@ export default function PageHeader({ view = "page" }: { view?: string }) {
   };
 
   return (
-    <Header
-      currentView={view}
-      onBack={handleBack}
-      onNavigate={handleNavigate}
-      products={store?.products ?? []}
-    />
+    <>
+      <Header
+        currentView={view}
+        onBack={handleBack}
+        onNavigate={handleNavigate}
+        products={store?.products ?? []}
+      />
+      <div aria-hidden className="h-[var(--header-h)] shrink-0" />
+    </>
   );
 }

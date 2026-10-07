@@ -28,7 +28,7 @@ export function SearchPanel({
     if (!sentinel || !("IntersectionObserver" in window)) return;
 
     const observer = new IntersectionObserver(([entry]) => setStuck(!entry?.isIntersecting), {
-      rootMargin: "-72px 0px 0px 0px",
+      rootMargin: "-64px 0px 0px 0px",
       threshold: 1,
     });
     observer.observe(sentinel);

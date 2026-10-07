@@ -526,6 +526,14 @@
 :root {
   --nav-h: 56px;
   --buybar-h: 68px;
+  /*
+    The site header's height, in one place. The bar is fixed, so it takes no
+    room of its own: AppShell and PageHeader reserve exactly this much above
+    the page, and sticky sub-bars stop exactly this far down. It lived only in
+    index.css, which this app never loads — so nothing reserved the room, each
+    page guessed its own top padding, and text ran behind the bar.
+  */
+  --header-h: calc(4rem + env(safe-area-inset-top, 0px));
   --hub-panel: color-mix(in oklab, var(--card) 72%, transparent);
   --hub-panel-2: color-mix(in oklab, var(--card) 88%, transparent);
   --hub-inset: color-mix(in oklab, var(--foreground) 6%, transparent);

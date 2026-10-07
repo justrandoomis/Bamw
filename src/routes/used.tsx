@@ -98,7 +98,7 @@ function UsedMarketPage() {
     <div dir="rtl" className="min-h-screen bg-background pb-24">
       <PageHeader view="used" />
 
-      <div className="mx-auto w-full max-w-5xl px-4 pt-20">
+      <div className="mx-auto w-full max-w-5xl px-4 pt-6">
         <header className="mb-6">
           <h1 className="text-2xl font-black">سوق المستعمل والمسترجع</h1>
           <p className="mt-1 text-sm text-muted-foreground">
