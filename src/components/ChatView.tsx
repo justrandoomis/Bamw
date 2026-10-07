@@ -53,7 +53,7 @@ import { useCurrency } from "@/context/CurrencyContext";
 import { useAuth } from "@/hooks/useAuth";
 import { useChatRealtime } from "@/hooks/useChatRealtime";
 import { api, uploadFileWithProgress, walletApi } from "@/lib/api";
-import { bubbleSide, bubbleTail } from "@/lib/chatSides";
+import { bubbleRow, bubbleSide, bubbleTail } from "@/lib/chatSides";
 import { isVideoUrl } from "@/lib/uploads";
 import { supportAnswer, type SupportContext } from "@/lib/support";
 import { buildProductIndex, searchProducts } from "@/lib/search/products";
@@ -2864,10 +2864,17 @@ export default function ChatView({
                     right, whatever the language. Everything in the thread now
                     takes its side from the one helper, so the bubbles, the
                     typing indicator and the skeletons cannot disagree again.
+
+                    The row spans the thread and pins its one child; a row as
+                    wide as its bubble left the shop's bubbles drifting toward
+                    the middle (see `bubbleRow`). The highlight rings the
+                    bubble, not the whole width.
                   */
-                  className={`flex w-fit max-w-full ${startsRun ? "mt-3" : "mt-0.5"} ${bubbleSide(
-                    isMine,
-                  )} ${isHighlighted ? "animate-pulse rounded-2xl ring-2 ring-amber-500 p-0.5" : ""}`}
+                  className={`${bubbleRow(isMine)} ${startsRun ? "mt-3" : "mt-0.5"} ${
+                    isHighlighted
+                      ? "animate-pulse [&>*]:rounded-2xl [&>*]:ring-2 [&>*]:ring-amber-500"
+                      : ""
+                  }`}
                 >
                   {msg.type === "digital_order_card" && msg.payload ? (
                     <DigitalOrderCard

@@ -38,6 +38,26 @@ export function bubbleSide(mine: boolean): string {
 }
 
 /**
+ * The row one message sits in: the full width of the thread, with its one
+ * child pinned to the speaker's edge.
+ *
+ * «فقاعه الرسالة تظهر زاحفة الى المنتصف الرسالة من النظام او الادمن». The
+ * row used to be `w-fit`, pinned by `bubbleSide`, around a bubble capped at
+ * `max-w-[80%]`. A percentage inside a box that is as wide as its content is
+ * circular, so the browser sized the row to the text, then capped the bubble
+ * at 80% of that, and laid the bubble at the row's inline START — the right,
+ * in Arabic. On the left side of the thread that left a fifth of the row
+ * empty between the shop's bubble and its edge: 42px on a 375px phone, more
+ * for a longer message. In English the same gap opened on the member's side.
+ *
+ * Full width, the 80% is 80% of the thread, and each side's margin pins the
+ * child where `bubbleSide` would — physically, the same in either language.
+ */
+export function bubbleRow(mine: boolean): string {
+  return mine ? "flex w-full [&>*]:ml-auto [&>*]:mr-0" : "flex w-full [&>*]:mr-auto [&>*]:ml-0";
+}
+
+/**
  * The squared-off corner that points at the speaker.
  *
  * Physical too, and for the same reason: the tail belongs on the side the
