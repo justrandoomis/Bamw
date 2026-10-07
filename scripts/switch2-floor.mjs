@@ -227,6 +227,35 @@ const titleOf = (p) =>
   String(p?.titleEn || p?.title || p?.titleAr || p?.slug || p?.id || "")
     .replace(/\s+/g, " ")
     .trim();
+/*
+  «ركز على سويتش ٢». The card's badge also marks Switch 1 games that merely
+  RUN on a Switch 2 — Super Mario Odyssey, Galaxy 1 + 2 — and pricing those
+  like Mario Kart World is not «منطقي». So a game is held to this floor only
+  when it IS a Switch 2 game: its platform says so, it is flagged a Switch 2
+  Edition, or its own name or slug says Switch 2.
+*/
+const isSwitch2Game = (product) => {
+  const platform = String(product.platform ?? "")
+    .trim()
+    .toLowerCase();
+  if (/switch[\s_-]*2|^ns2$/.test(platform)) return true;
+  if (product.switch2?.isSwitch2Edition === true) return true;
+  return /switch\W*2/i.test(`${titleOf(product)} ${app.getProductSlug(product) ?? ""}`);
+};
+/** Why the card badges a game this run leaves out as Switch 1. */
+const badgeWhy = (product) => {
+  if (/^(both|dual)$/i.test(String(product.platform ?? "").trim())) return "للجهازين";
+  if (product.switch2Enhanced === true) return "محسّنة لسويتش ٢";
+  return "وسم سويتش ٢";
+};
+/*
+  Switch 2 games the owner listed among the shop's Nintendo titles when asking
+  for the offline-price covers (`lib/offline-cover.mjs`, «ألعاب نينتندو») that
+  the demand list does not carry: Pokémon Legends Z-A, Switch 2 Edition. Named
+  by the owner, so flagship; matched by title.
+*/
+const OWNER_FLAGSHIPS = [/pok[eé]mon\s+legends:?\s*z-?a/i];
+const ownerFlagship = (product) => OWNER_FLAGSHIPS.some((re) => re.test(titleOf(product)));
 const label = (p) => {
   const t = titleOf(p);
   return `${t.length > 52 ? `${t.slice(0, 51)}…` : t || "—"} \`${String(p?.id ?? "").slice(-6)}\``;
@@ -331,7 +360,9 @@ const isGame = (product) => {
   });
   return !notGame && (amountOf(product.price) ?? 0) < OUTLIER;
 };
-const switch2 = products.filter((p) => isGame(p) && app.isNintendoSwitch2Product(p));
+const badged = products.filter((p) => isGame(p) && app.isNintendoSwitch2Product(p));
+const switch2 = badged.filter((p) => isSwitch2Game(p) || ownerFlagship(p));
+const switch1Badged = badged.filter((p) => !switch2.includes(p));
 const orderedRank = new Map(
   switch2
     .filter((p) => (orders.get(String(p.id)) ?? 0) >= 2)
@@ -347,7 +378,9 @@ const yuanBuckets = { 10: 0, 12: 0, 15: 0, 20: 0 };
 for (const product of switch2) {
   const id = String(product.id);
   if (SCOPE && !SCOPE.has(id)) continue;
-  const tier = app.demandTierFor(String(app.getProductSlug(product) || "")).tier;
+  const tier = ownerFlagship(product)
+    ? "flagship"
+    : app.demandTierFor(String(app.getProductSlug(product) || "")).tier;
   const rank = orderedRank.get(id) ?? null;
   const yuan = offlineYuan(product);
   for (const step of Object.keys(yuanBuckets))
@@ -406,7 +439,7 @@ for (const product of switch2) {
   });
 }
 
-/* His own examples are not a matter of judgement: they come out at 12,000. */
+/* The owner's own examples are not a matter of judgement: they come out at 12,000. */
 for (const [family, matches] of NAMED) {
   for (const product of switch2.filter((p) => matches(titleOf(p)))) {
     const entry = planned.find((e) => e.id === String(product.id));
@@ -430,6 +463,7 @@ say();
 say(`| | العدد |`);
 say(`| --- | ---: |`);
 say(`| ألعاب سويتش ٢ | ${switch2.length} |`);
+say(`| ألعاب سويتش ١ تحمل شارة سويتش ٢ (تعمل عليه فقط) — خارج القاعدة | ${switch1Badged.length} |`);
 say(`| **سترتفع** | **${planned.length}** |`);
 for (const why of Object.keys(WHY)) {
   const n = planned.filter((e) => e.floor.why === why).length;
@@ -481,7 +515,18 @@ for (const l of [...left]
 if (left.length > 80) say(`- … و${left.length - 80} أخرى في الملف`);
 say();
 
-say(`## 5. تُركت للمراجعة — ${held.length}`);
+say(`## 5. ألعاب سويتش ١ تحمل شارة سويتش ٢ — خارج القاعدة (${switch1Badged.length})، أشهرها`);
+say();
+for (const p of switch1Badged
+  .filter((p) =>
+    ["flagship", "major"].includes(app.demandTierFor(String(app.getProductSlug(p) || "")).tier),
+  )
+  .slice(0, 30)) {
+  say(`- ${label(p)} · ${money(seen(p).card)} · ${badgeWhy(p)}`);
+}
+say();
+
+say(`## 6. تُركت للمراجعة — ${held.length}`);
 say();
 for (const h of held) say(`- ${label(h.product)} — ${h.why}`);
 say();
@@ -562,7 +607,7 @@ const writeFailed = (err) => {
 process.on("unhandledRejection", writeFailed);
 process.on("uncaughtException", writeFailed);
 
-say(`## 5. الكتابة`);
+say(`## 7. الكتابة`);
 say();
 const skipped = [];
 const writtenIds = new Set();
@@ -670,7 +715,7 @@ for (let at = 0; at < writtenList.length; at += 50) {
 }
 for (const product of indexLag) await app.refreshProductIndexRow(product);
 
-say(`## 6. التحقق بالقراءة من D1`);
+say(`## 8. التحقق بالقراءة من D1`);
 say();
 say(`- كُتبت وقُرئت كل نسخها على سعر واحد: **${verified}** من ${writtenIds.size}`);
 say(`- منتجات لم يكتبها هذا التشغيل وبقيت أسعارها كما هي: ${untouched} فُحصت`);

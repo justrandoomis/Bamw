@@ -5,8 +5,8 @@
  *    الف للسويتش ٢ · ركز على سويتش ٢ · مثلا زيلدا سويتش ٢ بسعر ١٢ الف ·
  *    دونكي كونك بنانزا ب١٢ الف وغيرها · يعني الاسعار تكون منطقيه اكثر»
  *
- * Not every Switch 2 game — the ones in demand, or dear to buy. His examples
- * fix the two levels: Zelda's Switch 2 editions and Donkey Kong Bananza at
+ * Not every Switch 2 game — the ones in demand, or dear to buy. The owner's
+ * examples fix the two levels: Zelda's Switch 2 editions and Donkey Kong Bananza at
  * 12,000 are the shop's own FLAGSHIP titles (`nintendoDemandTiers.ts`, «reasons
  * to own the console»), so flagship Switch 2 games are 12,000; and the rest of
  * what is in high demand or expensive «starts from 10,000».
