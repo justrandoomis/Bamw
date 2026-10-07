@@ -399,8 +399,8 @@ export function AccountCard({
                   ? "✅ تم إرسال الإثبات (إرفاق صورة أخرى)"
                   : "✅ Proof attached (Send another)"
                 : locale === "ar"
-                  ? "📷 إرفاق إثبات تسجيل الدخول"
-                  : "📷 Attach sign-in proof"}
+                  ? "إرفاق إثبات تسجيل الدخول"
+                  : "Attach sign-in proof"}
             </button>
             <button
               type="button"

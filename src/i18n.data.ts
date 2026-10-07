@@ -656,6 +656,18 @@ export const translations: Record<string, { en: string; ku: string; tr?: string 
   "اللعب بحسابك الشخصي": { en: "Play on Personal Profile", ku: "یاریکردن بە پرۆفایلی خۆت" },
   "متطلبات التشغيل": { en: "System Requirements", ku: "پێداویستییەکانی سیستەم" },
   "تفاصيل إضافية": { en: "Additional Details", ku: "وردەکاری زیاتر" },
+
+  // The chat: who is on the other end, the composer, the day a message was sent.
+  "تجهيز طلب": { en: "Preparing order", ku: "ئامادەکردنی داواکاری" },
+  "المشرف متاح": { en: "Admin available", ku: "ئەدمین بەردەستە" },
+  "المشرف مشغول": { en: "Admin busy", ku: "ئەدمین سەرقاڵە" },
+  "المشرف غير متصل": { en: "Admin offline", ku: "ئەدمین لەسەرهێڵ نییە" },
+  مكتمل: { en: "Completed", ku: "تەواوبوو" },
+  "اكتب للمشرف...": { en: "Message the admin...", ku: "بۆ ئەدمین بنووسە..." },
+  "إرفاق صورة": { en: "Attach a photo", ku: "وێنە هاوپێچ بکە" },
+  اليوم: { en: "Today", ku: "ئەمڕۆ" },
+  أمس: { en: "Yesterday", ku: "دوێنێ" },
+  "صورة من المحادثة": { en: "Photo from the chat", ku: "وێنەیەک لە گفتوگۆکە" },
 };
 
 for (const [source, turkish] of Object.entries(LEGACY_TR)) {

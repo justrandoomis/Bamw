@@ -15,7 +15,6 @@ import {
   CreditCard,
   FileText,
   Headset,
-  Image as ImageIcon,
   MapPin,
   Menu,
   MessageSquarePlus,
@@ -30,7 +29,6 @@ import {
   Trash2,
   Wallet,
   X,
-  Zap,
   Bot,
   Sparkles,
   User,
@@ -73,6 +71,8 @@ import { isEmptyMessage, readMessageRow } from "@/lib/chat-message-row";
 import AccountCard from "@/components/chat/AccountCard";
 import { DigitalOrderCard } from "@/components/chat/DigitalOrderCard";
 import { RatingCard } from "@/components/chat/RatingCard";
+import { DeliveryTracker } from "@/components/chat/DeliveryTracker";
+import { ImageViewer } from "@/components/chat/ImageViewer";
 import { TopUpModal } from "@/components/wallet/TopUpModal";
 
 export type MessageStatus = "sending" | "sent" | "failed";
@@ -109,6 +109,28 @@ export type DisplayMessage = {
    */
   failureReason?: string;
 };
+
+/**
+ * The label over the first message of a day: «اليوم», «أمس», or the date.
+ *
+ * An order thread can run for days — a code that arrives tomorrow, a question
+ * a week later — and the times under the bubbles said only the hour, so
+ * «07:32 م» could be this evening or last Tuesday's.
+ */
+function dayLabel(iso: string, lang: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return "";
+  const today = new Date();
+  const midnight = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+  const daysAgo = Math.round((midnight(today) - midnight(date)) / 86_400_000);
+  if (daysAgo === 0) return tr("اليوم");
+  if (daysAgo === 1) return tr("أمس");
+  return date.toLocaleDateString(lang === "en" || lang === "tr" ? "en" : "ar", {
+    day: "numeric",
+    month: "long",
+    ...(date.getFullYear() !== today.getFullYear() ? { year: "numeric" as const } : {}),
+  });
+}
 
 /**
  * Reads the underlying wire fields off a rendered message.
@@ -707,7 +729,6 @@ export default function ChatView({
 
   const [inputText, setInputText] = useState("");
   const [isInputFocused, setIsInputFocused] = useState(false);
-  const [showAttachments, setShowAttachments] = useState(false);
   const [localMessages, setLocalMessages] = useState<DisplayMessage[]>([]);
   const [serverMessages, setServerMessages] = useState<DisplayMessage[]>([]);
   const [hasMore, setHasMore] = useState(false);
@@ -945,6 +966,8 @@ export default function ChatView({
   }, [adminAvailability, adminPresenceOnline, orderThreads.length]);
 
   const [selectedInvoiceOrder, setSelectedInvoiceOrder] = useState<Order | null>(null);
+  /* A picture from the thread, opened at the size of the screen. */
+  const [viewerSrc, setViewerSrc] = useState<string | null>(null);
 
   /* ------------------------- live queue metrics ------------------------- */
   const [liveQueueMetrics, setLiveQueueMetrics] = useState<{
@@ -958,6 +981,17 @@ export default function ChatView({
     activeOrderItemId?: string;
     activeDeliveryItemId?: string;
   } | null>(null);
+
+  /* The account being delivered right now, and its place in the order. */
+  const activeItemIndex = liveQueueMetrics?.activeOrderItemId
+    ? (currentOrder?.items ?? []).findIndex(
+        (item) => item.id === liveQueueMetrics.activeOrderItemId,
+      )
+    : -1;
+  const activeDeliveryItem =
+    activeItemIndex >= 0 && currentOrder?.items
+      ? { title: currentOrder.items[activeItemIndex]!.title, number: activeItemIndex + 1 }
+      : null;
 
   /* ------------------------- human support countdown ------------------------- */
   const [supportCountdown, setSupportCountdown] = useState<{
@@ -1933,7 +1967,6 @@ export default function ChatView({
   // Handle direct file attachment with real progress percentage
   const attachWithProgress = async (rawFile: File) => {
     if (!rawFile) return;
-    setShowAttachments(false);
 
     /*
       Scaled down before anything else, for the same reason the wallet receipt
@@ -2331,14 +2364,51 @@ export default function ChatView({
                   : currentThread?.subject || tr("محادثة الإدارة")}
             </span>
             {isOrderMode ? (
-              <span className="flex shrink-0 items-center gap-1 rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-bold text-amber-700 dark:text-amber-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
-                {currentOrder?.status === "completed"
-                  ? tr("مكتمل")
-                  : (liveQueueMetrics?.position || currentQueueIndex) <= 1
-                    ? tr("دورك الآن ⚡")
-                    : `${tr("طابور")} #${liveQueueMetrics?.position || currentQueueIndex}`}
-              </span>
+              /*
+                Who is on the other end. The queue place lives in the tracker
+                under the header now; said here as well, «دورك الآن» was on
+                the screen three times at once.
+              */
+              (() => {
+                /*
+                  From the live queue only. The page's own guess at the
+                  admin's status reads data the server and the browser do not
+                  share at the first paint, so the two drew different chips
+                  and React threw the server's header away. Until the queue
+                  answers, the chip waits.
+                */
+                const presence =
+                  currentOrder?.status === "completed" ? "done" : liveQueueMetrics?.adminStatus;
+                if (!presence) return null;
+                return (
+                  <span
+                    className={`flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                      presence === "done" || presence === "available"
+                        ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400"
+                        : presence === "busy"
+                          ? "bg-amber-500/15 text-amber-700 dark:text-amber-400"
+                          : "bg-stone-500/15 text-stone-600 dark:text-stone-400"
+                    }`}
+                  >
+                    <span
+                      className={`h-1.5 w-1.5 rounded-full ${
+                        presence === "done" || presence === "available"
+                          ? "bg-emerald-500"
+                          : presence === "busy"
+                            ? "bg-amber-500"
+                            : "bg-stone-400"
+                      } ${presence === "available" ? "animate-pulse" : ""}`}
+                    />
+                    {presence === "done"
+                      ? tr("مكتمل")
+                      : presence === "available"
+                        ? tr("المشرف متاح")
+                        : presence === "busy"
+                          ? tr("المشرف مشغول")
+                          : tr("المشرف غير متصل")}
+                  </span>
+                );
+              })()
             ) : isAutomatedThread ? (
               <span className="flex items-center gap-1 rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-bold text-amber-700 dark:text-amber-400">
                 <Sparkles className="h-3 w-3" />
@@ -2422,104 +2492,20 @@ export default function ChatView({
         </div>
       </div>
 
-      {/* Live Realtime Status / Notice Banner for Orders */}
+      {/* Where the order stands, and the one thing to do next. */}
       {isOrderMode && currentOrder?.status !== "completed" && (
-        <div
-          className={`relative z-20 border-b px-3.5 py-2 text-xs transition-all ${
-            liveQueueMetrics?.deliveryStage === "awaiting_login_proof"
-              ? "border-amber-500/30 bg-amber-500/10 text-amber-950 dark:text-amber-200"
-              : liveQueueMetrics?.deliveryStage === "proof_received"
-                ? "border-blue-500/30 bg-blue-500/10 text-blue-950 dark:text-blue-200"
-                : liveQueueMetrics?.deliveryStage === "otp_sent"
-                  ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-950 dark:text-emerald-200"
-                  : "border-amber-500/20 bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent text-[var(--ink)]"
-          }`}
-          dir={isRtl ? "rtl" : "ltr"}
-        >
-          <div className="flex items-center justify-between gap-2.5">
-            <div className="flex items-center gap-2 min-w-0">
-              <span className="flex h-2.5 w-2.5 relative shrink-0">
-                <span
-                  className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
-                    liveQueueMetrics?.deliveryStage === "proof_received"
-                      ? "bg-blue-400"
-                      : liveQueueMetrics?.deliveryStage === "otp_sent"
-                        ? "bg-emerald-400"
-                        : "bg-amber-400"
-                  }`}
-                />
-                <span
-                  className={`relative inline-flex rounded-full h-2.5 w-2.5 ${
-                    liveQueueMetrics?.deliveryStage === "proof_received"
-                      ? "bg-blue-500"
-                      : liveQueueMetrics?.deliveryStage === "otp_sent"
-                        ? "bg-emerald-500"
-                        : "bg-amber-500"
-                  }`}
-                />
-              </span>
-
-              <div className="min-w-0 line-clamp-2 font-bold leading-snug">
-                {liveQueueMetrics?.deliveryStage === "awaiting_login_proof" ? (
-                  <span>{tr("وصلتك بيانات الحساب — سجّل الدخول وأرفق صورة الإثبات")}</span>
-                ) : liveQueueMetrics?.deliveryStage === "proof_received" ? (
-                  <span>{tr("وصل إثبات الدخول — بانتظار كود التحقق من المشرف")}</span>
-                ) : liveQueueMetrics?.deliveryStage === "otp_sent" ? (
-                  <span>{tr("وصلك كود التحقق — أدخله لتشغيل اللعبة")}</span>
-                ) : (
-                  <>
-                    {(liveQueueMetrics?.position || currentQueueIndex) <= 1
-                      ? tr("⚡ دورك الآن — قيد التجهيز المباشر من المشرف")
-                      : `${tr("طابور التجهيز المباشر: الدور")} #${liveQueueMetrics?.position || currentQueueIndex}`}
-                    {(liveQueueMetrics?.aheadCount ?? currentQueueIndex - 1) > 0 && (
-                      <span className="ms-2 rounded-md bg-amber-500/15 px-1.5 py-0.5 text-[11px] font-semibold text-amber-800 dark:text-amber-300">
-                        {isAr
-                          ? `(أمامك ${liveQueueMetrics?.aheadCount ?? currentQueueIndex - 1} طلبات)`
-                          : `(${liveQueueMetrics?.aheadCount ?? currentQueueIndex - 1} orders ahead)`}
-                      </span>
-                    )}
-                  </>
-                )}
-              </div>
-            </div>
-
-            {/* Banner Actions & Dynamic Timers */}
-            <div className="flex items-center gap-2 shrink-0">
-              {liveQueueMetrics?.deliveryStage === "awaiting_login_proof" ? (
-                <button
-                  type="button"
-                  onClick={() => pickLoginProof()}
-                  disabled={deliveryBusy}
-                  className="flex items-center gap-1.5 whitespace-nowrap rounded-xl bg-amber-600 hover:bg-amber-700 text-white px-3 py-1.5 text-xs font-bold shadow-xs transition-all cursor-pointer disabled:opacity-50 active:scale-95"
-                >
-                  <Camera className="h-3.5 w-3.5" />
-                  <span>{tr("إرفاق الإثبات")}</span>
-                </button>
-              ) : liveQueueMetrics?.deliveryStage === "proof_received" ? (
-                <button
-                  type="button"
-                  onClick={() => pickLoginProof()}
-                  disabled={deliveryBusy}
-                  className="flex items-center gap-1 whitespace-nowrap rounded-lg border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-700 dark:text-blue-300 px-2.5 py-1 text-[11px] font-bold transition-all cursor-pointer disabled:opacity-50"
-                >
-                  <Camera className="h-3 w-3" />
-                  <span>تعديل الصورة</span>
-                </button>
-              ) : (
-                <div className="flex items-center gap-1.5 text-[11px] text-[var(--muted-ink)] font-medium">
-                  <Clock className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
-                  <span>
-                    {liveQueueMetrics?.estimatedWaitTime ||
-                      liveQueueMetrics?.estimatedMinutesText ||
-                      ((liveQueueMetrics?.position || currentQueueIndex) <= 1
-                        ? tr("خلال دقائق معدودة")
-                        : `${Math.max(5, ((liveQueueMetrics?.position || currentQueueIndex) - 1) * 5)} - ${Math.max(10, (liveQueueMetrics?.position || currentQueueIndex) * 7)} ${tr("دقيقة")}`)}
-                  </span>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+        <DeliveryTracker
+          stage={liveQueueMetrics?.deliveryStage}
+          position={liveQueueMetrics?.position || currentQueueIndex || 1}
+          aheadCount={liveQueueMetrics?.aheadCount ?? Math.max(0, currentQueueIndex - 1)}
+          etaText={liveQueueMetrics?.estimatedWaitTime || liveQueueMetrics?.estimatedMinutesText}
+          itemTitle={activeDeliveryItem?.title}
+          itemNumber={activeDeliveryItem ? activeDeliveryItem.number : undefined}
+          itemCount={currentOrder?.items?.length}
+          busy={deliveryBusy}
+          onAttachProof={() => pickLoginProof()}
+          locale={isAr || lang === "ku" ? "ar" : "en"}
+        />
       )}
 
       {/* In-thread Search Bar */}
@@ -2790,8 +2776,12 @@ export default function ChatView({
           )}
         </AnimatePresence>
 
-        {/* Dynamic Chat Messages */}
-        <div className="flex flex-col">
+        {/*
+          One column, as wide as a conversation reads well. On a desktop the
+          thread ran the full width of the screen, the member's messages at one
+          edge of a 1280px window and the shop's at the other.
+        */}
+        <div className="mx-auto flex w-full max-w-3xl flex-col">
           {threadLoadError && !isThreadLoading ? (
             <div className="mx-auto my-8 flex w-full max-w-sm flex-col items-center gap-3 rounded-2xl border border-[var(--line)] bg-card p-5 text-center">
               <span className="text-2xl">⚠️</span>
@@ -2844,16 +2834,30 @@ export default function ChatView({
               */
               const previous = messages[index - 1];
               const next = messages[index + 1];
-              const startsRun = !previous || previous.sender !== msg.sender;
-              const endsRun = !next || next.sender !== msg.sender;
+              /* A new day starts a new run, under a label naming the day. */
+              const dayOf = (m?: DisplayMessage) =>
+                m?.createdAt ? new Date(m.createdAt).toDateString() : null;
+              const day = dayOf(msg);
+              const startsDay = day !== null && day !== dayOf(previous);
+              const nextDay = dayOf(next);
+              const sameDayAsNext = nextDay === null || nextDay === day;
+              const startsRun = !previous || previous.sender !== msg.sender || startsDay;
+              const endsRun = !next || next.sender !== msg.sender || !sameDayAsNext;
 
               return (
-                <motion.div
-                  id={`msg-${msg.id}`}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  key={msg.id}
-                  /*
+                <React.Fragment key={msg.id}>
+                  {startsDay && msg.createdAt && (
+                    <div className="mb-1 mt-4 flex justify-center first:mt-1">
+                      <span className="rounded-full border border-[var(--line)] bg-[var(--surface-2)] px-2.5 py-0.5 text-[10.5px] font-semibold text-[var(--muted-ink)]">
+                        {dayLabel(msg.createdAt, lang)}
+                      </span>
+                    </div>
+                  )}
+                  <motion.div
+                    id={`msg-${msg.id}`}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    /*
                     Physical margins, and see src/lib/chatSides.ts for why.
 
                     This file previously argued itself into `ms-auto`, on the
@@ -2870,383 +2874,397 @@ export default function ChatView({
                     the middle (see `bubbleRow`). The highlight rings the
                     bubble, not the whole width.
                   */
-                  className={`${bubbleRow(isMine)} ${startsRun ? "mt-3" : "mt-0.5"} ${
-                    isHighlighted
-                      ? "animate-pulse [&>*]:rounded-2xl [&>*]:ring-2 [&>*]:ring-amber-500"
-                      : ""
-                  }`}
-                >
-                  {msg.type === "digital_order_card" && msg.payload ? (
-                    <DigitalOrderCard
-                      orderId={String(msg.payload["orderId"] ?? currentOrder?.id ?? "")}
-                      code={String(msg.payload["code"] ?? currentOrder?.code ?? "BN-ORDER")}
-                      items={
-                        (msg.payload["items"] as any) ??
-                        currentOrder?.items?.map((it) => ({
-                          id: it.id,
-                          productId: it.productId,
-                          title: it.title,
-                          unitPrice: it.unitPrice,
-                          quantity: it.quantity,
-                          image: it.image || "",
-                          kind: it.kind,
-                        })) ??
-                        []
-                      }
-                      total={
-                        typeof msg.payload["total"] === "number"
-                          ? msg.payload["total"]
-                          : currentOrder?.total
-                      }
-                      currency={String(
-                        msg.payload["currency"] ??
-                          currentOrder?.currency ??
-                          activeCurrencyInfo?.symbol ??
-                          "د.ع",
-                      )}
-                      paymentStatus={String(
-                        msg.payload["paymentStatus"] ?? currentOrder?.paymentStatus ?? "paid",
-                      )}
-                      paymentMethod="محفظة بنانا"
-                      status={currentOrder?.status ?? "processing"}
-                      createdAt={currentOrder?.createdAt ?? msg.createdAt}
-                      text={
-                        typeof msg.payload["text"] === "string" ? msg.payload["text"] : undefined
-                      }
-                      locale={lang === "en" ? "en" : "ar"}
-                      queuePosition={
-                        liveQueueMetrics?.position ||
-                        (currentQueueIndex > 0 ? currentQueueIndex : 1)
-                      }
-                      aheadCount={liveQueueMetrics?.aheadCount}
-                      adminStatus={liveQueueMetrics?.adminStatus || adminStatus}
-                      workingHoursText={adminAvailability?.workingHoursText}
-                      canConfirmReceived={canConfirmOrderReceipt}
-                      onConfirmReceived={handleConfirmOrderReceipt}
-                      isConfirmingReceived={isConfirmingReceipt}
-                      onReportIssue={handleReportDeliveryIssue}
-                      isReportingIssue={isReportingDeliveryIssue}
-                      onOpenInvoice={() => {
-                        if (currentOrder) setSelectedInvoiceOrder(currentOrder);
-                      }}
-                    />
-                  ) : msg.type === "review_request" && msg.payload ? (
-                    <RatingCard
-                      orderId={String(msg.payload["orderId"] ?? currentOrder?.id ?? "")}
-                      orderCode={String(msg.payload["orderCode"] ?? currentOrder?.code ?? "")}
-                      items={
-                        (msg.payload["items"] as any) ??
-                        currentOrder?.items?.map((it) => ({
-                          id: it.id,
-                          productId: it.productId,
-                          title: it.title,
-                          image: it.image || "",
-                        })) ??
-                        []
-                      }
-                      text={
-                        typeof msg.payload["text"] === "string" ? msg.payload["text"] : undefined
-                      }
-                      locale={lang === "en" ? "en" : "ar"}
-                    />
-                  ) : msg.type === "order_completed" ? (
-                    <div
-                      dir="auto"
-                      className="max-w-[85%] rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-3.5 text-foreground shadow-xs space-y-1.5"
-                    >
-                      <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-300 font-bold text-xs">
-                        <Check className="w-4 h-4 text-emerald-500" />
-                        <span>
-                          {msg.text ||
-                            (lang === "en"
-                              ? "Order has been completed successfully ✅"
-                              : "تم اكتمال الطلب بنجاح ✅")}
-                        </span>
-                      </div>
-                      {typeof msg.payload?.["code"] === "string" && (
-                        <div className="text-[11px] font-mono text-muted-foreground">
-                          #{String(msg.payload["code"])}
-                        </div>
-                      )}
-                    </div>
-                  ) : msg.type === "account_card" && msg.payload ? (
-                    <AccountCard
-                      kind={String(msg.payload["kind"] ?? "")}
-                      body={msg.payload["body"] as Record<string, unknown>}
-                      locale={lang === "en" ? "en" : "ar"}
-                      {...(currentOrder && String(msg.payload["kind"] ?? "") === "item_credentials"
-                        ? {
-                            delivery: {
-                              onAttachProof: (itemId: string, deliveryItemId?: string) => {
-                                pickLoginProof({ itemId, deliveryItemId });
-                              },
-                              onNext: requestNextAccount,
-                              proofSent: Boolean(
-                                proofSentItems[
-                                  String(
-                                    (msg.payload["body"] as Record<string, unknown>)?.[
-                                      "deliveryItemId"
-                                    ] ??
-                                      (msg.payload["body"] as Record<string, unknown>)?.[
-                                        "itemId"
-                                      ] ??
-                                      "",
-                                  )
-                                ],
-                              ),
-                              busy: deliveryBusy,
-                            },
-                          }
-                        : {})}
-                    />
-                  ) : msg.type === "audio" && msg.payload ? (
-                    <div
-                      className={`relative rounded-2xl px-2.5 py-2 shadow-xs ${
-                        startsRun ? bubbleTail(isMine) : ""
-                      } ${
-                        isMine
-                          ? "bg-[var(--ink)] text-[var(--surface-2)]"
-                          : "border border-[var(--surface-4)] bg-card text-[var(--ink)]"
-                      } ${msg.status === "sending" ? "opacity-70" : ""}`}
-                    >
-                      <VoiceNotePlayer
-                        src={String(msg.payload["audioUrl"] ?? "")}
-                        durationMs={Number(msg.payload["durationMs"]) || undefined}
-                        tone={isMine ? "inverse" : "default"}
+                    className={`${bubbleRow(isMine)} ${startsRun ? "mt-3" : "mt-0.5"} ${
+                      isHighlighted
+                        ? "animate-pulse [&>*]:rounded-2xl [&>*]:ring-2 [&>*]:ring-amber-500"
+                        : ""
+                    }`}
+                  >
+                    {msg.type === "digital_order_card" && msg.payload ? (
+                      <DigitalOrderCard
+                        orderId={String(msg.payload["orderId"] ?? currentOrder?.id ?? "")}
+                        code={String(msg.payload["code"] ?? currentOrder?.code ?? "BN-ORDER")}
+                        items={
+                          (msg.payload["items"] as any) ??
+                          currentOrder?.items?.map((it) => ({
+                            id: it.id,
+                            productId: it.productId,
+                            title: it.title,
+                            unitPrice: it.unitPrice,
+                            quantity: it.quantity,
+                            image: it.image || "",
+                            kind: it.kind,
+                          })) ??
+                          []
+                        }
+                        total={
+                          typeof msg.payload["total"] === "number"
+                            ? msg.payload["total"]
+                            : currentOrder?.total
+                        }
+                        currency={String(
+                          msg.payload["currency"] ??
+                            currentOrder?.currency ??
+                            activeCurrencyInfo?.symbol ??
+                            "د.ع",
+                        )}
+                        paymentStatus={String(
+                          msg.payload["paymentStatus"] ?? currentOrder?.paymentStatus ?? "paid",
+                        )}
+                        paymentMethod="محفظة بنانا"
+                        status={currentOrder?.status ?? "processing"}
+                        createdAt={currentOrder?.createdAt ?? msg.createdAt}
+                        text={
+                          typeof msg.payload["text"] === "string" ? msg.payload["text"] : undefined
+                        }
+                        locale={lang === "en" ? "en" : "ar"}
+                        queuePosition={
+                          liveQueueMetrics?.position ||
+                          (currentQueueIndex > 0 ? currentQueueIndex : 1)
+                        }
+                        aheadCount={liveQueueMetrics?.aheadCount}
+                        adminStatus={liveQueueMetrics?.adminStatus || adminStatus}
+                        workingHoursText={adminAvailability?.workingHoursText}
+                        canConfirmReceived={canConfirmOrderReceipt}
+                        onConfirmReceived={handleConfirmOrderReceipt}
+                        isConfirmingReceived={isConfirmingReceipt}
+                        onReportIssue={handleReportDeliveryIssue}
+                        isReportingIssue={isReportingDeliveryIssue}
+                        onOpenInvoice={() => {
+                          if (currentOrder) setSelectedInvoiceOrder(currentOrder);
+                        }}
                       />
-                      {msg.status === "sending" && (
-                        <span className="mt-1 block text-[10px] font-bold opacity-80">
-                          {tr("جاري الإرسال…")}{" "}
-                          {typeof msg.uploadProgress === "number" ? `${msg.uploadProgress}%` : ""}
-                        </span>
-                      )}
-                      {msg.status === "failed" && (
-                        <span className="mt-1 block text-[10px] font-bold text-red-500">
-                          {msg.failureReason || tr("تعذر الإرسال")}
-                        </span>
-                      )}
-                    </div>
-                  ) : msg.type === "image" && msg.payload ? (
-                    <div className="relative w-64 max-w-[85%] overflow-hidden rounded-2xl border border-[var(--surface-4)] bg-card p-1.5 shadow-xs">
-                      {isVideoUrl(String(msg.payload["imageUrl"] ?? "")) ? (
-                        <video
-                          src={String(msg.payload["imageUrl"] ?? "")}
-                          controls
-                          preload="metadata"
-                          playsInline
-                          className={`max-h-64 w-full rounded-[12px] bg-black ${
-                            msg.status === "sending" ? "blur-[2px]" : ""
-                          }`}
-                        />
-                      ) : (
-                        <img
-                          src={String(msg.payload["imageUrl"] ?? "")}
-                          alt="مرفق"
-                          className={`max-h-64 w-full rounded-[12px] object-cover ${
-                            msg.status === "sending" ? "blur-[2px]" : ""
-                          }`}
-                        />
-                      )}
-                      {msg.status === "sending" && typeof msg.uploadProgress === "number" && (
-                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 text-white backdrop-blur-xs">
-                          <div className="relative h-12 w-12 flex items-center justify-center">
-                            <svg className="h-full w-full -rotate-90 transform" viewBox="0 0 36 36">
-                              <circle
-                                cx="18"
-                                cy="18"
-                                r="15"
-                                fill="none"
-                                stroke="rgba(255,255,255,0.3)"
-                                strokeWidth="3"
-                              />
-                              <circle
-                                cx="18"
-                                cy="18"
-                                r="15"
-                                fill="none"
-                                stroke="white"
-                                strokeWidth="3"
-                                strokeDasharray="94.2"
-                                strokeDashoffset={94.2 - (94.2 * (msg.uploadProgress || 0)) / 100}
-                                strokeLinecap="round"
-                                className="transition-all duration-200"
-                              />
-                            </svg>
-                            <span className="absolute text-[11px] font-black">
-                              {msg.uploadProgress}%
-                            </span>
-                          </div>
-                          <span className="mt-1 text-[10px] font-bold">جاري الرفع...</span>
+                    ) : msg.type === "review_request" && msg.payload ? (
+                      <RatingCard
+                        orderId={String(msg.payload["orderId"] ?? currentOrder?.id ?? "")}
+                        orderCode={String(msg.payload["orderCode"] ?? currentOrder?.code ?? "")}
+                        items={
+                          (msg.payload["items"] as any) ??
+                          currentOrder?.items?.map((it) => ({
+                            id: it.id,
+                            productId: it.productId,
+                            title: it.title,
+                            image: it.image || "",
+                          })) ??
+                          []
+                        }
+                        text={
+                          typeof msg.payload["text"] === "string" ? msg.payload["text"] : undefined
+                        }
+                        locale={lang === "en" ? "en" : "ar"}
+                      />
+                    ) : msg.type === "order_completed" ? (
+                      <div
+                        dir="auto"
+                        className="max-w-[85%] rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-3.5 text-foreground shadow-xs space-y-1.5"
+                      >
+                        <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-300 font-bold text-xs">
+                          <Check className="w-4 h-4 text-emerald-500" />
+                          <span>
+                            {msg.text ||
+                              (lang === "en"
+                                ? "Order has been completed successfully ✅"
+                                : "تم اكتمال الطلب بنجاح ✅")}
+                          </span>
                         </div>
-                      )}
-                      {msg.status === "failed" && (
-                        <button
-                          onClick={() => handleRetry(msg)}
-                          className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-red-950/70 px-3 text-center text-white cursor-pointer"
-                        >
-                          <RotateCcw className="h-6 w-6" />
-                          <span className="text-xs font-bold">{tr("إعادة المحاولة")}</span>
-                          {/*
+                        {typeof msg.payload?.["code"] === "string" && (
+                          <div className="text-[11px] font-mono text-muted-foreground">
+                            #{String(msg.payload["code"])}
+                          </div>
+                        )}
+                      </div>
+                    ) : msg.type === "account_card" && msg.payload ? (
+                      <AccountCard
+                        kind={String(msg.payload["kind"] ?? "")}
+                        body={msg.payload["body"] as Record<string, unknown>}
+                        locale={lang === "en" ? "en" : "ar"}
+                        {...(currentOrder &&
+                        String(msg.payload["kind"] ?? "") === "item_credentials"
+                          ? {
+                              delivery: {
+                                onAttachProof: (itemId: string, deliveryItemId?: string) => {
+                                  pickLoginProof({ itemId, deliveryItemId });
+                                },
+                                onNext: requestNextAccount,
+                                proofSent: Boolean(
+                                  proofSentItems[
+                                    String(
+                                      (msg.payload["body"] as Record<string, unknown>)?.[
+                                        "deliveryItemId"
+                                      ] ??
+                                        (msg.payload["body"] as Record<string, unknown>)?.[
+                                          "itemId"
+                                        ] ??
+                                        "",
+                                    )
+                                  ],
+                                ),
+                                busy: deliveryBusy,
+                              },
+                            }
+                          : {})}
+                      />
+                    ) : msg.type === "audio" && msg.payload ? (
+                      <div
+                        className={`relative rounded-2xl px-2.5 py-2 shadow-xs ${
+                          startsRun ? bubbleTail(isMine) : ""
+                        } ${
+                          isMine
+                            ? "bg-[var(--ink)] text-[var(--surface-2)]"
+                            : "border border-[var(--surface-4)] bg-card text-[var(--ink)]"
+                        } ${msg.status === "sending" ? "opacity-70" : ""}`}
+                      >
+                        <VoiceNotePlayer
+                          src={String(msg.payload["audioUrl"] ?? "")}
+                          durationMs={Number(msg.payload["durationMs"]) || undefined}
+                          tone={isMine ? "inverse" : "default"}
+                        />
+                        {msg.status === "sending" && (
+                          <span className="mt-1 block text-[10px] font-bold opacity-80">
+                            {tr("جاري الإرسال…")}{" "}
+                            {typeof msg.uploadProgress === "number" ? `${msg.uploadProgress}%` : ""}
+                          </span>
+                        )}
+                        {msg.status === "failed" && (
+                          <span className="mt-1 block text-[10px] font-bold text-red-500">
+                            {msg.failureReason || tr("تعذر الإرسال")}
+                          </span>
+                        )}
+                      </div>
+                    ) : msg.type === "image" && msg.payload ? (
+                      <div className="relative w-64 max-w-[85%] overflow-hidden rounded-2xl border border-[var(--line)] bg-card p-1 shadow-xs">
+                        {isVideoUrl(String(msg.payload["imageUrl"] ?? "")) ? (
+                          <video
+                            src={String(msg.payload["imageUrl"] ?? "")}
+                            controls
+                            preload="metadata"
+                            playsInline
+                            className={`max-h-64 w-full rounded-[12px] bg-black ${
+                              msg.status === "sending" ? "blur-[2px]" : ""
+                            }`}
+                          />
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              if (msg.status !== "sending")
+                                setViewerSrc(String(msg.payload?.["imageUrl"] ?? ""));
+                            }}
+                            aria-label={tr("صورة من المحادثة")}
+                            className="block w-full cursor-zoom-in"
+                          >
+                            <img
+                              src={String(msg.payload["imageUrl"] ?? "")}
+                              alt="مرفق"
+                              className={`max-h-64 w-full rounded-[12px] object-cover ${
+                                msg.status === "sending" ? "blur-[2px]" : ""
+                              }`}
+                            />
+                          </button>
+                        )}
+                        {msg.status === "sending" && typeof msg.uploadProgress === "number" && (
+                          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 text-white backdrop-blur-xs">
+                            <div className="relative h-12 w-12 flex items-center justify-center">
+                              <svg
+                                className="h-full w-full -rotate-90 transform"
+                                viewBox="0 0 36 36"
+                              >
+                                <circle
+                                  cx="18"
+                                  cy="18"
+                                  r="15"
+                                  fill="none"
+                                  stroke="rgba(255,255,255,0.3)"
+                                  strokeWidth="3"
+                                />
+                                <circle
+                                  cx="18"
+                                  cy="18"
+                                  r="15"
+                                  fill="none"
+                                  stroke="white"
+                                  strokeWidth="3"
+                                  strokeDasharray="94.2"
+                                  strokeDashoffset={94.2 - (94.2 * (msg.uploadProgress || 0)) / 100}
+                                  strokeLinecap="round"
+                                  className="transition-all duration-200"
+                                />
+                              </svg>
+                              <span className="absolute text-[11px] font-black">
+                                {msg.uploadProgress}%
+                              </span>
+                            </div>
+                            <span className="mt-1 text-[10px] font-bold">جاري الرفع...</span>
+                          </div>
+                        )}
+                        {msg.status === "failed" && (
+                          <button
+                            onClick={() => handleRetry(msg)}
+                            className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-red-950/70 px-3 text-center text-white cursor-pointer"
+                          >
+                            <RotateCcw className="h-6 w-6" />
+                            <span className="text-xs font-bold">{tr("إعادة المحاولة")}</span>
+                            {/*
                             The reason, where the failure is. A retry that
                             cannot succeed — an unsupported format, a spent
                             upload limit — should say so rather than invite an
                             eleventh identical attempt.
                           */}
-                          {msg.failureReason && (
-                            <span className="line-clamp-3 text-[10px] font-medium leading-tight opacity-90">
-                              {msg.failureReason}
+                            {msg.failureReason && (
+                              <span className="line-clamp-3 text-[10px] font-medium leading-tight opacity-90">
+                                {msg.failureReason}
+                              </span>
+                            )}
+                          </button>
+                        )}
+                      </div>
+                    ) : msg.type === "product" && msg.payload ? (
+                      <div className="group flex w-72 max-w-[85%] flex-col gap-3 rounded-2xl border border-[var(--surface-4)] bg-card p-4 shadow-xs transition-shadow hover:shadow-md">
+                        <div className="flex items-center gap-3" dir="rtl">
+                          <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[var(--surface-4)] bg-[var(--surface)]">
+                            {msg.payload["image"] ? (
+                              <img
+                                src={String(msg.payload["image"])}
+                                alt=""
+                                className="h-full w-full object-cover"
+                              />
+                            ) : (
+                              <ShoppingBag className="h-7 w-7 text-[var(--ink)]" />
+                            )}
+                          </div>
+                          <div className="flex flex-1 flex-col justify-center text-start">
+                            <span className="mb-0.5 line-clamp-1 text-[15px] font-bold leading-tight text-[var(--ink)]">
+                              {String(msg.payload["name"] ?? "")}
                             </span>
-                          )}
-                        </button>
-                      )}
-                    </div>
-                  ) : msg.type === "product" && msg.payload ? (
-                    <div className="group flex w-72 max-w-[85%] flex-col gap-3 rounded-2xl border border-[var(--surface-4)] bg-card p-4 shadow-xs transition-shadow hover:shadow-md">
-                      <div className="flex items-center gap-3" dir="rtl">
-                        <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[var(--surface-4)] bg-[var(--surface)]">
-                          {msg.payload["image"] ? (
-                            <img
-                              src={String(msg.payload["image"])}
-                              alt=""
-                              className="h-full w-full object-cover"
-                            />
-                          ) : (
-                            <ShoppingBag className="h-7 w-7 text-[var(--ink)]" />
-                          )}
+                            <span className="inline-block w-max rounded-md bg-[var(--surface)] px-2 py-0.5 text-[12px] text-[var(--muted-ink)]">
+                              {tr("منتج مقترح")}
+                            </span>
+                          </div>
                         </div>
-                        <div className="flex flex-1 flex-col justify-center text-start">
-                          <span className="mb-0.5 line-clamp-1 text-[15px] font-bold leading-tight text-[var(--ink)]">
-                            {String(msg.payload["name"] ?? "")}
-                          </span>
-                          <span className="inline-block w-max rounded-md bg-[var(--surface)] px-2 py-0.5 text-[12px] text-[var(--muted-ink)]">
-                            {tr("منتج مقترح")}
-                          </span>
+                        <div className="border-t border-[var(--surface-4)]/50 pt-2 text-start text-[13px] leading-relaxed text-[var(--ink)]/80">
+                          {msg.text}
                         </div>
-                      </div>
-                      <div className="border-t border-[var(--surface-4)]/50 pt-2 text-start text-[13px] leading-relaxed text-[var(--ink)]/80">
-                        {msg.text}
-                      </div>
-                      <a
-                        href={`/product/${String(msg.payload["id"] ?? "")}`}
-                        className="mt-1 w-full rounded-xl bg-[var(--ink)] py-2 text-center text-[13px] font-bold text-[var(--page)] transition-colors hover:bg-[var(--ink-strong)]"
-                      >
-                        {tr("عرض التفاصيل")}
-                      </a>
-                    </div>
-                  ) : msg.type === "location" && msg.payload ? (
-                    <div className="group w-72 max-w-[85%] rounded-2xl border border-[var(--surface-4)] bg-card p-1.5 shadow-xs transition-shadow hover:shadow-md">
-                      <div className="relative mb-2 flex h-32 w-full items-center justify-center overflow-hidden rounded-[12px] bg-[var(--surface)] transition-colors group-hover:bg-[#F0EBE1]">
-                        <motion.div
-                          animate={{ y: [0, -5, 0] }}
-                          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                        <a
+                          href={`/product/${String(msg.payload["id"] ?? "")}`}
+                          className="mt-1 w-full rounded-xl bg-[var(--ink)] py-2 text-center text-[13px] font-bold text-[var(--page)] transition-colors hover:bg-[var(--ink-strong)]"
                         >
-                          <MapPin className="relative z-10 h-10 w-10 text-blue-500 drop-shadow-md" />
-                        </motion.div>
+                          {tr("عرض التفاصيل")}
+                        </a>
                       </div>
-                      <div className="px-3 pb-3">
-                        <div className="mb-0.5 text-start text-[15px] font-bold text-[var(--ink)]">
-                          {String(msg.payload["name"] ?? "")}
+                    ) : msg.type === "location" && msg.payload ? (
+                      <div className="group w-72 max-w-[85%] rounded-2xl border border-[var(--surface-4)] bg-card p-1.5 shadow-xs transition-shadow hover:shadow-md">
+                        <div className="relative mb-2 flex h-32 w-full items-center justify-center overflow-hidden rounded-[12px] bg-[var(--surface)] transition-colors group-hover:bg-[#F0EBE1]">
+                          <motion.div
+                            animate={{ y: [0, -5, 0] }}
+                            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                          >
+                            <MapPin className="relative z-10 h-10 w-10 text-blue-500 drop-shadow-md" />
+                          </motion.div>
                         </div>
-                        <div className="mb-2 text-start text-[12px] leading-relaxed text-[var(--muted-ink)]">
-                          {msg.text}
-                        </div>
-                      </div>
-                    </div>
-                  ) : msg.type === "wallet" && msg.payload ? (
-                    <div
-                      className="relative w-64 max-w-[85%] overflow-hidden rounded-3xl p-5 shadow-lg"
-                      style={{
-                        background: "linear-gradient(135deg, #4A2B25 0%, #2c1a15 100%)",
-                      }}
-                    >
-                      <div className="pointer-events-none absolute right-0 top-0 h-32 w-32 -translate-y-1/2 translate-x-1/4 rounded-full bg-card/5 blur-xl" />
-                      <div className="relative z-10 mb-5 flex items-center justify-between">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-card/10 shadow-inner backdrop-blur-md">
-                          <Wallet className="h-5 w-5 text-[var(--peach)]" />
-                        </div>
-                        <span className="rounded-lg border border-white/5 bg-card/10 px-2.5 py-1 text-[11px] font-bold tracking-wide text-[var(--peach)] shadow-xs backdrop-blur-xs">
-                          {tr("تحويل رصيد")}
-                        </span>
-                      </div>
-                      <div className="relative z-10 flex flex-col items-end gap-1">
-                        <span className="text-[12px] font-medium tracking-wide text-white/70">
-                          {tr("المبلغ المحول")}
-                        </span>
-                        <div className="flex flex-row-reverse items-baseline gap-1.5" dir="ltr">
-                          <span className="text-3xl font-bold tracking-tight text-white drop-shadow-md">
-                            {String(msg.payload["amount"] ?? "")}
-                          </span>
-                          <span className="text-sm font-bold tracking-wide text-[var(--peach)]">
-                            {activeCurrencyInfo?.symbol || "د.ع"}
-                          </span>
+                        <div className="px-3 pb-3">
+                          <div className="mb-0.5 text-start text-[15px] font-bold text-[var(--ink)]">
+                            {String(msg.payload["name"] ?? "")}
+                          </div>
+                          <div className="mb-2 text-start text-[12px] leading-relaxed text-[var(--muted-ink)]">
+                            {msg.text}
+                          </div>
                         </div>
                       </div>
-                      <div className="relative z-10 mt-4 flex items-center justify-between border-t border-white/10 pt-3">
-                        <span className="font-mono text-[10px] tracking-wider text-white/50">
-                          REF: #{msg.id.slice(-5)}
-                        </span>
-                        <Check className="h-4 w-4 text-green-400 drop-shadow-xs" />
-                      </div>
-                    </div>
-                  ) : msg.payload?.isOfflineNotice ||
-                    msg.payload?.action === "switch_to_automated_support" ? (
-                    <div
-                      dir="auto"
-                      className="max-w-[85%] rounded-2xl border border-amber-500/30 bg-amber-500/10 dark:bg-amber-950/30 p-4 text-[14px] text-[var(--ink)] shadow-xs space-y-3"
-                    >
-                      <div className="flex items-start gap-2.5">
-                        <Clock className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                        <div className="leading-relaxed whitespace-pre-wrap font-medium">
-                          {msg.text}
-                        </div>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={handleSwitchToAutomatedSupport}
-                        className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[var(--ink)] text-[var(--page)] font-bold text-xs hover:bg-[var(--ink-strong)] transition-all shadow-xs cursor-pointer"
+                    ) : msg.type === "wallet" && msg.payload ? (
+                      <div
+                        className="relative w-64 max-w-[85%] overflow-hidden rounded-3xl p-5 shadow-lg"
+                        style={{
+                          background: "linear-gradient(135deg, #4A2B25 0%, #2c1a15 100%)",
+                        }}
                       >
-                        <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                        <span>الانتقال إلى الرد الآلي</span>
-                      </button>
-                    </div>
-                  ) : (
-                    <div
-                      /*
+                        <div className="pointer-events-none absolute right-0 top-0 h-32 w-32 -translate-y-1/2 translate-x-1/4 rounded-full bg-card/5 blur-xl" />
+                        <div className="relative z-10 mb-5 flex items-center justify-between">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-card/10 shadow-inner backdrop-blur-md">
+                            <Wallet className="h-5 w-5 text-[var(--peach)]" />
+                          </div>
+                          <span className="rounded-lg border border-white/5 bg-card/10 px-2.5 py-1 text-[11px] font-bold tracking-wide text-[var(--peach)] shadow-xs backdrop-blur-xs">
+                            {tr("تحويل رصيد")}
+                          </span>
+                        </div>
+                        <div className="relative z-10 flex flex-col items-end gap-1">
+                          <span className="text-[12px] font-medium tracking-wide text-white/70">
+                            {tr("المبلغ المحول")}
+                          </span>
+                          <div className="flex flex-row-reverse items-baseline gap-1.5" dir="ltr">
+                            <span className="text-3xl font-bold tracking-tight text-white drop-shadow-md">
+                              {String(msg.payload["amount"] ?? "")}
+                            </span>
+                            <span className="text-sm font-bold tracking-wide text-[var(--peach)]">
+                              {activeCurrencyInfo?.symbol || "د.ع"}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="relative z-10 mt-4 flex items-center justify-between border-t border-white/10 pt-3">
+                          <span className="font-mono text-[10px] tracking-wider text-white/50">
+                            REF: #{msg.id.slice(-5)}
+                          </span>
+                          <Check className="h-4 w-4 text-green-400 drop-shadow-xs" />
+                        </div>
+                      </div>
+                    ) : msg.payload?.isOfflineNotice ||
+                      msg.payload?.action === "switch_to_automated_support" ? (
+                      <div
+                        dir="auto"
+                        className="max-w-[85%] rounded-2xl border border-amber-500/30 bg-amber-500/10 dark:bg-amber-950/30 p-4 text-[14px] text-[var(--ink)] shadow-xs space-y-3"
+                      >
+                        <div className="flex items-start gap-2.5">
+                          <Clock className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                          <div className="leading-relaxed whitespace-pre-wrap font-medium">
+                            {msg.text}
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={handleSwitchToAutomatedSupport}
+                          className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[var(--ink)] text-[var(--page)] font-bold text-xs hover:bg-[var(--ink-strong)] transition-all shadow-xs cursor-pointer"
+                        >
+                          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                          <span>الانتقال إلى الرد الآلي</span>
+                        </button>
+                      </div>
+                    ) : (
+                      <div
+                        /*
                         `items-end`/`items-start` are logical as well, so the
                         timestamp under an Arabic bubble used to sit under the
                         far corner of the bubble it belongs to. The children
                         pin themselves physically instead.
                       */
-                      className="flex max-w-[80%] flex-col gap-1 sm:max-w-[85%]"
-                    >
-                      <div
-                        /*
+                        className="flex max-w-[80%] flex-col gap-1 sm:max-w-[85%]"
+                      >
+                        <div
+                          /*
                           Right to left in Arabic, whatever the first word is.
                           `auto` took the direction from the first strong
                           letter, so «Mario Kart World اشتغل عندي» was laid out
                           left to right and read backwards.
                         */
-                        dir={isRtl ? "rtl" : "auto"}
-                        className={`overflow-hidden break-words whitespace-pre-wrap rounded-2xl px-3 py-2 text-[13.5px] font-medium leading-[1.45] shadow-xs sm:px-4 sm:py-2.5 sm:text-[14.5px] ${bubbleSide(
-                          isMine,
-                        )} ${startsRun ? bubbleTail(isMine) : ""} ${
-                          isMine
-                            ? "bg-[var(--ink)] text-[var(--surface-2)]"
-                            : "border border-[var(--line)] bg-card text-[var(--ink)]"
-                        }`}
-                      >
-                        {msg.sender === "ai" ? (
-                          <TextGenerateEffect
-                            words={msg.text}
-                            className="text-[var(--ink)]"
-                            duration={0.3}
-                          />
-                        ) : (
-                          msg.text
-                        )}
-                      </div>
+                          dir={isRtl ? "rtl" : "auto"}
+                          className={`overflow-hidden break-words whitespace-pre-wrap rounded-2xl px-3 py-2 text-[13.5px] font-medium leading-[1.45] shadow-xs sm:px-4 sm:py-2.5 sm:text-[14.5px] ${bubbleSide(
+                            isMine,
+                          )} ${startsRun ? bubbleTail(isMine) : ""} ${
+                            isMine
+                              ? "bg-[var(--ink)] text-[var(--surface-2)]"
+                              : "border border-[var(--line)] bg-card text-[var(--ink)]"
+                          }`}
+                        >
+                          {msg.sender === "ai" ? (
+                            <TextGenerateEffect
+                              words={msg.text}
+                              className="text-[var(--ink)]"
+                              duration={0.3}
+                            />
+                          ) : (
+                            msg.text
+                          )}
+                        </div>
 
-                      {/*
+                        {/*
                         The time, on both sides and once per run.
 
                         Only the customer's own messages carried a time, so a
@@ -3256,40 +3274,41 @@ export default function ChatView({
                         last message of a run says when the run happened, which
                         is the thing anybody actually wants to know.
                       */}
-                      {endsRun && (
-                        <div
-                          className={`flex w-fit items-center gap-1 px-1 text-[10px] text-[var(--muted-ink)] ${bubbleSide(
-                            isMine,
-                          )}`}
-                        >
-                          {msg.createdAt && (
-                            <span>
-                              {new Date(msg.createdAt).toLocaleTimeString("ar", {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              })}
-                            </span>
-                          )}
-                          {isMine && msg.status === "sending" && (
-                            <Clock className="h-3 w-3 animate-spin text-[var(--muted-ink)]" />
-                          )}
-                          {isMine && msg.status === "sent" && (
-                            <CheckCheck className="h-3.5 w-3.5 text-emerald-600" />
-                          )}
-                          {isMine && msg.status === "failed" && (
-                            <button
-                              onClick={() => handleRetry(msg)}
-                              className="flex items-center gap-0.5 text-red-500 font-bold hover:underline cursor-pointer"
-                            >
-                              <AlertCircle className="h-3 w-3" />
-                              <span>{tr("إعادة المحاولة")}</span>
-                            </button>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </motion.div>
+                        {endsRun && (
+                          <div
+                            className={`flex w-fit items-center gap-1 px-1 text-[10px] text-[var(--muted-ink)] ${bubbleSide(
+                              isMine,
+                            )}`}
+                          >
+                            {msg.createdAt && (
+                              <span>
+                                {new Date(msg.createdAt).toLocaleTimeString("ar", {
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                })}
+                              </span>
+                            )}
+                            {isMine && msg.status === "sending" && (
+                              <Clock className="h-3 w-3 animate-spin text-[var(--muted-ink)]" />
+                            )}
+                            {isMine && msg.status === "sent" && (
+                              <CheckCheck className="h-3.5 w-3.5 text-emerald-600" />
+                            )}
+                            {isMine && msg.status === "failed" && (
+                              <button
+                                onClick={() => handleRetry(msg)}
+                                className="flex items-center gap-0.5 text-red-500 font-bold hover:underline cursor-pointer"
+                              >
+                                <AlertCircle className="h-3 w-3" />
+                                <span>{tr("إعادة المحاولة")}</span>
+                              </button>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </motion.div>
+                </React.Fragment>
               );
             })
           )}
@@ -3379,7 +3398,7 @@ export default function ChatView({
         the conversation reads as continuing underneath rather than stopping at
         a wall.
       */}
-      <div className="relative z-10 mx-auto flex w-full shrink-0 flex-col gap-1.5 rounded-t-[28px] border-t border-[var(--line)] bg-[var(--surface)]/92 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 shadow-[0_-12px_32px_-18px_color-mix(in_oklab,var(--ink)_45%,transparent)] backdrop-blur-xl sm:px-6">
+      <div className="relative z-10 mx-auto flex w-full max-w-3xl shrink-0 flex-col gap-1.5 rounded-t-[28px] border-t border-[var(--line)] md:border-x bg-[var(--surface)]/92 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 shadow-[0_-12px_32px_-18px_color-mix(in_oklab,var(--ink)_45%,transparent)] backdrop-blur-xl sm:px-6">
         {/* 30-second Human Support Request Countdown Banner */}
         <AnimatePresence>
           {supportCountdown?.active && (
@@ -3474,9 +3493,10 @@ export default function ChatView({
                 One row that scrolls sideways. Wrapped, four replies took three
                 rows of a 640px phone during an order — on top of the header,
                 the banner and the composer — and left the conversation itself
-                a strip in the middle.
+                a strip in the middle. Its far edge fades, so the reply the
+                screen cuts in half reads as "more this way", not as broken.
               */}
-              <div className="-mx-1 flex flex-nowrap justify-start gap-1.5 overflow-x-auto px-1 pb-0.5 no-scrollbar">
+              <div className="-mx-1 flex flex-nowrap justify-start gap-1.5 overflow-x-auto px-1 pb-0.5 pe-6 no-scrollbar rtl:[mask-image:linear-gradient(to_right,transparent,black_28px)] ltr:[mask-image:linear-gradient(to_left,transparent,black_28px)]">
                 {activeSuggestions.map((suggestion, idx) => (
                   <button
                     key={idx}
@@ -3512,51 +3532,26 @@ export default function ChatView({
               if (file) void attachWithProgress(file);
             }}
           />
-          <div className="relative ms-1 flex items-center justify-center">
-            <AnimatePresence>
-              {showAttachments && (
-                <motion.div
-                  initial={{ opacity: 0, y: 30, scale: 0.8 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 30, scale: 0.8, transition: { duration: 0.2 } }}
-                  className="absolute bottom-[calc(100%+12px)] left-1/2 z-30 flex -translate-x-1/2 flex-col-reverse gap-3"
-                >
-                  {[
-                    { icon: ImageIcon, color: "text-blue-500" },
-                    { icon: Camera, color: "text-green-500" },
-                    { icon: Paperclip, color: "text-purple-500" },
-                  ].map(({ icon: Icon, color }, i) => (
-                    <motion.button
-                      key={i}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.05 * (i + 1) }}
-                      onClick={() => fileRef.current?.click()}
-                      className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[var(--surface-4)] bg-card shadow-lg transition-colors hover:bg-[var(--surface)] cursor-pointer"
-                    >
-                      <Icon className={`h-4 w-4 ${color}`} />
-                    </motion.button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
+          {/*
+            One button that does what it shows. It was a lightning bolt that
+            opened three round buttons — a picture, a camera, a paperclip — and
+            all three opened the same file picker, which on a phone already
+            offers the camera and the gallery itself.
+          */}
+          <button
+            type="button"
+            onClick={() => fileRef.current?.click()}
+            aria-label={tr("إرفاق صورة")}
+            title={tr("إرفاق صورة")}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[var(--ink)] transition-colors hover:bg-[var(--surface-3)] active:scale-95 cursor-pointer"
+          >
+            <Paperclip className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
+          </button>
 
-            <button
-              onClick={() => setShowAttachments(!showAttachments)}
-              className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[var(--ink)] transition-colors hover:bg-[var(--surface-3)] cursor-pointer"
-            >
-              {showAttachments ? (
-                <X className="h-4 w-4" strokeWidth={1.5} />
-              ) : (
-                <Zap className="h-4 w-4 fill-transparent" strokeWidth={1.5} />
-              )}
-            </button>
-          </div>
-
-          <div className="relative flex h-[42px] flex-1 items-center overflow-hidden rounded-full border border-[var(--surface-4)] bg-[var(--surface-2)] shadow-xs transition-all focus-within:border-[var(--ink-mute)]">
+          <div className="relative flex h-[42px] min-w-0 flex-1 items-center overflow-hidden rounded-full border border-[var(--surface-4)] bg-[var(--surface-2)] shadow-xs transition-all focus-within:border-[var(--ink-mute)]">
             {recordingState !== "idle" ? (
               <div
-                className="absolute inset-0 flex items-center justify-between ps-[48px] pe-4"
+                className="absolute inset-0 flex items-center justify-between px-4"
                 dir={isRtl ? "rtl" : "ltr"}
               >
                 <div className="z-10 flex items-center gap-2 font-medium text-red-500">
@@ -3586,9 +3581,13 @@ export default function ChatView({
                     void handleSend();
                   }
                 }}
+                /*
+                  Short enough to be read whole on a 360px phone. «اكتب رسالتك
+                  للمشرف بخصوص الطلب...» ran under the edge of the field.
+                */
                 placeholder={
                   isOrderMode
-                    ? tr("اكتب رسالتك للمشرف بخصوص الطلب...")
+                    ? tr("اكتب للمشرف...")
                     : isHumanChat
                       ? tr("اكتب رسالتك للدعم...")
                       : tr("اسألني أي شيء")
@@ -3603,33 +3602,41 @@ export default function ChatView({
                   further would have made it worse. Desktop keeps the compact
                   13px, where no such rule exists.
                 */
-                className={`h-full w-full bg-transparent ${"ps-[44px] pe-4"} text-[16px] font-medium text-[var(--ink)] placeholder-[var(--muted-ink)] focus:outline-none sm:text-[13px]`}
+                className="h-full w-full min-w-0 bg-transparent px-4 text-[16px] font-medium text-[var(--ink)] placeholder-[var(--muted-ink)] focus:outline-none sm:text-[13px]"
               />
             )}
-            <button
-              onClick={() => {
-                if (recordingState !== "idle") voice.cancel();
-                else if (inputText.length > 0) void handleSend();
-                else void startVoiceNote();
-              }}
-              aria-label={
-                recordingState !== "idle"
-                  ? tr("إلغاء التسجيل")
-                  : inputText.length > 0
-                    ? tr("إرسال")
-                    : tr("تسجيل رسالة صوتية")
-              }
-              className={`absolute ${"start-1"} z-20 flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary/90 cursor-pointer`}
-            >
-              {recordingState !== "idle" ? (
-                <X className="h-4 w-4" strokeWidth={1.75} />
-              ) : inputText.length > 0 ? (
-                <Send className="h-3.5 w-3.5 rtl:-scale-x-100" strokeWidth={2} />
-              ) : (
-                <Mic className="h-4 w-4" strokeWidth={1.75} />
-              )}
-            </button>
           </div>
+
+          {/*
+            Send, or record, at the end of the line — where the sentence being
+            typed ends, under the thumb, as in every messenger. It sat inside
+            the field at the start, so in Arabic both buttons crowded the right
+            edge and the placeholder ran out under the left one.
+          */}
+          <button
+            type="button"
+            onClick={() => {
+              if (recordingState !== "idle") voice.cancel();
+              else if (inputText.length > 0) void handleSend();
+              else void startVoiceNote();
+            }}
+            aria-label={
+              recordingState !== "idle"
+                ? tr("إلغاء التسجيل")
+                : inputText.length > 0
+                  ? tr("إرسال")
+                  : tr("تسجيل رسالة صوتية")
+            }
+            className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary/90 active:scale-95 cursor-pointer"
+          >
+            {recordingState !== "idle" ? (
+              <X className="h-4 w-4" strokeWidth={1.75} />
+            ) : inputText.length > 0 ? (
+              <Send className="h-4 w-4 rtl:-scale-x-100" strokeWidth={2} />
+            ) : (
+              <Mic className="h-[18px] w-[18px]" strokeWidth={1.75} />
+            )}
+          </button>
         </div>
 
         {/* Bottom Fast Action Buttons - only show in general support mode, HIDE in Order Mode or when Input is Focused! */}
@@ -4026,6 +4033,13 @@ export default function ChatView({
           </>
         )}
       </AnimatePresence>
+
+      <ImageViewer
+        src={viewerSrc}
+        onClose={() => setViewerSrc(null)}
+        label={tr("صورة من المحادثة")}
+        closeLabel={tr("إغلاق")}
+      />
 
       {/* Invoice Modal for selected order */}
       <AnimatePresence>
