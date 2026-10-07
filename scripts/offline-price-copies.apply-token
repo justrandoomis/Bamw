@@ -1,6 +1,0 @@
-# One line: the token. Claimed in `console_runs` before the first write, so this
-# file writes once however many times it is pushed. Removed after the run.
-#
-# Stage 2: every other game whose offline price copies still disagree. The five
-# stage 1 wrote now agree, so there is nothing to plan for them.
-offline-copies-stage-2
