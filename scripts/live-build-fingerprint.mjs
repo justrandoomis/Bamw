@@ -9,8 +9,8 @@
  *
  *  - `header-bar`  — the top bar is a solid strip of its own (`data-header-bar`),
  *                    so nothing scrolls visibly behind it;
- *  - `microphone`  — the server lets the site's own pages use the microphone
- *                    (`microphone=(self)`), which voice notes need;
+ *  - `header-height` — the page reserves the bar's own height plus the phone's
+ *                    notch (`--header-h`), which the same change added.
  *
  * It signs in as nobody and presses nothing.
  *
@@ -63,8 +63,9 @@ for (let attempt = 1; attempt <= 3; attempt += 1) {
   if (!challenged) break;
 }
 
-const headers = (await response?.allHeaders()) ?? {};
-const policy = headers["permissions-policy"] ?? "";
+const headerHeight = await page
+  .evaluate(() => getComputedStyle(document.documentElement).getPropertyValue("--header-h").trim())
+  .catch(() => "");
 const headerBar = await page
   .locator("[data-header-bar]")
   .count()
@@ -73,9 +74,9 @@ const headerBar = await page
 const probes = [
   { name: "header-bar", live: headerBar > 0, seen: `${headerBar} element(s)` },
   {
-    name: "microphone",
-    live: /microphone=\(self\)/.test(policy),
-    seen: policy ? `\`${policy}\`` : "no permissions-policy header",
+    name: "header-height",
+    live: /4rem/.test(headerHeight),
+    seen: headerHeight ? `\`--header-h: ${headerHeight}\`` : "no `--header-h`",
   },
 ];
 
