@@ -1,8 +1,6 @@
 # One line: the token. Claimed in `console_runs` before the first write, so this
 # file writes once however many times it is pushed. Removed after the run.
 #
-# Stage 1: the owner's own examples — LEGO Batman (its own row), Mario Tennis
-# Aces, Super Mario Bros. Wonder, Mario & Luigi: Brothership, Paper Mario: The
-# Thousand-Year Door — before the other 763 games.
-offline-copies-stage-1
-only=prd_cat_lego-batman-legacy-of-the-dark-knight-deluxe-edition,prd_a546170ff0fd4846,prd_99e5727e6bc7469f,prd_cat_mario-luigi-brothership,prd_e29d75e0daf94fd6
+# Stage 2: every other game whose offline price copies still disagree. The five
+# stage 1 wrote now agree, so there is nothing to plan for them.
+offline-copies-stage-2
