@@ -111,6 +111,64 @@ const JUDGED = new Map([
   ["prd_8404c32e2c544ea4", { step: IN_DEMAND_FLOOR, why: "twin" }],
 ]);
 
+/*
+  «الالعاب الغاليه سابقا التي اساسا سعرها ١٢ وفوك ارفعها لان باقيه نفس اسعارها»
+
+  The rounds above lifted the cheaper flagships to 12,000 and left every Switch
+  2 game already at 12,000 or more where it stood — so Mario Kart World, 2,000
+  above Donkey Kong Bananza before, sat level with it. Each of these goes up by
+  the same 2,000 the flagships rose by, which puts every gap back. The targets
+  are frozen, read from the live catalogue after round 2: a rule that added
+  2,000 on every run would add it again on the next one.
+*/
+const ABOVE_THE_FLOOR = new Map([
+  [
+    "prd_cat_the-prince-of-tennis-sweet-school-festival-40-and-more-nintendo-switch-2-edition",
+    25000,
+  ], // The Prince of Tennis: Sweet School Festival ♡-40 and more... — 23,000
+  ["prd_ddd43641059248a3", 24000], // EA SPORTS FC 27 switch 2 — 22,000
+  ["prd_cat_fire-emblem-fortune-s-weave", 22000], // Fire Emblem: Fortune's Weave — 20,000
+  ["prd_cat_lego-batman-legacy-of-the-dark-knight-deluxe-edition", 22000], // LEGO Batman: Legacy of the Dark Knight – Deluxe Edition — 20,000
+  ["prd_e0e2e61ef26b4744", 21000], // ELDEN RING Tarnished Edition — 19,000
+  ["prd_2fc942f8c6314b12", 21000], // Onimusha: Way of the Sword — 19,000
+  ["prd_cat_wo-long-fallen-dynasty-complete-edition", 20000], // Wo Long: Fallen Dynasty – Complete Edition — 18,000
+  ["prd_cat_brigandine-abyss", 19000], // BRIGANDINE ABYSS — 17,000
+  ["prd_cat_captain-tsubasa-rise-of-new-champions-2", 19000], // Captain Tsubasa: Rise of New Champions 2 — 17,000
+  ["prd_cat_indiana-jones-and-the-great-circle", 19000], // Indiana Jones and the Great Circle — 17,000
+  ["prd_cat_moeyo-otome-doushi-kayu-koigatari", 19000], // Moeyo! Otome Doushi ~Kayu Koigatari~ — 17,000
+  ["prd_cat_taisho-x-alice", 19000], // TAISHO x ALICE — 17,000
+  ["prd_cat_metal-gear-solid-master-collection-vol-2", 17000], // METAL GEAR SOLID: MASTER COLLECTION Vol.2 — 15,000
+  ["prd_7037e22716fa4681", 17000], // Resident Evil Requiem — 15,000
+  ["prd_cat_the-elder-scrolls-iv-oblivion-remastered-deluxe-edition", 17000], // The Elder Scrolls IV: Oblivion Remastered – Deluxe Edition — 15,000
+  ["prd_cat_9-r-i-p-switch-2", 16000], // 9 R.I.P. — 14,000
+  ["prd_cat_blue-reflection", 16000], // BLUE REFLECTION — 14,000
+  ["prd_cat_everspace-2-galactic-edition", 16000], // EVERSPACE 2: Galactic Edition — 14,000
+  ["prd_7c8bc4a553ff4edd", 16000], // Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2  — 14,000
+  ["prd_2b0afd3037524c80", 16000], // Lies of P: Complete Edition — 14,000
+  ["prd_cat_rilakkuma-ouchi-de-relax", 16000], // Rilakkuma: Ouchi de Relax — 14,000
+  ["prd_cat_sangoku-rensenki-otome-no-heihou", 16000], // Sangoku Rensenki ~Otome no Heihou!~ — 14,000
+  ["prd_cat_starsand-island", 16000], // Starsand Island — 14,000
+  ["prd_cat_village-in-the-shade", 16000], // Village in the Shade — 14,000
+  ["prd_cat_diabolik-lovers-1-21", 15000], // DIABOLIK LOVERS — 13,000
+  ["prd_cat_diabolik-lovers-chaos-lineage", 15000], // DIABOLIK LOVERS CHAOS LINEAGE — 13,000
+  ["prd_cat_diabolik-lovers-lunatic-parade", 15000], // DIABOLIK LOVERS: Lunatic Parade — 13,000
+  ["prd_cat_dynamic-chord", 15000], // DYNAMIC CHORD — 13,000
+  ["prd_cat_digimon-story-time-stranger", 15000], // Digimon Story: Time Stranger — 13,000
+  ["prd_cat_orbitals", 15000], // Orbitals — 13,000
+  ["prd_bb3ce91b87764684", 15000], // SpongeBob SquarePants: Titans of the Tide switch 2 — 13,000
+  ["prd_391864a55b884a32", 14000], // EA SPORTS FC 26 switch 2 — 12,000
+  ["prd_cat_hakuoki-shinkai-tenun-no-shou", 14000], // Hakuoki Shinkai: Tenun no Shou — 12,000
+  ["prd_cat_kyoto-xanadu", 14000], // Kyoto Xanadu — 12,000
+  ["prd_cat_monopoly-star-wars-heroes-vs-villains", 14000], // MONOPOLY Star Wars: Heroes vs Villains — 12,000
+  ["prd_34be2de35cbe4d6b", 14000], // Mario Kart World [Switch 2] — 12,000
+  ["prd_cat_momotaro-dentetsu-2", 14000], // Momotaro Dentetsu 2 — 12,000
+  ["prd_cat_railway-nippon-real-pro-tbhq3", 14000], // Railway Nippon! Real Pro (特快专通) — 12,000
+  ["prd_cat_railway-nippon-real-pro-express-edition", 14000], // Railway Nippon! Real Pro - Express Edition — 12,000
+  ["prd_eddd0a3519bd4681", 14000], // Super Mario Bros.™ Wonder – Nintendo Switch™ 2 Edition + Mee — 12,000
+  ["prd_cat_winning-post-10-2026", 14000], // Winning Post 10 2026 — 12,000
+  ["prd_9e05c55e9e4f4c59", 14000], // Xenoblade Chronicles: Definitive Edition – Nintendo Switch 2 — 12,000
+]);
+
 const SECRETS = [process.env.CLOUDFLARE_API_TOKEN, process.env.CLOUDFLARE_ACCOUNT_ID].filter(
   (v) => v && v.length >= 8,
 );
@@ -143,6 +201,7 @@ const WHY = {
   online: `غالية: أونلاين ≥ ${money(EXPENSIVE_ONLINE)}`,
   "judged-step": "تصحيح: في الطلب، وثمنها أقل من ألعاب الـ12,000",
   twin: "نسخة مكررة: بسعر نسختها الأخرى",
+  premium: "كانت غالية: +2,000 لتبقى فوق ألعاب الـ12,000",
 };
 
 const ONLY = args.only && args.only !== "true" ? new Set(String(args.only).split(",")) : null;
@@ -460,14 +519,17 @@ for (const product of switch2) {
   /* Not a game the shop judged niche: no price brings those buyers. */
   const dearOnline = tier !== "niche" && onlinePrice(product) >= EXPENSIVE_ONLINE;
   const judged = JUDGED.get(id) ?? null;
+  const above = ABOVE_THE_FLOOR.get(id);
   let floor = judged
     ? { target: judged.step, why: judged.why }
-    : floorFor({
-        isSwitch2: true,
-        tier,
-        inDemand: rank !== null && rank <= TOP_ORDERED,
-        expensive: dearInYuan || dearOnline,
-      });
+    : above
+      ? { target: above, why: "premium" }
+      : floorFor({
+          isSwitch2: true,
+          tier,
+          inDemand: rank !== null && rank <= TOP_ORDERED,
+          expensive: dearInYuan || dearOnline,
+        });
   if (floor?.why === "cost" && !dearInYuan) floor = { ...floor, why: "online" };
   if (!floor) {
     left.push({ product, tier, rank });
