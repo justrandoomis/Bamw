@@ -113,57 +113,23 @@ const open = (path) =>
     .catch((error) => ({ error }));
 
 /*
-  THE HOME PAGE FIRST, AND THE CHALLENGE LEFT TO CLEAR.
+  ONE PAGE LOAD, AND EVERYTHING ELSE FROM INSIDE IT.
 
-  The first run of this went straight to `/disc_trade` and was answered 403 on
-  every page after it, `/api/health` included — the edge scoring a runner that
-  never lets its challenge finish. A visitor lands, the challenge runs, and the
-  clearance cookie carries every page after; so does this.
+  The first run went straight to `/disc_trade` and was answered 403 on every
+  request after it. The second opened the home page first and got it — the
+  trade card read «تحت الصيانة» — and then 403 on every fresh page load and on
+  `/api/health`. The edge lets a runner's browser in once; it does not let it
+  keep knocking. So, as the market checker found before: the home page is the
+  only document requested, the two server questions are asked from it at
+  once, and every other screen is reached the way a member reaches it — inside
+  the app, by `pushState` + `popstate`, the transition TanStack Router listens
+  for, with nothing new for the edge to refuse.
 */
 await open("/");
 await waitOutChallenge(30);
+const homeChallenged = await looksChallenged();
 
-const results = [];
-for (const screen of SCREENS) {
-  const label = screen.what ?? screen.path;
-  let res = await open(screen.path);
-  if (!res?.error && (await looksChallenged())) {
-    if (await waitOutChallenge(20)) res = await open(screen.path);
-  }
-  if (!res?.error && (await looksChallenged())) {
-    results.push({
-      label,
-      ok: false,
-      skipped: true,
-      detail: "حماية الحافة اعترضت المتصفح — غير حاسم",
-    });
-    continue;
-  }
-  if (res?.error || !res || res.status() >= 400) {
-    const why = res?.error
-      ? String(res.error).split("\n")[0].slice(0, 100)
-      : `HTTP ${res?.status?.()}`;
-    results.push({ label, ok: false, detail: why });
-    continue;
-  }
-  /*
-    Waited for, not read at once: the page is drawn by the client, and a
-    notice that has not rendered YET is not a notice that is missing.
-  */
-  const notice = page.locator(`[data-maintenance="${screen.feature}"]`).first();
-  const seen = await notice
-    .waitFor({ state: "attached", timeout: 30_000 })
-    .then(() => true)
-    .catch(() => false);
-  const text = seen ? (await notice.innerText().catch(() => "")).replace(/\s+/g, " ").trim() : "";
-  results.push({
-    label,
-    ok: seen && text.includes(screen.words),
-    detail: text.slice(0, 90) || "لا إشعار صيانة",
-  });
-}
-
-/* The build the site says it is, so the screens above can be tied to a commit. */
+/* The build the site says it is, so the screens below can be tied to a commit. */
 const build = await page
   .evaluate(async () => {
     try {
@@ -199,6 +165,63 @@ const quote = await page
     }
   })
   .catch(() => ({ status: 0, code: null, feature: null }));
+
+const routeTo = (to) =>
+  page.evaluate((target) => {
+    window.history.pushState({}, "", target);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+  }, to);
+
+const results = [];
+for (const screen of SCREENS) {
+  const label = screen.what ?? screen.path;
+  if (homeChallenged) {
+    results.push({
+      label,
+      ok: false,
+      skipped: true,
+      detail: "حماية الحافة اعترضت المتصفح — غير حاسم",
+    });
+    continue;
+  }
+  if (screen.path !== "/") await routeTo(screen.path).catch(() => {});
+  /*
+    Waited for, not read at once: the screen is drawn by the client, and a
+    notice that has not rendered YET is not a notice that is missing.
+
+    And waited for BY ITS OWN WORDS. The home card's label and the trade page's
+    notice share `data-maintenance="discTrade"`, and right after an in-app
+    move the card is still on screen — so a bare attribute match read the
+    card and called it the page. A screen's notice is the `role="status"`
+    element carrying that screen's sentence; the card is neither.
+  */
+  const selector =
+    screen.path === "/"
+      ? `[data-maintenance="${screen.feature}"]`
+      : `[role="status"][data-maintenance="${screen.feature}"]`;
+  const notice = page.locator(selector).filter({ hasText: screen.words }).first();
+  const seen = await notice
+    .waitFor({ state: "attached", timeout: 30_000 })
+    .then(() => true)
+    .catch(() => false);
+  const text = seen ? (await notice.innerText().catch(() => "")).replace(/\s+/g, " ").trim() : "";
+  const onScreen = seen
+    ? ""
+    : (
+        await page
+          .locator("body")
+          .innerText()
+          .catch(() => "")
+      )
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 80);
+  results.push({
+    label,
+    ok: seen && text.includes(screen.words),
+    detail: text.slice(0, 90) || `لا إشعار صيانة${onScreen ? ` — على الشاشة: «${onScreen}»` : ""}`,
+  });
+}
 await browser.close();
 
 const quoteClosed =

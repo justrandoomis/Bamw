@@ -67,6 +67,7 @@ export default tseslint.config(
       "scripts/check-horizontal-overflow.mjs",
       "scripts/cheapest-option-check.mjs",
       "scripts/live-price-check.mjs",
+      "scripts/maintenance-live-check.mjs",
       "scripts/market-roulette-check.mjs",
       "scripts/search-live-check.mjs",
       "scripts/square-card-audit.mjs",
