@@ -167,6 +167,46 @@ for (const key of ["CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_TOKEN", "D1_DATABASE
 */
 const silenced = { count: 0 };
 globalThis.__yuanRepriceSilenced = silenced;
+
+/*
+  AND THE MEMBER LIST STAYS UNREAD.
+
+  Before it sends anything, that alert block reads EVERY member —
+  \`SELECT * FROM users\`, names, phones, addresses — and then looks up each
+  favourite-keeper's Telegram link, one query each. From a runner that is a
+  minute or more of nothing useful, and it is a minute that matters: over the
+  REST API the catalogue write is a sequence of statements whose FIRST one
+  moves the revision, so a shop isolate that reloads during the write can
+  cache a half-written catalogue, and it keeps it until the version moves
+  again. This script moves it again only after \`updateStore\` returns.
+
+  So that one statement is answered here, before it leaves the process, with
+  no rows: no member is read, no alert is prepared, and the version moves
+  seconds after the write instead of a minute. Matched on the exact text
+  \`getUsers\` sends; if that text ever changes this matches nothing and the
+  run is only slower — the alerts stay silenced either way.
+*/
+const membersUnread = { count: 0 };
+const fetchThrough = globalThis.fetch;
+globalThis.fetch = async (input, init) => {
+  const url = typeof input === "string" ? input : String(input?.url ?? "");
+  if (/\/d1\/database\/[^/]+\/query$/.test(url) && typeof init?.body === "string") {
+    let sql = "";
+    try {
+      sql = String(JSON.parse(init.body)?.sql ?? "");
+    } catch {
+      sql = "";
+    }
+    if (/^\s*SELECT \* FROM users ORDER BY created_at ASC\s*$/i.test(sql)) {
+      membersUnread.count += 1;
+      return new Response(
+        JSON.stringify({ success: true, result: [{ success: true, results: [], meta: {} }] }),
+        { headers: { "content-type": "application/json" } },
+      );
+    }
+  }
+  return fetchThrough(input, init);
+};
 const realTelegram = path.resolve("src/lib/telegram.server.ts");
 
 const outfile = path.resolve(".yuan-reprice-apply-bundle.mjs");
@@ -836,7 +876,9 @@ for (const id of chunkWritten) writtenIds.add(id);
 skipped.push(...chunkSkipped);
 say(`- عبر كتل الكتالوج: ${chunkWritten.size} من ${chunkPlanned.length}`);
 say(`- حزم: ${bundleWritten.size} من ${plannedBundles.length}`);
-say(`- تنبيهات تيليجرام «تغيّر السعر» لم تُرسل: ${silenced.count}`);
+say(
+  `- تنبيهات «تغيّر السعر»: لم يُرسل شيء — قائمة الأعضاء لم تُقرأ (${membersUnread.count})، وإرسال تيليجرام معطّل في هذا التشغيل (${silenced.count} محاولة)`,
+);
 
 /*
   THE VERSION, AFTER EVERYTHING.
@@ -978,6 +1020,7 @@ report.applied = true;
 report.written = writtenList;
 report.skipped = skipped.map((s) => ({ id: s.entry.id, why: s.why }));
 report.alertsSilenced = silenced.count;
+report.memberListReads = membersUnread.count;
 writeJson();
 
 if (faults.length) {
