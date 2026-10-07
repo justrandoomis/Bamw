@@ -10,7 +10,9 @@
  *  - `header-bar`  — the top bar is a solid strip of its own (`data-header-bar`),
  *                    so nothing scrolls visibly behind it;
  *  - `header-height` — the page reserves the bar's own height plus the phone's
- *                    notch (`--header-h`), which the same change added.
+ *                    notch (`--header-h`), which the same change added;
+ *  - `chat-attach` — the chat's composer attaches with one labelled paperclip
+ *                    («إرفاق صورة»), where it had an unlabelled lightning bolt.
  *
  * It signs in as nobody and presses nothing.
  *
@@ -71,12 +73,36 @@ const headerBar = await page
   .count()
   .catch(() => 0);
 
+/* The chat renders for a visitor who is not signed in, composer and all. */
+let chatAttach = 0;
+let chatStatus = 0;
+try {
+  const chat = await page.goto(`${ORIGIN}/chat`, {
+    waitUntil: "domcontentloaded",
+    timeout: 60_000,
+  });
+  chatStatus = chat?.status() ?? 0;
+  chatAttach = await page
+    .locator('button[aria-label="إرفاق صورة"], button[aria-label="Attach a photo"]')
+    .first()
+    .waitFor({ timeout: 20_000 })
+    .then(() => 1)
+    .catch(() => 0);
+} catch {
+  chatAttach = 0;
+}
+
 const probes = [
   { name: "header-bar", live: headerBar > 0, seen: `${headerBar} element(s)` },
   {
     name: "header-height",
     live: /4rem/.test(headerHeight),
     seen: headerHeight ? `\`--header-h: ${headerHeight}\`` : "no `--header-h`",
+  },
+  {
+    name: "chat-attach",
+    live: chatAttach > 0,
+    seen: `/chat HTTP ${chatStatus || "—"} · ${chatAttach ? "labelled paperclip" : "no labelled paperclip"}`,
   },
 ];
 
