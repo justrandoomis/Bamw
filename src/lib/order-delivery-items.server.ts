@@ -1072,23 +1072,42 @@ export async function recordDeliveryProof(input: {
   if (!order) throw new Error("ORDER_NOT_FOUND");
   await ensureOrderDeliveryRecords(order);
   const row = await loadMappedDeliveryRow(order.id, input.deliveryItemId);
-  if (row.status !== "sent" && row.status !== "proof_received") {
+  /*
+    A proof can be sent again until the order is done.
+
+    «إعادة إرسال إثبات التسجيل» never worked: a second proof passed the check
+    above it — `proof_received` was allowed — and then met an UPDATE that only
+    matched `status = 'sent'`, so every replacement threw
+    DELIVERY_ITEM_NOT_SENT and the member saw that code in a toast. And once
+    the verification code was out (`otp_sent`) — the moment a member most
+    needs to sign in again, because the code expired — there was no way to
+    send one at all.
+
+    Now a new image replaces the old one from `sent`, `proof_received` or
+    `otp_sent`. From `otp_sent` the item goes back to `proof_received`, so
+    the shop can send a fresh code; the UPDATE is pinned to the status read
+    here, so a change in between is refused rather than overwritten.
+  */
+  const replaceable = ["sent", "proof_received", "otp_sent"] as const;
+  if (!replaceable.includes(row.status as (typeof replaceable)[number])) {
     throw new Error("DELIVERY_ITEM_NOT_SENT");
   }
   if (row.status === "proof_received" && row.proof_url === input.imageUrl) {
     return getDeliveryOrderState(order);
   }
+  const replacing = row.status !== "sent";
   const now = new Date().toISOString();
   const changed = await d1RunChanges(
     `UPDATE order_delivery_items
      SET status = 'proof_received', proof_received_at = ?, proof_url = ?,
-         updated_at = ?, revision = revision + 1
-     WHERE id = ? AND order_id = ? AND status = 'sent' AND archived_at IS NULL`,
+         otp_sent_at = NULL, updated_at = ?, revision = revision + 1
+     WHERE id = ? AND order_id = ? AND status = ? AND archived_at IS NULL`,
     now,
     input.imageUrl,
     now,
     row.id,
     order.id,
+    row.status,
   );
   if (changed !== 1) throw new Error("DELIVERY_ITEM_NOT_SENT");
 
@@ -1104,15 +1123,20 @@ export async function recordDeliveryProof(input: {
         productId: row.canonical_product_id || row.product_id,
         title: row.product_title,
         imageUrl: input.imageUrl,
-        text: "📸 صورة إثبات تسجيل الدخول",
+        text: replacing ? "📸 صورة إثبات تسجيل دخول جديدة" : "📸 صورة إثبات تسجيل الدخول",
       },
     });
   } catch (error) {
+    /* Put back exactly what was there: a first proof undone, a replacement reverted. */
     await d1Run(
       `UPDATE order_delivery_items
-       SET status = 'sent', proof_received_at = NULL, proof_url = NULL,
+       SET status = ?, proof_received_at = ?, proof_url = ?, otp_sent_at = ?,
            updated_at = ?, revision = revision + 1
        WHERE id = ? AND order_id = ? AND proof_received_at = ?`,
+      row.status,
+      row.proof_received_at ?? null,
+      row.proof_url ?? null,
+      row.otp_sent_at ?? null,
       new Date().toISOString(),
       row.id,
       order.id,
@@ -1139,7 +1163,7 @@ export async function recordDeliveryProof(input: {
     const { escapeHtml } = await import("./telegram.server");
     await sendAdminNotification(
       "order",
-      `📸 <b>وصلت صورة إثبات تسجيل الدخول</b>\n\n` +
+      `📸 <b>${replacing ? "وصلت صورة إثبات دخول جديدة" : "وصلت صورة إثبات تسجيل الدخول"}</b>\n\n` +
         `🔖 <b>رقم الطلب:</b> <code>${escapeHtml(String(order.code ?? order.id))}</code>\n` +
         `🎮 <b>المنتج:</b> ${escapeHtml(String(row.product_title ?? ""))}\n` +
         `\n▶️ العميل بانتظار رمز التحقق.`,

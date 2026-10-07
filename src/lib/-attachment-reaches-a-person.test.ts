@@ -34,7 +34,8 @@ const images = source("src/lib/support/images.ts");
 
 describe("an attachment in the assistant thread", () => {
   it("notifies the admin, whatever kind of thread it arrived in", () => {
-    expect(chat).toContain("const hasAttachment = Boolean(data.imageUrl)");
+    /* A voice note is an attachment too: nobody but a person can listen to it. */
+    expect(chat).toContain("const hasAttachment = Boolean(data.imageUrl || audioUrl)");
     expect(chat).toContain("if (!isAutomatedThread || hasAttachment)");
   });
 
@@ -44,7 +45,7 @@ describe("an attachment in the assistant thread", () => {
       conversation. Only the notification was widened.
     */
     const block = chat.slice(
-      chat.indexOf("const hasAttachment = Boolean(data.imageUrl)"),
+      chat.indexOf("const hasAttachment = Boolean(data.imageUrl || audioUrl)"),
       chat.indexOf("const availability = await getAdminAvailabilityStatus()"),
     );
     const notifyEnd = block.indexOf("[chat:notify_admin_failed]");

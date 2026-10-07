@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { guard } from "@/lib/http.server";
-import { readBinaryStream, readBinary } from "@/lib/storage.server";
+import { readBinaryStream, readBinary, readBinaryRange } from "@/lib/storage.server";
 import { getSessionUser } from "@/lib/session.server";
 
 /*
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/api/files/$")({
         guard(async () => {
           const path = (params as { _splat?: string })._splat ?? "";
           if (
-            !/^(?:[a-z0-9_-]{1,64}\/)*[a-z0-9_-]{1,96}\.(?:png|jpe?g|webp|gif|avif|pdf|mp4|webm|mov)$/i.test(
+            !/^(?:[a-z0-9_-]{1,64}\/)*[a-z0-9_-]{1,96}\.(?:png|jpe?g|webp|gif|avif|pdf|mp4|webm|mov|weba|ogg|oga|opus|m4a|aac|mp3)$/i.test(
               path,
             )
           ) {
@@ -45,8 +45,25 @@ export const Route = createFileRoute("/api/files/$")({
             if (!viewer) {
               return new Response("Not found", { status: 404 });
             }
+            /*
+              What the shop sends into a conversation is filed under that
+              conversation — `chat/<threadId>/…` — and belongs to the member
+              whose conversation it is. Images an admin sent were stored in the
+              admin's own folder and answered every member with a 404, and
+              Telegram replies (already filed this way) were refused to anyone
+              but an admin, so «الصورة لا تصل» was true of every one of them.
+            */
+            const threadMatch = /^chat\/(thr_[a-z0-9]+)\//i.exec(path);
             const userMatch = /(?:^|\/)(usr_[a-z0-9]+)(?:\/|$)/i.exec(path);
-            if (userMatch) {
+            if (threadMatch) {
+              if (!viewer.isAdmin) {
+                const { getThread } = await import("@/lib/db.server");
+                const thread = await getThread(threadMatch[1]!);
+                if (!thread || thread.userId !== viewer.id) {
+                  return new Response("Not found", { status: 404 });
+                }
+              }
+            } else if (userMatch) {
               const targetUserId = userMatch[1];
               if (!viewer.isAdmin && viewer.id !== targetUserId) {
                 return new Response("Not found", { status: 404 });
@@ -56,11 +73,53 @@ export const Route = createFileRoute("/api/files/$")({
             }
           }
 
+          const cacheControlFor = isPrivateFolder
+            ? "private, no-store"
+            : "public, max-age=31536000, immutable";
+
+          /*
+            A media element's byte-range request, answered as one: Safari will
+            not play a voice note or a clip without it.
+          */
+          const rangeHeader = request.headers.get("range");
+          if (rangeHeader && !new URL(request.url).searchParams.get("w")) {
+            const part = await readBinaryRange(`files/${path}`, rangeHeader);
+            if (part && "unsatisfiable" in part) {
+              return new Response(null, {
+                status: 416,
+                headers: { "content-range": `bytes */${part.size}`, "accept-ranges": "bytes" },
+              });
+            }
+            if (part) {
+              return new Response(part.body as unknown as BodyInit, {
+                status: 206,
+                headers: {
+                  "content-type": part.mime,
+                  "content-range": `bytes ${part.start}-${part.end}/${part.size}`,
+                  "content-length": String(part.end - part.start + 1),
+                  "accept-ranges": "bytes",
+                  "cache-control": cacheControlFor,
+                  "x-content-type-options": "nosniff",
+                  ...(part.etag ? { etag: part.etag } : {}),
+                },
+              });
+            }
+          }
+
           const url = new URL(request.url);
-          const targetWidth = Math.min(2400, Math.max(0, parseInt(url.searchParams.get("w") || "0", 10)));
-          const targetQuality = Math.min(100, Math.max(40, parseInt(url.searchParams.get("q") || "85", 10)));
-          
-          const file: any = targetWidth > 0 ? await readBinary(`files/${path}`) : await readBinaryStream(`files/${path}`);
+          const targetWidth = Math.min(
+            2400,
+            Math.max(0, parseInt(url.searchParams.get("w") || "0", 10)),
+          );
+          const targetQuality = Math.min(
+            100,
+            Math.max(40, parseInt(url.searchParams.get("q") || "85", 10)),
+          );
+
+          const file: any =
+            targetWidth > 0
+              ? await readBinary(`files/${path}`)
+              : await readBinaryStream(`files/${path}`);
           if (!file) {
             // If this is a product cover / cartridge / game image, attempt on-demand recovery
             const isProductMedia =
@@ -185,15 +244,16 @@ export const Route = createFileRoute("/api/files/$")({
           }
 
           const etag = file.etag || `"${path}-${file.size || 0}"`;
-          const cacheControl = isPrivateFolder
-            ? "private, no-store"
-            : "public, max-age=31536000, immutable";
+          const cacheControl = cacheControlFor;
 
           const headers: Record<string, string> = {
             "content-type": file.mime,
             etag,
             "cache-control": cacheControl,
             "x-content-type-options": "nosniff",
+            /* Says ranges are welcome, so a player asks for them. */
+            "accept-ranges": "bytes",
+            ...(file.size ? { "content-length": String(file.size) } : {}),
           };
 
           if (request.headers.get("if-none-match") === etag) {

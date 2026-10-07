@@ -49,6 +49,9 @@ export interface NormalizedCardItem {
 export interface NormalizedMessageBody extends Record<string, unknown> {
   text?: string;
   imageUrl?: string | null;
+  /** A voice note's file, and its length from the recorder. */
+  audioUrl?: string | null;
+  durationMs?: number;
   images?: string[];
   code?: string | null;
   verificationCode?: string | null;
@@ -177,6 +180,10 @@ export function normalizeMessage(raw: unknown, threadIdFallback?: string): Norma
       kind = "login_proof";
     } else if (rawKind === "image" || rawKind === "image/file" || rawKind === "file") {
       kind = "image";
+    } else if (rawKind === "video") {
+      kind = "video";
+    } else if (rawKind === "audio" || rawKind === "voice") {
+      kind = "audio";
     } else if (rawKind === "discount_code" || rawKind === "card" || rawKind === "activation_code") {
       kind = "discount_code";
     } else if (rawKind === "instructions") {

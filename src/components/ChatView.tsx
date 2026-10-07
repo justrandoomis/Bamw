@@ -1,7 +1,10 @@
 import { tr, useI18n } from "@/i18n";
 import { threadKind } from "@/lib/thread-lifecycle";
 import { toast } from "sonner";
-import { prepareServableImage } from "@/lib/imageForUpload";
+import { prepareImageForUpload, prepareServableImage } from "@/lib/imageForUpload";
+import { useVoiceRecorder } from "@/hooks/useVoiceRecorder";
+import { microphoneErrorText, voiceFile } from "@/lib/voiceNotes";
+import { VoiceNotePlayer } from "@/components/chat/VoiceNotePlayer";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
 import {
@@ -86,6 +89,7 @@ export type DisplayMessage = {
     | "wallet"
     | "order"
     | "image"
+    | "audio"
     | "account_card"
     | "digital_order_card"
     | "review_request"
@@ -740,8 +744,14 @@ export default function ChatView({
   const [threadReloadKey, setThreadReloadKey] = useState(0);
   const activeAbortControllerRef = useRef<AbortController | null>(null);
   const [showHistory, setShowHistory] = useState(false);
-  const [recordingState, setRecordingState] = useState<"idle" | "recording" | "paused">("idle");
-  const [recordingTime, setRecordingTime] = useState(0);
+  /*
+    A real recorder. The microphone used to run a timer and then send the words
+    «🎤 رسالة صوتية (0:07)» as text — nothing was ever recorded.
+  */
+  const voice = useVoiceRecorder();
+  const recordingState: "idle" | "recording" | "paused" =
+    voice.state === "idle" ? "idle" : voice.state === "paused" ? "paused" : "recording";
+  const recordingTime = Math.floor(voice.elapsedMs / 1000);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
@@ -1032,6 +1042,19 @@ export default function ChatView({
         status: "sent",
       };
     }
+    const audioUrl =
+      typeof message.body["audioUrl"] === "string" ? message.body["audioUrl"] : undefined;
+    if (audioUrl) {
+      return {
+        id: message.id,
+        sender: mine ? "user" : "ai",
+        text: "",
+        type: "audio" as const,
+        payload: { ...message.body, audioUrl },
+        createdAt: message.createdAt,
+        status: "sent",
+      };
+    }
     return {
       id: message.id,
       sender: mine ? "user" : "ai",
@@ -1099,9 +1122,17 @@ export default function ChatView({
       toast.error(tr("تعذر تحديد الطلب لإرسال الإثبات"));
       return;
     }
+    /* Used once: the next tap names its own item, or none. */
+    proofItemRef.current = null;
     setDeliveryBusy(true);
     try {
-      const { url } = await uploadFileWithProgress(file, "orders");
+      /*
+        Prepared like every other photo the shop takes. A picture of a TV
+        screen — how a Switch sign-in is usually shown — is a 10 MB camera
+        JPEG or an iPhone HEIC, and sent as it was it failed the upload.
+      */
+      const prepared = await prepareImageForUpload(file);
+      const { url } = await uploadFileWithProgress(prepared, "orders");
       await api.orderAction({
         orderId,
         action: "submit_login_proof",
@@ -1118,10 +1149,23 @@ export default function ChatView({
       await reloadThread();
     } catch (err: any) {
       console.error("Failed to submit the sign-in proof", err);
-      toast.error(err?.message || tr("تعذر إرسال صورة الإثبات، حاول مرة أخرى"));
+      const code = String(err?.message || "");
+      toast.error(
+        /^DELIVERY_ITEM_NOT_SENT$|delivery_item_not_found/.test(code)
+          ? tr("لا يوجد حساب بانتظار إثبات في هذا الطلب حاليًا")
+          : /^[A-Z_]+$/.test(code) || !code
+            ? tr("تعذر إرسال صورة الإثبات، حاول مرة أخرى")
+            : code,
+      );
     } finally {
       setDeliveryBusy(false);
     }
+  };
+
+  /** Open the photo picker for a sign-in proof — for one account, or the order's current one. */
+  const pickLoginProof = (target?: { itemId: string; deliveryItemId?: string }) => {
+    proofItemRef.current = target ?? null;
+    proofInputRef.current?.click();
   };
 
   /** Ask for the next prepared account, or finish when the line is done. */
@@ -1554,6 +1598,115 @@ export default function ChatView({
   }, [isOrderMode, currentOrder?.status, hasAccountCards]);
 
   // Send message handler with optimistic UI
+  /*
+    The server's copy of a message just sent, in the shape a bubble is drawn
+    from.
+
+    The optimistic bubble used to be replaced by the raw wire message, which
+    has none of `sender`, `text`, `type` or `payload` — so whenever the HTTP
+    reply beat the live event, the member's message turned into an empty
+    bubble on the shop's side of the thread, image and all, and the live event
+    that would have fixed it was then dropped as a duplicate.
+  */
+  const confirmedBubble = (raw: ChatMessage | undefined, previous: DisplayMessage) => {
+    const mapped = raw ? mapServerMessage(raw) : null;
+    return mapped
+      ? {
+          ...mapped,
+          ...(previous.clientMessageId ? { clientMessageId: previous.clientMessageId } : {}),
+          status: "sent" as const,
+          uploadProgress: 100,
+        }
+      : { ...previous, status: "sent" as const };
+  };
+
+  const startVoiceNote = async () => {
+    if (!user) {
+      toast.error(tr("سجّل الدخول أولاً لإرسال رسالة صوتية."));
+      return;
+    }
+    try {
+      await voice.start();
+    } catch (error) {
+      toast.error(tr(microphoneErrorText(error)));
+    }
+  };
+
+  /** Stop the recording and send it: upload, then post it to the conversation. */
+  const sendVoiceNote = async () => {
+    const note = await voice.stop();
+    if (!note || note.blob.size === 0 || note.durationMs < 700) {
+      toast.error(tr("التسجيل قصير جدًا. اضغط الميكروفون وتحدّث ثم أرسل."));
+      return;
+    }
+    const file = voiceFile(note.blob, note.mime);
+    const tempId = `voice-${Date.now()}`;
+    const preview = URL.createObjectURL(note.blob);
+
+    let targetThreadId = threadId;
+    try {
+      if (!targetThreadId) {
+        const created = await createThread.mutateAsync({
+          subject: "محادثة المساعد الآلي",
+          chatType: "AUTOMATED_SUPPORT",
+        });
+        targetThreadId = created?.thread?.id;
+        if (!targetThreadId) throw new Error(tr("تعذر بدء المحادثة."));
+        setThreadId(targetThreadId);
+      }
+    } catch (err) {
+      toast.error(err instanceof Error && err.message ? err.message : tr("تعذر بدء المحادثة."));
+      return;
+    }
+
+    setServerMessages((prev) => [
+      ...prev,
+      {
+        id: tempId,
+        clientMessageId: tempId,
+        sender: "user",
+        text: "",
+        type: "audio",
+        payload: { audioUrl: preview, durationMs: note.durationMs },
+        status: "sending",
+        uploadProgress: 0,
+        createdAt: new Date().toISOString(),
+      },
+    ]);
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+
+    try {
+      const { url } = await uploadFileWithProgress(file, "chat", (pct) =>
+        setServerMessages((prev) =>
+          prev.map((m) => (m.id === tempId ? { ...m, uploadProgress: pct } : m)),
+        ),
+      );
+      setServerMessages((prev) =>
+        prev.map((m) =>
+          m.id === tempId ? { ...m, payload: { audioUrl: url, durationMs: note.durationMs } } : m,
+        ),
+      );
+      const res = await api.sendMessage({
+        threadId: targetThreadId,
+        audioUrl: url,
+        durationMs: note.durationMs,
+        clientMessageId: tempId,
+      });
+      setServerMessages((prev) =>
+        prev.map((m) => (m.id === tempId ? confirmedBubble(res.message, m) : m)),
+      );
+    } catch (err) {
+      const reason =
+        err instanceof Error && err.message
+          ? err.message
+          : tr("تعذر إرسال الرسالة الصوتية. حاول مرة أخرى.");
+      toast.error(reason);
+      setServerMessages((prev) =>
+        prev.map((m) => (m.id === tempId ? { ...m, status: "failed", failureReason: reason } : m)),
+      );
+    }
+  };
+
   const handleSend = async (customText?: string) => {
     const value = (customText !== undefined ? customText : inputText).trim();
     if (!value) return;
@@ -1618,7 +1771,7 @@ export default function ChatView({
         // Update optimistic item with confirmed message
         setServerMessages((prev) =>
           prev.map((m) =>
-            m.clientMessageId === clientMessageId ? ({ ...res.message, status: "sent" } as any) : m,
+            m.clientMessageId === clientMessageId ? confirmedBubble(res.message, m) : m,
           ),
         );
 
@@ -1765,7 +1918,7 @@ export default function ChatView({
         clientMessageId: msg.clientMessageId || msg.id,
       });
       setServerMessages((prev) =>
-        prev.map((m) => (m.id === msg.id ? ({ ...res.message, status: "sent" } as any) : m)),
+        prev.map((m) => (m.id === msg.id ? confirmedBubble(res.message, m) : m)),
       );
     } catch (err) {
       const reason =
@@ -1869,9 +2022,7 @@ export default function ChatView({
         });
 
         setServerMessages((prev) =>
-          prev.map((m) =>
-            m.id === tempId ? ({ ...res.message, status: "sent", uploadProgress: 100 } as any) : m,
-          ),
+          prev.map((m) => (m.id === tempId ? confirmedBubble(res.message, m) : m)),
         );
       } catch (err) {
         /*
@@ -2032,18 +2183,6 @@ export default function ChatView({
     }, 1000);
   };
 
-  useEffect(() => {
-    let interval: ReturnType<typeof setInterval> | undefined;
-    if (recordingState === "recording") {
-      interval = setInterval(() => setRecordingTime((prev) => prev + 1), 1000);
-    } else if (recordingState === "idle") {
-      setRecordingTime(0);
-    }
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [recordingState]);
-
   const formatTime = (seconds: number) => {
     const m = Math.floor(seconds / 60);
     const s = seconds % 60;
@@ -2082,8 +2221,7 @@ export default function ChatView({
       return (
         m.kind === "proof" ||
         m.kind === "login_proof" ||
-        (Boolean(m.body["imageUrl"]) && m.senderRole === "user") ||
-        (m.senderRole === "user" && m.text.includes("إثبات"))
+        (Boolean(m.body["imageUrl"]) && m.senderRole === "user")
       );
     });
 
@@ -2132,9 +2270,14 @@ export default function ChatView({
   ]);
 
   const handleSuggestionClick = (text: string) => {
-    if (text.includes("إثبات تسجيل الدخول")) {
+    /*
+      Any chip about the sign-in proof opens the picker. It matched only
+      «إثبات تسجيل الدخول», so the chip «📸 أرسلت إثبات الدخول» went out as a
+      text message — claiming a proof nobody had sent.
+    */
+    if (text.includes("إثبات")) {
       if (proofInputRef.current) {
-        proofInputRef.current.click();
+        pickLoginProof();
       } else if (fileRef.current) {
         fileRef.current.click();
       }
@@ -2344,9 +2487,7 @@ export default function ChatView({
               {liveQueueMetrics?.deliveryStage === "awaiting_login_proof" ? (
                 <button
                   type="button"
-                  onClick={() => {
-                    proofInputRef.current?.click();
-                  }}
+                  onClick={() => pickLoginProof()}
                   disabled={deliveryBusy}
                   className="flex items-center gap-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white px-3 py-1 text-xs font-bold shadow-xs transition-all cursor-pointer disabled:opacity-50 active:scale-95"
                 >
@@ -2356,9 +2497,7 @@ export default function ChatView({
               ) : liveQueueMetrics?.deliveryStage === "proof_received" ? (
                 <button
                   type="button"
-                  onClick={() => {
-                    proofInputRef.current?.click();
-                  }}
+                  onClick={() => pickLoginProof()}
                   disabled={deliveryBusy}
                   className="flex items-center gap-1 rounded-lg border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-700 dark:text-blue-300 px-2.5 py-1 text-[11px] font-bold transition-all cursor-pointer disabled:opacity-50"
                 >
@@ -2831,8 +2970,7 @@ export default function ChatView({
                         ? {
                             delivery: {
                               onAttachProof: (itemId: string, deliveryItemId?: string) => {
-                                proofItemRef.current = { itemId, deliveryItemId };
-                                proofInputRef.current?.click();
+                                pickLoginProof({ itemId, deliveryItemId });
                               },
                               onNext: requestNextAccount,
                               proofSent: Boolean(
@@ -2853,6 +2991,33 @@ export default function ChatView({
                           }
                         : {})}
                     />
+                  ) : msg.type === "audio" && msg.payload ? (
+                    <div
+                      className={`relative rounded-2xl px-2.5 py-2 shadow-xs ${
+                        startsRun ? bubbleTail(isMine) : ""
+                      } ${
+                        isMine
+                          ? "bg-[var(--ink)] text-[var(--surface-2)]"
+                          : "border border-[var(--surface-4)] bg-card text-[var(--ink)]"
+                      } ${msg.status === "sending" ? "opacity-70" : ""}`}
+                    >
+                      <VoiceNotePlayer
+                        src={String(msg.payload["audioUrl"] ?? "")}
+                        durationMs={Number(msg.payload["durationMs"]) || undefined}
+                        tone={isMine ? "inverse" : "default"}
+                      />
+                      {msg.status === "sending" && (
+                        <span className="mt-1 block text-[10px] font-bold opacity-80">
+                          {tr("جاري الإرسال…")}{" "}
+                          {typeof msg.uploadProgress === "number" ? `${msg.uploadProgress}%` : ""}
+                        </span>
+                      )}
+                      {msg.status === "failed" && (
+                        <span className="mt-1 block text-[10px] font-bold text-red-500">
+                          {msg.failureReason || tr("تعذر الإرسال")}
+                        </span>
+                      )}
+                    </div>
                   ) : msg.type === "image" && msg.payload ? (
                     <div className="relative w-64 max-w-[85%] overflow-hidden rounded-2xl border border-[var(--surface-4)] bg-card p-1.5 shadow-xs">
                       {isVideoUrl(String(msg.payload["imageUrl"] ?? "")) ? (
@@ -3176,7 +3341,7 @@ export default function ChatView({
       <input
         type="file"
         ref={proofInputRef}
-        accept="image/png,image/jpeg,image/webp"
+        accept="image/*"
         className="hidden"
         onChange={(event) => {
           const file = event.target.files?.[0];
@@ -3252,15 +3417,15 @@ export default function ChatView({
               className="relative z-10 flex justify-end gap-2"
             >
               <button
-                onClick={() => setRecordingState("idle")}
-                className="flex items-center justify-center rounded-[14px] bg-red-50 px-3.5 py-1.5 text-red-500 shadow-xs transition-colors hover:bg-red-100 cursor-pointer"
+                onClick={() => voice.cancel()}
+                aria-label={tr("حذف التسجيل")}
+                className="flex items-center justify-center rounded-[14px] bg-red-500/10 px-3.5 py-1.5 text-red-600 shadow-xs transition-colors hover:bg-red-500/20 dark:text-red-400 cursor-pointer"
               >
                 <Trash2 className="h-4 w-4" />
               </button>
               <button
-                onClick={() =>
-                  setRecordingState((prev) => (prev === "paused" ? "recording" : "paused"))
-                }
+                onClick={() => (voice.state === "paused" ? voice.resume() : voice.pause())}
+                aria-label={voice.state === "paused" ? tr("متابعة التسجيل") : tr("إيقاف مؤقت")}
                 className="flex items-center justify-center rounded-[14px] border border-[var(--surface-4)] bg-[var(--surface-2)] px-3.5 py-1.5 text-[var(--ink)] shadow-xs transition-colors hover:bg-card cursor-pointer"
               >
                 {recordingState === "paused" ? (
@@ -3270,11 +3435,7 @@ export default function ChatView({
                 )}
               </button>
               <button
-                onClick={() => {
-                  const label = `🎤 رسالة صوتية (${formatTime(recordingTime)})`;
-                  setRecordingState("idle");
-                  void handleSend(label);
-                }}
+                onClick={() => void sendVoiceNote()}
                 className="flex items-center justify-center gap-1.5 rounded-[14px] bg-[var(--ink)] px-4 py-1.5 text-[12px] font-medium text-white shadow-xs transition-colors hover:bg-[var(--ink-strong)] cursor-pointer"
               >
                 <span>{tr("إرسال")}</span>
@@ -3425,10 +3586,17 @@ export default function ChatView({
             )}
             <button
               onClick={() => {
-                if (recordingState !== "idle") setRecordingState("idle");
+                if (recordingState !== "idle") voice.cancel();
                 else if (inputText.length > 0) void handleSend();
-                else setRecordingState("recording");
+                else void startVoiceNote();
               }}
+              aria-label={
+                recordingState !== "idle"
+                  ? tr("إلغاء التسجيل")
+                  : inputText.length > 0
+                    ? tr("إرسال")
+                    : tr("تسجيل رسالة صوتية")
+              }
               className={`absolute ${"start-1"} z-20 flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-[var(--ink)] transition-colors hover:bg-[var(--ink-strong)] cursor-pointer`}
             >
               {recordingState !== "idle" ? (

@@ -71,3 +71,34 @@ export function isVideoUploadUrl(url: string): boolean {
 export function isVideoUrl(url: string | null | undefined): boolean {
   return typeof url === "string" && /\.(mp4|webm|mov)(?:\?|#|$)/i.test(url);
 }
+
+/*
+  A member's voice note: always in their own `chat/` folder, always one of the
+  audio extensions `/api/upload` gives a recording. Its own rule rather than a
+  wider MEMBER_UPLOAD_URL, so `imageUrl` stays an image or a clip and nothing
+  else.
+*/
+const VOICE_UPLOAD_URL =
+  /^\/api\/files\/chat\/(usr_[a-z0-9]+)\/[a-z0-9_-]{1,96}\.(weba|ogg|oga|opus|m4a|aac|mp3)$/i;
+
+export function isOwnVoiceUrl(url: string, userId: string): boolean {
+  const match = VOICE_UPLOAD_URL.exec(url);
+  return Boolean(match && match[1] === userId);
+}
+
+/**
+ * A voice note an admin recorded into a conversation: filed under that
+ * conversation by `/api/upload` (`chat/<threadId>/…`).
+ */
+export function isConversationVoiceUrl(url: string, threadId: string): boolean {
+  const match =
+    /^\/api\/files\/chat\/(thr_[a-z0-9]+)\/[a-z0-9_-]{1,96}\.(weba|ogg|oga|opus|m4a|aac|mp3)$/i.exec(
+      url,
+    );
+  return Boolean(match && match[1] === threadId);
+}
+
+/** Render-time check: an audio file, played with an audio player rather than shown. */
+export function isAudioUrl(url: string | null | undefined): boolean {
+  return typeof url === "string" && /\.(weba|ogg|oga|opus|m4a|aac|mp3)(?:\?|#|$)/i.test(url);
+}

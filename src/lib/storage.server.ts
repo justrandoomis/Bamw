@@ -19,7 +19,13 @@ export type R2ObjectBodyLike = {
 };
 
 export type R2Like = {
-  get: (key: string) => Promise<R2ObjectBodyLike | null>;
+  get: (
+    key: string,
+    options?: { range?: { offset: number; length?: number } },
+  ) => Promise<R2ObjectBodyLike | null>;
+  head?: (
+    key: string,
+  ) => Promise<{ size?: number; etag?: string; httpMetadata?: { contentType?: string } } | null>;
   put: (
     key: string,
     value: string | ArrayBuffer | Uint8Array | ReadableStream,
@@ -285,6 +291,85 @@ export async function hasObject(key: string): Promise<boolean> {
     }
   }
   return false;
+}
+
+/**
+ * One byte range of a stored file, for a `Range:` request.
+ *
+ * Safari plays no `<audio>` or `<video>` whose server cannot answer one: it
+ * opens with `Range: bytes=0-1`, and a plain 200 with the whole file is taken
+ * as "this source cannot be played". Voice notes therefore need this, and
+ * every clip in the chat plays better for it.
+ *
+ * `header` is the raw `Range` value. Returns undefined when the object does
+ * not exist or the header is not one simple range (the caller then serves the
+ * whole file), and `{ unsatisfiable }` when it asks past the end.
+ */
+export async function readBinaryRange(
+  key: string,
+  header: string,
+): Promise<
+  | {
+      body: ReadableStream<Uint8Array> | Uint8Array;
+      mime: string;
+      size: number;
+      start: number;
+      end: number;
+      etag?: string;
+    }
+  | { unsatisfiable: true; size: number }
+  | undefined
+> {
+  if (!safeStorageKey(key)) return undefined;
+  const match = /^bytes=(\d*)-(\d*)$/i.exec(header.trim());
+  if (!match || (match[1] === "" && match[2] === "")) return undefined;
+
+  const bounds = (size: number) => {
+    let start: number;
+    let end: number;
+    if (match[1] === "") {
+      /* bytes=-N: the last N bytes. */
+      const suffix = Number(match[2]);
+      start = Math.max(0, size - suffix);
+      end = size - 1;
+    } else {
+      start = Number(match[1]);
+      end = match[2] === "" ? size - 1 : Math.min(Number(match[2]), size - 1);
+    }
+    return start >= size || end < start ? null : { start, end };
+  };
+
+  const bucket = getPrivateBucket();
+  if (bucket && typeof bucket.head === "function") {
+    const head = await bucket.head(key);
+    if (!head) return undefined;
+    const size = Number(head.size ?? 0);
+    const range = bounds(size);
+    if (!range) return { unsatisfiable: true, size };
+    const obj = await bucket.get(key, {
+      range: { offset: range.start, length: range.end - range.start + 1 },
+    });
+    if (!obj) return undefined;
+    const mime =
+      obj.httpMetadata?.contentType || head.httpMetadata?.contentType || "application/octet-stream";
+    const body =
+      obj.body ?? (obj.arrayBuffer ? new Uint8Array(await obj.arrayBuffer()) : undefined);
+    if (!body) return undefined;
+    return { body, mime, size, ...range, etag: obj.etag ?? head.etag };
+  }
+
+  /* No ranged reads here (dev, or an older binding): slice the whole file. */
+  const whole = await readBinary(key);
+  if (!whole) return undefined;
+  const size = whole.bytes.byteLength;
+  const range = bounds(size);
+  if (!range) return { unsatisfiable: true, size };
+  return {
+    body: whole.bytes.slice(range.start, range.end + 1),
+    mime: whole.mime,
+    size,
+    ...range,
+  };
 }
 
 export async function readBinary(

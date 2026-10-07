@@ -451,6 +451,9 @@ export const api = {
     threadId: string;
     text?: string;
     imageUrl?: string;
+    /** A voice note uploaded to the conversation, and its length. */
+    audioUrl?: string;
+    durationMs?: number;
     kind?: string;
     body?: any;
     surface?: "store" | "admin";
@@ -1139,12 +1142,15 @@ export function uploadFileWithProgress(
   file: File,
   folder = "chat",
   onProgress?: (percent: number) => void,
+  /** More form fields — an admin's `threadId`, which files the upload under that conversation. */
+  fields?: Record<string, string>,
 ): Promise<{ url: string }> {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     const formData = new FormData();
     formData.append("file", file);
     formData.append("folder", folder);
+    for (const [name, value] of Object.entries(fields ?? {})) formData.append(name, value);
 
     xhr.open("POST", "/api/upload");
     xhr.withCredentials = true;
@@ -1190,7 +1196,7 @@ export function uploadFileWithProgress(
       a phone connection — a member sending a short video watched the progress
       bar reach ninety-odd percent and then be told it had timed out.
     */
-    xhr.timeout = (file.type || "").toLowerCase().startsWith("video/") ? 180000 : 60000;
+    xhr.timeout = /^(video|audio)\//.test((file.type || "").toLowerCase()) ? 180000 : 60000;
 
     xhr.send(formData);
   });

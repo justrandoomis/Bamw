@@ -23,7 +23,23 @@ const MIME_EXT: Record<string, string> = {
   "video/mp4": "mp4",
   "video/webm": "webm",
   "video/quicktime": "mov",
+  /*
+    Voice notes, as a browser's MediaRecorder hands them over: WebM/Opus from
+    Chrome and Android, Ogg/Opus from Firefox, MP4/AAC from Safari. Audio has
+    its own extensions so a voice note is never mistaken for a video — `.webm`
+    and `.mp4` are read as video everywhere else in the app.
+  */
+  "audio/webm": "weba",
+  "audio/ogg": "ogg",
+  "audio/opus": "opus",
+  "audio/mp4": "m4a",
+  "audio/x-m4a": "m4a",
+  "audio/aac": "aac",
+  "audio/mpeg": "mp3",
 };
+
+/** Largest voice note accepted: about ten minutes of Opus, several of AAC. */
+const MAX_AUDIO_BYTES = 12 * 1024 * 1024;
 
 function isVideo(mime: string): boolean {
   return mime.startsWith("video/");
@@ -146,6 +162,7 @@ export const Route = createFileRoute("/api/upload")({
           let targetFolder = "uploads";
           let productId = "";
           let imageType = "image";
+          let threadId = "";
 
           if (contentType.includes("multipart/form-data")) {
             const formData = await request.formData();
@@ -153,6 +170,8 @@ export const Route = createFileRoute("/api/upload")({
             const formFolder = formData.get("folder");
             const formProductId = formData.get("productId");
             const formImageType = formData.get("imageType");
+            const formThreadId = formData.get("threadId");
+            if (typeof formThreadId === "string") threadId = formThreadId.trim();
 
             if (typeof formFolder === "string") targetFolder = formFolder;
             if (typeof formProductId === "string")
@@ -164,10 +183,15 @@ export const Route = createFileRoute("/api/upload")({
               return json({ error: "missing_file" }, { status: 400 });
             }
 
-            mime =
+            /* `audio/webm;codecs=opus` is `audio/webm`: parameters never pick an extension. */
+            mime = (
               file.type ||
               sniffUploadMime(new Uint8Array(await file.slice(0, 32).arrayBuffer())) ||
-              "image/jpeg";
+              "image/jpeg"
+            )
+              .split(";")[0]!
+              .trim()
+              .toLowerCase();
             const buffer = await file.arrayBuffer();
             bytes = new Uint8Array(buffer);
           } else {
@@ -277,6 +301,33 @@ export const Route = createFileRoute("/api/upload")({
 
           const root = rootMatch[1]!.toLowerCase();
 
+          /* Audio only as a chat voice note, and not an hour of it. */
+          if (mime.startsWith("audio/")) {
+            if (root !== "chat" || !MIME_EXT[mime]) {
+              return json({ error: "unsupported_audio" }, { status: 415 });
+            }
+            if (bytes.length > MAX_AUDIO_BYTES) {
+              return json(
+                { error: "audio_too_large", message: "الرسالة الصوتية طويلة جدًا" },
+                { status: 413 },
+              );
+            }
+          }
+
+          /*
+            What an admin sends into a conversation is filed under that
+            conversation, where its member may read it (see /api/files). In
+            the admin's own folder it reached the member as a 404.
+          */
+          let conversationId = "";
+          if (user.isAdmin && root === "chat" && /^thr_[a-z0-9]{6,40}$/i.test(threadId)) {
+            const { getThread } = await import("@/lib/db.server");
+            if (!(await getThread(threadId))) {
+              return json({ error: "thread_not_found" }, { status: 404 });
+            }
+            conversationId = threadId;
+          }
+
           // Compute SHA-256 hash for deduplication and structured naming
           const hashBuffer = await crypto.subtle.digest("SHA-256", new Uint8Array(bytes));
           const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -345,6 +396,8 @@ export const Route = createFileRoute("/api/upload")({
               const prefix = imageType ? `${imageType}-` : "";
               key = `files/products/${targetProdId}/${prefix}${hashHex}.${ext}`;
             }
+          } else if (conversationId) {
+            key = `files/chat/${conversationId}/${hashHex}.${ext}`;
           } else {
             const safeFolder = `${root}/${user.id}`;
             key = `files/${safeFolder}/${hashHex}.${ext}`;

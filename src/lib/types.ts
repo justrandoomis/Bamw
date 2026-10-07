@@ -1030,6 +1030,8 @@ export type MessageKind =
   | "text"
   | "image"
   | "video"
+  /** A voice note: `body.audioUrl`, with `body.durationMs` when the recorder knew it. */
+  | "audio"
   | "system"
   | "payment_methods_card"
   | "payment_receipt_prompt"

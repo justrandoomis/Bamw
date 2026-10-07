@@ -271,6 +271,8 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
       kind?: string;
       body?: any;
       imageUrl?: string;
+      audioUrl?: string;
+      durationMs?: number;
       clientMessageId?: string;
     }) => {
       const clientMessageId =
@@ -286,6 +288,11 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
       if (data.body) payload.body = data.body;
       if (data.imageUrl) {
         payload.body = { ...payload.body, imageUrl: data.imageUrl };
+      }
+      /* The server checks a voice note's URL against this conversation and builds its body. */
+      if (data.audioUrl) {
+        payload.audioUrl = data.audioUrl;
+        if (data.durationMs) payload.durationMs = data.durationMs;
       }
       return api.sendMessage(payload);
     },

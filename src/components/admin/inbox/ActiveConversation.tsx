@@ -27,7 +27,13 @@ import {
   Bot,
   Headphones,
   ShieldCheck,
+  Mic,
+  Trash2,
 } from "lucide-react";
+import { useVoiceRecorder } from "@/hooks/useVoiceRecorder";
+import { prepareServableImage } from "@/lib/imageForUpload";
+import { formatVoiceDuration, microphoneErrorText, voiceFile } from "@/lib/voiceNotes";
+import { uploadFileWithProgress } from "@/lib/api";
 import { Thread, ChatMessage, ThreadMode, Order } from "@/lib/types";
 import { isFullyDigitalOrder } from "@/lib/delivery-kinds";
 import { api, type AdminReplySuggestion } from "@/lib/api";
@@ -117,7 +123,14 @@ interface ActiveConversationProps {
   onLoadOlder?: (container: HTMLDivElement | null) => void;
   onBackToList?: () => void;
   onNavigateToOrder?: (orderId: string) => void;
-  onSendMessage: (payload: { text?: string; kind?: string; body?: any; imageUrl?: string }) => void;
+  onSendMessage: (payload: {
+    text?: string;
+    kind?: string;
+    body?: any;
+    imageUrl?: string;
+    audioUrl?: string;
+    durationMs?: number;
+  }) => void;
   onSetThreadMode: (mode: ThreadMode) => void;
   onSetThreadStatus: (status: "open" | "closed") => void;
   onToggleAiPause?: (paused: boolean) => void;
@@ -168,6 +181,8 @@ export function ActiveConversation({
 }: ActiveConversationProps) {
   const [inputText, setInputText] = useState("");
   const [isUploading, setIsUploading] = useState(false);
+  /* Voice notes from the shop — the inbox had no way to record one at all. */
+  const voice = useVoiceRecorder();
   const [isDragging, setIsDragging] = useState(false);
 
   // Modals & Drawers state
@@ -367,33 +382,68 @@ export function ActiveConversation({
     }
   };
 
-  const handleFileUpload = async (file: File) => {
-    if (!file) return;
+  /*
+    Filed under this conversation, so its member can open it.
+
+    This posted to /api/upload with no folder and no conversation, which put
+    the picture in the admin's own folder — and the file route answers a
+    member asking for someone else's folder with a 404. The message arrived;
+    the picture never did. It is also prepared the way the member's own photos
+    are, so an iPhone HEIC or a 12 MB photo is not refused on the way.
+  */
+  const handleFileUpload = async (raw: File) => {
+    if (!raw || !threadId) return;
     setIsUploading(true);
     try {
-      const formData = new FormData();
-      formData.append("file", file);
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
+      const { file, servable } = await prepareServableImage(raw);
+      if (!servable) throw new Error("تعذر تحويل هذه الصورة. أرسلها بصيغة JPG أو PNG.");
+      const { url } = await uploadFileWithProgress(file, "chat", undefined, { threadId });
+      onSendMessage({
+        imageUrl: url,
+        kind: (file.type || "").startsWith("video/") ? "video" : "image",
+        body: { imageUrl: url },
       });
-      if (!res.ok) {
-        throw new Error("فشل رفع الملف");
-      }
-      const data = await res.json();
-      if (data.url) {
-        onSendMessage({
-          imageUrl: data.url,
-          kind: "image",
-          body: { imageUrl: data.url, text: file.name },
-        });
-        toast.success("تم إرسال الصورة بنجاح");
-      }
+      toast.success("تم إرسال الصورة");
     } catch (err: any) {
       toast.error(err?.message || "فشل رفع الصورة");
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  };
+
+  const startVoiceNote = async () => {
+    try {
+      await voice.start();
+    } catch (error) {
+      toast.error(microphoneErrorText(error));
+    }
+  };
+  const sendVoiceNote = async () => {
+    const note = await voice.stop();
+    if (!note || note.blob.size === 0 || note.durationMs < 700) {
+      toast.error("التسجيل قصير جدًا");
+      return;
+    }
+    if (!threadId) return;
+    setIsUploading(true);
+    try {
+      const { url } = await uploadFileWithProgress(
+        voiceFile(note.blob, note.mime),
+        "chat",
+        undefined,
+        { threadId },
+      );
+      onSendMessage({
+        kind: "audio",
+        audioUrl: url,
+        durationMs: note.durationMs,
+        body: { audioUrl: url, durationMs: note.durationMs },
+      });
+    } catch (err: any) {
+      toast.error(err?.message || "تعذر إرسال الرسالة الصوتية");
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -973,32 +1023,71 @@ export function ActiveConversation({
               )}
             </button>
 
-            <div className="flex-1 relative">
-              <textarea
-                ref={textareaRef}
-                value={inputText}
-                onChange={handleInputChange}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    handleSend();
-                  }
-                }}
-                placeholder="اكتب ردك هنا..."
-                rows={1}
-                /*
+            {voice.state !== "idle" ? (
+              <div className="flex min-h-[42px] flex-1 items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/5 px-3">
+                <span className="size-2 animate-pulse rounded-full bg-red-500" />
+                <span className="text-sm font-bold tabular-nums text-foreground" dir="ltr">
+                  {formatVoiceDuration(voice.elapsedMs)}
+                </span>
+                <span className="text-xs text-muted-foreground">
+                  {voice.state === "requesting"
+                    ? "بانتظار إذن الميكروفون…"
+                    : voice.state === "paused"
+                      ? "متوقف مؤقتًا"
+                      : "جاري التسجيل…"}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => voice.cancel()}
+                  className="ms-auto rounded-lg p-1.5 text-red-600 hover:bg-red-500/10 cursor-pointer dark:text-red-400"
+                  title="حذف التسجيل"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
+            ) : (
+              <div className="flex-1 relative">
+                <textarea
+                  ref={textareaRef}
+                  value={inputText}
+                  onChange={handleInputChange}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSend();
+                    }
+                  }}
+                  placeholder="اكتب ردك هنا..."
+                  rows={1}
+                  /*
                   16px on a phone. Below that iOS Safari zooms the whole page
                   on focus and never zooms back — the admin's half of the same
                   «المحادثة تبدو كبيرة جدا» complaint.
                 */
-                className="w-full resize-none rounded-xl border border-border bg-background px-3.5 py-2.5 text-[16px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary max-h-32 min-h-[38px] sm:text-xs"
-              />
-            </div>
+                  className="w-full resize-none rounded-xl border border-border bg-background px-3.5 py-2.5 text-[16px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary max-h-32 min-h-[38px] sm:text-xs"
+                />
+              </div>
+            )}
+
+            {voice.state === "idle" && !inputText.trim() && (
+              <button
+                type="button"
+                onClick={() => void startVoiceNote()}
+                disabled={isUploading}
+                className="p-2.5 text-muted-foreground hover:text-foreground bg-muted/40 hover:bg-muted border border-border rounded-xl transition-colors shrink-0 cursor-pointer disabled:opacity-50"
+                title="تسجيل رسالة صوتية"
+              >
+                <Mic className="w-4 h-4" />
+              </button>
+            )}
 
             <button
               type="button"
-              onClick={handleSend}
-              disabled={!inputText.trim() || isSending}
+              onClick={() => (voice.state !== "idle" ? void sendVoiceNote() : handleSend())}
+              disabled={
+                voice.state === "requesting" ||
+                (voice.state === "idle" && (!inputText.trim() || isSending))
+              }
               className="p-2.5 bg-primary hover:bg-primary/90 disabled:opacity-50 text-primary-foreground rounded-xl transition-all shadow-xs shrink-0 cursor-pointer"
               title="إرسال"
             >

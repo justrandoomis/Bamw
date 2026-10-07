@@ -291,11 +291,13 @@ export const Route = createFileRoute("/api/orders")({
               ? state.deliveryItems.find((entry) => entry.id === deliveryItemId)
               : undefined;
 
+            /* Every state a proof can be sent — or sent again — from. */
+            const takesProof = (status: string) =>
+              status === "sent" || status === "proof_received" || status === "otp_sent";
+
             if (!exactDeliveryItem && itemId) {
               const candidates = state.deliveryItems.filter(
-                (entry) =>
-                  entry.orderItemId === itemId &&
-                  (entry.status === "sent" || entry.status === "proof_received"),
+                (entry) => entry.orderItemId === itemId && takesProof(entry.status),
               );
               if (candidates.length === 1) {
                 exactDeliveryItem = candidates[0];
@@ -303,11 +305,11 @@ export const Route = createFileRoute("/api/orders")({
             }
 
             if (!exactDeliveryItem) {
-              // Fallback to any sent delivery item in the order
-              const sentCandidates = state.deliveryItems.filter((entry) => entry.status === "sent");
-              if (sentCandidates.length === 1) {
-                exactDeliveryItem = sentCandidates[0];
-              }
+              // Fallback: the one item awaiting a first proof, else the one that takes a new one.
+              const open = state.deliveryItems.filter((entry) => takesProof(entry.status));
+              const awaiting = open.filter((entry) => entry.status === "sent");
+              exactDeliveryItem =
+                awaiting.length === 1 ? awaiting[0] : open.length === 1 ? open[0] : undefined;
             }
 
             if (!exactDeliveryItem) {

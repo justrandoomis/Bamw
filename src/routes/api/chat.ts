@@ -43,7 +43,12 @@ import { randomId } from "@/lib/crypto.server";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 import { redactMessageForMember } from "@/lib/redaction";
 import { canAccessThread } from "@/lib/thread-access";
-import { isOwnUploadUrl, isVideoUploadUrl } from "@/lib/uploads";
+import {
+  isConversationVoiceUrl,
+  isOwnUploadUrl,
+  isOwnVoiceUrl,
+  isVideoUploadUrl,
+} from "@/lib/uploads";
 
 /** Modes where the automated assistant must stay silent (read-only). */
 const SILENT_MODES: ThreadMode[] = [
@@ -398,6 +403,9 @@ export const Route = createFileRoute("/api/chat")({
             kind?: MessageKind;
             text?: string;
             imageUrl?: string;
+            /** A voice note uploaded to `/api/upload`, and how long it runs. */
+            audioUrl?: string;
+            durationMs?: number;
             close?: boolean;
             create?: boolean;
             subject?: string;
@@ -691,9 +699,8 @@ export const Route = createFileRoute("/api/chat")({
             */
             void (async () => {
               try {
-                const { notifyAdminHumanSupportRequest } = await import(
-                  "@/lib/telegram-notifications.server"
-                );
+                const { notifyAdminHumanSupportRequest } =
+                  await import("@/lib/telegram-notifications.server");
                 await notifyAdminHumanSupportRequest({
                   threadId: humanThread.id,
                   user: { id: user.id, name: user.name, username: user.username },
@@ -870,9 +877,28 @@ export const Route = createFileRoute("/api/chat")({
             });
           }
 
-          if (!data.text && !data.imageUrl && !data.body && !data.kind) {
+          if (!data.text && !data.imageUrl && !data.audioUrl && !data.body && !data.kind) {
             return json({ success: true, thread: current });
           }
+
+          /*
+            A voice note: the member's own recording, or one an admin recorded
+            into this very conversation. Anything else is refused — the URL is
+            played to the other side.
+          */
+          const audioUrl = typeof data.audioUrl === "string" ? data.audioUrl.trim() : "";
+          if (
+            audioUrl &&
+            !(user.isAdmin
+              ? isConversationVoiceUrl(audioUrl, current.id) || isOwnVoiceUrl(audioUrl, user.id)
+              : isOwnVoiceUrl(audioUrl, user.id))
+          ) {
+            return json({ error: "invalid_audio" }, { status: 400 });
+          }
+          const durationMs = Math.max(
+            0,
+            Math.min(60 * 60 * 1000, Math.round(Number(data.durationMs) || 0)),
+          );
 
           // Credentials and OTP are state transitions, not ordinary chat
           // messages. Requiring the dedicated D1 action prevents a message
@@ -909,17 +935,20 @@ export const Route = createFileRoute("/api/chat")({
             message = await appendMessage(current.id, {
               senderRole,
               senderName: user.name,
-              kind: data.imageUrl
-                ? isVideoUploadUrl(data.imageUrl)
-                  ? "video"
-                  : (data.kind ?? "image")
-                : (data.kind ?? "text"),
+              kind: audioUrl
+                ? "audio"
+                : data.imageUrl
+                  ? isVideoUploadUrl(data.imageUrl)
+                    ? "video"
+                    : (data.kind ?? "image")
+                  : (data.kind ?? "text"),
               clientMessageId: data.clientMessageId,
-              body:
-                data.body ||
-                (data.imageUrl
-                  ? { imageUrl: data.imageUrl, ...(data.text ? { text: data.text } : {}) }
-                  : { text: data.text }),
+              body: audioUrl
+                ? { audioUrl, ...(durationMs ? { durationMs } : {}) }
+                : data.body ||
+                  (data.imageUrl
+                    ? { imageUrl: data.imageUrl, ...(data.text ? { text: data.text } : {}) }
+                    : { text: data.text }),
             });
           } catch (appendErr: any) {
             console.error(
@@ -942,7 +971,9 @@ export const Route = createFileRoute("/api/chat")({
 
           // Update thread lastMessageAt
           current.lastMessageAt = message.createdAt;
-          current.lastMessagePreview = data.body?.title || data.text || "مرفق";
+          current.lastMessagePreview = audioUrl
+            ? "🎤 رسالة صوتية"
+            : data.body?.title || data.text || "مرفق";
           if (!user.isAdmin) {
             current.userLastReadAt = message.createdAt;
           } else if (data.surface === "admin") {
@@ -1007,7 +1038,7 @@ export const Route = createFileRoute("/api/chat")({
             thread it arrives in, while the queue re-entry and availability
             handling below stay where they belong.
           */
-          const hasAttachment = Boolean(data.imageUrl);
+          const hasAttachment = Boolean(data.imageUrl || audioUrl);
 
           if (!isAutomatedThread || hasAttachment) {
             /*
@@ -1023,7 +1054,11 @@ export const Route = createFileRoute("/api/chat")({
             try {
               const messagePayload = {
                 thread: current,
-                message: { text: data.text, imageUrl: data.imageUrl, senderRole: "user" as const },
+                message: {
+                  text: data.text || (audioUrl ? "🎤 رسالة صوتية" : undefined),
+                  imageUrl: data.imageUrl,
+                  senderRole: "user" as const,
+                },
                 user: { id: user.id, name: user.name, phone: user.phone, username: user.username },
               };
               const { enqueueNotification } = await import("@/lib/notification-outbox.server");
@@ -1034,9 +1069,8 @@ export const Route = createFileRoute("/api/chat")({
                   dedupeKey: `chat_message:${message.id}`,
                 },
                 async () => {
-                  const { notifyAdminCustomerMessage } = await import(
-                    "@/lib/telegram-notifications.server"
-                  );
+                  const { notifyAdminCustomerMessage } =
+                    await import("@/lib/telegram-notifications.server");
                   return notifyAdminCustomerMessage(messagePayload);
                 },
               );

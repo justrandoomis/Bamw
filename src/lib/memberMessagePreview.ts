@@ -80,6 +80,9 @@ export function memberMessagePreview(message: StoredMessageShape): string {
       */
       return caption ? `📸 ${caption}` : "📸 أرسل لك فريق الدعم صورة.";
 
+    case "audio":
+      return "🎤 أرسل لك فريق الدعم رسالة صوتية — استمع إليها في التطبيق.";
+
     default:
       return caption || "💬 وصلتك رسالة جديدة من فريق الدعم.";
   }

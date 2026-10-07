@@ -83,7 +83,11 @@ export function withSecurityHeaders(response: Response, url?: URL): Response {
   const headers = new Headers(response.headers);
   headers.set("x-content-type-options", "nosniff");
   headers.set("referrer-policy", "no-referrer");
-  headers.set("permissions-policy", "camera=(), microphone=(), geolocation=(), payment=()");
+  /*
+    The microphone is the site's own: the chat records voice notes. `()` here
+    would switch `getUserMedia` off for every page this header reaches.
+  */
+  headers.set("permissions-policy", "camera=(), microphone=(self), geolocation=(), payment=()");
   // Do not set X-Frame-Options globally: Telegram Web embeds Mini Apps. Pages
   // that must not be framed should use a route-specific CSP instead.
   headers.set("cross-origin-opener-policy", "same-origin-allow-popups");

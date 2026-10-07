@@ -2,6 +2,7 @@ import React, { useState, Component, type ErrorInfo, type ReactNode } from "reac
 import CodeValidity from "@/components/CodeValidity";
 import { DELIVERY_OTP_TTL_MINUTES } from "@/lib/delivery-otp";
 import { isVideoUrl } from "@/lib/uploads";
+import { VoiceNotePlayer } from "@/components/chat/VoiceNotePlayer";
 import {
   Key,
   ShieldCheck,
@@ -297,7 +298,7 @@ function InnerMessageCard({
           dir="auto"
           className={`relative max-w-[78%] sm:max-w-[80%] rounded-2xl p-2.5 shadow-2xs text-xs leading-relaxed transition-all sm:p-3.5 ${
             isAdmin
-              ? "bg-[var(--admin-ink,#1e293b)] text-white rounded-tr-xs border border-black/10"
+              ? "bg-foreground text-background rounded-tr-xs border border-black/10"
               : isAssistant
                 ? "bg-amber-500/10 text-foreground border border-amber-500/20 rounded-tr-xs"
                 : "bg-muted/30 text-foreground border border-border rounded-tl-xs"
@@ -394,6 +395,15 @@ function InnerMessageCard({
                 </div>
               )}
             </div>
+          ) : null}
+
+          {/* Voice note */}
+          {typeof body.audioUrl === "string" && body.audioUrl ? (
+            <VoiceNotePlayer
+              src={body.audioUrl}
+              durationMs={Number(body.durationMs) || undefined}
+              tone={isAdmin ? "inverse" : "default"}
+            />
           ) : null}
 
           {/* Image Attachment & Login Proof with Direct OTP */}
