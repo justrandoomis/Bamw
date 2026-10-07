@@ -29,6 +29,8 @@ import { toast } from "sonner";
 
 import { useI18n } from "@/i18n";
 import { useAuth } from "@/hooks/useAuth";
+import { MaintenanceNotice } from "@/components/MaintenanceNotice";
+import { isUnderMaintenance } from "@/lib/maintenance";
 import { loadSiteContent } from "@/lib/content.functions";
 import { localized, statusCopy } from "@/lib/content";
 import type { DiscTradeData } from "@/lib/content";
@@ -122,6 +124,12 @@ function DiscTradePage() {
   const cfg = content.discTrade as DiscTradeData;
   const L = (key: string) => localized(cfg as unknown as Record<string, unknown>, key, lang);
   const visible = (key: string) => cfg.section_visibility?.[key] !== false;
+  /*
+    «وقف ميزه استبدال الاقراص وجعلها تحت الصيانه». New trades stop; the history
+    below stays, because a member with a trade in progress still has to follow
+    it, accept the offer or cancel — and the server keeps those open.
+  */
+  const tradePaused = isUnderMaintenance("discTrade");
 
   const [step, setStep] = useState(0);
   const [term, setTerm] = useState("");
@@ -154,6 +162,7 @@ function DiscTradePage() {
   const { data: rulesData } = useQuery({
     queryKey: ["trade_rules"],
     queryFn: async () => (await fetch("/api/game-catalog?mode=rules")).json(),
+    enabled: !tradePaused,
   });
   const rules = (rulesData?.rules || []) as TradeRule[];
   const grouped = useMemo(() => groupRulesByCategory(rules), [rules]);
@@ -166,6 +175,7 @@ function DiscTradePage() {
       const res = await fetch("/api/game-catalog?mode=search&q=&limit=60");
       return res.json();
     },
+    enabled: !tradePaused,
   });
   const featuredGames = (featuredData?.items || []) as CatalogGame[];
 
@@ -468,7 +478,9 @@ function DiscTradePage() {
       )}
 
       <main className="max-w-3xl mx-auto px-4 mt-8 space-y-10">
-        {!user ? (
+        {tradePaused ? (
+          <MaintenanceNotice feature="discTrade" />
+        ) : !user ? (
           <LoginGate
             title={
               L("login_gate_title") ||

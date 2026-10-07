@@ -2,10 +2,11 @@
  * @vitest-environment node
  */
 /**
- * Four features under maintenance, and every door to them actually shut.
+ * Five features under maintenance, and every door to them actually shut.
  *
  *   «حاليا الروليت والموز وسوق الموز وخصم التقييم الالف دينار
  *    ( اجعلها تحت الصيانه )»
+ *   «وقف ميزه استبدال الاقراص وجعلها تحت الصيانه»
  *
  * A maintenance screen alone is a curtain — the endpoints behind it would go
  * on spinning, selling and minting for anyone who calls them. So these tests
@@ -14,8 +15,9 @@
  *
  * And the other half, which matters as much: what maintenance must NOT take.
  * A prize already won can still be claimed, the banana snapshot the profile
- * reads still answers, a top-up code still credits its money, and a review
- * code already issued is still returned.
+ * reads still answers, a top-up code still credits its money, a review code
+ * already issued is still returned, and a disc trade already submitted can
+ * still be cancelled, accepted and settled.
  */
 import { readFileSync } from "node:fs";
 import path from "node:path";
@@ -69,6 +71,7 @@ const handlersOf = (route: { Route: { options: { server?: unknown } } }) =>
 let wheel: Handlers;
 let roulette: Handlers;
 let banana: Handlers;
+let discTrade: Handlers;
 
 beforeAll(async () => {
   const { ensureSchema } = await import("@/lib/d1.server");
@@ -76,6 +79,7 @@ beforeAll(async () => {
   wheel = handlersOf(await import("@/routes/api/wheel"));
   roulette = handlersOf(await import("@/routes/api/roulette"));
   banana = handlersOf(await import("@/routes/api/banana"));
+  discTrade = handlersOf(await import("@/routes/api/disc-trade"));
 });
 
 const post = async (handlers: Handlers, url: string, payload: unknown) => {
@@ -113,12 +117,13 @@ beforeEach(async () => {
 });
 
 describe("the switch", () => {
-  it("has all four features the owner named under maintenance", () => {
+  it("has every feature the owner named under maintenance", () => {
     expect(UNDER_MAINTENANCE).toEqual({
       roulette: true,
       bananas: true,
       bananaMarket: true,
       reviewReward: true,
+      discTrade: true,
     });
     for (const feature of Object.keys(UNDER_MAINTENANCE) as (keyof typeof UNDER_MAINTENANCE)[]) {
       expect(isUnderMaintenance(feature)).toBe(true);
@@ -240,5 +245,49 @@ describe("the review discount", () => {
       "cpn_review_ord_maint_review",
     ).catch(() => ({ n: 0 }));
     expect(Number(coupons?.n ?? 0)).toBe(0);
+  });
+});
+
+describe("the disc trade-in", () => {
+  async function tradeRows() {
+    const { d1First } = await import("@/lib/d1.server");
+    const row = await d1First<{ n: number }>(`SELECT COUNT(*) AS n FROM disc_trades`);
+    return Number(row?.n ?? 0);
+  }
+
+  it.each([
+    ["a quote", { action: "quote", game_name: "Mario Kart 8 Deluxe" }],
+    ["a submission", { action: "submit", game_name: "Mario Kart 8 Deluxe", selections: {} }],
+    ["a request with no action, which is a submission", { game_name: "Zelda" }],
+  ])("refuses %s, and writes no trade", async (_what, payload) => {
+    const before = await tradeRows();
+    const res = await post(discTrade, "/api/disc-trade", payload);
+    expect(res.status).toBe(503);
+    expect(res.body).toMatchObject({ code: "maintenance", feature: "discTrade" });
+    expect(await tradeRows()).toBe(before);
+  });
+
+  /*
+    A trade id that does not exist reaches the handler and is answered 403
+    «غير مسموح» — the proof that maintenance did not stop it at the door. A
+    member's real trade would be cancelled or accepted the same way.
+  */
+  it.each(["cancel", "user_cancel", "accept", "accept_offer"])(
+    "still lets a member %s a trade already submitted",
+    async (action) => {
+      const res = await post(discTrade, "/api/disc-trade", { action, trade_id: "trade_nope" });
+      expect(res.status).not.toBe(503);
+      expect(res.body["code"]).not.toBe("maintenance");
+    },
+  );
+
+  it("still lets the admin settle a trade — the door is the admin check, not maintenance", async () => {
+    const res = await post(discTrade, "/api/disc-trade", { action: "admin_update", trade_id: "x" });
+    expect(res.status).toBe(403);
+  });
+
+  it("still shows a member their own trades", async () => {
+    const res = await discTrade.GET({ request: new Request("https://banan.to/api/disc-trade") });
+    expect(res.status).toBe(200);
   });
 });

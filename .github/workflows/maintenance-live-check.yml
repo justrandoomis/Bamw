@@ -1,0 +1,56 @@
+# Is every feature under maintenance actually closed on banan.to? READ ONLY.
+#
+# Opens each closed screen in a real phone browser and looks for its notice,
+# reads the build the site reports, and asks the one server door that is safe
+# to ask — a disc-trade quote, which writes nothing even when open. Signs in as
+# nobody, needs no secret. Run it after a deploy: production only changes when
+# something ships, so it is dispatched rather than run on every push.
+name: Maintenance live check
+
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: "Origin to read"
+        type: string
+        default: "https://banan.to"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: maintenance-live-check
+  cancel-in-progress: true
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # The runner's default npm 10 refuses this lockfile on Linux.
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+      # `playwright-core` carries no installer, so the browser comes from the
+      # `playwright` CLI, pinned to the version the other checkers pin.
+      - name: Install Chromium
+        run: npx --yes playwright@1.62.1 install --with-deps chromium
+      - name: Read the closed screens
+        env:
+          ORIGIN: ${{ inputs.origin }}
+        run: node scripts/maintenance-live-check.mjs --origin "${ORIGIN:-https://banan.to}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: maintenance-live-check
+          path: maintenance-live-check.md
+          if-no-files-found: warn
+      - name: The checks, last in the log
+        if: always()
+        run: tail -c 3000 maintenance-live-check.md || true

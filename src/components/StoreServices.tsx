@@ -2,8 +2,21 @@ import React from "react";
 import { motion } from "motion/react";
 import { Link } from "@tanstack/react-router";
 import { PUBLIC_SERVICES_IMAGES } from "@/config/publicAssets";
+import { isUnderMaintenance, type MaintenanceFeature } from "@/lib/maintenance";
 
-const services = [
+const services: {
+  id: string;
+  badge: string;
+  title: string;
+  subtitle: string;
+  bgColor: string;
+  borderColor: string;
+  badgeColor: string;
+  image: string;
+  isFullImage: boolean;
+  /** The switch that pauses this service, if it has one. */
+  maintenance?: MaintenanceFeature;
+}[] = [
   {
     id: "add_game",
     badge: "جديد",
@@ -26,6 +39,7 @@ const services = [
     badgeColor: "#217366",
     image: PUBLIC_SERVICES_IMAGES.discTrade,
     isFullImage: true,
+    maintenance: "discTrade",
   },
 
   {
@@ -123,8 +137,23 @@ export function StoreServices() {
       {/* Cards Grid */}
       <div className="flex overflow-x-auto pb-6 pt-4 px-4 sm:px-8 md:px-12 lg:px-16 snap-x snap-mandatory hide-scrollbar gap-3 md:gap-4 items-center justify-start w-full max-w-full">
         {services.map((service) => {
+          /*
+            The card stays, and says it is paused: the artwork has the service's
+            name painted into it, so hiding nothing and labelling it is clearer
+            than a gap where the member last saw it. Its link still opens the
+            page, which explains and shows any trade already in progress.
+          */
+          const paused = service.maintenance ? isUnderMaintenance(service.maintenance) : false;
           const cardContent = (
             <>
+              {paused && (
+                <span
+                  data-maintenance={service.maintenance}
+                  className="absolute top-2 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-full bg-amber-500 px-2.5 py-1 text-[10px] font-black text-white shadow-md md:text-[12px]"
+                >
+                  تحت الصيانة
+                </span>
+              )}
               {service.isFullImage ? (
                 <img
                   src={service.image}

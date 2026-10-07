@@ -1,9 +1,10 @@
 /**
  * @vitest-environment jsdom
  *
- * The roulette and the banana market, under maintenance, on screen.
+ * The roulette, the banana market and disc trade-in, under maintenance, on screen.
  *
  *   «حاليا الروليت والموز وسوق الموز … ( اجعلها تحت الصيانه )»
+ *   «وقف ميزه استبدال الاقراص وجعلها تحت الصيانه»
  *
  * The server already refuses every spin, sale and redemption — see
  * `-the-closed-features-stay-closed.test.ts`. These tests are the other half:
@@ -61,6 +62,8 @@ vi.mock("@/components/roulette/RouletteStrip", () => ({
 
 const { RoulettePage } = await import("./wheel");
 const { MarketMaintenance } = await import("@/components/market/MarketMaintenance");
+const { StoreServices } = await import("@/components/StoreServices");
+const { MaintenanceNotice } = await import("@/components/MaintenanceNotice");
 
 const wonPrize = {
   id: "prz_1",
@@ -143,5 +146,42 @@ describe("the banana market under maintenance", () => {
       /if \(isUnderMaintenance\("bananaMarket"\) \|\| isUnderMaintenance\("bananas"\)\) \{\s*return <MarketMaintenance \/>;\s*\}\s*return <BananaMarketPage \/>;/,
     );
     expect(useBananaMarketMock).not.toHaveBeenCalled();
+  });
+});
+
+describe("disc trade-in under maintenance", () => {
+  it("says so in the trade page's own words", () => {
+    render(<MaintenanceNotice feature="discTrade" />);
+    const notice = screen.getByRole("status");
+    expect(notice.textContent).toContain("استبدال الأقراص تحت الصيانة");
+    expect(notice.textContent).toContain("طلباتك السابقة محفوظة");
+  });
+
+  /*
+    Asserted on the page's source, as the market is: the route's component is
+    code-split into a chunk the test runner never loads. What matters is that
+    the switch is asked BEFORE the sign-in gate and the new-trade wizard — and
+    that the member's own trades are still listed below it, because the server
+    keeps cancelling and accepting them open.
+  */
+  it("replaces the new-trade wizard, and keeps the member's trades below it", () => {
+    const source = readFileSync(path.resolve(__dirname, "disc_trade.tsx"), "utf8");
+    expect(source).toMatch(
+      /\{tradePaused \? \(\s*<MaintenanceNotice feature="discTrade" \/>\s*\) : !user \? \(\s*<LoginGate/,
+    );
+    const gate = source.indexOf('<MaintenanceNotice feature="discTrade" />');
+    const history = source.indexOf('{user && visible("history") && (');
+    expect(gate).toBeGreaterThan(-1);
+    expect(history).toBeGreaterThan(gate);
+  });
+
+  it("labels the home page's trade card, and still links it to the page that explains", () => {
+    render(<StoreServices />);
+    const label = document.querySelector('[data-maintenance="discTrade"]');
+    expect(label?.textContent).toBe("تحت الصيانة");
+    const card = label?.closest("div");
+    expect(card?.querySelector('a[href="/disc_trade"]')).toBeTruthy();
+    /* Only that card: the other services are not under maintenance. */
+    expect(document.querySelectorAll("[data-maintenance]")).toHaveLength(1);
   });
 });

@@ -23,6 +23,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { useI18n } from "@/i18n";
+import { isUnderMaintenance } from "@/lib/maintenance";
 import { readTradePricing } from "@/lib/trade-pricing";
 import {
   TRADE_PRICING_MODE_BADGE_STYLE,
@@ -138,6 +139,17 @@ export default function DiscTradesAdminView() {
           <p className="text-muted-foreground text-xs mt-1">
             {t("مراجعة وتسعير طلبات المقايضة وتعديل إعدادات ونصوص واجهة صفحة الاستبدال.")}
           </p>
+          {/* So a quiet queue is not mistaken for a broken one. */}
+          {isUnderMaintenance("discTrade") && (
+            <p
+              role="status"
+              className="mt-2 inline-block rounded-lg border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 text-[11px] font-bold text-amber-700 dark:text-amber-300"
+            >
+              {t(
+                "الخدمة تحت الصيانة للزبائن: لا تُستقبل طلبات جديدة. الطلبات القائمة تُراجَع وتُسوّى هنا كالمعتاد.",
+              )}
+            </p>
+          )}
         </div>
 
         <div className="flex items-center gap-2 bg-muted p-1 rounded-xl border border-border">

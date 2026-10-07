@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { body, guard, json } from "@/lib/http.server";
+import { isUnderMaintenance, maintenanceError } from "@/lib/maintenance";
 import { requireAdmin, requireUser } from "@/lib/session.server";
 import { d1All, d1First, d1Run, ensureSchema } from "@/lib/d1.server";
 import { d1Batch } from "@/lib/db.server";
@@ -32,6 +33,22 @@ interface TradeBody extends Record<string, unknown> {
 }
 
 const now = () => new Date().toISOString();
+
+/*
+  What keeps running while trade-in is under maintenance: everything about a
+  trade that ALREADY exists. A member can still cancel one or accept the offer
+  the shop made, and the admin can still price, receive and settle it — a disc
+  may already be on its way, and stopping mid-trade would strand it. Every
+  other action is a quote or a new submission (an unknown action falls through
+  to submit), and those are the ones the owner paused.
+*/
+const OPEN_DURING_MAINTENANCE = new Set([
+  "cancel",
+  "user_cancel",
+  "accept",
+  "accept_offer",
+  "admin_update",
+]);
 
 async function notify(text: string, userId?: string) {
   try {
@@ -227,9 +244,14 @@ export const Route = createFileRoute("/api/disc-trade")({
       POST: async ({ request }) =>
         guard(async () => {
           await ensureSchema();
-          await backfillCanonicalIds();
           const data = await body<TradeBody>(request);
           const action = String(data.action || "submit");
+
+          /* Before the backfill below: a refused request should cost nothing. */
+          if (isUnderMaintenance("discTrade") && !OPEN_DURING_MAINTENANCE.has(action)) {
+            return json(maintenanceError("discTrade"), { status: 503 });
+          }
+          await backfillCanonicalIds();
 
           /* ---------------- quote: deterministic, no AI, no network -------- */
           if (action === "quote") {

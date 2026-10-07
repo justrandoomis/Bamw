@@ -7,6 +7,7 @@
  */
 
 import { GoogleGenAI } from "@google/genai";
+import { isUnderMaintenance } from "../maintenance";
 import { findProducts } from "./intent";
 import { contentTokens, detectLang, skeleton } from "./normalize";
 import type { SupportCard, SupportContext, SupportIntent, SupportLang } from "./types";
@@ -159,6 +160,19 @@ export async function understand(
   const targetLang = detectLang(message, ctx.lang);
   const products = candidateProducts(message, ctx);
 
+  /*
+    What the shop can do TODAY. A feature under maintenance is described as
+    paused, so the model never invites a member through a door the server
+    will refuse — the same rule the scripted answers in `engine.ts` follow.
+  */
+  const discTradeLine = isUnderMaintenance("discTrade")
+    ? "Disc Trade / Exchange: UNDER MAINTENANCE — new trade-in requests are paused for now. Trades a member already submitted carry on and can be followed on the trade page."
+    : "Disc Trade / Exchange: Users can exchange physical discs for new games or store credits.";
+  const bananaLine =
+    isUnderMaintenance("bananas") || isUnderMaintenance("bananaMarket")
+      ? "Banana Wallet (محفظة الموز) & Banana Market: UNDER MAINTENANCE — earning, redeeming and trading bananas are paused for now; every balance is kept in full."
+      : "Banana Wallet (محفظة الموز) & Banana Market: Reward points earned from orders; can be redeemed or traded in the live peer-to-peer Banana market.";
+
   const system = `You are the master customer support AI concierge for "Bananto Store" (بنانا ستور), the premier Nintendo Switch & gaming store in Iraq.
 
 CRITICAL RULES:
@@ -179,8 +193,8 @@ CRITICAL RULES:
    - Digital Accounts: Primary accounts (play on your personal user, online/offline) and Secondary accounts (cost-effective, play on provided profile).
    - Delivery: Instant digital delivery in chat upon payment confirmation. Fast physical shipping to all Iraq governorates (Baghdad, Erbil, Basra, Sulaymaniyah, etc.) within 24-48h.
    - Payment Methods: ZainCash (زين كاش), FIB (First Iraqi Bank), AsiaPay (آسيا باي), Visa/Mastercard, Binance Pay (USDT Crypto), and Banana Wallet.
-   - Disc Trade / Exchange: Users can exchange physical discs for new games or store credits.
-   - Banana Wallet (محفظة الموز) & Banana Market: Reward points earned from orders; can be redeemed or traded in the live peer-to-peer Banana market.
+   - ${discTradeLine}
+   - ${bananaLine}
    - Warranty: 100% full lifetime guarantee on digital accounts. Free replacement if any technical problem occurs.
    - Technical support: Provide step-by-step help for Nintendo Switch error codes, 2-step verification codes, account setup, offline mode, and DNS fixes (8.8.8.8 / 1.1.1.1).
 

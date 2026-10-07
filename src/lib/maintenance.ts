@@ -3,6 +3,7 @@
  *
  *   «حاليا الروليت والموز وسوق الموز وخصم التقييم الالف دينار
  *    ( اجعلها تحت الصيانه )»
+ *   «وقف ميزه استبدال الاقراص وجعلها تحت الصيانه»
  *
  * ONE SWITCH PER FEATURE, ASKED WHEREVER THAT FEATURE CAN MOVE VALUE. A
  * maintenance screen on its own is a curtain: the endpoints behind it would
@@ -14,7 +15,9 @@
  * WHAT MAINTENANCE KEEPS, ON PURPOSE:
  *   - every balance — bananas, tickets, wallet money — untouched and shown;
  *   - what the shop already owes: a roulette prize already won can still be
- *     claimed, and a review code already issued still works at checkout;
+ *     claimed, a review code already issued still works at checkout, and a
+ *     disc trade already submitted can still be followed, accepted or
+ *     cancelled — and settled by the admin;
  *   - the reviews themselves: a customer can still rate an order. Only the
  *     1,000-dinar code is paused.
  *
@@ -22,7 +25,12 @@
  * carries it and cannot be flipped by a stray admin save; reopening a feature
  * is setting its line to `false`.
  */
-export type MaintenanceFeature = "roulette" | "bananas" | "bananaMarket" | "reviewReward";
+export type MaintenanceFeature =
+  | "roulette"
+  | "bananas"
+  | "bananaMarket"
+  | "reviewReward"
+  | "discTrade";
 
 export const UNDER_MAINTENANCE: Readonly<Record<MaintenanceFeature, boolean>> = {
   /** Spinning and buying tickets. Claiming a prize already won stays open. */
@@ -33,6 +41,8 @@ export const UNDER_MAINTENANCE: Readonly<Record<MaintenanceFeature, boolean>> = 
   bananaMarket: true,
   /** The 1,000-dinar code an approved review earns. */
   reviewReward: true,
+  /** New disc trade-in requests and their quotes. Trades already submitted carry on. */
+  discTrade: true,
 };
 
 export function isUnderMaintenance(feature: MaintenanceFeature): boolean {
@@ -57,6 +67,10 @@ export const MAINTENANCE_COPY: Readonly<
   reviewReward: {
     title: "خصم التقييم تحت الصيانة",
     body: "كود خصم الألف دينار مقابل التقييم متوقف مؤقتًا. يمكنك تقييم طلبك كالمعتاد.",
+  },
+  discTrade: {
+    title: "استبدال الأقراص تحت الصيانة",
+    body: "استقبال طلبات الاستبدال الجديدة متوقف مؤقتًا. طلباتك السابقة محفوظة ويمكنك متابعتها هنا كالمعتاد، وسيعود الاستبدال قريبًا.",
   },
 };
 
