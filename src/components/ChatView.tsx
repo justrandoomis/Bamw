@@ -3549,7 +3549,7 @@ export default function ChatView({
           <div className="relative flex h-[42px] flex-1 items-center overflow-hidden rounded-full border border-[var(--surface-4)] bg-[var(--surface-2)] shadow-xs transition-all focus-within:border-[var(--ink-mute)]">
             {recordingState !== "idle" ? (
               <div
-                className="absolute inset-0 flex items-center justify-between px-4"
+                className="absolute inset-0 flex items-center justify-between ps-[48px] pe-4"
                 dir={isRtl ? "rtl" : "ltr"}
               >
                 <div className="z-10 flex items-center gap-2 font-medium text-red-500">
