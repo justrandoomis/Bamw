@@ -4,6 +4,7 @@ import { d1First, d1Run, ensureTelegramSchema } from "@/lib/d1.server";
 import { body, guard, json } from "@/lib/http.server";
 import { getSessionUser } from "@/lib/session.server";
 import { createLinkToken } from "@/lib/telegram-link.server";
+import { getUserTelegramChatId } from "@/lib/telegram-notifications.server";
 import { telegramBotUsername } from "@/lib/telegram.server";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 
@@ -19,6 +20,16 @@ async function statusFor(userId: string) {
   );
   return {
     linked: !!link,
+    /*
+      Whether the shop's Telegram messages reach this member at all, asked of
+      the lookup every order update and support reply is sent through.
+
+      `linked` is narrower: it is the row this account's own «إلغاء الربط»
+      removes. A member reached through a link filed under their phone is not
+      `linked`, and is reachable — the alert after an order must not tell them
+      Telegram is off when their notifications already arrive.
+    */
+    reachable: link ? true : Boolean(await getUserTelegramChatId(userId)),
     telegram_username: link?.telegram_username ?? null,
     linked_at: link?.linked_at ?? null,
     bot_username: telegramBotUsername(),

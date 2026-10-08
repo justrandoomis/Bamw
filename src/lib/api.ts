@@ -288,15 +288,20 @@ export const api = {
   telegramStatus: () =>
     request<{
       linked: boolean;
+      /** whether Telegram messages reach the member at all — see `/api/telegram` */
+      reachable?: boolean;
       telegram_username: string | null;
       linked_at: string | null;
       bot_username: string;
     }>("/api/telegram"),
   telegramLink: () =>
-    request<{ ok: boolean; bot_username: string; deep_link: string }>("/api/telegram", {
-      method: "POST",
-      body: JSON.stringify({ action: "link" }),
-    }),
+    request<{ ok: boolean; bot_username: string; deep_link: string; expires_at?: string }>(
+      "/api/telegram",
+      {
+        method: "POST",
+        body: JSON.stringify({ action: "link" }),
+      },
+    ),
   telegramUnlink: () =>
     request<{ ok: boolean; linked: boolean }>("/api/telegram", {
       method: "POST",

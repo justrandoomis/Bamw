@@ -772,6 +772,47 @@ export const translations: Record<string, { en: string; ku: string; tr?: string 
     ku: "کۆدی چوونەژوورەوەت پاشەکەوت کرد؟",
   },
   "٨ أحرف على الأقل": { en: "At least 8 characters", ku: "لانیکەم ٨ پیت" },
+
+  /* The alert after an order, for a member Telegram cannot reach. */
+  "تلغرام غير مفعّل": { en: "Telegram isn't set up", ku: "تێلێگرام چالاک نەکراوە" },
+  "فعّل تلغرام لتصلك إشعارات طلبك وردود الدعم أولاً بأول — بدونه لن يصلك شيء منها.": {
+    en: "Turn on Telegram to get your order's updates and support's replies as they happen — without it, none of them reach you.",
+    ku: "تێلێگرام چالاک بکە بۆ ئەوەی ئاگادارکردنەوەکانی داواکارییەکەت و وەڵامەکانی پشتگیری یەکسەر پێت بگات — بەبێ ئەو هیچیان پێت ناگات.",
+  },
+  "اختياري، ويأخذ أقل من دقيقة.": {
+    en: "Optional, and it takes less than a minute.",
+    ku: "ئارەزوومەندانەیە و کەمتر لە خولەکێک دەخایەنێت.",
+  },
+  الإعداد: { en: "Set up", ku: "ڕێکخستن" },
+  لاحقاً: { en: "Later", ku: "دواتر" },
+  "أكمل الإعداد في تلغرام": {
+    en: "Finish setting up in Telegram",
+    ku: "ڕێکخستنەکە لە تێلێگرام تەواو بکە",
+  },
+  "اضغط «ابدأ» (Start) في محادثة بوت بنانتو.": {
+    en: "Press “Start” in the Bananto bot chat.",
+    ku: "لە گفتوگۆی بۆتی بەنانتۆ «Start» دابگرە.",
+  },
+  "إن طلب منك الاشتراك في القناة، اشترك ثم اضغط «تحققت من اشتراكي».": {
+    en: "If it asks you to join the channel, join it, then press “تحققت من اشتراكي” (I've subscribed).",
+    ku: "ئەگەر داوای بەشداربوون لە کەناڵەکەی کرد، بەشداربە و پاشان «تحققت من اشتراكي» دابگرە.",
+  },
+  "ارجع إلى هنا — يتفعّل تلقائياً.": {
+    en: "Come back here — it turns on by itself.",
+    ku: "بگەڕێوە ئێرە — خۆکارانە چالاک دەبێت.",
+  },
+  "بانتظار التفعيل…": { en: "Waiting for Telegram…", ku: "چاوەڕێی چالاککردن…" },
+  "فتح تلغرام": { en: "Open Telegram", ku: "کردنەوەی تێلێگرام" },
+  "تعذر إنشاء رابط الربط، حاول مجدداً.": {
+    en: "Couldn't create the link — try again.",
+    ku: "دروستکردنی بەستەری بەستنەوە سەرکەوتوو نەبوو، دووبارە هەوڵ بدەرەوە.",
+  },
+  "تم تفعيل تلغرام": { en: "Telegram is on", ku: "تێلێگرام چالاک کرا" },
+  "ستصلك إشعارات طلباتك وردود الدعم على تلغرام.": {
+    en: "Your order updates and support replies will reach you on Telegram.",
+    ku: "ئاگادارکردنەوەکانی داواکارییەکانت و وەڵامەکانی پشتگیری لە تێلێگرام پێت دەگات.",
+  },
+  تم: { en: "Done", ku: "تەواو" },
 };
 
 for (const [source, turkish] of Object.entries(LEGACY_TR)) {

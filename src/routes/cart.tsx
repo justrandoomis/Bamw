@@ -1,5 +1,6 @@
 import { tr, useI18n } from "@/i18n";
 import { rememberAfterSignIn } from "@/lib/signInReturn";
+import { askAboutTelegramAfterOrder } from "@/lib/telegramNudge";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import {
@@ -711,6 +712,8 @@ function CartPage() {
       void refreshMe();
       playSound("bumper_end", 0.7);
       toast.success("تم تأكيد الطلب والدفع بنجاح!");
+      // Its updates go out on Telegram: a member it cannot reach is asked, once, over the order chat.
+      askAboutTelegramAfterOrder(order.id);
       void navigate({ to: "/chat", search: { initialOrderId: order.id } });
     },
     onError: (err: Error) => {

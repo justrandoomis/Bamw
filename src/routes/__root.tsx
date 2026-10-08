@@ -18,6 +18,7 @@ import { ensureLanguageAssets, useI18n, tr } from "../i18n";
 import GlobalMusicPlayer from "../components/GlobalMusicPlayer";
 import { Toaster } from "../components/ui/sonner";
 import { ReferralCapture } from "../components/referral/ReferralCapture";
+import TelegramOrderNudge from "../components/TelegramOrderNudge";
 import { ensureNintendoCategory } from "../lib/nintendo-setup";
 import { isScriptImportError, handleModuleReload } from "../lib/polyfills";
 import { useStoreData } from "../hooks/useStoreData";
@@ -387,6 +388,12 @@ function RootInner() {
       <div key={`${lang}:${assetsVersion}`} className="contents">
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
+        {/*
+          After an order, a member Telegram cannot reach is asked whether to
+          set it up. Here rather than in a page: the cart that asks unmounts as
+          the order chat opens, and the chat has no AppShell of its own.
+        */}
+        <TelegramOrderNudge />
       </div>
     </CurrencyProvider>
   );

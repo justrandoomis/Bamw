@@ -27,6 +27,7 @@ import { loadSiteContent } from "@/lib/content.functions";
 import { activeOptions, localized, statusCopy } from "@/lib/content";
 import type { AddGameData, SelectOption } from "@/lib/content";
 import type { ProductRequest } from "@/lib/types";
+import { askAboutTelegramAfterOrder } from "@/lib/telegramNudge";
 import {
   Badge,
   ChoiceCard,
@@ -222,6 +223,8 @@ function AddGamePage() {
       toast.success(
         L("success_title") || (lang === "ar" ? "تم استلام طلبك بنجاح!" : "Request submitted!"),
       );
+      // The answer to a request goes out on Telegram too.
+      askAboutTelegramAfterOrder(String((data.request as ProductRequest)?.id ?? "game-request"));
       loadHistory();
     } catch {
       toast.error(lang === "ar" ? "حدث خطأ في الاتصال، حاول ثانية" : "Network error, please retry");
