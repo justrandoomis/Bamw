@@ -1,4 +1,5 @@
 import { tr, useI18n } from "@/i18n";
+import { rememberAfterSignIn } from "@/lib/signInReturn";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import {
@@ -311,7 +312,16 @@ function CartPage() {
 
   const { data: dbItems = [] } = useQuery({
     queryKey: ["cart"],
-    queryFn: () => fetchCartFn(),
+    /*
+      A list, or nothing. When the session has ended on the server but the
+      page still believes it is signed in, the answer is an error object, and
+      `.map` on it took the whole cart down — at the moment a buyer is about
+      to sign in again and pay.
+    */
+    queryFn: async () => {
+      const items = await fetchCartFn();
+      return Array.isArray(items) ? items : [];
+    },
     enabled: !!user,
   });
 
@@ -760,6 +770,11 @@ function CartPage() {
 
     if (!user) {
       toast.info("يرجى تسجيل الدخول أولاً لإتمام الشراء");
+      /*
+        Back to this cart afterwards, not to the profile: a buyer who signs in
+        halfway through a purchase came to finish the purchase.
+      */
+      rememberAfterSignIn("/cart");
       return void navigate({ to: "/auth" });
     }
 

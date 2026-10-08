@@ -1,4 +1,5 @@
 import { tr } from "@/i18n";
+import { rememberAfterSignIn } from "@/lib/signInReturn";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
@@ -49,7 +50,10 @@ function OrdersPage() {
             {tr("سجّل الدخول لعرض طلباتك ومحادثاتك مع الدعم.")}
           </p>
           <button
-            onClick={() => void navigate({ to: "/auth" })}
+            onClick={() => {
+              rememberAfterSignIn("/orders");
+              void navigate({ to: "/auth" });
+            }}
             className="w-full rounded-2xl bg-[var(--brand-red)] py-4 text-sm font-black text-white shadow-lg shadow-rose-500/20 active:scale-98 transition-all"
           >
             {tr("تسجيل الدخول")}

@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { rememberAfterSignIn } from "@/lib/signInReturn";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo } from "react";
 import { AlertTriangle } from "lucide-react";
@@ -60,7 +61,8 @@ function ProductPage() {
   // 1. Instant cache access via shared store data
   const { data: storeData } = useStoreData();
   const cachedProduct = useMemo(
-    () => findProductByIdOrSlug(storeData?.products, productId) as Record<string, unknown> | undefined,
+    () =>
+      findProductByIdOrSlug(storeData?.products, productId) as Record<string, unknown> | undefined,
     [storeData?.products, productId],
   );
 
@@ -206,7 +208,10 @@ function ProductPage() {
                       productTitle={String(product["titleEn"] || product["title"] || "")}
                       platform={String(product["platform"] ?? "")}
                       isSignedIn={sessionLoading ? undefined : Boolean(user)}
-                      onSignIn={() => void navigate({ to: "/auth" })}
+                      onSignIn={() => {
+                        rememberAfterSignIn(window.location.pathname);
+                        void navigate({ to: "/auth" });
+                      }}
                     />
                   </div>
                 )}
@@ -221,10 +226,7 @@ function ProductPage() {
   return (
     <AppShell currentView="details" hideNav>
       <div className="min-h-screen bg-[var(--page)]">
-        <ProductDetails
-          product={product}
-          schema={schema}
-        />
+        <ProductDetails product={product} schema={schema} />
         <div className="mx-auto max-w-6xl px-4 py-8">
           <ProductReviews productId={String(product["id"])} />
         </div>
