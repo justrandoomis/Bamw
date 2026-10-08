@@ -16,7 +16,10 @@
  *  - `security-headers` — the home page arrives with the shop's security
  *                    headers (none were sent before), the referrer policy
  *                    YouTube embeds need, and no framing ban, which would shut
- *                    the Telegram Mini App out.
+ *                    the Telegram Mini App out;
+ *  - `sign-in-code` — the sign-in page offers an account by login code alone
+ *                    («كود الدخول» / «بكود — الأسهل»), where it asked for a
+ *                    phone and a verification code.
  *
  * And one reading that is not a probe of the build: whether «الدخول عبر Google»
  * reaches Google at all. That depends on two secrets in Cloudflare, not on the
@@ -119,6 +122,24 @@ if (!challenged) {
 }
 const chatPath = await page.evaluate(() => location.pathname).catch(() => "—");
 
+/* The sign-in page, reached the same way: in-app, never as a second page load. */
+let signInCode = 0;
+if (!challenged) {
+  await page
+    .evaluate(() => {
+      window.history.pushState({}, "", "/auth");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    })
+    .catch(() => {});
+  signInCode = await page
+    .locator('[role="tab"]', { hasText: /كود الدخول|بكود — الأسهل|Login code/ })
+    .first()
+    .waitFor({ state: "attached", timeout: 30_000 })
+    .then(() => 1)
+    .catch(() => 0);
+}
+const authPath = await page.evaluate(() => location.pathname).catch(() => "—");
+
 /*
   Where «الدخول عبر Google» lands, from a browser of its own — a first visit,
   which the edge lets through. Google's sign-in page means the two secrets are
@@ -157,6 +178,11 @@ const probes = [
     name: "chat-attach",
     live: chatAttach > 0,
     seen: `in-app ${chatPath} · ${chatAttach ? "labelled paperclip" : "no labelled paperclip"}${chatRefused ? ` · ${chatRefused} request(s) refused 403` : ""}`,
+  },
+  {
+    name: "sign-in-code",
+    live: signInCode > 0,
+    seen: `in-app ${authPath} · ${signInCode ? "a login-code tab" : "no login-code tab"}`,
   },
   {
     name: "security-headers",
