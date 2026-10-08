@@ -18,6 +18,10 @@
  *                    YouTube embeds need, and no framing ban, which would shut
  *                    the Telegram Mini App out.
  *
+ * And one reading that is not a probe of the build: whether «الدخول عبر Google»
+ * reaches Google at all. That depends on two secrets in Cloudflare, not on the
+ * code, so it is reported and never fails the run.
+ *
  * It signs in as nobody and presses nothing.
  *
  * Usage:
@@ -115,6 +119,33 @@ if (!challenged) {
 }
 const chatPath = await page.evaluate(() => location.pathname).catch(() => "—");
 
+/*
+  Where «الدخول عبر Google» lands, from a browser of its own — a first visit,
+  which the edge lets through. Google's sign-in page means the two secrets are
+  set; the shop's own «not configured» answer means they are not.
+*/
+let google = "unknown";
+try {
+  const context = await browser.newContext({ userAgent: PHONE_UA });
+  const tab = await context.newPage();
+  await tab
+    .goto(`${ORIGIN}/api/oauth/google?next=/auth`, {
+      waitUntil: "domcontentloaded",
+      timeout: 45_000,
+    })
+    .catch(() => null);
+  await tab.waitForTimeout(3_000);
+  const landed = new URL(tab.url());
+  google = /(^|\.)google\.com$/.test(landed.hostname)
+    ? "configured — reaches Google's sign-in"
+    : landed.searchParams.get("error") === "google_not_configured"
+      ? "NOT configured — GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET missing"
+      : `unclear — landed on ${landed.hostname}${landed.pathname}`;
+  await context.close();
+} catch {
+  google = "unknown — the check could not run";
+}
+
 const probes = [
   { name: "header-bar", live: headerBar > 0, seen: `${headerBar} element(s)` },
   {
@@ -147,6 +178,8 @@ say("| --- | :---: | --- |");
 for (const probe of probes) say(`| ${probe.name} | ${probe.live ? "✓" : "✗"} | ${probe.seen} |`);
 say();
 const allLive = !challenged && probes.every((probe) => probe.live);
+say(`- Google sign-in: ${google}`);
+say();
 say(
   allLive
     ? "**Every probe is live: banan.to serves the new build.**"
