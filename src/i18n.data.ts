@@ -668,6 +668,110 @@ export const translations: Record<string, { en: string; ku: string; tr?: string 
   اليوم: { en: "Today", ku: "ئەمڕۆ" },
   أمس: { en: "Yesterday", ku: "دوێنێ" },
   "صورة من المحادثة": { en: "Photo from the chat", ku: "وێنەیەک لە گفتوگۆکە" },
+  // Sign-in: Google, an email, or a username and a login code (src/lib/loginCode.ts).
+  "أضف كوداً تدخل به بلا كلمة مرور": {
+    en: "Add a code to sign in without a password",
+    ku: "کۆدێک زیاد بکە بۆ چوونەژوورەوە بەبێ وشەی نهێنی",
+  },
+  "أعطني كوداً جديداً": { en: "Give me a new code", ku: "کۆدێکی نوێم بدەرێ" },
+  أو: { en: "or", ku: "یان" },
+  "إنشاء كود دخول": { en: "Create a login code", ku: "دروستکردنی کۆدی چوونەژوورەوە" },
+  "إنشاء كود دخول جديد؟": {
+    en: "Create a new login code?",
+    ku: "کۆدێکی نوێی چوونەژوورەوە دروست بکرێت؟",
+  },
+  "اسم المستخدم": { en: "Username", ku: "ناوی بەکارهێنەر" },
+  اسمك: { en: "Your name", ku: "ناوت" },
+  "الإيميل أو الهاتف": { en: "Email or phone", ku: "ئیمەیڵ یان مۆبایل" },
+  "الإيميل أو الهاتف أو اسم المستخدم": {
+    en: "Email, phone or username",
+    ku: "ئیمەیڵ، مۆبایل یان ناوی بەکارهێنەر",
+  },
+  "الاسم (اختياري)": { en: "Name (optional)", ku: "ناو (ئارەزوومەندانە)" },
+  "الاسم متاح": { en: "Username available", ku: "ناوەکە بەردەستە" },
+  "التسجيل عبر Google": { en: "Sign up with Google", ku: "خۆتۆمارکردن بە Google" },
+  "الدخول عبر Google": { en: "Continue with Google", ku: "چوونەژوورەوە بە Google" },
+  "الكود ١٦ حرفاً ورقماً، مثل A7K2-9QXM-PH3T-6WZB": {
+    en: "The code is 16 letters and digits, like A7K2-9QXM-PH3T-6WZB",
+    ku: "کۆدەکە ١٦ پیت و ژمارەیە، وەک A7K2-9QXM-PH3T-6WZB",
+  },
+  بالإيميل: { en: "With email", ku: "بە ئیمەیڵ" },
+  "بدون إيميل ولا رقم هاتف ولا كلمة مرور: بعد الإنشاء نعطيك كوداً تدخل به من أي جهاز.": {
+    en: "No email, no phone, no password: once it's made, we give you a code to sign in with on any device.",
+    ku: "بەبێ ئیمەیڵ، ژمارەی مۆبایل و وشەی نهێنی: دوای دروستکردن کۆدێکت دەدەینێ کە لە هەر ئامێرێکەوە پێی بچیتە ژوورەوە.",
+  },
+  "بكود — الأسهل": { en: "With a code — easiest", ku: "بە کۆد — ئاسانترین" },
+  "تأكد أنك حفظت كود الدخول — بدونه لن تستطيع الدخول مرة أخرى. هل تريد الخروج؟": {
+    en: "Make sure you saved your login code — without it you can't sign back in. Sign out?",
+    ku: "دڵنیابە کۆدی چوونەژوورەوەت پاشەکەوت کردووە — بەبێ ئەو ناتوانیت دووبارە بچیتە ژوورەوە. دەتەوێت بچیتە دەرەوە؟",
+  },
+  "تأكيد والمتابعة": { en: "Confirm and continue", ku: "پشتڕاستکردنەوە و بەردەوامبوون" },
+  "تعذّر إنشاء كود جديد، حاول مرة أخرى": {
+    en: "Couldn't create a new code — try again",
+    ku: "نەتوانرا کۆدی نوێ دروست بکرێت، دووبارە هەوڵ بدەرەوە",
+  },
+  "تعذّر الحفظ، حاول مرة أخرى": {
+    en: "Couldn't save — try again",
+    ku: "پاشەکەوت نەکرا، دووبارە هەوڵ بدەرەوە",
+  },
+  "تعذّر النسخ — اكتب الكود أو صوّر الشاشة": {
+    en: "Couldn't copy — write the code down or take a screenshot",
+    ku: "کۆپی نەکرا — کۆدەکە بنووسە یان وێنەی شاشەکە بگرە",
+  },
+  "تم إنشاء حسابك 🎉": { en: "Your account is ready 🎉", ku: "هەژمارەکەت دروستکرا 🎉" },
+  "تم النسخ": { en: "Copied", ku: "کۆپی کرا" },
+  "جارٍ التحقق من الاسم…": { en: "Checking the name…", ku: "پشکنینی ناوەکە…" },
+  "حسابك يدخل بكود الدخول وحده. إن لم تحفظه، خذ كوداً جديداً الآن وأنت ما زلت داخل حسابك — بدونه لن تستطيع الدخول بعد الخروج أو من جهاز آخر.":
+    {
+      en: "Your account signs in with its login code alone. If you didn't save it, get a new one now while you're still signed in — without it you can't sign in after signing out, or from another device.",
+      ku: "هەژمارەکەت تەنها بە کۆدی چوونەژوورەوە دەکرێتەوە. ئەگەر پاشەکەوتت نەکردووە، ئێستا کۆدێکی نوێ وەربگرە کە هێشتا لە ژوورەوەیت — بەبێ ئەو دوای دەرچوون یان لە ئامێرێکی ترەوە ناتوانیت بچیتە ژوورەوە.",
+    },
+  "حفظ كصورة": { en: "Save as image", ku: "پاشەکەوت وەک وێنە" },
+  "حفظت الكود في مكان آمن": {
+    en: "I've saved the code somewhere safe",
+    ku: "کۆدەکەم لە شوێنێکی پارێزراو پاشەکەوت کرد",
+  },
+  "سيتوقف الكود القديم فوراً وتخرج الأجهزة الأخرى من حسابك.": {
+    en: "The old code stops working at once, and other devices are signed out of your account.",
+    ku: "کۆدە کۆنەکە یەکسەر ڕادەوەستێت و ئامێرەکانی تر لە هەژمارەکەت دەردەچن.",
+  },
+  "سيتوقف الكود القديم فوراً وتخرج الأجهزة الأخرى من حسابك. ستحتاج الكود الجديد لتدخل به مرة أخرى.":
+    {
+      en: "The old code stops working at once, and other devices are signed out of your account. You'll need the new code to sign in again.",
+      ku: "کۆدە کۆنەکە یەکسەر ڕادەوەستێت و ئامێرەکانی تر لە هەژمارەکەت دەردەچن. بۆ چوونەژوورەوەی دووبارە پێویستت بە کۆدە نوێیەکە دەبێت.",
+    },
+  "كود الدخول": { en: "Login code", ku: "کۆدی چوونەژوورەوە" },
+  "كود الدخول الجديد": { en: "Your new login code", ku: "کۆدی نوێی چوونەژوورەوە" },
+  "كود جديد": { en: "New code", ku: "کۆدی نوێ" },
+  "لا يمكن استرجاع الكود إن ضاع، ولا تشاركه مع أحد — فريق بنانا لا يطلبه منك أبداً.": {
+    en: "A lost code can't be recovered. Don't share it with anyone — the Banana team will never ask you for it.",
+    ku: "کۆدی ونبوو ناگەڕێندرێتەوە. لەگەڵ کەس بەشی مەکە — تیمی بنانا هەرگیز داوای ناکات.",
+  },
+  "لم تؤكد حفظه بعد": {
+    en: "Not confirmed as saved yet",
+    ku: "هێشتا پاشەکەوتکردنەکەیت پشتڕاست نەکردووەتەوە",
+  },
+  "محفوظ ✓ — به تدخل من أي جهاز": {
+    en: "Saved ✓ — sign in with it on any device",
+    ku: "پاشەکەوتکراوە ✓ — لە هەر ئامێرێکەوە پێی بچۆ ژوورەوە",
+  },
+  "نسخ الكود": { en: "Copy code", ku: "کۆپیکردنی کۆد" },
+  "نعم، حفظته": { en: "Yes, I saved it", ku: "بەڵێ، پاشەکەوتم کرد" },
+  "نعم، كود جديد": { en: "Yes, a new code", ku: "بەڵێ، کۆدی نوێ" },
+  "هذا الاسم مستخدم، اختر اسماً آخر": {
+    en: "This name is taken — pick another",
+    ku: "ئەم ناوە بەکارهاتووە، ناوێکی تر هەڵبژێرە",
+  },
+  "هذا كود الدخول لحسابك. صوّر الشاشة أو انسخه أو اكتبه على ورقة واحفظه في مكان آمن — به وحده تدخل حسابك من أي جهاز.":
+    {
+      en: "This is your account's login code. Screenshot it, copy it or write it on paper, and keep it somewhere safe — it alone signs you in on any device.",
+      ku: "ئەمە کۆدی چوونەژوورەوەی هەژمارەکەتە. وێنەی شاشەکە بگرە، کۆپی بکە یان لەسەر کاغەز بینووسە و لە شوێنێکی پارێزراو هەڵیبگرە — تەنها بەم کۆدە لە هەر ئامێرێکەوە دەچیتە ژوورەوە.",
+    },
+  "هل حفظت كود الدخول؟": {
+    en: "Did you save your login code?",
+    ku: "کۆدی چوونەژوورەوەت پاشەکەوت کرد؟",
+  },
+  "٨ أحرف على الأقل": { en: "At least 8 characters", ku: "لانیکەم ٨ پیت" },
 };
 
 for (const [source, turkish] of Object.entries(LEGACY_TR)) {

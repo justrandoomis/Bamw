@@ -192,6 +192,12 @@ export const Route = createFileRoute("/api/auth")({
             typed it — see `findOrCreateOAuthUser`.
           */
           if (data.action === "register") {
+            /*
+              Per address as well as per email: the limit above is keyed on
+              the email typed, so a new email each time would never meet it.
+            */
+            const perAddress = await consumeRateLimit(request, "auth-register-ip", 10, 10 * 60);
+            if (!perAddress.allowed) return rateLimitResponse(perAddress.retryAfter);
             const email = String(data.email ?? data.identifier ?? "")
               .trim()
               .toLowerCase();
