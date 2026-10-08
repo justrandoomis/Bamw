@@ -70,23 +70,31 @@ describe("/auth actions", () => {
     expect(authPageAction(state({ user: null }), opts).type).toBe("stay");
   });
 
-  it("sends unverified phones to phone_setup once, then stays", () => {
+  /*
+    «تسهيل عملية تسجيل الدخول وشراء اللعبة ... بدون رمز تحقق أو شيء». A phone
+    verified by code and a completed profile were both tolls on the way to the
+    game; neither is asked for any more.
+  */
+  it("lets a member without a verified phone straight through", () => {
     const s = state({ user: user({ phoneVerifiedAt: null as never }) });
-    expect(authPageAction(s, opts)).toEqual({ type: "view", view: "phone_setup" });
+    expect(authPageAction(s, opts)).toEqual({ type: "redirect", to: "/profile" });
+    // One who opened the phone steps themselves may still finish them.
     expect(authPageAction(s, { ...opts, view: "phone_setup" }).type).toBe("stay");
     expect(authPageAction(s, { ...opts, view: "otp" }).type).toBe("stay");
   });
 
-  it("only shows profile_setup for brand new registrations", () => {
+  it("sends a brand new registration straight on, profile or not", () => {
     const s = state({ user: user({ profileCompletedAt: null as never }) });
     expect(authPageAction(s, { ...opts, isNewRegistration: true })).toEqual({
-      type: "view",
-      view: "profile_setup",
-    });
-    expect(authPageAction(s, { ...opts, isNewRegistration: false })).toEqual({
       type: "redirect",
       to: "/profile",
     });
+  });
+
+  it("waits while a new login code is on screen", () => {
+    const s = state({ user: user({ provider: "code" }) });
+    expect(authPageAction(s, { ...opts, holdRedirect: true }).type).toBe("stay");
+    expect(authPageAction(s, { ...opts, holdRedirect: false }).type).toBe("redirect");
   });
 
   it("redirects a fully set-up user to /profile", () => {
@@ -176,19 +184,21 @@ describe("redirect-once across unstable session sequences", () => {
     ).toBe(1);
   });
 
-  it("new registration walks phone_setup -> profile_setup without any redirect", () => {
+  it("a new registration without a phone or a profile leaves /auth exactly once", () => {
     const result = replayAuth(
       [
+        state({ isLoading: true }),
         state({
           user: user({ phoneVerifiedAt: null as never, profileCompletedAt: null as never }),
         }),
-        state({ user: user({ profileCompletedAt: null as never }) }),
-        state({ user: user({ profileCompletedAt: null as never }) }),
+        state({
+          user: user({ phoneVerifiedAt: null as never, profileCompletedAt: null as never }),
+        }),
       ],
       true,
     );
-    expect(result.redirects).toBe(0);
-    expect(result.view).toBe("profile_setup");
+    expect(result.redirects).toBe(1);
+    expect(result.view).toBe("signin");
   });
 
   it("auth <-> profile ping-pong is impossible: the two pages never both redirect on one snapshot", () => {

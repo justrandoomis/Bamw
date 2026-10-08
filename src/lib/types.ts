@@ -469,9 +469,18 @@ export interface User {
   isAdmin?: boolean;
   /** true for system/service accounts (e.g. automated bots) */
   isService?: boolean;
-  /** how the account was created: local password, Google or Apple */
-  provider?: "password" | "google" | "apple";
+  /**
+   * how the account was created: local password, Google or Apple, or a
+   * system-made login code with no email, phone or password at all
+   */
+  provider?: "password" | "google" | "apple" | "code";
   providerId?: string;
+  /** SHA-256 of the account's login code — server only, never sent out */
+  loginCodeHash?: string;
+  /** set once the member confirmed they kept their login code somewhere safe */
+  loginCodeSavedAt?: string;
+  /** public stand-in for `loginCodeHash`: whether the account has a login code */
+  hasLoginCode?: boolean;
   settings: UserSettings;
   addresses: Address[];
   favorites: (string | number)[];
@@ -815,7 +824,7 @@ export interface BananCode {
   createdAt: string;
 }
 
-export type PublicUser = Omit<User, "passwordHash" | "providerId">;
+export type PublicUser = Omit<User, "passwordHash" | "providerId" | "loginCodeHash">;
 
 export interface OrderItem {
   id: string;

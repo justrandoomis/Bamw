@@ -31,6 +31,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { useBananaMarket } from "../hooks/useBananaMarket";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../lib/api";
+import { LoginCodeRow } from "./auth/LoginCode";
 import { getDefaultRadioTracks } from "../config/publicAssets";
 
 export default function ProfileView() {
@@ -552,8 +553,26 @@ export default function ProfileView() {
 
             <div className="w-full h-px bg-muted" />
 
+            <LoginCodeRow />
+
+            <div className="w-full h-px bg-muted" />
+
             <button
               onClick={() => {
+                /*
+                  A code account has no email or phone to come back with: its
+                  code is the only way in. One question before it leaves.
+                */
+                if (
+                  user?.provider === "code" &&
+                  !window.confirm(
+                    t(
+                      "تأكد أنك حفظت كود الدخول — بدونه لن تستطيع الدخول مرة أخرى. هل تريد الخروج؟",
+                    ),
+                  )
+                ) {
+                  return;
+                }
                 playSound("turn_off", 0.6);
                 logout.mutate();
               }}

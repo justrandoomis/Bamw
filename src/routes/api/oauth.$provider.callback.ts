@@ -85,17 +85,16 @@ async function handle(request: Request, providerParam: string) {
     const user = await findOrCreateOAuthUser(profile);
     const sessionCookie = await establishSession(user.id, request);
 
-    // Safety check: All accounts must have a verified phone number.
-    // Redirect to profile setup/phone verification if missing.
-    // Use window.location origin for relative paths in redirect.
-    let next =
+    /*
+      Straight back to where the member was going. Every account used to be
+      sent to verify a phone by code first; «إنشاء الحساب أسهل بدون رمز
+      تحقق» — Google has already proven who they are, and a phone stays
+      something a member may add from their profile, not a toll.
+    */
+    const next =
       state.next.startsWith("/") && !state.next.startsWith("//") && !state.next.includes("\\")
         ? state.next
         : "/profile";
-
-    if (!user.phoneVerifiedAt) {
-      next = "/auth?view=phone_setup";
-    }
 
     // Explicitly return a redirect with the session cookie in the headers.
     // D1 environment needs standard Response for set-cookie to persist reliably.

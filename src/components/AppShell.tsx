@@ -24,6 +24,7 @@ import FlowerMenu from "./FlowerMenu";
 import { cdnImage } from "@/lib/img";
 import BottomNav from "./BottomNav";
 import Header from "./Header";
+import { LoginCodeReminder } from "./auth/LoginCode";
 import { trackBrowsing, getSessionId } from "@/lib/activity.functions";
 
 const viewToPath: Record<string, string> = {
@@ -130,6 +131,8 @@ export default function AppShell({
           <BottomNav currentView={currentView} onNavigate={handleNavigate} />
         </div>
       )}
+      {/* A code account that never confirmed keeping its code is asked once, wherever it lands. */}
+      <LoginCodeReminder pathname={pathname} />
     </div>
   );
 }

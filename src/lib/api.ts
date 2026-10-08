@@ -248,6 +248,33 @@ export const api = {
       method: "POST",
       body: JSON.stringify({ action: "register", ...input }),
     }),
+
+  /** Login-code accounts: a username in, a code out — see src/lib/loginCode.ts. */
+  usernameCheck: (username: string) =>
+    request<{ available: boolean; username: string; problem?: string; error?: string }>(
+      "/api/auth",
+      { method: "POST", body: JSON.stringify({ action: "username_check", username }) },
+    ),
+  codeRegister: (username: string) =>
+    request<{ user: PublicUser; code: string }>("/api/auth", {
+      method: "POST",
+      body: JSON.stringify({ action: "code_register", username }),
+    }),
+  codeLogin: (code: string) =>
+    request<{ user: PublicUser }>("/api/auth", {
+      method: "POST",
+      body: JSON.stringify({ action: "code_login", code }),
+    }),
+  codeSaved: () =>
+    request<{ ok: boolean }>("/api/auth", {
+      method: "POST",
+      body: JSON.stringify({ action: "code_saved" }),
+    }),
+  codeRotate: () =>
+    request<{ code: string; user: PublicUser | null }>("/api/auth", {
+      method: "POST",
+      body: JSON.stringify({ action: "code_rotate" }),
+    }),
   logout: () =>
     request<{ user: null }>("/api/auth", {
       method: "POST",

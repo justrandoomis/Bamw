@@ -340,6 +340,36 @@ export const ErrorMsg = ({
     </motion.div>
   ) : null;
 
+/** The Google button on its own, for a page that offers it first. */
+export const GoogleButton = ({ onClick, label }: { onClick: () => void; label: string }) => (
+  <div className="px-2">
+    <button
+      type="button"
+      onClick={onClick}
+      className="group relative flex min-h-12 w-full items-center justify-center gap-3 overflow-hidden border-[2px] border-[var(--ink-soft)] bg-[var(--surface-2)] py-2.5 shadow-sm transition-all hover:bg-[var(--gold)]/30 active:scale-[0.98] sm:py-3"
+      style={{ borderRadius: "18px 10px 18px 10px/10px 18px 10px 18px" }}
+    >
+      <div
+        className="pointer-events-none absolute inset-0 translate-x-[2.5px] translate-y-[3.5px] border-[2px] border-[var(--ink-soft)]"
+        style={{ borderRadius: "10px 18px 10px 18px/18px 10px 18px 10px" }}
+      />
+      <GoogleIcon className="relative z-10 h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
+      <span className="relative z-10 text-[15px] font-[900] text-[var(--ink-soft)] sm:text-[18px]">
+        {label}
+      </span>
+    </button>
+  </div>
+);
+
+/** A dashed rule with a word in the middle: «أو». */
+export const OrDivider = ({ text }: { text: string }) => (
+  <div className="relative my-5 border-t-2 border-dashed border-[var(--ink-soft)]/20">
+    <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[var(--page-3)] px-3 text-[13px] font-[800] whitespace-nowrap text-[var(--ink-soft)] sm:text-[15px]">
+      {text}
+    </span>
+  </div>
+);
+
 export const AlternativeLogins = ({ onGoogleClick }: { onGoogleClick: () => void }) => (
   <div className="relative mt-5 border-t-2 border-dashed border-[var(--ink-soft)]/20 pt-5 sm:mt-8 sm:pt-6">
     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[var(--page-3)] px-4 text-[14px] font-[800] whitespace-nowrap text-[var(--ink-soft)] sm:text-[16px]">

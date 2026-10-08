@@ -81,6 +81,22 @@ export function useAuth() {
     onSuccess: (data) => setSession(data as { user: PublicUser | null }),
   });
 
+  /** Sign in with a login code alone. */
+  const codeLogin = useMutation({
+    mutationFn: (code: string) => api.codeLogin(code),
+    onSuccess: (data) => setSession(data as { user: PublicUser | null }),
+  });
+
+  /*
+    A new login-code account. The session is NOT written here: the caller
+    must first put the code on screen and hold the redirect, then hand the
+    session over with `acceptSession` — written in that order, so no render
+    can see a signed-in member without the code that opens their account.
+  */
+  const codeRegister = useMutation({
+    mutationFn: (username: string) => api.codeRegister(username),
+  });
+
   const logout = useMutation({
     mutationFn: () => api.logout(),
     onSuccess: () => {
@@ -139,6 +155,10 @@ export function useAuth() {
     isFetching: query.isFetching,
     login,
     register,
+    codeLogin,
+    codeRegister,
+    acceptSession: setSession,
+    refreshSession: () => queryClient.invalidateQueries({ queryKey: ["me"] }),
     logout,
     updateProfile,
     sendOtp,

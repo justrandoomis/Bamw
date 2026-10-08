@@ -955,6 +955,10 @@ const SCHEMA_PATCHES: string[] = [
   `ALTER TABLE users ADD COLUMN member_no TEXT`,
   `ALTER TABLE users ADD COLUMN preferred_genres TEXT NOT NULL DEFAULT '[]'`,
   `ALTER TABLE users ADD COLUMN profile_completed_at TEXT`,
+  // The login code (src/lib/loginCode.ts): its hash, and when it was made and kept.
+  `ALTER TABLE users ADD COLUMN login_code_hash TEXT`,
+  `ALTER TABLE users ADD COLUMN login_code_created_at TEXT`,
+  `ALTER TABLE users ADD COLUMN login_code_saved_at TEXT`,
   `CREATE UNIQUE INDEX IF NOT EXISTS users_phone_idx ON users (phone)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS users_username_idx ON users (username)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS users_member_no_idx ON users (member_no)`,
@@ -1826,6 +1830,13 @@ const USERS_COLUMNS: Record<string, string> = {
   contact_enc: "TEXT",
   legacy_id: "TEXT",
   must_reset_password: "INTEGER NOT NULL DEFAULT 0",
+  /*
+    The login code (src/lib/loginCode.ts): a SHA-256 of the code, never the
+    code itself, when it was made, and when the member confirmed they kept it.
+  */
+  login_code_hash: "TEXT",
+  login_code_created_at: "TEXT",
+  login_code_saved_at: "TEXT",
   created_at: "TEXT NOT NULL DEFAULT ''",
 };
 
@@ -1866,6 +1877,15 @@ export function ensureUsersSchema(): Promise<void> {
       try {
         await db
           .prepare(`CREATE INDEX IF NOT EXISTS users_member_no_idx ON users (member_no)`)
+          .run();
+      } catch {
+        // ignore index creation error
+      }
+      try {
+        await db
+          .prepare(
+            `CREATE INDEX IF NOT EXISTS users_login_code_idx ON users (login_code_hash) WHERE login_code_hash IS NOT NULL`,
+          )
           .run();
       } catch {
         // ignore index creation error

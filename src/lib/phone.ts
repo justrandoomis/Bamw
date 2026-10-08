@@ -163,6 +163,16 @@ export function phonePlaceholderEmail(phone: string) {
   return `${phone.replace(/\D/g, "")}@phone.banana.local`;
 }
 
+/**
+ * The email an account made with a login code is stored under: it has none,
+ * and the column cannot be empty — an empty email would match every other
+ * account without one. Unique by the account's id, and in a domain that
+ * cannot receive mail.
+ */
+export function codePlaceholderEmail(userId: string) {
+  return `${userId.replace(/[^\w-]/g, "")}@code.banana.local`;
+}
+
 export function isPlaceholderEmail(email: string) {
-  return email.endsWith("@phone.banana.local");
+  return email.endsWith("@phone.banana.local") || email.endsWith("@code.banana.local");
 }

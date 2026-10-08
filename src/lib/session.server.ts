@@ -126,6 +126,12 @@ async function sessionFingerprint(user: User): Promise<string> {
     user.provider ?? "password",
     user.providerId ?? "",
     user.createdAt,
+    /*
+      The login code, when the account has one: a member who replaces a code
+      that somebody else has seen signs that person out everywhere. Only when
+      present, so every session made before login codes existed still matches.
+    */
+    ...(user.loginCodeHash ? [user.loginCodeHash] : []),
   ].join("\u0000");
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(material));
   return Array.from(new Uint8Array(digest).slice(0, 12))

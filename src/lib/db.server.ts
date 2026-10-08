@@ -13,7 +13,7 @@ import {
   ensureUsersSchema,
   getD1,
 } from "./d1.server";
-import { normalizePhone, arePhonesEqual } from "./phone";
+import { codePlaceholderEmail, normalizePhone, arePhonesEqual } from "./phone";
 import { listKeys, mutateJson, readJson, writeJson } from "./storage.server";
 import { productIndexStatements, readProductIndexFingerprints } from "./product-index.server";
 import { sendWhatsappMessage } from "./whatsapp.server";
@@ -1564,6 +1564,8 @@ interface UserRow {
   wallet_balance: number;
   banana_balance: number;
   banana_locked: number;
+  login_code_hash?: string | null;
+  login_code_saved_at?: string | null;
   created_at: string;
 }
 
@@ -1578,6 +1580,8 @@ function rowToUser(row: UserRow): User {
     ...(row.phone ? { phone: row.phone } : {}),
     ...(row.phone_verified_at ? { phoneVerifiedAt: row.phone_verified_at } : {}),
     passwordHash: row.password_hash,
+    ...(row.login_code_hash ? { loginCodeHash: row.login_code_hash } : {}),
+    ...(row.login_code_saved_at ? { loginCodeSavedAt: row.login_code_saved_at } : {}),
     ...(row.avatar ? { avatar: row.avatar } : {}),
     ...(row.gender ? { gender: row.gender as Gender } : {}),
     ...(row.birth_date ? { birthDate: row.birth_date } : {}),
@@ -1683,8 +1687,8 @@ export async function countUsers(): Promise<number> {
 }
 
 export function toPublicUser(user: User): PublicUser {
-  const { passwordHash: _passwordHash, providerId: _providerId, ...rest } = user;
-  return rest;
+  const { passwordHash: _passwordHash, providerId: _providerId, loginCodeHash, ...rest } = user;
+  return { ...rest, hasLoginCode: Boolean(loginCodeHash) };
 }
 
 export async function findUserByEmail(email: string): Promise<User | undefined> {
@@ -1936,6 +1940,122 @@ export async function createUser(input: {
   return user;
 }
 
+/**
+ * An account with nothing but a username and a login code.
+ *
+ * One statement, so two people choosing the same name in the same second
+ * cannot both get it: the row is written only where no account already holds
+ * the name, compared without regard to case. The email is a placeholder in the
+ * same form phone accounts use, so nothing that reads an email ever mistakes
+ * it for an address that can receive mail. Returns undefined when the name was
+ * taken first.
+ */
+export async function createCodeUser(input: {
+  username: string;
+  loginCodeHash: string;
+}): Promise<User | undefined> {
+  const now = new Date().toISOString();
+  const id = randomId("usr");
+  const user: User = {
+    id,
+    name: input.username,
+    username: input.username,
+    memberNo: await nextMemberNo(),
+    email: codePlaceholderEmail(id),
+    passwordHash: "",
+    avatar: randomAvatar(),
+    gender: "unspecified",
+    preferredGenres: [],
+    isAdmin: false,
+    provider: "code",
+    loginCodeHash: input.loginCodeHash,
+    settings: { ...defaultSettings },
+    addresses: [],
+    favorites: [],
+    walletBalance: 0,
+    createdAt: now,
+  };
+
+  if (await d1Ready()) {
+    const written = await d1RunChanges(
+      `INSERT INTO users (id, name, username, member_no, email, password_hash, avatar, gender,
+         preferred_genres, is_admin, provider, settings, addresses, favorites, wallet_balance,
+         banana_balance, banana_locked, login_code_hash, login_code_created_at, created_at)
+       SELECT ?, ?, ?, ?, ?, '', ?, 'unspecified', '[]', 0, 'code', ?, '[]', '[]', 0, 0, 0, ?, ?, ?
+       WHERE NOT EXISTS (SELECT 1 FROM users WHERE lower(username) = ?)`,
+      user.id,
+      user.name,
+      user.username,
+      user.memberNo ?? null,
+      user.email,
+      user.avatar ?? null,
+      JSON.stringify(user.settings),
+      input.loginCodeHash,
+      now,
+      now,
+      input.username.toLowerCase(),
+    );
+    return written > 0 ? user : undefined;
+  }
+
+  if (await findUserByUsername(input.username)) return undefined;
+  const users = await getUsers();
+  await writeJson(USERS_KEY, [...users, user]);
+  return user;
+}
+
+/** The account a login code belongs to, by the code's hash. */
+export async function findUserByLoginCodeHash(hash: string): Promise<User | undefined> {
+  if (!hash) return undefined;
+  if (await d1Ready()) {
+    const row = await d1First<UserRow>(
+      `SELECT * FROM users WHERE login_code_hash = ? LIMIT 1`,
+      hash,
+    );
+    return row ? rowToUser(row) : undefined;
+  }
+  return (await getUsers()).find((u) => u.loginCodeHash === hash);
+}
+
+/**
+ * A new login code for an account; the old one stops working at once.
+ *
+ * Its own statement rather than `updateUser`: the upsert behind that writes a
+ * fixed list of columns and leaves these alone, which is what keeps a profile
+ * edit from wiping the code.
+ */
+export async function setUserLoginCodeHash(id: string, hash: string): Promise<void> {
+  const now = new Date().toISOString();
+  if (await d1Ready()) {
+    await d1RunChanges(
+      `UPDATE users SET login_code_hash = ?, login_code_created_at = ?, login_code_saved_at = NULL
+        WHERE id = ?`,
+      hash,
+      now,
+      id,
+    );
+    return;
+  }
+  await updateUser(id, (user) => {
+    const { loginCodeSavedAt: _saved, ...rest } = user;
+    return { ...rest, loginCodeHash: hash };
+  });
+}
+
+/** The member confirmed they kept the code somewhere safe. */
+export async function markUserLoginCodeSaved(id: string): Promise<void> {
+  const now = new Date().toISOString();
+  if (await d1Ready()) {
+    await d1RunChanges(
+      `UPDATE users SET login_code_saved_at = ? WHERE id = ? AND login_code_hash IS NOT NULL`,
+      now,
+      id,
+    );
+    return;
+  }
+  await updateUser(id, (user) => (user.loginCodeHash ? { ...user, loginCodeSavedAt: now } : user));
+}
+
 export async function updateUser(
   id: string,
   mutate: (user: User) => User,
@@ -1986,11 +2106,26 @@ export async function findOrCreateOAuthUser(profile: {
   if (!user) {
     const existing = await findUserByEmail(profile.email);
     if (existing) {
+      /*
+        An address typed into the email sign-up was never proven. If nothing
+        else ever proved the account either — no verified email, no verified
+        phone — whoever typed it may not be whoever owns it: someone can sign
+        up with a stranger's Gmail and a password of their own, and wait. When
+        the real owner then arrives through Google, they take the account and
+        that password stops opening it. The provider change already signs out
+        every session the other person had (see `sessionFingerprint`).
+      */
+      const unproven =
+        existing.provider === "password" && !existing.emailVerifiedAt && !existing.phoneVerifiedAt;
+      if (unproven) {
+        console.warn("[oauth] verified email took over an unproven password account");
+      }
       const updated = await updateUser(existing.id, (u) => ({
         ...u,
         provider: profile.provider,
         providerId: profile.providerId,
         emailVerifiedAt: u.emailVerifiedAt || now,
+        ...(unproven ? { passwordHash: "" } : {}),
         ...(u.avatar ? {} : profile.avatar ? { avatar: profile.avatar } : {}),
       }));
       user = await ensureOwnerAdmin(updated ?? existing, { email: profile.email });
@@ -3144,7 +3279,11 @@ export async function createWalletTransaction(
 export async function addBananaBalance(userId: string, amount: number): Promise<void> {
   if (!Number.isFinite(amount) || amount === 0) return;
   if (await d1Ready()) {
-    await d1Run(`UPDATE users SET banana_balance = COALESCE(banana_balance, 0) + ? WHERE id = ?`, amount, userId);
+    await d1Run(
+      `UPDATE users SET banana_balance = COALESCE(banana_balance, 0) + ? WHERE id = ?`,
+      amount,
+      userId,
+    );
     return;
   }
   // JSON driver (local sandbox): no SQL, and no concurrency to lose to either.

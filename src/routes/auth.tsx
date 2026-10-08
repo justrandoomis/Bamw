@@ -5,19 +5,22 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 
 import {
-  AlternativeLogins,
   BoyFaceIcon,
   CardWrapper,
   DEFAULT_DIAL,
   ErrorMsg,
   FieldDecorations,
+  GoogleButton,
   InputField,
+  OrDivider,
   PasswordField,
   PhoneField,
   SkipButton,
   SubmitButton,
   calculateProgress,
 } from "@/components/auth/AuthPieces";
+import { CodeInput, LoginCodeDialog, MethodTabs } from "@/components/auth/LoginCode";
+import { useUsernameCheck, type UsernameState } from "@/hooks/useUsernameCheck";
 import OtpBoxes from "@/components/auth/OtpBoxes";
 import TelegramLinkPrompt from "@/components/auth/TelegramLinkPrompt";
 import { ASSET_BASE_URL } from "@/config/publicAssets";
@@ -30,6 +33,12 @@ import { api } from "@/lib/api";
 import { AVATAR_GALLERY } from "@/lib/avatars";
 import { GAME_GENRES } from "@/lib/genres";
 import { isPlaceholderEmail, normalizePhone } from "@/lib/phone";
+import {
+  LOGIN_CODE_LENGTH,
+  normalizeLoginCode,
+  usernameProblem,
+  usernameProblemText,
+} from "@/lib/loginCode";
 import { playSound } from "@/utils/audio";
 
 const patternAsset = { url: `${ASSET_BASE_URL}/Images/Ui/Auth%20background%20.webp` };
@@ -46,7 +55,7 @@ export const Route = createFileRoute("/auth")({
       {
         name: "description",
         content:
-          "سجّل الدخول برقم هاتفك أو بريدك، أو أنشئ حساباً موثقاً عبر واتساب لمتابعة طلباتك.",
+          "سجّل الدخول عبر Google أو بريدك أو بكود الدخول، أو أنشئ حساباً بخطوة واحدة بلا رمز تحقق.",
       },
       { property: "og:title", content: "تسجيل الدخول — بنانا ستور" },
       {
@@ -68,8 +77,7 @@ const AUTH_ERROR_MESSAGES: Record<string, string> = {
   invalid_state: "انتهت صلاحية محاولة تسجيل الدخول. ابدأ المحاولة من جديد.",
   access_denied: "أُلغيت محاولة تسجيل الدخول من مزود الحساب.",
   oauth_start_failed: "تعذر بدء تسجيل الدخول الخارجي. حاول مجدداً بعد قليل.",
-  oauth_failed:
-    "تعذر إكمال تسجيل الدخول الخارجي. يرجى المتابعة لربط رقم الهاتف أو المراجعة لاحقاً.",
+  oauth_failed: "تعذر إكمال تسجيل الدخول عبر Google. حاول مجدداً بعد قليل.",
 };
 
 export function authErrorMessage(code?: string): string | undefined {
@@ -132,6 +140,12 @@ function AuthPage() {
   const [authData, setAuthData] = useState<AuthData>({});
   const [channel, setChannel] = useState<OtpChannel>("telegram");
   const [isNewRegistration, setIsNewRegistration] = useState(false);
+  /*
+    A login code just issued, on screen until the member says they kept it.
+    While it is, the page does not move on — leaving would take the code
+    with it, and the server keeps only its hash.
+  */
+  const [pendingCode, setPendingCode] = useState<{ code: string; username?: string } | null>(null);
   // Safety valve: never keep the visitor on the session gate forever.
   const [waitedTooLong, setWaitedTooLong] = useState(false);
   useEffect(() => {
@@ -142,7 +156,10 @@ function AuthPage() {
   // A signed-in visitor never has to fill this form again — the session cookie
   // lasts 30 days. Accounts without a verified number finish that step first.
   useEffect(() => {
-    const action = authPageAction({ user, isLoading, isFetching }, { view, isNewRegistration });
+    const action = authPageAction(
+      { user, isLoading, isFetching },
+      { view, isNewRegistration, holdRedirect: Boolean(pendingCode) },
+    );
     if (action.type === "view") setView(action.view);
     /*
       Back to whatever they were trying to reach. `RequireSignIn` puts the path
@@ -153,7 +170,7 @@ function AuthPage() {
       const back = takeAfterSignIn();
       void navigate({ to: back ?? action.to, replace: true });
     }
-  }, [user, isLoading, isFetching, navigate, isNewRegistration, view]);
+  }, [user, isLoading, isFetching, navigate, isNewRegistration, view, pendingCode]);
 
   const go = (next: View, data?: AuthData) => {
     setDirection((previous) => (previous === 1 ? -1 : 1));
@@ -169,6 +186,7 @@ function AuthPage() {
     channel,
     setChannel,
     externalError: authErrorMessage(search.error),
+    onCodeIssued: (code: string, username?: string) => setPendingCode({ code, username }),
   };
 
   const showGate =
@@ -239,6 +257,14 @@ function AuthPage() {
           </motion.div>
         </AnimatePresence>
       </div>
+      {pendingCode && (
+        <LoginCodeDialog
+          code={pendingCode.code}
+          username={pendingCode.username}
+          isNew
+          onConfirmed={() => setPendingCode(null)}
+        />
+      )}
     </div>
   );
 }
@@ -250,16 +276,52 @@ interface CardProps {
   channel: OtpChannel;
   setChannel: (value: OtpChannel) => void;
   externalError: string | undefined;
+  /** A new login-code account: put its code on screen and hold the page there. */
+  onCodeIssued: (code: string, username?: string) => void;
 }
 
 /* ------------------------------- sign in -------------------------------- */
 
+/*
+  «أريد تسهيل عملية تسجيل الدخول وشراء اللعبة»: Google first, one tap; then
+  the two ways in that need nothing sent anywhere — a login code alone, or an
+  email or phone with its password. The way a member last came in is the tab
+  they find open next time.
+*/
+type SignInMethod = "password" | "code";
+const SIGN_IN_METHOD_KEY = "bananto:sign-in-method";
+
+function rememberedSignInMethod(): SignInMethod {
+  try {
+    return localStorage.getItem(SIGN_IN_METHOD_KEY) === "code" ? "code" : "password";
+  } catch {
+    return "password";
+  }
+}
+
+function rememberSignInMethod(method: SignInMethod): void {
+  try {
+    localStorage.setItem(SIGN_IN_METHOD_KEY, method);
+  } catch {
+    /* Private mode: the default tab opens next time. */
+  }
+}
+
+const startGoogle = () => {
+  window.location.href = "/api/oauth/google?next=/auth";
+};
+
 function SignInCard({ onNavigate, externalError }: CardProps) {
-  const { login } = useAuth();
+  const { login, codeLogin } = useAuth();
+  const [method, setMethod] = useState<SignInMethod>("password");
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+  const [code, setCode] = useState("");
   const [error, setError] = useState<string | undefined>(externalError);
   const [hint, setHint] = useState<string | undefined>(undefined);
+
+  // Read after mount: the server cannot know which tab this browser used last.
+  useEffect(() => setMethod(rememberedSignInMethod()), []);
 
   useEffect(() => {
     setError(externalError);
@@ -281,53 +343,93 @@ function SignInCard({ onNavigate, externalError }: CardProps) {
     // The shared session query performs the redirect once the cookie is verified.
     login.mutate(
       { identifier: identifier.trim(), password },
-      { onError: (err: Error) => setError(err.message) },
+      {
+        onSuccess: () => rememberSignInMethod("password"),
+        onError: (err: Error) => setError(err.message),
+      },
     );
+  };
+
+  const handleCode = (event: React.FormEvent) => {
+    event.preventDefault();
+    setError(undefined);
+    if (!normalizeLoginCode(code)) {
+      setError(tr("الكود ١٦ حرفاً ورقماً، مثل A7K2-9QXM-PH3T-6WZB"));
+      return;
+    }
+    playSound("bumper_end", 0.6);
+    codeLogin.mutate(code, {
+      onSuccess: () => rememberSignInMethod("code"),
+      onError: (err: Error) => setError(err.message),
+    });
   };
 
   return (
     <CardWrapper title={tr("تسجيل الدخول")} subtitle="MEMBER LOGIN" logo={mascotAsset.url}>
       <ErrorMsg error={error} hint={hint} />
-      <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-6">
-        <InputField
-          label="معرّف الحساب"
-          icon={<BoyFaceIcon />}
-          type="text"
-          value={identifier}
-          onChange={(event) => setIdentifier(event.target.value)}
-          placeholder={tr("اسم المستخدم أو الهاتف أو البريد أو رقم العضوية")}
-          autoComplete="username"
-          decoration={<FieldDecorations />}
-        />
-        <PasswordField
-          label="كلمة المرور"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          placeholder={tr("كلمة المرور")}
-          autoComplete="current-password"
-        />
 
-        <SubmitButton
-          isLoading={login.isPending}
-          text="دخول"
-          progress={calculateProgress({ text: identifier, password })}
-        />
-      </form>
+      <GoogleButton label={tr("الدخول عبر Google")} onClick={startGoogle} />
+      <OrDivider text={tr("أو")} />
 
-      <AlternativeLogins
-        onGoogleClick={() => {
-          window.location.href = "/api/oauth/google?next=/auth";
+      <MethodTabs
+        value={method}
+        onChange={(next) => {
+          setMethod(next);
+          setError(undefined);
         }}
+        options={[
+          { id: "password", label: tr("الإيميل أو الهاتف") },
+          { id: "code", label: tr("كود الدخول") },
+        ]}
       />
 
+      {method === "code" ? (
+        <form onSubmit={handleCode} className="space-y-3 sm:space-y-6">
+          <CodeInput value={code} onChange={setCode} label={tr("كود الدخول")} />
+          <SubmitButton
+            isLoading={codeLogin.isPending}
+            text="دخول"
+            progress={Math.min(1, code.replace(/-/g, "").length / LOGIN_CODE_LENGTH)}
+          />
+        </form>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-6">
+          <InputField
+            label="معرّف الحساب"
+            icon={<BoyFaceIcon />}
+            type="text"
+            value={identifier}
+            onChange={(event) => setIdentifier(event.target.value)}
+            placeholder={tr("الإيميل أو الهاتف أو اسم المستخدم")}
+            autoComplete="username"
+            decoration={<FieldDecorations />}
+          />
+          <PasswordField
+            label="كلمة المرور"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            placeholder={tr("كلمة المرور")}
+            autoComplete="current-password"
+          />
+
+          <SubmitButton
+            isLoading={login.isPending}
+            text="دخول"
+            progress={calculateProgress({ text: identifier, password })}
+          />
+        </form>
+      )}
+
       <div className="mt-6 space-y-3 text-center sm:mt-6 sm:space-y-4">
-        <button
-          type="button"
-          onClick={() => onNavigate("forgot")}
-          className="block w-full text-[14px] font-[800] text-[var(--ink-soft)] transition-opacity hover:opacity-70 sm:text-[18px]"
-        >
-          {tr("هل نسيت كلمة المرور؟")}
-        </button>
+        {method === "password" && (
+          <button
+            type="button"
+            onClick={() => onNavigate("forgot")}
+            className="block w-full text-[14px] font-[800] text-[var(--ink-soft)] transition-opacity hover:opacity-70 sm:text-[18px]"
+          >
+            {tr("هل نسيت كلمة المرور؟")}
+          </button>
+        )}
         <p className="pt-2 text-[14px] font-[800] text-[var(--ink-soft)] sm:text-[18px]">
           ليس لديك حساب؟{" "}
           <button
@@ -345,226 +447,175 @@ function SignInCard({ onNavigate, externalError }: CardProps) {
 
 /* ------------------------------- sign up -------------------------------- */
 
-function SignUpCard({
-  onNavigate,
-  authData,
-  setIsNewRegistration,
-  channel,
-  setChannel,
-  externalError,
-}: CardProps) {
-  const { sendOtp } = useAuth();
-  const [dial, setDial] = useState(DEFAULT_DIAL);
-  const [phone, setPhone] = useState("");
+/*
+  «إنشاء الحساب أسهل بدون رمز تحقق أو شيء». It was a phone number, a password
+  and a code sent by WhatsApp or Telegram — and when neither delivered, no
+  account at all. Now: Google; or a username and nothing else, the shop
+  handing back the code that opens the account; or an email and a password.
+  Nothing is sent, nothing is waited for.
+*/
+type SignUpMethod = "code" | "email";
+
+function UsernameStatus({ state }: { state: UsernameState }) {
+  if (state.status === "idle") return null;
+  return (
+    <p
+      className={`px-4 text-[13px] font-[800] ${
+        state.status === "available"
+          ? "text-emerald-700 dark:text-emerald-400"
+          : state.status === "checking"
+            ? "text-[var(--ink-mute)]"
+            : "text-[var(--danger)]"
+      }`}
+      aria-live="polite"
+    >
+      {state.status === "available"
+        ? `✓ ${tr("الاسم متاح")}`
+        : state.status === "checking"
+          ? tr("جارٍ التحقق من الاسم…")
+          : state.message}
+    </p>
+  );
+}
+
+function SignUpCard({ onNavigate, externalError, onCodeIssued }: CardProps) {
+  const { register, codeRegister, acceptSession } = useAuth();
+  const [method, setMethod] = useState<SignUpMethod>("code");
+  const [username, setUsername] = useState("");
+  const usernameState = useUsernameCheck(username);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | undefined>(externalError);
-  /** The server said another channel can carry this code. Offer it explicitly. */
-  const [fallbackOffered, setFallbackOffered] = useState(false);
-  const [hint, setHint] = useState<string | undefined>(undefined);
 
-  useEffect(() => {
-    setError(externalError);
-    setHint(undefined);
-  }, [externalError]);
-  const [needsLinking, setNeedsLinking] = useState<{
-    error: string;
-    botUrl: string;
-    sessionId?: string;
-    isVerification?: boolean;
-  } | null>(null);
+  useEffect(() => setError(externalError), [externalError]);
 
-  const handleSubmit = (event: React.FormEvent | null, forceChannel?: OtpChannel) => {
-    event?.preventDefault();
+  const usernameReady =
+    Boolean(username.trim()) &&
+    !usernameProblem(username) &&
+    usernameState.status !== "unavailable" &&
+    usernameState.status !== "checking";
+
+  const handleCode = (event: React.FormEvent) => {
+    event.preventDefault();
     setError(undefined);
-    setHint(undefined);
-    const normalized = normalizePhone(phone, dial);
-    if (!normalized) {
-      setError("يرجى إدخال رقم هاتف صحيح لإرسال رمز التحقق");
-      return;
-    }
-    if (password.length < 8 || password.length > 128) {
-      setError("يرجى إدخال كلمة مرور من 8 إلى 128 حرفاً");
+    const problem = usernameProblem(username);
+    if (problem) {
+      setError(usernameProblemText(problem, "ar"));
       return;
     }
     playSound("bumper_end", 0.6);
+    codeRegister.mutate(username, {
+      onSuccess: (data) => {
+        // The code goes on screen before the session lands, so no render sees one without the other.
+        onCodeIssued(data.code, data.user.username);
+        acceptSession({ user: data.user });
+        rememberSignInMethod("code");
+      },
+      onError: (err: Error) => setError(err.message),
+    });
+  };
 
-    const targetChannel = forceChannel || channel;
-
-    sendOtp.mutate(
-      { phone: normalized, purpose: "signup", channel: targetChannel },
+  const handleEmail = (event: React.FormEvent) => {
+    event.preventDefault();
+    setError(undefined);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) {
+      setError("اكتب بريداً إلكترونياً صحيحاً");
+      return;
+    }
+    if (password.length < 8 || password.length > 128) {
+      setError("كلمة المرور يجب أن تكون من ٨ إلى ١٢٨ حرفاً");
+      return;
+    }
+    playSound("bumper_end", 0.6);
+    register.mutate(
+      { name: name.trim(), email: email.trim(), password },
       {
-        onSuccess: () => {
-          setNeedsLinking(null);
-          onNavigate("otp", { phone: normalized, password, mode: "signup" });
-        },
-        onError: (err: any) => {
-          if (err.needsLinking) {
-            const botUsername = (window as any).VITE_TELEGRAM_BOT_USERNAME || "Bananto_store_bot";
-            const sessionId = err.sessionId || err.linkToken;
-            setNeedsLinking({
-              error: err.message,
-              botUrl:
-                err.botUrl ||
-                `https://t.me/${botUsername}?start=${encodeURIComponent(sessionId || "")}`,
-              sessionId: sessionId,
-              isVerification: !!err.sessionId,
-            });
-          } else {
-            setError(err.message);
-            setHint(err.hint);
-            /*
-              A failure the server says another channel can carry.
-
-              The two channel buttons sit on this card, and a customer whose
-              WhatsApp code never arrives was told «حاول لاحقاً» with the
-              working channel one tap away and unmentioned. Selecting it for
-              them is not enough on its own — it must be visible that the
-              choice moved — so the button below says what will happen.
-            */
-            if (err.fallbackChannel === "telegram") {
-              setChannel("telegram");
-              setFallbackOffered(true);
-            }
-          }
-        },
+        onSuccess: () => rememberSignInMethod("password"),
+        onError: (err: Error) => setError(err.message),
       },
     );
   };
 
   return (
     <CardWrapper title={tr("إنشاء حساب جديد")} subtitle="NEW ACCOUNT" logo={mascotAsset.url}>
-      <ErrorMsg error={error} hint={hint} />
+      <ErrorMsg error={error} />
 
-      {error && fallbackOffered ? (
-        <button
-          type="button"
-          onClick={() => {
-            setError(undefined);
-            setHint(undefined);
-            setFallbackOffered(false);
-            handleSubmit(null, "telegram");
-          }}
-          className="mb-4 w-full rounded-2xl border-2 border-ink-base bg-surface-2 px-4 py-3 text-[14px] font-black text-ink-base transition-transform active:scale-95"
-        >
-          {tr("إرسال الرمز عبر تلغرام بدلاً من ذلك")}
-        </button>
-      ) : null}
+      <GoogleButton label={tr("التسجيل عبر Google")} onClick={startGoogle} />
+      <OrDivider text={tr("أو")} />
 
-      {needsLinking ? (
-        <div className="space-y-6">
-          <TelegramLinkPrompt
-            message={needsLinking.error}
-            linkUrl={needsLinking.botUrl}
-            token={needsLinking.sessionId}
-            onVerified={() => {
-              setNeedsLinking(null);
-              handleSubmit(null, "telegram");
-            }}
-            onRetry={() => {
-              setNeedsLinking(null);
-              handleSubmit(null, "telegram");
-            }}
-          />
-
-          <div className="px-2">
-            <button
-              type="button"
-              onClick={() => {
-                setNeedsLinking(null);
-                playSound("klick", 0.4);
-              }}
-              className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-[var(--ink-soft)]/30 py-3 text-[14px] font-[800] text-[var(--ink-soft)] hover:bg-[var(--ink-soft)]/5 sm:text-[16px]"
-            >
-              <span>{tr("تراجع لتعديل البيانات")}</span>
-            </button>
-          </div>
-        </div>
-      ) : null}
-
-      {/* Lock fields when Telegram verification is active to prevent conflicts */}
-      <form onSubmit={(e) => handleSubmit(e)} className="space-y-3 sm:space-y-6">
-        <PhoneField
-          dial={dial}
-          onDialChange={setDial}
-          value={phone}
-          onChange={setPhone}
-          disabled={!!needsLinking}
-          decoration={<FieldDecorations />}
-        />
-        <PasswordField
-          label="إنشاء كلمة المرور"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          disabled={!!needsLinking}
-          placeholder={tr("إنشاء كلمة المرور")}
-          autoComplete="new-password"
-        />
-
-        <div className="grid grid-cols-2 gap-4 mb-8">
-          <button
-            type="button"
-            onClick={() => {
-              // The error on screen was about the other channel.
-              setError(undefined);
-              setHint(undefined);
-              setFallbackOffered(false);
-              setChannel("whatsapp");
-            }}
-            disabled={!!needsLinking}
-            className={`relative flex flex-col items-center justify-center p-5 border-2 transition-all duration-300 outline outline-[3px] outline-offset-[-6px] ${
-              channel === "whatsapp"
-                ? "border-ink-base bg-surface-2 shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)] scale-[1.02] outline-ink-base"
-                : "border-ink-soft/20 bg-surface-2 opacity-60 hover:opacity-100 hover:border-ink-soft/40 outline-transparent"
-            } ${needsLinking ? "cursor-not-allowed" : ""}`}
-            style={{ borderRadius: "28px 12px 28px 12px/12px 28px 12px 28px" }}
-          >
-            <div className="flex flex-col items-center gap-1.5">
-              <span
-                className={`text-[15px] font-black ${channel === "whatsapp" ? "text-ink-base" : "text-ink-soft"}`}
-              >
-                WhatsApp
-              </span>
-            </div>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => {
-              setError(undefined);
-              setHint(undefined);
-              setFallbackOffered(false);
-              setChannel("telegram");
-            }}
-            disabled={!!needsLinking}
-            className={`relative flex flex-col items-center justify-center p-5 border-2 transition-all duration-300 outline outline-[3px] outline-offset-[-6px] ${
-              channel === "telegram"
-                ? "border-ink-base bg-surface-2 shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)] scale-[1.02] outline-ink-base"
-                : "border-ink-soft/20 bg-surface-2 opacity-60 hover:opacity-100 hover:border-ink-soft/40 outline-transparent"
-            } ${needsLinking ? "cursor-not-allowed" : ""}`}
-            style={{ borderRadius: "12px 28px 12px 28px/28px 12px 28px 12px" }}
-          >
-            <div className="flex flex-col items-center gap-1.5">
-              <span
-                className={`text-[15px] font-black ${channel === "telegram" ? "text-ink-base" : "text-ink-soft"}`}
-              >
-                Telegram
-              </span>
-            </div>
-          </button>
-        </div>
-
-        <SubmitButton
-          isLoading={sendOtp.isPending}
-          text="تأكيد الحساب"
-          progress={calculateProgress({ phone, dial, password })}
-        />
-      </form>
-
-      <AlternativeLogins
-        onGoogleClick={() => {
-          window.location.href = "/api/oauth/google?next=/auth";
+      <MethodTabs
+        value={method}
+        onChange={(next) => {
+          setMethod(next);
+          setError(undefined);
         }}
+        options={[
+          { id: "code", label: tr("بكود — الأسهل") },
+          { id: "email", label: tr("بالإيميل") },
+        ]}
       />
+
+      {method === "code" ? (
+        <form onSubmit={handleCode} className="space-y-3 sm:space-y-5">
+          <InputField
+            label={tr("اسم المستخدم")}
+            icon={<AtSign className="h-5 w-5 text-[var(--ink-soft)]" />}
+            type="text"
+            dir="ltr"
+            value={username}
+            onChange={(event) => setUsername(event.target.value.replace(/\s/g, ""))}
+            placeholder="ali_gamer"
+            autoComplete="username"
+          />
+          <UsernameStatus state={usernameState} />
+          <p className="px-3 text-[13px] font-[700] leading-relaxed text-[var(--ink-mute)]">
+            {tr(
+              "بدون إيميل ولا رقم هاتف ولا كلمة مرور: بعد الإنشاء نعطيك كوداً تدخل به من أي جهاز.",
+            )}
+          </p>
+          <SubmitButton
+            isLoading={codeRegister.isPending}
+            text="إنشاء الحساب"
+            progress={usernameReady ? 1 : username.trim() ? 0.5 : 0}
+          />
+        </form>
+      ) : (
+        <form onSubmit={handleEmail} className="space-y-3 sm:space-y-5">
+          <InputField
+            label={tr("الاسم (اختياري)")}
+            icon={<BoyFaceIcon />}
+            type="text"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            placeholder={tr("اسمك")}
+            autoComplete="name"
+          />
+          <InputField
+            label={tr("البريد الإلكتروني")}
+            icon={<Mail className="h-5 w-5 text-[var(--ink-soft)]" />}
+            type="email"
+            dir="ltr"
+            inputMode="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="name@gmail.com"
+            autoComplete="email"
+          />
+          <PasswordField
+            label="كلمة المرور"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            placeholder={tr("٨ أحرف على الأقل")}
+            autoComplete="new-password"
+          />
+          <SubmitButton
+            isLoading={register.isPending}
+            text="إنشاء الحساب"
+            progress={calculateProgress({ email, password })}
+          />
+        </form>
+      )}
 
       <div className="mt-6 text-center sm:mt-6">
         <p className="pt-2 text-[14px] font-[800] text-[var(--ink-soft)] sm:text-[18px]">
