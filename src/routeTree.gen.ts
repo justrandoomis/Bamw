@@ -38,6 +38,7 @@ import { Route as ApiAuthRouteImport } from './routes/api/auth'
 import { Route as ApiBananaRouteImport } from './routes/api/banana'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiContentRouteImport } from './routes/api/content'
+import { Route as ApiContestsRouteImport } from './routes/api/contests'
 import { Route as ApiDataRouteImport } from './routes/api/data'
 import { Route as ApiDiagnosticsRouteImport } from './routes/api/diagnostics'
 import { Route as ApiDiscTradeRouteImport } from './routes/api/disc-trade'
@@ -82,6 +83,7 @@ import { Route as ApiAdminAssetsRouteImport } from './routes/api/admin/assets'
 import { Route as ApiAdminBananaRouteImport } from './routes/api/admin/banana'
 import { Route as ApiAdminBinanceTopupsRouteImport } from './routes/api/admin/binance-topups'
 import { Route as ApiAdminCatalogueImportRouteImport } from './routes/api/admin/catalogue-import'
+import { Route as ApiAdminContestsRouteImport } from './routes/api/admin/contests'
 import { Route as ApiAdminCouponsRouteImport } from './routes/api/admin/coupons'
 import { Route as ApiAdminDebugImageFetchRouteImport } from './routes/api/admin/debug-image-fetch'
 import { Route as ApiAdminDeliveryItemsRouteImport } from './routes/api/admin/delivery-items'
@@ -280,6 +282,11 @@ const ApiChatRoute = ApiChatRouteImport.update({
 const ApiContentRoute = ApiContentRouteImport.update({
   id: '/api/content',
   path: '/api/content',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiContestsRoute = ApiContestsRouteImport.update({
+  id: '/api/contests',
+  path: '/api/contests',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiDataRoute = ApiDataRouteImport.update({
@@ -500,6 +507,11 @@ const ApiAdminBinanceTopupsRoute = ApiAdminBinanceTopupsRouteImport.update({
 const ApiAdminCatalogueImportRoute = ApiAdminCatalogueImportRouteImport.update({
   id: '/api/admin/catalogue-import',
   path: '/api/admin/catalogue-import',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminContestsRoute = ApiAdminContestsRouteImport.update({
+  id: '/api/admin/contests',
+  path: '/api/admin/contests',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAdminCouponsRoute = ApiAdminCouponsRouteImport.update({
@@ -820,6 +832,7 @@ export interface FileRoutesByFullPath {
   '/api/banana': typeof ApiBananaRoute
   '/api/chat': typeof ApiChatRoute
   '/api/content': typeof ApiContentRoute
+  '/api/contests': typeof ApiContestsRoute
   '/api/data': typeof ApiDataRoute
   '/api/diagnostics': typeof ApiDiagnosticsRoute
   '/api/disc-trade': typeof ApiDiscTradeRoute
@@ -865,6 +878,7 @@ export interface FileRoutesByFullPath {
   '/api/admin/banana': typeof ApiAdminBananaRoute
   '/api/admin/binance-topups': typeof ApiAdminBinanceTopupsRoute
   '/api/admin/catalogue-import': typeof ApiAdminCatalogueImportRoute
+  '/api/admin/contests': typeof ApiAdminContestsRoute
   '/api/admin/coupons': typeof ApiAdminCouponsRoute
   '/api/admin/debug-image-fetch': typeof ApiAdminDebugImageFetchRoute
   '/api/admin/delivery-items': typeof ApiAdminDeliveryItemsRoute
@@ -949,6 +963,7 @@ export interface FileRoutesByTo {
   '/api/banana': typeof ApiBananaRoute
   '/api/chat': typeof ApiChatRoute
   '/api/content': typeof ApiContentRoute
+  '/api/contests': typeof ApiContestsRoute
   '/api/data': typeof ApiDataRoute
   '/api/diagnostics': typeof ApiDiagnosticsRoute
   '/api/disc-trade': typeof ApiDiscTradeRoute
@@ -994,6 +1009,7 @@ export interface FileRoutesByTo {
   '/api/admin/banana': typeof ApiAdminBananaRoute
   '/api/admin/binance-topups': typeof ApiAdminBinanceTopupsRoute
   '/api/admin/catalogue-import': typeof ApiAdminCatalogueImportRoute
+  '/api/admin/contests': typeof ApiAdminContestsRoute
   '/api/admin/coupons': typeof ApiAdminCouponsRoute
   '/api/admin/debug-image-fetch': typeof ApiAdminDebugImageFetchRoute
   '/api/admin/delivery-items': typeof ApiAdminDeliveryItemsRoute
@@ -1079,6 +1095,7 @@ export interface FileRoutesById {
   '/api/banana': typeof ApiBananaRoute
   '/api/chat': typeof ApiChatRoute
   '/api/content': typeof ApiContentRoute
+  '/api/contests': typeof ApiContestsRoute
   '/api/data': typeof ApiDataRoute
   '/api/diagnostics': typeof ApiDiagnosticsRoute
   '/api/disc-trade': typeof ApiDiscTradeRoute
@@ -1124,6 +1141,7 @@ export interface FileRoutesById {
   '/api/admin/banana': typeof ApiAdminBananaRoute
   '/api/admin/binance-topups': typeof ApiAdminBinanceTopupsRoute
   '/api/admin/catalogue-import': typeof ApiAdminCatalogueImportRoute
+  '/api/admin/contests': typeof ApiAdminContestsRoute
   '/api/admin/coupons': typeof ApiAdminCouponsRoute
   '/api/admin/debug-image-fetch': typeof ApiAdminDebugImageFetchRoute
   '/api/admin/delivery-items': typeof ApiAdminDeliveryItemsRoute
@@ -1210,6 +1228,7 @@ export interface FileRouteTypes {
     | '/api/banana'
     | '/api/chat'
     | '/api/content'
+    | '/api/contests'
     | '/api/data'
     | '/api/diagnostics'
     | '/api/disc-trade'
@@ -1255,6 +1274,7 @@ export interface FileRouteTypes {
     | '/api/admin/banana'
     | '/api/admin/binance-topups'
     | '/api/admin/catalogue-import'
+    | '/api/admin/contests'
     | '/api/admin/coupons'
     | '/api/admin/debug-image-fetch'
     | '/api/admin/delivery-items'
@@ -1339,6 +1359,7 @@ export interface FileRouteTypes {
     | '/api/banana'
     | '/api/chat'
     | '/api/content'
+    | '/api/contests'
     | '/api/data'
     | '/api/diagnostics'
     | '/api/disc-trade'
@@ -1384,6 +1405,7 @@ export interface FileRouteTypes {
     | '/api/admin/banana'
     | '/api/admin/binance-topups'
     | '/api/admin/catalogue-import'
+    | '/api/admin/contests'
     | '/api/admin/coupons'
     | '/api/admin/debug-image-fetch'
     | '/api/admin/delivery-items'
@@ -1468,6 +1490,7 @@ export interface FileRouteTypes {
     | '/api/banana'
     | '/api/chat'
     | '/api/content'
+    | '/api/contests'
     | '/api/data'
     | '/api/diagnostics'
     | '/api/disc-trade'
@@ -1513,6 +1536,7 @@ export interface FileRouteTypes {
     | '/api/admin/banana'
     | '/api/admin/binance-topups'
     | '/api/admin/catalogue-import'
+    | '/api/admin/contests'
     | '/api/admin/coupons'
     | '/api/admin/debug-image-fetch'
     | '/api/admin/delivery-items'
@@ -1598,6 +1622,7 @@ export interface RootRouteChildren {
   ApiBananaRoute: typeof ApiBananaRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiContentRoute: typeof ApiContentRoute
+  ApiContestsRoute: typeof ApiContestsRoute
   ApiDataRoute: typeof ApiDataRoute
   ApiDiagnosticsRoute: typeof ApiDiagnosticsRoute
   ApiDiscTradeRoute: typeof ApiDiscTradeRoute
@@ -1643,6 +1668,7 @@ export interface RootRouteChildren {
   ApiAdminBananaRoute: typeof ApiAdminBananaRoute
   ApiAdminBinanceTopupsRoute: typeof ApiAdminBinanceTopupsRoute
   ApiAdminCatalogueImportRoute: typeof ApiAdminCatalogueImportRoute
+  ApiAdminContestsRoute: typeof ApiAdminContestsRoute
   ApiAdminCouponsRoute: typeof ApiAdminCouponsRoute
   ApiAdminDebugImageFetchRoute: typeof ApiAdminDebugImageFetchRoute
   ApiAdminDeliveryItemsRoute: typeof ApiAdminDeliveryItemsRoute
@@ -1890,6 +1916,13 @@ declare module '@tanstack/react-router' {
       path: '/api/content'
       fullPath: '/api/content'
       preLoaderRoute: typeof ApiContentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/contests': {
+      id: '/api/contests'
+      path: '/api/contests'
+      fullPath: '/api/contests'
+      preLoaderRoute: typeof ApiContestsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/data': {
@@ -2198,6 +2231,13 @@ declare module '@tanstack/react-router' {
       path: '/api/admin/catalogue-import'
       fullPath: '/api/admin/catalogue-import'
       preLoaderRoute: typeof ApiAdminCatalogueImportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/contests': {
+      id: '/api/admin/contests'
+      path: '/api/admin/contests'
+      fullPath: '/api/admin/contests'
+      preLoaderRoute: typeof ApiAdminContestsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/admin/coupons': {
@@ -2672,6 +2712,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiBananaRoute: ApiBananaRoute,
   ApiChatRoute: ApiChatRoute,
   ApiContentRoute: ApiContentRoute,
+  ApiContestsRoute: ApiContestsRoute,
   ApiDataRoute: ApiDataRoute,
   ApiDiagnosticsRoute: ApiDiagnosticsRoute,
   ApiDiscTradeRoute: ApiDiscTradeRoute,
@@ -2717,6 +2758,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminBananaRoute: ApiAdminBananaRoute,
   ApiAdminBinanceTopupsRoute: ApiAdminBinanceTopupsRoute,
   ApiAdminCatalogueImportRoute: ApiAdminCatalogueImportRoute,
+  ApiAdminContestsRoute: ApiAdminContestsRoute,
   ApiAdminCouponsRoute: ApiAdminCouponsRoute,
   ApiAdminDebugImageFetchRoute: ApiAdminDebugImageFetchRoute,
   ApiAdminDeliveryItemsRoute: ApiAdminDeliveryItemsRoute,

@@ -76,6 +76,9 @@ export interface RoulettePrize {
   claimedAt: string | null;
   orderId: string | null;
   threadId: string | null;
+  /** where the game was won: the roulette (null, from before this was kept) or a contest */
+  source: "roulette" | "contest" | null;
+  contestId: string | null;
 }
 
 export type SpinResult =
@@ -200,6 +203,14 @@ export function ensureRouletteSchema(): Promise<void> {
         `CREATE INDEX IF NOT EXISTS roulette_prizes_user_idx
            ON roulette_prizes (user_id, status, won_at DESC)`,
       );
+      /*
+        «عند الفوز في قسم الروليت كان هنالك جوائزي، فهنا في المسابقات أيضاً
+        يضيف اللعبة في قسم جوائزي». A game won in a contest is a row here too,
+        so it sits in the same «ألعابك» and imports through the same button —
+        these say which it was. A roulette row written before them reads null.
+      */
+      await d1Run(`ALTER TABLE roulette_prizes ADD COLUMN source TEXT`).catch(() => undefined);
+      await d1Run(`ALTER TABLE roulette_prizes ADD COLUMN contest_id TEXT`).catch(() => undefined);
     })().catch((error) => {
       schemaReady = undefined;
       throw error;
@@ -229,6 +240,9 @@ const prizeFromRow = (row: Record<string, unknown>): RoulettePrize => ({
   claimedAt: row["claimed_at"] ? String(row["claimed_at"]) : null,
   orderId: row["order_id"] ? String(row["order_id"]) : null,
   threadId: row["thread_id"] ? String(row["thread_id"]) : null,
+  source:
+    row["source"] === "contest" ? "contest" : row["source"] === "roulette" ? "roulette" : null,
+  contestId: row["contest_id"] ? String(row["contest_id"]) : null,
 });
 
 /** Every prize a member holds, newest first. */
@@ -431,7 +445,11 @@ export async function spinRoulette(input: SpinInput): Promise<SpinResult> {
       `DELETE FROM wheel_spins WHERE id = ? AND status = 'claiming'`,
       claimedId,
     ).catch(() => 0);
-    return { ok: false, reason: "no_tickets", ticketsLeft: await getTicketBalance(userId).catch(() => 0) };
+    return {
+      ok: false,
+      reason: "no_tickets",
+      ticketsLeft: await getTicketBalance(userId).catch(() => 0),
+    };
   }
 
   /*
@@ -503,16 +521,7 @@ export async function spinRoulette(input: SpinInput): Promise<SpinResult> {
                SET status = 'settled', settled_at = ?, bucket = ?, product_id = ?,
                    product_title = ?, product_price = ?, weight_label = ?, prize_id = ?
              WHERE id = ? AND status = 'claiming'`,
-      binds: [
-        now,
-        bucket,
-        winner.id,
-        winner.title,
-        winner.price,
-        bucket,
-        prizeId,
-        liveSpinId,
-      ],
+      binds: [now, bucket, winner.id, winner.title, winner.price, bucket, prizeId, liveSpinId],
     },
     {
       sql: `INSERT INTO roulette_prizes
@@ -542,7 +551,11 @@ export async function spinRoulette(input: SpinInput): Promise<SpinResult> {
     */
     const settled = await readSpinByRequest(userId, requestId);
     if (settled) return describeSettled(settled, userId, true);
-    return { ok: false, reason: "failed", ticketsLeft: await getTicketBalance(userId).catch(() => 0) };
+    return {
+      ok: false,
+      reason: "failed",
+      ticketsLeft: await getTicketBalance(userId).catch(() => 0),
+    };
   }
 
   return {

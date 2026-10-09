@@ -1,8 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Suspense, useCallback, useMemo, useRef, useState } from "react";
 import { ArrowLeft, Loader2, TrendingDown, TrendingUp } from "lucide-react";
 import { toast } from "sonner";
 
+import EventsTab from "@/components/contests/EventsTab";
+import MarketTabs from "@/components/contests/MarketTabs";
 import { RewardsShelf } from "@/components/market/RewardsShelf";
 import { SellBananasSheet } from "@/components/market/SellBananasSheet";
 import { TicketShop } from "@/components/market/TicketShop";
@@ -53,7 +55,16 @@ const BananaPriceChart = lazyWithRetry(() => import("@/components/BananaPriceCha
  * is nested inside anything else it does not belong to.
  */
 
+/** `?tab=events` opens the contests; `?contest=<id>` opens one of them. */
+type MarketSearch = { tab?: "events"; contest?: string };
+
 export const Route = createFileRoute("/banana_market")({
+  validateSearch: (search: Record<string, unknown>): MarketSearch => ({
+    ...(search["tab"] === "events" ? { tab: "events" as const } : {}),
+    ...(typeof search["contest"] === "string" && search["contest"]
+      ? { contest: search["contest"] }
+      : {}),
+  }),
   head: () => ({
     meta: [
       { title: "سوق الموز — بنانتو" },
@@ -65,8 +76,56 @@ export const Route = createFileRoute("/banana_market")({
       { property: "og:type", content: "website" },
     ],
   }),
-  component: BananaMarketRoute,
+  component: BananaMarketScreen,
 });
+
+/**
+ * «في /banana_market اجعل هنالك شريط علوي ينتقل بين سوق الموز والفعاليات
+ * والمسابقات».
+ *
+ * The bar sits above both halves; the market half is still decided by
+ * `BananaMarketRoute`, so under maintenance it is still one sentence and none
+ * of the market's hooks run. The contests half is its own screen.
+ *
+ * A contest opened from the list is a new history entry, so the phone's back
+ * button closes the sheet rather than leaving the page; one arrived at by a
+ * shared link is closed in place.
+ */
+function BananaMarketScreen() {
+  const search = Route.useSearch();
+  const navigate = useNavigate({ from: "/banana_market" });
+  const openedHere = useRef(false);
+  const tab = search.tab === "events" || search.contest ? "events" : "market";
+
+  return (
+    <>
+      <MarketTabs
+        tab={tab}
+        onChange={(next) =>
+          void navigate({ search: next === "events" ? { tab: "events" } : {}, replace: true })
+        }
+      />
+      {tab === "events" ? (
+        <EventsTab
+          contestId={search.contest}
+          onOpen={(id) => {
+            if (id) {
+              openedHere.current = true;
+              void navigate({ search: { tab: "events", contest: id } });
+            } else if (openedHere.current) {
+              openedHere.current = false;
+              window.history.back();
+            } else {
+              void navigate({ search: { tab: "events" }, replace: true });
+            }
+          }}
+        />
+      ) : (
+        <BananaMarketRoute />
+      )}
+    </>
+  );
+}
 
 /**
  * Under maintenance the market is one sentence, decided before the page's

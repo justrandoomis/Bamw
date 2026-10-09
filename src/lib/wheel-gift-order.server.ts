@@ -63,6 +63,11 @@ export interface WheelGiftOrderInput {
   orderId?: string;
   threadId?: string;
   idempotencyKey?: string;
+  /**
+   * What the game was won in. A contest's prize is the same gift order, but
+   * the admin opening its chat needs to know which promise it keeps.
+   */
+  occasion?: "wheel" | "contest";
 }
 
 export interface WheelGiftOrder {
@@ -147,7 +152,7 @@ export async function createWheelGiftOrder(
     userName: String(user?.name ?? "") || "عميل",
     orderId,
     chatType: "ORDER_SUPPORT",
-    subject: `هدية عجلة الحظ — ${title}`,
+    subject: input.occasion === "contest" ? `جائزة مسابقة — ${title}` : `هدية عجلة الحظ — ${title}`,
     status: "open",
     mode: "ORDER_PREPARATION",
     needsAdmin: true,
@@ -180,7 +185,7 @@ export async function createWheelGiftOrder(
     updatedAt: now,
     events: [
       {
-        type: "wheel_prize_awarded",
+        type: input.occasion === "contest" ? "contest_prize_awarded" : "wheel_prize_awarded",
         at: now,
         payload: { spinId: input.spinId, productId, giftValue: Number(input.price) || 0 },
       },

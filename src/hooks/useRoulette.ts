@@ -30,6 +30,9 @@ export interface RoulettePrizeData {
   claimedAt: string | null;
   orderId: string | null;
   threadId: string | null;
+  /** where it was won — a contest's game sits on the same shelf */
+  source?: "roulette" | "contest" | null;
+  contestId?: string | null;
 }
 
 export interface OddsRow {
@@ -163,5 +166,12 @@ export function useRoulette(tickets: number) {
     void queryClient.invalidateQueries({ queryKey: ["roulette"] });
   }, [queryClient]);
 
-  return { state: query.data, isPending: query.isPending, error: query.error, spin, importPrize, refresh };
+  return {
+    state: query.data,
+    isPending: query.isPending,
+    error: query.error,
+    spin,
+    importPrize,
+    refresh,
+  };
 }

@@ -156,6 +156,7 @@ export async function importPrize(input: {
       orderId,
       threadId,
       idempotencyKey: idempotencyKeyForPrize(prizeId),
+      occasion: before.source === "contest" ? "contest" : "wheel",
     });
     if (!created) throw new Error("ROULETTE_IMPORT_NO_ORDER");
 

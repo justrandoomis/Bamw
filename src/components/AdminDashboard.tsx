@@ -70,6 +70,7 @@ import {
   Wallet,
   Coins,
   Gift,
+  Trophy,
   CreditCard,
   MapPin,
   FileText,
@@ -114,6 +115,7 @@ import BundlesManager from "./admin/BundlesManager";
 import { BananaManagementView } from "./admin/BananaManagementView";
 import CouponsManager from "./admin/CouponsManager";
 import ReferralsManager from "./admin/ReferralsManager";
+import ContestsManager from "./admin/contests/ContestsManager";
 import UsedListingsManager from "./admin/UsedListingsManager";
 import { StoreAdvisorSection } from "./admin/StoreAdvisorSection";
 import AdminInboxView from "./admin/inbox/AdminInboxView";
@@ -841,6 +843,7 @@ export default function AdminDashboard() {
     },
     { id: "orders", icon: ShoppingCart, label: "إدارة الطلبات" },
     { id: "market_settings", icon: Sparkles, label: "إدارة واقتصاد الموز" },
+    { id: "contests", icon: Trophy, label: "المسابقات" },
     { id: "users", icon: Users, label: "إدارة المستخدمين" },
     {
       id: "import",
@@ -981,6 +984,8 @@ export default function AdminDashboard() {
         return <CouponsManager />;
       case "referrals":
         return <ReferralsManager />;
+      case "contests":
+        return <ContestsManager />;
       case "used_listings":
         return <UsedListingsManager />;
       case "binance_mgmt":

@@ -813,6 +813,183 @@ export const translations: Record<string, { en: string; ku: string; tr?: string 
     ku: "ئاگادارکردنەوەکانی داواکارییەکانت و وەڵامەکانی پشتگیری لە تێلێگرام پێت دەگات.",
   },
   تم: { en: "Done", ku: "تەواو" },
+
+  /* Contests — the «الفعاليات والمسابقات» tab of the banana market. */
+  "تنتهي بإعلان من الإدارة": {
+    en: "Ends when the team announces it",
+    ku: "کۆتایی دێت کاتێک بەڕێوەبەرایەتی ڕایدەگەیەنێت",
+  },
+  "تبدأ بعد": { en: "Starts in", ku: "دەستپێدەکات دوای" },
+  "تنتهي بعد": { en: "Ends in", ku: "کۆتایی دێت دوای" },
+  "من تعليقات إنستغرام": { en: "From Instagram comments", ku: "لە کۆمێنتەکانی ئینستاگرام" },
+  "فزت!": { en: "You won!", ku: "بردتەوە!" },
+  مشارك: { en: "entered", ku: "بەشداربوو" },
+  فائز: { en: "winner", ku: "براوە" },
+  فائزين: { en: "winners", ku: "براوە" },
+  "أنت مشارك بـ": { en: "You're in with", ku: "تۆ بەشداریت بە" },
+  تذكرة: { en: "ticket", ku: "بلیت" },
+  تذاكر: { en: "tickets", ku: "بلیت" },
+  الشروط: { en: "Conditions", ku: "مەرجەکان" },
+  "افتح المنشور على إنستغرام": {
+    en: "Open the post on Instagram",
+    ku: "پۆستەکە لە ئینستاگرام بکەرەوە",
+  },
+  "المسابقة لم تبدأ بعد — عُد عند بدايتها للمشاركة.": {
+    en: "The contest hasn't started yet — come back when it does to enter.",
+    ku: "پێشبڕکێکە هێشتا دەستی پێنەکردووە — کاتی دەستپێکردنی بگەڕێوە بۆ بەشداریکردن.",
+  },
+  "انتهى وقت الدخول، والسحب قريباً.": {
+    en: "Entries are closed; the draw is coming soon.",
+    ku: "کاتی بەشداریکردن تەواو بوو، تیروپشک بەم زووانە دەکرێت.",
+  },
+  "حساب مربوط بتلغرام": { en: "A Telegram-linked account", ku: "هەژماری بەستراو بە تێلێگرام" },
+  "طلبات مكتملة على الأقل:": {
+    en: "Completed orders, at least:",
+    ku: "لانیکەم داواکاری تەواوکراو:",
+  },
+  "عمر الحساب بالأيام على الأقل:": {
+    en: "Account age in days, at least:",
+    ku: "لانیکەم تەمەنی هەژمار بە ڕۆژ:",
+  },
+  حتى: { en: "Up to", ku: "تا" },
+  "تذاكر لكل مشارك": { en: "tickets per entrant", ku: "بلیت بۆ هەر بەشداربوویەک" },
+  "تذكرة واحدة لكل مشارك": { en: "One ticket per entrant", ku: "یەک بلیت بۆ هەر بەشداربوویەک" },
+  "الحد الأقصى للمشاركين:": { en: "Maximum entrants:", ku: "زۆرترین ژمارەی بەشداربووان:" },
+  "من يحق له الدخول": { en: "Who can enter", ku: "کێ دەتوانێت بەشداربێت" },
+  "طريقة الدخول": { en: "How to enter", ku: "چۆنیەتی بەشداریکردن" },
+  "علّق على منشور إنستغرام حسب الشروط. يختار النظام الفائز من التعليقات المطابقة بسحب عادل — تعليق واحد لكل حساب.":
+    {
+      en: "Comment on the Instagram post as the conditions say. The system picks the winner from the matching comments in a fair draw — one comment per account.",
+      ku: "بەپێی مەرجەکان لەسەر پۆستی ئینستاگرام کۆمێنت بنووسە. سیستەمەکە براوە لە کۆمێنتە گونجاوەکان بە تیروپشکێکی دادپەروەرانە هەڵدەبژێرێت — یەک کۆمێنت بۆ هەر هەژمارێک.",
+    },
+  "إن فزت يصلك كود الجائزة في رسائل إنستغرام — أدخله في «لديك كود جائزة؟» لتصل اللعبة إلى ألعابك.":
+    {
+      en: "If you win, your prize code arrives in your Instagram messages — enter it under “Have a prize code?” and the game lands in your games.",
+      ku: "ئەگەر بردتەوە، کۆدی خەڵاتەکەت لە نامەکانی ئینستاگرام پێت دەگات — لە «کۆدی خەڵاتت هەیە؟» بینووسە بۆ ئەوەی یارییەکە بگاتە یارییەکانت.",
+    },
+  "انتهى وقت التعليق، والسحب قريباً.": {
+    en: "Commenting has closed; the draw is coming soon.",
+    ku: "کاتی کۆمێنت تەواو بوو، تیروپشک بەم زووانە دەکرێت.",
+  },
+  "سجّل الدخول لتشارك في المسابقة.": {
+    en: "Sign in to enter the contest.",
+    ku: "بچۆ ژوورەوە بۆ بەشداریکردن لە پێشبڕکێکە.",
+  },
+  "ادخل المسابقة": { en: "Enter the contest", ku: "بەشداری پێشبڕکێکە بکە" },
+  "تعذّر الدخول، حاول مرة أخرى": {
+    en: "Couldn't enter — try again",
+    ku: "بەشداریکردن سەرکەوتوو نەبوو، دووبارە هەوڵ بدەرەوە",
+  },
+  "دخلت مجاناً — تذكرتك المجانية محسوبة.": {
+    en: "You're in for free — your free ticket counts.",
+    ku: "بەخۆڕایی بەشداریت کرد — بلیتە بەخۆڕاییەکەت حیساب کراوە.",
+  },
+  "ادخل مجاناً": { en: "Enter for free", ku: "بەخۆڕایی بەشداربە" },
+  "كل تذكرة بـ": { en: "Each ticket costs", ku: "هەر بلیتێک بە" },
+  "الموز تحت الصيانة — الدخول بالموز متوقف مؤقتاً.": {
+    en: "Bananas are under maintenance — entering with bananas is paused for now.",
+    ku: "مۆز لە چاککردنەوەدایە — بەشداریکردن بە مۆز بۆ ماوەیەک ڕاگیراوە.",
+  },
+  أقل: { en: "Fewer", ku: "کەمتر" },
+  أكثر: { en: "More", ku: "زیاتر" },
+  "رصيد الموز لا يكفي": { en: "Not enough bananas", ku: "مۆزەکەت بەس نییە" },
+  "ادخل بـ": { en: "Enter for", ku: "بەشداربە بە" },
+  "لديك تذكرة من الإدارة؟ أدخل رقمها": {
+    en: "Got a ticket from the team? Enter its number",
+    ku: "بلیتت لە بەڕێوەبەرایەتی هەیە؟ ژمارەکەی بنووسە",
+  },
+  استخدم: { en: "Use", ku: "بەکاربهێنە" },
+  "كل صديق يسجّل برابط إحالتك بعد بدء المسابقة = تذكرة.": {
+    en: "Every friend who signs up through your referral link after the contest starts = one ticket.",
+    ku: "هەر هاوڕێیەک دوای دەستپێکردنی پێشبڕکێکە بە بەستەری ئاماژەپێکردنەکەت تۆمار بکات = یەک بلیت.",
+  },
+  "كل صديق يشتري أول طلب برابط إحالتك بعد بدء المسابقة = تذكرة.": {
+    en: "Every friend who places their first order through your referral link after the contest starts = one ticket.",
+    ku: "هەر هاوڕێیەک دوای دەستپێکردنی پێشبڕکێکە یەکەم داواکاری بە بەستەری ئاماژەپێکردنەکەت بکات = یەک بلیت.",
+  },
+  "احسب تذاكر إحالاتي": {
+    en: "Count my referral tickets",
+    ku: "بلیتەکانی ئاماژەپێکردنم حیساب بکە",
+  },
+  رابطي: { en: "My link", ku: "بەستەرەکەم" },
+  "تم السحب ولم يُعلن فائز بعد.": {
+    en: "The draw is done; no winner has been announced yet.",
+    ku: "تیروپشک کرا و هێشتا براوە ڕانەگەیەندراوە.",
+  },
+  "مبروك! اللعبة في «جوائزي» أعلى الصفحة — اضغط «استيراد» لتصلك مجاناً.": {
+    en: "Congratulations! The game is in “My prizes” at the top of the page — tap “Import” to get it free.",
+    ku: "پیرۆزە! یارییەکە لە «خەڵاتەکانم» لە سەرەوەی پەڕەکەیە — «هاوردەکردن» دابگرە بۆ ئەوەی بەخۆڕایی پێت بگات.",
+  },
+  الفائز: { en: "Winner", ku: "براوە" },
+  الفائزون: { en: "Winners", ku: "براوەکان" },
+  "بانتظار التأكيد": { en: "awaiting confirmation", ku: "چاوەڕێی پشتڕاستکردنەوە" },
+  "كيف نعرف أن السحب عادل؟": {
+    en: "How do we know the draw is fair?",
+    ku: "چۆن دەزانین تیروپشکەکە دادپەروەرانەیە؟",
+  },
+  "اختار النظام الفائز عشوائياً بنفسه، دون أن يختار أحد. البذرة العشوائية منشورة أدناه، ومنها والتذاكر المرقّمة يخرج الفائز نفسه في كل مرة — لا يمكن تغييره بعد السحب.":
+    {
+      en: "The system picked the winner at random on its own — no person chose. The random seed is published below; from it and the numbered tickets the same winner comes out every time, so it can't be changed after the draw.",
+      ku: "سیستەمەکە خۆی براوەی بە هەڕەمەکی هەڵبژارد، بێ ئەوەی کەس هەڵیبژێرێت. تۆوی هەڕەمەکی لە خوارەوە بڵاوکراوەتەوە، و لێیەوە و لە بلیتە ژمارەکراوەکانەوە هەمیشە هەمان براوە دەردەچێت — دوای تیروپشک ناگۆڕدرێت.",
+    },
+  "الفعاليات والمسابقات": { en: "Events & contests", ku: "بۆنە و پێشبڕکێکان" },
+  "ادخل المسابقات واربح ألعاباً — كل لعبة تربحها تصل إلى ألعابك وتستوردها مجاناً.": {
+    en: "Enter contests and win games — every game you win lands in your games, to import for free.",
+    ku: "بەشداری پێشبڕکێکان بکە و یاری ببەرەوە — هەر یارییەک دەیبەیتەوە دەگاتە یارییەکانت و بەخۆڕایی هاوردەی دەکەیت.",
+  },
+  المسابقات: { en: "Contests", ku: "پێشبڕکێکان" },
+  "تعذّر تحميل المسابقات، حاول مرة أخرى.": {
+    en: "Couldn't load the contests — try again.",
+    ku: "بارکردنی پێشبڕکێکان سەرکەوتوو نەبوو، دووبارە هەوڵ بدەرەوە.",
+  },
+  "لا توجد مسابقات الآن": { en: "No contests right now", ku: "ئێستا هیچ پێشبڕکێیەک نییە" },
+  "تابعنا على إنستغرام وتلغرام ليصلك خبر المسابقة القادمة أولاً.": {
+    en: "Follow us on Instagram and Telegram to hear about the next contest first.",
+    ku: "لە ئینستاگرام و تێلێگرام فۆڵۆمان بکە بۆ ئەوەی یەکەم کەس هەواڵی پێشبڕکێی داهاتوو بزانیت.",
+  },
+  "مسابقات انتهت": { en: "Past contests", ku: "پێشبڕکێ کۆتاییهاتووەکان" },
+  "ستعود قريباً — ألعابك التي ربحتها سابقاً تجدها هنا وتستوردها كالمعتاد.": {
+    en: "Back soon — games you already won are here to import as usual.",
+    ku: "بەم زووانە دەگەڕێتەوە — یارییەکانی پێشتر بردتەوە لێرەن و وەک هەمیشە هاوردەیان دەکەیت.",
+  },
+  الروليت: { en: "Roulette", ku: "ڕۆلێت" },
+  "دوّر واربح لعبة من المتجر": {
+    en: "Spin and win a game from the shop",
+    ku: "بیسوڕێنە و یارییەک لە فرۆشگا ببەرەوە",
+  },
+  "جوائزي — ألعابك": { en: "My prizes — your games", ku: "خەڵاتەکانم — یارییەکانت" },
+  "من مسابقة": { en: "From a contest", ku: "لە پێشبڕکێیەکەوە" },
+  "من الروليت": { en: "From the roulette", ku: "لە ڕۆلێتەوە" },
+  "فتح الطلب": { en: "Open order", ku: "کردنەوەی داواکاری" },
+  "تم إنشاء طلب الهدية ✅": { en: "Gift order created ✅", ku: "داواکاری دیاری دروستکرا ✅" },
+  "تعذّر الاستيراد": { en: "Couldn't import", ku: "هاوردەکردن سەرکەوتوو نەبوو" },
+  استيراد: { en: "Import", ku: "هاوردەکردن" },
+  "الاستيراد ينشئ طلب هدية بسعر صفر ويفتح محادثته مباشرة — بلا سلة وبلا دفع.": {
+    en: "Importing creates a free gift order and opens its chat — no cart, no payment.",
+    ku: "هاوردەکردن داواکارییەکی دیاری بە نرخی سفر دروست دەکات و گفتوگۆکەی ڕاستەوخۆ دەکاتەوە — بێ سەبەتە و بێ پارەدان.",
+  },
+  "لديك كود جائزة؟": { en: "Have a prize code?", ku: "کۆدی خەڵاتت هەیە؟" },
+  "تعذّر استلام الجائزة": {
+    en: "Couldn't claim the prize",
+    ku: "وەرگرتنی خەڵاتەکە سەرکەوتوو نەبوو",
+  },
+  "أدخل كود الجائزة الذي وصلك من الإدارة — تصل اللعبة إلى ألعابك.": {
+    en: "Enter the prize code the team sent you — the game lands in your games.",
+    ku: "کۆدی خەڵاتەکە کە لە بەڕێوەبەرایەتییەوە پێت گەیشتووە بنووسە — یارییەکە دەگاتە یارییەکانت.",
+  },
+  استلم: { en: "Claim", ku: "وەریبگرە" },
+  "أقسام السوق": { en: "Market sections", ku: "بەشەکانی بازاڕ" },
+  مجاني: { en: "Free", ku: "بەخۆڕایی" },
+  بالموز: { en: "Bananas", ku: "بە مۆز" },
+  بتذكرة: { en: "Ticket", ku: "بە بلیت" },
+  بالإحالة: { en: "Referral", ku: "بە ئاماژەپێکردن" },
+  مسودة: { en: "Draft", ku: "ڕەشنووس" },
+  قريباً: { en: "Coming soon", ku: "بەم زووانە" },
+  مفتوحة: { en: "Open", ku: "کراوە" },
+  "انتهت — بانتظار السحب": { en: "Ended — draw pending", ku: "کۆتایی هات — چاوەڕێی تیروپشک" },
+  "تم السحب": { en: "Drawn", ku: "تیروپشک کرا" },
+  أُلغيت: { en: "Cancelled", ku: "هەڵوەشێنرایەوە" },
+  "الروليت تحت الصيانة": { en: "The roulette is under maintenance", ku: "ڕۆلێت لە چاککردنەوەدایە" },
 };
 
 for (const [source, turkish] of Object.entries(LEGACY_TR)) {

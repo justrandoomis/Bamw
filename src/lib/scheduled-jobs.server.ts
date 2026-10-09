@@ -588,3 +588,18 @@ export async function processHeldReferralRewards() {
     console.error("[scheduled-jobs] referral rewards error:", err);
   }
 }
+
+/**
+ * «يكون هنالك موعد للانتهاء» — a contest whose end has come is drawn within
+ * the minute. One indexed read when nothing is due, which is almost always;
+ * a draw is idempotent, so a doubled cron firing draws once.
+ */
+export async function processDueContests() {
+  try {
+    const { settleDueContests } = await import("./contests.server");
+    const settled = await settleDueContests();
+    if (settled) console.log(`[scheduled-jobs:contests] drawn=${settled}`);
+  } catch (err) {
+    console.error("[scheduled-jobs] contests error:", err);
+  }
+}

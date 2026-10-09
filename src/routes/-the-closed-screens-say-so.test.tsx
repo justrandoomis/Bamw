@@ -128,7 +128,9 @@ describe("the banana market under maintenance", () => {
   it("says so, with a way home", () => {
     render(<MarketMaintenance />);
     expect(screen.getByRole("status").textContent).toContain("سوق الموز تحت الصيانة");
-    expect(screen.getByRole("link", { name: "العودة إلى الرئيسية" }).getAttribute("href")).toBe("/");
+    expect(screen.getByRole("link", { name: "العودة إلى الرئيسية" }).getAttribute("href")).toBe(
+      "/",
+    );
   });
 
   /*
@@ -139,7 +141,12 @@ describe("the banana market under maintenance", () => {
   */
   it("is what the route renders, before any of the market's hooks can run", () => {
     const source = readFileSync(path.resolve(__dirname, "banana_market.tsx"), "utf8");
-    expect(source).toContain("component: BananaMarketRoute,");
+    /*
+      The route now renders a tab bar above two halves — «سوق الموز» and
+      «الفعاليات والمسابقات» — and hands the market half to the same gate.
+    */
+    expect(source).toContain("component: BananaMarketScreen,");
+    expect(source).toMatch(/\) : \(\s*<BananaMarketRoute \/>\s*\)\}/);
     const gate = source.slice(source.indexOf("function BananaMarketRoute()"));
     const body = gate.slice(0, gate.indexOf("\n}\n"));
     expect(body).toMatch(

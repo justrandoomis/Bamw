@@ -153,7 +153,7 @@ async function attempt<T>(
  * Anything carrying an idempotency key — order creation does — is safe to
  * retry and deliberately absent from this list.
  */
-const NEVER_RETRY_POST = ["/api/otp", "/api/wheel", "/api/banana"];
+const NEVER_RETRY_POST = ["/api/otp", "/api/wheel", "/api/banana", "/api/contests"];
 
 async function request<T>(url: string, init?: RequestInit, timeoutMs = 20000): Promise<T> {
   // A hung request must never leave the UI stuck on a loading screen,
@@ -318,6 +318,35 @@ export const api = {
     request<{ success: boolean; status: string; sessionId?: string }>("/api/otp", {
       method: "POST",
       body: JSON.stringify({ action: "telegram_init", sessionId, initData }),
+    }),
+
+  /** Contests: every published one, the viewer's tickets, and «ألعابك». */
+  contests: () =>
+    request<{
+      contests: import("./contests").ContestView[];
+      prizes: import("@/hooks/useRoulette").RoulettePrizeData[];
+    }>("/api/contests"),
+  contest: (id: string) =>
+    request<{ contest: import("./contests").ContestView }>(
+      `/api/contests?id=${encodeURIComponent(id)}`,
+    ),
+  enterContest: (payload: {
+    contestId: string;
+    method: import("./contests").ContestEntryMethod;
+    count?: number;
+    requestId?: string;
+    code?: string;
+  }) =>
+    request<{
+      ok: boolean;
+      added: number;
+      message: string;
+      contest: import("./contests").ContestView | null;
+    }>("/api/contests", { method: "POST", body: JSON.stringify({ action: "enter", ...payload }) }),
+  claimContestPrize: (code: string) =>
+    request<{ ok: boolean; message: string; prizeId: string }>("/api/contests", {
+      method: "POST",
+      body: JSON.stringify({ action: "claim", code }),
     }),
 
   orders: () => request<{ orders: Order[] }>("/api/orders"),
@@ -767,6 +796,16 @@ export const adminApi = {
    */
   catalogue: (signal?: AbortSignal) =>
     request<StoreDoc>("/api/data?slim=1", signal ? { signal } : undefined),
+
+  /** Contests: the list, one contest whole, and every admin action by name. */
+  contests: () =>
+    request<{ contests: import("./contests.admin").AdminContestRow[] }>("/api/admin/contests"),
+  contest: (id: string) =>
+    request<import("./contests.admin").AdminContestDetail>(
+      `/api/admin/contests?id=${encodeURIComponent(id)}`,
+    ),
+  contestAction: <T = Record<string, unknown>>(payload: Record<string, unknown>) =>
+    request<T>("/api/admin/contests", { method: "POST", body: JSON.stringify(payload) }, 60_000),
 
   /**
    * Per-line delivery state for one order.

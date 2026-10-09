@@ -10,6 +10,7 @@ import {
   processReleaseAlerts,
   processExpiredBotThreads,
   processHeldReferralRewards,
+  processDueContests,
 } from "./lib/scheduled-jobs.server";
 
 // Cloudflare binds existing Durable Object instances to this exact named export.
@@ -142,7 +143,13 @@ export default {
           // it judges each row with the same function the UI filters by.
           processExpiredBotThreads(),
         ]
-      : [processAutoScheduledTasks(), processDigitalDeliveryMaintenance(), processBotTrading()];
+      : [
+          processAutoScheduledTasks(),
+          processDigitalDeliveryMaintenance(),
+          processBotTrading(),
+          // A contest past its end is drawn within the minute; nothing due is one indexed read.
+          processDueContests(),
+        ];
 
     const results = await Promise.allSettled(tasks);
     for (const result of results) {
