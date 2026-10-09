@@ -19,7 +19,11 @@
  *                    the Telegram Mini App out;
  *  - `sign-in-code` — the sign-in page offers an account by login code alone
  *                    («كود الدخول» / «بكود — الأسهل»), where it asked for a
- *                    phone and a verification code.
+ *                    phone and a verification code;
+ *  - `contests-tab` — the banana market opens on a bar of two tabs, its
+ *                    «الفعاليات والمسابقات» tab selected by `?tab=events`, and
+ *                    `/api/contests` answers with a list (an answer the edge
+ *                    refuses outright is not held against the build).
  *
  * And one reading that is not a probe of the build: whether «الدخول عبر Google»
  * reaches Google at all. That depends on two secrets in Cloudflare, not on the
@@ -140,6 +144,36 @@ if (!challenged) {
 }
 const authPath = await page.evaluate(() => location.pathname).catch(() => "—");
 
+/* The contests tab of the banana market, reached the same way. */
+let contestsTab = 0;
+let contestsApi = { status: 0, list: false };
+if (!challenged) {
+  await page
+    .evaluate(() => {
+      window.history.pushState({}, "", "/banana_market?tab=events");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    })
+    .catch(() => {});
+  contestsTab = await page
+    .locator('[data-market-tabs] [role="tab"][aria-selected="true"]', {
+      hasText: /الفعاليات والمسابقات|Events/,
+    })
+    .first()
+    .waitFor({ state: "attached", timeout: 30_000 })
+    .then(() => 1)
+    .catch(() => 0);
+  contestsApi = await page
+    .evaluate(async () => {
+      const res = await fetch("/api/contests", { credentials: "include" });
+      const body = await res.json().catch(() => ({}));
+      return { status: res.status, list: Array.isArray(body?.contests) };
+    })
+    .catch(() => ({ status: 0, list: false }));
+}
+const contestsPath = await page
+  .evaluate(() => location.pathname + location.search)
+  .catch(() => "—");
+
 /*
   Where «الدخول عبر Google» lands, from a browser of its own — a first visit,
   which the edge lets through. Google's sign-in page means the two secrets are
@@ -183,6 +217,11 @@ const probes = [
     name: "sign-in-code",
     live: signInCode > 0,
     seen: `in-app ${authPath} · ${signInCode ? "a login-code tab" : "no login-code tab"}`,
+  },
+  {
+    name: "contests-tab",
+    live: contestsTab > 0 && (contestsApi.list || contestsApi.status === 403),
+    seen: `in-app ${contestsPath} · ${contestsTab ? "the events tab, selected" : "no events tab"} · /api/contests HTTP ${contestsApi.status || "—"}${contestsApi.list ? " with a list" : ""}`,
   },
   {
     name: "security-headers",
