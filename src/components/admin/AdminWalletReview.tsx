@@ -110,7 +110,7 @@ export default function AdminWalletReview({ id }: { id: string }) {
 
   return (
     <div className="p-6 max-w-md mx-auto" dir="rtl">
-      <div className="bg-white rounded-[2rem] p-6 shadow-xl border border-gray-100">
+      <div className="bg-card rounded-[2rem] p-6 shadow-xl border border-border">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center shrink-0">
             <DollarSign className="w-6 h-6" />

@@ -98,7 +98,7 @@ export default function OtpBoxes({
           onKeyDown={(event) => handleKeyDown(event, index)}
           onFocus={(event) => event.currentTarget.select()}
           className="h-12 w-10 border-[2px] border-[var(--ink-soft)] bg-[var(--page-3)] text-center text-xl font-[900] text-[var(--ink-soft)] transition-colors focus:bg-[var(--gold)]/30 focus:outline-none sm:h-14 sm:w-12 sm:text-2xl"
-          style={{ borderRadius: "10px 4px 10px 4px/4px 10px 4px 10px" }}
+          style={{ borderRadius: "22px" }}
         />
       ))}
     </div>

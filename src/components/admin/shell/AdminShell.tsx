@@ -132,7 +132,7 @@ export function AdminShell({
 
   return (
     <div
-      className="flex h-[100dvh] w-full overflow-hidden bg-[var(--page)] font-sans text-foreground"
+      className="clay-canvas flex h-[100dvh] w-full overflow-hidden font-sans text-foreground"
       dir="rtl"
     >
       {/* ─────────────────────────── Sidebar (desktop) ─────────────────────────── */}

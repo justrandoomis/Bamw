@@ -847,12 +847,12 @@ function ForgotPasswordCard({
               type="button"
               onClick={() => setChannel("whatsapp")}
               disabled={!!needsLinking}
-              className={`relative flex flex-col items-center justify-center p-4 border-2 transition-all duration-300 outline outline-[3px] outline-offset-[-6px] ${
+              className={`relative flex flex-col items-center justify-center p-4 border-2 transition-all duration-300 ${
                 channel === "whatsapp"
-                  ? "border-ink-base bg-surface-2 shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)] scale-[1.02] outline-ink-base"
-                  : "border-ink-soft/20 bg-surface-2 opacity-60 hover:opacity-100 hover:border-ink-soft/40 outline-transparent"
+                  ? "border-ink-base bg-surface-2 shadow-md scale-[1.02]"
+                  : "border-ink-soft/20 bg-surface-2 opacity-60 hover:opacity-100 hover:border-ink-soft/40"
               } ${needsLinking ? "cursor-not-allowed" : ""}`}
-              style={{ borderRadius: "28px 12px 28px 12px/12px 28px 12px 28px" }}
+              style={{ borderRadius: "22px" }}
             >
               <div className="flex flex-col items-center gap-1.5">
                 <span
@@ -867,12 +867,12 @@ function ForgotPasswordCard({
               type="button"
               onClick={() => setChannel("telegram")}
               disabled={!!needsLinking}
-              className={`relative flex flex-col items-center justify-center p-4 border-2 transition-all duration-300 outline outline-[3px] outline-offset-[-6px] ${
+              className={`relative flex flex-col items-center justify-center p-4 border-2 transition-all duration-300 ${
                 channel === "telegram"
-                  ? "border-ink-base bg-surface-2 shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)] scale-[1.02] outline-ink-base"
-                  : "border-ink-soft/20 bg-surface-2 opacity-60 hover:opacity-100 hover:border-ink-soft/40 outline-transparent"
+                  ? "border-ink-base bg-surface-2 shadow-md scale-[1.02]"
+                  : "border-ink-soft/20 bg-surface-2 opacity-60 hover:opacity-100 hover:border-ink-soft/40"
               }`}
-              style={{ borderRadius: "12px 28px 12px 28px/28px 12px 28px 12px" }}
+              style={{ borderRadius: "22px" }}
             >
               <span
                 className={`text-[15px] font-black ${channel === "telegram" ? "text-ink-base" : "text-ink-soft"}`}
@@ -1231,12 +1231,12 @@ function PhoneRequiredCard({
             type="button"
             onClick={() => setChannel("whatsapp")}
             disabled={!!needsLinking}
-            className={`relative flex flex-col items-center justify-center p-4 border-2 transition-all duration-300 outline outline-[3px] outline-offset-[-6px] ${
+            className={`relative flex flex-col items-center justify-center p-4 border-2 transition-all duration-300 ${
               channel === "whatsapp"
-                ? "border-ink-base bg-surface-2 shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)] scale-[1.02] outline-ink-base"
-                : "border-ink-soft/20 bg-surface-2 opacity-60 hover:opacity-100 hover:border-ink-soft/40 outline-transparent"
+                ? "border-ink-base bg-surface-2 shadow-md scale-[1.02]"
+                : "border-ink-soft/20 bg-surface-2 opacity-60 hover:opacity-100 hover:border-ink-soft/40"
             } ${needsLinking ? "cursor-not-allowed" : ""}`}
-            style={{ borderRadius: "28px 12px 28px 12px/12px 28px 12px 28px" }}
+            style={{ borderRadius: "22px" }}
           >
             <div className="flex flex-col items-center gap-1.5">
               <span
@@ -1251,12 +1251,12 @@ function PhoneRequiredCard({
             type="button"
             onClick={() => setChannel("telegram")}
             disabled={!!needsLinking}
-            className={`relative flex flex-col items-center justify-center p-4 border-2 transition-all duration-300 outline outline-[3px] outline-offset-[-6px] ${
+            className={`relative flex flex-col items-center justify-center p-4 border-2 transition-all duration-300 ${
               channel === "telegram"
-                ? "border-ink-base bg-surface-2 shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)] scale-[1.02] outline-ink-base"
-                : "border-ink-soft/20 bg-surface-2 opacity-60 hover:opacity-100 hover:border-ink-soft/40 outline-transparent"
+                ? "border-ink-base bg-surface-2 shadow-md scale-[1.02]"
+                : "border-ink-soft/20 bg-surface-2 opacity-60 hover:opacity-100 hover:border-ink-soft/40"
             }`}
-            style={{ borderRadius: "12px 28px 12px 28px/28px 12px 28px 12px" }}
+            style={{ borderRadius: "22px" }}
           >
             <span
               className={`text-[15px] font-black ${channel === "telegram" ? "text-ink-base" : "text-ink-soft"}`}

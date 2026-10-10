@@ -180,7 +180,7 @@ export const CardWrapper = ({
 }) => (
   <div
     dir="rtl"
-    className="relative z-10 mx-auto my-auto flex w-full max-w-[500px] min-w-0 flex-col rounded-2xl bg-[var(--page-3)] px-[clamp(0.75rem,4vw,2.5rem)] pt-[clamp(1rem,4vw,2rem)] pb-[clamp(1rem,5vw,2.25rem)] shadow-2xl sm:rounded-xl"
+    className="relative z-10 mx-auto my-auto flex w-full max-w-[500px] min-w-0 flex-col rounded-[32px] border border-[var(--clay-rim)] bg-[var(--page-3)] px-[clamp(0.75rem,4vw,2.5rem)] pt-[clamp(1rem,4vw,2rem)] pb-[clamp(1rem,5vw,2.25rem)] shadow-2xl"
   >
     <CornerBanana className="pointer-events-none absolute top-3 left-3 h-8 w-8 rotate-[-15deg] opacity-90 sm:top-4 sm:left-4 sm:h-10 sm:w-10" />
     <CornerBanana className="pointer-events-none absolute top-5 right-3 h-8 w-8 rotate-[15deg] opacity-90 sm:top-6 sm:right-4 sm:h-10 sm:w-10" />
@@ -241,14 +241,7 @@ export const InputField = ({
       {label}
     </label>
     <div className="relative">
-      <div
-        className="pointer-events-none absolute inset-0 translate-x-[2.5px] translate-y-[3.5px] border-[2.5px] border-[var(--ink-soft)]"
-        style={{ borderRadius: "10px 22px 10px 22px/22px 10px 22px 10px" }}
-      />
-      <div
-        className="relative z-10 flex w-full flex-row-reverse items-center gap-3 border-[2.5px] border-[var(--ink-soft)] bg-[var(--surface-2)] px-3 py-1.5 sm:gap-4 sm:px-4 sm:py-2.5"
-        style={{ borderRadius: "22px 10px 22px 10px/10px 22px 10px 22px" }}
-      >
+      <div className="clay-well relative z-10 flex w-full flex-row-reverse items-center gap-3 rounded-2xl border border-transparent bg-[var(--surface-2)] px-3 py-2 transition-colors focus-within:border-[var(--gold-deep)] sm:gap-4 sm:px-4 sm:py-3">
         <div className="flex shrink-0 items-center justify-center pl-1">{icon}</div>
         <input
           type={type}
@@ -325,8 +318,7 @@ export const ErrorMsg = ({
     <motion.div
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="relative mb-4 flex flex-col items-start gap-2 border-[2px] border-[var(--danger)] bg-[#fff3f3] p-2.5 text-[var(--danger)] shadow-sm sm:p-3"
-      style={{ borderRadius: "12px 6px 12px 6px/6px 12px 6px 12px" }}
+      className="relative mb-4 flex flex-col items-start gap-2 rounded-2xl border border-[var(--danger)]/25 bg-[#fff3f3] p-2.5 text-[var(--danger)] shadow-sm sm:p-3"
     >
       <div className="flex items-center gap-2">
         <AlertCircle className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" strokeWidth={2.5} />
@@ -346,13 +338,8 @@ export const GoogleButton = ({ onClick, label }: { onClick: () => void; label: s
     <button
       type="button"
       onClick={onClick}
-      className="group relative flex min-h-12 w-full items-center justify-center gap-3 overflow-hidden border-[2px] border-[var(--ink-soft)] bg-[var(--surface-2)] py-2.5 shadow-sm transition-all hover:bg-[var(--gold)]/30 active:scale-[0.98] sm:py-3"
-      style={{ borderRadius: "18px 10px 18px 10px/10px 18px 10px 18px" }}
+      className="group relative flex min-h-12 w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-[var(--surface-2)] py-2.5 transition-colors hover:bg-[var(--gold)]/30 sm:py-3"
     >
-      <div
-        className="pointer-events-none absolute inset-0 translate-x-[2.5px] translate-y-[3.5px] border-[2px] border-[var(--ink-soft)]"
-        style={{ borderRadius: "10px 18px 10px 18px/18px 10px 18px 10px" }}
-      />
       <GoogleIcon className="relative z-10 h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
       <span className="relative z-10 text-[15px] font-[900] text-[var(--ink-soft)] sm:text-[18px]">
         {label}
@@ -379,13 +366,8 @@ export const AlternativeLogins = ({ onGoogleClick }: { onGoogleClick: () => void
       <button
         type="button"
         onClick={onGoogleClick}
-        className="group relative flex w-full items-center justify-center gap-3 overflow-hidden border-[2px] border-[var(--ink-soft)] bg-[var(--page-3)] py-2 shadow-sm transition-all hover:bg-[var(--gold)]/30 active:scale-[0.98] sm:py-3"
-        style={{ borderRadius: "18px 10px 18px 10px/10px 18px 10px 18px" }}
+        className="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-[var(--page-3)] py-2 transition-colors hover:bg-[var(--gold)]/30 sm:py-3"
       >
-        <div
-          className="pointer-events-none absolute inset-0 translate-x-[2.5px] translate-y-[3.5px] border-[2px] border-[var(--ink-soft)]"
-          style={{ borderRadius: "10px 18px 10px 18px/18px 10px 18px 10px" }}
-        />
         <GoogleIcon className="relative z-10 h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
         <span className="relative z-10 text-[14px] font-[900] text-[var(--ink-soft)] sm:text-[18px]">
           Google
@@ -421,14 +403,7 @@ export const PasswordField = ({
         {label}
       </label>
       <div className="relative">
-        <div
-          className="pointer-events-none absolute inset-0 translate-x-[2.5px] translate-y-[3.5px] border-[2.5px] border-[var(--ink-soft)]"
-          style={{ borderRadius: "10px 22px 10px 22px/22px 10px 22px 10px" }}
-        />
-        <div
-          className="relative z-10 flex w-full flex-row-reverse items-center gap-3 border-[2.5px] border-[var(--ink-soft)] bg-[var(--surface-2)] px-3 py-1.5 sm:gap-4 sm:px-4 sm:py-2.5"
-          style={{ borderRadius: "22px 10px 22px 10px/10px 22px 10px 22px" }}
-        >
+        <div className="clay-well relative z-10 flex w-full flex-row-reverse items-center gap-3 rounded-2xl border border-transparent bg-[var(--surface-2)] px-3 py-2 transition-colors focus-within:border-[var(--gold-deep)] sm:gap-4 sm:px-4 sm:py-3">
           <div className="flex shrink-0 items-center justify-center pl-1">
             <LockIcon />
           </div>
@@ -501,20 +476,13 @@ export const PhoneField = ({
         )}
       </div>
       <div className="relative">
-        <div
-          className="pointer-events-none absolute inset-0 translate-x-[2.5px] translate-y-[3.5px] border-[2.5px] border-[var(--ink-soft)]"
-          style={{ borderRadius: "10px 22px 10px 22px/22px 10px 22px 10px" }}
-        />
-        <div
-          className="relative z-10 flex w-full flex-row-reverse items-center gap-2 border-[2.5px] border-[var(--ink-soft)] bg-[var(--surface-2)] px-3 py-1.5 sm:gap-3 sm:px-4 sm:py-2.5"
-          style={{ borderRadius: "22px 10px 22px 10px/10px 22px 10px 22px" }}
-        >
+        <div className="clay-well relative z-10 flex w-full flex-row-reverse items-center gap-2 rounded-2xl border border-transparent bg-[var(--surface-2)] px-3 py-2 transition-colors focus-within:border-[var(--gold-deep)] sm:gap-3 sm:px-4 sm:py-3">
           <select
             value={dial}
             onChange={(event) => handleDialChange(event.target.value)}
             disabled={disabled}
             aria-label={tr("رمز الدولة")}
-            className="shrink-0 cursor-pointer rounded-lg border-[2px] border-[var(--ink-soft)]/30 bg-[var(--gold)]/50 px-1.5 py-1 text-[13px] font-[800] text-[var(--ink-soft)] outline-none disabled:opacity-50 sm:text-[15px]"
+            className="shrink-0 cursor-pointer rounded-xl border border-transparent bg-[var(--gold)]/50 px-2 py-1 text-[13px] font-[800] text-[var(--ink-soft)] outline-none disabled:opacity-50 sm:text-[15px]"
             dir="ltr"
           >
             {COUNTRIES.map((country) => (

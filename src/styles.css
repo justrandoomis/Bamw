@@ -91,9 +91,23 @@
   --color-rind: var(--rind);
   --color-banana-ink: var(--banana-ink);
 
-  --radius-panel: 18px;
-  --shadow-soft: 0 8px 24px -16px color-mix(in oklab, var(--foreground) 45%, transparent);
-  --shadow-lift: 0 18px 40px -24px color-mix(in oklab, var(--foreground) 55%, transparent);
+  --radius-panel: 24px;
+  /*
+    Claymorphism: every step of the shadow scale is a piece of clay — a soft
+    drop shadow outside, light pressed into the top edge, shade into the
+    bottom. The recipes live on :root (below) so each theme pack tunes the
+    light and the shade for its own surface. `shadow-none` still means none.
+  */
+  --shadow-2xs: var(--clay-1);
+  --shadow-xs: var(--clay-1);
+  --shadow-sm: var(--clay-1);
+  --shadow: var(--clay-1);
+  --shadow-md: var(--clay-2);
+  --shadow-lg: var(--clay-2);
+  --shadow-xl: var(--clay-3);
+  --shadow-2xl: var(--clay-3);
+  --shadow-soft: var(--clay-2);
+  --shadow-lift: var(--clay-3);
 
   --animate-fade-up: fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-fade-in: fade-in 0.4s ease both;
@@ -120,7 +134,8 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  /* Clay is round: every radius in the scale grows from this one. */
+  --radius: 0.875rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
@@ -548,15 +563,16 @@ html {
   position: relative;
   border-radius: var(--radius-panel);
   background: var(--hub-panel);
-  border: 1px solid var(--hub-hairline);
-  box-shadow: 0 1px 0 0 color-mix(in oklab, var(--foreground) 5%, transparent) inset;
+  border: 1px solid var(--clay-rim);
+  box-shadow: var(--clay-2);
   min-width: 0;
 }
 
 .inset {
-  border-radius: 1rem;
+  border-radius: 1.25rem;
   background: var(--hub-inset);
-  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  border: 1px solid transparent;
+  box-shadow: var(--clay-well);
   min-width: 0;
 }
 
@@ -599,17 +615,22 @@ html {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   font-weight: 700;
-  transition: all 0.2s;
+  box-shadow: var(--clay-btn);
+  transition:
+    scale 0.28s var(--clay-ease),
+    box-shadow 0.28s var(--clay-ease),
+    background-color 0.2s ease;
 }
 .btn:active {
-  transform: scale(0.97);
+  scale: 0.97;
+  box-shadow: var(--clay-pressed);
+  transition-duration: 0.08s;
 }
 .btn-primary {
   background: var(--primary);
   color: var(--primary-foreground);
-  box-shadow: 0 1px 0 0 color-mix(in oklab, white 22%, transparent) inset;
 }
 .btn-primary:hover {
   background: color-mix(in oklab, var(--primary) 88%, white);
@@ -632,7 +653,8 @@ html {
   font-size: 11px;
   font-weight: 700;
   background: var(--hub-panel);
-  border: 1px solid var(--hub-hairline);
+  border: 1px solid var(--clay-rim);
+  box-shadow: var(--clay-1);
 }
 
 .focusable:focus-visible {
@@ -718,6 +740,7 @@ html {
     font-size: 1rem;
     line-height: 1.2;
     cursor: pointer;
+    box-shadow: var(--clay-btn);
     transition:
       transform 0.22s ease-out,
       box-shadow 0.22s ease-out,
@@ -730,9 +753,8 @@ html {
     border: 1px solid var(--primary);
   }
   .bn-btn-primary:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0.94;
+    transform: translateY(-1px);
   }
   .bn-btn-ghost {
     background-color: var(--card);
@@ -741,11 +763,11 @@ html {
   }
   .bn-btn-ghost:hover {
     border-color: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
   }
   .bn-btn:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.97);
+    box-shadow: var(--clay-pressed);
   }
 
   .bn-chip {
@@ -762,6 +784,7 @@ html {
     font-size: 0.9375rem;
     cursor: pointer;
     white-space: nowrap;
+    box-shadow: var(--clay-1);
     transition:
       transform 0.2s ease-out,
       background-color 0.2s ease-out,
@@ -770,9 +793,8 @@ html {
       box-shadow 0.2s ease-out;
   }
   .bn-chip:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     border-color: var(--primary);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   .bn-chip[aria-pressed="true"] {
     background-color: var(--primary);
@@ -972,5 +994,376 @@ html {
   }
   [data-sonner-toaster][data-sonner-toaster] [data-sonner-toast] {
     width: 100%;
+  }
+}
+
+/* =========================================================================
+ * Claymorphism
+ *
+ * «Turn all website ui ux to claymorphism (button, card, background…) all
+ *  pages and elements (apple design + claymorphism)»
+ *
+ * Every surface is a piece of soft clay: a drop shadow that lifts it off the
+ * page, light pressed into its top edge, shade into its bottom, and a rim of
+ * light where a border used to be. Wells — tracks, fields, chips — are the
+ * same clay pressed in. A press squashes a button into the page and it springs
+ * back, critically damped: Apple's rule that a control answers on the press,
+ * not on the release, and settles without overshoot.
+ *
+ * It is done here, in tokens and a handful of rules, because the shop styles
+ * its screens inline: some nine hundred buttons and six hundred cards across
+ * every page. A card is recognised by what it already is — a filled, rounded,
+ * bordered block — so every page, the admin included, is clay without being
+ * rewritten, and anything that asks for its own shadow (`shadow-*`,
+ * `shadow-none`, `ring-*`) still gets exactly that: those are utilities, and
+ * utilities sit in the layer above these rules.
+ *
+ * The recipes are tuned per theme: a light pack shades with its own ink, a
+ * dark pack with black and a far fainter light. `prefers-reduced-motion`
+ * keeps the depth and drops the squash; `prefers-contrast: more` gives every
+ * piece of clay a real border back. The «lite motion» setting still turns
+ * every shadow off, as it always has — that switch is for slow phones.
+ * ======================================================================= */
+
+:root {
+  /* The ink a light pack's clay is shaded with — warm, never grey. */
+  --clay-tint: oklch(0.42 0.05 60);
+  --clay-light: rgb(255 255 255 / 0.9);
+  --clay-light-soft: rgb(255 255 255 / 0.55);
+  --clay-shade: color-mix(in oklab, var(--clay-tint) 12%, transparent);
+  --clay-shade-strong: color-mix(in oklab, var(--clay-tint) 20%, transparent);
+  --clay-drop: color-mix(in oklab, var(--clay-tint) 30%, transparent);
+  --clay-drop-near: color-mix(in oklab, var(--clay-tint) 14%, transparent);
+  --clay-rim: rgb(255 255 255 / 0.7);
+  /* On a coloured fill — a banana or red button — light and shade, not ink. */
+  --clay-fill-light: rgb(255 255 255 / 0.4);
+  --clay-fill-shade: rgb(0 0 0 / 0.14);
+
+  /* Small clay: chips, small buttons, a segment of a control. */
+  --clay-1:
+    0 6px 14px -8px var(--clay-drop), 0 1px 2px var(--clay-drop-near),
+    inset 0 -2px 4px var(--clay-shade), inset 0 2px 3px var(--clay-light);
+  /* A card. */
+  --clay-2:
+    0 18px 36px -20px var(--clay-drop), 0 4px 10px -6px var(--clay-drop-near),
+    inset 0 -6px 12px var(--clay-shade), inset 0 5px 10px var(--clay-light);
+  /* What floats: sheets, dialogs, the bottom dock. */
+  --clay-3:
+    0 30px 60px -26px var(--clay-drop), 0 10px 22px -14px var(--clay-drop),
+    inset 0 -8px 16px var(--clay-shade), inset 0 6px 12px var(--clay-light);
+  /* A filled button — works on any colour, from white to banana to black. */
+  --clay-btn:
+    0 8px 16px -10px var(--clay-drop), 0 2px 3px -1px var(--clay-drop-near),
+    inset 0 -3px 6px var(--clay-fill-shade), inset 0 2px 4px var(--clay-fill-light);
+  /* Clay pressed in: a button held down, a field, a track. */
+  --clay-pressed:
+    inset 0 4px 10px var(--clay-shade-strong), inset 0 -2px 4px var(--clay-light-soft);
+  --clay-well: inset 0 3px 7px var(--clay-shade-strong), inset 0 -2px 3px var(--clay-light-soft);
+
+  /* Critically damped: fast out, no overshoot. */
+  --clay-ease: cubic-bezier(0.2, 0.9, 0.25, 1);
+}
+
+[data-theme="banana"] {
+  --clay-tint: oklch(0.5 0.1 80);
+}
+
+.dark,
+[data-theme="midnight"],
+[data-theme="space"],
+[data-theme="cyber"] {
+  --clay-light: rgb(255 255 255 / 0.09);
+  --clay-light-soft: rgb(255 255 255 / 0.06);
+  --clay-shade: rgb(0 0 0 / 0.3);
+  --clay-shade-strong: rgb(0 0 0 / 0.45);
+  --clay-drop: rgb(0 0 0 / 0.62);
+  --clay-drop-near: rgb(0 0 0 / 0.34);
+  --clay-rim: rgb(255 255 255 / 0.07);
+  --clay-fill-light: rgb(255 255 255 / 0.24);
+  --clay-fill-shade: rgb(0 0 0 / 0.24);
+}
+
+/* The page the clay sits on: the pack's own colour, lit from above. */
+.clay-canvas {
+  background-color: var(--page);
+  background-image:
+    radial-gradient(120% 55% at 50% -12%, rgb(255 255 255 / 0.7), transparent 62%),
+    radial-gradient(
+      55% 38% at 100% 4%,
+      color-mix(in oklab, var(--banana) 16%, transparent),
+      transparent 72%
+    ),
+    radial-gradient(
+      60% 40% at 0% 100%,
+      color-mix(in oklab, var(--peel) 10%, transparent),
+      transparent 70%
+    );
+}
+:is(.dark, [data-theme="midnight"], [data-theme="space"], [data-theme="cyber"]) .clay-canvas {
+  background-image:
+    radial-gradient(
+      120% 55% at 50% -12%,
+      color-mix(in oklab, var(--primary) 14%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      55% 38% at 100% 4%,
+      color-mix(in oklab, var(--accent) 22%, transparent),
+      transparent 72%
+    ),
+    radial-gradient(
+      60% 40% at 0% 100%,
+      color-mix(in oklab, var(--primary) 8%, transparent),
+      transparent 70%
+    );
+}
+
+@layer base {
+  /* A focus a keyboard can see, wherever a screen did not draw its own. */
+  :focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--ring) 90%, transparent);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /*
+    Raised clay — a card is a filled, rounded, bordered block. Its border
+    becomes the rim of light along the edge, and a card inside a card is a
+    smaller piece of clay rather than a second slab.
+  */
+  :is(
+      .bg-card,
+      .bg-popover,
+      .bg-white,
+      [class*="bg-[var(--card)]"],
+      [class*="bg-[var(--surface"],
+      [class*="bg-[var(--page-2)]"],
+      [class*="bg-[var(--page-3)]"]
+    ):is(
+      [class*="rounded-xl"],
+      [class*="rounded-2xl"],
+      [class*="rounded-3xl"],
+      [class*="rounded-[1"],
+      [class*="rounded-[2"],
+      [class*="rounded-[3"]
+    ):is(.border, .border-2):not(input, textarea, select, img, video, iframe) {
+    box-shadow: var(--clay-2);
+    border-color: var(--clay-rim);
+  }
+  :is(
+      .bg-card,
+      .bg-popover,
+      .bg-white,
+      [class*="bg-[var(--card)]"],
+      [class*="bg-[var(--surface"],
+      [class*="bg-[var(--page-2)]"],
+      [class*="bg-[var(--page-3)]"]
+    ):is(
+      [class*="rounded-xl"],
+      [class*="rounded-2xl"],
+      [class*="rounded-3xl"],
+      [class*="rounded-[1"],
+      [class*="rounded-[2"],
+      [class*="rounded-[3"]
+    ):is(.border, .border-2)
+    :is(
+      .bg-card,
+      .bg-popover,
+      .bg-white,
+      [class*="bg-[var(--card)]"],
+      [class*="bg-[var(--surface"],
+      [class*="bg-[var(--page-2)]"],
+      [class*="bg-[var(--page-3)]"]
+    ):is(
+      [class*="rounded-xl"],
+      [class*="rounded-2xl"],
+      [class*="rounded-3xl"],
+      [class*="rounded-[1"],
+      [class*="rounded-[2"],
+      [class*="rounded-[3"]
+    ):is(.border, .border-2):not(input, textarea, select, img, video, iframe) {
+    box-shadow: var(--clay-1);
+  }
+
+  /*
+    Pressed clay — a track, a chip, a placeholder: the muted fills, rounded,
+    and not themselves a control. A segmented control is a pressed track with
+    a raised segment in it, which is what `bg-muted` around `bg-card
+    shadow-sm` already says.
+  */
+  :is(
+      .bg-muted,
+      [class^="bg-muted/"],
+      [class*=" bg-muted/"],
+      .bg-secondary,
+      [class^="bg-secondary/"],
+      [class*=" bg-secondary/"]
+    ):is([class*="rounded-"]):not(
+      button,
+      a,
+      label,
+      summary,
+      [role="button"],
+      [role="tab"],
+      [role="switch"],
+      input,
+      textarea,
+      select,
+      img,
+      video,
+      [class*="rounded-none"]
+    ) {
+    box-shadow: var(--clay-well);
+  }
+
+  /*
+    A filled control — any button or link with a fill of its own — is a
+    button of clay, and squashes when pressed. Ghost buttons, whose fill
+    only appears on hover, stay flat until then.
+  */
+  :is(button, a, summary, [role="button"]):is([class^="bg-"], [class*=" bg-"]):not(
+      [class*="bg-transparent"],
+      [class*="bg-none"],
+      [class*="bg-clip-"],
+      [class*="bg-cover"],
+      [class*="bg-contain"]
+    ) {
+    box-shadow: var(--clay-btn);
+    transition:
+      scale 0.32s var(--clay-ease),
+      box-shadow 0.32s var(--clay-ease),
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      opacity 0.2s ease;
+  }
+  :is(button, a, summary, [role="button"]):is([class^="bg-"], [class*=" bg-"]):not(
+      [class*="bg-transparent"],
+      [class*="bg-none"],
+      [class*="bg-clip-"],
+      [class*="bg-cover"],
+      [class*="bg-contain"]
+    ):not(:disabled, [aria-disabled="true"]):active {
+    scale: 0.97;
+    box-shadow: var(--clay-pressed);
+    transition-duration: 0.08s;
+  }
+
+  /* A field is a well pressed into the clay, whatever surface it sits on. */
+  :is(
+    input:not(
+      [type="checkbox"],
+      [type="radio"],
+      [type="range"],
+      [type="file"],
+      [type="color"],
+      [type="hidden"],
+      [type="submit"],
+      [type="button"],
+      [type="reset"],
+      [type="image"]
+    ),
+    textarea,
+    select
+  ):not([class*="bg-transparent"]) {
+    box-shadow: var(--clay-well);
+  }
+
+  /* Opt-in, for a screen that wants the squash on something without a fill. */
+  .clay-press {
+    transition: scale 0.32s var(--clay-ease);
+  }
+  .clay-press:active {
+    scale: 0.97;
+    transition-duration: 0.08s;
+  }
+}
+
+@layer utilities {
+  /*
+    The rim has to beat `border-border`, which is a utility, so it is one too
+    — written specific enough to win only on a card whose border is the
+    plain one. A card with a coloured border (a warning, a winner) keeps it.
+  */
+  :is(
+      .bg-card,
+      .bg-popover,
+      .bg-white,
+      [class*="bg-[var(--card)]"],
+      [class*="bg-[var(--surface"],
+      [class*="bg-[var(--page-2)]"],
+      [class*="bg-[var(--page-3)]"]
+    ):is(
+      [class*="rounded-xl"],
+      [class*="rounded-2xl"],
+      [class*="rounded-3xl"],
+      [class*="rounded-[1"],
+      [class*="rounded-[2"],
+      [class*="rounded-[3"]
+    ):is(.border, .border-2):is(
+      .border-border,
+      [class*="border-border/"],
+      [class*="border-[var(--line"],
+      [class*="border-[var(--cream-line)]"]
+    ) {
+    border-color: var(--clay-rim);
+  }
+
+  /*
+    A field is a well even where its screen gave it a small raised shadow —
+    a dropdown beside a text field must not stand up while the field sinks.
+    Not while it has focus: the screen's own focus ring speaks then.
+  */
+  :is(
+      input:not(
+        [type="checkbox"],
+        [type="radio"],
+        [type="range"],
+        [type="file"],
+        [type="color"],
+        [type="hidden"],
+        [type="submit"],
+        [type="button"],
+        [type="reset"],
+        [type="image"]
+      ),
+      textarea,
+      select
+    ):is(.shadow-2xs, .shadow-xs, .shadow-sm, .shadow, .shadow-md):not(
+      [class*="bg-transparent"],
+      :focus
+    ) {
+    box-shadow: var(--clay-well);
+  }
+
+  /* Named recipes, for the screens that set their own. */
+  .clay-1 {
+    box-shadow: var(--clay-1);
+  }
+  .clay-2 {
+    box-shadow: var(--clay-2);
+  }
+  .clay-3 {
+    box-shadow: var(--clay-3);
+  }
+  .clay-btn {
+    box-shadow: var(--clay-btn);
+  }
+  .clay-well {
+    box-shadow: var(--clay-well);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(button, a, summary, [role="button"], .clay-press):active {
+    scale: none !important;
+  }
+}
+
+/* More contrast asked for: every piece of clay gets a real edge back. */
+@media (prefers-contrast: more) {
+  :is(.bg-card, .bg-popover, .bg-white):is(.border, .border-2) {
+    border-color: var(--foreground) !important;
   }
 }

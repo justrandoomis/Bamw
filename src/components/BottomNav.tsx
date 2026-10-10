@@ -42,9 +42,14 @@ export default function BottomNav({
   }, [currentView]);
 
   return (
+    /*
+      A floating dock of clay: lifted off the page on its own shadow, the
+      material translucent so the page reads through it, and the section the
+      member is in pressed out of it as a raised piece.
+    */
     <div
       dir="rtl"
-      className="w-full bg-[var(--page)]/90 backdrop-blur-xl border-t border-border px-6 py-3 z-50 flex justify-around sm:justify-center sm:gap-16 lg:gap-24 items-center shadow-[0_-10px_40px_rgba(0,0,0,0.05)] pb-[env(safe-area-inset-bottom,1.5rem)] sm:pb-3 shrink-0 transform-gpu pointer-events-auto"
+      className="mx-auto mb-[max(env(safe-area-inset-bottom),0.75rem)] flex w-[calc(100%-1.5rem)] max-w-lg shrink-0 transform-gpu items-center justify-around rounded-[28px] border border-[var(--clay-rim)] bg-[var(--page)]/80 px-2 py-2 backdrop-blur-xl clay-3 pointer-events-auto sm:gap-6 z-50"
     >
       {navItems.map((item) => {
         const isActive =
@@ -61,24 +66,24 @@ export default function BottomNav({
               if (Date.now() < settledAt.current) return;
               onNavigate(item.id);
             }}
-            className="relative flex flex-col items-center justify-center w-12 h-12"
+            className="relative flex h-12 w-14 flex-col items-center justify-center rounded-2xl clay-press"
             title={label}
             suppressHydrationWarning
           >
             {isActive && (
               <motion.div
                 layoutId="nav-pill"
-                className="absolute inset-0 bg-blue-100/50 rounded-xl"
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="absolute inset-0 rounded-2xl bg-card clay-1"
+                transition={{ type: "spring", bounce: 0, duration: 0.35 }}
               />
             )}
             {item.id === "cart" && count > 0 && (
-              <div className="absolute top-0 right-0 -mr-2 -mt-1 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white z-20">
+              <div className="absolute -top-1 right-0 z-20 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[var(--brand-red)] px-1 text-[10px] font-bold text-white clay-btn">
                 {count}
               </div>
             )}
             <Icon
-              className={`w-6 h-6 relative z-10 transition-colors duration-300 ${isActive ? "text-blue-600" : "text-muted-foreground"}`}
+              className={`w-6 h-6 relative z-10 transition-colors duration-300 ${isActive ? "text-foreground" : "text-muted-foreground"}`}
               {...(item.id === "home" ? { solid: isActive } : {})}
             />
           </button>

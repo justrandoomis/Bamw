@@ -3680,7 +3680,7 @@ export default function ChatView({
                     onClick={() => setSelectedNav("المنتجات")}
                     className="group flex w-full max-w-[68px] min-w-0 flex-col items-center justify-end gap-1 text-[var(--ink)] cursor-pointer"
                   >
-                    <div className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-[var(--ink)] transition-colors group-hover:bg-[var(--surface-3)]/50">
+                    <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-[var(--clay-rim)] bg-[var(--page-2)] shadow-sm transition-[scale,background-color] duration-200 group-hover:bg-[var(--surface-3)] group-active:scale-95">
                       <ShoppingBag className="h-[17px] w-[17px]" strokeWidth={1.75} />
                     </div>
                     <span className="w-full text-center text-[10px] sm:text-[11px] font-bold tracking-tight opacity-90 truncate leading-tight">
@@ -3693,7 +3693,7 @@ export default function ChatView({
                     onClick={() => setSelectedNav("الطلب")}
                     className="group flex w-full max-w-[68px] min-w-0 flex-col items-center justify-end gap-1 text-[var(--ink)] cursor-pointer"
                   >
-                    <div className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-[var(--ink)] transition-colors group-hover:bg-[var(--surface-3)]/50">
+                    <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-[var(--clay-rim)] bg-[var(--page-2)] shadow-sm transition-[scale,background-color] duration-200 group-hover:bg-[var(--surface-3)] group-active:scale-95">
                       <FileText className="h-[17px] w-[17px]" strokeWidth={1.75} />
                     </div>
                     <span className="w-full text-center text-[10px] sm:text-[11px] font-bold tracking-tight opacity-90 truncate leading-tight">
@@ -3708,7 +3708,7 @@ export default function ChatView({
                     }}
                     className="group relative flex w-full max-w-[76px] min-w-0 flex-col items-center justify-end gap-1 text-[var(--ink)] cursor-pointer"
                   >
-                    <div className="flex h-[44px] w-[44px] items-center justify-center rounded-full bg-[var(--ink)] text-[var(--page)] shadow-md transition-colors group-hover:bg-[var(--ink-strong)]">
+                    <div className="flex h-[46px] w-[46px] items-center justify-center rounded-full bg-[var(--ink)] text-[var(--page)] shadow-md transition-[scale,background-color] duration-200 group-hover:bg-[var(--ink-strong)] group-active:scale-95">
                       <Headset className="h-5 w-5" />
                     </div>
                     <span className="w-full text-center text-[10px] sm:text-[11px] font-bold tracking-tight truncate leading-tight">
@@ -3722,7 +3722,7 @@ export default function ChatView({
                       onClick={() => setSelectedNav("الموقع")}
                       className="group flex w-full max-w-[68px] min-w-0 flex-col items-center justify-end gap-1 text-[var(--ink)] cursor-pointer"
                     >
-                      <div className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-[var(--ink)] transition-colors group-hover:bg-[var(--surface-3)]/50">
+                      <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-[var(--clay-rim)] bg-[var(--page-2)] shadow-sm transition-[scale,background-color] duration-200 group-hover:bg-[var(--surface-3)] group-active:scale-95">
                         <MapPin className="h-[17px] w-[17px]" strokeWidth={1.75} />
                       </div>
                       <span className="w-full text-center text-[10px] sm:text-[11px] font-bold tracking-tight opacity-90 truncate leading-tight">
@@ -3734,7 +3734,7 @@ export default function ChatView({
                       onClick={() => setSelectedNav("المحفظة")}
                       className="group flex w-full max-w-[68px] min-w-0 flex-col items-center justify-end gap-1 text-[var(--ink)] cursor-pointer"
                     >
-                      <div className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-[var(--ink)] transition-colors group-hover:bg-[var(--surface-3)]/50">
+                      <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-[var(--clay-rim)] bg-[var(--page-2)] shadow-sm transition-[scale,background-color] duration-200 group-hover:bg-[var(--surface-3)] group-active:scale-95">
                         <Wallet className="h-[17px] w-[17px]" strokeWidth={1.75} />
                       </div>
                       <span className="w-full text-center text-[10px] sm:text-[11px] font-bold tracking-tight opacity-90 truncate leading-tight">
@@ -3754,7 +3754,7 @@ export default function ChatView({
                     }}
                     className="group flex w-full max-w-[68px] min-w-0 flex-col items-center justify-end gap-1 text-[var(--ink)] cursor-pointer"
                   >
-                    <div className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-[var(--ink)] transition-colors group-hover:bg-[var(--surface-3)]/50">
+                    <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-[var(--clay-rim)] bg-[var(--page-2)] shadow-sm transition-[scale,background-color] duration-200 group-hover:bg-[var(--surface-3)] group-active:scale-95">
                       <MessageSquarePlus className="h-[17px] w-[17px]" strokeWidth={1.75} />
                     </div>
                     <span className="w-full text-center text-[10px] sm:text-[11px] font-bold tracking-tight opacity-90 truncate leading-tight">

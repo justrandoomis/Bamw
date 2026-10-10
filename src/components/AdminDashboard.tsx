@@ -4166,7 +4166,7 @@ function UsersManagementView() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="البحث بالاسم، البريد، الهاتف أو المعرف..."
-              className="w-full pl-12 pr-4 py-3 rounded-2xl bg-white border border-border outline-none focus:ring-2 ring-blue-500/20"
+              className="w-full pl-12 pr-4 py-3 rounded-2xl bg-card border border-border outline-none focus:ring-2 ring-blue-500/20"
             />
           </div>
         </div>
@@ -4285,7 +4285,7 @@ function UsersManagementView() {
                     logsQuery.data?.logs.map((tx: any) => (
                       <div
                         key={tx.id}
-                        className="bg-white p-3 rounded-xl border border-border flex justify-between items-center shadow-sm"
+                        className="bg-card p-3 rounded-xl border border-border flex justify-between items-center shadow-sm"
                       >
                         <div className="max-w-[70%]">
                           <p className="text-[11px] font-bold leading-tight line-clamp-2">
@@ -4381,7 +4381,7 @@ function FinancialStatsView({ products, orders }: { products: any[]; orders: any
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
         {chain.map((row) => (
-          <div key={row.label} className="bg-white p-5 rounded-3xl border border-border shadow-sm">
+          <div key={row.label} className="bg-card p-5 rounded-3xl border border-border shadow-sm">
             <p className="text-muted-foreground text-xs font-bold mb-1">{row.label}</p>
             <p className={`text-2xl font-black ${row.tone}`} dir="ltr">
               {iqd(row.value)}
@@ -4391,7 +4391,7 @@ function FinancialStatsView({ products, orders }: { products: any[]; orders: any
         ))}
       </div>
 
-      <div className="bg-white p-6 rounded-3xl border border-border shadow-sm">
+      <div className="bg-card p-6 rounded-3xl border border-border shadow-sm">
         <p className="text-muted-foreground text-sm font-bold mb-1">صافي الأرباح</p>
         <p
           className={`text-4xl font-black ${totals.profit >= 0 ? "text-blue-600" : "text-rose-600"}`}
@@ -4418,7 +4418,7 @@ function FinancialStatsView({ products, orders }: { products: any[]; orders: any
         )}
       </div>
 
-      <div className="bg-white p-8 rounded-3xl border border-border shadow-sm h-[400px] flex items-center justify-center">
+      <div className="bg-card p-8 rounded-3xl border border-border shadow-sm h-[400px] flex items-center justify-center">
         <div className="text-center space-y-2">
           <PieChart className="w-12 h-12 text-muted-foreground mx-auto opacity-20" />
           <p className="text-muted-foreground font-bold italic">
@@ -4513,7 +4513,7 @@ function PricingSettingsView() {
         إعدادات السعر
       </h1>
 
-      <div className="bg-white p-8 rounded-3xl border border-border shadow-sm space-y-6">
+      <div className="bg-card p-8 rounded-3xl border border-border shadow-sm space-y-6">
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <label className="text-sm font-black">كل دينار كم موزة يحصل عليها المستخدم؟</label>
@@ -4744,7 +4744,7 @@ function WalletManagementView() {
       </h1>
 
       <div className="grid md:grid-cols-2 gap-8">
-        <div className="bg-white p-4 rounded-2xl border border-border shadow-sm space-y-4">
+        <div className="bg-card p-4 rounded-2xl border border-border shadow-sm space-y-4">
           <h2 className="font-black flex items-center gap-2 mb-2">
             <CreditCard className="w-5 h-5 text-blue-600" /> إعدادات التعبئة
           </h2>
@@ -5521,7 +5521,7 @@ function BinanceManagementView() {
         <button
           onClick={() => refetch()}
           disabled={isFetching}
-          className="flex items-center gap-2 px-4 py-2.5 bg-white border border-border hover:bg-muted/50 rounded-xl text-xs font-bold transition-all shadow-xs"
+          className="flex items-center gap-2 px-4 py-2.5 bg-card border border-border hover:bg-muted/50 rounded-xl text-xs font-bold transition-all shadow-xs"
         >
           <RefreshCw className={`w-4 h-4 ${isFetching ? "animate-spin" : ""}`} />
           تحديث السجلات
@@ -5530,7 +5530,7 @@ function BinanceManagementView() {
 
       {/* Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <div className="bg-white p-5 rounded-2xl border border-border shadow-xs">
+        <div className="bg-card p-5 rounded-2xl border border-border shadow-xs">
           <span className="text-[11px] font-bold text-muted-foreground uppercase">
             إجمالي الرصيد المودع
           </span>
@@ -5540,21 +5540,21 @@ function BinanceManagementView() {
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-border shadow-xs">
+        <div className="bg-card p-5 rounded-2xl border border-border shadow-xs">
           <span className="text-[11px] font-bold text-muted-foreground uppercase">
             العمليات المكتملة
           </span>
           <div className="text-2xl font-black text-zinc-900 mt-1">{topups.length}</div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-border shadow-xs">
+        <div className="bg-card p-5 rounded-2xl border border-border shadow-xs">
           <span className="text-[11px] font-bold text-muted-foreground uppercase">
             طلبات جارية (Pending)
           </span>
           <div className="text-2xl font-black text-amber-600 mt-1">{pendingIntentsCount}</div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-border shadow-xs">
+        <div className="bg-card p-5 rounded-2xl border border-border shadow-xs">
           <span className="text-[11px] font-bold text-muted-foreground uppercase">
             سجلات التدقيق الأمني
           </span>
@@ -5605,14 +5605,14 @@ function BinanceManagementView() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="بحث بالمعرف أو المستخدم..."
-              className="w-full pl-9 pr-3 py-2 bg-white border border-border rounded-xl text-xs font-medium outline-none focus:ring-2 ring-blue-500/20"
+              className="w-full pl-9 pr-3 py-2 bg-card border border-border rounded-xl text-xs font-medium outline-none focus:ring-2 ring-blue-500/20"
             />
           </div>
         </div>
 
         {/* Tab 1: Top-Ups Table */}
         {activeTab === "topups" && (
-          <div className="bg-white rounded-2xl border border-border shadow-xs overflow-hidden">
+          <div className="bg-card rounded-2xl border border-border shadow-xs overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-right text-xs">
                 <thead className="bg-muted/40 text-muted-foreground font-bold border-b border-border">
@@ -5670,7 +5670,7 @@ function BinanceManagementView() {
 
         {/* Tab 2: Intents Table */}
         {activeTab === "intents" && (
-          <div className="bg-white rounded-2xl border border-border shadow-xs overflow-hidden">
+          <div className="bg-card rounded-2xl border border-border shadow-xs overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-right text-xs">
                 <thead className="bg-muted/40 text-muted-foreground font-bold border-b border-border">
@@ -5738,7 +5738,7 @@ function BinanceManagementView() {
 
         {/* Tab 3: Security Logs Table */}
         {activeTab === "logs" && (
-          <div className="bg-white rounded-2xl border border-border shadow-xs overflow-hidden">
+          <div className="bg-card rounded-2xl border border-border shadow-xs overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-right text-xs">
                 <thead className="bg-muted/40 text-muted-foreground font-bold border-b border-border">

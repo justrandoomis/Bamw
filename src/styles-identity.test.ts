@@ -16,7 +16,26 @@ describe("Bananto visual identity baseline", () => {
     expect(STYLES).toContain("--surface: #f8f5f1;");
     expect(STYLES).toContain("--surface-2: #fcfbf9;");
     expect(STYLES).toContain("--line: #d6cdc2;");
-    expect(STYLES).toContain("--radius: 0.625rem;");
+  });
+
+  /*
+    «Turn all website ui ux to claymorphism (button, card, background…) all
+    pages and elements (apple design + claymorphism)» — the owner's own brief,
+    so the baseline moved with it: the cream surfaces above are unchanged, the
+    corners grew from 0.625rem to clay's 0.875rem, and the clay recipes are
+    what every shadow in the shop now draws.
+  */
+  it("is made of clay, tuned per theme", () => {
+    expect(STYLES).toContain("--radius: 0.875rem;");
+    for (const recipe of ["--clay-1:", "--clay-2:", "--clay-3:", "--clay-btn:", "--clay-well:"]) {
+      expect(STYLES).toContain(recipe);
+    }
+    expect(STYLES).toContain("--shadow-sm: var(--clay-1);");
+    expect(STYLES).toContain("--shadow-md: var(--clay-2);");
+    expect(STYLES).toContain("--shadow-2xl: var(--clay-3);");
+    expect(STYLES).toMatch(
+      /@media \(prefers-reduced-motion: reduce\)[\s\S]*scale: none !important/,
+    );
   });
 
   it("keeps cartridges independent from generic card and theme tokens", () => {

@@ -161,7 +161,7 @@ function Nudge() {
           data-telegram-nudge={step}
           dir={lang === "en" ? "ltr" : "rtl"}
           className="fixed left-1/2 top-1/2 z-[90] max-h-[calc(100dvh-1.5rem)] w-[min(26rem,calc(100vw-1.5rem))] -translate-x-1/2 -translate-y-1/2 overflow-y-auto bg-[var(--page-3)] p-5 text-center text-[var(--ink-soft)] shadow-2xl outline-none"
-          style={{ borderRadius: "26px 14px 26px 14px/14px 26px 14px 26px" }}
+          style={{ borderRadius: "22px" }}
         >
           {step === "linked" ? (
             <>

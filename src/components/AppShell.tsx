@@ -87,7 +87,7 @@ export default function AppShell({
 
   return (
     <div
-      className="flex min-h-screen flex-col bg-[var(--page)]"
+      className="clay-canvas flex min-h-screen flex-col"
       dir={lang === "en" ? "ltr" : "rtl"}
       suppressHydrationWarning={true}
     >
@@ -105,7 +105,7 @@ export default function AppShell({
         alone runs its banner under the bar, which is transparent there.
       */}
       <main
-        className={`relative flex-1 ${!hideNav && !isTelegramMiniApp ? "pb-[72px]" : ""} ${
+        className={`relative flex-1 ${!hideNav && !isTelegramMiniApp ? "pb-[calc(88px+env(safe-area-inset-bottom))]" : ""} ${
           !isTelegramMiniApp && currentView !== "home" ? "pt-[var(--header-h)]" : ""
         }`}
       >

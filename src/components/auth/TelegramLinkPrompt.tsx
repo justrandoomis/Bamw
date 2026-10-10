@@ -62,8 +62,8 @@ export default function TelegramLinkPrompt({
       initial={{ scale: 0.9, y: 20, opacity: 0 }}
       animate={{ scale: 1, y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 260, damping: 20 }}
-      className="mb-6 border-2 border-ink-base bg-surface-2 p-6 text-center shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)] outline outline-[3px] outline-ink-base outline-offset-[-6px]"
-      style={{ borderRadius: "24px 48px 24px 48px/48px 24px 48px 24px" }}
+      className="mb-6 border border-[var(--clay-rim)] bg-surface-2 p-6 text-center shadow-md"
+      style={{ borderRadius: "28px" }}
     >
       <p className="mb-4 text-[13px] font-bold text-ink-soft leading-relaxed px-2">
         {message.split("\n").map((line, i) => (
@@ -81,8 +81,8 @@ export default function TelegramLinkPrompt({
               setHasClicked(true);
               window.open(linkUrl, "_blank");
             }}
-            className="flex items-center justify-center bg-ink-base px-6 py-3.5 text-[15px] font-black text-surface shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98] outline outline-[3px] outline-ink-base outline-offset-[-6px] cursor-pointer w-full"
-            style={{ borderRadius: "32px 16px 32px 16px/16px 32px 16px 32px" }}
+            className="flex items-center justify-center bg-ink-base px-6 py-3.5 text-[15px] font-black text-surface shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer w-full"
+            style={{ borderRadius: "22px" }}
           >
             فتح تطبيق تلغرام للتحقق
           </button>
@@ -90,8 +90,8 @@ export default function TelegramLinkPrompt({
 
         {hasClicked && !isTerminal && (
           <div
-            className="flex items-center justify-center gap-2 bg-ink-base/10 px-6 py-3.5 text-[15px] font-black text-ink-base shadow-inner outline outline-[3px] outline-ink-base/20 outline-offset-[-6px] w-full"
-            style={{ borderRadius: "32px 16px 32px 16px/16px 32px 16px 32px" }}
+            className="flex items-center justify-center gap-2 bg-ink-base/10 px-6 py-3.5 text-[15px] font-black text-ink-base shadow-inner w-full"
+            style={{ borderRadius: "22px" }}
           >
             <span className="animate-spin text-xl">⏳</span>
             <span>بانتظار إثبات الملكية...</span>
@@ -105,8 +105,8 @@ export default function TelegramLinkPrompt({
               setHasClicked(false);
               onRetry();
             }}
-            className="flex items-center justify-center bg-red-500 px-6 py-3.5 text-[15px] font-black text-white shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98] outline outline-[3px] outline-red-500 outline-offset-[-6px] cursor-pointer w-full mt-2"
-            style={{ borderRadius: "32px 16px 32px 16px/16px 32px 16px 32px" }}
+            className="flex items-center justify-center bg-red-500 px-6 py-3.5 text-[15px] font-black text-white shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer w-full mt-2"
+            style={{ borderRadius: "22px" }}
           >
             تجديد رابط التحقق (إعادة المحاولة)
           </button>

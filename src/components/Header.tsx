@@ -340,7 +340,8 @@ export default function Header({
           className={`w-full pt-[env(safe-area-inset-top)] transition-colors duration-200 ${
             overlay
               ? "border-b border-transparent bg-transparent"
-              : "pointer-events-auto border-b border-border bg-[var(--page)]"
+              : /* Clay: the bar lifts off the page on a soft shadow, no hairline. */
+                "pointer-events-auto border-b border-transparent bg-[var(--page)] shadow-[0_10px_28px_-22px_var(--clay-drop)]"
           }`}
         >
           <div
@@ -403,7 +404,8 @@ export default function Header({
                     className={`w-full h-10 rounded-full outline-none px-4 ps-10 text-sm transition-all shadow-sm ${
                       overlay
                         ? "bg-black/20 border border-white/20 text-white backdrop-blur-md placeholder-white/70 focus:border-white focus:bg-black/40"
-                        : "bg-card border border-border text-foreground placeholder:text-muted-foreground focus:border-primary/60"
+                        : /* A field is clay pressed in: a well in the bar, not a pill on it. */
+                          "clay-well bg-card/70 border border-transparent text-foreground placeholder:text-muted-foreground focus:border-primary/50 focus:bg-card"
                     }`}
                   />
                 </form>

@@ -152,7 +152,7 @@ export function LoginCodeDialog({
           onInteractOutside={(event) => event.preventDefault()}
           dir="rtl"
           className="fixed left-1/2 top-1/2 z-[90] max-h-[calc(100dvh-1.5rem)] w-[min(28rem,calc(100vw-1.5rem))] -translate-x-1/2 -translate-y-1/2 overflow-y-auto bg-[var(--page-3)] p-5 text-[var(--ink-soft)] shadow-2xl outline-none sm:p-6"
-          style={{ borderRadius: "26px 14px 26px 14px/14px 26px 14px 26px" }}
+          style={{ borderRadius: "22px" }}
         >
           <div className="mb-3 flex flex-col items-center gap-2 text-center">
             <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#d5a840]/25">
@@ -179,7 +179,7 @@ export function LoginCodeDialog({
 
           <div
             className="mb-3 border-[2.5px] border-dashed border-[#d5a840] bg-[var(--surface-2)] px-3 py-4 text-center"
-            style={{ borderRadius: "18px 10px 18px 10px/10px 18px 10px 18px" }}
+            style={{ borderRadius: "22px" }}
           >
             {/*
               Each group of four keeps together, so a narrow phone breaks the
@@ -221,7 +221,7 @@ export function LoginCodeDialog({
 
           <div
             className="mb-4 flex items-start gap-2 bg-[var(--danger)]/10 p-3 text-[12.5px] font-[700] leading-relaxed text-[var(--danger)]"
-            style={{ borderRadius: "12px 6px 12px 6px/6px 12px 6px 12px" }}
+            style={{ borderRadius: "22px" }}
           >
             <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
             <span>
@@ -279,14 +279,7 @@ export function CodeInput({
         {label}
       </label>
       <div className="relative">
-        <div
-          className="pointer-events-none absolute inset-0 translate-x-[2.5px] translate-y-[3.5px] border-[2.5px] border-[var(--ink-soft)]"
-          style={{ borderRadius: "10px 22px 10px 22px/22px 10px 22px 10px" }}
-        />
-        <div
-          className="relative z-10 flex w-full items-center gap-3 border-[2.5px] border-[var(--ink-soft)] bg-[var(--surface-2)] px-3 py-1.5 sm:px-4 sm:py-2.5"
-          style={{ borderRadius: "22px 10px 22px 10px/10px 22px 10px 22px" }}
-        >
+        <div className="clay-well relative z-10 flex w-full items-center gap-3 rounded-2xl border border-transparent bg-[var(--surface-2)] px-3 py-2 transition-colors focus-within:border-[var(--gold-deep)] sm:px-4 sm:py-3">
           <KeyRound className="h-5 w-5 shrink-0 text-[var(--ink-soft)]" aria-hidden="true" />
           <input
             id="login-code"
@@ -321,10 +314,10 @@ export function MethodTabs<T extends string>({
   return (
     <div
       role="tablist"
-      className="mx-2 mb-4 grid gap-1 border-[2px] border-[var(--ink-soft)]/25 bg-[var(--surface-2)] p-1"
+      className="clay-well mx-2 mb-4 grid gap-1 border border-transparent bg-[var(--surface-2)] p-1"
       style={{
         gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))`,
-        borderRadius: "18px 10px 18px 10px/10px 18px 10px 18px",
+        borderRadius: "22px",
       }}
     >
       {options.map((option) => (
@@ -416,7 +409,7 @@ export function LoginCodeReminder({ pathname }: { pathname: string }) {
           onPointerDownOutside={(event) => event.preventDefault()}
           dir="rtl"
           className="fixed left-1/2 top-1/2 z-[90] w-[min(26rem,calc(100vw-1.5rem))] -translate-x-1/2 -translate-y-1/2 bg-[var(--page-3)] p-5 text-center text-[var(--ink-soft)] shadow-2xl outline-none"
-          style={{ borderRadius: "26px 14px 26px 14px/14px 26px 14px 26px" }}
+          style={{ borderRadius: "22px" }}
         >
           <span className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#d5a840]/25">
             <KeyRound className="h-6 w-6" aria-hidden="true" />

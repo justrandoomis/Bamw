@@ -266,7 +266,7 @@ function TelegramIndex() {
     >
       {/* Header Bar */}
       <header className="w-full px-6 py-8 flex flex-col items-center gap-4 bg-[var(--page)] border-b border-line-2">
-        <div className="w-20 h-20 bg-white rounded-[24px] shadow-sm flex items-center justify-center border-4 border-[var(--brand-red)] outline outline-2 outline-line-2 outline-offset-[-6px]">
+        <div className="w-20 h-20 bg-white rounded-[24px] shadow-sm flex items-center justify-center border-4 border-[var(--brand-red)]">
           {logoFailed ? (
             <span aria-label="بنانتو" role="img" className="text-4xl">
               🍌
@@ -291,8 +291,8 @@ function TelegramIndex() {
       {/* Main Content */}
       <main className="w-full max-w-md px-6 py-10 flex-1 flex flex-col">
         <div
-          className="relative bg-surface-2 p-8 text-center border-2 border-ink-base shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)] outline outline-[3px] outline-ink-base outline-offset-[-6px]"
-          style={{ borderRadius: "24px 48px 24px 48px/48px 24px 48px 24px" }}
+          className="relative bg-surface-2 p-8 text-center border border-[var(--clay-rim)] shadow-md"
+          style={{ borderRadius: "28px" }}
         >
           {status === "loading" && (
             <div className="py-8 flex flex-col items-center gap-4">
@@ -313,8 +313,8 @@ function TelegramIndex() {
 
               <button
                 onClick={handleShareContact}
-                className="w-full bg-[#0088cc] text-white py-4 font-black text-[16px] shadow-lg hover:brightness-110 active:scale-[0.98] transition-all outline outline-2 outline-white/20 outline-offset-[-4px] flex items-center justify-center gap-3 cursor-pointer"
-                style={{ borderRadius: "32px 16px 32px 16px/16px 32px 16px 32px" }}
+                className="w-full bg-[#0088cc] text-white py-4 font-black text-[16px] shadow-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-3 cursor-pointer"
+                style={{ borderRadius: "22px" }}
               >
                 <span>مشاركة رقم الهاتف وإثبات الملكية</span>
               </button>

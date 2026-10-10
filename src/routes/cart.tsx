@@ -1512,9 +1512,9 @@ function CartPage() {
         )}
       </main>
 
-      {/* Fixed Checkout Bar */}
+      {/* Fixed Checkout Bar — a floating piece of clay, just above the dock. */}
       <footer
-        className="fixed bottom-[58px] sm:bottom-[60px] left-0 right-0 bg-[var(--card)]/95 backdrop-blur-md border-t border-border px-4 py-3 sm:py-3.5 space-y-2.5 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] z-40"
+        className="fixed inset-x-3 bottom-[calc(max(env(safe-area-inset-bottom),0.75rem)+74px)] z-40 mx-auto max-w-2xl space-y-2.5 rounded-[24px] border border-[var(--clay-rim)] bg-[var(--card)]/92 px-4 py-3 backdrop-blur-xl clay-3 sm:py-3.5"
         dir="rtl"
       >
         <div className="flex items-center justify-between max-w-2xl mx-auto w-full">
