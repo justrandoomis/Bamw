@@ -100,7 +100,10 @@ import {
 } from "@/lib/support.functions";
 import { ChatMessage, Thread, StoreDoc, AccountBundle } from "@/lib/types";
 
-import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
+import { AdminShell } from "./admin/shell/AdminShell";
+import { orderNeedsAction, threadWaitsForAdmin } from "./admin/shell/adminNav";
+import AdminHome from "./admin/AdminHome";
+import PromotionsManager from "./admin/PromotionsManager";
 import AdminProductEditor from "./AdminProductEditor";
 import AdminZipImportModal from "./admin/AdminZipImportModal";
 import CatalogueImportModal from "./admin/CatalogueImportModal";
@@ -142,7 +145,6 @@ function reportMediaWarnings(warnings: unknown) {
     toast(warning, { icon: "⚠️", duration: 8000 });
   }
 }
-import mascot from "@/assets/bananto_logo.webp.asset.json";
 import { useAuth } from "@/hooks/useAuth";
 import { getDefaultRadioTracks } from "@/config/publicAssets";
 import { resolveCategoryType } from "@/lib/productSection";
@@ -260,6 +262,24 @@ export default function AdminDashboard() {
         setSelectedChatThreadId(threadParam);
       }
     }
+  }, []);
+
+  /*
+    The section is in the address, so a refresh, a bookmark or a link pasted
+    to another admin opens the same screen. Replaced rather than pushed: the
+    router owns the history stack, and this only keeps the address honest.
+  */
+  const openSection = React.useCallback((tab: string) => {
+    setActiveSidebar(tab);
+    if (typeof window === "undefined") return;
+    const url = new URL(window.location.href);
+    if (tab === "dashboard") url.searchParams.delete("tab");
+    else url.searchParams.set("tab", tab);
+    if (tab !== "messages") url.searchParams.delete("thread");
+    if (url.href !== window.location.href) {
+      window.history.replaceState(window.history.state, "", url);
+    }
+    document.getElementById("admin-main")?.scrollTo({ top: 0 });
   }, []);
 
   const [isLoaded, setIsLoaded] = useState(false);
@@ -765,112 +785,30 @@ export default function AdminDashboard() {
     void saveToDb("problemSolutions", problemSolutions);
   }, [problemSolutions, isLoaded, saveToDb]);
 
-  const [open, setOpen] = useState(false);
-  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
-
-  const toggleGroup = (groupId: string) => {
-    if (!open) setOpen(true);
-    setExpandedGroups((prev) => ({ ...prev, [groupId]: !prev[groupId] }));
-  };
-
-  const sidebarItems = [
-    { id: "dashboard", icon: LayoutDashboard, label: "لوحة التحكم" },
-    { id: "store_advisor", icon: Sparkles, label: "مستشار المتجر الذكي" },
-    { id: "categories", icon: Folder, label: "الأقسام" },
-    {
-      id: "listings",
-      icon: Package,
-      label: "المنتجات",
-      children: [
-        { id: "listings_all", icon: Tag, label: "جميع المنتجات" },
-        ...(Array.isArray(categories) ? categories : [])
-          .filter((c: any) => c && c.id)
-          .map((c: any) => ({
-            id: `listings_${c.id}`,
-            icon: Tag,
-            label: c.title || c.name || "قسم",
-          })),
-      ],
-    },
-    { id: "bundles", icon: Layers, label: "حزم الحسابات (Bundles)" },
-    {
-      id: "marketing",
-      icon: Megaphone,
-      label: "الإعلانات",
-      children: [
-        { id: "banners", icon: ImageIcon, label: "البنرات الإعلانية" },
-        { id: "notifications", icon: Bell, label: "الإشعارات" },
-      ],
-    },
-    { id: "music", icon: Music, label: "الموسيقى" },
-    { id: "messages", icon: MessageSquare, label: "الدعم والمحادثات" },
-
-    // The square-image queue, beside the other catalogue chores rather than
-    // buried in the product editor it deliberately avoids.
-    { id: "missing_square_images", icon: ImageIcon, label: "ألعاب بلا صورة مربعة" },
-    { id: "reviews", icon: Star, label: "تقييمات الأعضاء" },
-    { id: "game_requests", icon: Sparkles, label: "طلبات الألعاب" },
-    { id: "used_listings", icon: Tag, label: "سوق المستعمل والمسترجع" },
-
-    {
-      id: "financial_mgmt",
-      icon: DollarSign,
-      label: "الإدارة المالية",
-      children: [
-        { id: "financial_stats", icon: PieChart, label: "التكلفة والأرباح" },
-        { id: "pricing_settings", icon: Settings, label: "إعدادات السعر" },
-        { id: "wallet_mgmt", icon: Wallet, label: "إدارة المحفظة" },
-        { id: "binance_mgmt", icon: Zap, label: "عمليات Binance Pay" },
-        { id: "banan_codes", icon: Coins, label: "إدارة أكواد بنانتا" },
-        { id: "coupons", icon: Tag, label: "أكواد الخصم والكوبونات" },
-        { id: "referrals", icon: Gift, label: "الإحالات — دعوة صديق" },
-      ],
-    },
-
-    {
-      id: "store_services",
-      icon: HelpCircle,
-      label: "خدمات وإرشادات المتجر",
-      children: [
-        { id: "services_requests", icon: Plus, label: "طلبات المنتجات" },
-        { id: "services_disc_trades", icon: RefreshCw, label: "مقايضة الأقراص" },
-        { id: "services_trade_library", icon: BookOpen, label: "مكتبة وأسعار المقايضة" },
-        { id: "services_faq", icon: HelpCircle, label: "الأسئلة الشائعة" },
-        { id: "services_policy", icon: ShieldCheck, label: "سياسة المتجر والمقايضة" },
-        { id: "services_support", icon: LifeBuoy, label: "إعدادات الدعم" },
-        { id: "services_guides", icon: BookOpen, label: "إرشادات الحساب" },
-      ],
-    },
-    { id: "orders", icon: ShoppingCart, label: "إدارة الطلبات" },
-    { id: "market_settings", icon: Sparkles, label: "إدارة واقتصاد الموز" },
-    { id: "contests", icon: Trophy, label: "المسابقات" },
-    { id: "users", icon: Users, label: "إدارة المستخدمين" },
-    {
-      id: "import",
-      icon: FileUp,
-      label: "استيراد بيانات الألعاب",
-      subtitle: "Deterministic Import",
-    },
-    { id: "image_migration", icon: ImageIcon, label: "نظام صور المنتجات (WebP)" },
-
-    { id: "stats", icon: BarChart2, label: "الإحصائيات" },
-    { id: "settings", icon: Settings, label: "الإعدادات" },
-  ];
+  const renderHome = () => (
+    <AdminHome
+      changeTab={openSection}
+      orders={effectiveOrders}
+      threads={effectiveMessages}
+      gameRequests={gameRequests as unknown as Record<string, unknown>[]}
+      products={products}
+      categories={categories}
+      catalogue={{
+        total: catalogueProductCount,
+        hidden: productFacets.hidden,
+        unpriced: productFacets.unpriced,
+      }}
+      visits={visits}
+      views={views}
+    />
+  );
 
   const renderContent = () => {
     switch (activeSidebar) {
       case "dashboard":
-        return (
-          <DashboardHome
-            changeTab={setActiveSidebar}
-            orders={effectiveOrders}
-            messages={effectiveMessages}
-            products={products}
-            categories={categories}
-            visits={visits}
-            views={views}
-          />
-        );
+        return renderHome();
+      case "promotions":
+        return <PromotionsManager />;
       case "store_advisor":
         return (
           <div className="w-full p-2 sm:p-6">
@@ -879,7 +817,7 @@ export default function AdminDashboard() {
               messages={effectiveMessages}
               products={products}
               categories={categories}
-              changeTab={setActiveSidebar}
+              changeTab={openSection}
             />
           </div>
         );
@@ -959,7 +897,7 @@ export default function AdminDashboard() {
           <AdminInboxView
             initialThreadId={selectedChatThreadId}
             onNavigateToOrder={() => {
-              setActiveSidebar("orders");
+              openSection("orders");
             }}
           />
         );
@@ -968,7 +906,7 @@ export default function AdminDashboard() {
           <OrdersManagerView
             onNavigateToChat={(threadId) => {
               setSelectedChatThreadId(threadId);
-              setActiveSidebar("messages");
+              openSection("messages");
             }}
           />
         );
@@ -1009,747 +947,57 @@ export default function AdminDashboard() {
             categories={categories}
             visits={visits}
             views={views}
-            changeTab={setActiveSidebar}
+            changeTab={openSection}
           />
         );
       case "settings":
         return <SettingsView />;
       default:
-        return (
-          <DashboardHome
-            changeTab={setActiveSidebar}
-            orders={effectiveOrders}
-            messages={effectiveMessages}
-            products={products}
-            categories={categories}
-            visits={visits}
-            views={views}
-          />
-        );
+        return renderHome();
     }
   };
 
+  const badges = {
+    orders: effectiveOrders.filter(orderNeedsAction).length,
+    chats: effectiveMessages.filter(threadWaitsForAdmin).length,
+    gameRequests: gameRequests.filter((request) => request?.status === "pending").length,
+  };
+  const navCategories = (Array.isArray(categories) ? categories : [])
+    .filter((category: any) => category && category.id)
+    .map((category: any) => ({
+      id: String(category.id),
+      title: String(category.title || category.name || ""),
+    }));
+
   return (
-    <div
-      className="flex flex-col md:flex-row h-[100dvh] w-full bg-card overflow-hidden text-[var(--admin-ink)] font-sans"
-      dir="rtl"
+    <AdminShell
+      active={activeSidebar}
+      onNavigate={openSection}
+      badges={badges}
+      categories={navCategories}
+      fullBleed={activeSidebar === "messages"}
+      banner={
+        dbError ? (
+          <DbErrorBanner
+            message={dbError}
+            detail={dbErrorDetail}
+            isRetrying={isReloading}
+            onRetry={retryDbLoad}
+            className=""
+          />
+        ) : null
+      }
     >
-      {/* 
-          '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
-                                        
-                                            
-                                            For the code present, I get the error below.
-
-Please think step-by-step in order to resolve it.
-      */}
-      <Sidebar open={open} setOpen={setOpen} animate={true}>
-        <SidebarBody className="border-l border-border bg-card">
-          <div className="flex flex-col flex-1 h-full">
-            <div className="flex items-center justify-between mb-4 mt-2 px-1">
-              <h2
-                className={`font-bold text-lg tracking-tight whitespace-nowrap overflow-hidden transition-all ${open ? "opacity-100 w-auto" : "opacity-0 w-0 hidden"}`}
-              >
-                إدارة المتجر
-              </h2>
-              <button
-                onClick={() => setOpen(!open)}
-                className="p-1 hover:bg-muted rounded-md text-muted-foreground transition-colors"
-              >
-                <Menu className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="mb-4">
-              <div className="flex items-center gap-2 py-2 text-muted-foreground hover:bg-muted rounded-md cursor-pointer transition-colors px-1">
-                <Search className="w-5 h-5 flex-shrink-0" />
-                <span
-                  className={`text-[15px] whitespace-nowrap overflow-hidden transition-all ${open ? "opacity-100" : "opacity-0 w-0"}`}
-                >
-                  بحث
-                </span>
-              </div>
-            </div>
-
-            <div className="flex-1 overflow-y-auto no-scrollbar py-2">
-              <div className="space-y-0.5">
-                {sidebarItems.map((item) => {
-                  if (item.children) {
-                    const isExpanded = expandedGroups[item.id];
-                    return (
-                      <div key={item.id} className="space-y-0.5 px-2">
-                        <button
-                          onClick={() => toggleGroup(item.id)}
-                          className={`w-full flex items-center justify-between px-2 py-2 rounded-md text-[15px] hover:bg-muted text-foreground transition-colors ${open ? "" : "px-0 justify-center"}`}
-                        >
-                          <div
-                            className={`flex items-center gap-2 ${!open && "justify-center w-full"}`}
-                          >
-                            <item.icon
-                              className="w-5 h-5 flex-shrink-0 text-muted-foreground"
-                              strokeWidth={1.5}
-                            />
-                            <span
-                              className={`whitespace-nowrap overflow-hidden transition-all ${open ? "opacity-100" : "opacity-0 w-0 hidden"}`}
-                            >
-                              {item.label}
-                            </span>
-                          </div>
-                          {open && (
-                            <div className="flex-shrink-0 text-muted-foreground">
-                              {isExpanded ? (
-                                <ChevronUp className="w-4 h-4" />
-                              ) : (
-                                <ChevronDown className="w-4 h-4" />
-                              )}
-                            </div>
-                          )}
-                        </button>
-                        {isExpanded && open && (
-                          <div className="mr-4 pr-3 border-r border-border space-y-0.5 animate-in slide-in-from-top-2">
-                            {item.children.map((child) => {
-                              const isActive = activeSidebar === child.id;
-                              return (
-                                <SidebarLink
-                                  key={child.id}
-                                  link={{
-                                    label: child.label,
-                                    icon: (
-                                      <child.icon
-                                        className={`w-4 h-4 flex-shrink-0 ${isActive ? "text-[var(--brand-red-dark)]" : "text-blue-500"}`}
-                                        strokeWidth={isActive ? 2 : 1.5}
-                                      />
-                                    ),
-                                    onClick: () => setActiveSidebar(child.id),
-                                  }}
-                                  className={`w-full rounded-md px-2 text-[14px] transition-colors py-1.5 ${isActive ? "bg-muted font-semibold text-[var(--brand-red-dark)]" : "hover:bg-muted text-muted-foreground"}`}
-                                />
-                              );
-                            })}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  }
-
-                  const isActive = activeSidebar === item.id;
-                  return (
-                    <div key={item.id} className="px-2">
-                      <SidebarLink
-                        link={{
-                          label: item.label,
-                          icon: (
-                            <item.icon
-                              className={`w-5 h-5 flex-shrink-0 ${isActive ? "text-foreground" : "text-muted-foreground"}`}
-                              strokeWidth={isActive ? 2 : 1.5}
-                            />
-                          ),
-                          onClick: () => setActiveSidebar(item.id),
-                        }}
-                        className={`w-full px-2 rounded-md text-[15px] transition-colors ${isActive ? "bg-muted font-semibold text-foreground" : "hover:bg-muted text-foreground"}`}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Sales Channels */}
-            <div className="pt-4 border-t border-border mt-4">
-              <div
-                className={`text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-2 whitespace-nowrap overflow-hidden transition-all ${open ? "opacity-100" : "opacity-0 h-0 w-0 m-0 p-0 hidden"}`}
-              >
-                قنوات البيع
-              </div>
-              <div
-                className="flex items-center justify-between hover:bg-muted cursor-pointer p-1 rounded-md transition-colors"
-                onClick={() => navigate({ to: "/" })}
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 flex-shrink-0 rounded bg-amber-500/20 text-white flex items-center justify-center p-0.5 overflow-hidden">
-                    <img src={mascot.url} alt="Logo" className="w-full h-full object-contain" />
-                  </div>
-                  <div
-                    className={`whitespace-nowrap overflow-hidden transition-all ${open ? "opacity-100" : "opacity-0 w-0"}`}
-                  >
-                    <div className="text-sm font-medium text-[var(--admin-ink)]">عرض المتجر</div>
-                  </div>
-                </div>
-                {open && <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />}
-              </div>
-            </div>
-          </div>
-        </SidebarBody>
-      </Sidebar>
-
-      {/* Main Content - RTL for Arabic content */}
-      <main
-        className={`flex-1 h-full relative no-scrollbar ${
-          activeSidebar === "messages" ? "overflow-hidden flex flex-col p-0 m-0" : "overflow-y-auto"
-        }`}
-        dir="rtl"
+      <AdminErrorBoundary
+        sectionName={activeSidebar === "messages" ? "صندوق الدعم والمحادثات" : activeSidebar}
       >
-        {activeSidebar === "messages" ? (
-          <div className="w-full h-full flex-1 flex flex-col min-h-0 overflow-hidden p-0 m-0 max-w-none">
-            {dbError && (
-              <DbErrorBanner
-                message={dbError}
-                detail={dbErrorDetail}
-                isRetrying={isReloading}
-                onRetry={retryDbLoad}
-                className="m-2"
-              />
-            )}
-            <AdminErrorBoundary sectionName="صندوق الدعم والمحادثات">
-              {renderContent()}
-            </AdminErrorBoundary>
-          </div>
-        ) : (
-          <div className="w-full px-4 py-6 pb-24 sm:px-8 lg:px-10">
-            {dbError && (
-              <DbErrorBanner
-                message={dbError}
-                detail={dbErrorDetail}
-                isRetrying={isReloading}
-                onRetry={retryDbLoad}
-                className="mb-4"
-              />
-            )}
-            <AdminErrorBoundary sectionName={activeSidebar}>{renderContent()}</AdminErrorBoundary>
-          </div>
-        )}
-      </main>
-    </div>
+        {renderContent()}
+      </AdminErrorBoundary>
+    </AdminShell>
   );
 }
 
 // --- SUB-VIEWS ---
-
-function DashboardHome({
-  changeTab,
-  orders = [],
-  messages = [],
-  products = [],
-  categories = [],
-  visits = 0,
-  views = 0,
-}: {
-  changeTab: (tab: string) => void;
-  orders?: any[];
-  messages?: any[];
-  products?: any[];
-  categories?: any[];
-  visits?: number;
-  views?: number;
-}) {
-  const { user } = useAuth();
-  const navigate = useNavigate();
-  const [period, setPeriod] = useState<"year" | "month" | "week" | "day">("year");
-  const [showPeriodDropdown, setShowPeriodDropdown] = useState(false);
-
-  // Store Name state and inline editing
-  const [storeName, setStoreName] = useState("بنانتو");
-  const [isEditingName, setIsEditingName] = useState(false);
-  const [nameInput, setNameInput] = useState("بنانتو");
-  const [isSavingName, setIsSavingName] = useState(false);
-
-  // Fetch store name setting
-  useEffect(() => {
-    fetch("/api/data")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.settings?.storeName) {
-          setStoreName(data.settings.storeName);
-          setNameInput(data.settings.storeName);
-        }
-      })
-      .catch(() => {});
-  }, []);
-
-  const handleSaveStoreName = async () => {
-    if (!nameInput.trim()) return;
-    setIsSavingName(true);
-    try {
-      const res = await fetch("/api/data", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: safeStringify({
-          settings: {
-            storeName: nameInput.trim(),
-          },
-        }),
-      });
-      if (res.ok) {
-        setStoreName(nameInput.trim());
-        setIsEditingName(false);
-        toast.success("تم تحديث اسم المتجر بنجاح");
-      }
-    } catch {
-      toast.error("تعذر حفظ اسم المتجر");
-    } finally {
-      setIsSavingName(false);
-    }
-  };
-
-  // Dynamic Time Greeting
-  const currentHour = new Date().getHours();
-  const greeting = currentHour >= 4 && currentHour < 12 ? "صباح الخير" : "مساء الخير";
-
-  // Community Reviews calculation
-  const { data: reviewsData } = useQuery({
-    queryKey: ["admin_community_reviews"],
-    queryFn: async () => {
-      const res = await fetch("/api/reviews?scope=all", { credentials: "include" });
-      if (!res.ok) return { reviews: [] };
-      return res.json() as Promise<{ reviews?: any[] }>;
-    },
-    staleTime: 30_000,
-  });
-
-  const reviewsList = reviewsData?.reviews || [];
-  const reviewsCount = reviewsList.length;
-  const avgRating =
-    reviewsCount > 0
-      ? Math.round(
-          (reviewsList.reduce((acc: number, r: any) => acc + (Number(r.rating) || 5), 0) /
-            reviewsCount) *
-            10,
-        ) / 10
-      : 5.0;
-
-  const totalOrdersCount = orders.length;
-  const totalVisitsCount = visits || 0;
-  const totalViewsCount = views || 0;
-
-  // Orders needing attention (awaiting payment or still being processed)
-  const delayedOrdersCount = orders.filter((o) =>
-    ["pending", "processing"].includes(String(o?.status ?? "")),
-  ).length;
-  const shippingTodayCount = orders.filter((o) => String(o?.status ?? "") === "delivering").length;
-
-  // Inbox split: threads flagged for admin vs. ordinary buyer messages
-  const helpRequestsCount = messages.filter(
-    (m) => Boolean(m?.needsAdmin) || String(m?.mode ?? "") === "SUPPORT",
-  ).length;
-  const buyerMessagesCount = Math.max(0, messages.length - helpRequestsCount);
-
-  // Catalog health
-  const outOfStockCount = products.filter((p) => Number(p?.stock ?? p?.quantity ?? 0) <= 0).length;
-  const inactiveProductsCount = products.filter(
-    (p) => p?.active === false || p?.published === false,
-  ).length;
-
-  const periodLabel =
-    period === "day"
-      ? "اليوم"
-      : period === "week"
-        ? "آخر 7 أيام"
-        : period === "month"
-          ? "آخر شهر"
-          : "آخر سنة";
-
-  const periodStartMs = (() => {
-    const day = 24 * 60 * 60 * 1000;
-    const spans = { day: day, week: 7 * day, month: 30 * day, year: 365 * day } as const;
-    return Date.now() - spans[period];
-  })();
-
-  /*
-    Revenue is what customers paid for goods, so it goes through the same
-    reckoning as the finance screen: `order.total` includes the delivery fee we
-    collect for the courier, and a cancelled order stays "paid" right up until
-    it is refunded. Both used to be counted here. Only the period filter is
-    local — `financeTotals` decides what a sale is.
-
-    Markup below is deliberately untouched; this is a change to the number, not
-    to the screen.
-  */
-  const totalRevenue = financeTotals(
-    orders.filter((o) => {
-      const createdAt = Date.parse(String(o?.createdAt ?? o?.created_at ?? ""));
-      return Number.isNaN(createdAt) ? true : createdAt >= periodStartMs;
-    }),
-  ).net;
-
-  return (
-    <div className="animate-in fade-in duration-300">
-      {/* Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.
-                                        
-                                            
-                                            أكمل الدفعة السادسة */}
-      {/* Header */}
-      <div className="flex items-start gap-4 mb-8">
-        <div className="relative flex-shrink-0">
-          <div
-            className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-amber-500/10 border-2 border-amber-500/20 overflow-hidden flex items-center justify-center p-2.5 shadow-sm"
-            title="أيقونة المتجر"
-          >
-            <img
-              src={mascot.url}
-              alt="Store Logo"
-              className="w-full h-full object-contain drop-shadow-sm"
-            />
-          </div>
-          <div
-            className="w-10 h-10 rounded-full border-2 border-background absolute -bottom-2 -right-2 shadow-md overflow-hidden bg-muted flex items-center justify-center cursor-pointer hover:ring-2 hover:ring-primary transition-all"
-            onClick={() => void navigate({ to: "/profile" })}
-            title="الملف الشخصي للمدير"
-          >
-            {user?.avatar ? (
-              <img
-                src={user.avatar}
-                alt={user.name || "Admin"}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full bg-[var(--admin-ink)] text-white flex items-center justify-center text-xs font-bold font-serif">
-                {user?.name?.charAt(0) || "👤"}
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="pt-1 flex-1">
-          <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            {isEditingName ? (
-              <div className="flex items-center gap-2">
-                <span className="text-[20px] sm:text-[26px] font-serif text-[var(--admin-ink)]">
-                  {greeting}،
-                </span>
-                <input
-                  type="text"
-                  value={nameInput}
-                  onChange={(e) => setNameInput(e.target.value)}
-                  className="text-[18px] sm:text-[22px] font-bold border border-border rounded-lg px-2.5 py-1 bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                  autoFocus
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") void handleSaveStoreName();
-                    if (e.key === "Escape") setIsEditingName(false);
-                  }}
-                />
-                <button
-                  onClick={() => void handleSaveStoreName()}
-                  disabled={isSavingName}
-                  className="px-3 py-1.5 text-xs font-bold rounded-lg bg-[var(--admin-ink)] text-white hover:opacity-90 transition-opacity"
-                >
-                  {isSavingName ? "جارٍ الحفظ…" : "حفظ"}
-                </button>
-                <button
-                  onClick={() => {
-                    setNameInput(storeName);
-                    setIsEditingName(false);
-                  }}
-                  className="px-2.5 py-1.5 text-xs font-bold rounded-lg bg-muted text-foreground hover:bg-muted/80 transition-colors"
-                >
-                  إلغاء
-                </button>
-              </div>
-            ) : (
-              <div className="flex items-center gap-2 group">
-                <h1 className="text-[22px] sm:text-[28px] font-normal text-[var(--admin-ink)] font-serif flex items-center gap-1.5">
-                  <span>{greeting}،</span>
-                  <span className="font-bold">{storeName}</span>
-                </h1>
-                <button
-                  onClick={() => {
-                    setNameInput(storeName);
-                    setIsEditingName(true);
-                  }}
-                  className="p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors opacity-70 group-hover:opacity-100"
-                  title="تعديل اسم المتجر"
-                >
-                  <Edit className="w-4 h-4" />
-                </button>
-              </div>
-            )}
-          </div>
-
-          <div className="flex items-center gap-3 text-sm text-muted-foreground flex-wrap">
-            <button
-              type="button"
-              onClick={() => changeTab("reviews")}
-              className="flex items-center gap-1.5 hover:bg-muted/70 px-2 py-0.5 rounded-lg transition-colors group cursor-pointer border border-transparent hover:border-border"
-              title="انقر للانتقال إلى إدارة تقييمات الأعضاء"
-            >
-              <div className="flex items-center gap-0.5 text-amber-500">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star
-                    key={star}
-                    className={`w-3.5 h-3.5 ${
-                      reviewsCount > 0 && star <= Math.round(avgRating)
-                        ? "fill-amber-400 text-amber-500"
-                        : reviewsCount === 0
-                          ? "fill-amber-400 text-amber-500"
-                          : "text-muted-foreground/30"
-                    }`}
-                  />
-                ))}
-              </div>
-              <span className="font-bold text-[13px] text-foreground group-hover:text-primary transition-colors">
-                {reviewsCount > 0 ? avgRating.toFixed(1) : "جديد"}
-              </span>
-              <span className="text-muted-foreground text-[12px]">
-                ({reviewsCount > 0 ? `${reviewsCount} تقييم` : "لا توجد تقييمات"})
-              </span>
-            </button>
-
-            <span className="text-muted-foreground hidden sm:inline">|</span>
-            <button
-              type="button"
-              onClick={() => changeTab("orders")}
-              className="text-[13px] text-muted-foreground hover:text-foreground hover:underline transition-colors cursor-pointer"
-            >
-              {orders.length} طلبات
-            </button>
-
-            <span className="text-muted-foreground hidden sm:inline">|</span>
-            <button
-              type="button"
-              onClick={() => changeTab("orders")}
-              className="text-[13px] text-muted-foreground hover:text-foreground hover:underline transition-colors cursor-pointer"
-            >
-              {orders.length} مبيعات
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="border-b border-border mb-8 flex gap-6 text-[15px]">
-        <button className="pb-3 border-b-2 border-[var(--admin-ink)] font-semibold text-[var(--admin-ink)]">
-          الرئيسية
-        </button>
-        <button
-          onClick={() => changeTab("stats")}
-          className="pb-3 border-b-2 border-transparent text-muted-foreground hover:text-[var(--admin-ink)] transition-colors"
-        >
-          النشاط الأخير
-        </button>
-      </div>
-
-      {/* المهام الأساسية (Core Tasks) */}
-      <div className="mb-10">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-[18px] font-bold text-[var(--admin-ink)]">المهام الأساسية</h2>
-          <span className="text-xs text-green-700 bg-green-50 px-2.5 py-1 rounded-full font-medium border border-green-200 flex items-center gap-1">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            مُحدثة تلقائياً
-          </span>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div
-            onClick={() => changeTab("orders")}
-            className="border border-border rounded-lg p-5 hover:border-black hover:shadow-md transition-all cursor-pointer bg-card group relative"
-          >
-            <div className="flex items-center justify-between mb-3 text-[var(--admin-ink)]">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">
-                  <Package className="w-5 h-5" />
-                </div>
-                <h3 className="font-bold text-[16px] flex items-center gap-1">
-                  الطلبات{" "}
-                  <ArrowLeft className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
-                </h3>
-              </div>
-              <span className="text-xs font-bold text-foreground bg-muted px-2 py-0.5 rounded-full">
-                {orders.length}
-              </span>
-            </div>
-            <div className="text-[13px] text-muted-foreground space-y-1.5">
-              <p className="flex justify-between items-center">
-                <span>طلبات بانتظار الشحن/الدفع:</span>
-                <span
-                  className={`font-semibold ${delayedOrdersCount > 0 ? "text-amber-600" : "text-foreground"}`}
-                >
-                  {delayedOrdersCount} طلبات
-                </span>
-              </p>
-              <p className="flex justify-between items-center">
-                <span>طلبات قيد الشحن اليوم:</span>
-                <span className="font-semibold text-blue-600">{shippingTodayCount} طلبات</span>
-              </p>
-            </div>
-          </div>
-
-          <div
-            onClick={() => changeTab("messages")}
-            className="border border-border rounded-lg p-5 hover:border-black hover:shadow-md transition-all cursor-pointer bg-card group relative"
-          >
-            <div className="flex items-center justify-between mb-3 text-[var(--admin-ink)]">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center">
-                  <MessageSquare className="w-5 h-5" />
-                </div>
-                <h3 className="font-bold text-[16px] flex items-center gap-1">
-                  الرسائل{" "}
-                  <ArrowLeft className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
-                </h3>
-              </div>
-              <span className="text-xs font-bold text-foreground bg-muted px-2 py-0.5 rounded-full">
-                {messages.length}
-              </span>
-            </div>
-            <div className="text-[13px] text-muted-foreground space-y-1.5">
-              <p className="flex justify-between items-center">
-                <span>طلبات الدعم والاستفسار:</span>
-                <span className="font-semibold text-purple-600">{helpRequestsCount} طلبات</span>
-              </p>
-              <p className="flex justify-between items-center">
-                <span>رسائل من مشترين محتملين:</span>
-                <span className="font-semibold text-foreground">{buyerMessagesCount} رسائل</span>
-              </p>
-            </div>
-          </div>
-
-          <div
-            onClick={() => changeTab("listings")}
-            className="border border-border rounded-lg p-5 hover:border-black hover:shadow-md transition-all cursor-pointer bg-card group relative"
-          >
-            <div className="flex items-center justify-between mb-3 text-[var(--admin-ink)]">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                  <Tag className="w-5 h-5" />
-                </div>
-                <h3 className="font-bold text-[16px] flex items-center gap-1">
-                  المنتجات{" "}
-                  <ArrowLeft className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
-                </h3>
-              </div>
-              <span className="text-xs font-bold text-foreground bg-muted px-2 py-0.5 rounded-full">
-                {products.length}
-              </span>
-            </div>
-            <div className="text-[13px] text-muted-foreground space-y-1.5">
-              <p className="flex justify-between items-center">
-                <span>منتجات نفدت كميتها:</span>
-                <span
-                  className={`font-semibold ${outOfStockCount > 0 ? "text-red-600" : "text-foreground"}`}
-                >
-                  {outOfStockCount} منتجات
-                </span>
-              </p>
-              <p className="flex justify-between items-center">
-                <span>منتجات متوقفة/غير نشطة:</span>
-                <span className="font-semibold text-foreground">
-                  {inactiveProductsCount} منتجات
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <p className="text-[12px] text-muted-foreground mt-3 flex items-center gap-1">
-          <Clock className="w-3.5 h-3.5 text-muted-foreground" />
-          تظهر المهام الأساسية نشاط وتفاعل متجرك المباشر.
-          <button
-            onClick={() => changeTab("orders")}
-            className="underline hover:text-foreground mr-1"
-          >
-            إدارة الطلبات بالتفصيل
-          </button>
-        </p>
-      </div>
-
-      {/* الإحصائيات (Statistics) */}
-      <div className="mb-10">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-[18px] font-bold text-[var(--admin-ink)]">الإحصائيات</h2>
-          <button
-            onClick={() => changeTab("stats")}
-            className="text-sm font-semibold underline text-[var(--admin-ink)] hover:text-foreground flex items-center gap-1"
-          >
-            عرض التقرير الكامل <ArrowLeft className="w-4 h-4" />
-          </button>
-        </div>
-        <div className="border border-border rounded-lg p-6 bg-card shadow-sm">
-          <div className="mb-6 relative inline-block">
-            <button
-              onClick={() => setShowPeriodDropdown(!showPeriodDropdown)}
-              className="text-[13px] font-semibold flex items-center gap-2 text-[var(--admin-ink)] bg-muted border border-border hover:bg-muted px-3 py-1.5 rounded-md transition-colors"
-            >
-              <Calendar className="w-4 h-4 text-muted-foreground" />
-              المدة: {periodLabel}
-              <ChevronDown className="w-4 h-4 text-muted-foreground" />
-            </button>
-            {showPeriodDropdown && (
-              <div className="absolute right-0 mt-1 w-44 bg-card border border-border rounded-lg shadow-lg z-20 overflow-hidden py-1">
-                {[
-                  { id: "day", label: "اليوم" },
-                  { id: "week", label: "آخر 7 أيام" },
-                  { id: "month", label: "آخر شهر" },
-                  { id: "year", label: "آخر سنة" },
-                ].map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => {
-                      setPeriod(item.id as any);
-                      setShowPeriodDropdown(false);
-                    }}
-                    className={`w-full text-right px-4 py-2 text-xs font-medium transition-colors ${period === item.id ? "bg-muted text-foreground font-bold" : "text-foreground hover:bg-muted"}`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 divide-x divide-x-reverse divide-border">
-            <div className="pl-6">
-              <h4 className="text-[14px] font-semibold text-muted-foreground mb-1">
-                إجمالي المشاهدات
-              </h4>
-              <div className="text-[28px] sm:text-[32px] font-light text-[var(--admin-ink)] mb-1">
-                {totalViewsCount.toLocaleString()}
-              </div>
-              <div className="text-[12px] text-muted-foreground flex items-center gap-1 mt-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div> تتبع
-                مباشر
-              </div>
-            </div>
-            <div className="px-6">
-              <h4 className="text-[14px] font-semibold text-muted-foreground mb-1">الزيارات</h4>
-              <div className="text-[28px] sm:text-[32px] font-light text-[var(--admin-ink)] mb-1">
-                {totalVisitsCount.toLocaleString()}
-              </div>
-              <div className="text-[12px] text-muted-foreground flex items-center gap-1 mt-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div> تتبع
-                مباشر
-              </div>
-            </div>
-            <div className="px-6">
-              <h4 className="text-[14px] font-semibold text-muted-foreground mb-1">الطلبات</h4>
-              <div className="text-[28px] sm:text-[32px] font-light text-[var(--admin-ink)] mb-1">
-                {totalOrdersCount}
-              </div>
-              <div className="text-[12px] text-muted-foreground flex items-center gap-1 mt-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div> مسجلة بالنظام
-              </div>
-            </div>
-            <div className="pr-6">
-              <h4 className="text-[14px] font-semibold text-muted-foreground mb-1">
-                إجمالي الإيرادات
-              </h4>
-              <div
-                className="text-[28px] sm:text-[32px] font-light text-[var(--admin-ink)] mb-1"
-                dir="ltr"
-              >
-                د.ع {Math.round(totalRevenue).toLocaleString()}
-              </div>
-              <div className="text-[12px] text-muted-foreground flex items-center gap-1 mt-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div> حسب الطلبات
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* مستشار المتجر الذكي (Store Advisor) */}
-      <StoreAdvisorSection
-        orders={orders}
-        messages={messages}
-        products={products}
-        categories={categories}
-        changeTab={changeTab}
-      />
-    </div>
-  );
-}
 
 /**
  * A column header that sorts the products table.

@@ -92,7 +92,8 @@ describe("the head preloads nothing the app does not draw", () => {
   it.each([
     "components/auth/AuthPieces.tsx",
     "components/telegram/TelegramLayout.tsx",
-    "components/AdminDashboard.tsx",
+    /* The admin's frame moved out of the dashboard into its own shell. */
+    "components/admin/shell/AdminShell.tsx",
     "routes/telegram/index.tsx",
   ])("%s draws the mascot from the bundle, not from a CDN", (relative) => {
     const text = readFileSync(path.resolve(__dirname, "..", relative), "utf8");

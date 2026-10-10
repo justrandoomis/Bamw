@@ -20,14 +20,14 @@ export const Route = createFileRoute("/admin/")({
   },
   head: () => ({
     meta: [
-      { title: "لوحة الإدارة — بنانا ستور" },
+      { title: "لوحة الإدارة — بنانتو" },
       {
         name: "description",
         content:
           "إدارة المنتجات، البانرات، الطلبات، والمحادثات مع استخراج بيانات المنتج بالذكاء الاصطناعي.",
       },
       { name: "robots", content: "noindex, nofollow" },
-      { property: "og:title", content: "لوحة الإدارة — بنانا ستور" },
+      { property: "og:title", content: "لوحة الإدارة — بنانتو" },
       { property: "og:description", content: "إدارة كامل المتجر من مكان واحد." },
     ],
   }),
@@ -62,26 +62,20 @@ function AdminPage() {
     );
   }
 
+  /*
+    The dashboard brings its own frame — sidebar, top bar, search — so this
+    page adds none: a second bar above it was a second place for the same
+    two links, and it pushed the dashboard's own bar off the top.
+  */
   return (
     <div dir="rtl">
-      <div className="flex items-center justify-between border-b border-border bg-card px-4 py-2">
-        <p className="text-sm font-bold text-foreground">لوحة الإدارة — بنانتو</p>
-        <div className="flex items-center gap-2">
-          <Link
-            to="/admin/orders"
-            className="rounded-lg bg-muted/60 hover:bg-muted border border-border px-3 py-1.5 text-xs font-bold text-foreground transition-colors"
-          >
-            إدارة الطلبات
-          </Link>
-          <Link
-            to="/"
-            className="rounded-lg bg-foreground text-background px-3 py-1.5 text-xs font-bold transition-opacity hover:opacity-90"
-          >
-            عرض المتجر
-          </Link>
-        </div>
-      </div>
-      <Suspense fallback={<div className="p-10 text-center text-sm text-muted-foreground animate-pulse">جاري تحميل لوحة الإدارة...</div>}>
+      <Suspense
+        fallback={
+          <div className="flex h-[100dvh] items-center justify-center bg-[var(--page)] text-sm font-bold text-muted-foreground">
+            جارٍ تحميل لوحة الإدارة…
+          </div>
+        }
+      >
         <AdminDashboard />
       </Suspense>
     </div>
