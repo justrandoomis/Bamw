@@ -31,6 +31,12 @@
  *  - `clay`        — the page is made of clay: the material's tokens on the
  *                    root (`--clay-2`), the lit page canvas (`.clay-canvas`),
  *                    and the fade under the floating dock that came last.
+ *  - `catalogue-header` — `/category/nintendo_games` names its shelf in an
+ *                    `<h1>` («ألعاب نينتندو سويتش»); the page used to open on a
+ *                    banner with an empty block where the title belonged;
+ *  - `game-hero`   — a card on that shelf opens the rebuilt game page: its
+ *                    buy button, and the back control the hero now carries
+ *                    (the old hub had none).
  *
  * And one reading that is not a probe of the build: whether «الدخول عبر Google»
  * reaches Google at all. That depends on two secrets in Cloudflare, not on the
@@ -196,6 +202,46 @@ const contestsPath = await page
   .catch(() => "—");
 
 /*
+  The catalogue, reached the same way — and from it, a game, by the card's own
+  link, which the router follows in-app, so neither is a second page load.
+*/
+let catalogueHeader = 0;
+const gameHero = { opened: 0, back: 0 };
+if (!challenged) {
+  await page
+    .evaluate(() => {
+      window.history.pushState({}, "", "/category/nintendo_games");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    })
+    .catch(() => {});
+  catalogueHeader = await page
+    .locator("h1", { hasText: /ألعاب نينتندو سويتش|Nintendo Switch/ })
+    .first()
+    .waitFor({ state: "attached", timeout: 30_000 })
+    .then(() => 1)
+    .catch(() => 0);
+  const card = page.locator('a[href^="/product/"]').first();
+  const opened = await card
+    .waitFor({ state: "attached", timeout: 30_000 })
+    .then(() => card.click({ timeout: 10_000 }))
+    .then(() => true)
+    .catch(() => false);
+  if (opened) {
+    gameHero.opened = await page
+      .locator("#hero-buy-button")
+      .first()
+      .waitFor({ state: "attached", timeout: 30_000 })
+      .then(() => 1)
+      .catch(() => 0);
+    gameHero.back = await page
+      .locator('header button[aria-label="رجوع"], header button[aria-label="Back"]')
+      .count()
+      .catch(() => 0);
+  }
+}
+const gamePath = await page.evaluate(() => location.pathname).catch(() => "—");
+
+/*
   Where «الدخول عبر Google» lands, from a browser of its own — a first visit,
   which the edge lets through. Google's sign-in page means the two secrets are
   set; the shop's own «not configured» answer means they are not.
@@ -243,6 +289,16 @@ const probes = [
     name: "contests-tab",
     live: contestsTab > 0 && (contestsApi.list || contestsApi.status === 403),
     seen: `in-app ${contestsPath} · ${contestsTab ? "the events tab, selected" : "no events tab"} · /api/contests HTTP ${contestsApi.status || "—"}${contestsApi.list ? " with a list" : ""}`,
+  },
+  {
+    name: "catalogue-header",
+    live: catalogueHeader > 0,
+    seen: `in-app /category/nintendo_games · ${catalogueHeader ? "the shelf's own heading" : "no heading"}`,
+  },
+  {
+    name: "game-hero",
+    live: gameHero.opened > 0 && gameHero.back > 0,
+    seen: `in-app ${gamePath} · ${gameHero.opened ? "buy button" : "no buy button"} · ${gameHero.back ? "back control in the hero" : "no back control"}`,
   },
   {
     name: "clay",
