@@ -537,6 +537,8 @@ function WaitingTile({
   urgent?: boolean;
 }) {
   const waiting = count > 0;
+  // On navy a yellow wash cancels to grey, so the dark packs keep the card
+  // and let the gold rim and the gold count carry the alert.
   return (
     <button
       type="button"
@@ -545,7 +547,7 @@ function WaitingTile({
         "group flex min-h-[112px] flex-col justify-between rounded-2xl border p-3 text-start transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-banana/70 sm:min-h-[128px] sm:rounded-3xl sm:p-4",
         waiting
           ? urgent
-            ? "border-banana/60 bg-banana/15 hover:bg-banana/25"
+            ? "border-banana/60 bg-banana/15 hover:bg-banana/25 dark:border-banana/70 dark:bg-card dark:hover:bg-muted/50"
             : "border-border bg-card hover:bg-muted/50"
           : "border-border bg-card/60 hover:bg-card",
       )}
@@ -559,7 +561,12 @@ function WaitingTile({
       </span>
       {waiting ? (
         <span>
-          <span className="block text-[32px] font-black leading-none tracking-[-0.03em] tabular-nums sm:text-[40px]">
+          <span
+            className={cn(
+              "block text-[32px] font-black leading-none tracking-[-0.03em] tabular-nums sm:text-[40px]",
+              urgent && "dark:text-banana",
+            )}
+          >
             {num(count)}
           </span>
           <span className="mt-1 block text-[11.5px] font-bold leading-snug text-foreground/80 sm:text-[13px]">

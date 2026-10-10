@@ -9,7 +9,6 @@ import {
   CardWrapper,
   DEFAULT_DIAL,
   ErrorMsg,
-  FieldDecorations,
   GoogleButton,
   InputField,
   OrDivider,
@@ -402,7 +401,6 @@ function SignInCard({ onNavigate, externalError }: CardProps) {
             onChange={(event) => setIdentifier(event.target.value)}
             placeholder={tr("الإيميل أو الهاتف أو اسم المستخدم")}
             autoComplete="username"
-            decoration={<FieldDecorations />}
           />
           <PasswordField
             label="كلمة المرور"
@@ -834,7 +832,6 @@ function ForgotPasswordCard({
                 value={memberId}
                 onChange={(e) => setMemberId(e.target.value)}
                 placeholder="123456"
-                decoration={<FieldDecorations />}
               />
               <p className="px-2 text-[12px] font-[600] text-[var(--ink-soft)]">
                 {tr("سيصلك الرمز عبر تلغرام المرتبط بحسابك، أو عبر واتساب إن لم يكن مرتبطاً.")}
@@ -1352,7 +1349,6 @@ function ProfileSetupCard({ onNavigate }: CardProps) {
           value={name}
           onChange={(event) => setName(event.target.value)}
           placeholder={tr("اسمك الظاهر")}
-          decoration={<FieldDecorations />}
         />
         <InputField
           label="معرّف الحساب"

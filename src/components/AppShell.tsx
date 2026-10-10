@@ -123,10 +123,12 @@ export default function AppShell({
         </AnimatePresence>
       </main>
 
+      {/* The dock floats, so the page fades out beneath it instead of
+          showing through the gap under it (Apple's scroll-edge effect). */}
       {!hideNav && !isTelegramMiniApp && (
         <div
           id="app-bottom-nav"
-          className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none [&>*]:pointer-events-auto"
+          className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none [&>*]:pointer-events-auto before:absolute before:inset-x-0 before:bottom-0 before:h-[calc(100%+1.25rem)] before:bg-gradient-to-t before:from-[var(--page)] before:from-30% before:to-transparent"
         >
           <BottomNav currentView={currentView} onNavigate={handleNavigate} />
         </div>

@@ -1,4 +1,4 @@
-/** Hand-drawn banana decorations and framing for the auth cards. */
+/** Banana accents and the clay card that frames the sign-in screens. */
 import type { ReactNode } from "react";
 import { Loader2, AlertCircle, Eye, EyeOff } from "lucide-react";
 import { motion } from "motion/react";
@@ -116,55 +116,6 @@ const CornerBanana = ({ className = "" }: { className?: string }) => (
 
 export const ButtonBananaOutline = ({ className = "w-7 h-7" }: { className?: string }) => (
   <CornerBanana className={className} />
-);
-
-export const InputLeftLeaf = ({ className = "" }: { className?: string }) => (
-  <svg
-    viewBox="0 0 50 80"
-    fill="none"
-    stroke="var(--ink-soft)"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-    aria-hidden="true"
-  >
-    <path
-      d="M 25 10 C 40 15, 45 35, 35 50 C 25 65, 10 50, 15 35 C 20 20, 20 15, 25 10 Z"
-      fill="var(--page-3)"
-    />
-    <path d="M 12 70 C 18 55, 25 35, 25 10" />
-    <path d="M 21 40 L 30 35" />
-    <path d="M 23 25 L 32 20" />
-    <path d="M 17 50 L 25 48" />
-  </svg>
-);
-
-export const InputRightBanana = ({ className = "" }: { className?: string }) => (
-  <svg
-    viewBox="0 0 40 40"
-    fill="none"
-    stroke="var(--ink-soft)"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-    aria-hidden="true"
-  >
-    <path d="M 10 30 C 15 35, 25 35, 35 25 C 25 15, 15 15, 10 30 Z" fill="var(--gold)" />
-    <path d="M 8 32 L 10 30" />
-  </svg>
-);
-
-export const FieldDecorations = () => (
-  <>
-    <div className="pointer-events-none absolute top-1/2 -left-[1.5rem] z-20 -translate-y-1/2 sm:-left-[3rem]">
-      <InputLeftLeaf className="h-16 w-10 rotate-[-5deg] sm:h-24 sm:w-16" />
-    </div>
-    <div className="pointer-events-none absolute -right-[0.5rem] bottom-[-1.5rem] z-20 sm:-right-[1.5rem]">
-      <InputRightBanana className="h-8 w-8 rotate-[15deg] sm:h-12 sm:w-12" />
-    </div>
-  </>
 );
 
 export const CardWrapper = ({
