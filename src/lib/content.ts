@@ -3,6 +3,7 @@
  * Admin dashboard saves it through the existing /api/content pipe, and served
  * publicly through /api/content or server functions.
  */
+import { DEFAULT_PROMOTIONS, normalizePromotions, type PromotionsData } from "./promotions";
 
 export interface FaqCategory {
   id: string;
@@ -514,6 +515,12 @@ export interface ReviewPromptData {
 export interface ContentDoc {
   problems?: ProblemEntry[];
   reviewPrompt?: ReviewPromptData;
+  /**
+   * The shop's offers and their switches — «اشتري ثلاثة ألعاب وأحصل على
+   * الرابعة مجانا». Here for the reason `reviewPrompt` is: content is patched
+   * key by key, so turning an offer on is never undone by an unrelated save.
+   */
+  promotions?: PromotionsData;
   faqCategories: FaqCategory[];
   faq: FaqItem[];
   policy: PolicyData;
@@ -539,6 +546,7 @@ const opt = (
 
 export const DEFAULT_CONTENT: ContentDoc = {
   problems: [],
+  promotions: DEFAULT_PROMOTIONS,
   reviewPrompt: {
     /*
       Empty by default, and the sheet says so rather than guessing a link. An
@@ -818,6 +826,7 @@ export function mergeContent(partial: unknown): ContentDoc {
   const source = (partial ?? {}) as Partial<ContentDoc>;
   return {
     problems: Array.isArray(source.problems) ? source.problems : DEFAULT_CONTENT.problems,
+    promotions: normalizePromotions(source.promotions),
     reviewPrompt: source.reviewPrompt
       ? { ...DEFAULT_CONTENT.reviewPrompt, ...source.reviewPrompt }
       : DEFAULT_CONTENT.reviewPrompt,

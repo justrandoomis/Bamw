@@ -5,6 +5,13 @@
  *    ( اجعلها تحت الصيانه )»
  *   «وقف ميزه استبدال الاقراص وجعلها تحت الصيانه»
  *
+ * And later, the banana half back:
+ *
+ *   «ارجاع ربح الموز / ارجاع الروليت / ارجاع قسم الموز كاملا»
+ *
+ * So the roulette, the bananas and the banana market are open again; the
+ * review discount and disc trade-in are still closed.
+ *
  * ONE SWITCH PER FEATURE, ASKED WHEREVER THAT FEATURE CAN MOVE VALUE. A
  * maintenance screen on its own is a curtain: the endpoints behind it would
  * still spin, sell, redeem and mint for anyone who calls them directly. So
@@ -34,11 +41,11 @@ export type MaintenanceFeature =
 
 export const UNDER_MAINTENANCE: Readonly<Record<MaintenanceFeature, boolean>> = {
   /** Spinning and buying tickets. Claiming a prize already won stays open. */
-  roulette: true,
+  roulette: false,
   /** Earning bananas on orders and top-up codes, and spending them on rewards. */
-  bananas: true,
+  bananas: false,
   /** Selling to the shop, trading listings, and the market's bots. */
-  bananaMarket: true,
+  bananaMarket: false,
   /** The 1,000-dinar code an approved review earns. */
   reviewReward: true,
   /** New disc trade-in requests and their quotes. Trades already submitted carry on. */

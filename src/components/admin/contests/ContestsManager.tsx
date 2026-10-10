@@ -260,7 +260,7 @@ function ContestDetail({ id, onBack }: { id: string; onBack: () => void }) {
         extra={
           contest.status !== "draft" ? (
             <a
-              href={`/banana_market?tab=events&contest=${contest.id}`}
+              href={`/banana?contest=${contest.id}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex h-9 items-center gap-1 rounded-xl border border-border px-3 text-[12.5px] font-bold"

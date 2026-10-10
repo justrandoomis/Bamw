@@ -33,7 +33,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 const useRouletteMock = vi.fn();
 const useAuthMock = vi.fn();
 
-vi.mock("@tanstack/react-router", () => ({
+vi.mock("@tanstack/react-router", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@tanstack/react-router")>()),
   createFileRoute: () => (options: unknown) => options,
   Link: ({ to, children, ...rest }: { to: string; children: React.ReactNode }) => (
     <a href={to} {...rest}>

@@ -1392,7 +1392,7 @@ async function notifyWinners(contestId: string, onlyWinnerId?: string): Promise<
         parse_mode: "HTML",
         reply_markup: {
           inline_keyboard: [
-            [{ text: "🎁 افتح ألعابي", url: `${telegramPublicOrigin()}/banana_market?tab=events` }],
+            [{ text: "🎁 افتح ألعابي", url: `${telegramPublicOrigin()}/banana` }],
           ],
         },
       },

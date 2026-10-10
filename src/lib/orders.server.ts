@@ -43,6 +43,7 @@ import { isFullyDigitalOrder } from "./delivery-kinds";
 import { resolveDeliveryPrice } from "./delivery-fee";
 import { cashOnDeliveryAllowed, resolvePaymentMethod } from "./payment-method";
 import { isUnderMaintenance } from "./maintenance";
+import { normalizePromotions, quoteBuy3Get1, withoutFreeUnits } from "./promotions";
 import type {
   Address,
   Order,
@@ -528,6 +529,29 @@ export async function createOrderForUser(
     throw new Error("invalid_total");
   }
 
+  /*
+    «اشتري ثلاثة ألعاب وأحصل على الرابعة مجانا» — priced FIRST, on the
+    server's own lines and prices, with the switch the admin set in the shop's
+    content. The coupon and the referral below are then priced on the copies
+    still being paid for, so neither can discount a game that is already free,
+    and a referrer is not paid a share of a gift.
+  */
+  const buy3get1 = quoteBuy3Get1(
+    items.map((item) => ({
+      key: item.id,
+      productId: String(item.productId),
+      title: item.title,
+      kind: item.kind,
+      unitPrice: item.unitPrice,
+      quantity: item.quantity,
+    })),
+    normalizePromotions((store as { content?: { promotions?: unknown } }).content?.promotions)
+      .buy3get1,
+  );
+  const promotionDiscount = Math.min(buy3get1.discount, itemsTotal);
+  const paidItems = withoutFreeUnits(items, (item) => item.id, buy3get1);
+  const paidItemsTotal = itemsTotal - promotionDiscount;
+
   const now = new Date().toISOString();
   let discountAmount = 0;
   let appliedCoupon: Coupon | null = null;
@@ -556,7 +580,7 @@ export async function createOrderForUser(
   const referralDecision = await resolveReferralForCheckout({
     ...(referralContext?.request ? { request: referralContext.request } : {}),
     buyer: user,
-    lines: items.map((item) => ({
+    lines: paidItems.map((item) => ({
       productId: item.productId,
       kind: item.kind,
       quantity: item.quantity,
@@ -625,7 +649,7 @@ export async function createOrderForUser(
       values the browser sent. That is what makes an offline-account
       restriction unspoofable.
     */
-    const couponItems: CouponCheckItem[] = items.map((item) => ({
+    const couponItems: CouponCheckItem[] = paidItems.map((item) => ({
       productId: item.productId,
       kind: item.kind,
       unitPrice: item.unitPrice,
@@ -647,7 +671,7 @@ export async function createOrderForUser(
     const verdict = checkCoupon({
       coupon,
       userId: user.id,
-      orderAmount: itemsTotal,
+      orderAmount: paidItemsTotal,
       items: couponItems,
       globalUses: usage.globalUses,
       userUses: usage.userUses,
@@ -656,7 +680,7 @@ export async function createOrderForUser(
     });
     if (!verdict.ok) throw new Error("coupon_invalid");
 
-    const discountRes = couponDiscount(coupon, itemsTotal, couponItems, targetProductId);
+    const discountRes = couponDiscount(coupon, paidItemsTotal, couponItems, targetProductId);
     const discountedLine = discountRes.targetProductId
       ? couponItems.find((item) => String(item.productId) === String(discountRes.targetProductId))
       : undefined;
@@ -771,7 +795,8 @@ export async function createOrderForUser(
   }
 
   if (useReferral) discountAmount += referralDiscount;
-  discountAmount = Math.min(discountAmount, itemsTotal);
+  /* The coupon and the referral come off what is paid for; the free game on top. */
+  discountAmount = Math.min(discountAmount, paidItemsTotal) + promotionDiscount;
 
   /*
     Recorded whenever anything is owed, which since the rules changed is no
@@ -919,6 +944,19 @@ export async function createOrderForUser(
 
   const order: Order = {
     discountAmount: discountAmount || undefined,
+    ...(buy3get1.applied
+      ? {
+          promotion: {
+            id: "buy3get1" as const,
+            discountIqd: promotionDiscount,
+            freeItems: buy3get1.free.map((unit) => ({
+              productId: unit.productId,
+              title: unit.title,
+              unitPrice: unit.unitPrice,
+            })),
+          },
+        }
+      : {}),
     couponCode: appliedCoupon && couponCode ? couponCode.trim().toUpperCase() : undefined,
     // Which line the coupon actually came off, when it was restricted to one.
     // Resolved above to compute the discount; recording it is what lets
@@ -1132,7 +1170,8 @@ export async function createOrderForUser(
         appliedCoupon.discountType,
         user.id,
         orderId,
-        discountAmount,
+        // What the coupon (and a stacked referral) took — not the free game.
+        discountAmount - promotionDiscount,
         appliedTargetProductId,
         appliedVariantId,
         now,
@@ -1254,7 +1293,11 @@ export async function createOrderForUser(
         a pricier edition still earns on the difference the member paid.
       */
       const isWheelPrize = String(appliedCoupon?.code ?? "").startsWith("WIN-");
-      const bananaBase = isWheelPrize ? finalItemsTotal : itemsTotal;
+      /*
+        And a game the 3+1 offer gave away earns nothing either, for the same
+        reason: nobody paid for it.
+      */
+      const bananaBase = isWheelPrize ? finalItemsTotal : paidItemsTotal;
       const bananaReward = Math.floor(bananaBase * rewardRate);
 
       const existingReward = await d1First(

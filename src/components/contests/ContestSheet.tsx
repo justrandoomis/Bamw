@@ -302,7 +302,7 @@ function EntryPanel({ contest, onClose }: { contest: ContestView; onClose: () =>
         <button
           type="button"
           onClick={() => {
-            rememberAfterSignIn(`/banana_market?tab=events&contest=${contest.id}`);
+            rememberAfterSignIn(`/banana?contest=${contest.id}`);
             onClose();
             void navigate({ to: "/auth" });
           }}

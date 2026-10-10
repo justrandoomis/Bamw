@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { ChevronLeft, Gift, KeyRound, Loader2, Trophy, Users } from "lucide-react";
+import { ChevronLeft, Gift, KeyRound, Loader2, Ticket, Trophy, Users } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
 import { tr, useI18n } from "@/i18n";
 import { useAuth } from "@/hooks/useAuth";
 import { useContests } from "@/hooks/useContests";
-import type { RoulettePrizeData } from "@/hooks/useRoulette";
+import { useRoulette, type RoulettePrizeData } from "@/hooks/useRoulette";
 import type { ContestView } from "@/lib/contests";
 import { isUnderMaintenance, MAINTENANCE_COPY } from "@/lib/maintenance";
 import { cn } from "@/lib/utils";
@@ -15,111 +15,283 @@ import { playSound } from "@/utils/audio";
 import { Countdown, MethodChips, PhaseBadge, PrizeImage } from "./ContestParts";
 import ContestSheet from "./ContestSheet";
 
+const money = (n: number) => Number(n || 0).toLocaleString("en-US");
+
 /**
- * «الفعاليات والمسابقات» — the second tab of /banana_market.
+ * «الفعاليات والمسابقات» — what `/banana` opens on.
  *
- * The roulette (under maintenance for now, and saying so in one line), the
- * games the member has won from anything, a place to type the code of a game
- * won on Instagram, and the contests — open ones first. A contest opens in a
- * sheet over the list, addressed by `?contest=` so it can be shared.
+ *   «تطوير تجربه المستخدم وتسهيلها في قسم الفعاليات والمسابقات»
+ *
+ * One thing is loud: the contest a member can enter right now, ending
+ * soonest, with its countdown and one button. Everything under it is quiet
+ * and in the order a member reaches for it — the roulette and their tickets,
+ * the games they have won, the other contests, a code from Instagram, and
+ * how the bananas that pay for all of it are earned.
+ *
+ * A contest opens in a sheet over the list, addressed by `?contest=` so it
+ * can be shared.
  */
 export default function EventsTab({
   contestId,
   onOpen,
+  onShowMarket,
 }: {
   contestId?: string | undefined;
   onOpen: (id: string | null) => void;
+  /** To the market half — where tickets are bought and bananas sold. */
+  onShowMarket: () => void;
 }) {
   const { lang } = useI18n();
   const { user } = useAuth();
   const { contests, prizes, isPending, error } = useContests();
+  const roulette = useRoulette(1, { enabled: Boolean(user) });
   const selected = contestId ? (contests.find((c) => c.id === contestId) ?? null) : null;
 
-  const live = contests.filter((c) => c.phase === "open" || c.phase === "upcoming");
+  /*
+    The featured contest: open, and ending soonest — the one where waiting
+    costs a member something. One with no end date is ended by the admin, so
+    it comes after every dated one.
+  */
+  const open = contests
+    .filter((c) => c.phase === "open")
+    .sort(
+      (a, b) =>
+        (a.endsAt ? Date.parse(a.endsAt) : Infinity) - (b.endsAt ? Date.parse(b.endsAt) : Infinity),
+    );
+  const featured = open[0] ?? null;
+  const live = contests.filter(
+    (c) => (c.phase === "open" || c.phase === "upcoming") && c.id !== featured?.id,
+  );
   const past = contests.filter((c) => c.phase !== "open" && c.phase !== "upcoming");
+  const bananasOpen = !isUnderMaintenance("bananas");
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 pb-24 pt-2" dir={lang === "en" ? "ltr" : "rtl"}>
-      <header className="mb-3">
-        <h1 className="text-[19px] font-black tracking-[-0.02em] text-foreground">
-          {tr("الفعاليات والمسابقات")}
-        </h1>
-        <p className="mt-0.5 text-[12px] text-muted-foreground">
-          {tr("ادخل المسابقات واربح ألعاباً — كل لعبة تربحها تصل إلى ألعابك وتستوردها مجاناً.")}
-        </p>
-      </header>
+    <div className="mx-auto w-full max-w-3xl px-4 pb-8 pt-2" dir={lang === "en" ? "ltr" : "rtl"}>
+      {/* The tab above already says where this is; the heading is for screen readers. */}
+      <h1 className="sr-only">{tr("الفعاليات والمسابقات")}</h1>
 
-      <RouletteCard />
+      {user && roulette.state ? (
+        <WalletStrip
+          bananas={roulette.state.bananas}
+          tickets={roulette.state.tickets}
+          onShowMarket={onShowMarket}
+        />
+      ) : null}
+
+      {isPending ? (
+        <div className="flex justify-center py-12 text-muted-foreground">
+          <Loader2 className="h-5 w-5 animate-spin motion-reduce:animate-none" />
+        </div>
+      ) : featured ? (
+        <FeaturedContest contest={featured} onOpen={() => onOpen(featured.id)} />
+      ) : null}
+
+      <RouletteCard
+        signedIn={Boolean(user)}
+        tickets={roulette.state?.tickets ?? 0}
+        onShowMarket={onShowMarket}
+      />
 
       {user && prizes.length ? <MyPrizes prizes={prizes} /> : null}
 
-      <section className="mt-5" aria-labelledby="contests-title">
-        <h2
-          id="contests-title"
-          className="mb-2 flex items-center gap-1.5 text-[15px] font-black text-foreground"
-        >
-          <Trophy className="h-4 w-4 text-banana" aria-hidden="true" />
-          {tr("المسابقات")}
-        </h2>
+      {!isPending ? (
+        <section className="mt-6" aria-labelledby="contests-title">
+          <h2
+            id="contests-title"
+            className="mb-2 flex items-center gap-1.5 text-[15px] font-black text-foreground"
+          >
+            <Trophy className="h-4 w-4 text-banana" aria-hidden="true" />
+            {featured ? tr("مسابقات أخرى") : tr("المسابقات")}
+          </h2>
 
-        {isPending ? (
-          <div className="flex justify-center py-10 text-muted-foreground">
-            <Loader2 className="h-5 w-5 animate-spin motion-reduce:animate-none" />
-          </div>
-        ) : error ? (
-          <p className="rounded-2xl border border-border bg-card p-4 text-center text-[13px] text-muted-foreground">
-            {tr("تعذّر تحميل المسابقات، حاول مرة أخرى.")}
-          </p>
-        ) : !contests.length ? (
-          <div className="rounded-3xl border border-dashed border-border bg-card/60 px-5 py-8 text-center">
-            <p className="text-[28px]" aria-hidden="true">
-              🏆
+          {error ? (
+            <p className="rounded-2xl border border-border bg-card p-4 text-center text-[13px] text-muted-foreground">
+              {tr("تعذّر تحميل المسابقات، حاول مرة أخرى.")}
             </p>
-            <p className="mt-1 text-[14px] font-black text-foreground">
-              {tr("لا توجد مسابقات الآن")}
-            </p>
-            <p className="mt-1 text-[12px] text-muted-foreground">
-              {tr("تابعنا على إنستغرام وتلغرام ليصلك خبر المسابقة القادمة أولاً.")}
-            </p>
-          </div>
-        ) : (
-          <div className="space-y-2.5">
-            {live.map((contest) => (
-              <ContestCard key={contest.id} contest={contest} onOpen={() => onOpen(contest.id)} />
-            ))}
-            {past.length ? (
-              <>
-                <h3 className="pt-3 text-[12px] font-black text-muted-foreground">
-                  {tr("مسابقات انتهت")}
-                </h3>
-                {past.map((contest) => (
-                  <ContestCard
-                    key={contest.id}
-                    contest={contest}
-                    onOpen={() => onOpen(contest.id)}
-                  />
-                ))}
-              </>
-            ) : null}
-          </div>
-        )}
-      </section>
+          ) : !contests.length ? (
+            <div className="rounded-3xl border border-dashed border-border bg-card/60 px-5 py-8 text-center">
+              <p className="text-[28px]" aria-hidden="true">
+                🏆
+              </p>
+              <p className="mt-1 text-[14px] font-black text-foreground">
+                {tr("لا توجد مسابقات الآن")}
+              </p>
+              <p className="mt-1 text-[12px] text-muted-foreground">
+                {tr("تابعنا على إنستغرام وتلغرام ليصلك خبر المسابقة القادمة أولاً.")}
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-2.5">
+              {live.map((contest) => (
+                <ContestCard key={contest.id} contest={contest} onOpen={() => onOpen(contest.id)} />
+              ))}
+              {!live.length && featured ? (
+                <p className="rounded-2xl border border-dashed border-border px-4 py-3 text-center text-[12px] text-muted-foreground">
+                  {tr("لا مسابقات أخرى مفتوحة الآن.")}
+                </p>
+              ) : null}
+              {past.length ? <PastContests contests={past} onOpen={onOpen} /> : null}
+            </div>
+          )}
+        </section>
+      ) : null}
 
       {user ? <ClaimCode /> : null}
+
+      {bananasOpen ? <EarnBananas onShowMarket={onShowMarket} /> : null}
 
       <ContestSheet contest={selected} onClose={() => onOpen(null)} />
     </div>
   );
 }
 
-function RouletteCard() {
+/** The member's bananas and tickets, and the one place both are topped up. */
+function WalletStrip({
+  bananas,
+  tickets,
+  onShowMarket,
+}: {
+  bananas: number;
+  tickets: number;
+  onShowMarket: () => void;
+}) {
+  return (
+    <div className="mb-3 flex items-center gap-2 rounded-2xl border border-border bg-card px-3 py-2">
+      <p className="flex min-w-0 flex-1 flex-wrap items-center gap-x-3 gap-y-0.5 text-[12.5px] font-bold text-muted-foreground">
+        <span className="inline-flex items-center gap-1">
+          <span aria-hidden="true">🍌</span>
+          <span dir="ltr" className="font-black tabular-nums text-foreground">
+            {money(bananas)}
+          </span>
+          {tr("موزة")}
+        </span>
+        <span className="inline-flex items-center gap-1">
+          <Ticket className="h-3.5 w-3.5" aria-hidden="true" />
+          <span dir="ltr" className="font-black tabular-nums text-foreground">
+            {money(tickets)}
+          </span>
+          {tr("تذكرة")}
+        </span>
+      </p>
+      <button
+        type="button"
+        onClick={() => {
+          playSound("klick", 0.4);
+          onShowMarket();
+        }}
+        className="inline-flex min-h-10 shrink-0 items-center gap-1 rounded-xl px-2.5 text-[12px] font-black text-foreground transition-colors hover:bg-muted"
+      >
+        {tr("سوق الموز")}
+        <ChevronLeft className="h-3.5 w-3.5 ltr:rotate-180" aria-hidden="true" />
+      </button>
+    </div>
+  );
+}
+
+/**
+ * The contest to enter now — the page's one loud element. The prize is the
+ * picture, the countdown ticks, and the button says what the member's next
+ * step is in this contest, not in contests in general.
+ */
+function FeaturedContest({ contest, onOpen }: { contest: ContestView; onOpen: () => void }) {
+  const held = contest.mine?.tickets ?? 0;
+  const label = contest.mine?.won
+    ? tr("فزت! افتح التفاصيل")
+    : held
+      ? tr("أنت مشارك — زد فرصتك")
+      : tr("ادخل المسابقة");
+  return (
+    <section
+      aria-labelledby="featured-contest"
+      data-featured-contest={contest.id}
+      className="relative overflow-hidden rounded-[28px] border border-banana/40 bg-card shadow-soft"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-banana/25 to-transparent"
+      />
+      <div className="relative flex gap-3.5 p-4">
+        <PrizeImage
+          title={contest.prize.title}
+          image={contest.prize.image}
+          size={112}
+          className="rounded-[22px] shadow-sm ring-1 ring-black/5"
+        />
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <PhaseBadge phase={contest.phase} />
+            {held ? (
+              <span className="rounded-full bg-leaf/15 px-2 py-0.5 text-[10.5px] font-black text-leaf">
+                🎟️ {tr("مشارك")} ×{held}
+              </span>
+            ) : null}
+          </div>
+          <h2
+            id="featured-contest"
+            className="mt-1.5 line-clamp-2 text-[17px] font-black leading-snug tracking-[-0.01em] text-foreground"
+          >
+            {contest.title}
+          </h2>
+          <p className="mt-0.5 truncate text-[12.5px] font-bold text-muted-foreground" dir="auto">
+            🎁 {contest.prize.title}
+          </p>
+          <div className="mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11.5px] font-bold text-muted-foreground">
+            <Countdown
+              phase={contest.phase}
+              startsAt={contest.startsAt}
+              endsAt={contest.endsAt}
+              live
+              className="text-foreground"
+            />
+            {contest.participants !== null ? (
+              <span className="inline-flex items-center gap-1">
+                <Users className="h-3.5 w-3.5" aria-hidden="true" />
+                <span dir="ltr" className="tabular-nums">
+                  {contest.participants}
+                </span>
+              </span>
+            ) : null}
+          </div>
+        </div>
+      </div>
+      <div className="relative flex flex-wrap items-center gap-1.5 px-4 pb-1">
+        <MethodChips
+          methods={contest.entryMethods}
+          instagram={contest.drawSource === "instagram"}
+        />
+      </div>
+      <div className="relative p-3 pt-2.5">
+        <button
+          type="button"
+          onClick={() => {
+            playSound("klick", 0.45);
+            onOpen();
+          }}
+          className="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-banana px-4 text-[15px] font-black text-banana-ink shadow-sm transition-transform active:scale-[0.99]"
+        >
+          {label}
+        </button>
+      </div>
+    </section>
+  );
+}
+
+function RouletteCard({
+  signedIn,
+  tickets,
+  onShowMarket,
+}: {
+  signedIn: boolean;
+  tickets: number;
+  onShowMarket: () => void;
+}) {
   const closed = isUnderMaintenance("roulette");
   if (closed) {
     return (
       <div
         role="status"
         data-maintenance="roulette"
-        className="flex items-center gap-3 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-3"
+        className="mt-3 flex items-center gap-3 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-3"
       >
         <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-amber-500/15 text-[22px]">
           🎰
@@ -136,22 +308,131 @@ function RouletteCard() {
     );
   }
   return (
-    <Link
-      to="/wheel"
-      className="flex items-center gap-3 rounded-2xl border border-border bg-card p-3 transition-colors hover:bg-muted/50"
+    <section
+      aria-labelledby="roulette-card"
+      data-roulette-card
+      className="mt-3 rounded-3xl border border-border bg-card p-3"
     >
-      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-banana/20 text-[22px]">
-        🎰
+      <div className="flex items-center gap-3">
+        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-banana/20 text-[24px]">
+          🎰
+        </span>
+        <div className="min-w-0 flex-1">
+          <h2 id="roulette-card" className="text-[14px] font-black text-foreground">
+            {tr("الروليت")}
+          </h2>
+          <p className="text-[11.5px] text-muted-foreground">
+            {signedIn
+              ? tickets
+                ? tr("لديك تذاكر — دوّر واربح لعبة من المتجر.")
+                : tr("اشترِ تذاكر بالموز، ثم دوّر واربح لعبة من المتجر.")
+              : tr("دوّر بتذاكرك واربح لعبة من المتجر.")}
+          </p>
+        </div>
+        {signedIn ? (
+          <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-muted px-2.5 py-1 text-[12px] font-black text-foreground">
+            <Ticket className="h-3.5 w-3.5" aria-hidden="true" />
+            <span dir="ltr" className="tabular-nums">
+              {tickets}
+            </span>
+          </span>
+        ) : null}
+      </div>
+      <div className="mt-3 grid grid-cols-2 gap-1.5">
+        <Link
+          to="/wheel"
+          data-ui-sound="klick"
+          className={cn(
+            "flex min-h-11 items-center justify-center rounded-2xl text-[13px] font-black transition-transform active:scale-[0.99]",
+            /* With no tickets to spend, buying them is the step that matters. */
+            signedIn && !tickets
+              ? "border border-border text-foreground"
+              : "col-span-2 bg-foreground text-background",
+          )}
+        >
+          {tr("دوّر الآن")}
+        </Link>
+        {signedIn && !tickets ? (
+          <button
+            type="button"
+            onClick={() => {
+              playSound("klick", 0.4);
+              onShowMarket();
+            }}
+            className="flex min-h-11 items-center justify-center rounded-2xl bg-foreground text-[13px] font-black text-background transition-transform active:scale-[0.99]"
+          >
+            {tr("اشترِ تذاكر")}
+          </button>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
+/** Contests that ended: the three latest, and the rest on request. */
+function PastContests({
+  contests,
+  onOpen,
+}: {
+  contests: ContestView[];
+  onOpen: (id: string | null) => void;
+}) {
+  const [all, setAll] = useState(false);
+  const shown = all ? contests : contests.slice(0, 3);
+  return (
+    <>
+      <h3 className="pt-3 text-[12px] font-black text-muted-foreground">{tr("مسابقات انتهت")}</h3>
+      {shown.map((contest) => (
+        <ContestCard key={contest.id} contest={contest} onOpen={() => onOpen(contest.id)} />
+      ))}
+      {contests.length > 3 && !all ? (
+        <button
+          type="button"
+          onClick={() => setAll(true)}
+          className="flex min-h-10 w-full items-center justify-center rounded-2xl text-[12.5px] font-black text-foreground hover:bg-muted"
+        >
+          {tr("عرض كل المسابقات المنتهية")}{" "}
+          <span dir="ltr" className="ms-1 tabular-nums text-muted-foreground">
+            ({contests.length})
+          </span>
+        </button>
+      ) : null}
+    </>
+  );
+}
+
+/** «ارجاع ربح الموز» — where the bananas come from, in one sentence. */
+function EarnBananas({ onShowMarket }: { onShowMarket: () => void }) {
+  return (
+    <section
+      aria-labelledby="earn-bananas"
+      className="mt-6 flex items-start gap-3 rounded-3xl bg-banana/10 p-4"
+    >
+      <span className="text-[24px]" aria-hidden="true">
+        🍌
       </span>
       <div className="min-w-0 flex-1">
-        <p className="text-[13.5px] font-black text-foreground">{tr("الروليت")}</p>
-        <p className="text-[11.5px] text-muted-foreground">{tr("دوّر واربح لعبة من المتجر")}</p>
+        <h2 id="earn-bananas" className="text-[13.5px] font-black text-foreground">
+          {tr("كيف تربح الموز؟")}
+        </h2>
+        <p className="mt-0.5 text-[12px] leading-relaxed text-muted-foreground">
+          {tr(
+            "كل طلب مدفوع من المتجر يضيف موزاً إلى رصيدك تلقائياً. استخدمه لتذاكر الروليت ودخول المسابقات، أو بِعه للمتجر بسعر السوق.",
+          )}
+        </p>
+        <button
+          type="button"
+          onClick={() => {
+            playSound("klick", 0.4);
+            onShowMarket();
+          }}
+          className="mt-2 inline-flex min-h-10 items-center gap-1 rounded-xl text-[12.5px] font-black text-foreground underline-offset-4 hover:underline"
+        >
+          {tr("افتح سوق الموز")}
+          <ChevronLeft className="h-3.5 w-3.5 ltr:rotate-180" aria-hidden="true" />
+        </button>
       </div>
-      <ChevronLeft
-        className="h-4 w-4 text-muted-foreground rtl:rotate-0 ltr:rotate-180"
-        aria-hidden="true"
-      />
-    </Link>
+    </section>
   );
 }
 

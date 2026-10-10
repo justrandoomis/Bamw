@@ -77,7 +77,7 @@ export default function ContestDrawPanel({
   const dm = (winner: AdminContestWinner) =>
     `🎉 مبروك! فزت في مسابقة «${contest.settings.title}» بلعبة ${contest.settings.prizeTitle}.\n` +
     `كود جائزتك: ${winner.claimCode}\n` +
-    `ادخل حسابك في بنانتو ثم اكتب الكود في «لديك كود جائزة؟» هنا:\n${origin}/banana_market?tab=events`;
+    `ادخل حسابك في بنانتو ثم اكتب الكود في «لديك كود جائزة؟» هنا:\n${origin}/banana`;
 
   if (!drawn) {
     return (

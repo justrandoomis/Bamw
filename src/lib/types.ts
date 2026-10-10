@@ -950,6 +950,13 @@ export interface OrderReferral {
   riskScore: number;
 }
 
+/** «اشتري ثلاثة ألعاب وأحصل على الرابعة مجانا», as one order received it. */
+export interface OrderPromotion {
+  id: "buy3get1";
+  discountIqd: number;
+  freeItems: { productId: string; title: string; unitPrice: number }[];
+}
+
 export interface Order {
   id: string;
   code: string;
@@ -979,6 +986,12 @@ export interface Order {
    * with the settings since changed and the catalogue re-priced.
    */
   referral?: OrderReferral;
+  /**
+   * The buy-three-get-the-fourth offer, when it gave a game away on this
+   * order. Its value is part of `discountAmount`; this says which copies were
+   * free and what each was worth at the time.
+   */
+  promotion?: OrderPromotion;
   currency: string;
   status: OrderStatus;
   paymentStatus: PaymentStatus;

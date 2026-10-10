@@ -136,7 +136,7 @@ export function TicketsPanel({
   const [fresh, setFresh] = useState<string[]>([]);
   const contest = detail.contest;
   const enabled = contest.settings.entryMethods.includes("ticket");
-  const link = `${typeof window === "undefined" ? "" : window.location.origin}/banana_market?tab=events&contest=${contest.id}`;
+  const link = `${typeof window === "undefined" ? "" : window.location.origin}/banana?contest=${contest.id}`;
   const message = (code: string) =>
     `🎟️ تذكرتك لدخول مسابقة «${contest.settings.title}»: ${code}\nادخل من هنا واكتب الرقم في «لديك تذكرة من الإدارة؟»:\n${link}`;
 

@@ -30,6 +30,7 @@ import {
   ArrowUpRight,
   RefreshCw,
   X,
+  Gift,
 } from "lucide-react";
 import { useState, useMemo, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -52,6 +53,14 @@ import { useCurrency } from "@/context/CurrencyContext";
 import { getCart, updateCartItem, removeCartItem } from "@/lib/cart.functions";
 import { cartLinePrice } from "@/lib/productPricing";
 import ReferralCartField, { type ReferralCartState } from "@/components/referral/ReferralCartField";
+import { usePromotions } from "@/hooks/usePromotions";
+import {
+  BUY3GET1_GROUP,
+  freeCopiesOf,
+  quoteBuy3Get1,
+  withoutFreeUnits,
+  type Buy3Get1Quote,
+} from "@/lib/promotions";
 
 /**
  * A cart line as the coupon rules need to see it.
@@ -107,18 +116,71 @@ const emptyAddress: Omit<Address, "id"> = {
   notes: "",
 };
 
+/**
+ * How close the cart is to its next free game — four dots, filled one per
+ * game. It names the next step in a sentence, and when a game is already
+ * free it says which one, so the member never has to work the rule out.
+ */
+function Buy3Get1Progress({ quote }: { quote: Buy3Get1Quote }) {
+  const { formatIQDPrice } = useCurrency();
+  if (!quote.games) return null;
+  const inSet = quote.games % BUY3GET1_GROUP;
+  const filled = quote.applied && inSet === 0 ? BUY3GET1_GROUP : inSet;
+  const sentence =
+    quote.toNext === null
+      ? tr("حصلت على لعبتك المجانية في هذا الطلب 🎉")
+      : quote.applied && inSet === 0
+        ? tr("الأرخص بين ألعابك صار مجاناً 🎉 — أضف 4 ألعاب أخرى لتحصل على مجانية ثانية.")
+        : quote.toNext === 1
+          ? tr("أضف لعبة واحدة أخرى، وتصير أرخص لعبة في سلتك مجاناً.")
+          : quote.toNext === 2
+            ? tr("أضف لعبتين أخريين، وتصير أرخص لعبة في سلتك مجاناً.")
+            : tr("اشترِ 3 ألعاب واحصل على الرابعة مجاناً — الأرخص بينها.");
+  return (
+    <section
+      aria-label={tr("عرض اشترِ 3 واحصل على الرابعة مجاناً")}
+      data-buy3get1-progress={filled}
+      className="flex items-center gap-3 rounded-3xl border border-banana/40 bg-banana/10 p-3.5"
+    >
+      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-banana text-banana-ink">
+        <Gift className="h-5 w-5" aria-hidden="true" />
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="text-[13px] font-black leading-snug text-foreground">{sentence}</p>
+        <div className="mt-1.5 flex items-center gap-1.5" aria-hidden="true">
+          {Array.from({ length: BUY3GET1_GROUP }, (_, i) => (
+            <span
+              key={i}
+              className={`h-1.5 flex-1 rounded-full ${i < filled ? "bg-banana" : "bg-foreground/10"}`}
+            />
+          ))}
+        </div>
+        {quote.applied ? (
+          <p className="mt-1.5 text-[11px] font-bold text-muted-foreground">
+            {tr("وفّرت")} <span className="text-foreground">{formatIQDPrice(quote.discount)}</span>
+          </p>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
 /** Single Cart Item Card */
 function CartItemCard({
   line,
+  freeCopies = 0,
   onUpdateQuantity,
   onRequestDelete,
 }: {
   line: CartLine;
+  /** Copies of this line the 3+1 offer makes free. */
+  freeCopies?: number;
   onUpdateQuantity: (id: string | number, delta: number) => void;
   onRequestDelete: (line: CartLine) => void;
 }) {
   const { formatIQDPrice } = useCurrency();
-  const itemTotal = line.price * line.quantity;
+  const fullTotal = line.price * line.quantity;
+  const itemTotal = line.price * Math.max(0, line.quantity - freeCopies);
 
   const getKindBadge = () => {
     if (line.requiresAddress || line.kind === "hardware") {
@@ -213,6 +275,28 @@ function CartItemCard({
 
           {/* Badges & Price per unit */}
           <div className="flex flex-wrap items-center gap-2 mt-2">
+            {freeCopies > 0 ? (
+              <span
+                data-free-copies={freeCopies}
+                className="inline-flex items-center gap-1 text-[10px] font-black px-2 py-0.5 rounded-full bg-banana text-banana-ink"
+              >
+                <Gift className="h-3 w-3" aria-hidden="true" />
+                {line.quantity > 1 ? (
+                  <>
+                    {tr("مجاناً")} <span dir="ltr">×{freeCopies}</span>
+                  </>
+                ) : (
+                  /*
+                    «3+1» isolated left-to-right: inside Arabic, the bidi
+                    algorithm reads each digit as an Arabic number and the
+                    plus as a separator between them, and shows «1+3».
+                  */
+                  <>
+                    {tr("مجاناً — عرض")} <bdi dir="ltr">3+1</bdi>
+                  </>
+                )}
+              </span>
+            ) : null}
             {getKindBadge()}
             <div className="text-xs text-muted-foreground">
               <span>{tr("سعر الوحدة")}: </span>
@@ -269,6 +353,11 @@ function CartItemCard({
         {/* Item Total */}
         <div className="text-right">
           <span className="text-[11px] text-muted-foreground ml-1">{tr("الإجمالي")}:</span>
+          {freeCopies > 0 ? (
+            <span className="me-1 text-[11px] font-bold text-muted-foreground line-through">
+              {formatIQDPrice(fullTotal)}
+            </span>
+          ) : null}
           <span className="text-sm sm:text-base font-black text-foreground">
             {formatIQDPrice(itemTotal)}
           </span>
@@ -333,8 +422,9 @@ function CartPage() {
     },
   });
 
-  const products = (storeData?.products ?? []) as Product[];
-  const bundles = (storeData?.bundles ?? []) as any[];
+  /* Stable while the catalogue is, so the memos below re-run only when it changes. */
+  const products = useMemo(() => (storeData?.products ?? []) as Product[], [storeData?.products]);
+  const bundles = useMemo(() => (storeData?.bundles ?? []) as any[], [storeData?.bundles]);
 
   /*
     The price a cart line is worth *now*.
@@ -474,6 +564,44 @@ function CartPage() {
   const totalItemsCount = lines.reduce((sum, l) => sum + (l.quantity || 1), 0);
 
   /*
+    «اشتري ثلاثة ألعاب وأحصل على الرابعة مجانا» — the same function the
+    checkout prices with, on the same catalogue prices, so the free game here
+    is the free game the order is charged for. A coupon and a referral are
+    then priced on the copies still being paid for, as the checkout does.
+
+    The kind is the catalogue's, as the server reads it — a bundle is a
+    bundle whatever an old cart line says.
+  */
+  const promotions = usePromotions();
+  const buy3get1 = useMemo(
+    () =>
+      quoteBuy3Get1(
+        lines.map((line) => {
+          const isProduct = products.some((p) => String(p.id) === String(line.productId));
+          const isBundle =
+            !isProduct && bundles.some((b) => String(b.id) === String(line.productId));
+          const source = line.source as { kind?: string } | undefined;
+          return {
+            key: String(line.id),
+            productId: String(line.productId),
+            title: String(line.title ?? ""),
+            kind: isBundle ? "bundle" : (source?.kind ?? line.kind ?? "account"),
+            unitPrice: Number(line.price) || 0,
+            quantity: Number(line.quantity) || 0,
+          };
+        }),
+        promotions.buy3get1,
+      ),
+    [lines, products, bundles, promotions.buy3get1],
+  );
+  const promotionDiscount = Math.min(buy3get1.discount, subtotal);
+  const paidLines = useMemo(
+    () => withoutFreeUnits(lines, (line) => String(line.id), buy3get1),
+    [lines, buy3get1],
+  );
+  const paidSubtotal = subtotal - promotionDiscount;
+
+  /*
     Delivery, from the same function the checkout uses.
 
     This read `deliveryBase` alone and ignored the owner's per-city list, while
@@ -507,9 +635,9 @@ function CartPage() {
       const res = await validateCouponFn({
         data: {
           code,
-          orderAmount: subtotal,
+          orderAmount: paidSubtotal,
           targetProductId: target,
-          items: lines.map(couponItemFromLine),
+          items: paidLines.map(couponItemFromLine),
         },
       });
       if (res.valid && res.coupon) {
@@ -548,9 +676,9 @@ function CartPage() {
           const res = await validateCouponFn({
             data: {
               code: appliedCoupon.code,
-              orderAmount: subtotal,
+              orderAmount: paidSubtotal,
               targetProductId: selectedTargetProductId,
-              items: lines.map(couponItemFromLine),
+              items: paidLines.map(couponItemFromLine),
             },
           });
           if (res.valid && res.coupon) {
@@ -567,7 +695,7 @@ function CartPage() {
         }
       })();
     }
-  }, [subtotal, lines.length]);
+  }, [subtotal, paidSubtotal, lines.length]);
 
   /*
     The referral, as the server prices it.
@@ -585,7 +713,9 @@ function CartPage() {
     more. The same rule is applied again at checkout, from the same inputs, so
     this preview cannot disagree with the charge.
   */
-  const finalDiscount = Math.min(subtotal, Math.max(couponDiscount, referralDiscount));
+  const offerDiscount = Math.min(paidSubtotal, Math.max(couponDiscount, referralDiscount));
+  /* The coupon or referral comes off what is paid for; the free game on top. */
+  const finalDiscount = Math.min(subtotal, promotionDiscount + offerDiscount);
   const referralWins = referralDiscount > 0 && referralDiscount > couponDiscount;
   const totalPayable = Math.max(0, subtotal - finalDiscount + deliveryPrice);
 
@@ -905,6 +1035,7 @@ function CartPage() {
                 <CartItemCard
                   key={`${line.productId}-${line.offerKind || ""}-${line.optionId || ""}-${line.typeId || ""}`}
                   line={line}
+                  freeCopies={freeCopiesOf(String(line.id), buy3get1)}
                   onUpdateQuantity={(id, q) =>
                     setQuantity(id, q, line.offerKind, line.optionId, line.typeId, line.editionId)
                   }
@@ -917,6 +1048,8 @@ function CartPage() {
             </AnimatePresence>
           </div>
         </section>
+
+        {promotions.buy3get1.enabled ? <Buy3Get1Progress quote={buy3get1} /> : null}
 
         {/* Continue Shopping Link */}
         <div className="flex items-center justify-between px-2">
@@ -1090,7 +1223,7 @@ function CartPage() {
                   </span>
                 </div>
                 <span className="text-xs font-black text-emerald-600 dark:text-emerald-400 font-mono">
-                  - {formatIQDPrice(finalDiscount)}
+                  - {formatIQDPrice(offerDiscount)}
                 </span>
               </div>
 
@@ -1102,7 +1235,7 @@ function CartPage() {
                     {appliedCoupon.singleUnitPrice && (
                       <span className="font-mono text-foreground font-bold">
                         {formatIQDPrice(appliedCoupon.singleUnitPrice)} ÷ 2 = -
-                        {formatIQDPrice(finalDiscount)}
+                        {formatIQDPrice(offerDiscount)}
                       </span>
                     )}
                   </div>
@@ -1155,7 +1288,7 @@ function CartPage() {
           with, and it must read as the quieter of the two. It renders nothing
           at all once the discount has been spent and there is nobody to name.
         */}
-        <ReferralCartField lines={lines} onChange={setReferral} />
+        <ReferralCartField lines={paidLines} onChange={setReferral} />
 
         {/* Requirement 3: Detailed Order Breakdown / Summary */}
         <section className="bg-[var(--card)] p-4 rounded-3xl border border-border shadow-xs space-y-3">
@@ -1179,14 +1312,36 @@ function CartPage() {
               <span className="font-bold text-foreground">{formatIQDPrice(subtotal)}</span>
             </div>
 
+            {/* The 3+1 offer, on its own line and named after the game it gave. */}
+            {promotionDiscount > 0 && (
+              <div
+                data-promotion="buy3get1"
+                className="flex justify-between items-start gap-3 text-emerald-600 dark:text-emerald-400 font-bold"
+              >
+                <span className="flex min-w-0 items-start gap-1">
+                  <Gift className="mt-0.5 w-3.5 h-3.5 shrink-0" />
+                  <span className="min-w-0">
+                    {tr("عرض")} <bdi dir="ltr">3+1</bdi> — {tr("الأرخص مجاناً")}:
+                    <span
+                      className="block truncate text-[11px] font-medium text-muted-foreground"
+                      dir="auto"
+                    >
+                      {buy3get1.free.map((unit) => unit.title).join("، ")}
+                    </span>
+                  </span>
+                </span>
+                <span className="shrink-0">- {formatIQDPrice(promotionDiscount)}</span>
+              </div>
+            )}
+
             {/* Discount if present — named, so the member can see which one won */}
-            {finalDiscount > 0 && (
+            {offerDiscount > 0 && (
               <div className="flex justify-between items-center text-emerald-600 dark:text-emerald-400 font-bold">
                 <span className="flex items-center gap-1">
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>{referralWins ? tr("خصم الإحالة") : tr("الخصم المطبق")}:</span>
                 </span>
-                <span>- {formatIQDPrice(finalDiscount)}</span>
+                <span>- {formatIQDPrice(offerDiscount)}</span>
               </div>
             )}
             {referralWins && couponDiscount > 0 && (

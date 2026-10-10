@@ -24,7 +24,7 @@ const read = (path: string) =>
     .replace(/^\s*\/\/.*$/gm, " ");
 
 const BUY = read("src/routes/banana_buy.tsx");
-const MARKET = read("src/routes/banana_market.tsx");
+const MARKET = read("src/routes/banana.tsx");
 /*
   The sheet is where a price is quoted now.
 
@@ -42,8 +42,8 @@ describe("no screen prints a banana price in dollars", () => {
     /*
       This asserted that `/banana_buy` printed its prices in dinars. There are
       no prices on it any more: the member-to-member market is gone and the
-      route is a redirect into `/banana_market`, kept only because the address
-      exists in members' bookmarks and chat history.
+      route is a redirect into the market half of `/banana`, kept only because
+      the address exists in members' bookmarks and chat history.
 
       So the assertion is stronger than it was — not «the numbers are in the
       right currency» but «there are no numbers» — and it is still a real
@@ -51,7 +51,7 @@ describe("no screen prints a banana price in dollars", () => {
       fail here and have to answer for itself.
     */
     expect(BUY).toContain("redirect");
-    expect(BUY).toContain("/banana_market");
+    expect(BUY).toContain('to: "/banana", search: { tab: "market" }');
     expect(BUY).not.toMatch(/\$\{[a-zA-Z]+\.(total|pricePer)/);
     expect(BUY).not.toContain("$0.00");
     expect(BUY).not.toContain("pricePer");

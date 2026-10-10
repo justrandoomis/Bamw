@@ -664,9 +664,32 @@ export const Route = createFileRoute("/api/data")({
             }
           }
 
+          /*
+            `settings` is MERGED key by key; every other section is replaced.
+
+            A plain `{ ...prev, ...patch }` replaced the whole settings object
+            with whatever the screen sent, and «إعدادات السعر» sends only its
+            own four keys — so one save there erased the referral programme's
+            settings, the banana market's, the shop's name and the banana
+            earn rate, with nothing on screen to say so. A screen now owns the
+            keys it sends and nothing else. Removing a key outright was never
+            something any screen did; a value is cleared by sending it empty.
+          */
+          const settingsPatch =
+            patch.settings && typeof patch.settings === "object" && !Array.isArray(patch.settings)
+              ? (patch.settings as Record<string, unknown>)
+              : undefined;
           const updated = await updateStore((prev) => ({
             ...prev,
             ...patch,
+            ...(settingsPatch
+              ? {
+                  settings: {
+                    ...((prev.settings ?? {}) as Record<string, unknown>),
+                    ...settingsPatch,
+                  } as StoreDoc["settings"],
+                }
+              : {}),
           }));
 
           publicPayloadCache = undefined;

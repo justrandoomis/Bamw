@@ -30,7 +30,7 @@ import { trackBrowsing, getSessionId } from "@/lib/activity.functions";
 const viewToPath: Record<string, string> = {
   home: "/",
   store: "/",
-  market: "/banana_market",
+  market: "/banana",
   chat: "/chat",
   orders: "/orders",
   cart: "/cart",

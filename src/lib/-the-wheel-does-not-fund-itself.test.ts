@@ -27,9 +27,15 @@ const SOURCE = readFileSync(resolve(process.cwd(), "src/lib/orders.server.ts"), 
   .replace(/^\s*\/\/.*$/gm, " ");
 
 describe("a won game does not pay for the next ticket", () => {
+  /*
+    The other side of the base is `paidItemsTotal`: the full price, less only
+    a game the 3+1 offer gave away — nobody paid for that one either. No
+    coupon or referral is taken off it.
+  */
   it("earns bananas on what a prize order actually cost", () => {
-    expect(SOURCE).toMatch(/const bananaBase = isWheelPrize \? finalItemsTotal : itemsTotal/);
+    expect(SOURCE).toMatch(/const bananaBase = isWheelPrize \? finalItemsTotal : paidItemsTotal/);
     expect(SOURCE).toMatch(/Math\.floor\(bananaBase \* rewardRate\)/);
+    expect(SOURCE).toMatch(/const paidItemsTotal = itemsTotal - promotionDiscount;/);
   });
 
   it("recognises a prize by the code the wheel mints", () => {
@@ -42,7 +48,7 @@ describe("a won game does not pay for the next ticket", () => {
       commercial decision about what customers earn, and this is not it: it
       closes a loop the wheel opened and touches nothing else.
     */
-    expect(SOURCE).toContain("isWheelPrize ? finalItemsTotal : itemsTotal");
+    expect(SOURCE).toContain("isWheelPrize ? finalItemsTotal : paidItemsTotal");
     expect(SOURCE).not.toMatch(/const bananaReward = Math\.floor\(itemsTotal \* rewardRate\)/);
   });
 

@@ -4,16 +4,17 @@ import { playSound } from "@/utils/audio";
 
 export type MarketTab = "market" | "events";
 
+/** The contests first: they are where `/banana` opens. */
 const TABS: { id: MarketTab; icon: string; label: string }[] = [
-  { id: "market", icon: "🍌", label: "سوق الموز" },
   { id: "events", icon: "🏆", label: "الفعاليات والمسابقات" },
+  { id: "market", icon: "🍌", label: "سوق الموز" },
 ];
 
 /**
  * «في /banana_market اجعل هنالك شريط علوي ينتقل بين سوق الموز والفعاليات
- * والمسابقات» — one control, two halves, pinned to the top while the page
- * scrolls under it. The tab lives in the address (`?tab=events`), so a link
- * from Telegram or Instagram can open the contests directly.
+ * والمسابقات» — one control, two halves, pinned under the site header while
+ * the page scrolls beneath it. The tab lives in the address (`?tab=market`),
+ * so a link from Telegram or Instagram opens the half it means.
  */
 export default function MarketTabs({
   tab,
@@ -26,7 +27,7 @@ export default function MarketTabs({
   return (
     <div
       data-market-tabs
-      className="sticky top-0 z-30 bg-background/95 px-4 pb-2 pt-3 backdrop-blur supports-[backdrop-filter]:bg-background/80"
+      className="sticky top-[var(--header-h)] z-30 bg-[var(--page)]/95 px-4 pb-2 pt-3 backdrop-blur supports-[backdrop-filter]:bg-[var(--page)]/80"
       dir={lang === "en" ? "ltr" : "rtl"}
     >
       <div

@@ -2,11 +2,17 @@
  * @vitest-environment node
  */
 /**
- * Five features under maintenance, and every door to them actually shut.
+ * Five features that can be put under maintenance, and every door to them
+ * actually shut when they are.
  *
  *   «حاليا الروليت والموز وسوق الموز وخصم التقييم الالف دينار
  *    ( اجعلها تحت الصيانه )»
  *   «وقف ميزه استبدال الاقراص وجعلها تحت الصيانه»
+ *
+ * Then the banana half came back — «ارجاع ربح الموز / ارجاع الروليت / ارجاع
+ * قسم الموز كاملا» — so the switch as it ships is pinned on its own, read from
+ * the real module, and the doors are tested with every switch turned ON:
+ * that is what each switch has to do the next time it is.
  *
  * A maintenance screen alone is a curtain — the endpoints behind it would go
  * on spinning, selling and minting for anyone who calls them. So these tests
@@ -22,11 +28,25 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { createSqliteD1, type FakeD1 } from "@/test/sqlite-d1";
 
-import { MAINTENANCE_COPY, UNDER_MAINTENANCE, isUnderMaintenance, maintenanceError } from "./maintenance";
+import { MAINTENANCE_COPY, maintenanceError, type MaintenanceFeature } from "./maintenance";
+
+/*
+  Every switch ON for the door tests; `everyDoorShut = false` reads the switch
+  as it ships. The mock wraps the real module, so nothing else changes.
+*/
+let everyDoorShut = true;
+vi.mock("./maintenance", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("./maintenance")>();
+  return {
+    ...actual,
+    isUnderMaintenance: (feature: MaintenanceFeature) =>
+      everyDoorShut || actual.isUnderMaintenance(feature),
+  };
+});
 
 const db: FakeD1 = createSqliteD1();
 (globalThis as Record<string, unknown>)["__TEST_D1__"] = db;
@@ -117,16 +137,17 @@ beforeEach(async () => {
 });
 
 describe("the switch", () => {
-  it("has every feature the owner named under maintenance", () => {
-    expect(UNDER_MAINTENANCE).toEqual({
-      roulette: true,
-      bananas: true,
-      bananaMarket: true,
+  it("ships with the banana half open, and the review discount and disc trade-in closed", async () => {
+    const actual = await vi.importActual<typeof import("./maintenance")>("./maintenance");
+    expect(actual.UNDER_MAINTENANCE).toEqual({
+      roulette: false,
+      bananas: false,
+      bananaMarket: false,
       reviewReward: true,
       discTrade: true,
     });
-    for (const feature of Object.keys(UNDER_MAINTENANCE) as (keyof typeof UNDER_MAINTENANCE)[]) {
-      expect(isUnderMaintenance(feature)).toBe(true);
+    for (const feature of Object.keys(actual.UNDER_MAINTENANCE) as MaintenanceFeature[]) {
+      expect(actual.isUnderMaintenance(feature)).toBe(actual.UNDER_MAINTENANCE[feature]);
     }
   });
 
@@ -289,5 +310,81 @@ describe("the disc trade-in", () => {
   it("still shows a member their own trades", async () => {
     const res = await discTrade.GET({ request: new Request("https://banan.to/api/disc-trade") });
     expect(res.status).toBe(200);
+  });
+});
+
+/*
+  The same doors with the switch read as it ships: the banana half lets a
+  member through — each answer is the feature's own, never «تحت الصيانة» —
+  while the two features still closed stay shut.
+*/
+describe("as it ships", () => {
+  beforeEach(() => {
+    everyDoorShut = false;
+  });
+  afterEach(() => {
+    everyDoorShut = true;
+  });
+
+  /*
+    This database has no ticket price and no prize pool, so the roulette
+    answers with its own reasons — which is the proof the request got past
+    the maintenance door to the roulette itself.
+  */
+  it("lets a ticket purchase reach the roulette", async () => {
+    const res = await post(wheel, "/api/wheel", {
+      action: "buy_ticket",
+      quantity: 1,
+      requestId: "open-ticket-1",
+    });
+    expect(res.status).not.toBe(503);
+    expect(res.body["code"]).not.toBe("maintenance");
+    expect(String(res.body["error"])).toContain("سعر التذكرة");
+  });
+
+  it("lets a spin reach the roulette", async () => {
+    const spin = await post(roulette, "/api/roulette", {
+      action: "spin",
+      tickets: 1,
+      requestId: "open-spin-1",
+    });
+    expect(spin.status).not.toBe(503);
+    expect(spin.body["code"]).toBe("empty_pool");
+  });
+
+  it("buys a member's bananas at the market price again", async () => {
+    const before = await balances();
+    const res = await post(banana, "/api/banana", {
+      action: "sell_bananas",
+      quantity: 100,
+      requestId: "open-sell-1",
+    });
+    expect(res.status).toBe(200);
+    expect((await balances()).bananas).toBe(before.bananas - 100);
+  });
+
+  it("lets a reward redemption reach the shelf", async () => {
+    const res = await post(banana, "/api/banana", { action: "redeem_reward", rewardId: "x" });
+    expect(res.status).not.toBe(503);
+    expect(res.body["error"]).toBe("reward_not_found");
+  });
+
+  it("lets the market's bots run their round", async () => {
+    const { processBotTrading } = await import("./scheduled-jobs.server");
+    await expect(processBotTrading()).resolves.toBeUndefined();
+  });
+
+  it("still shuts disc trade-in and the review discount", async () => {
+    const quote = await post(discTrade, "/api/disc-trade", {
+      action: "quote",
+      game_name: "Mario Kart 8 Deluxe",
+    });
+    expect(quote.status).toBe(503);
+    const { issueApprovedReviewReward } = await import("./review-reward.server");
+    const outcome = await issueApprovedReviewReward(
+      { id: "ord_ships_review", userId: MEMBER.id, code: "BN-2" } as never,
+      { now: "2026-10-07T12:00:00.000Z" },
+    );
+    expect(outcome).toEqual({ ok: false, reason: "maintenance" });
   });
 });

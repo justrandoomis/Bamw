@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as Account_guidesRouteImport } from './routes/account_guides'
 import { Route as Add_gameRouteImport } from './routes/add_game'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BananaRouteImport } from './routes/banana'
 import { Route as Banana_buyRouteImport } from './routes/banana_buy'
 import { Route as Banana_marketRouteImport } from './routes/banana_market'
 import { Route as Banana_redeemRouteImport } from './routes/banana_redeem'
@@ -52,6 +53,7 @@ import { Route as ApiOrdersRouteImport } from './routes/api/orders'
 import { Route as ApiOtpRouteImport } from './routes/api/otp'
 import { Route as ApiProductRouteImport } from './routes/api/product'
 import { Route as ApiProfileRouteImport } from './routes/api/profile'
+import { Route as ApiPromotionsRouteImport } from './routes/api/promotions'
 import { Route as ApiReferralRouteImport } from './routes/api/referral'
 import { Route as ApiReleaseAlertsRouteImport } from './routes/api/release-alerts'
 import { Route as ApiRevealPasswordRouteImport } from './routes/api/reveal-password'
@@ -157,6 +159,11 @@ const Add_gameRoute = Add_gameRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BananaRoute = BananaRouteImport.update({
+  id: '/banana',
+  path: '/banana',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Banana_buyRoute = Banana_buyRouteImport.update({
@@ -352,6 +359,11 @@ const ApiProductRoute = ApiProductRouteImport.update({
 const ApiProfileRoute = ApiProfileRouteImport.update({
   id: '/api/profile',
   path: '/api/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPromotionsRoute = ApiPromotionsRouteImport.update({
+  id: '/api/promotions',
+  path: '/api/promotions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiReferralRoute = ApiReferralRouteImport.update({
@@ -808,6 +820,7 @@ export interface FileRoutesByFullPath {
   '/account_guides': typeof Account_guidesRoute
   '/add_game': typeof Add_gameRoute
   '/auth': typeof AuthRoute
+  '/banana': typeof BananaRoute
   '/banana_buy': typeof Banana_buyRoute
   '/banana_market': typeof Banana_marketRoute
   '/banana_redeem': typeof Banana_redeemRoute
@@ -846,6 +859,7 @@ export interface FileRoutesByFullPath {
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
   '/api/profile': typeof ApiProfileRoute
+  '/api/promotions': typeof ApiPromotionsRoute
   '/api/referral': typeof ApiReferralRoute
   '/api/release-alerts': typeof ApiReleaseAlertsRoute
   '/api/reveal-password': typeof ApiRevealPasswordRoute
@@ -939,6 +953,7 @@ export interface FileRoutesByTo {
   '/account_guides': typeof Account_guidesRoute
   '/add_game': typeof Add_gameRoute
   '/auth': typeof AuthRoute
+  '/banana': typeof BananaRoute
   '/banana_buy': typeof Banana_buyRoute
   '/banana_market': typeof Banana_marketRoute
   '/banana_redeem': typeof Banana_redeemRoute
@@ -977,6 +992,7 @@ export interface FileRoutesByTo {
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
   '/api/profile': typeof ApiProfileRoute
+  '/api/promotions': typeof ApiPromotionsRoute
   '/api/referral': typeof ApiReferralRoute
   '/api/release-alerts': typeof ApiReleaseAlertsRoute
   '/api/reveal-password': typeof ApiRevealPasswordRoute
@@ -1071,6 +1087,7 @@ export interface FileRoutesById {
   '/account_guides': typeof Account_guidesRoute
   '/add_game': typeof Add_gameRoute
   '/auth': typeof AuthRoute
+  '/banana': typeof BananaRoute
   '/banana_buy': typeof Banana_buyRoute
   '/banana_market': typeof Banana_marketRoute
   '/banana_redeem': typeof Banana_redeemRoute
@@ -1109,6 +1126,7 @@ export interface FileRoutesById {
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
   '/api/profile': typeof ApiProfileRoute
+  '/api/promotions': typeof ApiPromotionsRoute
   '/api/referral': typeof ApiReferralRoute
   '/api/release-alerts': typeof ApiReleaseAlertsRoute
   '/api/reveal-password': typeof ApiRevealPasswordRoute
@@ -1204,6 +1222,7 @@ export interface FileRouteTypes {
     | '/account_guides'
     | '/add_game'
     | '/auth'
+    | '/banana'
     | '/banana_buy'
     | '/banana_market'
     | '/banana_redeem'
@@ -1242,6 +1261,7 @@ export interface FileRouteTypes {
     | '/api/otp'
     | '/api/product'
     | '/api/profile'
+    | '/api/promotions'
     | '/api/referral'
     | '/api/release-alerts'
     | '/api/reveal-password'
@@ -1335,6 +1355,7 @@ export interface FileRouteTypes {
     | '/account_guides'
     | '/add_game'
     | '/auth'
+    | '/banana'
     | '/banana_buy'
     | '/banana_market'
     | '/banana_redeem'
@@ -1373,6 +1394,7 @@ export interface FileRouteTypes {
     | '/api/otp'
     | '/api/product'
     | '/api/profile'
+    | '/api/promotions'
     | '/api/referral'
     | '/api/release-alerts'
     | '/api/reveal-password'
@@ -1466,6 +1488,7 @@ export interface FileRouteTypes {
     | '/account_guides'
     | '/add_game'
     | '/auth'
+    | '/banana'
     | '/banana_buy'
     | '/banana_market'
     | '/banana_redeem'
@@ -1504,6 +1527,7 @@ export interface FileRouteTypes {
     | '/api/otp'
     | '/api/product'
     | '/api/profile'
+    | '/api/promotions'
     | '/api/referral'
     | '/api/release-alerts'
     | '/api/reveal-password'
@@ -1598,6 +1622,7 @@ export interface RootRouteChildren {
   Account_guidesRoute: typeof Account_guidesRoute
   Add_gameRoute: typeof Add_gameRoute
   AuthRoute: typeof AuthRoute
+  BananaRoute: typeof BananaRoute
   Banana_buyRoute: typeof Banana_buyRoute
   Banana_marketRoute: typeof Banana_marketRoute
   Banana_redeemRoute: typeof Banana_redeemRoute
@@ -1636,6 +1661,7 @@ export interface RootRouteChildren {
   ApiOtpRoute: typeof ApiOtpRoute
   ApiProductRoute: typeof ApiProductRoute
   ApiProfileRoute: typeof ApiProfileRoute
+  ApiPromotionsRoute: typeof ApiPromotionsRoute
   ApiReferralRoute: typeof ApiReferralRoute
   ApiReleaseAlertsRoute: typeof ApiReleaseAlertsRoute
   ApiRevealPasswordRoute: typeof ApiRevealPasswordRoute
@@ -1741,6 +1767,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/banana': {
+      id: '/banana'
+      path: '/banana'
+      fullPath: '/banana'
+      preLoaderRoute: typeof BananaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/banana_buy': {
@@ -2014,6 +2047,13 @@ declare module '@tanstack/react-router' {
       path: '/api/profile'
       fullPath: '/api/profile'
       preLoaderRoute: typeof ApiProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/promotions': {
+      id: '/api/promotions'
+      path: '/api/promotions'
+      fullPath: '/api/promotions'
+      preLoaderRoute: typeof ApiPromotionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/referral': {
@@ -2688,6 +2728,7 @@ const rootRouteChildren: RootRouteChildren = {
   Account_guidesRoute: Account_guidesRoute,
   Add_gameRoute: Add_gameRoute,
   AuthRoute: AuthRoute,
+  BananaRoute: BananaRoute,
   Banana_buyRoute: Banana_buyRoute,
   Banana_marketRoute: Banana_marketRoute,
   Banana_redeemRoute: Banana_redeemRoute,
@@ -2726,6 +2767,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiOtpRoute: ApiOtpRoute,
   ApiProductRoute: ApiProductRoute,
   ApiProfileRoute: ApiProfileRoute,
+  ApiPromotionsRoute: ApiPromotionsRoute,
   ApiReferralRoute: ApiReferralRoute,
   ApiReleaseAlertsRoute: ApiReleaseAlertsRoute,
   ApiRevealPasswordRoute: ApiRevealPasswordRoute,

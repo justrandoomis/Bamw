@@ -354,7 +354,11 @@ if (FAMOUS.length === 0) {
 
   That is the third time tonight a check has reported a fault that was its own.
   So the string is one that exists on the destination and NOWHERE else: the
-  price card's heading, which only `banana_market.tsx` renders.
+  price card's heading, which only the market renders.
+
+  The market has since moved to the market half of `/banana`, and
+  `/banana_market` redirects there — so going by the old address checks the
+  redirect too, and it settles on the same heading either way.
 */
 const MARKET_SETTLED = "سعر موزة واحدة";
 const marketLanded = await routeTo("/banana_market", MARKET_SETTLED);
@@ -488,10 +492,16 @@ if (strip > 0) {
 }
 
 // ─── 4. The two old addresses ─────────────────────────────────────────────
+/*
+  Both land on the market: `/banana` since the section moved there
+  («تغيير العنوان من /banana_market الى /banana»), `/banana_market` on a
+  build from before it — either is the market, and nothing else is.
+*/
+const MARKET_HOMES = ["/banana", "/banana_market"];
 for (const old of ["/banana_buy", "/banana_redeem"]) {
   await routeTo(old, MARKET_SETTLED);
   const landed = await here();
-  check(`${old} ← ${landed}`, landed === "/banana_market", landed);
+  check(`${old} ← ${landed}`, MARKET_HOMES.includes(landed), landed);
 }
 
 await browser.close();

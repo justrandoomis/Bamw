@@ -20,10 +20,14 @@
  *  - `sign-in-code` — the sign-in page offers an account by login code alone
  *                    («كود الدخول» / «بكود — الأسهل»), where it asked for a
  *                    phone and a verification code;
- *  - `contests-tab` — the banana market opens on a bar of two tabs, its
- *                    «الفعاليات والمسابقات» tab selected by `?tab=events`, and
- *                    `/api/contests` answers with a list (an answer the edge
- *                    refuses outright is not held against the build).
+ *  - `contests-tab` — the banana section opens on a bar of two tabs with
+ *                    «الفعاليات والمسابقات» selected, and `/api/contests`
+ *                    answers with a list (an answer the edge refuses outright
+ *                    is not held against the build). It is reached by the old
+ *                    address, `/banana_market?tab=events`, on purpose: that
+ *                    link is out in Telegram messages, and since the section
+ *                    moved to `/banana` it has to redirect there and still
+ *                    land on the contests.
  *
  * And one reading that is not a probe of the build: whether «الدخول عبر Google»
  * reaches Google at all. That depends on two secrets in Cloudflare, not on the
@@ -144,7 +148,7 @@ if (!challenged) {
 }
 const authPath = await page.evaluate(() => location.pathname).catch(() => "—");
 
-/* The contests tab of the banana market, reached the same way. */
+/* The contests tab, reached the same way — through the old address's redirect. */
 let contestsTab = 0;
 let contestsApi = { status: 0, list: false };
 if (!challenged) {

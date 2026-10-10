@@ -655,6 +655,8 @@ export const api = {
     }),
 
   content: () => request<import("./content").ContentDoc>("/api/content"),
+  /** The offer switches alone — what the cart needs to preview a free game. */
+  promotions: () => request<import("./promotions").PromotionsData>("/api/promotions"),
   saveContent: (patch: Partial<import("./content").ContentDoc>) =>
     request<{ success: boolean; data: import("./content").ContentDoc }>("/api/content", {
       method: "POST",

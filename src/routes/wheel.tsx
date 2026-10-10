@@ -16,6 +16,7 @@ import {
   type SpinResponse,
 } from "@/hooks/useRoulette";
 import { useAuth } from "@/hooks/useAuth";
+import AppShell from "@/components/AppShell";
 import { MaintenanceNotice } from "@/components/MaintenanceNotice";
 import { isUnderMaintenance } from "@/lib/maintenance";
 import { cn } from "@/lib/utils";
@@ -56,8 +57,21 @@ export const Route = createFileRoute("/wheel")({
       { property: "og:type", content: "website" },
     ],
   }),
-  component: RoulettePage,
+  component: RouletteRoute,
 });
+
+/**
+ * Inside the shop's frame, like `/banana` — header above, bottom bar below,
+ * the bar marking the banana section the roulette belongs to. The page itself
+ * stays a bare component so it can be rendered on its own in tests.
+ */
+function RouletteRoute() {
+  return (
+    <AppShell currentView="market">
+      <RoulettePage />
+    </AppShell>
+  );
+}
 
 const money = (n: number) => Number(n || 0).toLocaleString("en-US");
 
@@ -516,7 +530,7 @@ export function RoulettePage() {
   const busy = spin.isPending || Boolean(outcome);
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 pb-24 pt-4" dir="rtl">
+    <div className="mx-auto w-full max-w-3xl px-4 pb-8 pt-4" dir="rtl">
       <header className="mb-4">
         <h1 className="text-xl font-extrabold text-foreground">روليت بنانتو</h1>
         <p className="mt-0.5 text-xs text-muted-foreground">
@@ -617,7 +631,8 @@ export function RoulettePage() {
 
         {!user ? null : !affordable ? (
           <Link
-            to="/banana_market"
+            to="/banana"
+            search={{ tab: "market" }}
             data-ui-sound="klick"
             className="mt-2 flex min-h-11 items-center justify-center text-center text-xs font-bold text-primary underline"
           >

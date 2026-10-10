@@ -12,13 +12,14 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
  * world: in chat history, in a member's own tabs, in whatever they bookmarked.
  * «يمكن إبقاء routes القديمة فقط إذا كانت لازمة للتوافق مع روابط قديمة، لكن
  * يجب redirect أو دمجها بطريقة آمنة إلى القسم المناسب في /banana_market.» A
- * dead link is a worse answer than the page that replaced it.
+ * dead link is a worse answer than the page that replaced it. The market
+ * lives at `/banana?tab=market` now, so that is where it goes, in one hop.
  *
  * `beforeLoad` rather than a component that navigates on mount: the redirect
  * happens before anything renders, so nobody sees the old title flash past.
  */
 export const Route = createFileRoute("/banana_buy")({
   beforeLoad: () => {
-    throw redirect({ to: "/banana_market", replace: true });
+    throw redirect({ to: "/banana", search: { tab: "market" }, replace: true });
   },
 });

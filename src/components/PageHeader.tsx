@@ -6,7 +6,7 @@ import Header from "./Header";
 const viewToPath: Record<string, string> = {
   home: "/",
   store: "/",
-  market: "/banana_market",
+  market: "/banana",
   chats: "/chat",
   cart: "/cart",
   profile: "/profile",

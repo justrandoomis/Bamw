@@ -86,12 +86,19 @@ describe("the checker waits for something that means it arrived", () => {
     },
   );
 
+  /*
+    The checker still goes by `/banana_market`, which now redirects into the
+    market half of `/banana` — so the page that has to draw the string is
+    `banana.tsx`, and the old address is only a door to it.
+  */
   it("waits, on the market, for something only the market draws", () => {
     const market = WAITS.filter((w) => w.route === "/banana_market");
     expect(market.length, "a wait on /banana_market").toBeGreaterThan(0);
-    const page = read("src/routes/banana_market.tsx");
+    const redirect = read("src/routes/banana_market.tsx");
+    expect(redirect).toContain('to: "/banana"');
+    const page = read("src/routes/banana.tsx");
     for (const string of market.flatMap((w) => w.strings)) {
-      expect(page, `«${string}» must be drawn by banana_market.tsx`).toContain(string);
+      expect(page, `«${string}» must be drawn by banana.tsx`).toContain(string);
     }
   });
 

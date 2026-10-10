@@ -12,7 +12,10 @@
  * refuse, and that maintenance does not hide what the shop still owes them —
  * the games already won, waiting to be imported.
  *
- * Nothing mocks `@/lib/maintenance` here. The switch is read as it ships.
+ * The roulette and the market have since reopened — «ارجاع الروليت / ارجاع
+ * قسم الموز كاملا» — so the switch is held here per test: closed, to prove
+ * each screen still says so the next time it is; and as it ships, to prove
+ * the roulette is back.
  */
 import { readFileSync } from "node:fs";
 import path from "node:path";
@@ -55,6 +58,17 @@ vi.mock("@/utils/audio", () => ({
 
 vi.mock("sonner", () => ({ toast: { success: vi.fn(), error: vi.fn(), info: vi.fn() } }));
 
+/* `null` reads the switch as it ships; a set closes exactly those features. */
+let closed: Set<string> | null = null;
+vi.mock("@/lib/maintenance", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/lib/maintenance")>();
+  return {
+    ...actual,
+    isUnderMaintenance: (feature: Parameters<typeof actual.isUnderMaintenance>[0]) =>
+      closed ? closed.has(feature) : actual.isUnderMaintenance(feature),
+  };
+});
+
 vi.mock("@/components/roulette/RouletteStrip", () => ({
   ROULETTE_SOUND_CHANNEL: "roulette-run",
   RouletteStrip: () => <div aria-label="شريط الجوائز" role="img" />,
@@ -81,6 +95,7 @@ const wonPrize = {
 };
 
 beforeEach(() => {
+  closed = null;
   useRouletteMock.mockReset();
   useAuthMock.mockReset();
   useBananaMarketMock.mockReset();
@@ -110,6 +125,10 @@ beforeEach(() => {
 afterEach(cleanup);
 
 describe("the roulette under maintenance", () => {
+  beforeEach(() => {
+    closed = new Set(["roulette"]);
+  });
+
   it("says so, and offers no spin", () => {
     render(<RoulettePage />);
     expect(screen.getByRole("status").textContent).toContain("الروليت تحت الصيانة");
@@ -121,6 +140,15 @@ describe("the roulette under maintenance", () => {
     render(<RoulettePage />);
     expect(screen.getAllByText("Mario Kart 8 Deluxe").length).toBeGreaterThan(0);
     expect(screen.getByRole("button", { name: /استيراد/ })).toBeTruthy();
+  });
+});
+
+describe("the roulette as it ships", () => {
+  it("is back: the strip and the spin, and no maintenance sentence", () => {
+    render(<RoulettePage />);
+    expect(screen.queryByText("الروليت تحت الصيانة")).toBeNull();
+    expect(screen.getByRole("img", { name: "شريط الجوائز" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /ابدأ/ })).toBeTruthy();
   });
 });
 
@@ -140,12 +168,13 @@ describe("the banana market under maintenance", () => {
     `BananaMarketPage`, which is where every market hook lives, can run.
   */
   it("is what the route renders, before any of the market's hooks can run", () => {
-    const source = readFileSync(path.resolve(__dirname, "banana_market.tsx"), "utf8");
+    const source = readFileSync(path.resolve(__dirname, "banana.tsx"), "utf8");
     /*
-      The route now renders a tab bar above two halves — «سوق الموز» and
-      «الفعاليات والمسابقات» — and hands the market half to the same gate.
+      The route renders a tab bar above two halves — «الفعاليات والمسابقات»,
+      where `/banana` opens, and «سوق الموز» — and hands the market half to
+      the same gate.
     */
-    expect(source).toContain("component: BananaMarketScreen,");
+    expect(source).toContain("component: BananaScreen,");
     expect(source).toMatch(/\) : \(\s*<BananaMarketRoute \/>\s*\)\}/);
     const gate = source.slice(source.indexOf("function BananaMarketRoute()"));
     const body = gate.slice(0, gate.indexOf("\n}\n"));

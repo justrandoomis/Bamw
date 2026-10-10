@@ -94,12 +94,14 @@ export function pressId(prefix: string): string {
   return `${prefix}_${uuid}`.replace(/[^\w-]/g, "").slice(0, 64);
 }
 
-export function useRoulette(tickets: number) {
+export function useRoulette(tickets: number, options: { enabled?: boolean } = {}) {
   const queryClient = useQueryClient();
 
   const query = useQuery({
     queryKey: ["roulette", tickets],
     queryFn: () => read(tickets),
+    /* Off for a visitor who is not signed in: the answer would be a 401. */
+    enabled: options.enabled ?? true,
     staleTime: 10_000,
     /*
       Keep the previous answer on screen while a new ticket count loads. The

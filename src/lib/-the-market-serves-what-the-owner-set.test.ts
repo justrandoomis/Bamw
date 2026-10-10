@@ -181,7 +181,7 @@ describe("a refusal reads as a sentence on every screen", () => {
       bare code, and the sell sheet prints whatever came back verbatim. So the
       guard is that no screen prints a raw code.
     */
-    const market = read("../routes/banana_market.tsx");
+    const market = read("../routes/banana.tsx");
     const sheet = read("../components/market/SellBananasSheet.tsx");
     for (const code of ["price_above_max", "quantity_below_min", "insufficient_balance"]) {
       expect(market, code).not.toContain(code);
@@ -248,6 +248,6 @@ describe("a bot's face is not a broken image", () => {
   it("leads with the live price instead, and links into the one market page", () => {
     expect(homeStrip).toContain("سعر موزة واحدة");
     expect(homeStrip).toContain("formatPrice(price)");
-    expect(homeStrip).toContain('to="/banana_market"');
+    expect(homeStrip).toMatch(/to="\/banana"\s+search=\{\{ tab: "market" \}\}/);
   });
 });

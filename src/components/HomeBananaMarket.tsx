@@ -30,7 +30,7 @@ const BananaPriceChart = lazyWithRetry(() => import("@/components/BananaPriceCha
  *
  * ## WHAT IT IS NOW
  *
- * The same thing `/banana_market` leads with, in miniature: the price, what it
+ * The same thing the market half of `/banana` leads with, in miniature: the price, what it
  * did, that it is live, and the shape it made getting there. One loud number
  * and a way in — a home strip is a shop window, not a second market.
  *
@@ -64,7 +64,8 @@ export function HomeBananaMarket() {
             <h3 className="text-lg font-black tracking-tight text-foreground">{t("سوق الموز")}</h3>
           </div>
           <Link
-            to="/banana_market"
+            to="/banana"
+            search={{ tab: "market" }}
             data-ui-sound="klick"
             className="flex shrink-0 items-center gap-1 rounded-full border border-banana/30 bg-banana/15 px-3 py-1.5 text-[11px] font-black text-foreground transition-colors hover:bg-banana/25"
           >
@@ -77,9 +78,7 @@ export function HomeBananaMarket() {
         <div className="rounded-3xl border border-border bg-card p-4 shadow-soft">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <h4 className="text-[12px] font-bold text-muted-foreground">
-                {t("سعر موزة واحدة")}
-              </h4>
+              <h4 className="text-[12px] font-bold text-muted-foreground">{t("سعر موزة واحدة")}</h4>
               <div className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-1">
                 <span
                   dir="ltr"
@@ -138,7 +137,8 @@ export function HomeBananaMarket() {
             ].map((entry) => (
               <Link
                 key={entry.label}
-                to="/banana_market"
+                to="/banana"
+                search={{ tab: "market" }}
                 data-ui-sound="klick"
                 className="flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-xl text-[12px] font-black text-foreground transition-colors hover:bg-card"
               >
@@ -164,7 +164,8 @@ export function HomeBananaMarket() {
             </h3>
           </div>
           <Link
-            to="/banana_market"
+            to="/banana"
+            search={{ tab: "market" }}
             data-ui-sound="klick"
             className="flex shrink-0 items-center gap-1 rounded-full border border-leaf/30 bg-leaf/10 px-3 py-1.5 text-[11px] font-black text-foreground transition-colors hover:bg-leaf/20"
           >
@@ -176,7 +177,8 @@ export function HomeBananaMarket() {
         <div className="flex w-full max-w-full snap-x gap-3 overflow-x-auto px-4 pb-4 no-scrollbar sm:px-8">
           {rewards.map((reward, i) => (
             <Link
-              to="/banana_market"
+              to="/banana"
+              search={{ tab: "market" }}
               key={reward.id || i}
               data-ui-sound="klick"
               className="group flex min-w-[140px] shrink-0 snap-start flex-col items-center rounded-2xl border border-border bg-card p-4 text-center shadow-sm transition-all hover:-translate-y-0.5 hover:border-leaf/30 hover:shadow-md"

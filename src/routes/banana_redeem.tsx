@@ -8,12 +8,12 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
  *
  * The rewards themselves did not go anywhere: the same offers, the same
  * stock, the same redemption action, rendered by `RewardsShelf` at the bottom
- * of `/banana_market`. Only the separate address is gone, and it redirects for
+ * of the market half of `/banana`. Only the separate address is gone, and it redirects for
  * the reason its sibling does — the link exists in places this repository does
  * not control.
  */
 export const Route = createFileRoute("/banana_redeem")({
   beforeLoad: () => {
-    throw redirect({ to: "/banana_market", replace: true });
+    throw redirect({ to: "/banana", search: { tab: "market" }, replace: true });
   },
 });
