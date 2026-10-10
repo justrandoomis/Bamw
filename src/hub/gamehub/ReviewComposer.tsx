@@ -101,7 +101,7 @@ export function ReviewComposer({
               <Star
                 className={cn(
                   "h-7 w-7 transition-colors",
-                  value <= rating ? "fill-warn text-warn" : "text-white/20",
+                  value <= rating ? "fill-warn text-warn" : "text-foreground/15",
                 )}
               />
             </button>
@@ -126,7 +126,7 @@ export function ReviewComposer({
                       "h-6 w-6 rounded-md text-[10px] font-bold transition-colors",
                       (aspects[row.key] ?? 0) >= value
                         ? "bg-warn/25 text-warn"
-                        : "bg-white/[0.05] muted hover:bg-white/[0.09]",
+                        : "bg-muted/50 muted hover:bg-muted/60",
                     )}
                   >
                     {value}
@@ -146,7 +146,7 @@ export function ReviewComposer({
           value={title}
           onChange={(event) => setTitle(event.target.value)}
           maxLength={90}
-          className="h-11 w-full rounded-xl border border-white/[0.08] bg-black/25 px-4 text-sm outline-none transition-colors placeholder:text-white/25 focus:border-nin/50"
+          className="h-11 w-full rounded-xl border border-border/70 bg-muted/50 px-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-nin/50"
         />
       </label>
 
@@ -158,7 +158,7 @@ export function ReviewComposer({
           rows={5}
           maxLength={2000}
           placeholder={t("reviews.reviewPlaceholder")}
-          className="w-full resize-none rounded-xl border border-white/[0.08] bg-black/25 p-4 text-sm leading-relaxed outline-none transition-colors placeholder:text-white/25 focus:border-nin/50"
+          className="w-full resize-none rounded-xl border border-border/70 bg-muted/50 p-4 text-sm leading-relaxed outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-nin/50"
         />
       </label>
 

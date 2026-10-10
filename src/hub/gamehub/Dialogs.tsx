@@ -213,7 +213,7 @@ export function BuySheet({
                     className={cn(
                       "flex w-full items-center justify-between gap-3 rounded-2xl border p-3 text-start transition-all",
                       selected
-                        ? "border-primary/80 bg-primary/10 ring-1 ring-primary/25"
+                        ? "border-primary/80 bg-primary/10 ring-1 ring-primary/25 dark:bg-card"
                         : "border-border/70 bg-card/50 hover:bg-card hover:border-border",
                     )}
                   >
@@ -276,7 +276,7 @@ export function BuySheet({
                     className={cn(
                       "flex w-full items-center justify-between gap-3 rounded-2xl border p-3 text-start transition-all",
                       selected
-                        ? "border-primary/80 bg-primary/10 ring-1 ring-primary/25"
+                        ? "border-primary/80 bg-primary/10 ring-1 ring-primary/25 dark:bg-card"
                         : "border-border/70 bg-card/50 hover:bg-card hover:border-border",
                     )}
                   >
@@ -339,7 +339,7 @@ export function BuySheet({
                     className={cn(
                       "flex w-full items-center justify-between gap-3 rounded-2xl border p-3 text-start transition-all",
                       selected
-                        ? "border-primary/80 bg-primary/10 ring-1 ring-primary/25"
+                        ? "border-primary/80 bg-primary/10 ring-1 ring-primary/25 dark:bg-card"
                         : "border-border/70 bg-card/50 hover:bg-card hover:border-border",
                     )}
                   >
@@ -383,7 +383,7 @@ export function BuySheet({
 
         {/* Store Offer summary if applicable */}
         {chosen && !options.length && (
-          <div className="rounded-xl bg-black/25 p-4">
+          <div className="rounded-xl bg-muted/50 p-4">
             <div className="flex items-center justify-between gap-3 text-xs">
               <span className="muted">{t("prices.store")}</span>
               <span className="font-bold">
@@ -405,12 +405,12 @@ export function BuySheet({
         {/* Quantity selector */}
         <div className="flex items-center justify-between pt-2">
           <span className="text-xs font-bold muted">{t("common.more")}</span>
-          <div className="flex items-center gap-1 rounded-xl bg-white/[0.05] p-1">
+          <div className="flex items-center gap-1 rounded-xl bg-muted/50 p-1">
             <button
               type="button"
               onClick={() => setQuantity((q) => Math.max(1, q - 1))}
               aria-label="−"
-              className="rounded-lg p-2 transition-colors hover:bg-white/[0.08]"
+              className="rounded-lg p-2 transition-colors hover:bg-muted/60"
             >
               <Minus className="h-3.5 w-3.5" />
             </button>
@@ -419,7 +419,7 @@ export function BuySheet({
               type="button"
               onClick={() => setQuantity((q) => Math.min(10, q + 1))}
               aria-label="+"
-              className="rounded-lg p-2 transition-colors hover:bg-white/[0.08]"
+              className="rounded-lg p-2 transition-colors hover:bg-muted/60"
             >
               <Plus className="h-3.5 w-3.5" />
             </button>
@@ -427,7 +427,7 @@ export function BuySheet({
         </div>
       </div>
 
-      <div className="mt-5 border-t border-white/[0.07] pt-4">
+      <div className="mt-5 border-t border-border/70 pt-4">
         <div className="mb-3 flex items-baseline justify-between">
           <span className="text-sm font-bold">{t("prices.price")}</span>
           <span className="flex flex-wrap items-baseline justify-end gap-2">
@@ -547,7 +547,7 @@ export function PriceAlertDialog({ open, onClose }: { open: boolean; onClose: ()
 
       <label className="mt-5 block">
         <span className="eyebrow mb-2 block">{t("alert.notifyBelow")}</span>
-        <span className="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-black/25 px-4 focus-within:border-nin/50">
+        <span className="flex items-center gap-2 rounded-xl border border-border/70 bg-muted/50 px-4 focus-within:border-nin/50">
           <span className="text-sm font-bold muted">{currency}</span>
           <input
             data-autofocus
@@ -656,7 +656,7 @@ export function VideoDialog({ video, onClose }: { video: GameVideo | null; onClo
   return (
     <Modal open={video !== null} onClose={onClose} size="full" bare>
       {video && (
-        <div className="aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
+        <div className="aspect-video w-full overflow-hidden rounded-2xl border border-border/70 bg-black">
           {src ? (
             <iframe
               src={src}
@@ -720,7 +720,7 @@ export function FollowDialog({ open, onClose }: { open: boolean; onClose: () => 
       <ul className="mt-4 space-y-1">
         {rows.map((row, rowIdx) => (
           <li key={`${row.key}-${rowIdx}`}>
-            <label className="flex cursor-pointer items-center justify-between gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-white/[0.04]">
+            <label className="flex cursor-pointer items-center justify-between gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-muted/60">
               <span className="text-sm">{row.label}</span>
               <input
                 type="checkbox"

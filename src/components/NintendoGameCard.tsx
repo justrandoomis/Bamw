@@ -39,14 +39,20 @@ function NintendoGameCardBase({
         : formatIQDPrice(originalUnitPrice)
       : "";
 
+  /*
+    A piece of clay with the artwork pressed into it: the card is raised off
+    the shelf, the square art sits inside it on its own rounded window, and a
+    press squashes the whole piece (the shared rule for filled links). Hover
+    lifts the card one step instead of sliding it.
+  */
   return (
     <Link
       to="/product/$productId"
       params={{ productId: slug }}
       aria-label={`${title} — ${priceText}`}
-      className={`group relative flex min-w-0 flex-col overflow-hidden rounded-[14px] border border-border/70 bg-card shadow-[0_2px_10px_rgba(0,0,0,0.06)] transition duration-200 hover:-translate-y-0.5 hover:border-red-500/30 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/50 ${className}`}
+      className={`group relative flex min-w-0 flex-col rounded-[20px] border border-[var(--clay-rim)] bg-card p-1 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-red)]/50 sm:rounded-[22px] sm:p-1.5 ${className}`}
     >
-      <div className="relative aspect-square w-full overflow-hidden bg-muted/25">
+      <div className="relative aspect-square w-full overflow-hidden rounded-[16px] bg-muted/40 sm:rounded-[17px]">
         <NintendoCover
           product={product}
           usage="square-card"
@@ -56,12 +62,17 @@ function NintendoGameCardBase({
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : "auto"}
           className="h-full w-full"
-          imgClassName="transition-transform duration-300 group-hover:scale-[1.025]"
+          imgClassName="transition-transform duration-500 ease-[var(--clay-ease)] group-hover:scale-[1.04]"
+        />
+        {/* A hairline inside the window, so bright artwork keeps its edge. */}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 rounded-[inherit] shadow-[inset_0_0_0_1px_rgb(0_0_0/0.06)] dark:shadow-[inset_0_0_0_1px_rgb(255_255_255/0.07)]"
         />
 
         {switch2 ? (
           <div
-            className="absolute inset-x-0 top-0 z-10 flex min-h-5 items-center justify-center bg-gradient-to-r from-[#d90916] via-[#ed1b24] to-[#d90916] px-1.5 py-0.5 text-center text-[9px] font-black leading-none tracking-[0.01em] text-white shadow-[0_1px_4px_rgba(0,0,0,0.18)] sm:min-h-6 sm:text-[10px]"
+            className="absolute inset-x-0 top-0 z-10 flex min-h-5 items-center justify-center bg-[#e60012] px-1.5 py-0.5 text-center text-[9px] font-black leading-none tracking-[0.01em] text-white shadow-[inset_0_-1px_0_rgb(0_0_0/0.18),inset_0_1px_0_rgb(255_255_255/0.22)] sm:min-h-6 sm:text-[10px]"
             dir="ltr"
           >
             Nintendo Switch 2
@@ -69,21 +80,21 @@ function NintendoGameCardBase({
         ) : null}
       </div>
 
-      <div className="flex min-w-0 flex-1 flex-col gap-1.5 px-2 py-2 sm:gap-2 sm:px-2.5 sm:py-2.5">
+      <div className="flex min-w-0 flex-1 flex-col gap-1 px-1.5 pb-1.5 pt-2 sm:gap-1.5 sm:px-2 sm:pb-2">
         <h3
-          className="line-clamp-2 min-h-[2.25em] text-[11px] font-bold leading-[1.15] text-foreground sm:text-xs"
+          className="line-clamp-2 min-h-[2.3em] text-[11.5px] font-bold leading-[1.15] text-foreground sm:text-[13px]"
           dir="auto"
           title={title}
         >
           {title}
         </h3>
         <p
-          className="mt-auto flex min-w-0 flex-wrap items-baseline gap-x-1 gap-y-0.5 break-words text-[11px] font-extrabold leading-tight text-foreground sm:text-xs"
+          className="mt-auto flex min-w-0 flex-wrap items-baseline gap-x-1.5 gap-y-0.5 break-words text-[12px] font-black leading-tight tabular-nums text-foreground sm:text-[13.5px]"
           dir="ltr"
           title={priceText}
         >
           {originalPriceText ? (
-            <span className="text-[9px] font-semibold text-muted-foreground line-through sm:text-[10px]">
+            <span className="text-[9.5px] font-semibold text-muted-foreground line-through sm:text-[10.5px]">
               {originalPriceText}
             </span>
           ) : null}

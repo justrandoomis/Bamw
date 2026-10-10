@@ -18,10 +18,7 @@ import { formatDate } from "@/hub/utils/format";
 import { cn } from "@/hub/utils/cn";
 import type { TimelineEvent } from "@/hub/types";
 
-const EVENT_META: Record<
-  string,
-  { icon: typeof Rocket; key: string; accent?: boolean }
-> = {
+const EVENT_META: Record<string, { icon: typeof Rocket; key: string; accent?: boolean }> = {
   announcement: { icon: Megaphone, key: "timeline.announcement" },
   trailer: { icon: PlayCircle, key: "timeline.trailer" },
   demo: { icon: CircleDot, key: "timeline.demo" },
@@ -61,7 +58,7 @@ export function TimelineSection() {
         <Panel className="p-5 sm:p-6">
           {sorted.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-8 text-center">
-              <span className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/[0.05] text-muted">
+              <span className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-muted/50 text-muted">
                 <Rocket className="h-5 w-5 opacity-40" />
               </span>
               <p className="text-sm font-bold text-muted">
@@ -75,7 +72,7 @@ export function TimelineSection() {
               {/* The rail sits behind the markers, inset to align with them. */}
               <span
                 aria-hidden
-                className="absolute bottom-4 top-2 start-[7px] w-px bg-gradient-to-b from-white/[0.14] via-white/[0.09] to-transparent"
+                className="absolute bottom-4 top-2 start-[7px] w-px bg-gradient-to-b from-foreground/15 via-foreground/10 to-transparent"
               />
               {sorted.map((event, index) => {
                 const meta = EVENT_META[event.kind] || DEFAULT_EVENT_META;
@@ -86,11 +83,14 @@ export function TimelineSection() {
                 const linkUrl = event.sourceUrl || event.url;
 
                 return (
-                  <li key={`${event.id || event.title}-${index}`} className="relative flex gap-4 pb-5 last:pb-0">
+                  <li
+                    key={`${event.id || event.title}-${index}`}
+                    className="relative flex gap-4 pb-5 last:pb-0"
+                  >
                     <span
                       className={cn(
                         "relative z-10 mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full ring-4 ring-ink-900",
-                        meta.accent ? "bg-nin" : future ? "bg-white/20" : "bg-white/35",
+                        meta.accent ? "bg-nin" : future ? "bg-foreground/20" : "bg-foreground/35",
                       )}
                     />
                     <div className="min-w-0 flex-1">
@@ -105,7 +105,7 @@ export function TimelineSection() {
                           </span>
                         )}
                         {event.version && (
-                          <span className="rounded bg-white/[0.08] px-1.5 py-0.5 text-[10px] font-mono font-bold text-nin-soft">
+                          <span className="rounded bg-muted/70 px-1.5 py-0.5 text-[10px] font-mono font-bold text-nin-soft">
                             {event.version}
                           </span>
                         )}
@@ -137,7 +137,7 @@ export function TimelineSection() {
                             href={linkUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-[11px] font-bold text-muted hover:text-white"
+                            className="inline-flex items-center gap-1 text-[11px] font-bold text-muted hover:text-foreground"
                           >
                             <ExternalLink className="h-3 w-3" />
                             <span>{intlLocale === "ar" ? "المصدر" : "Source"}</span>
@@ -178,7 +178,7 @@ export function PatchNotesSection() {
   return (
     <Section id="patches" title={t("patches.title")} weight="support">
       <Reveal>
-        <Panel className="divide-y divide-white/[0.05] overflow-hidden">
+        <Panel className="divide-y divide-border/70 overflow-hidden">
           {notes.map((note, noteIdx) => {
             const open = expanded === note.version;
             return (
@@ -186,7 +186,7 @@ export function PatchNotesSection() {
                 <button
                   onClick={() => setExpanded(open ? null : note.version)}
                   aria-expanded={open}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-start transition-colors hover:bg-white/[0.03]"
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-start transition-colors hover:bg-muted/60"
                 >
                   <span className="flex items-baseline gap-3">
                     <span className="font-mono text-sm font-extrabold">{note.version}</span>
@@ -212,7 +212,7 @@ export function PatchNotesSection() {
                           <ul className="space-y-1 text-xs leading-relaxed muted">
                             {items.map((item, itemIdx) => (
                               <li key={`${item}-${itemIdx}`} className="flex gap-2">
-                                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/25" />
+                                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-foreground/25" />
                                 {item}
                               </li>
                             ))}
@@ -246,7 +246,7 @@ export function SoundtrackSection() {
     <Section id="soundtrack" title={t("soundtrack.title")} weight="support">
       <Reveal>
         <Panel className="flex flex-wrap items-center gap-x-8 gap-y-4 p-5 sm:p-6">
-          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.06]">
+          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-muted/70">
             <Disc3 className="h-5 w-5 text-nin-soft" />
           </span>
           {ost.composer && (

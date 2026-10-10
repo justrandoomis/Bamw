@@ -237,60 +237,28 @@ function DetailsBody({
       dir={dir}
     >
       {/* ------------------------------ hero ------------------------------ */}
-      <div className="grid min-w-0 grid-cols-1 gap-6 py-6 lg:grid-cols-2 lg:gap-10">
+      <div className="grid min-w-0 grid-cols-1 gap-6 pb-4 pt-2 lg:grid-cols-2 lg:gap-10 lg:pt-4">
         <div className="min-w-0">
           <ProductGallery images={view.images} alt={view.title} />
         </div>
 
-        <div className="min-w-0 space-y-5">
-          <div className="space-y-2">
+        <div className="min-w-0 space-y-4">
+          <div className="space-y-1.5">
             {view.brand ? (
-              <p className="text-[13px] font-bold uppercase tracking-wide text-muted-foreground">
-                {view.brand}
-              </p>
+              <p className="text-[12px] font-bold text-muted-foreground">{view.brand}</p>
             ) : null}
-            <h1 className="text-2xl font-bold leading-snug sm:text-3xl">{view.title}</h1>
-            {view.subtitle ? <p className="text-muted-foreground">{view.subtitle}</p> : null}
-          </div>
-
-          {/* Price */}
-          <div className="flex flex-wrap items-baseline gap-3">
-            <span className="text-3xl font-bold" dir="ltr">
-              {formatIQDPrice(effectivePrice)}
-            </span>
-            {effectiveOriginalPrice > effectivePrice ? (
-              <span className="text-lg text-muted-foreground line-through" dir="ltr">
-                {formatIQDPrice(effectiveOriginalPrice)}
-              </span>
-            ) : null}
-            {effectiveDiscountPercent > 0 ? (
-              <span className="rounded-full bg-[var(--bad-bg,#fee)] px-2 py-0.5 text-[12px] font-bold text-[var(--brand-red-dark,#c00)]">
-                −{effectiveDiscountPercent}%
-              </span>
-            ) : null}
-          </div>
-
-          {/* Stock */}
-          <div className="flex flex-wrap items-center gap-2 text-[13px]">
-            <span
-              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 font-bold ${
-                soldOut
-                  ? "bg-[var(--bad-bg,#fee)] text-[var(--brand-red-dark,#c00)]"
-                  : "bg-[var(--ok-bg,#e9f7ef)] text-[var(--ok-ink,#137a41)]"
-              }`}
-            >
-              <BadgeCheck className="h-3.5 w-3.5" />
-              {soldOut ? t("product.outOfStock") : t("product.inStock")}
-            </span>
-            {view.availability && !soldOut ? (
-              <span className="text-muted-foreground">
-                {t(`enums.availability.${view.availability}` as never)}
-              </span>
+            <h1 className="text-[26px] font-black leading-[1.12] tracking-[-0.02em] text-foreground text-balance sm:text-[32px]">
+              {view.title}
+            </h1>
+            {view.subtitle ? (
+              <p className="text-[15px] text-muted-foreground">{view.subtitle}</p>
             ) : null}
           </div>
 
           {view.descriptionShort ? (
-            <p className="leading-relaxed text-muted-foreground">{view.descriptionShort}</p>
+            <p className="text-[14px] leading-relaxed text-foreground/80">
+              {view.descriptionShort}
+            </p>
           ) : null}
 
           {/*
@@ -300,172 +268,233 @@ function DetailsBody({
           */}
           <HeroFacts view={view} t={t} locale={locale} formatPrice={formatIQDPrice} />
 
-          {/* Options */}
-          {view.options.length > 0 && (
-            <div className="space-y-2">
-              <label className="text-[13px] font-bold">{t("product.selectOption")}</label>
-              <div className="flex flex-wrap gap-2">
-                {view.options.map((option) => {
-                  const isSelected = option.id === optionId;
-                  return (
-                    <button
-                      key={option.id}
-                      type="button"
-                      onClick={() => {
-                        setOptionId(option.id);
-                        setVariantName("");
-                      }}
-                      className={`flex min-w-0 flex-col items-start gap-0.5 rounded-xl border px-3 py-2 text-start text-[13px] font-semibold transition ${
-                        isSelected
-                          ? "border-primary bg-primary/10 text-primary shadow-2xs"
-                          : "border-border text-foreground hover:border-primary/50"
-                      }`}
-                    >
-                      <div className="flex items-center gap-1.5">
-                        <span>{option.name}</span>
-                        {option.price != null && option.price > 0 && (
+          {/*
+            Everything the purchase needs, in one piece of clay: the price and
+            whether it is in stock, the choices, the quantity and the button.
+          */}
+          <div className="rounded-[28px] border border-[var(--clay-rim)] bg-card p-4 shadow-lg sm:p-5">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+                <span
+                  className="text-[30px] font-black leading-none tracking-[-0.03em] tabular-nums text-foreground"
+                  dir="ltr"
+                >
+                  {formatIQDPrice(effectivePrice)}
+                </span>
+                {effectiveOriginalPrice > effectivePrice ? (
+                  <span
+                    className="text-[15px] font-semibold text-muted-foreground line-through"
+                    dir="ltr"
+                  >
+                    {formatIQDPrice(effectiveOriginalPrice)}
+                  </span>
+                ) : null}
+                {effectiveDiscountPercent > 0 ? (
+                  <span className="rounded-full bg-[var(--brand-red)]/12 px-2 py-0.5 text-[12px] font-black text-[var(--brand-red)]">
+                    −{effectiveDiscountPercent}%
+                  </span>
+                ) : null}
+              </div>
+              <span
+                className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-[12px] font-bold ${
+                  soldOut
+                    ? "bg-red-500/12 text-red-700 dark:text-red-300"
+                    : "bg-emerald-500/12 text-emerald-700 dark:text-emerald-300"
+                }`}
+              >
+                <BadgeCheck className="h-3.5 w-3.5" aria-hidden="true" />
+                {soldOut ? t("product.outOfStock") : t("product.inStock")}
+              </span>
+            </div>
+            {view.availability && !soldOut ? (
+              <p className="mt-1.5 text-[12px] text-muted-foreground">
+                {t(`enums.availability.${view.availability}` as never)}
+              </p>
+            ) : null}
+
+            {/* Options: one row each, the chosen one raised out of the card. */}
+            {view.options.length > 0 && (
+              <div className="mt-4">
+                <p className="mb-2 text-[12px] font-bold text-muted-foreground">
+                  {t("product.selectOption")}
+                </p>
+                <div
+                  role="radiogroup"
+                  aria-label={t("product.selectOption")}
+                  className="grid gap-2"
+                >
+                  {view.options.map((option) => {
+                    const isSelected = option.id === optionId;
+                    return (
+                      <button
+                        key={option.id}
+                        type="button"
+                        role="radio"
+                        aria-checked={isSelected}
+                        onClick={() => {
+                          setOptionId(option.id);
+                          setVariantName("");
+                        }}
+                        className={`flex w-full min-w-0 items-center justify-between gap-3 rounded-[18px] border px-4 py-3 text-start transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-red)]/40 ${
+                          isSelected
+                            ? "border-[var(--brand-red)]/50 bg-card shadow-sm"
+                            : "border-transparent bg-muted/50 shadow-none hover:bg-muted/70"
+                        }`}
+                      >
+                        <span className="flex min-w-0 items-center gap-3">
                           <span
-                            className="flex items-baseline gap-1 font-mono text-[11px]"
-                            dir="ltr"
+                            aria-hidden="true"
+                            className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 ${
+                              isSelected
+                                ? "border-[var(--brand-red)]"
+                                : "border-muted-foreground/40"
+                            }`}
                           >
+                            {isSelected ? (
+                              <span className="h-2.5 w-2.5 rounded-full bg-[var(--brand-red)]" />
+                            ) : null}
+                          </span>
+                          <span className="min-w-0">
+                            <span className="block text-[14px] font-bold text-foreground">
+                              {option.name}
+                            </span>
+                            {option.description ? (
+                              <span className="block text-[12px] text-muted-foreground">
+                                {option.description}
+                              </span>
+                            ) : null}
+                          </span>
+                        </span>
+                        {option.price != null && option.price > 0 ? (
+                          <span className="shrink-0 text-end" dir="ltr">
                             {Number(option.originalPrice) > option.price ? (
-                              <span className="font-semibold text-muted-foreground line-through">
+                              <span className="block text-[11px] font-semibold text-muted-foreground line-through">
                                 {formatIQDPrice(Number(option.originalPrice))}
                               </span>
                             ) : null}
-                            <span
-                              className={`font-bold ${
-                                isSelected
-                                  ? "text-primary"
-                                  : "text-emerald-600 dark:text-emerald-400"
-                              }`}
-                            >
-                              ({formatIQDPrice(option.price)})
+                            <span className="block text-[14px] font-black tabular-nums text-foreground">
+                              {formatIQDPrice(option.price)}
                             </span>
                           </span>
-                        )}
-                      </div>
-                      {option.description && (
-                        <span className="text-[11px] font-normal text-muted-foreground">
-                          {option.description}
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
+                        ) : null}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Variants */}
-          {variantsForOption.length > 0 && (
-            <div className="space-y-2">
-              <label className="text-[13px] font-bold">{t("product.selectVariant")}</label>
-              <div className="flex flex-wrap gap-2">
-                {variantsForOption.map((variant) => {
-                  const isSelected = variant.name === variantName;
-                  return (
-                    <button
-                      key={variant.name}
-                      type="button"
-                      onClick={() =>
-                        setVariantName(variant.name === variantName ? "" : variant.name)
-                      }
-                      className={`flex min-w-0 flex-col items-start gap-0.5 rounded-xl border px-3 py-2 text-start text-[13px] font-semibold transition ${
-                        isSelected
-                          ? "border-primary bg-primary/10 text-primary shadow-2xs"
-                          : "border-border text-foreground hover:border-primary/50"
-                      }`}
-                    >
-                      <div className="flex items-center gap-1.5">
-                        <span>{variant.name}</span>
-                        {variant.price != null && variant.price > 0 && (
+            {/* Variants (denominations, sizes): chips, the chosen one filled. */}
+            {variantsForOption.length > 0 && (
+              <div className="mt-4">
+                <p className="mb-2 text-[12px] font-bold text-muted-foreground">
+                  {t("product.selectVariant")}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {variantsForOption.map((variant) => {
+                    const isSelected = variant.name === variantName;
+                    return (
+                      <button
+                        key={variant.name}
+                        type="button"
+                        aria-pressed={isSelected}
+                        onClick={() =>
+                          setVariantName(variant.name === variantName ? "" : variant.name)
+                        }
+                        className={`flex min-h-11 min-w-0 flex-col items-start justify-center gap-0.5 rounded-[16px] px-3.5 py-2 text-start text-[13px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-red)]/40 ${
+                          isSelected
+                            ? "bg-[var(--brand-red)] text-white"
+                            : "border border-[var(--clay-rim)] bg-card text-foreground shadow-sm"
+                        }`}
+                      >
+                        <span className="flex items-center gap-1.5">
+                          <span>{variant.name}</span>
+                          {variant.price != null && variant.price > 0 ? (
+                            <span
+                              className="flex items-baseline gap-1 text-[11.5px] tabular-nums"
+                              dir="ltr"
+                            >
+                              {Number(variant.originalPrice) > variant.price ? (
+                                <span className="font-semibold opacity-70 line-through">
+                                  {formatIQDPrice(Number(variant.originalPrice))}
+                                </span>
+                              ) : null}
+                              <span className="font-black">{formatIQDPrice(variant.price)}</span>
+                            </span>
+                          ) : null}
+                        </span>
+                        {variant.description ? (
                           <span
-                            className="flex items-baseline gap-1 font-mono text-[11px]"
-                            dir="ltr"
+                            className={`text-[11px] font-normal ${isSelected ? "text-white/85" : "text-muted-foreground"}`}
                           >
-                            {Number(variant.originalPrice) > variant.price ? (
-                              <span className="font-semibold text-muted-foreground line-through">
-                                {formatIQDPrice(Number(variant.originalPrice))}
-                              </span>
-                            ) : null}
-                            <span
-                              className={`font-bold ${
-                                isSelected
-                                  ? "text-primary"
-                                  : "text-emerald-600 dark:text-emerald-400"
-                              }`}
-                            >
-                              ({formatIQDPrice(variant.price)})
-                            </span>
+                            {variant.description}
                           </span>
-                        )}
-                      </div>
-                      {variant.description && (
-                        <span className="text-[11px] font-normal text-muted-foreground">
-                          {variant.description}
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
+                        ) : null}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Quantity + add to cart — or the release alert, before launch */}
-          {awaitingRelease ? (
-            <div className="pt-2">
-              <ReleaseAlertPanel product={product} lang={locale} />
-            </div>
-          ) : (
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <div className="flex items-center rounded-xl border border-border">
+            {/* Quantity + add to cart — or the release alert, before launch */}
+            {awaitingRelease ? (
+              <div className="mt-4">
+                <ReleaseAlertPanel product={product} lang={locale} />
+              </div>
+            ) : (
+              <div className="mt-4 flex items-center gap-2.5">
+                <div className="flex shrink-0 items-center gap-1 rounded-[18px] bg-muted/60 p-1">
+                  <button
+                    type="button"
+                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                    aria-label={t("common.previous")}
+                    className="flex h-11 w-10 items-center justify-center rounded-[14px] bg-card text-foreground shadow-sm"
+                  >
+                    <Minus className="h-4 w-4" />
+                  </button>
+                  <span
+                    className="min-w-8 text-center text-[16px] font-black tabular-nums"
+                    dir="ltr"
+                    aria-live="polite"
+                  >
+                    {quantity}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setQuantity((q) => q + 1)}
+                    aria-label={t("common.next")}
+                    className="flex h-11 w-10 items-center justify-center rounded-[14px] bg-card text-foreground shadow-sm"
+                  >
+                    <Plus className="h-4 w-4" />
+                  </button>
+                </div>
+
                 <button
                   type="button"
-                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                  aria-label={t("common.previous")}
-                  className="p-2.5 transition hover:bg-muted"
+                  onClick={handleAddToCart}
+                  disabled={soldOut}
+                  className="flex h-[52px] min-w-0 flex-1 items-center justify-center gap-2 rounded-[18px] bg-[var(--brand-red)] px-5 text-[15px] font-black text-white disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <Minus className="h-4 w-4" />
-                </button>
-                <span className="min-w-10 text-center text-[15px] font-bold" dir="ltr">
-                  {quantity}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setQuantity((q) => q + 1)}
-                  aria-label={t("common.next")}
-                  className="p-2.5 transition hover:bg-muted"
-                >
-                  <Plus className="h-4 w-4" />
+                  <ShoppingCart className="h-4 w-4" aria-hidden="true" />
+                  {t("product.addToCart")}
                 </button>
               </div>
+            )}
 
-              <button
-                type="button"
-                onClick={handleAddToCart}
-                disabled={soldOut}
-                className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-xl bg-[var(--brand-red,#e11d48)] px-6 py-3 font-bold text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                <ShoppingCart className="h-4 w-4" />
-                {t("product.addToCart")}
-              </button>
+            {/*
+              Share and earn. Under the buy row rather than in it, because it is
+              an offer to the person already looking at the product — and it
+              stays visible before release too, when there is nothing to buy yet
+              but a link is still worth sharing. A chip, so it reads as quieter
+              than the button above it.
+            */}
+            <div className="mt-3.5">
+              <div className="flex justify-center">
+                <ShareAndEarnButton product={product} />
+              </div>
+              <ShareTermsNote />
             </div>
-          )}
-
-          {/*
-            Share and earn. Under the buy row rather than in it, because it is
-            an offer to the person already looking at the product — and it
-            stays visible before release too, when there is nothing to buy yet
-            but a link is still worth sharing. A chip, so it reads as quieter
-            than the button above it.
-          */}
-          <div className="pt-3">
-            <div className="flex">
-              <ShareAndEarnButton product={product} />
-            </div>
-            <ShareTermsNote />
           </div>
         </div>
       </div>
@@ -581,11 +610,14 @@ function HeroFacts({
   if (visible.length === 0) return null;
 
   return (
-    <dl className="grid grid-cols-2 gap-x-4 gap-y-2 pt-1 text-[13px]">
+    <dl className="grid grid-cols-2 gap-2">
       {visible.map((row, index) => (
-        <div key={`${row.label}-${index}`} className="flex min-w-0 flex-col">
-          <dt className="text-muted-foreground">{row.label}</dt>
-          <dd className="break-words font-semibold">
+        <div
+          key={`${row.label}-${index}`}
+          className="flex min-w-0 flex-col gap-0.5 rounded-[18px] bg-muted/50 px-3.5 py-2.5"
+        >
+          <dt className="text-[11.5px] font-bold text-muted-foreground">{row.label}</dt>
+          <dd className="break-words text-[14px] font-black text-foreground">
             {row.label === t("product.releaseDate")
               ? formatDate(locale, row.value) || row.value
               : row.value}

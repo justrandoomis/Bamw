@@ -125,6 +125,42 @@ export default function HomeView({
   );
   const adminCategories: any[] = Array.isArray(store?.categories) ? store.categories : [];
 
+  /*
+    Every fixed shelf, filled once. A shelf with nothing on it is not drawn at
+    all: a heading and «عرض الكل» over an empty row is a label for a section
+    that has nothing in it, and the home page carried several of them for
+    things the shop does not stock yet. While the catalogue is still loading
+    the shelves stay, so their skeletons hold the page's shape.
+  */
+  const shelvesLoading = isPending && adminProducts.length === 0;
+  const hardwareShelf = useMemo(
+    () =>
+      adminProducts
+        .filter((p) => {
+          const resolved = getProductCategory(p);
+          return resolved === "hardware" || resolved === "accessory";
+        })
+        .slice(0, 12),
+    [adminProducts],
+  );
+  const amiiboShelf = useMemo(
+    () => adminProducts.filter((p) => getProductCategory(p) === "amiibo").slice(0, 12),
+    [adminProducts],
+  );
+  const giftCardShelf = useMemo(
+    () => adminProducts.filter((p) => getProductCategory(p) === "gift_card").slice(0, 12),
+    [adminProducts],
+  );
+  const usedShelf = useMemo(
+    () => adminProducts.filter((p) => getProductCategory(p) === "used").slice(0, 12),
+    [adminProducts],
+  );
+  const cartridgeGames = useMemo(
+    () => squareCardFirst(adminProducts.filter((p) => isGameProduct(p))),
+    [adminProducts],
+  );
+  const shows = (items: unknown[]) => shelvesLoading || items.length > 0;
+
   const activeBanners = useMemo(() => banners.filter((b) => b && b.isActive !== false), [banners]);
 
   useEffect(() => {
@@ -329,30 +365,32 @@ export default function HomeView({
         </SectionErrorBoundary>
 
         {/* Section 1: Square Nintendo Switch game cards */}
-        <SectionErrorBoundary sectionName="NintendoGameShelf">
-          <LazySection>
-            <section className="mt-2 w-full max-w-full">
-              <div className="mb-3 flex items-center justify-between gap-2 px-4 sm:px-8">
-                <h3 className="truncate text-xl font-bold text-foreground">
-                  {t("home.nintendoSwitchGames")}
-                </h3>
-                <Link
-                  to="/category/$categoryId"
-                  params={{ categoryId: "nintendo_games" }}
-                  className="shrink-0 px-2 py-1 text-sm font-bold text-orange-500 transition-colors hover:text-orange-600"
-                >
-                  {t("common.viewAll")}
-                </Link>
-              </div>
+        {shows(nintendoGames) ? (
+          <SectionErrorBoundary sectionName="NintendoGameShelf">
+            <LazySection>
+              <section className="mt-2 w-full max-w-full">
+                <div className="mb-3 flex items-center justify-between gap-2 px-4 sm:px-8">
+                  <h3 className="truncate text-xl font-bold text-foreground">
+                    {t("home.nintendoSwitchGames")}
+                  </h3>
+                  <Link
+                    to="/category/$categoryId"
+                    params={{ categoryId: "nintendo_games" }}
+                    className="shrink-0 px-2 py-1 text-sm font-bold text-orange-500 transition-colors hover:text-orange-600"
+                  >
+                    {t("common.viewAll")}
+                  </Link>
+                </div>
 
-              <NintendoGameStrip
-                products={nintendoGames}
-                formatPrice={formatGenericPrice}
-                direction={dir}
-              />
-            </section>
-          </LazySection>
-        </SectionErrorBoundary>
+                <NintendoGameStrip
+                  products={nintendoGames}
+                  formatPrice={formatGenericPrice}
+                  direction={dir}
+                />
+              </section>
+            </LazySection>
+          </SectionErrorBoundary>
+        ) : null}
 
         {/* Section 2: Account Bundles (Horizontal Strip) */}
         <SectionErrorBoundary sectionName="BundleStrip">
@@ -365,26 +403,26 @@ export default function HomeView({
         </SectionErrorBoundary>
 
         {/* Section 3: Existing cartridge shelf, moved without changing its cards or order */}
-        <SectionErrorBoundary sectionName="CartridgeShelf">
-          <section className="relative mt-2 pb-2 w-full max-w-full">
-            <div className="mb-3 px-4 sm:px-8 flex items-center justify-between">
-              <h3 className="truncate text-xl font-bold text-foreground">
-                {t("home.nintendoSwitchGames")}
-              </h3>
-            </div>
+        {shows(cartridgeGames) ? (
+          <SectionErrorBoundary sectionName="CartridgeShelf">
+            <section className="relative mt-2 pb-2 w-full max-w-full">
+              <div className="mb-3 px-4 sm:px-8 flex items-center justify-between">
+                <h3 className="truncate text-xl font-bold text-foreground">
+                  {t("home.nintendoSwitchGames")}
+                </h3>
+              </div>
 
-            <div className="relative mb-6 mt-2 min-h-[200px] w-full max-w-full">
-              <LazySection placeholder={<CartridgeSkeleton />}>
-                <CartridgeStrip
-                  /*
+              <div className="relative mb-6 mt-2 min-h-[200px] w-full max-w-full">
+                <LazySection placeholder={<CartridgeSkeleton />}>
+                  <CartridgeStrip
+                    /*
                     Square art first here too. `adminProducts` is already
                     `onlyPictured`, so nothing artwork-less reaches the front
                     page at all — but a box-cover-only game still draws a
                     placeholder in this square window, and it belongs behind
                     the ones that fill it.
                   */
-                  games={squareCardFirst(adminProducts.filter((p) => isGameProduct(p))).map(
-                    (p) => ({
+                    games={cartridgeGames.map((p) => ({
                       id: p.id,
                       slug: p.slug,
                       title: p.titleEn || p.english_name || p.title || "Game",
@@ -394,27 +432,27 @@ export default function HomeView({
                       subtitle: p.developer || p.publisher || "Nintendo Switch",
                       rating: p.metacriticRating ?? null,
                       platform: p.platform,
-                    }),
-                  )}
-                  clickedId={clickedCartridgeId}
-                  onSelect={(game: any) => {
-                    if (clickedCartridgeId != null) return;
-                    setClickedCartridgeId(game.id);
-                    setTimeout(() => {
-                      onGameClick(game, true);
-                    }, 400);
-                    setTimeout(() => setClickedCartridgeId(null), 6000);
-                  }}
-                />
-              </LazySection>
+                    }))}
+                    clickedId={clickedCartridgeId}
+                    onSelect={(game: any) => {
+                      if (clickedCartridgeId != null) return;
+                      setClickedCartridgeId(game.id);
+                      setTimeout(() => {
+                        onGameClick(game, true);
+                      }, 400);
+                      setTimeout(() => setClickedCartridgeId(null), 6000);
+                    }}
+                  />
+                </LazySection>
 
-              <div className="absolute bottom-[-18px] left-0 right-0 flex flex-col z-0">
-                <div className="h-[6px] w-full bg-gradient-to-b from-[var(--gray-1)] to-[var(--gray-2)]"></div>
-                <div className="h-[12px] w-full bg-gradient-to-b from-[var(--gray-3)] to-[var(--gray-4)] shadow-[0_15px_25px_rgba(0,0,0,0.15)]"></div>
+                <div className="absolute bottom-[-18px] left-0 right-0 flex flex-col z-0">
+                  <div className="h-[6px] w-full bg-gradient-to-b from-[var(--gray-1)] to-[var(--gray-2)]"></div>
+                  <div className="h-[12px] w-full bg-gradient-to-b from-[var(--gray-3)] to-[var(--gray-4)] shadow-[0_15px_25px_rgba(0,0,0,0.15)]"></div>
+                </div>
               </div>
-            </div>
-          </section>
-        </SectionErrorBoundary>
+            </section>
+          </SectionErrorBoundary>
+        ) : null}
 
         {/* Dynamic / Custom Categories */}
         {isClient &&
@@ -500,27 +538,22 @@ export default function HomeView({
             })}
 
         {/* Section 5: Hardware & Accessories */}
-        <SectionErrorBoundary sectionName="HardwareAccessories">
-          <LazySection>
-            <section className="mt-8 w-full max-w-full">
-              <div className="flex items-center justify-between gap-2 mb-4 px-4 sm:px-8">
-                <h3 className="text-xl font-bold text-foreground">أجهزة الهاردوير وملحقاتها</h3>
-                <Link
-                  to="/category/$categoryId"
-                  params={{ categoryId: "hardware" }}
-                  className="text-[#EA8918] text-sm font-bold hover:underline"
-                >
-                  عرض الكل
-                </Link>
-              </div>
-              <ProductStrip
-                products={adminProducts
-                  .filter((p) => {
-                    const resolved = getProductCategory(p);
-                    return resolved === "hardware" || resolved === "accessory";
-                  })
-                  .slice(0, 12)
-                  .map((p) => ({
+        {shows(hardwareShelf) ? (
+          <SectionErrorBoundary sectionName="HardwareAccessories">
+            <LazySection>
+              <section className="mt-8 w-full max-w-full">
+                <div className="flex items-center justify-between gap-2 mb-4 px-4 sm:px-8">
+                  <h3 className="text-xl font-bold text-foreground">أجهزة الهاردوير وملحقاتها</h3>
+                  <Link
+                    to="/category/$categoryId"
+                    params={{ categoryId: "hardware" }}
+                    className="text-[#EA8918] text-sm font-bold hover:underline"
+                  >
+                    عرض الكل
+                  </Link>
+                </div>
+                <ProductStrip
+                  products={hardwareShelf.map((p) => ({
                     id: p.id,
                     slug: p.slug,
                     title: p.titleEn || p.english_name || p.title || "Hardware",
@@ -530,35 +563,34 @@ export default function HomeView({
                     source: p,
                     rating: p.metacriticRating,
                   }))}
-                onSelect={(product: any) => onGameClick(product)}
-                formatPrice={formatGenericPrice}
-                onPress={() => playSound("bumper_end", 0.6)}
-                ratingIcon={<BananaIcon className="w-3 h-3 sm:w-4 sm:h-4" solid />}
-                loading={isPending && adminProducts.length === 0}
-              />
-            </section>
-          </LazySection>
-        </SectionErrorBoundary>
+                  onSelect={(product: any) => onGameClick(product)}
+                  formatPrice={formatGenericPrice}
+                  onPress={() => playSound("bumper_end", 0.6)}
+                  ratingIcon={<BananaIcon className="w-3 h-3 sm:w-4 sm:h-4" solid />}
+                  loading={isPending && adminProducts.length === 0}
+                />
+              </section>
+            </LazySection>
+          </SectionErrorBoundary>
+        ) : null}
 
         {/* Section 6: Amiibo */}
-        <SectionErrorBoundary sectionName="Amiibo">
-          <LazySection>
-            <section className="mt-8 w-full max-w-full">
-              <div className="flex items-center justify-between gap-2 mb-4 px-4 sm:px-8">
-                <h3 className="text-xl font-bold text-foreground">مجسمات amiibo</h3>
-                <Link
-                  to="/category/$categoryId"
-                  params={{ categoryId: "amiibo" }}
-                  className="text-[#EA8918] text-sm font-bold hover:underline"
-                >
-                  عرض الكل
-                </Link>
-              </div>
-              <ProductStrip
-                products={adminProducts
-                  .filter((p) => getProductCategory(p) === "amiibo")
-                  .slice(0, 12)
-                  .map((p) => ({
+        {shows(amiiboShelf) ? (
+          <SectionErrorBoundary sectionName="Amiibo">
+            <LazySection>
+              <section className="mt-8 w-full max-w-full">
+                <div className="flex items-center justify-between gap-2 mb-4 px-4 sm:px-8">
+                  <h3 className="text-xl font-bold text-foreground">مجسمات amiibo</h3>
+                  <Link
+                    to="/category/$categoryId"
+                    params={{ categoryId: "amiibo" }}
+                    className="text-[#EA8918] text-sm font-bold hover:underline"
+                  >
+                    عرض الكل
+                  </Link>
+                </div>
+                <ProductStrip
+                  products={amiiboShelf.map((p) => ({
                     id: p.id,
                     slug: p.slug,
                     title: p.titleEn || p.english_name || p.title || "Amiibo",
@@ -568,37 +600,36 @@ export default function HomeView({
                     source: p,
                     rating: p.metacriticRating,
                   }))}
-                onSelect={(product: any) => onGameClick(product)}
-                formatPrice={formatGenericPrice}
-                onPress={() => playSound("bumper_end", 0.6)}
-                ratingIcon={<BananaIcon className="w-3 h-3 sm:w-4 sm:h-4" solid />}
-                loading={isPending && adminProducts.length === 0}
-              />
-            </section>
-          </LazySection>
-        </SectionErrorBoundary>
+                  onSelect={(product: any) => onGameClick(product)}
+                  formatPrice={formatGenericPrice}
+                  onPress={() => playSound("bumper_end", 0.6)}
+                  ratingIcon={<BananaIcon className="w-3 h-3 sm:w-4 sm:h-4" solid />}
+                  loading={isPending && adminProducts.length === 0}
+                />
+              </section>
+            </LazySection>
+          </SectionErrorBoundary>
+        ) : null}
 
         {/* Section 7: Gift Cards */}
-        <SectionErrorBoundary sectionName="GiftCards">
-          <LazySection>
-            <section className="mt-8 w-full max-w-full">
-              <div className="flex items-center justify-between gap-2 mb-4 px-4 sm:px-8">
-                <h3 className="text-xl font-bold text-foreground">
-                  كروت التعبئة Nintendo Gift Cards
-                </h3>
-                <Link
-                  to="/category/$categoryId"
-                  params={{ categoryId: "gift-cards" }}
-                  className="text-[#EA8918] text-sm font-bold hover:underline"
-                >
-                  عرض الكل
-                </Link>
-              </div>
-              <ProductStrip
-                products={adminProducts
-                  .filter((p) => getProductCategory(p) === "gift_card")
-                  .slice(0, 12)
-                  .map((p) => ({
+        {shows(giftCardShelf) ? (
+          <SectionErrorBoundary sectionName="GiftCards">
+            <LazySection>
+              <section className="mt-8 w-full max-w-full">
+                <div className="flex items-center justify-between gap-2 mb-4 px-4 sm:px-8">
+                  <h3 className="text-xl font-bold text-foreground">
+                    كروت التعبئة Nintendo Gift Cards
+                  </h3>
+                  <Link
+                    to="/category/$categoryId"
+                    params={{ categoryId: "gift-cards" }}
+                    className="text-[#EA8918] text-sm font-bold hover:underline"
+                  >
+                    عرض الكل
+                  </Link>
+                </div>
+                <ProductStrip
+                  products={giftCardShelf.map((p) => ({
                     id: p.id,
                     slug: p.slug,
                     title: p.titleEn || p.english_name || p.title || "Gift Card",
@@ -611,35 +642,34 @@ export default function HomeView({
                     source: p,
                     rating: p.metacriticRating,
                   }))}
-                onSelect={(product: any) => onGameClick(product)}
-                formatPrice={formatGenericPrice}
-                onPress={() => playSound("bumper_end", 0.6)}
-                ratingIcon={<BananaIcon className="w-3 h-3 sm:w-4 sm:h-4" solid />}
-                loading={isPending && adminProducts.length === 0}
-              />
-            </section>
-          </LazySection>
-        </SectionErrorBoundary>
+                  onSelect={(product: any) => onGameClick(product)}
+                  formatPrice={formatGenericPrice}
+                  onPress={() => playSound("bumper_end", 0.6)}
+                  ratingIcon={<BananaIcon className="w-3 h-3 sm:w-4 sm:h-4" solid />}
+                  loading={isPending && adminProducts.length === 0}
+                />
+              </section>
+            </LazySection>
+          </SectionErrorBoundary>
+        ) : null}
 
         {/* Section 8: Used Parts & Games */}
-        <SectionErrorBoundary sectionName="Used">
-          <LazySection>
-            <section className="mt-8 w-full max-w-full">
-              <div className="flex items-center justify-between gap-2 mb-4 px-4 sm:px-8">
-                <h3 className="text-xl font-bold text-foreground">القطع والألعاب المستخدمة</h3>
-                <Link
-                  to="/category/$categoryId"
-                  params={{ categoryId: "used" }}
-                  className="text-[#EA8918] text-sm font-bold hover:underline"
-                >
-                  عرض الكل
-                </Link>
-              </div>
-              <ProductStrip
-                products={adminProducts
-                  .filter((p) => getProductCategory(p) === "used")
-                  .slice(0, 12)
-                  .map((p) => ({
+        {shows(usedShelf) ? (
+          <SectionErrorBoundary sectionName="Used">
+            <LazySection>
+              <section className="mt-8 w-full max-w-full">
+                <div className="flex items-center justify-between gap-2 mb-4 px-4 sm:px-8">
+                  <h3 className="text-xl font-bold text-foreground">القطع والألعاب المستخدمة</h3>
+                  <Link
+                    to="/category/$categoryId"
+                    params={{ categoryId: "used" }}
+                    className="text-[#EA8918] text-sm font-bold hover:underline"
+                  >
+                    عرض الكل
+                  </Link>
+                </div>
+                <ProductStrip
+                  products={usedShelf.map((p) => ({
                     id: p.id,
                     slug: p.slug,
                     title: p.titleEn || p.english_name || p.title || "Used",
@@ -649,15 +679,16 @@ export default function HomeView({
                     source: p,
                     rating: p.metacriticRating,
                   }))}
-                onSelect={(product: any) => onGameClick(product)}
-                formatPrice={formatGenericPrice}
-                onPress={() => playSound("bumper_end", 0.6)}
-                ratingIcon={<BananaIcon className="w-3 h-3 sm:w-4 sm:h-4" solid />}
-                loading={isPending && adminProducts.length === 0}
-              />
-            </section>
-          </LazySection>
-        </SectionErrorBoundary>
+                  onSelect={(product: any) => onGameClick(product)}
+                  formatPrice={formatGenericPrice}
+                  onPress={() => playSound("bumper_end", 0.6)}
+                  ratingIcon={<BananaIcon className="w-3 h-3 sm:w-4 sm:h-4" solid />}
+                  loading={isPending && adminProducts.length === 0}
+                />
+              </section>
+            </LazySection>
+          </SectionErrorBoundary>
+        ) : null}
 
         {/*
           Section 9: Banana Market. Not shown while the market is under

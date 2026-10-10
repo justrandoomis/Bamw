@@ -43,7 +43,7 @@ export function FaqSection() {
   return (
     <Section id="faq" title={t("faq.title")} subtitle={t("faq.subtitle")} weight="primary">
       <Reveal>
-        <Panel className="divide-y divide-white/[0.05] overflow-hidden">
+        <Panel className="divide-y divide-border/70 overflow-hidden">
           {faq.map((item, index) => {
             const expanded = open === item.id;
             return (
@@ -51,7 +51,7 @@ export function FaqSection() {
                 <button
                   onClick={() => setOpen(expanded ? null : item.id)}
                   aria-expanded={expanded}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-start transition-colors hover:bg-white/[0.03]"
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-start transition-colors hover:bg-muted/60"
                 >
                   <span className="text-sm font-bold">{item.question}</span>
                   <ChevronDown
@@ -130,13 +130,13 @@ export function PurchaseSection() {
           <Panel className="p-5">
             <dl className="space-y-3 text-xs">
               {purchase.supportedRegions && purchase.supportedRegions.length > 0 && (
-                <div className="flex items-baseline justify-between gap-4 border-b border-white/[0.05] pb-2.5">
+                <div className="flex items-baseline justify-between gap-4 border-b border-border/70 pb-2.5">
                   <dt className="muted">{t("purchase.supportedRegions")}</dt>
                   <dd className="font-bold">{purchase.supportedRegions.join(" · ")}</dd>
                 </div>
               )}
               {purchase.deliveryTime && (
-                <div className="flex items-baseline justify-between gap-4 border-b border-white/[0.05] pb-2.5">
+                <div className="flex items-baseline justify-between gap-4 border-b border-border/70 pb-2.5">
                   <dt className="muted">{t("purchase.delivery")}</dt>
                   <dd className="font-bold text-good">{purchase.deliveryTime}</dd>
                 </div>
@@ -172,7 +172,7 @@ export function PurchaseSection() {
                 <ul className="space-y-1.5 text-xs leading-relaxed muted">
                   {purchase.notes.map((note, index) => (
                     <li key={`${note}-${index}`} className="flex gap-2">
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/25" />
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-foreground/25" />
                       {note}
                     </li>
                   ))}
@@ -316,7 +316,7 @@ export function DataSourcesNote() {
   if (sources.length === 0) return null;
 
   return (
-    <div className="mb-8 rounded-panel border border-white/[0.06] bg-white/[0.02] p-5">
+    <div className="mb-8 rounded-panel border border-border/70 bg-muted/50 p-5">
       <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider muted">
         <ShieldAlert className="h-3 w-3" />
         {t("data.transparency")}
@@ -330,7 +330,7 @@ export function DataSourcesNote() {
                 href={source.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold hover:text-white hover:underline"
+                className="font-semibold hover:text-foreground hover:underline"
               >
                 {source.label}
               </a>

@@ -80,7 +80,7 @@ export default function GlobalPriceTracker({
 
   if (ranked.length === 0) {
     return (
-      <p className="rounded-2xl bg-white/[0.03] p-6 text-center text-sm muted">
+      <p className="rounded-2xl bg-muted/50 p-6 text-center text-sm muted">
         {t("prices.noOffers")}
       </p>
     );
@@ -106,7 +106,7 @@ export default function GlobalPriceTracker({
 
       <Panel className="overflow-hidden">
         {/* Header row — desktop only; the mobile layout is a stacked list. */}
-        <div className="hidden border-b border-white/[0.06] px-4 py-2.5 text-[10px] font-bold uppercase tracking-wider muted lg:grid lg:grid-cols-[1.6fr_0.7fr_1fr_0.8fr_1fr_auto] lg:gap-3">
+        <div className="hidden border-b border-border/70 px-4 py-2.5 text-[10px] font-bold uppercase tracking-wider muted lg:grid lg:grid-cols-[1.6fr_0.7fr_1fr_0.8fr_1fr_auto] lg:gap-3">
           <span>{t("prices.store")}</span>
           <span>{t("prices.region")}</span>
           <span>{t("prices.edition")}</span>
@@ -123,7 +123,7 @@ export default function GlobalPriceTracker({
               <li
                 key={`${offer.id || offer.storeName}-${index}`}
                 className={cn(
-                  "relative border-b border-white/[0.05] px-4 py-3.5 transition-colors last:border-b-0",
+                  "relative border-b border-border/70 px-4 py-3.5 transition-colors last:border-b-0",
                   "lg:grid lg:grid-cols-[1.6fr_0.7fr_1fr_0.8fr_1fr_auto] lg:items-center lg:gap-3",
                   (isBest || offer.firstParty) && "bg-good/[0.06]",
                   unavailable && "opacity-55",
@@ -247,7 +247,7 @@ export default function GlobalPriceTracker({
         {ranked.length > 6 && (
           <button
             onClick={() => setShowAll((v) => !v)}
-            className="w-full border-t border-white/[0.06] py-3 text-xs font-bold text-nin-soft transition-colors hover:bg-white/[0.03]"
+            className="w-full border-t border-border/70 py-3 text-xs font-bold text-nin-soft transition-colors hover:bg-muted/60"
           >
             {showAll ? t("common.showLess") : `${t("common.viewAll")} (${ranked.length})`}
           </button>

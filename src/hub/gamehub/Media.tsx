@@ -73,7 +73,7 @@ export function VideosSection() {
           {lead && (
             <button
               onClick={() => openVideo(lead)}
-              className="group relative aspect-video overflow-hidden rounded-panel border border-white/[0.08] text-start"
+              className="group relative aspect-video overflow-hidden rounded-panel border border-border/70 text-start"
             >
               <SmartImage
                 src={cdnImage(lead.thumbnailUrl)}
@@ -111,7 +111,7 @@ export function VideosSection() {
                 <button
                   key={`${video.id || video.title}-${vIdx}`}
                   onClick={() => openVideo(video)}
-                  className="group flex w-64 shrink-0 items-start gap-3 rounded-xl p-2 text-start transition-colors hover:bg-white/[0.05] lg:w-full"
+                  className="group flex w-64 shrink-0 items-start gap-3 rounded-xl p-2 text-start transition-colors hover:bg-muted/60 lg:w-full"
                 >
                   <span className="relative h-16 w-28 shrink-0 overflow-hidden rounded-lg">
                     <SmartImage
@@ -120,7 +120,7 @@ export function VideosSection() {
                       wrapperClassName="absolute inset-0"
                       className="h-full w-full object-cover"
                     />
-                    <span className="absolute inset-0 flex items-center justify-center bg-black/25 opacity-0 transition-opacity group-hover:opacity-100">
+                    <span className="absolute inset-0 flex items-center justify-center bg-muted/50 opacity-0 transition-opacity group-hover:opacity-100">
                       <Play className="h-4 w-4 fill-white text-white" />
                     </span>
                     {video.duration != null && (
@@ -193,7 +193,7 @@ export function GallerySection() {
               key={`${image.id || image.url}-${index}`}
               onClick={() => openLightbox(image.id)}
               className={cn(
-                "group relative aspect-[16/10] overflow-hidden rounded-xl border border-white/[0.06]",
+                "group relative aspect-[16/10] overflow-hidden rounded-xl border border-border/70",
                 // First tile spans two columns so the grid has a focal point.
                 index === 0 && "col-span-2 row-span-2 aspect-[16/12] sm:aspect-[16/10]",
               )}

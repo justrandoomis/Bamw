@@ -38,6 +38,8 @@ export function SimilarGamesSection() {
   const [kind, setKind] = useState<SimilarityKind | "all">("all");
 
   const kinds = [...new Set(similar.flatMap((s) => s.reasons.map((r) => r.kind)))];
+  // Nothing to suggest, nothing drawn — not a panel saying so.
+  if (similar.length === 0) return null;
   const visible =
     kind === "all" ? similar : similar.filter((s) => s.reasons.some((r) => r.kind === kind));
 
@@ -65,7 +67,7 @@ export function SimilarGamesSection() {
       <Reveal>
         {similar.length === 0 ? (
           <Panel className="flex flex-col items-center justify-center p-8 text-center">
-            <span className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/[0.05] text-muted">
+            <span className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-muted/50 text-muted">
               <Sparkles className="h-5 w-5 opacity-40" />
             </span>
             <p className="text-sm font-bold text-muted">
@@ -83,7 +85,7 @@ export function SimilarGamesSection() {
                 <Link
                   key={`${pick.slug}-${pickIdx}`}
                   to={gamePath(pick.slug)}
-                  className="group flex flex-col overflow-hidden rounded-panel border border-white/[0.07] bg-white/[0.03] transition-all duration-200 hover:border-white/15 hover:bg-white/[0.06]"
+                  className="group flex flex-col overflow-hidden rounded-panel border border-border/70 bg-muted/50 transition-all duration-200 hover:border-foreground/20 hover:bg-muted/60"
                 >
                   <span className="relative aspect-[3/4] overflow-hidden bg-black/40">
                     <SmartImage
@@ -142,7 +144,7 @@ function FilterPill({
       onClick={onClick}
       className={cn(
         "shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-[11px] font-bold transition-colors",
-        active ? "bg-white/[0.13] text-white" : "bg-black/25 muted hover:text-white",
+        active ? "bg-card text-foreground shadow-sm" : "bg-muted/50 muted hover:text-foreground",
       )}
     >
       {children}
@@ -231,7 +233,7 @@ export function SeriesSection() {
                 ) : (
                   <Link
                     to={gamePath(entry.slug)}
-                    className="flex gap-3 rounded-panel border border-white/[0.07] bg-white/[0.03] p-3 transition-colors hover:border-white/15 hover:bg-white/[0.06]"
+                    className="flex gap-3 rounded-panel border border-border/70 bg-muted/50 p-3 transition-colors hover:border-foreground/20 hover:bg-muted/60"
                   >
                     {inner}
                   </Link>
@@ -304,7 +306,7 @@ function StudioCard({
 }) {
   const body = (
     <>
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.07]">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted/70">
         <Icon className="h-4 w-4 text-nin-soft" />
       </span>
       <span className="min-w-0 flex-1">
@@ -344,7 +346,11 @@ export function SetupSection() {
       <Reveal>
         <div className="grid gap-3 sm:grid-cols-3">
           {accessories.map((item, accIdx) => (
-            <Panel key={`${item.id || item.name}-${accIdx}`} interactive className="flex flex-col overflow-hidden">
+            <Panel
+              key={`${item.id || item.name}-${accIdx}`}
+              interactive
+              className="flex flex-col overflow-hidden"
+            >
               <SmartImage
                 src={cdnImage(item.imageUrl)}
                 alt={item.name}
@@ -412,7 +418,7 @@ export function RecommendationStrip({
           <Link
             key={`${item.slug}-${itemIdx}`}
             to={gamePath(item.slug)}
-            className="group w-40 shrink-0 overflow-hidden rounded-panel border border-white/[0.07] bg-white/[0.03] transition-colors hover:border-white/15"
+            className="group w-40 shrink-0 overflow-hidden rounded-panel border border-border/70 bg-muted/50 transition-colors hover:border-foreground/20"
           >
             <SmartImage
               src={cdnImage(item.coverUrl)}

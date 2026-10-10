@@ -1,9 +1,12 @@
 import { useMemo, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
+import { useRouter } from "@tanstack/react-router";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import {
   Bell,
+  BellRing,
   Calendar,
+  ChevronLeft,
   Clock,
   Gamepad2,
   HardDrive,
@@ -11,44 +14,51 @@ import {
   Languages,
   Play,
   Shapes,
-  BellRing,
+  Share2,
   ShoppingBag,
   Star,
   Trophy,
   Users,
 } from "lucide-react";
 import { useHub } from "./hubContext";
-import { CaseStage } from "./CaseStage";
 import type { Game } from "@/hub/types";
 import { useI18n } from "@/hub/i18n";
 import { useCurrency } from "@/hub/context/CurrencyContext";
+import { useNotifications } from "@/hub/context/NotificationContext";
 import { PLATFORM_META } from "@/hub/ui/Icons";
 import { SmartImage } from "@/hub/ui/Bits";
 import { formatBytes, formatDate, formatRange } from "@/hub/utils/format";
 import { cn } from "@/hub/utils/cn";
 import { ShareAndEarnButton } from "@/components/referral/ShareAndEarnButton";
+import NintendoCover from "@/components/NintendoCover";
 import { isAwaitingRelease } from "@/lib/release";
+import { readOffers } from "@/lib/hub";
 import { playSound } from "@/hub/utils/audio";
-import { sleeveFor } from "@/hub/services/coverArtService";
 import { cdnImage } from "@/lib/img";
 
 /**
- * Cinematic hero, built around the 3D game case.
+ * The game page's first screen, made of the shop's own clay.
  *
- * The composition the page is known for is preserved: the product renders in
- * three-quarter perspective on one side, its information sits beside it, and
- * the whole thing is lit by the game's own art. The backdrop is layered
- * image → blur → dark wash → gradient → vignette, in that order, so the type
- * stays legible over bright key art.
+ * It used to be a cinematic black stage built around a 3D case: a dark wash
+ * that ignored the member's theme, the price seamed into the art, and the ways
+ * to buy the game three screens further down under a region filter. Now the
+ * page opens on the picture the member just tapped — the square card art, in a
+ * frame of clay — with the game's own key art as a soft wash behind it that
+ * fades into the page, in whichever theme they chose. Beside it: the name,
+ * what it runs on, and a purchase card that lists every way to buy it with its
+ * price before a single tap.
  *
- * Media is reachable without displacing the product: the trailer and gallery
- * live in a compact rail beneath the case rather than taking the stage.
+ * The buy sheet stays the one place a purchase is configured; this card shows
+ * the choices and opens it.
  */
 export function Hero() {
   const { t } = useI18n();
   const { formatConverted } = useCurrency();
+  const { addNotification } = useNotifications();
+  const router = useRouter();
   const {
     game,
+    ranked,
     bestOffer,
     isWishlisted,
     toggleWishlist,
@@ -59,20 +69,23 @@ export function Hero() {
     priceVerdict,
   } = useHub();
 
-  const awaitingRelease = isAwaitingRelease(game.rawProduct ?? {});
+  const raw = useMemo(() => (game.rawProduct ?? {}) as Record<string, unknown>, [game.rawProduct]);
+  const awaitingRelease = isAwaitingRelease(raw);
 
   const reduceMotion = useReducedMotion();
   const { scrollY } = useScroll();
-  // Parallax on the backdrop only — the case itself must not drift away from
-  // the type it belongs with.
-  const backdropY = useTransform(scrollY, [0, 600], [0, 90]);
-  const backdropScale = useTransform(scrollY, [0, 600], [1.1, 1.2]);
+  // The wash drifts a little slower than the page; the art and the type do not.
+  const washY = useTransform(scrollY, [0, 600], [0, 80]);
 
+  const legacyGallery = (game as any).gallery as string[] | undefined;
   const images = useMemo(() => {
     if (game.images?.length) return game.images;
-    const gallery = (game as any).gallery || [];
-    return gallery.map((url: string, id: number) => ({ id: `gal-${id}`, url, thumbUrl: url }));
-  }, [game.images, (game as any).gallery]);
+    return (legacyGallery || []).map((url: string, id: number) => ({
+      id: `gal-${id}`,
+      url,
+      thumbUrl: url,
+    }));
+  }, [game.images, legacyGallery]);
 
   const bannerUrl = (game as any).banner;
   const trailer = useMemo(
@@ -91,11 +104,10 @@ export function Hero() {
   const [thumbIndex, setThumbIndex] = useState<number | null>(null);
 
   /*
-    The hero background is the Cover Image role: wide, composition-friendly key
-    art meant to be blurred and darkened behind the title. The Front Box Cover
-    is deliberately absent from this chain — it is a tall, tightly-cropped
-    photograph of a box, and stretching it across a landscape header is what
-    made this look like a mistake rather than a design.
+    The wash behind the hero is the Cover Image role: wide, composition-friendly
+    key art meant to be blurred. The Front Box Cover is deliberately absent from
+    this chain — it is a tall, tightly-cropped photograph of a box, and stretched
+    across a landscape header it looked like a mistake rather than a design.
   */
   const backdropUrl =
     (thumbIndex !== null ? images[thumbIndex]?.url : undefined) ??
@@ -104,156 +116,175 @@ export function Hero() {
     game.keyArtUrl;
 
   /*
-    Which physical SKUs actually exist. A backward-compatible Switch game runs on
-    Switch 2 but still ships in a Switch 1 case, so hardware support alone does
-    not earn a Switch 2 case — only a distinct Switch 2 release does.
+    The ways to buy this game, cheapest first, named the way the shop names
+    them. The hub's ranked offers carry the price in the member's currency; the
+    shop's own reading of the product carries the label and the delivery note,
+    and the two share an order (`<kind>-<index>`), so each row is matched to its
+    own label rather than guessed from its format.
   */
-  const nin = game.nintendo;
-  const hasSwitch2Sku = Boolean(nin?.switch2Only || nin?.switch2Edition?.available);
-  const hasSwitch1Sku = Boolean(nin?.runsOn?.includes("switch") && !nin?.switch2Only);
-  const skus = [
-    ...(hasSwitch1Sku ? (["switch"] as const) : []),
-    ...(hasSwitch2Sku ? (["switch2"] as const) : []),
-  ];
-
-  // Switch 2 leads when both cases exist: it is the headline SKU on a
-  // Switch-2-first storefront, and the selector makes the other one one tap away.
-  const [sku, setSku] = useState<"switch" | "switch2">(() =>
-    hasSwitch2Sku ? "switch2" : "switch",
-  );
-  const isSwitch2 = sku === "switch2";
-
-  /*
-    A digital-only release has no case to show. Rendering one anyway would be a
-    straightforward lie about what the buyer receives.
-  */
-  const hasPhysical = Boolean(
-    nin?.formats?.some((format) => format === "cartridge" || format === "game-key-card"),
-  );
+  const purchaseOptions = useMemo(() => {
+    const local = readOffers(raw);
+    return ranked
+      .filter((entry) => entry.offer.firstParty)
+      .map((entry) => {
+        const index = Number(entry.offer.id.split("-").pop());
+        const source = Number.isInteger(index) ? local[index] : undefined;
+        return {
+          id: entry.offer.id,
+          label: source?.label ?? entry.offer.storeName,
+          meta: source?.meta,
+          price: entry.offer.price,
+          listPrice: entry.offer.listPrice,
+          available:
+            entry.offer.availability !== "out-of-stock" && entry.offer.availability !== "delisted",
+        };
+      });
+  }, [raw, ranked]);
 
   const stats = buildQuickStats(game, t);
+  const platforms = game.platforms
+    .filter((p) => PLATFORM_META[p])
+    .sort((a, b) => nintendoRank(a) - nintendoRank(b));
+
+  const goBack = () => {
+    playSound("select");
+    if (typeof window !== "undefined" && window.history.length > 1) router.history.back();
+    else void router.navigate({ to: "/" });
+  };
+
+  const share = async () => {
+    const url = window.location.href;
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: game.title, url });
+        return;
+      } catch {
+        // Sheet dismissed — fall through to the clipboard path.
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      addNotification({ title: t("common.linkCopied"), type: "success" });
+    } catch {
+      addNotification({ title: t("common.error"), type: "warning" });
+    }
+  };
 
   return (
-    <header className="hero-dark relative isolate overflow-hidden bg-ink-950">
-      {/* ---- Backdrop stack: the art itself, blurred, then only as much wash
-           as the type needs. A flat black plate is what made this look cheap. ---- */}
+    <header className="relative isolate overflow-hidden">
+      {/*
+        ---- The wash: the game's own art, blurred, fading into the page ----
+        Faded by a mask on the art itself, not by a band of page colour laid
+        over it: the page behind is the lit canvas, and a flat band of its base
+        colour drew a visible line where the wash ended.
+      */}
       <motion.div
         aria-hidden
-        {...(reduceMotion ? {} : { style: { y: backdropY, scale: backdropScale } })}
-        className="absolute inset-0 -z-30"
+        {...(reduceMotion ? {} : { style: { y: washY } })}
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[30rem] overflow-hidden sm:h-[34rem]"
       >
-        {backdropUrl && (
-          <>
-            {/* Bloom: an over-scaled, heavily blurred copy spreads the art's own
-                colour across the whole header. */}
-            <img
-              src={cdnImage(backdropUrl)}
-              alt=""
-              className="absolute inset-0 h-full w-full scale-[1.35] object-cover opacity-60 blur-[70px] saturate-150 transition-opacity duration-700"
-            />
-            {/* Readable layer: same art, gentler blur, slightly brighter. */}
-            <img
-              src={cdnImage(backdropUrl)}
-              alt=""
-              className="absolute inset-0 h-full w-full scale-110 object-cover opacity-30 blur-[30px] brightness-75 transition-opacity duration-700"
-            />
-          </>
-        )}
+        {backdropUrl ? (
+          <img
+            src={cdnImage(backdropUrl)}
+            alt=""
+            style={WASH_MASK}
+            className="h-full w-full scale-125 object-cover opacity-50 blur-3xl saturate-150 transition-opacity duration-700 dark:opacity-35"
+          />
+        ) : null}
       </motion.div>
-      {/* Increased wash and layered gradients to ensure white text is always legible */}
-      <div aria-hidden className="absolute inset-0 -z-20 bg-ink-950/60" />
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(8,9,13,0.6)_0%,rgba(11,13,19,0.4)_38%,rgba(11,13,19,0.8)_82%,rgb(11,13,19)_100%)]"
-      />
-      <div
-        aria-hidden
-        className="grain absolute inset-0 -z-10 bg-[radial-gradient(120%_80%_at_50%_22%,transparent_30%,rgba(8,9,13,0.9)_100%)]"
-      />
 
-      <div className="mx-auto w-full max-w-6xl px-4 pb-10 pt-8 sm:pb-12 sm:pt-12 lg:px-6">
-        <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)] lg:gap-12">
-          {/* ================= Product ================= */}
-          <div className="flex flex-col items-center justify-center min-h-[360px] sm:min-h-[440px] w-full max-w-full overflow-hidden">
-            <CaseStage
-              key={game.slug}
-              coverUrl={game.coverUrl}
-              // The 3D sleeve samples the print-resolution cover when the
-              // catalogue has one; the CSS case stays on `coverUrl`.
-              coverTextureUrl={game.coverTextureUrl}
-              detailCoverUrl={game.detailCoverUrl}
-              coverTrim={game.coverTrim}
-              // Explicit artwork wins; otherwise resolve from the game code.
-              sleeve={game.caseSleeve ?? sleeveFor(game.nintendoGameCode)}
-              title={game.title}
-              subtitle={game.subtitle}
-              isSwitch2={isSwitch2}
-              platform={isSwitch2 ? "ns2" : "ns1"}
-              ageRating={game.ageRating}
-              // Retail Switch 2 packaging prints the edition on the spine.
-              editionLabel={
-                isSwitch2 && nin?.switch2Edition?.available
-                  ? "Nintendo Switch 2 Edition"
-                  : undefined
-              }
-              size="lg"
-              onClick={() => images[0] && openLightbox(images[0].id)}
-              className="scale-90 sm:scale-100 will-change-transform max-w-full"
-            />
-
-            {/* SKU selector — only when both cases genuinely exist. */}
-            {skus.length > 1 && (
-              <div className="mt-4 flex gap-1 rounded-full bg-black/30 p-1">
-                {skus.map((option, optIdx) => (
-                  <button
-                    key={`${option}-${optIdx}`}
-                    onClick={() => {
-                      setSku(option);
-                      playSound("select");
-                    }}
-                    aria-pressed={sku === option}
-                    className={cn(
-                      "rounded-full px-3 py-1.5 text-[11px] font-bold transition-colors duration-200",
-                      sku === option ? "bg-white/[0.14] text-white" : "muted hover:text-white",
-                    )}
-                  >
-                    {PLATFORM_META[option].label}
-                  </button>
-                ))}
-              </div>
+      {/* ---- The page's own controls: back, share, keep ---- */}
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 pt-[max(env(safe-area-inset-top),0.75rem)] lg:px-6">
+        <button
+          type="button"
+          onClick={goBack}
+          aria-label={t("common.back")}
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--clay-rim)] bg-card/80 text-foreground shadow-sm backdrop-blur-xl"
+        >
+          <ChevronLeft className="h-5 w-5 rtl:rotate-180" aria-hidden="true" />
+        </button>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => void share()}
+            aria-label={t("common.share")}
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--clay-rim)] bg-card/80 text-foreground shadow-sm backdrop-blur-xl"
+          >
+            <Share2 className="h-[18px] w-[18px]" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            onClick={toggleWishlist}
+            aria-pressed={isWishlisted}
+            aria-label={isWishlisted ? t("hero.inWishlist") : t("hero.addToWishlist")}
+            className={cn(
+              "flex h-11 w-11 items-center justify-center rounded-full border border-[var(--clay-rim)] bg-card/80 shadow-sm backdrop-blur-xl",
+              isWishlisted ? "text-nin" : "text-foreground",
             )}
+          >
+            <Heart className={cn("h-[18px] w-[18px]", isWishlisted && "fill-current")} />
+          </button>
+        </div>
+      </div>
 
-            {!hasPhysical && <p className="mt-2 text-[11px] muted">{t("nintendo.digital")}</p>}
+      <div className="mx-auto grid max-w-6xl gap-6 px-4 pb-4 pt-4 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-10 lg:px-6 lg:pb-8 lg:pt-6">
+        {/* ================= The game ================= */}
+        <div className="min-w-0 lg:flex lg:items-start lg:gap-8">
+          <div className="mx-auto w-[min(66vw,272px)] shrink-0 lg:mx-0 lg:w-[296px]">
+            {/* The card art, in a frame of clay: the same picture the member tapped. */}
+            <button
+              type="button"
+              onClick={() => images[0] && openLightbox(images[0].id)}
+              aria-label={game.title}
+              className="block w-full rounded-[30px] border border-[var(--clay-rim)] bg-card p-1.5 shadow-xl"
+            >
+              <span className="relative block aspect-square w-full overflow-hidden rounded-[24px] bg-muted/40">
+                <NintendoCover
+                  product={raw}
+                  usage="square-card"
+                  ratio={null}
+                  fit="cover"
+                  alt={game.title}
+                  loading="eager"
+                  fetchPriority="high"
+                  className="h-full w-full"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 rounded-[inherit] shadow-[inset_0_0_0_1px_rgb(0_0_0/0.06)] dark:shadow-[inset_0_0_0_1px_rgb(255_255_255/0.07)]"
+                />
+              </span>
+            </button>
 
-            {/* Media rail — trailer + stills, secondary to the product. */}
-            {(trailer || images.length > 0) && (
-              <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-                {trailer && (
+            {/* Trailer and stills, secondary to the art. */}
+            {trailer || images.length > 0 ? (
+              <div className="mt-3 flex items-center justify-center gap-2 lg:justify-start">
+                {trailer ? (
                   <button
+                    type="button"
                     onClick={() => {
                       playSound("confirm");
                       openVideo(trailer);
                     }}
-                    className="group flex items-center gap-2 rounded-full bg-white/[0.08] py-1.5 pe-3.5 ps-1.5 text-[11px] font-bold backdrop-blur transition-colors hover:bg-white/[0.14]"
+                    className="flex h-10 shrink-0 items-center gap-2 rounded-full border border-[var(--clay-rim)] bg-card pe-3.5 ps-1.5 text-[12px] font-bold text-foreground shadow-sm"
                   >
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-nin text-white transition-transform group-hover:scale-110">
-                      <Play className="ms-px h-3 w-3 fill-current" />
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-nin text-white">
+                      <Play className="ms-px h-3 w-3 fill-current" aria-hidden="true" />
                     </span>
                     {t("hero.watchTrailer")}
                   </button>
-                )}
-                {images.slice(0, 4).map((image: any, index: number) => (
+                ) : null}
+                {images.slice(0, trailer ? 3 : 4).map((image: any, index: number) => (
                   <button
+                    type="button"
                     key={`${image.id || image.url}-${index}`}
                     onMouseEnter={() => setThumbIndex(index)}
                     onFocus={() => setThumbIndex(index)}
                     onClick={() => openLightbox(image.id)}
-                    aria-label={image.alt}
+                    aria-label={image.alt || t("hero.gallery")}
                     className={cn(
-                      "h-9 w-12 shrink-0 overflow-hidden rounded-md transition-all duration-300",
-                      index === thumbIndex
-                        ? "opacity-100 ring-1 ring-white/50"
-                        : "opacity-45 hover:opacity-85",
+                      "h-10 w-12 shrink-0 overflow-hidden rounded-[12px] border border-[var(--clay-rim)] shadow-sm transition-opacity duration-300",
+                      index === thumbIndex ? "opacity-100" : "opacity-75 hover:opacity-100",
                     )}
                   >
                     <SmartImage
@@ -265,283 +296,255 @@ export function Hero() {
                   </button>
                 ))}
               </div>
-            )}
+            ) : null}
           </div>
 
-          {/* ================= Information ================= */}
-          <div className="min-w-0">
-            <h1 className="text-[2rem] font-extrabold leading-[1.05] tracking-tight text-balance sm:text-5xl">
+          <div className="mt-5 min-w-0 text-center lg:mt-1 lg:text-start">
+            <h1
+              dir="auto"
+              className="text-[26px] font-black leading-[1.08] tracking-[-0.025em] text-balance text-foreground sm:text-[34px]"
+            >
               {game.title}
             </h1>
-            {game.subtitle && (
-              <p className="mt-1.5 text-lg font-bold text-nin-soft sm:text-xl">{game.subtitle}</p>
-            )}
+            {game.subtitle ? (
+              <p className="mt-1 text-[16px] font-bold text-nin sm:text-[18px]">{game.subtitle}</p>
+            ) : null}
 
-            {/* Developer / publisher — both navigable. */}
-            <p className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs muted">
-              {game.developer && (
-                <StudioLink
-                  kind="developer"
-                  name={game.developer.name}
-                  slug={game.developer.slug}
-                />
-              )}
-              {game.developer && game.publisher && game.developer.id !== game.publisher.id && (
-                <span aria-hidden>·</span>
-              )}
-              {game.publisher && game.publisher.id !== game.developer?.id && (
-                <StudioLink
-                  kind="publisher"
-                  name={game.publisher.name}
-                  slug={game.publisher.slug}
-                />
-              )}
-            </p>
+            {game.developer || game.publisher ? (
+              <p className="mt-2 text-[13px] text-muted-foreground">
+                {[
+                  game.developer?.name,
+                  game.publisher && game.publisher.id !== game.developer?.id
+                    ? game.publisher.name
+                    : null,
+                ]
+                  .filter(Boolean)
+                  .join(" · ")}
+              </p>
+            ) : null}
 
-            {/* Platform + format badges */}
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              {game.platforms
-                .filter((p) => PLATFORM_META[p])
-                .sort((a, b) => nintendoRank(a) - nintendoRank(b))
-                .map((platform, platIdx) => {
-                  const meta = PLATFORM_META[platform];
-                  const { Icon } = meta;
-                  return (
-                    <span
-                      key={`${platform}-${platIdx}`}
-                      className={cn(
-                        "inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-[11px] font-bold",
-                        meta.nintendo
-                          ? "bg-nin text-white"
-                          : "bg-white/[0.09] text-[rgb(var(--text))]",
-                      )}
-                    >
-                      <Icon className="h-3 w-3" />
-                      {meta.short}
-                    </span>
-                  );
-                })}
-              {game.nintendo?.formats?.map((format, fmtIdx) => (
-                <span
-                  key={`${format}-${fmtIdx}`}
-                  className="inline-flex items-center rounded-md border border-white/12 px-2 py-1 text-[11px] font-bold muted"
-                >
-                  {format === "digital"
-                    ? t("nintendo.digital")
-                    : format === "cartridge"
-                      ? t("nintendo.cartridge")
-                      : t("nintendo.gameKeyCard")}
-                </span>
-              ))}
-            </div>
-
-            {/* Scores and facts, one line */}
-            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
-              {game.userScore != null && (
-                <Metric icon={Star} iconClass="fill-warn text-warn">
-                  <b className="text-sm">{game.userScore.toFixed(1)}</b>
-                  <span className="muted"> / 5</span>
-                </Metric>
-              )}
-              {game.criticScore?.metacritic != null && (
-                <Metric icon={Trophy} iconClass="text-warn">
-                  <b className="text-sm">{game.criticScore.metacritic}</b>
-                  <span className="muted"> {t("hero.metacritic")}</span>
-                </Metric>
-              )}
-              {game.releaseDate && (
-                <Metric icon={Calendar}>
-                  <span dir="auto">{formatDate(game.releaseDate)}</span>
-                </Metric>
-              )}
-              {game.multiplayer?.players && (
-                <Metric icon={Users}>
-                  <span dir="auto">
-                    {formatRange(game.multiplayer.players)} {t("common.players")}
+            {/* What it runs on, how it ships, and what it scored. */}
+            <div className="mt-3.5 flex flex-wrap items-center justify-center gap-1.5 lg:justify-start">
+              {platforms.map((platform, platIdx) => {
+                const meta = PLATFORM_META[platform];
+                const { Icon } = meta;
+                return (
+                  <span
+                    key={`${platform}-${platIdx}`}
+                    className={cn(
+                      "inline-flex h-7 items-center gap-1.5 rounded-full px-2.5 text-[11.5px] font-bold",
+                      meta.nintendo ? "bg-nin text-white" : "bg-muted/70 text-foreground",
+                    )}
+                  >
+                    <Icon className="h-3 w-3" aria-hidden="true" />
+                    {meta.short}
                   </span>
-                </Metric>
-              )}
-              {game.ageRating && (
+                );
+              })}
+              {game.criticScore?.metacritic != null ? (
+                <span className="inline-flex h-7 items-center gap-1 rounded-full bg-muted/70 px-2.5 text-[11.5px] font-bold text-foreground">
+                  <Trophy className="h-3 w-3 text-warn" aria-hidden="true" />
+                  <span className="tabular-nums">{game.criticScore.metacritic}</span>
+                  <span className="text-muted-foreground">{t("hero.metacritic")}</span>
+                </span>
+              ) : null}
+              {game.userScore != null ? (
+                <span className="inline-flex h-7 items-center gap-1 rounded-full bg-muted/70 px-2.5 text-[11.5px] font-bold text-foreground">
+                  <Star className="h-3 w-3 fill-warn text-warn" aria-hidden="true" />
+                  <span className="tabular-nums">{game.userScore.toFixed(1)}</span>
+                </span>
+              ) : null}
+              {game.ageRating ? (
                 <span
                   dir="ltr"
-                  className="max-w-full truncate rounded border border-white/15 px-1.5 py-0.5 text-[10px] font-extrabold"
                   title={`${game.ageRating.system} ${game.ageRating.label}`}
+                  className="inline-flex h-7 max-w-full items-center truncate rounded-full border border-border px-2.5 text-[11px] font-extrabold text-foreground"
                 >
                   {game.ageRating.system} {game.ageRating.label}
                 </span>
-              )}
+              ) : null}
             </div>
 
-            {game.tagline && (
-              <p className="mt-4 max-w-xl text-sm leading-relaxed muted">{game.tagline}</p>
-            )}
-
-            {/* ---- Price + CTAs: seamed into the hero, not boxed ---- */}
-            <div className="mt-6 border-t border-white/[0.09] pt-5">
-              {bestOffer ? (
-                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span className="eyebrow">{t("hero.bestPrice")}</span>
-                  <span className="num text-3xl font-extrabold tracking-tight text-good sm:text-4xl">
-                    {formatConverted(bestOffer.offer.price)}
-                  </span>
-                  {bestOffer.offer.listPrice &&
-                    bestOffer.offer.listPrice.amount > bestOffer.offer.price.amount && (
-                      <span className="num text-sm font-semibold muted line-through sm:text-base">
-                        {formatConverted(bestOffer.offer.listPrice)}
-                      </span>
-                    )}
-                  {bestOffer.offer.discountPercent != null && (
-                    <span className="num rounded bg-good/15 px-1.5 py-0.5 text-xs font-extrabold text-good">
-                      −{bestOffer.offer.discountPercent}%
-                    </span>
-                  )}
-                  {priceVerdict && (
-                    <span
-                      className={cn(
-                        "text-xs font-bold",
-                        priceVerdict.id === "wait" ? "text-warn" : "text-good",
-                      )}
-                    >
-                      {t(`history.verdict${capitalise(priceVerdict.id)}` as never)}
-                    </span>
-                  )}
-                  <span className="text-[11px] muted">
-                    {bestOffer.offer.storeName} · {bestOffer.offer.region}
-                  </span>
-                </div>
-              ) : (
-                <p className="text-sm muted">{t("prices.noOffers")}</p>
-              )}
-
-              <div className="mt-4 flex flex-wrap items-center gap-2">
-                <button
-                  onClick={() => {
-                    playSound("confirm");
-                    openBuy();
-                  }}
-                  id="hero-buy-button"
-                  className="btn btn-primary h-12 flex-1 px-7 text-sm sm:flex-none"
-                >
-                  {/*
-                    Before launch this opens the release panel rather than the
-                    purchase sheet, so it must not promise a sale. `openBuy`
-                    itself is what enforces that; this only tells the truth
-                    about what the tap will do.
-                  */}
-                  {awaitingRelease ? (
-                    <>
-                      <BellRing className="h-4 w-4" />
-                      سجّل مسبقاً
-                    </>
-                  ) : (
-                    <>
-                      <ShoppingBag className="h-4 w-4" />
-                      {t("hero.buyNow")}
-                    </>
-                  )}
-                </button>
-                <button
-                  onClick={toggleWishlist}
-                  aria-pressed={isWishlisted}
-                  className={cn(
-                    "inline-flex h-12 items-center gap-2 rounded-xl px-4 text-xs font-bold transition-colors active:scale-[0.97]",
-                    isWishlisted
-                      ? "bg-nin/15 text-nin-soft"
-                      : "muted hover:bg-white/[0.07] hover:text-white",
-                  )}
-                >
-                  <Heart className={cn("h-4 w-4", isWishlisted && "fill-current")} />
-                  <span className="hidden sm:inline">
-                    {isWishlisted ? t("hero.inWishlist") : t("hero.addToWishlist")}
-                  </span>
-                </button>
-                <button
-                  onClick={openAlert}
-                  className="inline-flex h-12 items-center gap-2 rounded-xl px-4 text-xs font-bold muted transition-colors hover:bg-white/[0.07] hover:text-white active:scale-[0.97]"
-                >
-                  <Bell className="h-4 w-4 text-warn" />
-                  <span className="hidden sm:inline">{t("hero.trackPrice")}</span>
-                </button>
-              </div>
-
-              {/*
-                Share and earn — دعوة صديق.
-
-                A chip on its own line under the buy row: it carries a number
-                worth reading, so it is not an icon, but it is the page's thin
-                quiet control rather than a second call to action. On its own
-                line because a fourth control inside the buy row is what starts
-                the horizontal scroll this layout has fought before.
-              */}
-              <div className="mt-3 flex">
-                <ShareAndEarnButton product={(game.rawProduct ?? {}) as Record<string, unknown>} />
-              </div>
-            </div>
+            {game.tagline ? (
+              <p className="mx-auto mt-3.5 max-w-xl text-[14px] leading-relaxed text-muted-foreground lg:mx-0">
+                {game.tagline}
+              </p>
+            ) : null}
           </div>
         </div>
 
-        {/* ---- Quick stats strip: compact, seamed, full width ---- */}
-        {stats.length > 0 && (
-          <div className="mt-9 grid grid-cols-2 gap-2 overflow-hidden rounded-xl border border-white/15 bg-white/[0.07] p-2 backdrop-blur-md sm:grid-cols-3 lg:grid-cols-6">
+        {/* ================= The purchase card ================= */}
+        <aside className="min-w-0 lg:sticky lg:top-6 lg:self-start">
+          <div className="rounded-[28px] border border-[var(--clay-rim)] bg-card p-4 shadow-lg sm:p-5">
+            {bestOffer ? (
+              <div>
+                <p className="text-[12px] font-bold text-muted-foreground">
+                  {purchaseOptions.length > 1 ? t("hero.from") : t("hero.bestPrice")}
+                </p>
+                <div className="mt-0.5 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                  <span className="num text-[32px] font-black leading-none tracking-[-0.03em] text-foreground">
+                    {formatConverted(bestOffer.offer.price)}
+                  </span>
+                  {bestOffer.offer.listPrice &&
+                  bestOffer.offer.listPrice.amount > bestOffer.offer.price.amount ? (
+                    <span className="num text-[14px] font-semibold text-muted-foreground line-through">
+                      {formatConverted(bestOffer.offer.listPrice)}
+                    </span>
+                  ) : null}
+                  {bestOffer.offer.discountPercent != null ? (
+                    <span className="num rounded-full bg-good/15 px-2 py-0.5 text-[12px] font-extrabold text-good">
+                      −{bestOffer.offer.discountPercent}%
+                    </span>
+                  ) : null}
+                </div>
+                {priceVerdict ? (
+                  <p
+                    className={cn(
+                      "mt-1.5 text-[12px] font-bold",
+                      priceVerdict.id === "wait" ? "text-warn" : "text-good",
+                    )}
+                  >
+                    {t(`history.verdict${capitalise(priceVerdict.id)}` as never)}
+                  </p>
+                ) : null}
+              </div>
+            ) : (
+              <p className="text-[14px] text-muted-foreground">{t("prices.noOffers")}</p>
+            )}
+
+            {purchaseOptions.length > 0 ? (
+              <div className="mt-4">
+                <p className="mb-2 text-[12px] font-bold text-muted-foreground">
+                  {t("hero.waysToBuy")}
+                </p>
+                <ul className="divide-y divide-border/70 overflow-hidden rounded-[20px] bg-muted/50">
+                  {purchaseOptions.map((option) => (
+                    <li
+                      key={option.id}
+                      className="flex items-center justify-between gap-3 px-4 py-3"
+                    >
+                      <div className="min-w-0">
+                        <p className="truncate text-[14px] font-bold text-foreground">
+                          {option.label}
+                        </p>
+                        {option.meta ? (
+                          <p className="truncate text-[12px] text-muted-foreground">
+                            {option.meta}
+                          </p>
+                        ) : null}
+                      </div>
+                      <div className="shrink-0 text-end">
+                        <p className="num text-[14px] font-black text-foreground">
+                          {formatConverted(option.price)}
+                        </p>
+                        {option.listPrice && option.listPrice.amount > option.price.amount ? (
+                          <p className="num text-[11px] text-muted-foreground line-through">
+                            {formatConverted(option.listPrice)}
+                          </p>
+                        ) : null}
+                        {!option.available ? (
+                          <p className="text-[11px] font-bold text-muted-foreground">
+                            {t("hero.outOfStock")}
+                          </p>
+                        ) : null}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            <button
+              type="button"
+              id="hero-buy-button"
+              onClick={() => {
+                playSound("confirm");
+                openBuy();
+              }}
+              className="btn btn-primary mt-4 h-[52px] w-full rounded-[18px] text-[15px]"
+            >
+              {/*
+                Before launch this opens the release panel rather than the
+                purchase sheet, so it must not promise a sale. `openBuy` itself
+                is what enforces that; this only tells the truth about what the
+                tap will do.
+              */}
+              {awaitingRelease ? (
+                <>
+                  <BellRing className="h-4 w-4" aria-hidden="true" />
+                  {t("hero.preorder")}
+                </>
+              ) : (
+                <>
+                  <ShoppingBag className="h-4 w-4" aria-hidden="true" />
+                  {t("hero.buyNow")}
+                </>
+              )}
+            </button>
+
+            <div className="mt-2.5 grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={toggleWishlist}
+                aria-pressed={isWishlisted}
+                className={cn(
+                  "flex h-11 items-center justify-center gap-1.5 rounded-[16px] border border-[var(--clay-rim)] bg-card text-[12.5px] font-bold shadow-sm",
+                  isWishlisted ? "text-nin" : "text-foreground",
+                )}
+              >
+                <Heart
+                  className={cn("h-4 w-4", isWishlisted && "fill-current")}
+                  aria-hidden="true"
+                />
+                {isWishlisted ? t("hero.inWishlist") : t("hero.addToWishlist")}
+              </button>
+              <button
+                type="button"
+                onClick={openAlert}
+                className="flex h-11 items-center justify-center gap-1.5 rounded-[16px] border border-[var(--clay-rim)] bg-card text-[12.5px] font-bold text-foreground shadow-sm"
+              >
+                <Bell className="h-4 w-4 text-warn" aria-hidden="true" />
+                {t("hero.trackPrice")}
+              </button>
+            </div>
+
+            {/*
+              Share and earn — دعوة صديق. The card's quiet control: it carries a
+              number worth reading, so it is a chip, not a third button.
+            */}
+            <div className="mt-3 flex justify-center">
+              <ShareAndEarnButton product={raw} />
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      {/* ---- The facts, one glance: a strip of pressed tiles ---- */}
+      {stats.length > 0 ? (
+        <div className="mx-auto max-w-6xl px-4 pb-2 lg:px-6">
+          <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 lg:mx-0 lg:grid lg:grid-cols-6 lg:overflow-visible lg:px-0">
             {stats.map((stat, statIdx) => (
               <div
                 key={`${stat.label}-${statIdx}`}
-                className="min-w-0 rounded-lg border border-white/10 bg-white/[0.08] px-3.5 py-3"
+                className="flex min-w-[8.5rem] shrink-0 flex-col gap-1 rounded-[18px] bg-muted/50 px-3.5 py-3 lg:min-w-0"
               >
-                <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-white/80">
-                  <stat.icon className="h-4 w-4 shrink-0 text-white" strokeWidth={2.25} />
+                <span className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground">
+                  <stat.icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   <span className="truncate">{stat.label}</span>
                 </span>
                 <span
                   dir="auto"
                   title={stat.value}
-                  className="mt-1 block truncate text-[13px] font-bold"
+                  className="truncate text-[14px] font-black text-foreground"
                 >
                   {stat.value}
                 </span>
               </div>
             ))}
           </div>
-        )}
-      </div>
+        </div>
+      ) : null}
     </header>
-  );
-}
-
-function Metric({
-  icon: Icon,
-  iconClass,
-  children,
-}: {
-  icon: typeof Star;
-  iconClass?: string | undefined;
-  children: React.ReactNode;
-}) {
-  return (
-    <span className="inline-flex items-center gap-1.5">
-      <Icon className={cn("h-3.5 w-3.5 muted", iconClass)} />
-      {children}
-    </span>
-  );
-}
-
-function StudioLink({
-  kind,
-  name,
-  slug,
-}: {
-  kind: "developer" | "publisher";
-  name: string;
-  slug?: string | undefined;
-}) {
-  const { t } = useI18n();
-  const label = t(kind === "developer" ? "hero.developer" : "hero.publisher");
-  // This storefront has no studio pages, so the credit is plain text rather
-  // than a link that would dead-end.
-  return (
-    <span>
-      {label}: <span className="font-semibold text-[rgb(var(--text))]">{name}</span>
-    </span>
   );
 }
 
@@ -594,6 +597,12 @@ function buildQuickStats(game: Game, t: Translate) {
 
   return items.filter((item) => item.value && item.value.trim().length > 0).slice(0, 6);
 }
+
+/** Fades the wash out downwards, so the canvas behind it shows through. */
+const WASH_MASK = {
+  maskImage: "linear-gradient(to bottom, #000 0%, rgb(0 0 0 / 0.55) 45%, transparent 92%)",
+  WebkitMaskImage: "linear-gradient(to bottom, #000 0%, rgb(0 0 0 / 0.55) 45%, transparent 92%)",
+} as const;
 
 const nintendoRank = (platform: string) =>
   platform === "switch2" ? 0 : platform === "switch" ? 1 : 2;

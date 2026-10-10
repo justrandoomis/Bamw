@@ -35,11 +35,12 @@ import {
 /**
  * The game hub.
  *
- * Section order encodes the stated priority — price and purchase first, then
- * Nintendo, then the essentials, gameplay, reference detail, guides, community,
- * reviews and finally discovery. Every section returns `null` when its data is
- * absent, so a sparse record shortens the page instead of filling it with empty
- * panels.
+ * The hero carries the purchase — the ways to buy and the one button — so the
+ * page below it follows the questions a buyer asks next, in order: what the
+ * game is, how it runs on their Switch, which edition and add-ons, what
+ * players and we think of it, what to know before paying, its history, and
+ * what to play next. Every section returns `null` when its data is absent, so
+ * a sparse record shortens the page instead of filling it with empty panels.
  */
 export function GameHub({
   game,
@@ -90,50 +91,49 @@ export function GameHub({
         <HubNav items={navItems} />
 
         <div className="mx-auto max-w-6xl px-4 lg:px-6">
-          {/* 1 — Nintendo: the platform this storefront exists for. */}
+          {/* 1 — What the game is: about, pictures, how it plays. */}
+          <GlanceSection />
+          <VideosSection />
+          <GallerySection />
+          <GameplaySection />
+          <StorySection />
+          <FeaturesSection />
+
+          {/* 2 — On your Switch: compatibility, performance and the facts. */}
           <NintendoSection />
           <Switch2Section />
           <PerformanceSection />
-
-          {/* 2 — Essentials: everything you need to know, before the money talk. */}
-          <GlanceSection />
-          <FitSection />
-
-          {/* 3 — Where to buy it: reads better once the game itself is known. */}
-          <PricesSection />
-
-          <EditionsSection />
-
-          {/* 4 — Gameplay & content. */}
-          <GameplaySection />
-          <StorySection />
-          <VideosSection />
-          <GallerySection />
-          <FeaturesSection />
-
-          {/* 5 — Reference detail. */}
           <StorageSection />
           <LanguagesSection />
           <MultiplayerSection />
 
-          {/* 6 — Extras & help. */}
+          {/* 3 — Editions, add-ons and help. */}
+          <EditionsSection />
           <DlcSection />
           <GuidesSection />
           <CompletionSection />
+
+          {/* 4 — What we and the players think. */}
+          <VerdictSection />
+          <ReviewsSection />
+          <CommunitySection />
+
+          {/*
+            5 — Before you buy. The shop's own ways to buy are in the hero
+            now; the comparison table only earns a place when there is a price
+            history or another store to compare against.
+          */}
+          {hasPriceIntelligence(game) ? <PricesSection /> : null}
           <FaqSection />
           <PurchaseSection />
 
-          {/* 7 — Verdict, community, reviews. */}
-          <VerdictSection />
-          <CommunitySection />
-          <ReviewsSection />
-
-          {/* 8 — Post-launch history. */}
+          {/* 6 — After launch. */}
           <TimelineSection />
           <PatchNotesSection />
           <SoundtrackSection />
 
-          {/* 9 — Discovery. */}
+          {/* 7 — What to play next. */}
+          <FitSection />
           <SimilarGamesSection />
           <SeriesSection />
           <StudioSection />
@@ -157,36 +157,29 @@ export function GameHub({
  */
 function buildNavItems(game: Game, t: ReturnType<typeof useI18n>["t"]): NavItem[] {
   const candidates: Array<[boolean, NavItem]> = [
-    [
-      (game.offers?.length ?? 0) > 0 || Boolean(game.priceHistory?.length),
-      { id: "prices", label: t("nav.prices") },
-    ],
-    [Boolean(game.nintendo), { id: "nintendo", label: t("nav.nintendo") }],
-    [Boolean(game.nintendo?.switch2Enhanced?.available), { id: "switch2", label: "2 Switch" }],
-    [
-      (game.performance?.length ?? 0) > 0 || Boolean(game.nintendo?.runsOn.includes("switch2")),
-      { id: "performance", label: t("performance.title") },
-    ],
     /*
-      Was `true`. The section drops itself when the game has no facts to show —
-      which is now most of the catalogue — and a chip that scrolls to a section
-      that is not there is the exact failure the comment above this list
-      promises cannot happen.
+      `hasOverviewFacts`, not `true`: the section drops itself when the game has
+      no facts to show, and a chip that scrolls to a section that is not there
+      is the exact failure this list promises cannot happen.
     */
     [hasOverviewFacts(game), { id: "overview", label: t("nav.overview") }],
-    [(game.editions?.length ?? 0) > 0, { id: "editions", label: t("nav.editions") }],
+    [(game.videos?.length ?? 0) > 0, { id: "videos", label: t("media.title") }],
     [(game.gameplayPillars?.length ?? 0) > 0, { id: "gameplay", label: t("nav.gameplay") }],
     [(game.story?.length ?? 0) > 0, { id: "story", label: t("nav.story") }],
-    [(game.videos?.length ?? 0) > 0, { id: "videos", label: t("media.title") }],
+    [Boolean(game.nintendo), { id: "nintendo", label: t("nav.nintendo") }],
+    [Boolean(game.nintendo?.switch2Enhanced?.available), { id: "switch2", label: "2 Switch" }],
+    [(game.performance?.length ?? 0) > 0, { id: "performance", label: t("performance.title") }],
+    [(game.editions?.length ?? 0) > 0, { id: "editions", label: t("nav.editions") }],
     [(game.dlc?.length ?? 0) > 0, { id: "dlc", label: t("nav.dlc") }],
     [(game.guides?.length ?? 0) > 0, { id: "guides", label: t("nav.guides") }],
-    [(game.faq?.length ?? 0) > 0, { id: "faq", label: t("faq.title") }],
     [Boolean(game.verdict), { id: "verdict", label: t("verdict.title") }],
-    [(game.community?.length ?? 0) > 0, { id: "community", label: t("nav.community") }],
     [
       Boolean(game.reviewSummary) || (game.reviews?.length ?? 0) > 0,
       { id: "reviews", label: t("nav.reviews") },
     ],
+    [(game.community?.length ?? 0) > 0, { id: "community", label: t("nav.community") }],
+    [hasPriceIntelligence(game), { id: "prices", label: t("nav.prices") }],
+    [(game.faq?.length ?? 0) > 0, { id: "faq", label: t("faq.title") }],
     [(game.timeline?.length ?? 0) > 0, { id: "timeline", label: t("timeline.title") }],
     [(game.similar?.length ?? 0) > 0, { id: "similar", label: t("similar.title") }],
     [Boolean(game.series), { id: "series", label: t("series.title") }],
@@ -194,4 +187,15 @@ function buildNavItems(game: Game, t: ReturnType<typeof useI18n>["t"]): NavItem[
   ];
 
   return candidates.filter(([include]) => include).map(([, item]) => item);
+}
+
+/**
+ * Whether the price comparison has anything the hero does not already say:
+ * a price history to chart, or a store other than this one to compare with.
+ * The shop's own ways to buy are listed in the hero's purchase card.
+ */
+function hasPriceIntelligence(game: Game): boolean {
+  return (
+    Boolean(game.priceHistory?.length) || (game.offers ?? []).some((offer) => !offer.firstParty)
+  );
 }

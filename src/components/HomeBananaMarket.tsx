@@ -155,55 +155,51 @@ export function HomeBananaMarket() {
           about the deleted marketplace — it reads `snapshot.rewards`, which is
           the same array `/banana_market` feeds its own shelf. The «عرض الكل»
           link moves off `/banana_redeem`, which is now only a redirect. */}
-      <section className="w-full max-w-full overflow-hidden pb-8">
-        <div className="mb-4 flex items-center justify-between gap-2 px-4 sm:px-8">
-          <div className="flex items-center gap-1.5">
-            <Gift className="h-5 w-5 text-leaf drop-shadow-sm" aria-hidden="true" />
-            <h3 className="text-lg font-black tracking-tight text-foreground">
-              {t("جوائز الاستبدال")}
-            </h3>
-          </div>
-          <Link
-            to="/banana"
-            search={{ tab: "market" }}
-            data-ui-sound="klick"
-            className="flex shrink-0 items-center gap-1 rounded-full border border-leaf/30 bg-leaf/10 px-3 py-1.5 text-[11px] font-black text-foreground transition-colors hover:bg-leaf/20"
-          >
-            {t("عرض الكل")}
-            <ArrowLeft className="h-3 w-3" aria-hidden="true" />
-          </Link>
-        </div>
-
-        <div className="flex w-full max-w-full snap-x gap-3 overflow-x-auto px-4 pb-4 no-scrollbar sm:px-8">
-          {rewards.map((reward, i) => (
+      {/* No rewards, no shelf: an empty row under a heading is a label for nothing. */}
+      {rewards.length > 0 ? (
+        <section className="w-full max-w-full overflow-hidden pb-8">
+          <div className="mb-4 flex items-center justify-between gap-2 px-4 sm:px-8">
+            <div className="flex items-center gap-1.5">
+              <Gift className="h-5 w-5 text-leaf drop-shadow-sm" aria-hidden="true" />
+              <h3 className="text-lg font-black tracking-tight text-foreground">
+                {t("جوائز الاستبدال")}
+              </h3>
+            </div>
             <Link
               to="/banana"
               search={{ tab: "market" }}
-              key={reward.id || i}
               data-ui-sound="klick"
-              className="group flex min-w-[140px] shrink-0 snap-start flex-col items-center rounded-2xl border border-border bg-card p-4 text-center shadow-sm transition-all hover:-translate-y-0.5 hover:border-leaf/30 hover:shadow-md"
+              className="flex shrink-0 items-center gap-1 rounded-full border border-leaf/30 bg-leaf/10 px-3 py-1.5 text-[11px] font-black text-foreground transition-colors hover:bg-leaf/20"
             >
-              <div className="mb-3 text-3xl transition-transform duration-300 group-hover:scale-110">
-                {reward.icon}
-              </div>
-              <h5 className="mb-1 text-xs font-bold leading-tight text-foreground">
-                {reward.title}
-              </h5>
-              <div className="mt-auto flex w-full items-center justify-center gap-1 rounded-lg border border-banana/20 bg-banana/10 px-2.5 py-1.5 pt-2 text-foreground">
-                <span className="text-sm font-black tabular-nums">{reward.cost}</span>
-                <BananaIcon className="h-3.5 w-3.5 drop-shadow-sm" solid />
-              </div>
+              {t("عرض الكل")}
+              <ArrowLeft className="h-3 w-3" aria-hidden="true" />
             </Link>
-          ))}
-          {rewards.length === 0 ? (
-            <div className="w-full rounded-2xl border-2 border-dashed border-border bg-muted/30 py-6 text-center">
-              <p className="text-xs font-medium text-muted-foreground">
-                {t("لا توجد جوائز حالياً")}
-              </p>
-            </div>
-          ) : null}
-        </div>
-      </section>
+          </div>
+
+          <div className="flex w-full max-w-full snap-x gap-3 overflow-x-auto px-4 pb-4 no-scrollbar sm:px-8">
+            {rewards.map((reward, i) => (
+              <Link
+                to="/banana"
+                search={{ tab: "market" }}
+                key={reward.id || i}
+                data-ui-sound="klick"
+                className="group flex min-w-[140px] shrink-0 snap-start flex-col items-center rounded-2xl border border-border bg-card p-4 text-center shadow-sm transition-all hover:-translate-y-0.5 hover:border-leaf/30 hover:shadow-md"
+              >
+                <div className="mb-3 text-3xl transition-transform duration-300 group-hover:scale-110">
+                  {reward.icon}
+                </div>
+                <h5 className="mb-1 text-xs font-bold leading-tight text-foreground">
+                  {reward.title}
+                </h5>
+                <div className="mt-auto flex w-full items-center justify-center gap-1 rounded-lg border border-banana/20 bg-banana/10 px-2.5 py-1.5 pt-2 text-foreground">
+                  <span className="text-sm font-black tabular-nums">{reward.cost}</span>
+                  <BananaIcon className="h-3.5 w-3.5 drop-shadow-sm" solid />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }

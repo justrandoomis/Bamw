@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Bell, Heart, Share2, ShoppingBag } from "lucide-react";
+import { Heart, ShoppingBag } from "lucide-react";
 import { isAwaitingRelease } from "@/lib/release";
 import { useHub } from "./hubContext";
 import { useActiveSection } from "@/hub/hooks/useActiveSection";
@@ -41,12 +41,17 @@ export function HubNav({ items }: { items: NavItem[] }) {
     });
   }, [active]);
 
+  /*
+    A rail of clay that follows the page: the sections as a pressed track with
+    the one in view raised out of it — the same control as the shop's other
+    segmented choices. Share moved up into the hero, next to back.
+  */
   return (
-    <div className="sticky top-0 z-30 border-b border-white/[0.06] bg-ink-900/90 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 lg:px-6">
+    <div className="sticky top-0 z-30 px-3 pb-1 pt-[max(env(safe-area-inset-top),0.5rem)] sm:px-4">
+      <div className="mx-auto max-w-6xl">
         <div
           ref={railRef}
-          className="no-scrollbar flex flex-1 gap-1 overflow-x-auto py-2.5"
+          className="no-scrollbar flex gap-0.5 overflow-x-auto rounded-full border border-[var(--clay-rim)] bg-[var(--page)]/85 p-1 shadow-md backdrop-blur-xl"
           role="navigation"
           aria-label={game.title}
         >
@@ -55,55 +60,21 @@ export function HubNav({ items }: { items: NavItem[] }) {
               key={item.id}
               href={`#${item.id}`}
               data-nav-id={item.id}
+              aria-current={active === item.id ? "location" : undefined}
               onClick={() => playSound("select")}
               className={cn(
-                "shrink-0 whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-bold transition-colors duration-200",
+                "flex min-h-9 shrink-0 items-center whitespace-nowrap rounded-full px-3.5 text-[12.5px] font-bold transition-colors duration-200",
                 active === item.id
-                  ? "bg-nin text-white"
-                  : "muted hover:bg-white/[0.06] hover:text-white",
+                  ? "bg-card text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground",
               )}
             >
               {item.label}
             </a>
           ))}
         </div>
-
-        <ShareButton title={game.title} />
       </div>
     </div>
-  );
-}
-
-function ShareButton({ title }: { title: string }) {
-  const { t } = useI18n();
-  const { addNotification } = useNotifications();
-
-  const onShare = async () => {
-    const url = window.location.href;
-    if (navigator.share) {
-      try {
-        await navigator.share({ title, url });
-        return;
-      } catch {
-        // Sheet dismissed — fall through to the clipboard path.
-      }
-    }
-    try {
-      await navigator.clipboard.writeText(url);
-      addNotification({ title: t("common.linkCopied"), type: "success" });
-    } catch {
-      addNotification({ title: t("common.error"), type: "warning" });
-    }
-  };
-
-  return (
-    <button
-      onClick={() => void onShare()}
-      aria-label={t("common.share")}
-      className="hidden shrink-0 rounded-lg p-2 muted transition-colors hover:bg-white/[0.06] hover:text-white sm:block"
-    >
-      <Share2 className="h-4 w-4" />
-    </button>
   );
 }
 
@@ -121,7 +92,7 @@ export function StickyBuyBar() {
   const { t } = useI18n();
   const { formatConverted } = useCurrency();
   const { addNotification } = useNotifications();
-  const { game, bestOffer, isWishlisted, toggleWishlist, openBuy, openAlert } = useHub();
+  const { game, bestOffer, isWishlisted, toggleWishlist, openBuy } = useHub();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -142,27 +113,30 @@ export function StickyBuyBar() {
 
   if (!bestOffer) return null;
 
+  /*
+    The floating bar of clay that takes over once the purchase card has
+    scrolled away — on every width now, since the card does not follow the
+    page down. The price, a heart, and the one button.
+  */
   return (
     <AnimatePresence>
       {visible && (
         <motion.div
-          initial={{ y: "110%" }}
+          initial={{ y: "130%" }}
           animate={{ y: 0 }}
-          exit={{ y: "110%" }}
-          transition={{ type: "spring", stiffness: 380, damping: 34 }}
-          className="fixed inset-x-0 bottom-0 z-40 border-t border-white/[0.08] bg-ink-900/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl lg:hidden"
+          exit={{ y: "130%" }}
+          transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+          className="fixed inset-x-3 bottom-[max(env(safe-area-inset-bottom),0.75rem)] z-40 mx-auto max-w-lg rounded-[24px] border border-[var(--clay-rim)] bg-[var(--page)]/90 p-2.5 shadow-xl backdrop-blur-xl"
         >
-          <div className="mx-auto flex max-w-6xl items-center gap-3">
-            <div className="min-w-0 flex-1">
-              <p className="text-[10px] font-bold uppercase tracking-wider muted">
-                {t("cta.bestPriceNow")}
-              </p>
+          <div className="flex items-center gap-2.5">
+            <div className="min-w-0 flex-1 ps-1.5">
+              <p className="text-[11px] font-bold text-muted-foreground">{t("cta.bestPriceNow")}</p>
               <p className="flex items-baseline gap-2">
-                <span className="num text-lg font-extrabold text-good">
+                <span className="num text-[18px] font-black text-foreground">
                   {formatConverted(bestOffer.offer.price)}
                 </span>
                 {bestOffer.offer.discountPercent != null && (
-                  <span className="num text-[10px] font-extrabold text-good">
+                  <span className="num text-[11px] font-extrabold text-good">
                     −{bestOffer.offer.discountPercent}%
                   </span>
                 )}
@@ -170,6 +144,7 @@ export function StickyBuyBar() {
             </div>
 
             <button
+              type="button"
               onClick={() => {
                 toggleWishlist();
                 addNotification({
@@ -181,27 +156,22 @@ export function StickyBuyBar() {
                 });
               }}
               aria-label={t("hero.addToWishlist")}
+              aria-pressed={isWishlisted}
               className={cn(
-                "shrink-0 rounded-xl p-3 transition-colors",
-                isWishlisted ? "bg-nin/15 text-nin-soft" : "bg-white/[0.06] muted",
+                "flex h-12 w-12 shrink-0 items-center justify-center rounded-[16px] border border-[var(--clay-rim)] bg-card shadow-sm",
+                isWishlisted ? "text-nin" : "text-foreground",
               )}
             >
               <Heart className={cn("h-5 w-5", isWishlisted && "fill-current")} />
             </button>
             <button
-              onClick={openAlert}
-              aria-label={t("hero.trackPrice")}
-              className="shrink-0 rounded-xl bg-white/[0.06] p-3 text-warn"
-            >
-              <Bell className="h-5 w-5" />
-            </button>
-            <button
+              type="button"
               onClick={() => openBuy()}
-              className="btn btn-primary h-12 shrink-0 px-6 text-sm"
+              className="btn btn-primary h-12 shrink-0 rounded-[16px] px-6 text-sm"
             >
               {/* Before launch this opens the release panel, not a purchase. */}
               <ShoppingBag className="h-4 w-4" />
-              {isAwaitingRelease(game.rawProduct ?? {}) ? "سجّل مسبقاً" : t("hero.buyNow")}
+              {isAwaitingRelease(game.rawProduct ?? {}) ? t("hero.preorder") : t("hero.buyNow")}
             </button>
           </div>
         </motion.div>

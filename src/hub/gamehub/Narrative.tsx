@@ -74,7 +74,7 @@ export function StorySection() {
                     </div>
 
                     {hidden ? (
-                      <div className="rounded-2xl bg-black/25 p-6 text-center">
+                      <div className="rounded-2xl bg-muted/50 p-6 text-center">
                         <p className="text-xs muted">{t("story.spoiler")}</p>
                         <button
                           onClick={() => toggle(section.id)}
@@ -141,7 +141,7 @@ export function GameplaySection() {
             <Reveal key={`${pillar.id}-${index}`} delay={index * 50}>
               <div
                 className={cn(
-                  "group relative grid overflow-hidden rounded-panel border border-white/[0.07] sm:grid-cols-[1.15fr_1fr]",
+                  "group relative grid overflow-hidden rounded-panel border border-border/70 sm:grid-cols-[1.15fr_1fr]",
                   flip && "sm:[&>*:first-child]:order-2",
                 )}
               >
@@ -198,7 +198,7 @@ export function FeaturesSection() {
             {features.map((feature, index) => (
               <span
                 key={`${feature.id || feature.label}-${index}`}
-                className="rounded-xl bg-white/[0.05] px-3.5 py-2 text-xs font-bold transition-colors hover:bg-white/[0.09]"
+                className="rounded-xl bg-muted/50 px-3.5 py-2 text-xs font-bold transition-colors hover:bg-muted/60"
               >
                 {feature.label}
               </span>

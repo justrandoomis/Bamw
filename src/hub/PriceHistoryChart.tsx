@@ -110,7 +110,7 @@ export default function PriceHistoryChart({ history, defaultWindow = "6m", compa
 
   if (!history || !stats || !geometry) {
     return (
-      <p className="rounded-2xl bg-white/[0.03] p-6 text-center text-sm muted">
+      <p className="rounded-2xl bg-muted/50 p-6 text-center text-sm muted">
         {t("history.notEnoughData")}
       </p>
     );
@@ -141,7 +141,7 @@ export default function PriceHistoryChart({ history, defaultWindow = "6m", compa
         />
       </div>
 
-      <div className="relative overflow-hidden rounded-2xl bg-black/25 p-1">
+      <div className="relative overflow-hidden rounded-2xl bg-muted/50 p-1">
         <svg
           viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
           className="h-[190px] w-full sm:h-[220px]"
@@ -234,7 +234,7 @@ export default function PriceHistoryChart({ history, defaultWindow = "6m", compa
 
         {hovered && (
           <div className="pointer-events-none absolute inset-x-0 top-2 flex justify-center">
-            <span className="rounded-lg border border-white/10 bg-ink-850/95 px-2.5 py-1 text-[11px] font-bold backdrop-blur">
+            <span className="rounded-lg border border-border/70 bg-ink-850/95 px-2.5 py-1 text-[11px] font-bold backdrop-blur">
               <span className="num">{money(hovered.price)}</span>
               <span className="ms-2 font-normal muted">{formatDate(hovered.date, intlLocale)}</span>
             </span>
@@ -262,7 +262,7 @@ export default function PriceHistoryChart({ history, defaultWindow = "6m", compa
             "flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl px-4 py-3 text-sm",
             verdict.id === "great" && "bg-good/10",
             verdict.id === "good" && "bg-good/[0.07]",
-            verdict.id === "average" && "bg-white/[0.04]",
+            verdict.id === "average" && "bg-muted/50",
             verdict.id === "wait" && "bg-warn/[0.08]",
           )}
         >

@@ -47,9 +47,13 @@ export function EditionsSection() {
             className="grid"
             style={{ gridTemplateColumns: `minmax(180px, 1.4fr) repeat(${editions.length}, 1fr)` }}
           >
-            <div className="border-b border-white/[0.06] p-4" />
+            <div className="border-b border-border/70 p-4" />
             {editions.map((edition, index) => (
-              <EditionHeader key={`${edition.id || edition.name}-${index}`} edition={edition} onBuy={() => openBuy(edition.id)} />
+              <EditionHeader
+                key={`${edition.id || edition.name}-${index}`}
+                edition={edition}
+                onBuy={() => openBuy(edition.id)}
+              />
             ))}
 
             {rows.map((row, rowIndex) => (
@@ -143,7 +147,7 @@ function EditionHeader({ edition, onBuy }: { edition: GameEdition; onBuy: () => 
   return (
     <div
       className={cn(
-        "border-b border-s border-white/[0.06] p-4",
+        "border-b border-s border-border/70 p-4",
         edition.recommendation && "bg-nin/[0.07]",
       )}
     >
@@ -196,8 +200,8 @@ function FragmentRow({
     <>
       <div
         className={cn(
-          "flex items-center border-b border-white/[0.04] px-4 py-2.5 text-xs font-semibold",
-          zebra && "bg-white/[0.015]",
+          "flex items-center border-b border-border/70 px-4 py-2.5 text-xs font-semibold",
+          zebra && "bg-muted/50",
         )}
       >
         {label}
@@ -208,8 +212,8 @@ function FragmentRow({
           <div
             key={`${edition.id || edition.name}-${idx}`}
             className={cn(
-              "flex flex-col items-center justify-center gap-0.5 border-b border-s border-white/[0.04] px-3 py-2.5",
-              zebra && "bg-white/[0.015]",
+              "flex flex-col items-center justify-center gap-0.5 border-b border-s border-border/70 px-3 py-2.5",
+              zebra && "bg-muted/50",
               edition.recommendation && "bg-nin/[0.04]",
             )}
             title={item?.note}
@@ -217,7 +221,7 @@ function FragmentRow({
             {item?.included ? (
               <Check className="h-4 w-4 text-good" />
             ) : (
-              <Minus className="h-4 w-4 text-white/20" />
+              <Minus className="h-4 w-4 text-foreground/15" />
             )}
             {/* A qualifier only matters where the entitlement differs. */}
             {item?.included && item.note && (

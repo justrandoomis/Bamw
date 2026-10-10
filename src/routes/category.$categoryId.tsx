@@ -415,45 +415,97 @@ function CategoryPage() {
     resetKey: `${categoryId}|${sortBy}|${platform}|${selectedGenre}`,
   });
 
+  const unit = isNintendoGames ? t("لعبة") : t("منتج");
+  const platformOptions: { id: PlatformOption; label: string }[] = [
+    { id: "all", label: t("الكل") },
+    { id: "switch1", label: "Switch 1" },
+    { id: "switch2", label: "Switch 2" },
+  ];
+  const filtersActive = selectedGenre !== "all" || platform !== "all";
+  /* Nothing to sort and nothing to filter: the toolbar would be a bar of nothing. */
+  const showToolbar = isLoading || products.length > 0 || filtersActive;
+  const resetFilters = () => {
+    setSelectedGenre("all");
+    setPlatform("all");
+    setSortBy("best_sellers");
+  };
+
   return (
     <AppShell currentView="store" onBack={() => navigate({ to: "/" })}>
-      <div className="min-h-screen bg-[var(--page)] pb-24" dir={direction}>
-        {/* Header Section / Banner Slideshow */}
-        <div
-          className={`relative pt-10 pb-10 px-6 overflow-hidden min-h-[260px] sm:min-h-[300px] flex items-center justify-center ${categoryInfo.bgColor}`}
-        >
-          {/* Background Game Slideshow */}
-          <div className="absolute inset-0 z-0 select-none overflow-hidden">
-            <CategoryBannerSlideshow banners={productBanners} />
+      <div className="min-h-screen pb-24" dir={direction}>
+        {/*
+          The shelf's own name, finally. The banner used to fill the width
+          edge to edge with an empty block where the title belonged, so the
+          page never said what it was. Now it is a card of clay: the games'
+          own art behind, darkened at the foot so the name reads over it.
+        */}
+        <header className="px-3 pt-3 sm:px-4 sm:pt-4">
+          <div
+            className={`relative mx-auto max-w-7xl overflow-hidden rounded-[28px] border border-[var(--clay-rim)] shadow-lg ${categoryInfo.bgColor}`}
+          >
+            <div className="absolute inset-0 select-none" aria-hidden="true">
+              <CategoryBannerSlideshow banners={productBanners} />
+            </div>
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/30 to-transparent"
+            />
+            <div className="relative z-20 flex min-h-[188px] flex-col justify-end p-5 text-white sm:min-h-[248px] sm:p-8">
+              <p className="text-[12px] font-bold text-white/80 sm:text-[13px]">
+                <span dir="ltr" className="tabular-nums">
+                  {products.length.toLocaleString("en-US")}
+                </span>{" "}
+                {unit}
+              </p>
+              <h1 className="mt-0.5 text-[26px] font-black leading-[1.1] tracking-[-0.02em] text-balance sm:text-[38px]">
+                {categoryInfo.title}
+              </h1>
+              <p className="mt-1.5 max-w-md text-[13px] leading-relaxed text-white/85 sm:text-[15px]">
+                {categoryInfo.description}
+              </p>
+            </div>
           </div>
+        </header>
 
-          <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
-            {/* Header Content */}
-          </div>
-        </div>
+        {/*
+          One toolbar for every width, kept under the top bar while the shelf
+          scrolls: the device as a segmented control (a pressed track with the
+          chosen segment raised out of it), the order, and the genres.
+        */}
+        {showToolbar ? (
+          <div className="sticky top-[var(--header-h)] z-30 px-3 pt-3 sm:px-4">
+            <div className="mx-auto max-w-7xl rounded-[22px] border border-[var(--clay-rim)] bg-[var(--page)]/85 p-2 shadow-md backdrop-blur-xl">
+              <div className="flex items-center gap-2">
+                {isNintendoGames ? (
+                  <div
+                    role="group"
+                    aria-label={t("الجهاز")}
+                    className="flex min-w-0 shrink items-center gap-0.5 rounded-full bg-muted/70 p-1"
+                  >
+                    {platformOptions.map((option) => (
+                      <button
+                        key={option.id}
+                        type="button"
+                        onClick={() => setPlatform(option.id)}
+                        aria-pressed={platform === option.id}
+                        className={`min-h-8 shrink-0 whitespace-nowrap rounded-full px-3 text-[12px] font-bold transition-colors ${
+                          platform === option.id
+                            ? "bg-card text-foreground shadow-sm"
+                            : "text-muted-foreground hover:text-foreground"
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
 
-        {/* Sticky Toolbar Section on Mobile Only */}
-        <div className="md:hidden sticky top-[var(--header-h)] z-40 bg-[var(--page)]/95 backdrop-blur-xl border-b border-border shadow-sm transition-all">
-          <div className="max-w-7xl mx-auto px-4 py-2.5 flex flex-col gap-2">
-            {/* Top Toolbar Row: Sort, Period, Platform, and Filter Count */}
-            <div className="flex items-center justify-between gap-3">
-              {/*
-                `min-w-0` is the whole fix for this row. A flex item defaults to
-                `min-width: auto`, so this scroller refused to shrink below its
-                content and instead squeezed the pill group inside it until the
-                labels spilled out past their own rounded border — the clipped
-                "Switch 1 / Switch 2" chips. With `min-w-0` the scroller takes
-                the width that is available and scrolls its own content, which
-                is what `overflow-x-auto` was there to do.
-              */}
-              <div className="flex min-w-0 items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
-                {/* Sort / Period Selector */}
-                <div className="relative flex shrink-0 items-center">
+                <div className="relative ms-auto flex shrink-0 items-center">
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as SortOption)}
                     aria-label={t("الفترة والترتيب")}
-                    className="bg-card text-foreground border border-border rounded-full ps-3 pe-8 py-1.5 text-xs sm:text-sm font-bold focus:outline-none focus:ring-2 focus:ring-red-500/20 appearance-none cursor-pointer shadow-sm hover:border-foreground/30 transition-colors"
+                    className="min-h-9 cursor-pointer appearance-none rounded-full border border-[var(--clay-rim)] bg-card pe-8 ps-3.5 text-[12px] font-bold text-foreground shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-red)]/40"
                   >
                     <option value="best_sellers">{t("الأكثر مبيعًا عالميًا")}</option>
                     <option value="newest">{t("الأحدث")}</option>
@@ -462,158 +514,70 @@ function CategoryPage() {
                     <option value="price_desc">{t("السعر: من الأعلى")}</option>
                     <option value="rating">{t("التقييم")}</option>
                   </select>
-                  <ChevronDown className="pointer-events-none absolute end-2.5 h-3.5 w-3.5 text-muted-foreground" />
-                </div>
-
-                {/* Platform selector pills */}
-                <div className="flex shrink-0 items-center gap-1 bg-card/80 p-0.5 rounded-full border border-border">
-                  {[
-                    { id: "all", label: t("الكل") },
-                    { id: "switch1", label: "Switch 1" },
-                    { id: "switch2", label: "Switch 2" },
-                  ].map((p) => (
-                    <button
-                      key={p.id}
-                      onClick={() => setPlatform(p.id as PlatformOption)}
-                      className={`shrink-0 whitespace-nowrap px-3 py-1 rounded-full text-xs font-bold transition-all ${
-                        platform === p.id
-                          ? "bg-foreground text-background shadow-xs"
-                          : "text-muted-foreground hover:text-foreground"
-                      }`}
-                    >
-                      {p.label}
-                    </button>
-                  ))}
+                  <ChevronDown
+                    className="pointer-events-none absolute end-3 h-3.5 w-3.5 text-muted-foreground"
+                    aria-hidden="true"
+                  />
                 </div>
               </div>
 
-              {/* Product Counter Badge */}
-              <div className="text-xs font-bold text-muted-foreground bg-muted/60 px-3 py-1 rounded-full shrink-0">
-                {products.length} {t("لعبة")}
-              </div>
-            </div>
-
-            {/* Bottom Toolbar Row: Game Genres (التصنيف حسب genres اللعبة) */}
-            <div className="flex min-w-0 items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
-              <span className="text-[11px] font-black text-muted-foreground uppercase ps-1 pe-2 shrink-0 flex items-center gap-1">
-                <Tag className="w-3 h-3 text-red-500" />
-                {t("التصنيف")}:
-              </span>
-
-              <button
-                onClick={() => setSelectedGenre("all")}
-                className={`shrink-0 px-3.5 py-1 rounded-full text-xs font-bold border transition-all ${
-                  selectedGenre === "all"
-                    ? "bg-red-500 text-white border-red-600 shadow-sm shadow-red-500/25"
-                    : "bg-card text-muted-foreground border-border hover:border-foreground/30 hover:text-foreground"
-                }`}
-              >
-                {t("الكل")}
-              </button>
-
-              {availableGenres.map((g) => {
-                const isSelected = selectedGenre === g.id || selectedGenre === g.label;
-                return (
-                  <button
-                    key={g.id}
-                    onClick={() => setSelectedGenre(isSelected ? "all" : g.id)}
-                    className={`shrink-0 px-3.5 py-1 rounded-full text-xs font-bold border transition-all ${
-                      isSelected
-                        ? "bg-red-500 text-white border-red-600 shadow-sm shadow-red-500/25"
-                        : "bg-card text-muted-foreground border-border hover:border-foreground/30 hover:text-foreground"
-                    }`}
-                  >
-                    {g.label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        {/* Product Grid and Sidebar Filter */}
-        <div
-          className={`mx-auto flex max-w-7xl flex-col gap-8 py-6 md:flex-row md:items-start ${isNintendoGames ? "px-3 sm:px-4" : "px-4"}`}
-        >
-          {/* Desktop Sidebar Filter */}
-          <div className="hidden md:block w-64 shrink-0 space-y-6 sticky top-24 z-10 self-start max-h-[calc(100vh-7rem)] overflow-y-auto no-scrollbar pb-2">
-            <div className="bg-card/40 p-4 rounded-2xl border border-border/80">
-              <h3 className="text-sm font-black text-muted-foreground uppercase mb-3 px-1 tracking-wider flex items-center gap-2">
-                <Tag className="w-4 h-4 text-red-500" />
-                {t("تصنيفات الألعاب")}
-              </h3>
-              <div className="flex flex-col gap-1 max-h-[480px] overflow-y-auto no-scrollbar pe-1">
-                <button
-                  onClick={() => setSelectedGenre("all")}
-                  className={`w-full text-start px-3.5 py-2 rounded-xl text-sm font-bold transition-all ${
-                    selectedGenre === "all"
-                      ? "bg-red-500 text-white shadow-md shadow-red-500/20"
-                      : "text-foreground hover:bg-card hover:translate-x-[-2px]"
-                  }`}
+              {availableGenres.length > 0 ? (
+                <div
+                  role="group"
+                  aria-label={t("التصنيف")}
+                  className="no-scrollbar -mx-2 mt-2 flex min-w-0 items-center gap-1.5 overflow-x-auto px-2 pb-0.5 md:mx-0 md:flex-wrap md:overflow-visible md:px-0"
                 >
-                  {t("كل التصنيفات")}
-                </button>
-                {availableGenres.map((g) => {
-                  const isSelected = selectedGenre === g.id || selectedGenre === g.label;
-                  return (
-                    <button
-                      key={g.id}
-                      onClick={() => setSelectedGenre(isSelected ? "all" : g.id)}
-                      className={`w-full text-start px-3.5 py-2 rounded-xl text-sm font-bold transition-all ${
-                        isSelected
-                          ? "bg-red-500 text-white shadow-md shadow-red-500/20"
-                          : "text-foreground hover:bg-card hover:translate-x-[-2px]"
-                      }`}
-                    >
-                      {g.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="bg-card/40 p-4 rounded-2xl border border-border/80">
-              <h3 className="text-sm font-black text-muted-foreground uppercase mb-3 px-1 tracking-wider flex items-center gap-2">
-                <Gamepad2 className="w-4 h-4 text-red-500" />
-                {t("الجهاز")}
-              </h3>
-              <div className="flex flex-col gap-1">
-                {[
-                  { id: "all", label: t("كل الأجهزة") },
-                  { id: "switch1", label: "Nintendo Switch 1" },
-                  { id: "switch2", label: "Nintendo Switch 2" },
-                ].map((p) => (
-                  <button
-                    key={p.id}
-                    onClick={() => setPlatform(p.id as PlatformOption)}
-                    className={`w-full text-start px-3.5 py-2 rounded-xl text-sm font-bold transition-all ${
-                      platform === p.id
-                        ? "bg-foreground text-background shadow-md"
-                        : "text-foreground hover:bg-card hover:translate-x-[-2px]"
-                    }`}
-                  >
-                    {p.label}
-                  </button>
-                ))}
-              </div>
+                  <Tag
+                    className="h-3.5 w-3.5 shrink-0 text-[var(--brand-red)]"
+                    aria-hidden="true"
+                  />
+                  {[{ id: "all", label: t("الكل") }, ...availableGenres].map((g) => {
+                    const isSelected =
+                      g.id === "all"
+                        ? selectedGenre === "all"
+                        : selectedGenre === g.id || selectedGenre === g.label;
+                    return (
+                      <button
+                        key={g.id}
+                        type="button"
+                        onClick={() =>
+                          setSelectedGenre(isSelected || g.id === "all" ? "all" : g.id)
+                        }
+                        aria-pressed={isSelected}
+                        className={`min-h-8 shrink-0 whitespace-nowrap rounded-full px-3.5 text-[12px] font-bold transition-colors ${
+                          isSelected
+                            ? "bg-[var(--brand-red)] text-white"
+                            : "border border-[var(--clay-rim)] bg-card text-muted-foreground shadow-sm hover:text-foreground"
+                        }`}
+                      >
+                        {g.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : null}
             </div>
           </div>
+        ) : null}
 
-          {/* Product Cards Grid */}
+        {/* The shelf */}
+        <div
+          className={`mx-auto flex max-w-7xl flex-col gap-6 pt-4 ${isNintendoGames ? "px-3 sm:px-4" : "px-4"}`}
+        >
           <div className="min-w-0 flex-1">
             {isLoading ? (
               <div
                 className={
                   isNintendoGames
-                    ? "grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-3 lg:grid-cols-4 xl:grid-cols-5"
-                    : "grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+                    ? "grid grid-cols-3 gap-2.5 sm:grid-cols-4 sm:gap-3.5 lg:grid-cols-5 xl:grid-cols-6"
+                    : "grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
                 }
                 dir={isNintendoGames ? direction : "ltr"}
               >
-                {Array.from({ length: isNintendoGames ? 10 : 8 }, (_, i) => i).map((i) => (
+                {Array.from({ length: isNintendoGames ? 12 : 8 }, (_, i) => i).map((i) => (
                   <div
                     key={i}
-                    className={`${isNintendoGames ? "aspect-[4/5] rounded-[14px]" : "aspect-[3/4] rounded-2xl"} animate-pulse animate-skeleton-shimmer bg-muted/20`}
+                    className={`${isNintendoGames ? "aspect-[4/5] rounded-[20px]" : "aspect-[3/4] rounded-[22px]"} animate-pulse bg-muted/50`}
                   />
                 ))}
               </div>
@@ -622,8 +586,8 @@ function CategoryPage() {
                 <div
                   className={
                     isNintendoGames
-                      ? "grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-3 lg:grid-cols-4 xl:grid-cols-5"
-                      : "grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4"
+                      ? "grid grid-cols-3 gap-2.5 sm:grid-cols-4 sm:gap-3.5 lg:grid-cols-5 xl:grid-cols-6"
+                      : "grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4 xl:grid-cols-5"
                   }
                   dir={isNintendoGames ? direction : "ltr"}
                 >
@@ -651,30 +615,40 @@ function CategoryPage() {
                   <div ref={sentinelRef} className="flex justify-center py-6">
                     <span className="sr-only">{t("جاري تحميل المزيد")}</span>
                     <div
-                      className="h-6 w-6 animate-spin rounded-full border-2 border-border border-t-red-500"
+                      className="h-6 w-6 animate-spin rounded-full border-2 border-border border-t-[var(--brand-red)]"
                       aria-hidden="true"
                     />
                   </div>
                 )}
               </div>
             ) : (
-              <div className="text-center py-24 bg-card rounded-3xl border border-dashed border-border px-6">
-                <div className="text-5xl mb-4">🎮</div>
-                <h3 className="text-xl font-bold text-foreground mb-1">
-                  {t("لا توجد ألعاب متطابقة")}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {t("جرب تغيير خيارات التصفية أو اختيار تصنيف آخر")}
+              <div className="mx-auto mt-6 flex max-w-md flex-col items-center rounded-[28px] border border-[var(--clay-rim)] bg-card px-6 py-12 text-center shadow-md">
+                <div className="flex h-16 w-16 items-center justify-center rounded-[22px] bg-muted/70">
+                  <Gamepad2 className="h-7 w-7 text-muted-foreground" aria-hidden="true" />
+                </div>
+                {/*
+                  Two different empties: a filter that matched nothing can be
+                  undone, a section with nothing in it yet cannot — offering
+                  «reset the filters» there points at a button that does nothing.
+                */}
+                <h2 className="mt-4 text-[18px] font-black text-foreground">
+                  {filtersActive
+                    ? isNintendoGames
+                      ? t("لا توجد ألعاب متطابقة")
+                      : t("لا توجد منتجات متطابقة")
+                    : t("لا توجد منتجات في هذا القسم بعد")}
+                </h2>
+                <p className="mt-1 text-[13px] text-muted-foreground">
+                  {filtersActive
+                    ? t("جرب تغيير خيارات التصفية أو اختيار تصنيف آخر")
+                    : t("تصفّح بقية أقسام المتجر حتى نضيف منتجات هنا.")}
                 </p>
                 <button
-                  onClick={() => {
-                    setSelectedGenre("all");
-                    setPlatform("all");
-                    setSortBy("best_sellers");
-                  }}
-                  className="px-4 py-2 bg-red-500 text-white rounded-full text-xs font-bold hover:bg-red-600 transition-colors"
+                  type="button"
+                  onClick={filtersActive ? resetFilters : () => navigate({ to: "/" })}
+                  className="mt-5 min-h-11 rounded-full bg-[var(--brand-red)] px-5 text-[13px] font-bold text-white"
                 >
-                  {t("إعادة تعيين الفلاتر")}
+                  {filtersActive ? t("إعادة تعيين الفلاتر") : t("العودة إلى المتجر")}
                 </button>
               </div>
             )}

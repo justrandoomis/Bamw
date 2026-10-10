@@ -91,7 +91,7 @@ export function StatField({ children, className }: { children: ReactNode; classN
   return (
     <div
       className={cn(
-        "grid overflow-hidden rounded-2xl bg-black/20 [&>*]:border-white/[0.055]",
+        "grid overflow-hidden rounded-2xl bg-muted/50 [&>*]:border-border/60",
         "[&>*]:border-t [&>*]:border-s",
         className,
       )}
@@ -163,7 +163,7 @@ export function Segmented<T extends string>({
       role="tablist"
       aria-label={ariaLabel}
       className={cn(
-        "no-scrollbar flex max-w-full gap-1 overflow-x-auto rounded-full bg-black/25 p-1",
+        "no-scrollbar flex max-w-full gap-1 overflow-x-auto rounded-full bg-muted/50 p-1",
         className,
       )}
     >
@@ -178,12 +178,17 @@ export function Segmented<T extends string>({
             className={cn(
               "shrink-0 whitespace-nowrap rounded-full font-bold transition-all duration-200",
               size === "sm" ? "px-3 py-1.5 text-[11px]" : "px-4 py-2 text-xs",
-              selected ? "bg-white/[0.13] text-white" : "muted hover:text-white",
+              selected ? "bg-card text-foreground shadow-sm" : "muted hover:text-foreground",
             )}
           >
             {option.label}
             {option.count != null && (
-              <span className={cn("ms-1.5 text-[10px]", selected ? "text-white/60" : "opacity-60")}>
+              <span
+                className={cn(
+                  "ms-1.5 text-[10px]",
+                  selected ? "text-muted-foreground" : "opacity-60",
+                )}
+              >
                 {option.count}
               </span>
             )}
@@ -239,7 +244,7 @@ export function ScoreBar({
         <span className="font-semibold muted">{label}</span>
         <span className="font-mono font-bold tabular-nums">{value.toFixed(1)}</span>
       </div>
-      <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.07]">
+      <div className="h-1.5 overflow-hidden rounded-full bg-muted/70">
         <div
           className="h-full rounded-full bg-gradient-to-r from-nin to-nin-soft transition-[width] duration-[900ms] ease-out"
           style={{ width: shown ? `${pct * 100}%` : "0%", transitionDelay: `${delay}ms` }}
@@ -257,7 +262,7 @@ export function RatingStars({ value, className }: { value: number; className?: s
           key={i}
           className={cn(
             "h-3.5 w-3.5",
-            i < Math.round(value) ? "fill-warn text-warn" : "text-white/20",
+            i < Math.round(value) ? "fill-warn text-warn" : "text-foreground/15",
           )}
         />
       ))}

@@ -111,7 +111,7 @@ export function Modal({ open, onClose, title, children, size = "md", bare }: Mod
               SIZES[size],
               bare
                 ? "outline-none"
-                : "max-h-[90dvh] max-w-full overflow-hidden rounded-t-3xl border border-white/10 bg-ink-850 p-4 sm:p-6 shadow-lift outline-none sm:rounded-2xl",
+                : "max-h-[90dvh] max-w-full overflow-hidden rounded-t-3xl border border-border/70 bg-ink-850 p-4 sm:p-6 shadow-lift outline-none sm:rounded-2xl",
             )}
           >
             {!bare && (
@@ -124,7 +124,7 @@ export function Modal({ open, onClose, title, children, size = "md", bare }: Mod
                 <button
                   onClick={onClose}
                   aria-label={t("common.close")}
-                  className="-me-1 -mt-1 rounded-xl p-2 muted transition-colors hover:bg-white/[0.06] hover:text-white"
+                  className="-me-1 -mt-1 rounded-xl p-2 muted transition-colors hover:bg-muted/60 hover:text-foreground"
                 >
                   <X className="h-5 w-5" />
                 </button>

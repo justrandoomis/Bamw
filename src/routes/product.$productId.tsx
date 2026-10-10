@@ -168,7 +168,7 @@ function ProductPage() {
         <CurrencyProvider>
           <UserProvider>
             <NotificationProvider>
-              <div className="relative min-h-screen bg-[rgb(var(--bg))] text-[rgb(var(--text))]">
+              <div className="clay-canvas relative min-h-screen text-foreground">
                 <GameHub
                   game={game}
                   onNavigateGuide={(slug) => {
@@ -225,7 +225,7 @@ function ProductPage() {
 
   return (
     <AppShell currentView="details" hideNav>
-      <div className="min-h-screen bg-[var(--page)]">
+      <div className="min-h-screen">
         <ProductDetails product={product} schema={schema} />
         <div className="mx-auto max-w-6xl px-4 py-8">
           <ProductReviews productId={String(product["id"])} />

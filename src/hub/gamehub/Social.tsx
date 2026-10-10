@@ -251,7 +251,7 @@ export function ReviewsSection() {
                     return (
                       <div key={bucket} className="flex items-center gap-2 text-[11px]">
                         <span className="w-3 tabular-nums muted">{bucket}</span>
-                        <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/[0.07]">
+                        <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted/70">
                           <span
                             className="block h-full rounded-full bg-warn/70"
                             style={{ width: `${pct * 100}%` }}
@@ -295,7 +295,7 @@ export function ReviewsSection() {
       )}
 
       {sorted.length === 0 ? (
-        <p className="rounded-2xl bg-white/[0.03] p-6 text-center text-sm muted">
+        <p className="rounded-2xl bg-muted/50 p-6 text-center text-sm muted">
           {t("reviews.noReviews")}
         </p>
       ) : (
@@ -325,7 +325,7 @@ function ReviewCard({ review }: { review: UserReview }) {
     <Panel className="p-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.08] text-xs font-extrabold">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-muted/70 text-xs font-extrabold">
             {review.author.name.charAt(0)}
           </span>
           <span>
@@ -467,7 +467,7 @@ export function CommunitySection() {
             onChange={(event) => setDraft(event.target.value)}
             onKeyDown={(event) => event.key === "Enter" && submit()}
             placeholder={t("community.placeholder")}
-            className="h-11 flex-1 rounded-xl border border-white/[0.08] bg-black/25 px-4 text-sm outline-none transition-colors placeholder:text-white/30 focus:border-nin/50"
+            className="h-11 flex-1 rounded-xl border border-border/70 bg-muted/50 px-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-nin/50"
           />
           <button onClick={submit} className="btn btn-primary h-11 px-5 text-xs">
             <MessageSquare className="h-4 w-4" />
@@ -477,7 +477,7 @@ export function CommunitySection() {
       </Reveal>
 
       {visible.length === 0 ? (
-        <p className="rounded-2xl bg-white/[0.03] p-6 text-center text-sm muted">
+        <p className="rounded-2xl bg-muted/50 p-6 text-center text-sm muted">
           {t("community.empty")}
         </p>
       ) : (
@@ -495,7 +495,7 @@ export function CommunitySection() {
                       aria-pressed={myVote === 1}
                       className={cn(
                         "rounded-lg p-1.5 transition-colors",
-                        myVote === 1 ? "bg-good/15 text-good" : "muted hover:bg-white/[0.06]",
+                        myVote === 1 ? "bg-good/15 text-good" : "muted hover:bg-muted/60",
                       )}
                     >
                       <ThumbsUp className="h-3.5 w-3.5" />
@@ -507,7 +507,7 @@ export function CommunitySection() {
                       aria-pressed={myVote === -1}
                       className={cn(
                         "rounded-lg p-1.5 transition-colors",
-                        myVote === -1 ? "bg-warn/15 text-warn" : "muted hover:bg-white/[0.06]",
+                        myVote === -1 ? "bg-warn/15 text-warn" : "muted hover:bg-muted/60",
                       )}
                     >
                       <ThumbsDown className="h-3.5 w-3.5" />

@@ -200,7 +200,7 @@ export function GuidesSection() {
       <Reveal>
         <button
           onClick={() => openGuide(featured.slug)}
-          className="group relative block w-full overflow-hidden rounded-panel border border-white/[0.07] text-start"
+          className="group relative block w-full overflow-hidden rounded-panel border border-border/70 text-start"
         >
           <div className="grid sm:grid-cols-[1.15fr_1fr]">
             <div className="relative aspect-[16/9] overflow-hidden sm:aspect-auto sm:min-h-[220px]">
@@ -242,7 +242,7 @@ export function GuidesSection() {
                 <button
                   key={`${guide.slug}-${guideIdx}`}
                   onClick={() => openGuide(guide.slug)}
-                  className="group flex w-56 shrink-0 flex-col rounded-2xl border border-white/[0.07] bg-white/[0.03] p-4 text-start transition-all duration-200 hover:border-white/15 hover:bg-white/[0.06]"
+                  className="group flex w-56 shrink-0 flex-col rounded-2xl border border-border/70 bg-muted/50 p-4 text-start transition-all duration-200 hover:border-foreground/20 hover:bg-muted/60"
                 >
                   <span className="flex items-center gap-2">
                     <Icon className="h-3.5 w-3.5 shrink-0 text-nin-soft" />
@@ -325,7 +325,7 @@ export function CompletionSection() {
                 {durations.map((duration, durIdx) => (
                   <div
                     key={`${duration.label}-${durIdx}`}
-                    className="flex items-baseline justify-between gap-3 border-b border-white/[0.05] pb-2.5 last:border-b-0 last:pb-0"
+                    className="flex items-baseline justify-between gap-3 border-b border-border/70 pb-2.5 last:border-b-0 last:pb-0"
                   >
                     <span className="text-xs muted">{duration.label}</span>
                     <span dir="auto" className="text-sm font-extrabold tabular-nums">

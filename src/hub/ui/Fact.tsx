@@ -72,7 +72,7 @@ export function ConfidenceBadge({
         "inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[10px] font-bold",
         status === "confirmed" && "bg-good/10 text-good",
         status === "measured" && "bg-sky-400/10 text-sky-300",
-        status === "unconfirmed" && "bg-white/[0.06] muted",
+        status === "unconfirmed" && "bg-muted/70 muted",
       )}
     >
       <Icon className="h-3 w-3" />

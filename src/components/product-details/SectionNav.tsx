@@ -27,20 +27,24 @@ export function SectionNav({ sections }: { sections: SectionDef[] }) {
   return (
     <nav
       aria-label={t("product.sections.overview")}
-      className="sticky top-[var(--header-h)] z-20 -mx-4 mb-2 border-b border-border/60 bg-[var(--page,var(--background))]/95 px-4 py-2 backdrop-blur"
+      className="sticky top-[var(--header-h)] z-20 pt-2"
     >
-      <div className="w-full min-w-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <ul className="flex w-max gap-1.5">
+      {/*
+        A rail of clay: the sections as a pressed track with the one in view
+        raised out of it — the same control the game page and the catalogue use.
+      */}
+      <div className="w-full min-w-0 overflow-x-auto rounded-full border border-[var(--clay-rim)] bg-[var(--page,var(--background))]/85 p-1 shadow-md backdrop-blur-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <ul className="flex w-max gap-0.5">
           {sections.map((section) => {
             const isActive = active === section.id;
             return (
               <li key={section.id}>
                 <a
                   href={`#${section.id}`}
-                  className={`inline-block whitespace-nowrap rounded-full px-3 py-1.5 text-[12px] font-bold transition ${
+                  className={`flex min-h-9 items-center whitespace-nowrap rounded-full px-3.5 text-[12.5px] font-bold transition-colors ${
                     isActive
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground hover:text-foreground"
+                      ? "bg-card text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                   aria-current={isActive ? "true" : undefined}
                 >

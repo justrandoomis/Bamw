@@ -186,14 +186,14 @@ function NotificationViewport({
               }}
               style={{ cursor: isCartAction || item.href ? "pointer" : "default" }}
               className={cn(
-                "pointer-events-auto group relative flex w-full max-w-sm select-none items-center justify-between gap-3 overflow-hidden rounded-2xl border border-white/15 bg-ink-850/95 p-3.5 backdrop-blur-xl shadow-2xl transition-all duration-150 active:scale-[0.98]",
+                "pointer-events-auto group relative flex w-full max-w-sm select-none items-center justify-between gap-3 overflow-hidden rounded-2xl border border-border/70 bg-ink-850/95 p-3.5 backdrop-blur-xl shadow-2xl transition-all duration-150 active:scale-[0.98]",
                 (isCartAction || item.href) && "cursor-pointer hover:bg-ink-850",
               )}
             >
               <div className="flex min-w-0 flex-1 items-center gap-3">
                 <span
                   className={cn(
-                    "flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/[0.06]",
+                    "flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-muted/70",
                     TONE[item.type],
                   )}
                 >
@@ -202,7 +202,7 @@ function NotificationViewport({
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-bold leading-snug text-white">{item.title}</p>
                   {item.message && (
-                    <p className="mt-0.5 text-xs leading-relaxed text-white/70 truncate">
+                    <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground truncate">
                       {item.message}
                     </p>
                   )}
@@ -216,7 +216,7 @@ function NotificationViewport({
                   e.preventDefault();
                   onDismiss(item.id);
                 }}
-                className="-me-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-white/50 transition-colors hover:bg-white/10 hover:text-white active:scale-90"
+                className="-me-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground active:scale-90"
                 aria-label="Close notification"
               >
                 <X className="h-4 w-4" />

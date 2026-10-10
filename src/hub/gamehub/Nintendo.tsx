@@ -154,7 +154,7 @@ export function NintendoSection() {
                     )}
                   </div>
                   {nin.switch2Enhanced?.available && (
-                    <p className="mt-3 flex items-start gap-2 rounded-xl bg-white/[0.04] p-3 text-xs leading-relaxed muted">
+                    <p className="mt-3 flex items-start gap-2 rounded-xl bg-muted/50 p-3 text-xs leading-relaxed muted">
                       <Sparkles className="h-3.5 w-3.5 shrink-0 text-warn" />
                       <span>{t("nintendo.switch2Enhanced")}</span>
                     </p>
@@ -190,56 +190,60 @@ export function NintendoSection() {
           </Reveal>
         )}
 
-        {/* Play modes + NSO */}
-        <Reveal delay={80}>
-          <Panel className="flex h-full flex-col p-5 sm:p-6">
-            <p className="eyebrow mb-4">{t("nintendo.playModes")}</p>
-            {nin && nin.playModes && nin.playModes.length > 0 ? (
-              <ul className="space-y-2">
-                {(["tv", "tabletop", "handheld"] as PlayMode[]).map((mode) => {
-                  const supported = nin.playModes!.includes(mode);
-                  const { icon: Icon, key } = MODE_META[mode];
-                  return (
-                    <li
-                      key={mode}
-                      className={cn(
-                        "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm",
-                        supported ? "bg-white/[0.05] font-semibold" : "muted",
-                      )}
-                    >
-                      <Icon className={cn("h-4 w-4 shrink-0", supported ? "text-nin-soft" : "")} />
-                      <span className="flex-1">{t(`nintendo.${key}`)}</span>
-                      {supported ? (
-                        <span className="text-xs font-bold text-good">{t("common.yes")}</span>
-                      ) : (
-                        <CircleSlash className="h-3.5 w-3.5" />
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : (
-              <NotAvailable />
-            )}
+        {/* Play modes + NSO — drawn only when there is something to say. */}
+        {nin?.playModes?.length || nin?.switchOnline ? (
+          <Reveal delay={80}>
+            <Panel className="flex h-full flex-col p-5 sm:p-6">
+              {nin && nin.playModes && nin.playModes.length > 0 ? (
+                <>
+                  <p className="eyebrow mb-4">{t("nintendo.playModes")}</p>
+                  <ul className="space-y-2">
+                    {(["tv", "tabletop", "handheld"] as PlayMode[]).map((mode) => {
+                      const supported = nin.playModes!.includes(mode);
+                      const { icon: Icon, key } = MODE_META[mode];
+                      return (
+                        <li
+                          key={mode}
+                          className={cn(
+                            "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm",
+                            supported ? "bg-muted/50 font-semibold" : "muted",
+                          )}
+                        >
+                          <Icon
+                            className={cn("h-4 w-4 shrink-0", supported ? "text-nin-soft" : "")}
+                          />
+                          <span className="flex-1">{t(`nintendo.${key}`)}</span>
+                          {supported ? (
+                            <span className="text-xs font-bold text-good">{t("common.yes")}</span>
+                          ) : (
+                            <CircleSlash className="h-3.5 w-3.5" />
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </>
+              ) : null}
 
-            {nin?.switchOnline && (
-              <div className="mt-5 rounded-xl border border-white/[0.07] bg-black/25 p-4">
-                <p className="flex items-center gap-2 text-xs font-extrabold">
-                  <Wifi className="h-3.5 w-3.5 text-nin-soft" />
-                  {t("nintendo.nso")}
-                </p>
-                <div className="mt-2 space-y-1.5 text-xs">
-                  <Row label={t("multiplayer.online")}>
-                    <BooleanFact fact={nin.switchOnline.requiredForOnlinePlay} />
-                  </Row>
-                  {nin.switchOnline.note && (
-                    <p className="pt-1 leading-relaxed muted">{nin.switchOnline.note}</p>
-                  )}
+              {nin?.switchOnline && (
+                <div className="mt-5 rounded-xl border border-border/70 bg-muted/50 p-4">
+                  <p className="flex items-center gap-2 text-xs font-extrabold">
+                    <Wifi className="h-3.5 w-3.5 text-nin-soft" />
+                    {t("nintendo.nso")}
+                  </p>
+                  <div className="mt-2 space-y-1.5 text-xs">
+                    <Row label={t("multiplayer.online")}>
+                      <BooleanFact fact={nin.switchOnline.requiredForOnlinePlay} />
+                    </Row>
+                    {nin.switchOnline.note && (
+                      <p className="pt-1 leading-relaxed muted">{nin.switchOnline.note}</p>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
-          </Panel>
-        </Reveal>
+              )}
+            </Panel>
+          </Reveal>
+        ) : null}
       </div>
 
       {/* Hardware features */}
@@ -253,7 +257,7 @@ export function NintendoSection() {
                   key={`${feature.id}-${featureIdx}`}
                   className={cn(
                     "rounded-xl px-3 py-2.5 text-xs",
-                    feature.supported ? "bg-white/[0.05]" : "bg-black/20",
+                    feature.supported ? "bg-muted/50" : "bg-muted/50",
                   )}
                 >
                   <span
@@ -282,7 +286,7 @@ export function NintendoSection() {
               <div
                 className={cn(
                   "flex items-center gap-3 rounded-xl px-4 py-3 text-sm",
-                  game.gameIsOffline ? "bg-white/[0.05] font-semibold" : "muted",
+                  game.gameIsOffline ? "bg-muted/50 font-semibold" : "muted",
                 )}
               >
                 <Monitor
@@ -299,7 +303,7 @@ export function NintendoSection() {
               <div
                 className={cn(
                   "flex items-center gap-3 rounded-xl px-4 py-3 text-sm",
-                  game.gameIsOnline ? "bg-white/[0.05] font-semibold" : "muted",
+                  game.gameIsOnline ? "bg-muted/50 font-semibold" : "muted",
                 )}
               >
                 <Wifi
@@ -380,7 +384,7 @@ export function Switch2Section() {
       {switchPerf && switch2Perf && (
         <Reveal delay={100}>
           <Panel className="mt-4 overflow-hidden">
-            <div className="border-b border-white/[0.06] px-5 py-3.5">
+            <div className="border-b border-border/70 px-5 py-3.5">
               <p className="text-sm font-extrabold">{t("nintendo.comparison")}</p>
             </div>
             <div className="grid sm:grid-cols-2">
@@ -389,7 +393,7 @@ export function Switch2Section() {
                 logo={<SwitchLogo className="h-4 w-4" />}
                 profile={switchPerf}
               />
-              <div className="relative border-t border-white/[0.06] sm:border-s sm:border-t-0">
+              <div className="relative border-t border-border/70 sm:border-s sm:border-t-0">
                 <span className="absolute -top-3 start-1/2 hidden -translate-x-1/2 rounded-full bg-nin px-2 py-0.5 text-[10px] font-extrabold text-white sm:block">
                   <ArrowRight className="inline h-3 w-3" />
                 </span>
@@ -469,8 +473,9 @@ export function PerformanceSection() {
   const { game } = useHub();
   const profiles = game.performance ?? [];
 
-  const expectedOnSwitch2 = game.nintendo?.runsOn.includes("switch2") ?? false;
-  if (profiles.length === 0 && !expectedOnSwitch2) return null;
+  // No measured profile, no section: a heading over «not published yet» is a
+  // label for nothing.
+  if (profiles.length === 0) return null;
 
   return (
     <Section
@@ -480,11 +485,6 @@ export function PerformanceSection() {
       weight="support"
     >
       <Reveal>
-        {profiles.length === 0 ? (
-          <Panel className="p-6 text-center text-sm muted">
-            Performance information for this device has not been published yet.
-          </Panel>
-        ) : null}
         <div className="grid gap-3 lg:grid-cols-3">
           {profiles.map((profile) => (
             <Panel
@@ -494,7 +494,7 @@ export function PerformanceSection() {
               <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
                 <p className="flex items-center gap-2 text-sm font-extrabold">
                   <Gauge className="h-4 w-4 text-nin-soft" />
-                  Tested on
+                  جُرّبت على
                   {profile.deviceSlug ? (
                     <a
                       href={`/hardware/${profile.deviceSlug}`}
@@ -511,8 +511,8 @@ export function PerformanceSection() {
                   )}
                 </p>
                 {profile.verifiedAt ? (
-                  <span className="rounded-full bg-white/[0.05] px-3 py-1 text-[10px] font-bold muted">
-                    Performance verified: {profile.verifiedAt.slice(0, 7)}
+                  <span className="rounded-full bg-muted/50 px-3 py-1 text-[10px] font-bold muted">
+                    آخر تحقّق من الأداء: {profile.verifiedAt.slice(0, 7)}
                   </span>
                 ) : null}
               </div>
@@ -520,7 +520,7 @@ export function PerformanceSection() {
               {profile.informationStatus === "not_published" ||
               profile.informationStatus === "not_tested" ? (
                 <div className="inset p-4 text-sm muted">
-                  Performance information for this device has not been published yet.
+                  لم تُنشر معلومات الأداء على هذا الجهاز بعد.
                   {profile.unavailableReason ? (
                     <p className="mt-2 text-xs leading-relaxed">{profile.unavailableReason}</p>
                   ) : null}
@@ -536,7 +536,7 @@ export function PerformanceSection() {
                           t(`nintendo.${mode.mode === "pc-preset" ? "tv" : mode.mode}`)}
                       </p>
                       {mode.supported === false ? (
-                        <span className="inline-flex rounded-full bg-white/[0.06] px-3 py-1.5 text-xs font-bold muted">
+                        <span className="inline-flex rounded-full bg-muted/70 px-3 py-1.5 text-xs font-bold muted">
                           Not Supported
                         </span>
                       ) : (
@@ -559,7 +559,7 @@ export function PerformanceSection() {
                               </span>
                             ) : null}
                             {mode.vrr?.value === true ? (
-                              <span className="rounded-full bg-white/[0.08] px-3 py-1.5 font-extrabold">
+                              <span className="rounded-full bg-muted/70 px-3 py-1.5 font-extrabold">
                                 VRR
                               </span>
                             ) : null}
@@ -609,22 +609,22 @@ export function PerformanceSection() {
                         <p className="font-extrabold">{mode.name}</p>
                         <div className="mt-2 flex flex-wrap gap-2 text-[11px] font-bold">
                           {mode.handheldResolution ? (
-                            <span className="rounded-full bg-white/[0.06] px-2.5 py-1">
+                            <span className="rounded-full bg-muted/70 px-2.5 py-1">
                               Handheld {mode.handheldResolution}
                             </span>
                           ) : null}
                           {mode.handheldFps ? (
-                            <span className="rounded-full bg-white/[0.06] px-2.5 py-1">
+                            <span className="rounded-full bg-muted/70 px-2.5 py-1">
                               {mode.handheldFps} FPS
                             </span>
                           ) : null}
                           {mode.tvResolution ? (
-                            <span className="rounded-full bg-white/[0.06] px-2.5 py-1">
+                            <span className="rounded-full bg-muted/70 px-2.5 py-1">
                               TV {mode.tvResolution}
                             </span>
                           ) : null}
                           {mode.tvFps ? (
-                            <span className="rounded-full bg-white/[0.06] px-2.5 py-1">
+                            <span className="rounded-full bg-muted/70 px-2.5 py-1">
                               {mode.tvFps} FPS
                             </span>
                           ) : null}
@@ -634,7 +634,7 @@ export function PerformanceSection() {
                             </span>
                           ) : null}
                           {mode.vrr ? (
-                            <span className="rounded-full bg-white/[0.08] px-2.5 py-1">VRR</span>
+                            <span className="rounded-full bg-muted/70 px-2.5 py-1">VRR</span>
                           ) : null}
                         </div>
                         {mode.notes ? (
@@ -720,22 +720,19 @@ export function MultiplayerSection() {
         <Panel className="p-5 sm:p-6">
           <div className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
             {/* A player count when one is recorded, otherwise the support flag. */}
-            <Row label={t("multiplayer.localPlayers")} large>
-              {formatRange(mp.localPlayers) ??
-                (mp.localMultiplayer === undefined ? (
-                  <NotAvailable />
-                ) : (
-                  t(mp.localMultiplayer ? "common.yes" : "common.no")
-                ))}
-            </Row>
-            <Row label={t("multiplayer.onlinePlayers")} large>
-              {formatRange(mp.onlinePlayers) ??
-                (mp.onlineMultiplayer === undefined ? (
-                  <NotAvailable />
-                ) : (
-                  t(mp.onlineMultiplayer ? "common.yes" : "common.no")
-                ))}
-            </Row>
+            {/* A row only for what is known: a count, else the support flag. */}
+            {formatRange(mp.localPlayers) || mp.localMultiplayer !== undefined ? (
+              <Row label={t("multiplayer.localPlayers")} large>
+                {formatRange(mp.localPlayers) ??
+                  t(mp.localMultiplayer ? "common.yes" : "common.no")}
+              </Row>
+            ) : null}
+            {formatRange(mp.onlinePlayers) || mp.onlineMultiplayer !== undefined ? (
+              <Row label={t("multiplayer.onlinePlayers")} large>
+                {formatRange(mp.onlinePlayers) ??
+                  t(mp.onlineMultiplayer ? "common.yes" : "common.no")}
+              </Row>
+            ) : null}
             {mp.coop && (
               <Row label={t("multiplayer.coop")} large>
                 {t("common.yes")}
@@ -778,7 +775,7 @@ export function SourcesSection() {
             {sources.map((source, i) => (
               <li
                 key={`${source.url || source.label}-${i}`}
-                className="flex items-center gap-3 rounded-xl bg-white/[0.035] px-3 py-2.5"
+                className="flex items-center gap-3 rounded-xl bg-muted/50 px-3 py-2.5"
               >
                 <Globe className="h-4 w-4 text-nin-soft" />
                 {source.url ? (
@@ -786,7 +783,7 @@ export function SourcesSection() {
                     href={source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-bold hover:text-white hover:underline"
+                    className="text-sm font-bold hover:text-foreground hover:underline"
                   >
                     {source.label}
                   </a>
@@ -849,7 +846,7 @@ export function StorageSection() {
             )}
           </div>
           {storage.microSdRecommended && (
-            <p className="mt-4 flex items-center gap-2 rounded-xl bg-white/[0.04] p-3 text-xs muted">
+            <p className="mt-4 flex items-center gap-2 rounded-xl bg-muted/50 p-3 text-xs muted">
               <HardDrive className="h-3.5 w-3.5 shrink-0" />
               {t("storage.microSd")}
             </p>
@@ -914,7 +911,7 @@ export function LanguagesSection() {
             {visible.map((language, langIdx) => (
               <div
                 key={`${language.code || language.name}-${langIdx}`}
-                className="flex min-w-0 items-center justify-between gap-3 rounded-xl bg-white/[0.035] px-3 py-2.5"
+                className="flex min-w-0 items-center justify-between gap-3 rounded-xl bg-muted/50 px-3 py-2.5"
               >
                 <span className="min-w-0">
                   <span className="block truncate text-sm font-bold">{language.name}</span>
@@ -931,7 +928,7 @@ export function LanguagesSection() {
                         "flex h-5 w-5 items-center justify-center rounded text-[9px] font-extrabold uppercase",
                         language.channels.includes(ch)
                           ? "bg-good/15 text-good"
-                          : "bg-white/[0.04] text-white/20",
+                          : "bg-muted/50 text-foreground/15",
                       )}
                     >
                       {ch[0]}
@@ -997,7 +994,7 @@ function Row({
     <div
       className={cn(
         "flex items-baseline justify-between gap-3",
-        large && "border-b border-white/[0.05] pb-2",
+        large && "border-b border-border/70 pb-2",
       )}
     >
       <span className={cn("muted", large ? "text-xs" : "text-[11px]")}>{label}</span>

@@ -87,7 +87,7 @@ export function PricesSection() {
 
             <PriceHistoryChart history={history} />
 
-            <div className="mt-5 flex flex-col gap-3 rounded-2xl bg-white/[0.035] p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="mt-5 flex flex-col gap-3 rounded-2xl bg-muted/50 p-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-sm font-extrabold">{t("alert.title")}</p>
                 <p className="mt-0.5 text-xs muted">{t("alert.subtitle")}</p>

@@ -21,10 +21,19 @@ export function Section({
   const hasContent = typeof when === "number" ? when > 0 : Boolean(when);
   if (!hasContent) return null;
 
+  /*
+    Each section is a piece of clay of its own rather than a band between two
+    hairlines: the page reads as a stack of cards, the same as everywhere else
+    in the shop.
+  */
   return (
-    <section id={id} className="scroll-mt-20 border-t border-border/60 py-8 first:border-t-0">
-      <h2 className="mb-4 text-lg font-bold text-foreground sm:text-xl">{title}</h2>
-      {children}
+    <section id={id} className="scroll-mt-24 pt-4">
+      <div className="rounded-[24px] border border-[var(--clay-rim)] bg-card p-5 shadow-md sm:p-6">
+        <h2 className="mb-4 text-[18px] font-black tracking-[-0.02em] text-foreground sm:text-[20px]">
+          {title}
+        </h2>
+        {children}
+      </div>
     </section>
   );
 }
@@ -38,12 +47,12 @@ export function SpecTable({
   if (rows.length === 0) return null;
 
   return (
-    <div className="w-full min-w-0 overflow-hidden rounded-xl border border-border">
-      <dl className="divide-y divide-border">
+    <div className="w-full min-w-0 overflow-hidden rounded-[18px] bg-muted/40">
+      <dl className="divide-y divide-border/60">
         {rows.map((row, index) => (
           <div
             key={`${row.label}-${index}`}
-            className="flex flex-col gap-1 px-4 py-3 odd:bg-muted/30 sm:flex-row sm:items-baseline sm:gap-4"
+            className="flex flex-col gap-1 px-4 py-3 sm:flex-row sm:items-baseline sm:gap-4"
           >
             <dt className="text-[13px] font-medium text-muted-foreground break-words sm:w-2/5 sm:shrink-0">
               {row.label}
