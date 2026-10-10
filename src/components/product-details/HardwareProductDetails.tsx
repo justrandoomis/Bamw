@@ -153,9 +153,12 @@ function InfoCards({ items }: { items: Row[] }) {
             key={`${item.label}-${item.value}`}
             className="min-w-0 rounded-[18px] bg-muted/50 px-3.5 py-3 sm:px-4 sm:py-3.5"
           >
-            <dt className="flex items-center gap-1.5 text-[12px] font-bold text-muted-foreground">
+            <dt className="flex items-start gap-1.5 text-[12px] font-bold leading-snug text-muted-foreground">
               {Icon ? (
-                <Icon className="h-4 w-4 shrink-0 text-[var(--brand-red)]" aria-hidden="true" />
+                <Icon
+                  className="mt-px h-4 w-4 shrink-0 text-[var(--brand-red)]"
+                  aria-hidden="true"
+                />
               ) : null}
               {item.label}
             </dt>

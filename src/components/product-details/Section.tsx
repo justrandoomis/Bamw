@@ -58,7 +58,8 @@ export function SpecTable({
               {row.label}
             </dt>
             <dd className="min-w-0 text-[14px] font-semibold text-foreground break-words [overflow-wrap:anywhere] sm:w-3/5">
-              <span>{row.value}</span>
+              {/* `auto`, so a value like «534 g» or «256 GB» keeps its own order in an RTL row. */}
+              <span dir="auto">{row.value}</span>
               {row.unit ? (
                 // Unit symbols are international notation — never translated.
                 <span className="ms-1 text-[12px] font-normal text-muted-foreground" dir="ltr">
