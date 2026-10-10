@@ -358,9 +358,15 @@ if (FAMOUS.length === 0) {
 
   The market has since moved to the market half of `/banana`, and
   `/banana_market` redirects there — so going by the old address checks the
-  redirect too, and it settles on the same heading either way.
+  redirect too.
+
+  AND THE HEADING STOPPED BEING UNIQUE. The home page grew a market strip of
+  its own (`HomeBananaMarket`) with the same «سعر موزة واحدة» heading, so a
+  read that caught HOME settled again: 5,507 characters, the chart's ranges
+  and the ticket shop «missing» from a market that was never read. The
+  market's own line under its title is said nowhere else.
 */
-const MARKET_SETTLED = "سعر موزة واحدة";
+const MARKET_SETTLED = "موزك للمتجر مباشرة";
 const marketLanded = await routeTo("/banana_market", MARKET_SETTLED);
 const market = marketLanded.text;
 if (!market.trim()) {
