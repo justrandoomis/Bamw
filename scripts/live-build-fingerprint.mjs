@@ -28,6 +28,9 @@
  *                    link is out in Telegram messages, and since the section
  *                    moved to `/banana` it has to redirect there and still
  *                    land on the contests.
+ *  - `clay`        — the page is made of clay: the material's tokens on the
+ *                    root (`--clay-2`), the lit page canvas (`.clay-canvas`),
+ *                    and the fade under the floating dock that came last.
  *
  * And one reading that is not a probe of the build: whether «الدخول عبر Google»
  * reaches Google at all. That depends on two secrets in Cloudflare, not on the
@@ -99,6 +102,20 @@ const headerBar = await page
   .locator("[data-header-bar]")
   .count()
   .catch(() => 0);
+
+/* Read on the home page, before the probes below move the app elsewhere. */
+const clay = await page
+  .evaluate(() => {
+    const dock = document.getElementById("app-bottom-nav");
+    return {
+      tokens: getComputedStyle(document.documentElement).getPropertyValue("--clay-2").trim() !== "",
+      canvas: document.querySelector(".clay-canvas") !== null,
+      dockFade: dock
+        ? getComputedStyle(dock, "::before").backgroundImage.includes("gradient")
+        : false,
+    };
+  })
+  .catch(() => ({ tokens: false, canvas: false, dockFade: false }));
 
 /*
   The chat renders for a visitor who is not signed in, composer and all.
@@ -226,6 +243,11 @@ const probes = [
     name: "contests-tab",
     live: contestsTab > 0 && (contestsApi.list || contestsApi.status === 403),
     seen: `in-app ${contestsPath} · ${contestsTab ? "the events tab, selected" : "no events tab"} · /api/contests HTTP ${contestsApi.status || "—"}${contestsApi.list ? " with a list" : ""}`,
+  },
+  {
+    name: "clay",
+    live: clay.tokens && clay.canvas && clay.dockFade,
+    seen: `tokens ${clay.tokens ? "✓" : "✗"} · canvas ${clay.canvas ? "✓" : "✗"} · dock fade ${clay.dockFade ? "✓" : "✗"}`,
   },
   {
     name: "security-headers",
