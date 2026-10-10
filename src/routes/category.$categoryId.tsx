@@ -546,7 +546,7 @@ function CategoryPage() {
                         aria-pressed={isSelected}
                         className={`min-h-8 shrink-0 whitespace-nowrap rounded-full px-3.5 text-[12px] font-bold transition-colors ${
                           isSelected
-                            ? "bg-[var(--brand-red)] text-white"
+                            ? "bg-[var(--brand-red)] text-primary-foreground"
                             : "border border-[var(--clay-rim)] bg-card text-muted-foreground shadow-sm hover:text-foreground"
                         }`}
                       >
@@ -646,7 +646,7 @@ function CategoryPage() {
                 <button
                   type="button"
                   onClick={filtersActive ? resetFilters : () => navigate({ to: "/" })}
-                  className="mt-5 min-h-11 rounded-full bg-[var(--brand-red)] px-5 text-[13px] font-bold text-white"
+                  className="mt-5 min-h-11 rounded-full bg-[var(--brand-red)] px-5 text-[13px] font-bold text-primary-foreground"
                 >
                   {filtersActive ? t("إعادة تعيين الفلاتر") : t("العودة إلى المتجر")}
                 </button>

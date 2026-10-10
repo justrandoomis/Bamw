@@ -403,7 +403,7 @@ function DetailsBody({
                         }
                         className={`flex min-h-11 min-w-0 flex-col items-start justify-center gap-0.5 rounded-[16px] px-3.5 py-2 text-start text-[13px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-red)]/40 ${
                           isSelected
-                            ? "bg-[var(--brand-red)] text-white"
+                            ? "bg-[var(--brand-red)] text-primary-foreground"
                             : "border border-[var(--clay-rim)] bg-card text-foreground shadow-sm"
                         }`}
                       >
@@ -425,7 +425,7 @@ function DetailsBody({
                         </span>
                         {variant.description ? (
                           <span
-                            className={`text-[11px] font-normal ${isSelected ? "text-white/85" : "text-muted-foreground"}`}
+                            className={`text-[11px] font-normal ${isSelected ? "text-primary-foreground/85" : "text-muted-foreground"}`}
                           >
                             {variant.description}
                           </span>
@@ -474,7 +474,7 @@ function DetailsBody({
                   type="button"
                   onClick={handleAddToCart}
                   disabled={soldOut}
-                  className="flex h-[52px] min-w-0 flex-1 items-center justify-center gap-2 rounded-[18px] bg-[var(--brand-red)] px-5 text-[15px] font-black text-white disabled:cursor-not-allowed disabled:opacity-50"
+                  className="flex h-[52px] min-w-0 flex-1 items-center justify-center gap-2 rounded-[18px] bg-[var(--brand-red)] px-5 text-[15px] font-black text-primary-foreground disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <ShoppingCart className="h-4 w-4" aria-hidden="true" />
                   {t("product.addToCart")}

@@ -268,7 +268,7 @@ export function Hero() {
                     }}
                     className="flex h-10 shrink-0 items-center gap-2 rounded-full border border-[var(--clay-rim)] bg-card pe-3.5 ps-1.5 text-[12px] font-bold text-foreground shadow-sm"
                   >
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-nin text-white">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-nin text-primary-foreground">
                       <Play className="ms-px h-3 w-3 fill-current" aria-hidden="true" />
                     </span>
                     {t("hero.watchTrailer")}
@@ -333,7 +333,9 @@ export function Hero() {
                     key={`${platform}-${platIdx}`}
                     className={cn(
                       "inline-flex h-7 items-center gap-1.5 rounded-full px-2.5 text-[11.5px] font-bold",
-                      meta.nintendo ? "bg-nin text-white" : "bg-muted/70 text-foreground",
+                      meta.nintendo
+                        ? "bg-nin text-primary-foreground"
+                        : "bg-muted/70 text-foreground",
                     )}
                   >
                     <Icon className="h-3 w-3" aria-hidden="true" />
