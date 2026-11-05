@@ -7,7 +7,7 @@ import Cartridge, { type CartridgeGame } from "@/components/Cartridge";
 import StaggerItem from "@/components/StaggerItem";
 import { useBatches } from "@/hooks/useBatches";
 import { useStoreData } from "@/hooks/useStoreData";
-import { GAME_GENRES } from "@/lib/genres";
+import { GAME_GENRES, productGenreIds } from "@/lib/genres";
 import { getNintendoMediaUrl } from "@/lib/nintendoImages";
 import { filterPurchasable } from "@/lib/purchasable";
 import { picturedFirst, squareCardFirst } from "@/lib/listingOrder";
@@ -86,7 +86,9 @@ function GamesPage() {
         source: p,
         rating: p["metacriticRating"] ?? null,
         platform: p["platform"],
-        genres: Array.isArray(p["genres"]) ? (p["genres"] as string[]) : [],
+        // The shop's genre ids, folded from whatever spelling the record uses
+        // ("Action", "action rpg", "أكشن") — see src/lib/genres.ts.
+        genres: [...productGenreIds(p)],
       })),
 
     [products],
