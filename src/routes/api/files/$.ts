@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { isServableFilePath } from "@/lib/file-paths";
 import { guard } from "@/lib/http.server";
 import { readBinaryStream, readBinary, readBinaryRange } from "@/lib/storage.server";
 import { getSessionUser } from "@/lib/session.server";
@@ -28,11 +29,8 @@ export const Route = createFileRoute("/api/files/$")({
       GET: async ({ params, request }) =>
         guard(async () => {
           const path = (params as { _splat?: string })._splat ?? "";
-          if (
-            !/^(?:[a-z0-9_-]{1,64}\/)*[a-z0-9_-]{1,96}\.(?:png|jpe?g|webp|gif|avif|pdf|mp4|webm|mov|weba|ogg|oga|opus|m4a|aac|mp3)$/i.test(
-              path,
-            )
-          ) {
+          // Only plain names and known extensions; a product folder may be long (src/lib/file-paths.ts).
+          if (!isServableFilePath(path)) {
             return new Response("Not found", { status: 404 });
           }
 

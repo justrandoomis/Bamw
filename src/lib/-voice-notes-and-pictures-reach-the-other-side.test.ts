@@ -168,7 +168,9 @@ describe("a file is served in pieces, as a player asks for it", () => {
     const route = source("src/routes/api/files/$.ts");
     expect(route).toContain("status: 206");
     expect(route).toContain('"accept-ranges": "bytes"');
-    expect(route).toMatch(/weba\|ogg\|oga\|opus\|m4a\|aac\|mp3/);
+    // The extensions the route will look up live with its path rule.
+    expect(route).toContain("isServableFilePath(path)");
+    expect(source("src/lib/file-paths.ts")).toMatch(/weba\|ogg\|oga\|opus\|m4a\|aac\|mp3/);
   });
 });
 
