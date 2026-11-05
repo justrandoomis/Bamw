@@ -194,7 +194,7 @@ import {
   TELEGRAM_NOTICE_KINDS,
   TELEGRAM_NOTICE_LABELS,
   deliverySettings,
-} from "@/lib/telegram-delivery";
+} from "@/lib/telegram-destinations";
 import { isProductPriced, isProductHidden } from "@/lib/purchasable";
 import { productsTableState } from "@/lib/adminProductsTableState";
 

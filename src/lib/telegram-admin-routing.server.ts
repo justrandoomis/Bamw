@@ -22,7 +22,7 @@
 
 import { env } from "./env.server";
 import { getAdminTelegramChatId } from "./telegram-notifications.server";
-import { deliveryFor } from "./telegram-delivery";
+import { deliveryFor } from "./telegram-destinations";
 
 export type AdminNotificationKind = "order" | "wallet" | "support" | "general";
 
@@ -63,9 +63,9 @@ const PREFIX: Record<AdminNotificationKind, string> = {
 
 /*
   Private chat with the bot, or the admin group — per kind, the owner's choice.
-  The rule and its defaults live in ./telegram-delivery.ts (orders: private).
+  The rule and its defaults live in ./telegram-destinations.ts (orders: private).
 */
-export { DEFAULT_DELIVERY, deliveryFor, type AdminDelivery } from "./telegram-delivery";
+export { DEFAULT_DELIVERY, deliveryFor, type AdminDelivery } from "./telegram-destinations";
 
 /** Settings without the catalogue, and never a reason to lose a notification. */
 async function readDeliverySettings(): Promise<Record<string, unknown>> {
