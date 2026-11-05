@@ -1,11 +1,12 @@
 # The games database loader's run-once token (scripts/games-db-load.mjs).
 #
-# Empty on purpose: until the owner approves the load, every push runs DRY and
-# only reports what it would write.
+# Approved by the owner on 2026-11-05: load every Switch / Switch 2 title in
+# Nintendo Europe's index (20,065 that day) into nintendo_titles, the table
+# behind /games-db. It writes only that table and nintendo_title_genres —
+# never the catalogue, and no prices.
 #
-# To load, put ONE new token on its own line below these comments (letters,
-# digits, dots, dashes or underscores, 6 to 80 characters), for example
-#   2026-11-05-games-db-first-load
-# and push. It is claimed in console_runs before the first write, so it can
-# never write twice. Put a NEW token here to run again (a later run writes only
-# the titles that changed).
+# It is claimed in console_runs before the first write, so it can never write
+# twice. To run again, replace the line below with a NEW token (letters,
+# digits, dots, dashes or underscores, 6 to 80 characters) and push; a later
+# run writes only the titles that changed. Remove the line to go back to dry.
+2026-11-05-games-db-load-1
