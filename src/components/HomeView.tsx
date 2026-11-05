@@ -171,7 +171,9 @@ export default function HomeView({
     preload3DBoxAssets();
     // Preload active banners
     activeBanners.slice(0, 3).forEach((b) => {
-      if (b?.imageUrl) preloadImage(b.imageUrl, { width: 1200 });
+      // The same width the hero <img> asks for, so the preload is the image it shows
+      // (1200 here and 1400 there were two different URLs: two downloads, no warm-up).
+      if (b?.imageUrl) preloadImage(b.imageUrl, { width: 1400 });
     });
   }, [adminProducts, activeBanners]);
 

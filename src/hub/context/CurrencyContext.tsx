@@ -82,7 +82,15 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
   const { intlLocale } = useI18n();
   // The hub prices in whatever the shopper picked in the flower menu; IQD is
   // the store's own currency and the default.
-  const siteCurrency = useSiteCurrency().currency.toUpperCase();
+  const site = useSiteCurrency();
+  const siteCurrency = site.currency.toUpperCase();
+  /*
+    The shop's own dollar rate — the one the cards, the cart and the wallet use.
+    The game pages used to convert at the 1310 snapshot bundled with the app
+    (`VITE_FX_ENDPOINT` was never set), so the same game cost one dollar figure
+    on its card and another on its own page.
+  */
+  const shopIqdRate = site.usdIqdRate;
   const [currency, setCurrencyState] = useState<CurrencyCode>(readStored);
 
   useEffect(() => {
@@ -90,7 +98,21 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
       setCurrencyState(siteCurrency as CurrencyCode);
     }
   }, [siteCurrency]);
-  const [rates, setRates] = useState<ExchangeRates | null>(null);
+  const [fetchedRates, setRates] = useState<ExchangeRates | null>(null);
+  /*
+    Dinars and dollars always come from the shop, so dinar→dollar conversion
+    works from the first frame (no "$25,000.00" while the other rates load);
+    the remaining currencies come from the FX source as before.
+  */
+  const rates = useMemo<ExchangeRates>(
+    () => ({
+      base: "USD",
+      updatedAt: fetchedRates?.updatedAt ?? new Date().toISOString(),
+      live: fetchedRates?.live ?? false,
+      rates: { ...(fetchedRates?.rates ?? {}), USD: 1, IQD: shopIqdRate },
+    }),
+    [fetchedRates, shopIqdRate],
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -128,21 +150,22 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
       return to === "JPY" ? Math.round(converted) : Math.round(converted * 100) / 100;
     };
 
-    const ageMs = rates ? Date.now() - new Date(rates.updatedAt).getTime() : 0;
+    // Staleness is about the third-party currencies only; dinars and dollars are the shop's.
+    const ageMs = fetchedRates ? Date.now() - new Date(fetchedRates.updatedAt).getTime() : 0;
 
     return {
       currency,
       setCurrency,
       rates,
-      ratesUpdatedAt: rates?.updatedAt ?? null,
+      ratesUpdatedAt: fetchedRates?.updatedAt ?? null,
       convert,
       formatNative: (money) => formatMoney(money, intlLocale),
       formatConverted: (money) =>
         money ? formatAmount(convert(money.amount, money.currency), currency, intlLocale) : null,
       formatIn: (amount, code) => formatAmount(amount, code, intlLocale),
-      isStale: Boolean(rates) && ageMs > 24 * 3600_000,
+      isStale: Boolean(fetchedRates) && ageMs > 24 * 3600_000,
     };
-  }, [currency, rates, setCurrency, intlLocale]);
+  }, [currency, rates, fetchedRates, setCurrency, intlLocale]);
 
   return <CurrencyContext.Provider value={value}>{children}</CurrencyContext.Provider>;
 }

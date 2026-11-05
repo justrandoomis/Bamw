@@ -5,12 +5,14 @@ import {
   getCatalogVersion,
   getStore,
   getStoreCacheVersion,
+  getStoreSettings,
   isStoreDegraded,
   updateStore,
   getAdminAvailabilityStatus,
   getAdminAvailabilityConfig,
   saveAdminAvailabilityConfig,
 } from "@/lib/db.server";
+import { applyDealToProduct, dealsCacheKey, readDealsConfig, type DealsConfig } from "@/lib/deals";
 import { body, guard, json } from "@/lib/http.server";
 import { requireAdmin } from "@/lib/session.server";
 import { getSessionUser } from "@/lib/session.server";
@@ -200,6 +202,12 @@ const LIST_FIELDS = [
   "types",
   "badges",
   "tags",
+  /*
+    The live occasion deal (Black Friday, Eid, …): which occasion, its
+    percentage and its window. The prices above already carry it — this is
+    what the badge, the colours and the countdown on a card read.
+  */
+  "deal",
 ] as const;
 
 /*
@@ -213,6 +221,8 @@ const publicProduct = toPublicProduct;
 function publicStore(
   store: StoreDoc,
   availability?: AdminAvailabilityStatus,
+  deals: DealsConfig = { enabled: false, campaigns: [] },
+  now: number = Date.now(),
 ): StoreDoc & { adminAvailability?: AdminAvailabilityStatus } {
   return {
     /*
@@ -225,9 +235,19 @@ function publicStore(
       to half of this function was work nobody could ever see.
     */
     ...(redactPrivateKeys({ ...store, products: [], bundles: [] }) as StoreDoc),
+    /*
+      A live occasion deal is applied BEFORE the private fields are stripped:
+      the cost floor needs each row's cost, which the customer never receives.
+      Nothing is stored — switch the deals off and this is the stored price.
+    */
     products: (store.products ?? [])
       .filter((product) => isVisibleToPublic(product))
-      .map((product) => publicProduct(product) as StoreDoc["products"][number]),
+      .map(
+        (product) =>
+          publicProduct(
+            applyDealToProduct(product as unknown as Record<string, unknown>, deals, now),
+          ) as StoreDoc["products"][number],
+      ),
     /*
       Redacted, then filtered — not filtered from the raw store.
 
@@ -294,6 +314,7 @@ let publicPayloadCache:
       store: StoreDoc;
       version: number;
       availabilityKey: string;
+      dealsKey: string;
       visible: ReturnType<typeof publicStore>;
       full?: string;
       slim?: string;
@@ -309,19 +330,23 @@ function publicPayload(
   availability: AdminAvailabilityStatus | undefined,
   slim: boolean,
   options?: { page?: number; limit?: number; category?: string },
+  deals: DealsConfig = { enabled: false, campaigns: [] },
+  dealsKey = "",
 ): string {
   const availabilityKey = JSON.stringify(availability ?? null);
   const currentVersion = getStoreCacheVersion();
   if (
     publicPayloadCache?.store !== store ||
     publicPayloadCache?.version !== currentVersion ||
-    publicPayloadCache?.availabilityKey !== availabilityKey
+    publicPayloadCache?.availabilityKey !== availabilityKey ||
+    publicPayloadCache?.dealsKey !== dealsKey
   ) {
     publicPayloadCache = {
       store,
       version: currentVersion,
       availabilityKey,
-      visible: publicStore(store, availability),
+      dealsKey,
+      visible: publicStore(store, availability, deals),
     };
   }
 
@@ -368,6 +393,15 @@ export const Route = createFileRoute("/api/data")({
           const availabilityConfig = viewer?.isAdmin
             ? await getAdminAvailabilityConfig()
             : undefined;
+          /*
+            The occasion deals, from settings alone (no catalogue read). An
+            admin's payload is what the editor saves back, so it is NEVER
+            discounted — a deal price must not become the stored price.
+          */
+          const deals = viewer?.isAdmin
+            ? readDealsConfig(undefined)
+            : readDealsConfig(await getStoreSettings().catch(() => ({})));
+          const dealsKey = dealsCacheKey(deals);
 
           /*
             The validator first, and the catalogue only if it is needed.
@@ -426,6 +460,8 @@ export const Route = createFileRoute("/api/data")({
             viewer?.isAdmin ? "admin" : "public",
             availabilityKeyFor(availability),
             JSON.stringify(availabilityConfig ?? null),
+            // A deal opening or closing changes the answer without a write.
+            dealsKey,
           ].join(":");
           const etag = etagFor(shape);
 
@@ -479,6 +515,7 @@ export const Route = createFileRoute("/api/data")({
             limit,
             category,
             isAdmin: Boolean(viewer?.isAdmin),
+            dealsKey,
           });
           const cacheKey = cacheKeyUrl ? new Request(cacheKeyUrl, { method: "GET" }) : null;
 
@@ -546,7 +583,7 @@ export const Route = createFileRoute("/api/data")({
             };
             payload = JSON.stringify(slim ? slimStore(visibleStore, paginationOpts) : visibleStore);
           } else {
-            payload = publicPayload(store, availability, slim, paginationOpts);
+            payload = publicPayload(store, availability, slim, paginationOpts, deals, dealsKey);
           }
           /*
             Only a catalogue with something in it is worth holding at the edge.

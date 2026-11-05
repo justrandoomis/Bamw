@@ -59,6 +59,7 @@ import { isUnderMaintenance, maintenanceError } from "./maintenance";
 import { ensureRouletteSchema } from "./roulette.server";
 import { prizePriceOf, squareImageOf } from "./roulette-pool.server";
 import type { User } from "./types";
+import { joinShared, SCHEMA_WAIT_MS, trackShared } from "./shared-wait.server";
 
 /* ------------------------------------------------------------------ schema */
 
@@ -197,8 +198,18 @@ export function ensureContestSchema(): Promise<void> {
       schemaReady = undefined;
       throw error;
     });
+    trackShared(schemaReady);
+    return schemaReady;
   }
-  return schemaReady;
+  const shared = schemaReady;
+  return joinShared(shared, {
+    label: "contests-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (schemaReady === shared) schemaReady = undefined;
+      return ensureContestSchema();
+    },
+  });
 }
 
 /* ----------------------------------------------------------------- rows */

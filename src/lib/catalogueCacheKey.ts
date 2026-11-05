@@ -20,6 +20,12 @@ export interface CatalogueCacheKeyParts {
   category?: string | null;
   /** An admin payload carries costs and hidden products and is never cached. */
   isAdmin?: boolean;
+  /**
+   * Moves when what the occasion deals show could change by the clock alone
+   * (`dealsCacheKey`) — a revision only moves on a write, and a Black Friday
+   * starts at midnight whether or not anybody saves anything.
+   */
+  dealsKey?: string;
 }
 
 /**
@@ -35,5 +41,6 @@ export function catalogueCacheKey(parts: CatalogueCacheKeyParts): string | null 
   if (!Number.isFinite(parts.version) || parts.version <= 0) return null;
   const shape = parts.slim ? "slim" : "full";
   const category = encodeURIComponent(parts.category ?? "");
-  return `https://banan.to/__catalogue/${parts.version}/${shape}/${parts.page}/${parts.limit}/${category}`;
+  const deals = parts.dealsKey ? `?d=${encodeURIComponent(parts.dealsKey)}` : "";
+  return `https://banan.to/__catalogue/${parts.version}/${shape}/${parts.page}/${parts.limit}/${category}${deals}`;
 }

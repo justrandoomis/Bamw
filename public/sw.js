@@ -83,7 +83,7 @@ function catalogueHasProducts(response) {
 }
 
 /** Network first for data queries. Never serves stale data to an online visitor. */
-async function networkFirst(cacheName, request) {
+async function networkFirst(cacheName, request, waitUntil) {
   const cache = await caches.open(cacheName);
 
   const servableCached = async () => {
@@ -135,11 +135,22 @@ async function networkFirst(cacheName, request) {
     const mayStore = !/no-store|private/i.test(directive);
 
     if (response && response.status === 200 && mayStore && catalogueHasProducts(response)) {
-      // The stored copy is stamped so its age can be judged on the way out.
-      const body = await response.clone().blob();
-      const headers = new Headers(response.headers);
-      headers.set("x-sw-cached-at", String(Date.now()));
-      cache.put(request, new Response(body, { status: 200, headers }));
+      /*
+        Stored in the background. This used to `await` the whole cloned body
+        before returning, so the page saw no headers until the service worker
+        had buffered ~2 MB — on a slow phone line that alone could outlast the
+        storefront's 8.5 s patience, three attempts in a row. The page gets the
+        response now; the copy is kept alongside. The stored copy is stamped so
+        its age can be judged on the way out.
+      */
+      const copy = response.clone();
+      const store = (async () => {
+        const body = await copy.blob();
+        const headers = new Headers(copy.headers);
+        headers.set("x-sw-cached-at", String(Date.now()));
+        await cache.put(request, new Response(body, { status: 200, headers }));
+      })().catch(() => undefined);
+      if (typeof waitUntil === "function") waitUntil(store);
     }
     return response;
   } catch (error) {
@@ -209,6 +220,6 @@ self.addEventListener("fetch", (event) => {
   if (isImage(request, url)) {
     event.respondWith(staleWhileRevalidate(IMAGE_CACHE, request));
   } else if (url.pathname.startsWith("/api/data")) {
-    event.respondWith(networkFirst(DATA_CACHE, request));
+    event.respondWith(networkFirst(DATA_CACHE, request, (promise) => event.waitUntil(promise)));
   }
 });

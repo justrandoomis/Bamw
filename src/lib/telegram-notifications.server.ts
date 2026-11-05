@@ -3,6 +3,7 @@ import { memberAllowsNotification } from "./notification-preferences.server";
 import { telegramAdminIds } from "./telegram-admin.server";
 import {
   adminRoute,
+  fallbackRoute,
   findForbiddenSecret,
   redactSecrets,
   routeOptions,
@@ -21,6 +22,7 @@ import { d1First } from "./d1.server";
 import { normalizePhone } from "./phone";
 import { gameRequestLabel } from "./gameDetailRequest";
 import type { Order, ProductRequest, User } from "./types";
+import { isDollarRechargeMethod, rechargeCredit } from "./exchange-rate";
 
 /**
  * Primary admin Telegram Chat ID.
@@ -196,6 +198,30 @@ export async function sendAdminNotification(
   const route = await adminRoute(kind);
   if (!route.chatId) return { ok: false };
 
+  const first = await sendToAdminRoute(kind, route, text, options);
+  if (first.ok) return first;
+
+  /*
+    One more destination before giving up: the private chat when the group
+    refused, the group when the private chat did (an owner who never pressed
+    Start, or blocked the bot). The failure above is already recorded.
+  */
+  const next = await fallbackRoute(kind, route);
+  if (!next) return first;
+  console.warn("[telegram:admin_notification_fallback]", {
+    kind,
+    from: routeLabel(route),
+    to: routeLabel(next),
+  });
+  return sendToAdminRoute(kind, next, text, options);
+}
+
+async function sendToAdminRoute(
+  kind: AdminNotificationKind,
+  route: AdminRoute,
+  text: string,
+  options: Record<string, unknown>,
+): Promise<AdminNotificationResult> {
   /*
     Telegram refuses a message over 4096 characters, and refuses it whole.
 
@@ -206,18 +232,34 @@ export async function sendAdminNotification(
     the whole notification.
   */
   const TELEGRAM_MESSAGE_LIMIT = 4096;
-  const body =
-    text.length > TELEGRAM_MESSAGE_LIMIT
-      ? `${text.slice(0, TELEGRAM_MESSAGE_LIMIT - 40)}\n\n… <i>(اختُصرت)</i>`
-      : text;
+  let body = text;
+  if (body.length > TELEGRAM_MESSAGE_LIMIT) {
+    /*
+      Cut on a line boundary, and never inside a tag or an entity: a slice
+      through `<b>…` or `&amp;` is a message Telegram refuses whole with
+      "can't parse entities" — the same total loss the trim exists to avoid.
+    */
+    let cut = body.slice(0, TELEGRAM_MESSAGE_LIMIT - 60);
+    const lastBreak = cut.lastIndexOf("\n");
+    if (lastBreak > cut.length * 0.6) cut = cut.slice(0, lastBreak);
+    cut = cut.replace(/<[^>]*$/, "").replace(/&[^;\s]*$/, "");
+    const open = (cut.match(/<(b|i|code|u|s)>/g) ?? []).length;
+    const closed = (cut.match(/<\/(b|i|code|u|s)>/g) ?? []).length;
+    body = `${cut.replace(/<\/?(b|i|code|u|s)>/g, open === closed ? "$&" : "")}\n\n… <i>(اختُصرت)</i>`;
+  }
 
   /*
     A group is forwardable, searchable, and joined by whoever is added next.
     A message carrying a password, a one-time code or a key is dropped rather
     than trimmed: one that has to be censored to be sent was assembled wrongly,
     and sending the censored half would hide that.
+
+    The owner's private chat is not that risk, and dropping an order card there
+    because a customer's name looked like "password:" loses the order. There
+    the text is redacted and sent.
   */
-  const forbidden = findForbiddenSecret(body);
+  if (!route.isGroup) body = redactSecrets(body);
+  const forbidden = route.isGroup ? findForbiddenSecret(body) : undefined;
   if (forbidden) {
     console.error("[telegram:admin_notification_blocked]", { kind, forbidden });
     await recordSendFailure({
@@ -300,7 +342,7 @@ export async function notifyAdminNewOrder(params: {
       const kindLabel = ["hardware", "physical", "accessory", "device"].includes(item.kind)
         ? "📦 منتج فيزيائي"
         : "🎮 حساب رقمي / لعبة";
-      const edition = item.edition ? ` (${item.edition})` : "";
+      const edition = item.edition ? ` (${escapeHtml(item.edition)})` : "";
       /*
         The option, the type and the console, from the order's own snapshot.
 
@@ -319,25 +361,65 @@ export async function notifyAdminNewOrder(params: {
   const customerName = escapeHtml(user.name || user.username || "عميل بنانا");
   const customerContact = escapeHtml(user.phone || user.email || user.id);
 
+  const canReply = Boolean(order.threadId);
   const messageText =
     `🚨 <b>طلب جديد في بنانا ستور!</b> 🍌\n\n` +
     `🔖 <b>رمز الطلب:</b> <code>${escapeHtml(order.code)}</code>\n` +
-    `💰 <b>الإجمالي:</b> <b>${order.total.toLocaleString()} ${order.currency || "IQD"}</b>\n` +
+    `💰 <b>الإجمالي:</b> <b>${order.total.toLocaleString()} ${escapeHtml(order.currency || "IQD")}</b>\n` +
     `💳 <b>حالة الدفع:</b> ${order.paymentStatus === "paid" ? "✅ مدفوع من المحفظة" : "⏳ بانتظار التأكيد"}\n` +
     `👤 <b>الزبون:</b> ${customerName} (<code>${customerContact}</code>)\n` +
     (hasDigital
       ? `\n⚡ <b>نوع الطلب:</b> يتضمن حسابات/ألعاب رقمية تتطلب تجهيزاً في المحادثة!\n`
       : `\n🚚 <b>نوع الطلب:</b> شحن وتوصيل فيزيائي\n`) +
     `\n📋 <b>المنتجات المشمولة:</b>\n${itemsList}\n\n` +
-    `اضغط على الزر أدناه لفتح الطلب في MiniApp فوراً والبدء بتجهيزه 👇`;
+    (canReply
+      ? `↩️ <b>للرد على الزبون:</b> اضغط «رد» على هذه الرسالة واكتب — يصل ردّك إلى محادثة الطلب مباشرة.`
+      : `اضغط على الزر أدناه لفتح الطلب والبدء بتجهيزه 👇`);
 
-  const replyMarkup = buildInlineAppButton(
-    `🎮 فتح الطلب ${order.code} في MiniApp`,
+  /*
+    One message per order, everything on it: open the order (Mini App or
+    browser), and tell the customer it was received in one tap. The Mini App
+    button used to open a "verification link invalid" screen — `order_<id>`
+    is now read as a destination (routes/telegram/index.tsx).
+  */
+  const links = buildInlineAppButton(
+    `🎮 فتح الطلب ${order.code}`,
     `order_${order.id}`,
     `/orders/${order.id}`,
   );
+  const replyMarkup = {
+    inline_keyboard: [
+      ...links.inline_keyboard,
+      ...(canReply
+        ? [[{ text: "✅ أبلغ الزبون: تم استلام الطلب", callback_data: `ord:ack:${order.id}` }]]
+        : []),
+    ],
+  };
 
-  return sendAdminNotification("order", messageText, { reply_markup: replyMarkup });
+  const sent = await sendAdminNotification("order", messageText, { reply_markup: replyMarkup });
+
+  /*
+    Remember which order this card is about, so replying to it in Telegram —
+    private chat or group — reaches this order's conversation and nobody
+    else's (telegram-support-reply.server.ts).
+  */
+  if (sent.ok && sent.chatId && sent.messageId && order.threadId) {
+    try {
+      const { rememberSupportLink } = await import("./telegram-support-reply.server");
+      await rememberSupportLink({
+        telegramChatId: sent.chatId,
+        telegramMessageId: sent.messageId,
+        conversationId: order.threadId,
+        userId: user.id,
+        orderId: order.id,
+      });
+    } catch (err) {
+      // The card is delivered; losing the reply link must not report it as lost.
+      console.warn("[telegram:order_link_not_saved]", err);
+    }
+  }
+
+  return sent;
 }
 
 /**
@@ -625,10 +707,30 @@ export async function notifyAdminWalletTopUp(params: {
             ? "بطاقة eShop"
             : method;
 
+  /*
+    A card or a crypto transfer is entered in dollars; labelling it «د.ع» told
+    the reviewer a $20 card was twenty dinars. Show the dollars and what the
+    wallet will actually receive (bonus included) at the shop's rate.
+  */
+  let amountLine = `<b>${amount.toLocaleString()} د.ع</b>`;
+  if (isDollarRechargeMethod(method)) {
+    // Imported here: db.server imports this module, so a static import would be a cycle.
+    const settings = await import("./db.server")
+      .then((db) => db.getStoreSettings())
+      .catch(() => ({}) as Record<string, unknown>);
+    const credit = rechargeCredit(method, amount, settings);
+    if (credit.dollars) {
+      amountLine =
+        `<b>$${amount.toLocaleString("en-US")}</b> ← يُضاف <b>${Math.floor(credit.credited).toLocaleString("en-US")} د.ع</b>` +
+        (credit.bonusPercent ? ` (مع بونص ${credit.bonusPercent}%)` : "") +
+        ` — سعر الصرف ${credit.rate.toLocaleString("en-US")}`;
+    }
+  }
+
   const messageText =
     `💳 <b>طلب تعبئة رصيد محفظة جديد!</b> 🍌\n\n` +
     `👤 <b>العميل:</b> ${customerName} (<code>${escapeHtml(user.phone || user.id)}</code>)\n` +
-    `💰 <b>المبلغ المطلوب:</b> <b>${amount.toLocaleString()} د.ع</b>\n` +
+    `💰 <b>المبلغ المطلوب:</b> ${amountLine}\n` +
     `🏦 <b>طريقة الدفع:</b> ${escapeHtml(methodLabel)}\n` +
     (proofUrl ? `📎 <b>يوجد صورة إيصال مرفقة مع الطلب</b>\n` : "") +
     `\n<code>${escapeHtml(requestId)}</code>`;

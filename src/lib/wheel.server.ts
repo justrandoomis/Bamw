@@ -49,6 +49,7 @@ import {
   type WheelOdds,
   type WheelTier,
 } from "./wheel-odds";
+import { joinShared, SCHEMA_WAIT_MS, trackShared } from "./shared-wait.server";
 
 /** One spin, one ticket. */
 export const TICKET_COST_PER_SPIN = 1;
@@ -217,8 +218,18 @@ export function ensureWheelSchema(): Promise<void> {
       schemaReady = undefined;
       throw error;
     });
+    trackShared(schemaReady);
+    return schemaReady;
   }
-  return schemaReady;
+  const shared = schemaReady;
+  return joinShared(shared, {
+    label: "wheel-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (schemaReady === shared) schemaReady = undefined;
+      return ensureWheelSchema();
+    },
+  });
 }
 
 export async function getTicketBalance(userId: string): Promise<number> {

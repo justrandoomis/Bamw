@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "@tanstack/react-router";
 import { Star, Sparkles } from "lucide-react";
 import NintendoCover from "@/components/NintendoCover";
+import { DealRibbon, useLiveDeal } from "@/components/deals/DealBadge";
 import { useCurrency } from "@/context/CurrencyContext";
 import { listingPricing } from "@/lib/productPricing";
 import { getProductSlug } from "@/lib/productRouting";
@@ -36,7 +37,9 @@ export function GameCard({
     whose only tier is an online account has a `price` the card was hiding.
     `listingPricing` is the one rule all three surfaces read.
   */
-  const { unitPrice: price } = listingPricing(product);
+  const { unitPrice: price, originalUnitPrice } = listingPricing(product);
+  const deal = useLiveDeal(product);
+  const onDeal = Boolean(deal) && originalUnitPrice > price;
   const rating = product.metacriticRating ?? product.rating;
   const isSwitch2 =
     product.platform === "switch2" ||
@@ -89,12 +92,15 @@ export function GameCard({
         </div>
 
         {/* Rating tag */}
-        {rating ? (
+        {rating && !onDeal ? (
           <div className="absolute bottom-2 end-2 z-10 flex items-center gap-1 rounded-md bg-black/75 px-1.5 py-0.5 text-[11px] font-bold text-amber-400 shadow-sm backdrop-blur-md">
             <Star className="h-3 w-3 fill-current" />
             <span>{rating}</span>
           </div>
         ) : null}
+
+        {/* The occasion deal, in its own colours. */}
+        {onDeal && deal ? <DealRibbon deal={deal} /> : null}
       </div>
 
       <div className="flex flex-1 flex-col justify-between gap-2" dir="ltr">
@@ -115,8 +121,17 @@ export function GameCard({
 
         <div className="mt-2 flex items-baseline justify-between border-t border-border/50 pt-2">
           <span className="text-xs text-muted-foreground">السعر</span>
-          <span className="text-sm font-extrabold text-foreground sm:text-base">
-            {formatIQDPrice(price)}
+          <span className="flex flex-wrap items-baseline justify-end gap-x-1.5">
+            {onDeal ? (
+              <span className="text-[11px] font-semibold text-muted-foreground line-through">
+                {formatIQDPrice(originalUnitPrice)}
+              </span>
+            ) : null}
+            <span
+              className={`text-sm font-extrabold sm:text-base ${onDeal ? "text-[var(--brand-red,#e60012)]" : "text-foreground"}`}
+            >
+              {formatIQDPrice(price)}
+            </span>
           </span>
         </div>
       </div>

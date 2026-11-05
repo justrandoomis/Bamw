@@ -4,6 +4,7 @@ import { guard } from "@/lib/http.server";
 import { detectTrimCrop } from "@/lib/imageTrim.server";
 import { fetchRemoteImage, readLimitedBody, safeRemoteImageUrl } from "@/lib/security.server";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
+import { joinShared } from "@/lib/shared-wait.server";
 
 const MAX_BYTES = 12 * 1024 * 1024;
 // SVG is deliberately excluded: it is an active document, so echoing one
@@ -149,10 +150,17 @@ export const Route = createFileRoute("/api/img")({
           const prefersAvif = formatParam === "avif" || (!formatParam && acceptHeader.includes("image/avif"));
           const prefersWebp = formatParam === "webp" || (!formatParam && acceptHeader.includes("image/webp"));
 
-          // De-duplicate concurrent upstream fetches
-          let fetchPromise = inFlightRequests.get(cacheKey);
-          if (!fetchPromise) {
-            fetchPromise = (async () => {
+          /*
+            De-duplicate concurrent upstream fetches — but never trust another
+            request's fetch to finish. If the visitor who started it left, the
+            fetch was cancelled with their request and the shared promise can
+            stay pending; every later request for that cover then hung. Joiners
+            wait a bounded time and then fetch for themselves
+            (see src/lib/shared-wait.server.ts).
+          */
+          const startFetch = (): Promise<{ buffer: Uint8Array; mime: string } | null> => {
+            const holder: { promise?: Promise<{ buffer: Uint8Array; mime: string } | null> } = {};
+            const own: Promise<{ buffer: Uint8Array; mime: string } | null> = (holder.promise = (async () => {
               const res = await fetchRemoteImage(safeUrl.toString(), {
                 headers: {
                   accept: "image/avif,image/webp,image/*,*/*;q=0.8",
@@ -210,13 +218,23 @@ export const Route = createFileRoute("/api/img")({
               setCached(cacheKey, finalBuffer, mime);
               return { buffer: finalBuffer, mime };
             })().finally(() => {
-              inFlightRequests.delete(cacheKey);
-            });
+              if (inFlightRequests.get(cacheKey) === holder.promise) inFlightRequests.delete(cacheKey);
+            }));
+            inFlightRequests.set(cacheKey, own);
+            return own;
+          };
 
-            inFlightRequests.set(cacheKey, fetchPromise);
-          }
-
-          const processed = await fetchPromise;
+          const existing = inFlightRequests.get(cacheKey);
+          const processed = await (existing
+            ? joinShared(existing, {
+                label: "img-proxy",
+                waitMs: 10_000,
+                restart: () => {
+                  if (inFlightRequests.get(cacheKey) === existing) inFlightRequests.delete(cacheKey);
+                  return startFetch();
+                },
+              })
+            : startFetch());
           if (!processed) {
             // Graceful fallback: redirect directly to upstream URL so client fetches it natively
             return Response.redirect(safeUrl.toString(), 302);

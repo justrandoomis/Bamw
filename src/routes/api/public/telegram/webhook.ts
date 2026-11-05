@@ -228,6 +228,25 @@ async function handleUpdate(update: any) {
 
   if (msg.chat.type !== "private" || String(msg.from?.id) !== String(chatId)) return;
 
+  /*
+    An operator replying to an order or customer card in their private chat.
+    Order cards arrive here now, one message per order, and replying to one is
+    how the owner answers that customer. Handled before the commands and the
+    subscription gate, which are about members, not operators; anything that is
+    not such a reply falls through untouched.
+  */
+  if (msg.reply_to_message) {
+    const { handleAdminPrivateReply } = await import("@/lib/telegram-support-reply.server");
+    const outcome = await handleAdminPrivateReply(msg, update?.update_id);
+    if (outcome === "posted") {
+      await sendTelegramMessage(chatId, "✅ وصل ردّك إلى الزبون في محادثة الطلب.", {
+        reply_parameters: { message_id: msg.message_id, allow_sending_without_reply: true },
+      });
+      return;
+    }
+    if (outcome === "duplicate" || outcome === "empty") return;
+  }
+
   // Operator commands run before the member flow — including the channel
   // subscription gate, which is a member onboarding step and must never stand
   // between the operator and a pending top-up.

@@ -2,6 +2,7 @@ import { memo } from "react";
 import { Link } from "@tanstack/react-router";
 
 import NintendoCover from "@/components/NintendoCover";
+import { DealRibbon, useLiveDeal } from "@/components/deals/DealBadge";
 import { useCurrency } from "@/context/CurrencyContext";
 import { isNintendoSwitch2Product } from "@/lib/nintendoListing";
 import { listingPricing } from "@/lib/productPricing";
@@ -31,6 +32,7 @@ function NintendoGameCardBase({
   const title = product.titleEn || product.english_name || product.title || "";
   const { unitPrice, originalUnitPrice } = listingPricing(product);
   const switch2 = isNintendoSwitch2Product(product);
+  const deal = useLiveDeal(product);
   const priceText = formatPrice ? formatPrice(unitPrice) : formatIQDPrice(unitPrice);
   const originalPriceText =
     originalUnitPrice > unitPrice
@@ -78,6 +80,9 @@ function NintendoGameCardBase({
             Nintendo Switch 2
           </div>
         ) : null}
+
+        {/* The occasion, in its own colours, along the foot of the artwork. */}
+        {deal && originalPriceText ? <DealRibbon deal={deal} /> : null}
       </div>
 
       <div className="flex min-w-0 flex-1 flex-col gap-1 px-1.5 pb-1.5 pt-2 sm:gap-1.5 sm:px-2 sm:pb-2">
@@ -98,7 +103,9 @@ function NintendoGameCardBase({
               {originalPriceText}
             </span>
           ) : null}
-          <span>{priceText}</span>
+          <span className={deal && originalPriceText ? "text-[var(--brand-red,#e60012)]" : undefined}>
+            {priceText}
+          </span>
         </p>
       </div>
     </Link>

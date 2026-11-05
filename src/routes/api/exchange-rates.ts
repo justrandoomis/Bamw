@@ -1,28 +1,33 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { getStore } from "@/lib/db.server";
+import { getStoreSettings } from "@/lib/db.server";
+import { DEFAULT_USD_IQD_RATE, resolveUsdIqdRate } from "@/lib/exchange-rate";
 import { guard, json } from "@/lib/http.server";
 
+/*
+  The shop's own rate, and nothing else.
+
+  This used to read the WHOLE catalogue (`getStore()`) to find one setting, so
+  on a cold isolate the dollar rate waited behind five megabytes of products —
+  and when that load hung, so did every price on the page. It also fell back
+  to an outside feed's official rate (~1310) whenever the setting was missing,
+  which is not the rate the shop sells at and not the one Binance credits at.
+  The rate is a business setting; the shop states it, and every screen uses it.
+*/
 export const Route = createFileRoute("/api/exchange-rates")({
   server: {
     handlers: {
       GET: async () =>
         guard(async () => {
           try {
-            const store = await getStore();
-            const manualRate = Number(store.settings?.["usdExchangeRate"]);
-
-            // If admin has set a manual rate, use it as the source of truth
-            if (manualRate > 0) {
-              return json({ rates: { IQD: manualRate }, usdIqdRate: manualRate });
-            }
-
-            const response = await fetch("https://open.er-api.com/v6/latest/USD");
-            if (!response.ok) throw new Error("rates_unavailable");
-            const data = (await response.json()) as { rates?: Record<string, number> };
-            const rates = data.rates ?? {};
-            return json({ rates, usdIqdRate: rates["IQD"] ?? 1320 });
+            const settings = await getStoreSettings();
+            const rate = resolveUsdIqdRate(settings);
+            return json({ rates: { USD: 1, IQD: rate }, usdIqdRate: rate, source: "shop" });
           } catch {
-            return json({ rates: {}, usdIqdRate: 1320 });
+            return json({
+              rates: { USD: 1, IQD: DEFAULT_USD_IQD_RATE },
+              usdIqdRate: DEFAULT_USD_IQD_RATE,
+              source: "default",
+            });
           }
         }),
     },

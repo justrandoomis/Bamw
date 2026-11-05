@@ -35,6 +35,7 @@ export interface D1Like {
 }
 
 import { env, getEnv, getBinding } from "./env.server";
+import { joinShared, SCHEMA_WAIT_MS, trackShared } from "./shared-wait.server";
 const envVar = (name: string) =>
   name === "D1_DATABASE_ID" ? env("D1_DATABASE_ID") || env("CLOUDFLARE_D1_DATABASE_ID") : env(name);
 
@@ -1706,8 +1707,18 @@ export function ensureTelegramSchema(): Promise<void> {
       telegramSchemaPromise = undefined;
       throw error;
     });
+    trackShared(telegramSchemaPromise);
+    return telegramSchemaPromise;
   }
-  return telegramSchemaPromise;
+  const shared = telegramSchemaPromise;
+  return joinShared(shared, {
+    label: "d1:telegram-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (telegramSchemaPromise === shared) telegramSchemaPromise = undefined;
+      return ensureTelegramSchema();
+    },
+  });
 }
 
 const OTP_TABLE = `CREATE TABLE IF NOT EXISTS otp_codes (
@@ -1767,8 +1778,18 @@ export function ensureOtpSchema(): Promise<void> {
       otpSchemaPromise = undefined;
       throw error;
     });
+    trackShared(otpSchemaPromise);
+    return otpSchemaPromise;
   }
-  return otpSchemaPromise;
+  const shared = otpSchemaPromise;
+  return joinShared(shared, {
+    label: "d1:otp-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (otpSchemaPromise === shared) otpSchemaPromise = undefined;
+      return ensureOtpSchema();
+    },
+  });
 }
 
 const USERS_TABLE = `CREATE TABLE IF NOT EXISTS users (
@@ -1894,8 +1915,18 @@ export function ensureUsersSchema(): Promise<void> {
       usersSchemaPromise = undefined;
       throw error;
     });
+    trackShared(usersSchemaPromise);
+    return usersSchemaPromise;
   }
-  return usersSchemaPromise;
+  const shared = usersSchemaPromise;
+  return joinShared(shared, {
+    label: "d1:users-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (usersSchemaPromise === shared) usersSchemaPromise = undefined;
+      return ensureUsersSchema();
+    },
+  });
 }
 
 const COUPONS_TABLE = `CREATE TABLE IF NOT EXISTS coupons (
@@ -2080,8 +2111,18 @@ export function ensureCouponsSchema(): Promise<void> {
       couponsSchemaPromise = undefined;
       throw error;
     });
+    trackShared(couponsSchemaPromise);
+    return couponsSchemaPromise;
   }
-  return couponsSchemaPromise;
+  const shared = couponsSchemaPromise;
+  return joinShared(shared, {
+    label: "d1:coupons-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (couponsSchemaPromise === shared) couponsSchemaPromise = undefined;
+      return ensureCouponsSchema();
+    },
+  });
 }
 
 // Bumped whenever SCHEMA_PATCHES gains a statement existing databases need.
@@ -2404,8 +2445,18 @@ export function ensureSchema(): Promise<void> {
       schemaPromise = undefined;
       throw error;
     });
+    trackShared(schemaPromise);
+    return schemaPromise;
   }
-  return schemaPromise;
+  const shared = schemaPromise;
+  return joinShared(shared, {
+    label: "d1:schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (schemaPromise === shared) schemaPromise = undefined;
+      return ensureSchema();
+    },
+  });
 }
 
 export function isD1Ready(): boolean {

@@ -83,7 +83,12 @@ export const PRIVATE_PRODUCT_FIELDS = new Set([
  * `internal_note` are all caught without being listed individually.
  */
 const PRIVATE_KEY_PATTERN =
-  /(?:password|passwd|secret|token|credential|service.?role|api.?key|private.?key|webhook|supplier|wholesale|internal|raw.?data|model.?info|data.?confidence|cost)/i;
+  /(?:password|passwd|secret|token|credential|service.?role|api.?key|private.?key|webhook|supplier|wholesale|internal|raw.?data|model.?info|data.?confidence|cost|^ai_?key$|^ai_?base_?url$)/i;
+/*
+  `ai_key` and `ai_base_url` are saved into the public settings document by
+  «الإعدادات» and `api.?key` does not match "ai_key" — an AI provider key typed
+  there would have been served to every visitor in `/api/data`. Empty today.
+*/
 
 /**
  * Nested collections that describe purchasable variants of a product.

@@ -145,7 +145,12 @@ export function buildProductJsonLd(game: Game): object | null {
   if (prices.length > 0) {
     product["offers"] = {
       "@type": "AggregateOffer",
-      priceCurrency: "USD",
+      /*
+        The currency the amounts are actually in — the shop's dinars. This said
+        "USD" over raw IQD figures, so a search result could show a 25,000 IQD
+        game as $25,000.
+      */
+      priceCurrency: ranked[0]?.offer.price.currency || "IQD",
       lowPrice: Math.min(...prices),
       highPrice: Math.max(...prices),
       offerCount: prices.length,

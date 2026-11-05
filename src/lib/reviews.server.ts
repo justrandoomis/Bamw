@@ -1,6 +1,7 @@
 import type { ReviewStatus } from "./types";
 import { d1All, d1First, d1Run, getD1 } from "./d1.server";
 import type { Order } from "./types";
+import { joinShared, SCHEMA_WAIT_MS, trackShared } from "./shared-wait.server";
 
 export interface ProductReviewRow {
   id: string;
@@ -125,8 +126,18 @@ export function ensureReviewsSchema(): Promise<void> {
       reviewsSchemaPromise = undefined;
       throw error;
     });
+    trackShared(reviewsSchemaPromise);
+    return reviewsSchemaPromise;
   }
-  return reviewsSchemaPromise;
+  const shared = reviewsSchemaPromise;
+  return joinShared(shared, {
+    label: "reviews-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (reviewsSchemaPromise === shared) reviewsSchemaPromise = undefined;
+      return ensureReviewsSchema();
+    },
+  });
 }
 
 interface OrderRow {

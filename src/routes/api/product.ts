@@ -6,6 +6,7 @@ import { getSessionUser } from "@/lib/session.server";
 import { isVisibleToPublic } from "@/lib/purchasable";
 import { findProductByIdOrSlug } from "@/lib/productRouting";
 import { toPublicProduct } from "@/lib/public-product.server";
+import { applyDealToProduct, readDealsConfig } from "@/lib/deals";
 
 
 function etagFor(payload: string) {
@@ -53,9 +54,18 @@ export const Route = createFileRoute("/api/product")({
             cost rule sitting in a variant's `description` sailed straight
             through to the product page.
           */
+          /*
+            A live occasion deal is applied exactly as the catalogue applies it
+            (before the private fields go — the cost floor needs them), so the
+            product page shows the price the card showed and checkout charges.
+            Never for an admin: their copy is the one the editor saves back.
+          */
+          const deals = readDealsConfig(store.settings as Record<string, unknown> | undefined);
           const sanitized = viewer?.isAdmin
             ? match
-            : toPublicProduct(match as unknown as Record<string, unknown>);
+            : toPublicProduct(
+                applyDealToProduct(match as unknown as Record<string, unknown>, deals),
+              );
 
           const payload = JSON.stringify({ ok: true, product: sanitized });
           const etag = etagFor(payload);
@@ -64,7 +74,10 @@ export const Route = createFileRoute("/api/product")({
             etag,
             "cache-control": viewer?.isAdmin
               ? "private, no-store"
-              : "public, max-age=120, stale-while-revalidate=600",
+              : deals.enabled
+                ? // A deal opens and closes by the clock: keep shared copies short.
+                  "public, max-age=60, stale-while-revalidate=60"
+                : "public, max-age=120, stale-while-revalidate=600",
           };
 
           if (request.headers.get("if-none-match") === etag) {

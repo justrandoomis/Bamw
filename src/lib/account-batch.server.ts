@@ -1,5 +1,6 @@
 import { encryptSecretValue, decryptSecretValue, randomId } from "./crypto.server";
 import { d1All, d1First, d1Run, d1RunChanges } from "./d1.server";
+import { joinShared, SCHEMA_WAIT_MS, trackShared } from "./shared-wait.server";
 
 /**
  * Bulk-prepared account credentials, released to the buyer one at a time.
@@ -70,8 +71,18 @@ async function ensureSchema(): Promise<void> {
       ready = undefined;
       throw error;
     });
+    trackShared(ready);
+    return ready;
   }
-  return ready;
+  const shared = ready;
+  return joinShared(shared, {
+    label: "account-batch-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (ready === shared) ready = undefined;
+      return ensureSchema();
+    },
+  });
 }
 
 /**

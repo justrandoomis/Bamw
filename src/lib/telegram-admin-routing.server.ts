@@ -22,6 +22,7 @@
 
 import { env } from "./env.server";
 import { getAdminTelegramChatId } from "./telegram-notifications.server";
+import { deliveryFor } from "./telegram-delivery";
 
 export type AdminNotificationKind = "order" | "wallet" | "support" | "general";
 
@@ -60,21 +61,42 @@ const PREFIX: Record<AdminNotificationKind, string> = {
   general: "📢 عام",
 };
 
+/*
+  Private chat with the bot, or the admin group — per kind, the owner's choice.
+  The rule and its defaults live in ./telegram-delivery.ts (orders: private).
+*/
+export { DEFAULT_DELIVERY, deliveryFor, type AdminDelivery } from "./telegram-delivery";
+
+/** Settings without the catalogue, and never a reason to lose a notification. */
+async function readDeliverySettings(): Promise<Record<string, unknown>> {
+  try {
+    // Imported here: db.server imports the notification modules, so a static
+    // import would be a cycle.
+    const { getStoreSettings } = await import("./db.server");
+    return await getStoreSettings();
+  } catch {
+    return {};
+  }
+}
+
+/** The owner's private chat with the bot. */
+export function privateRoute(kind: AdminNotificationKind): AdminRoute {
+  return { chatId: getAdminTelegramChatId(), prefix: PREFIX[kind], isGroup: false };
+}
+
 /**
- * The destination for one kind of admin notification.
+ * The group destination for a kind, if the shop has one.
  *
- * Three answers in order, and the order is the point:
+ * Two answers in order, and the order is the point:
  *
  *   1. what the group taught us, via `/bind_*`;
- *   2. what the environment says, so a deployment can be pinned;
- *   3. the single admin chat, so the shop keeps being notified while neither
- *      of the first two has an answer yet.
+ *   2. what the environment says, so a deployment can be pinned.
  *
  * The binding wins over the environment because it is the one a person proved
  * by sending a message from inside the topic. A stale `TELEGRAM_*_TOPIC_ID`
  * left over from an earlier group would otherwise quietly outrank it.
  */
-export async function adminRoute(kind: AdminNotificationKind): Promise<AdminRoute> {
+export async function groupRoute(kind: AdminNotificationKind): Promise<AdminRoute | null> {
   const { readBindings, envBinding } = await import("./telegram-bindings.server");
 
   const bindings = await readBindings();
@@ -83,9 +105,7 @@ export async function adminRoute(kind: AdminNotificationKind): Promise<AdminRout
     ? { chatId: bound.chatId, messageThreadId: bound.messageThreadId }
     : envBinding(kind);
 
-  if (!from?.chatId) {
-    return { chatId: getAdminTelegramChatId(), prefix: PREFIX[kind], isGroup: false };
-  }
+  if (!from?.chatId) return null;
 
   return {
     chatId: from.chatId,
@@ -98,6 +118,34 @@ export async function adminRoute(kind: AdminNotificationKind): Promise<AdminRout
     prefix: from.messageThreadId ? "" : PREFIX[kind],
     isGroup: true,
   };
+}
+
+/**
+ * The destination for one kind of admin notification.
+ *
+ * The owner's delivery choice first; a kind meant for the group goes to the
+ * private chat while no group is configured, so the shop keeps being notified.
+ */
+export async function adminRoute(kind: AdminNotificationKind): Promise<AdminRoute> {
+  const settings = await readDeliverySettings();
+  if (deliveryFor(kind, settings) === "private") return privateRoute(kind);
+  return (await groupRoute(kind)) ?? privateRoute(kind);
+}
+
+/**
+ * Where to try next when a send to `route` failed: the other destination.
+ *
+ * A failed send used to be recorded and dropped, so a bot removed from the
+ * group, a deleted topic or an owner who had not pressed Start meant every
+ * notification of that kind was simply lost after the queue's retries.
+ */
+export async function fallbackRoute(
+  kind: AdminNotificationKind,
+  route: AdminRoute,
+): Promise<AdminRoute | null> {
+  const next = route.isGroup ? privateRoute(kind) : await groupRoute(kind);
+  if (!next || next.chatId === route.chatId) return null;
+  return next;
 }
 
 /** The `sendTelegramMessage` options a route implies. */

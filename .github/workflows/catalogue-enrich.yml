@@ -1,0 +1,74 @@
+# Catalogue enrichment: Nintendo's own facts and artwork onto the shop's games,
+# FILL ONLY — a field that already has a value is never touched.
+#
+# A push runs it DRY against the live catalogue. It writes only when the pushed
+# commit carries an unspent token in `scripts/catalogue-enrich.apply-token`,
+# claimed in `console_runs` before the first write. Public outputs carry counts
+# and game titles only — this repository is public — and no Telegram token is
+# passed.
+name: Catalogue enrich
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main", "claude/**"]
+    paths:
+      - import-sources/enrichment/*.json
+      - scripts/catalogue-enrich.mjs
+      - scripts/catalogue-enrich.apply-token
+      - scripts/lib/catalogue-enrich.mjs
+      - scripts/lib/catalogue-enrich-entry.ts
+      - .github/workflows/catalogue-enrich.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: catalogue-enrich
+  # Never cancel a run that may be writing; a second one waits.
+  cancel-in-progress: false
+
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # The runner's default npm 10 refuses this lockfile on Linux.
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+      - name: The rule's tests
+        run: npx vitest run scripts/-enrichment-fills-only-what-is-empty.test.mjs
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+      - name: Fill what is empty (dry unless the commit carries an unspent token)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: node scripts/catalogue-enrich.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: catalogue-enrich
+          path: |
+            catalogue-enrich.md
+            catalogue-enrich.json
+          if-no-files-found: warn
+      - name: The summary, last in the log
+        if: always()
+        run: |
+          cat catalogue-enrich.md >> "$GITHUB_STEP_SUMMARY" || true
+          tail -c 8000 catalogue-enrich.md || true

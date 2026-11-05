@@ -58,6 +58,7 @@ import {
 } from "./roulette-odds";
 import { populationOf, pickFromBucket, type PoolGame } from "./roulette-pool.server";
 import { ensureWheelSchema, getTicketBalance } from "./wheel.server";
+import { joinShared, SCHEMA_WAIT_MS, trackShared } from "./shared-wait.server";
 
 /** The prize's own life, from won to imported. */
 export type PrizeStatus = "available" | "claiming" | "claimed" | "expired";
@@ -215,8 +216,18 @@ export function ensureRouletteSchema(): Promise<void> {
       schemaReady = undefined;
       throw error;
     });
+    trackShared(schemaReady);
+    return schemaReady;
   }
-  return schemaReady;
+  const shared = schemaReady;
+  return joinShared(shared, {
+    label: "roulette-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (schemaReady === shared) schemaReady = undefined;
+      return ensureRouletteSchema();
+    },
+  });
 }
 
 /** A unit in [0,1) from the platform's CSPRNG. */

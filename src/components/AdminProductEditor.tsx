@@ -40,6 +40,7 @@ import {
   Link2,
 } from "lucide-react";
 import { toast } from "sonner";
+import { ProductOccasionDeal } from "@/components/deals/ProductOccasionDeal";
 
 import { boxContentsToText } from "@/lib/boxContentsText";
 import { stepsToText, toStepList } from "@/lib/stepsText";
@@ -2434,6 +2435,12 @@ export default function AdminProductEditor({
             </div>
           </motion.div>
         )}
+
+        {/* Occasion deal: follow the campaigns, sit them out, or carry its own. */}
+        <ProductOccasionDeal
+          product={formData}
+          onChange={(value) => handleChange("occasionDeal", value)}
+        />
 
         {/* ========================================================================= */}
         {/* COMMON PRICING, STOCK, & FINANCIALS */}

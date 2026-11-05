@@ -16,6 +16,7 @@ import BinanceTopUpSection from "@/components/BinanceTopUpSection";
 import { uploadFileWithProgress } from "@/lib/api";
 import { prepareImageForUpload } from "@/lib/imageForUpload";
 import { cn } from "@/lib/utils";
+import { resolveUsdIqdRate, usdToIqd } from "@/lib/exchange-rate";
 import {
   availableMethods,
   methodInfo,
@@ -81,7 +82,8 @@ export function TopUpModal({
 
   const nintendoBonusEnabled = settings?.["nintendoBonusEnabled"] !== false;
   const nintendoBonusPercent = Number(settings?.["nintendoBonusPercent"] || 15);
-  const usdIqdRate = Number(settings?.["usdExchangeRate"] || 1500);
+  // The shop's one dollar rate — the same number approval credits at.
+  const usdIqdRate = resolveUsdIqdRate(settings);
 
   const current = method ? methodInfo(method) : undefined;
 
@@ -424,14 +426,23 @@ export function TopUpModal({
                           </span>{" "}
                           ≈{" "}
                           <span className="font-bold text-foreground" dir="ltr">
-                            {Math.round(
-                              (amountValue + bonusOf(amountValue)) * usdIqdRate,
-                            ).toLocaleString("en-US")}{" "}
+                            {usdToIqd(amountValue + bonusOf(amountValue), usdIqdRate).toLocaleString(
+                              "en-US",
+                            )}{" "}
                             د.ع
                           </span>
                         </p>
                       </div>
                     </div>
+                  )}
+                  {method === "crypto" && amountValue > 0 && (
+                    <p className="text-xs text-muted-foreground">
+                      يُضاف إلى رصيدك ≈{" "}
+                      <span className="font-bold text-foreground" dir="ltr">
+                        {usdToIqd(amountValue, usdIqdRate).toLocaleString("en-US")} د.ع
+                      </span>{" "}
+                      (سعر الصرف {usdIqdRate.toLocaleString("en-US")} د.ع للدولار)
+                    </p>
                   )}
                 </Step>
 

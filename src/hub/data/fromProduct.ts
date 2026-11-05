@@ -20,6 +20,7 @@ import {
 import { resolveNintendoImage, resolveCaseSleeve } from "@/lib/nintendoImages";
 import { buildFitFor, buildFeatures } from "./mappers";
 import { toAmount, isVisibleToPublic } from "@/lib/purchasable";
+import { liveDealOf } from "@/lib/deals";
 import { gb } from "@/hub/utils/format";
 import { getDevicePerformanceList } from "@/lib/devicePerformance";
 import { getProductSlug } from "@/lib/productRouting";
@@ -1379,6 +1380,7 @@ function buildOffers(
   const hubOffers = readOffers(p);
   if (!hubOffers.length) return undefined;
   const now = new Date().toISOString();
+  const dealEndsAt = liveDealOf(p)?.endsAt;
   const formatByKind = {
     account: "digital-account",
     accountOnline: "digital-account",
@@ -1418,6 +1420,8 @@ function buildOffers(
         ? {
             listPrice: money(originalPrice),
             discountPercent: Math.round(((originalPrice - offer.price) / originalPrice) * 100),
+            // An occasion deal (applied server-side) says when the price ends.
+            ...(dealEndsAt ? { saleEndsAt: dealEndsAt } : {}),
           }
         : {}),
       availability: offer.available

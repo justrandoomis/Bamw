@@ -1,6 +1,7 @@
 import { getBinanceConfig } from "./config.server";
 import { signBinanceQuery } from "./crypto.server";
 import type { BinancePayApiResponse, BinancePayTransaction } from "./types";
+import { joinShared } from "../shared-wait.server";
 
 interface CacheEntry {
   data: BinancePayTransaction[];
@@ -56,13 +57,23 @@ export async function fetchBinancePayTransactions(
     }
   }
 
-  // Check in-flight deduplication
+  // Check in-flight deduplication — bounded, because the request that started
+  // it may have been cancelled with its fetch (see shared-wait.server.ts).
   const existingFlight = inFlightRequests.get(cacheKey);
   if (existingFlight) {
-    return existingFlight;
+    return joinShared(existingFlight, {
+      label: "binance-pay:transactions",
+      waitMs: 12_000,
+      restart: () => {
+        if (inFlightRequests.get(cacheKey) === existingFlight) inFlightRequests.delete(cacheKey);
+        return fetchBinancePayTransactions(startTimestamp, endTimestamp, forceFresh);
+      },
+    });
   }
 
-  const flightPromise = (async () => {
+  // A holder, so the `finally` below can compare against this attempt safely.
+  const own: { promise?: Promise<BinancePayTransaction[]> } = {};
+  const flightPromise: Promise<BinancePayTransaction[]> = (own.promise = (async () => {
     try {
       const serverTimestamp = Date.now();
       const recvWindow = 5000;
@@ -132,9 +143,10 @@ export async function fetchBinancePayTransactions(
 
       return txList;
     } finally {
-      inFlightRequests.delete(cacheKey);
+      // Only this attempt's own entry: a joiner may already have replaced it.
+      if (inFlightRequests.get(cacheKey) === own.promise) inFlightRequests.delete(cacheKey);
     }
-  })();
+  })());
 
   inFlightRequests.set(cacheKey, flightPromise);
   return flightPromise;

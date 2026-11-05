@@ -1,5 +1,7 @@
 import {
+  appendMessage,
   approveRechargeRequest,
+  getOrder,
   getRechargeRequestWithUser,
   listAllRechargeRequests,
   rejectRechargeRequest,
@@ -10,6 +12,7 @@ import { env } from "./env.server";
 import { isAdminCallback, isAdminPrivateMessage } from "./telegram-admin.server";
 import {
   answerCallbackQuery,
+  callTelegram,
   editTelegramMessageText,
   escapeHtml,
   pinTelegramMessage,
@@ -382,9 +385,73 @@ async function sendPendingRequests(chatId: number): Promise<void> {
  * anyone who is not the operator is consumed too, and answered as an expired
  * button: the reply must not reveal that an administrative action exists here.
  */
+/** The words the one-tap «received» button posts into the order's conversation. */
+export const ORDER_RECEIVED_TEXT =
+  "تم استلام طلبك ✅ ونعمل على تجهيزه الآن — سنوافيك هنا بأي تحديث.";
+
+/**
+ * «✅ أبلغ الزبون: تم استلام الطلب» on an order card.
+ *
+ * The order card is one message the owner acts on. The commonest first reply
+ * to any order is "received, working on it", so it is one tap: the words land
+ * in the order's conversation (realtime, like any admin message), the button
+ * turns into a done mark so it cannot be pressed twice, and the press is
+ * claimed by its callback id because Telegram redelivers slow webhooks.
+ */
+async function handleOrderCallback(callback: any): Promise<void> {
+  const data = String(callback?.data ?? "");
+  if (data === "ord:done") {
+    await answerCallbackQuery(callback.id, { text: "تم إبلاغ الزبون مسبقاً ✅" });
+    return;
+  }
+  const match = /^ord:ack:([A-Za-z0-9_-]{3,80})$/.exec(data);
+  if (!match?.[1]) {
+    await answerCallbackQuery(callback.id);
+    return;
+  }
+
+  const { claimUpdate } = await import("./telegram-support-reply.server");
+  if (!(await claimUpdate(`cb:${String(callback.id ?? "")}`, "order_ack"))) {
+    await answerCallbackQuery(callback.id);
+    return;
+  }
+
+  const order = await getOrder(match[1]);
+  if (!order?.threadId) {
+    await answerCallbackQuery(callback.id, { text: "لم نعثر على محادثة هذا الطلب." });
+    return;
+  }
+
+  await appendMessage(order.threadId, {
+    threadId: order.threadId,
+    senderRole: "admin",
+    kind: "text",
+    body: { text: ORDER_RECEIVED_TEXT },
+    senderName: String(callback?.from?.first_name || "الإدارة"),
+  });
+  await answerCallbackQuery(callback.id, { text: "تم إبلاغ الزبون ✅" });
+
+  const card = callback?.message;
+  const keyboard = card?.reply_markup?.inline_keyboard;
+  if (card?.chat?.id && card?.message_id && Array.isArray(keyboard)) {
+    const marked = keyboard.map((row: any[]) =>
+      (Array.isArray(row) ? row : []).map((button: any) =>
+        button?.callback_data === data
+          ? { text: "✅ تم إبلاغ الزبون باستلام الطلب", callback_data: "ord:done" }
+          : button,
+      ),
+    );
+    await callTelegram("editMessageReplyMarkup", {
+      chat_id: card.chat.id,
+      message_id: card.message_id,
+      reply_markup: { inline_keyboard: marked },
+    }).catch(() => undefined);
+  }
+}
+
 export async function handleAdminCallback(callback: any): Promise<boolean> {
   const data = String(callback?.data ?? "");
-  if (!data.startsWith("rq:") && !data.startsWith("adm:")) return false;
+  if (!data.startsWith("rq:") && !data.startsWith("adm:") && !data.startsWith("ord:")) return false;
 
   /*
     The group the shop has bound its topics to, so a press there counts. Without
@@ -402,6 +469,11 @@ export async function handleAdminCallback(callback: any): Promise<boolean> {
 
   if (data.startsWith("rq:")) {
     await handleRechargeDecision(callback);
+    return true;
+  }
+
+  if (data.startsWith("ord:")) {
+    await handleOrderCallback(callback);
     return true;
   }
 

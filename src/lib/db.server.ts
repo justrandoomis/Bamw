@@ -32,6 +32,8 @@ import {
 import { dedupeDevicePerformance, getDevicePerformanceList } from "./devicePerformance";
 import { normalizeProductOption, normalizeProductType } from "./productOptionDescriptions";
 import { isUnderMaintenance } from "./maintenance";
+import { joinShared, STORE_WAIT_MS } from "./shared-wait.server";
+import { rechargeCredit } from "./exchange-rate";
 export {
   isOwnerAccount,
   isOwnerEmail,
@@ -1207,7 +1209,18 @@ export async function bumpCatalogVersion(): Promise<number> {
 export async function getStoreMeta(): Promise<StoreDoc> {
   const cached = storeMetaCache;
   if (cached && Date.now() - cached.at < STORE_TTL_MS) return cached.doc;
-  if (storeMetaInFlight) return storeMetaInFlight;
+  if (storeMetaInFlight) {
+    // Another request's load: bounded, see shared-wait.server.ts.
+    const shared = storeMetaInFlight;
+    return joinShared(shared, {
+      label: "store:meta",
+      waitMs: STORE_WAIT_MS,
+      restart: () => {
+        if (storeMetaInFlight === shared) storeMetaInFlight = undefined;
+        return getStoreMeta();
+      },
+    });
+  }
 
   storeMetaInFlight = loadStore({ skipProducts: true })
     .then((doc) => {
@@ -1276,7 +1289,24 @@ export async function getStore(): Promise<StoreDoc> {
     }
   }
 
-  if (storeInFlight) return storeInFlight;
+  if (storeInFlight) {
+    /*
+      Another request's catalogue load. Joined, but never trusted to finish:
+      if its visitor left, its D1 reads went with them and this promise can
+      stay pending for the life of the isolate — which is exactly how every
+      shopper after them got a storefront with no games (see
+      shared-wait.server.ts). Past the bound, this request loads for itself.
+    */
+    const shared = storeInFlight;
+    return joinShared(shared, {
+      label: "store:catalogue",
+      waitMs: STORE_WAIT_MS,
+      restart: () => {
+        if (storeInFlight === shared) storeInFlight = undefined;
+        return getStore();
+      },
+    });
+  }
 
   const loadWithTimeout = async (): Promise<StoreDoc> => {
     return Promise.race([
@@ -3526,17 +3556,18 @@ export async function approveRechargeRequest(
     return { ok: false, reason: "already_settled", request: await getRechargeRequest(requestId) };
   }
 
-  const store = await getStore();
-  let finalAmount = existing.amount;
+  /*
+    The eShop bonus, and — for a dollar method — the conversion to dinars.
 
-  // Apply Nintendo Bonus if applicable
-  if (existing.method === "eshop_card") {
-    const bonusEnabled = store.settings?.["nintendoBonusEnabled"] !== false;
-    const bonusPercent = Number(store.settings?.["nintendoBonusPercent"] || 15);
-    if (bonusEnabled) {
-      finalAmount = existing.amount * (1 + bonusPercent / 100);
-    }
-  }
+    The top-up sheet asks for a card's value in dollars and promises
+    «(value + bonus) × rate» in dinars, but this credited the dollar figure as
+    if it were dinars: a $20 eShop card became 23 IQD. In production every
+    eShop-card request (4, all $10–$70) had been rejected rather than approved.
+    `rechargeCredit` is the one rule, shared with the reviewer's Telegram card.
+    Settings only — the catalogue has nothing to say about a top-up.
+  */
+  const settings = await getStoreSettings();
+  const finalAmount = rechargeCredit(existing.method, existing.amount, settings).credited;
 
   let updatedUser: User | undefined;
   try {

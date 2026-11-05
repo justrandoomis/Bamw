@@ -20,6 +20,7 @@ import {
   normalizeDeliveryStatus,
   type DeliveryItemStatus,
 } from "./delivery-items";
+import { joinShared, SCHEMA_WAIT_MS, trackShared } from "./shared-wait.server";
 
 const TABLE = `CREATE TABLE IF NOT EXISTS delivery_items (
   id TEXT PRIMARY KEY,
@@ -67,8 +68,18 @@ async function ensureSchema(): Promise<void> {
       ready = undefined;
       throw error;
     });
+    trackShared(ready);
+    return ready;
   }
-  return ready;
+  const shared = ready;
+  return joinShared(shared, {
+    label: "delivery-items-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (ready === shared) ready = undefined;
+      return ensureSchema();
+    },
+  });
 }
 
 interface DeliveryItemRow {

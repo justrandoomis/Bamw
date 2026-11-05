@@ -104,6 +104,7 @@ import { AdminShell } from "./admin/shell/AdminShell";
 import { orderNeedsAction, threadWaitsForAdmin } from "./admin/shell/adminNav";
 import AdminHome from "./admin/AdminHome";
 import PromotionsManager from "./admin/PromotionsManager";
+import DealsManager from "./admin/DealsManager";
 import AdminProductEditor from "./AdminProductEditor";
 import AdminZipImportModal from "./admin/AdminZipImportModal";
 import CatalogueImportModal from "./admin/CatalogueImportModal";
@@ -188,6 +189,12 @@ const defaultOrders: any[] = [];
 const defaultMessages: any[] = [];
 
 import { safeStringify } from "../utils/safeJson";
+import { isValidUsdIqdRate, resolveUsdIqdRate, usdIqdRateSettings } from "@/lib/exchange-rate";
+import {
+  TELEGRAM_NOTICE_KINDS,
+  TELEGRAM_NOTICE_LABELS,
+  deliverySettings,
+} from "@/lib/telegram-delivery";
 import { isProductPriced, isProductHidden } from "@/lib/purchasable";
 import { productsTableState } from "@/lib/adminProductsTableState";
 
@@ -809,6 +816,8 @@ export default function AdminDashboard() {
         return renderHome();
       case "promotions":
         return <PromotionsManager />;
+      case "deals":
+        return <DealsManager />;
       case "store_advisor":
         return (
           <div className="w-full p-2 sm:p-6">
@@ -2749,6 +2758,7 @@ function SettingsView() {
   const [storeName, setStoreName] = useState("Banana eShop");
   const [usdIqdRate, setUsdIqdRate] = useState<number>(1320);
   const [exchangeRatesApiKey, setExchangeRatesApiKey] = useState("");
+  const [telegramDelivery, setTelegramDelivery] = useState(() => deliverySettings(undefined));
   const [isSaving, setIsSaving] = useState(false);
   const [savedSuccess, setSavedSuccess] = useState(false);
 
@@ -2765,12 +2775,13 @@ function SettingsView() {
         if (data.settings?.storeName) {
           setStoreName(data.settings.storeName);
         }
-        if (data.settings?.usd_iqd_rate) {
-          setUsdIqdRate(Number(data.settings.usd_iqd_rate) || 1320);
-        }
+        // The rate the whole shop uses (cards, game pages, cart, wallet) —
+        // this screen used to show and save a key nothing read.
+        setUsdIqdRate(resolveUsdIqdRate(data.settings));
         if (data.settings?.exchange_rates_api_key) {
           setExchangeRatesApiKey(data.settings.exchange_rates_api_key);
         }
+        setTelegramDelivery(deliverySettings(data.settings));
       })
       .catch(console.error);
   }, []);
@@ -2778,6 +2789,10 @@ function SettingsView() {
   const [saveError, setSaveError] = useState("");
 
   const handleSave = async () => {
+    if (!isValidUsdIqdRate(usdIqdRate)) {
+      setSaveError("سعر الصرف غير صحيح: أدخل عدد الدنانير مقابل دولار واحد (بين 100 و100000)");
+      return;
+    }
     setIsSaving(true);
     setSaveError("");
     try {
@@ -2789,8 +2804,11 @@ function SettingsView() {
             ai_key: aiKey,
             ai_base_url: aiBaseUrl,
             storeName,
-            usd_iqd_rate: Number(usdIqdRate) || 1320,
+            // Both spellings, one number: this screen and «إعدادات السعر» now
+            // edit the same rate (src/lib/exchange-rate.ts).
+            ...usdIqdRateSettings(usdIqdRate),
             exchange_rates_api_key: exchangeRatesApiKey,
+            telegramDelivery,
           },
         }),
       });
@@ -2865,23 +2883,58 @@ function SettingsView() {
               </div>
             </div>
 
-            <div className="pt-2 border-t border-emerald-200/60">
-              <label className="block text-xs font-bold text-emerald-950 mb-1">
-                مفتاح Exchange Rates API (اختياري - لتحديث أسعار الصرف العالمية للعملات الأخرى):
-              </label>
-              <input
-                type="password"
-                dir="ltr"
-                className="w-full bg-card border border-emerald-300 focus:border-emerald-600 rounded-lg px-3 py-2 text-xs font-mono text-foreground outline-none transition-colors"
-                value={exchangeRatesApiKey}
-                onChange={(e) => setExchangeRatesApiKey(e.target.value)}
-                placeholder="أدخل مفتاح EXCHANGE_RATES_API_KEY (مثال: e.g. exchangerate-api.com)"
-              />
-              <p className="text-[11px] text-emerald-800/80 mt-1">
-                في حال عدم إدخال مفتاح، يعتمد النظام تلقائياً على الخدمة المجانية المباشرة
-                (open.er-api.com) لتوفير أسعار الصرف العالمية المحدثة.
-              </p>
-            </div>
+            <p className="pt-2 border-t border-emerald-200/60 text-[11px] text-emerald-800/80">
+              هذا هو السعر الوحيد الذي يعتمده المتجر للدولار: البطاقات، صفحات الألعاب، السلة،
+              المحفظة وشحن Binance. نفس الرقم يظهر في «إعدادات السعر».
+            </p>
+          </div>
+        </div>
+
+        <hr className="border-border" />
+
+        {/* Telegram delivery — where each kind of admin notification arrives. */}
+        <div>
+          <h2 className="text-base font-bold text-foreground mb-1 flex items-center gap-2">
+            <Send className="w-5 h-5 text-sky-500" />
+            إشعارات تيليجرام
+          </h2>
+          <p className="text-xs text-muted-foreground mb-4">
+            «رسالة خاصة من البوت» تصلك أنت مباشرة: رسالة واحدة لكل طلب، وتردّ على الزبون بالضغط على
+            «رد» على الرسالة. «مجموعة الإدارة» ترسلها إلى المجموعة المربوطة. إذا فشل الإرسال إلى
+            وجهة، يُجرَّب الإرسال إلى الأخرى تلقائياً.
+          </p>
+          <div className="space-y-2">
+            {TELEGRAM_NOTICE_KINDS.map((kind) => (
+              <div
+                key={kind}
+                className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-border bg-muted/30 px-3 py-2"
+              >
+                <span className="text-sm font-semibold text-foreground">
+                  {TELEGRAM_NOTICE_LABELS[kind]}
+                </span>
+                <div className="flex gap-1" role="radiogroup" aria-label={TELEGRAM_NOTICE_LABELS[kind]}>
+                  {(["private", "group"] as const).map((choice) => {
+                    const active = telegramDelivery[kind] === choice;
+                    return (
+                      <button
+                        key={choice}
+                        type="button"
+                        role="radio"
+                        aria-checked={active}
+                        onClick={() => setTelegramDelivery((prev) => ({ ...prev, [kind]: choice }))}
+                        className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-colors ${
+                          active
+                            ? "bg-sky-600 text-white"
+                            : "bg-card text-muted-foreground border border-border hover:text-foreground"
+                        }`}
+                      >
+                        {choice === "private" ? "رسالة خاصة من البوت" : "مجموعة الإدارة"}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -4440,7 +4493,7 @@ function PricingSettingsView() {
 
   const [form, setForm] = useState({
     dinarPerBanana: Number(settings["dinarPerBanana"] || 1000),
-    usdExchangeRate: Number(settings["usdExchangeRate"] || 1500),
+    usdExchangeRate: resolveUsdIqdRate(settings),
     deliveryBase: Number(settings["deliveryBase"] || 5000),
     deliveryExceptions: (Array.isArray(settings["deliveryExceptions"])
       ? settings["deliveryExceptions"]
@@ -4451,7 +4504,7 @@ function PricingSettingsView() {
     if (settings) {
       setForm({
         dinarPerBanana: Number(settings["dinarPerBanana"] || 1000),
-        usdExchangeRate: Number(settings["usdExchangeRate"] || 1500),
+        usdExchangeRate: resolveUsdIqdRate(settings),
         deliveryBase: Number(settings["deliveryBase"] || 5000),
         deliveryExceptions: (Array.isArray(settings["deliveryExceptions"])
           ? settings["deliveryExceptions"]
@@ -4461,6 +4514,10 @@ function PricingSettingsView() {
   }, [settings]);
 
   const handleSave = async () => {
+    if (!isValidUsdIqdRate(form.usdExchangeRate)) {
+      toast.error("سعر الصرف غير صحيح: أدخل عدد الدنانير مقابل دولار واحد (بين 100 و100000)");
+      return;
+    }
     setIsSaving(true);
     try {
       /*
@@ -4473,7 +4530,9 @@ function PricingSettingsView() {
         `store?.settings || {}`: with the query unresolved it is empty, and the
         save replaced the entire settings object with this form's few keys.
       */
-      await adminApi.saveStore({ settings: { ...form } });
+      await adminApi.saveStore({
+        settings: { ...form, ...usdIqdRateSettings(form.usdExchangeRate) },
+      });
       toast.success("تم حفظ إعدادات السعر بنجاح");
       refetch();
     } catch (e) {

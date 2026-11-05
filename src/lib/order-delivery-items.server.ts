@@ -38,6 +38,7 @@ import { appendMessage, d1Batch, getOrder, getThread, saveOrder, saveThread } fr
 import { DIGITAL_ORDER_KINDS, isDigitalOrderKind, isFullyDigitalOrder } from "./delivery-kinds";
 import { completeOrder } from "./order-completion.server";
 import type { Order, OrderItem } from "./types";
+import { joinShared, SCHEMA_WAIT_MS, trackShared } from "./shared-wait.server";
 
 const CODE_KINDS = new Set(["digital_code", "code", "gift_card"]);
 
@@ -135,8 +136,19 @@ export async function ensureDigitalDeliverySchema(): Promise<void> {
       deliverySchemaPromise = undefined;
       throw error;
     });
+    trackShared(deliverySchemaPromise);
+    await deliverySchemaPromise;
+    return;
   }
-  await deliverySchemaPromise;
+  const shared = deliverySchemaPromise;
+  await joinShared(shared, {
+    label: "digital-delivery-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (deliverySchemaPromise === shared) deliverySchemaPromise = undefined;
+      return ensureDigitalDeliverySchema();
+    },
+  });
 }
 
 const QUEUE_TERMINAL_ORDER_STATUSES = new Set([

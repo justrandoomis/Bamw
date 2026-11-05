@@ -1,6 +1,7 @@
 import { d1First, d1Run, getD1 } from "./d1.server";
 import { env } from "./env.server";
 import { clientAddress } from "./security.server";
+import { joinShared, SCHEMA_WAIT_MS, trackShared } from "./shared-wait.server";
 
 type Bucket = { count: number; expiresAt: number };
 const localBuckets = new Map<string, Bucket>();
@@ -64,8 +65,20 @@ async function ensureTable() {
         tablePromise = undefined;
         throw error;
       });
+    trackShared(tablePromise);
+    await tablePromise;
+    return true;
   }
-  await tablePromise;
+  // Another request's bootstrap: bounded (see shared-wait.server.ts).
+  const shared = tablePromise;
+  await joinShared(shared, {
+    label: "rate-limit-table",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: async () => {
+      if (tablePromise === shared) tablePromise = undefined;
+      await ensureTable();
+    },
+  });
   return true;
 }
 

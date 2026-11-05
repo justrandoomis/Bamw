@@ -31,6 +31,7 @@ import { formatBytes, formatDate, formatRange } from "@/hub/utils/format";
 import { cn } from "@/hub/utils/cn";
 import { ShareAndEarnButton } from "@/components/referral/ShareAndEarnButton";
 import NintendoCover from "@/components/NintendoCover";
+import { DealBanner, useLiveDeal } from "@/components/deals/DealBadge";
 import { isAwaitingRelease } from "@/lib/release";
 import { readOffers } from "@/lib/hub";
 import { playSound } from "@/hub/utils/audio";
@@ -71,6 +72,7 @@ export function Hero() {
 
   const raw = useMemo(() => (game.rawProduct ?? {}) as Record<string, unknown>, [game.rawProduct]);
   const awaitingRelease = isAwaitingRelease(raw);
+  const deal = useLiveDeal(raw);
 
   const reduceMotion = useReducedMotion();
   const { scrollY } = useScroll();
@@ -378,6 +380,23 @@ export function Hero() {
         {/* ================= The purchase card ================= */}
         <aside className="min-w-0 lg:sticky lg:top-6 lg:self-start">
           <div className="rounded-[28px] border border-[var(--clay-rim)] bg-card p-4 shadow-lg sm:p-5">
+            {/* The occasion this price belongs to — Black Friday, Eid, 11.11 … */}
+            {deal && bestOffer ? (
+              <DealBanner
+                deal={deal}
+                className="mb-3"
+                {...(bestOffer.offer.listPrice &&
+                bestOffer.offer.listPrice.amount > bestOffer.offer.price.amount
+                  ? {
+                      saving:
+                        formatConverted({
+                          ...bestOffer.offer.price,
+                          amount: bestOffer.offer.listPrice.amount - bestOffer.offer.price.amount,
+                        }) ?? undefined,
+                    }
+                  : {})}
+              />
+            ) : null}
             {bestOffer ? (
               <div>
                 <p className="text-[12px] font-bold text-muted-foreground">

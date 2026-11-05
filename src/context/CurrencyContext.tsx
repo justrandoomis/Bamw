@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { DEFAULT_USD_IQD_RATE, isValidUsdIqdRate } from "@/lib/exchange-rate";
 
 export interface CurrencyInfo {
   code: string;
@@ -136,9 +137,12 @@ export const KNOWN_CURRENCIES: CurrencyInfo[] = [
   },
 ];
 
+/** Where the shop's last-known dollar rate is kept on the device. */
+const RATE_CACHE_KEY = "app_usd_iqd_rate";
+
 const DEFAULT_RATES: Record<string, number> = {
   USD: 1,
-  IQD: 1320,
+  IQD: DEFAULT_USD_IQD_RATE,
   SAR: 3.75,
   EUR: 0.92,
   GBP: 0.78,
@@ -176,18 +180,28 @@ const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined
 export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currency, setCurrencyState] = useState<string>("IQD");
 
+  const [usdIqdRate, setUsdIqdRate] = useState<number>(DEFAULT_USD_IQD_RATE);
+  const [rates, setRates] = useState<Record<string, number>>(DEFAULT_RATES);
+  const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     try {
       const saved = localStorage.getItem("app_currency");
       if (saved) setCurrencyState(saved);
+      /*
+        The shop's rate as of this device's last visit, so a shopper reading
+        in dollars does not see every price at the default rate for the moment
+        before `/api/exchange-rates` answers.
+      */
+      const savedRate = Number(localStorage.getItem(RATE_CACHE_KEY));
+      if (isValidUsdIqdRate(savedRate)) {
+        setUsdIqdRate(savedRate);
+        setRates((prev) => ({ ...prev, IQD: savedRate }));
+      }
     } catch {
       /* storage unavailable */
     }
   }, []);
-
-  const [usdIqdRate, setUsdIqdRate] = useState<number>(1320);
-  const [rates, setRates] = useState<Record<string, number>>(DEFAULT_RATES);
-  const [loading, setLoading] = useState<boolean>(true);
 
   const setCurrency = (code: string) => {
     setCurrencyState(code);
@@ -207,8 +221,15 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         if (data.rates && typeof data.rates === "object") {
           setRates((prev) => ({ ...prev, ...data.rates }));
         }
-        if (data.usdIqdRate && typeof data.usdIqdRate === "number") {
-          setUsdIqdRate(data.usdIqdRate);
+        if (isValidUsdIqdRate(data.usdIqdRate)) {
+          const rate = Number(data.usdIqdRate);
+          setUsdIqdRate(rate);
+          setRates((prev) => ({ ...prev, IQD: rate }));
+          try {
+            localStorage.setItem(RATE_CACHE_KEY, String(rate));
+          } catch {
+            /* storage unavailable */
+          }
         }
       }
     } catch (err) {
@@ -237,7 +258,7 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const convertFromIQD = (iqdAmount: number, targetCurrency: string = currency): number => {
     const numericIqd = Number(iqdAmount) || 0;
-    const effectiveIqdRate = rates["IQD"] || usdIqdRate || 1320;
+    const effectiveIqdRate = rates["IQD"] || usdIqdRate || DEFAULT_USD_IQD_RATE;
     // Step 1: Convert IQD -> USD
     const usdAmount = numericIqd / effectiveIqdRate;
 
@@ -307,22 +328,18 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return `${formattedNum} ${info.symbol}`;
   };
 
-  // Helper for prices that could be IQD or USD:
-  // If price > 500, assume it's IQD. If < 500, assume it's USD (or convert appropriately).
+  /*
+    Every amount the shop stores is in dinars — prices, savings, surcharges and
+    wallet balances alike (prices start at 7,000). The old guess, "under 500
+    must be dollars", turned a 250 IQD saving into "$250.00" in dollar mode and
+    into 330,000 د.ع in dinar mode.
+  */
   const formatGenericPrice = (
     priceVal: number | string,
     targetCurrency: string = currency,
   ): string => {
-    const numeric = Number(priceVal) || 0;
-    if (numeric <= 0) return formatIQDPrice(0, targetCurrency);
-
-    if (numeric >= 500) {
-      // IQD base price
-      return formatIQDPrice(numeric, targetCurrency);
-    } else {
-      // USD base price -> Convert USD to IQD first if needed
-      return formatUSDPrice(numeric, targetCurrency);
-    }
+    const numeric = Number(String(priceVal).replace(/[^\d.-]/g, "")) || 0;
+    return formatIQDPrice(numeric > 0 ? numeric : 0, targetCurrency);
   };
 
   return (

@@ -126,6 +126,13 @@ export const ADMIN_NAV: AdminNavGroup[] = [
     label: "العروض والتسويق",
     items: [
       {
+        id: "deals",
+        label: "العروض والمناسبات",
+        icon: Zap,
+        keywords:
+          "خصم تخفيض الجمعة السوداء black friday cyber monday الكريسماس عيد رمضان 11.11 12.12 flash deal sale",
+      },
+      {
         id: "promotions",
         label: "العروض",
         icon: PercentCircle,

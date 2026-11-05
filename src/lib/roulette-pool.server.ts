@@ -52,6 +52,7 @@ import {
   type PopularityTier,
   type PrizeBucketKey,
 } from "./roulette-odds";
+import { joinShared, SCHEMA_WAIT_MS, trackShared } from "./shared-wait.server";
 
 /** The tier a game carries when nobody has said otherwise. */
 export const DEFAULT_POPULARITY: PopularityTier = "low";
@@ -110,8 +111,18 @@ export function ensureRoulettePoolSchema(): Promise<void> {
       schemaReady = undefined;
       throw error;
     });
+    trackShared(schemaReady);
+    return schemaReady;
   }
-  return schemaReady;
+  const shared = schemaReady;
+  return joinShared(shared, {
+    label: "roulette-pool-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (schemaReady === shared) schemaReady = undefined;
+      return ensureRoulettePoolSchema();
+    },
+  });
 }
 
 export interface GameFlags {

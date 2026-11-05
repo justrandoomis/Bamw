@@ -106,6 +106,23 @@ function TelegramIndex() {
         return;
       }
 
+      /*
+        An order card or a customer-message card in the admin's Telegram opens
+        the Mini App with `order_<id>` or `chat_<threadId>`. Those name a place
+        to go, not a proof session — read as one, the button on every order
+        notification opened a screen saying the verification link was invalid.
+      */
+      const orderRef = /^order_([A-Za-z0-9_-]{3,80})$/.exec(verificationRef ?? "");
+      const chatRef = /^chat_([A-Za-z0-9_-]{3,80})$/.exec(verificationRef ?? "");
+      if (orderRef?.[1] || chatRef?.[1]) {
+        window.location.replace(
+          orderRef?.[1]
+            ? `/orders/${encodeURIComponent(orderRef[1])}`
+            : `/chat?threadId=${encodeURIComponent(chatRef?.[1] ?? "")}`,
+        );
+        return;
+      }
+
       if (!verificationRef) {
         // Opened from the bot's menu or app button rather than a proof link:
         // this screen has nothing to prove, so show the member the store

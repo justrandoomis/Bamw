@@ -39,10 +39,20 @@ vi.mock("./d1.server", () => ({
   d1Run: async () => undefined,
 }));
 
+/*
+  The owner's delivery choice, `settings.telegramDelivery`. Empty means the
+  defaults: orders to the private chat, everything else to the group.
+*/
+const SETTINGS: Record<string, unknown> = {};
+vi.mock("./db.server", () => ({
+  getStoreSettings: async () => SETTINGS,
+}));
+
 let routing: typeof import("./telegram-admin-routing.server");
 
 beforeEach(async () => {
   for (const key of Object.keys(SECRETS)) delete SECRETS[key];
+  for (const key of Object.keys(SETTINGS)) delete SETTINGS[key];
   vi.resetModules();
   routing = await import("./telegram-admin-routing.server");
 });
@@ -61,11 +71,32 @@ describe("adminRoute", () => {
     expect(route.prefix).toContain("الطلبات");
   });
 
+  it("sends orders to the owner's private chat even when the group has a topic", async () => {
+    /*
+      The owner's request: orders «by bot not group» — one private message per
+      order he can answer. Telegram had accepted every order card into the
+      group topic, and he still did not receive them.
+    */
+    SECRETS["TELEGRAM_ADMIN_GROUP_ID"] = "-1001234567890";
+    SECRETS["TELEGRAM_ORDERS_TOPIC_ID"] = "11";
+    SECRETS["TELEGRAM_WALLET_TOPIC_ID"] = "22";
+    vi.resetModules();
+    routing = await import("./telegram-admin-routing.server");
+
+    expect(await routing.adminRoute("order")).toMatchObject({
+      chatId: "6404042791",
+      isGroup: false,
+    });
+    // The other kinds keep the group until the owner says otherwise.
+    expect((await routing.adminRoute("wallet")).messageThreadId).toBe(22);
+  });
+
   it("sends each kind to its own topic when the group has them", async () => {
     SECRETS["TELEGRAM_ADMIN_GROUP_ID"] = "-1001234567890";
     SECRETS["TELEGRAM_ORDERS_TOPIC_ID"] = "11";
     SECRETS["TELEGRAM_WALLET_TOPIC_ID"] = "22";
     SECRETS["TELEGRAM_SUPPORT_TOPIC_ID"] = "33";
+    SETTINGS["telegramDelivery"] = { order: "group" };
     vi.resetModules();
     routing = await import("./telegram-admin-routing.server");
 
@@ -78,11 +109,50 @@ describe("adminRoute", () => {
     expect((await routing.adminRoute("support")).messageThreadId).toBe(33);
   });
 
+  it("sends any kind privately when the owner chose that for it", async () => {
+    SECRETS["TELEGRAM_ADMIN_GROUP_ID"] = "-1001234567890";
+    SECRETS["TELEGRAM_WALLET_TOPIC_ID"] = "22";
+    SETTINGS["telegramDelivery"] = { wallet: "private" };
+    vi.resetModules();
+    routing = await import("./telegram-admin-routing.server");
+
+    expect(await routing.adminRoute("wallet")).toMatchObject({
+      chatId: "6404042791",
+      isGroup: false,
+    });
+  });
+
+  it("falls back to the other destination, and to nothing when there is none", async () => {
+    SECRETS["TELEGRAM_ADMIN_GROUP_ID"] = "-1001234567890";
+    SECRETS["TELEGRAM_ORDERS_TOPIC_ID"] = "11";
+    vi.resetModules();
+    routing = await import("./telegram-admin-routing.server");
+
+    const privateRoute = await routing.adminRoute("order");
+    expect(await routing.fallbackRoute("order", privateRoute)).toMatchObject({
+      chatId: "-1001234567890",
+      messageThreadId: 11,
+      isGroup: true,
+    });
+    const groupRoute = (await routing.groupRoute("order"))!;
+    expect(await routing.fallbackRoute("order", groupRoute)).toMatchObject({
+      chatId: "6404042791",
+      isGroup: false,
+    });
+
+    // No group configured: a failed private send has nowhere else to go.
+    delete SECRETS["TELEGRAM_ADMIN_GROUP_ID"];
+    vi.resetModules();
+    routing = await import("./telegram-admin-routing.server");
+    expect(await routing.fallbackRoute("order", await routing.adminRoute("order"))).toBeNull();
+  });
+
   it("drops the prefix inside a topic and keeps it without one", async () => {
     // The topic's own name already says which kind this is; repeating it
     // costs the first line of every card in a list people scan quickly.
     SECRETS["TELEGRAM_ADMIN_GROUP_ID"] = "-100999";
     SECRETS["TELEGRAM_ORDERS_TOPIC_ID"] = "7";
+    SETTINGS["telegramDelivery"] = { order: "group" };
     vi.resetModules();
     routing = await import("./telegram-admin-routing.server");
 
@@ -99,6 +169,7 @@ describe("adminRoute", () => {
     // topic slot would otherwise be sent as `message_thread_id` and rejected.
     SECRETS["TELEGRAM_ADMIN_GROUP_ID"] = "-100999";
     SECRETS["TELEGRAM_ORDERS_TOPIC_ID"] = "-1001234567890";
+    SETTINGS["telegramDelivery"] = { order: "group" };
     vi.resetModules();
     routing = await import("./telegram-admin-routing.server");
     expect((await routing.adminRoute("order")).messageThreadId).toBeUndefined();

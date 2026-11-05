@@ -42,6 +42,7 @@ import { randomId } from "./crypto.server";
 import { d1All, d1BatchRun, d1First, d1Run, getD1 } from "./d1.server";
 import { getMarketConfig, spotPriceAt } from "./banana-market-config.server";
 import { getUserBananaBalance } from "./banana-balance.server";
+import { joinShared, SCHEMA_WAIT_MS, trackShared } from "./shared-wait.server";
 
 /** The fewest bananas a sale may be, so the ledger is not filled with dust. */
 export const MIN_SELL_QUANTITY = 100;
@@ -121,8 +122,18 @@ export function ensureBananaSellSchema(): Promise<void> {
       schemaReady = undefined;
       throw error;
     });
+    trackShared(schemaReady);
+    return schemaReady;
   }
-  return schemaReady;
+  const shared = schemaReady;
+  return joinShared(shared, {
+    label: "banana-sell-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (schemaReady === shared) schemaReady = undefined;
+      return ensureBananaSellSchema();
+    },
+  });
 }
 
 /** A quantity this will actually execute, or null. */

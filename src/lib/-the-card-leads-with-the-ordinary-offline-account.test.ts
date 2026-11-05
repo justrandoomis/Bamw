@@ -251,7 +251,8 @@ describe("the card and the till agree", () => {
 
   it("the other card reads the same rule instead of the raw base price", () => {
     expect(gameCard).toContain('import { listingPricing } from "@/lib/productPricing";');
-    expect(gameCard).toContain("const { unitPrice: price } = listingPricing(product);");
+    // It may also read the compare-at price (struck through during a deal).
+    expect(gameCard).toMatch(/const \{ unitPrice: price(?:, originalUnitPrice)? \} = listingPricing\(product\);/);
     expect(gameCard).not.toContain("const price = Number(product.price) || 0;");
   });
 

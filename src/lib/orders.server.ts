@@ -26,6 +26,7 @@ import { claimCouponUse, readCouponUsage, releaseCouponUse } from "./coupon-usag
 import { isAwaitingRelease, releaseDayISO } from "./release";
 import { bundleAccountLabel, resolveBundleUnitPrice } from "./bundles";
 import { resolveUnitPrice } from "./productPricing";
+import { applyDealToProduct, liveDealOf, readDealsConfig, type DealsConfig } from "./deals";
 import { resolveReferralForCheckout } from "./referral/checkout.server";
 import {
   bindReferrerIfUnbound,
@@ -124,6 +125,8 @@ export class AwaitingReleaseError extends Error {
 async function validateLine(
   line: CheckoutLine,
   store: { products: Product[]; bundles?: AccountBundle[] },
+  deals: DealsConfig = { enabled: false, campaigns: [] },
+  pricedAt: number = Date.now(),
 ): Promise<OrderItem | null> {
   if (!line || !line.productId) return null;
   const product = store.products.find((p) => String(p.id) === String(line.productId));
@@ -226,7 +229,14 @@ async function validateLine(
     cart sits open is picked up here on the next request, because nothing is
     read from the cart at all.
   */
-  const priced = resolveUnitPrice(product as unknown as Record<string, unknown>, {
+  /*
+    A live occasion deal (Black Friday, Eid, …) is applied to the product the
+    same way the public catalogue applies it, by the same function and at the
+    same cost floor — so the price on the card is the price charged here.
+  */
+  const dealt = applyDealToProduct(product as unknown as Record<string, unknown>, deals, pricedAt);
+  const appliedDeal = dealt === (product as unknown) ? null : liveDealOf(dealt, pricedAt);
+  const priced = resolveUnitPrice(dealt, {
     optionId: line.optionId ?? null,
     typeId: line.typeId ?? null,
     editionId: line.editionId ?? null,
@@ -301,6 +311,20 @@ async function validateLine(
         says was sold. Taken from the product now, at the moment of sale.
       */
       platform: productPlatform(product as unknown as Record<string, unknown>),
+      /*
+        Which occasion priced this line, and what it cost without it — so the
+        order, the invoice and the profit report can say "Black Friday, was
+        13,000" rather than leaving a lower price unexplained.
+      */
+      ...(appliedDeal && priced.originalUnitPrice > unitPrice
+        ? {
+            dealId: appliedDeal.id,
+            dealOccasion: appliedDeal.occasion,
+            dealLabel: appliedDeal.label,
+            dealPercent: appliedDeal.percent,
+            regularUnitPrice: priced.originalUnitPrice,
+          }
+        : {}),
     },
   };
 }
@@ -516,9 +540,12 @@ export async function createOrderForUser(
 
   const store = await getStore();
   const items: OrderItem[] = [];
+  // One clock and one deal configuration for every line of this order.
+  const deals = readDealsConfig((store.settings ?? {}) as Record<string, unknown>);
+  const pricedAt = Date.now();
 
   for (const line of lines) {
-    const validated = await validateLine(line, store);
+    const validated = await validateLine(line, store, deals, pricedAt);
     if (validated) items.push(validated);
   }
 

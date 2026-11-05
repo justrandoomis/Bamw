@@ -24,6 +24,7 @@ import {
   updateStore,
 } from "./db.server";
 import { isOwnUploadUrl } from "./uploads";
+import { joinShared, SCHEMA_WAIT_MS, trackShared } from "./shared-wait.server";
 import { normalizeContact } from "./contact-links";
 import {
   ACTIVE_STATUSES,
@@ -178,8 +179,19 @@ export async function ensureUsedMarketplaceSchema(): Promise<void> {
       schemaPromise = undefined;
       throw error;
     });
+    trackShared(schemaPromise);
+    await schemaPromise;
+    return;
   }
-  await schemaPromise;
+  const shared = schemaPromise;
+  await joinShared(shared, {
+    label: "used-marketplace-schema",
+    waitMs: SCHEMA_WAIT_MS,
+    restart: () => {
+      if (schemaPromise === shared) schemaPromise = undefined;
+      return ensureUsedMarketplaceSchema();
+    },
+  });
 }
 
 /* ------------------------------- config ---------------------------------- */

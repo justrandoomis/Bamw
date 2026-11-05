@@ -26,7 +26,7 @@
 
 import { appendMessage } from "./db.server";
 import { d1First, d1Run } from "./d1.server";
-import { isAdminGroupMessage } from "./telegram-admin.server";
+import { isAdminGroupMessage, isAdminPrivateMessage } from "./telegram-admin.server";
 import { boundGroupId } from "./telegram-bindings.server";
 import { env } from "./env.server";
 
@@ -158,6 +158,47 @@ export async function handleAdminGroupReply(
   const link = await readSupportLink(group, repliedTo);
   if (!link) return "unknown_message";
 
+  return postAdminReply(msg, updateId, link);
+}
+
+/**
+ * The same, for a reply in the operator's own private chat with the bot.
+ *
+ * Order cards now arrive there (telegram-admin-routing.server.ts), and the
+ * owner answers a customer the way anyone answers a message: by replying to
+ * it. The rules are the group's, translated: a reply and nothing else, only
+ * from an operator in their own chat (`isAdminPrivateMessage`), only to a card
+ * the shop recorded in that same chat, and once per update.
+ */
+export async function handleAdminPrivateReply(
+  message: unknown,
+  updateId?: unknown,
+): Promise<ReplyOutcome> {
+  const msg = message as
+    | {
+        chat?: { id?: unknown; type?: string };
+        from?: { id?: unknown; is_bot?: boolean; first_name?: unknown };
+        reply_to_message?: { message_id?: unknown };
+      }
+    | undefined;
+
+  const repliedTo = Number(msg?.reply_to_message?.message_id);
+  if (!Number.isSafeInteger(repliedTo) || repliedTo <= 0) return "not_a_reply";
+  if (!isAdminPrivateMessage(msg)) return "not_an_admin";
+
+  const link = await readSupportLink(String(msg?.chat?.id ?? ""), repliedTo);
+  if (!link) return "unknown_message";
+
+  return postAdminReply(msg, updateId, link);
+}
+
+/** Deliver an operator's reply into the customer's conversation. */
+async function postAdminReply(
+  message: unknown,
+  updateId: unknown,
+  link: SupportLink,
+): Promise<ReplyOutcome> {
+  const msg = message as { from?: { first_name?: unknown } } | undefined;
   const { attachmentOf, storeTelegramAttachment } = await import("./telegram-attachments.server");
   const attachment = attachmentOf(msg);
   const body = replyText(msg);

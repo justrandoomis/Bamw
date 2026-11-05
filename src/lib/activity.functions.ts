@@ -3,15 +3,31 @@ import { z } from "zod";
 
 import { safeRandomUUID } from "./polyfills";
 
-/** Get or create a persistent session ID for tracking */
+/**
+ * Get or create a persistent session ID for tracking.
+ *
+ * Storage may be refused outright — Brave with site data blocked, Safari's
+ * strict modes, some in-app browsers — and then even *reading* localStorage
+ * throws a SecurityError. This was the one unguarded read on the way into the
+ * app shell, so for those visitors the error reached the route boundary and the
+ * whole shop showed «This page didn't load». Analytics never gets to break the
+ * page: without storage the id lives for this page view only.
+ */
+let ephemeralSid: string | null = null;
+
 export function getSessionId() {
   if (typeof window === "undefined") return null;
-  let sid = window.localStorage.getItem("bnt_sid");
-  if (!sid) {
-    sid = `sid_${safeRandomUUID().replace(/-/g, "")}`;
-    window.localStorage.setItem("bnt_sid", sid);
+  try {
+    let sid = window.localStorage.getItem("bnt_sid");
+    if (!sid) {
+      sid = `sid_${safeRandomUUID().replace(/-/g, "")}`;
+      window.localStorage.setItem("bnt_sid", sid);
+    }
+    return sid;
+  } catch {
+    ephemeralSid ??= `sid_${safeRandomUUID().replace(/-/g, "")}`;
+    return ephemeralSid;
   }
-  return sid;
 }
 
 export const trackBrowsing = createServerFn({ method: "POST" })
