@@ -155,6 +155,31 @@
   }
  },
  {
+  "id": "prd_cat_astral-chain",
+  "title": "ASTRAL CHAIN",
+  "how": "title",
+  "euId": "1513766",
+  "fill": {
+   "tagline": "Team up with a special weapon, the Legion, to investigate and fight against alien-like creatures invaders in ASTRAL CHAIN™, only on Nintendo Switch!",
+   "description": "Team up with a special weapon, the Legion, to investigate and fight against alien-like creatures invaders in ASTRAL CHAIN™, only on Nintendo Switch!",
+   "descriptionEn": "Team up with a special weapon, the Legion, to investigate and fight against alien-like creatures invaders in ASTRAL CHAIN™, only on Nintendo Switch!",
+   "genres": [
+    "Action",
+    "Adventure"
+   ],
+   "developer": "PlatinumGames",
+   "releaseDate": "2019-08-30",
+   "ageRating": "PEGI 16",
+   "numberOfPlayers": "1-2",
+   "supportedLanguages": "Japanese, English, Spanish, French, German, Italian, Russian, Korean, Chinese",
+   "size": "9.8 GB",
+   "downloadSizeGb": 9.8,
+   "product_code": "HACPAB48A",
+   "cartridgeImage": "https://www.nintendo.com/eu/media/images/05_packshots/games_13/nintendo_switch_8/PS_NSwitch_AstralChain_PEGI_image500w.jpg",
+   "coverImage": "https://www.nintendo.com/eu/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_AstralChain_image500w.jpg"
+  }
+ },
+ {
   "id": "prd_cat_back-to-the-dawn",
   "title": "Back to the Dawn",
   "how": "store-link",
@@ -4414,6 +4439,16 @@
   }
  },
  {
+  "id": "prd_090e739fce7e4a68",
+  "title": "Tales of Vesperia: Definitive Edition",
+  "how": "title",
+  "euId": "1478643",
+  "fill": {
+   "tagline": "Celebrate the 10th anniversary of Tales of Vesperia!",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Tales-of-Vesperia-Definitive-Edition-1478643.html"
+  }
+ },
+ {
   "id": "prd_0fefe79aebb14a3e",
   "title": "Trails in the Sky 2nd Chapter",
   "how": "title",
@@ -4500,6 +4535,18 @@
   }
  },
  {
+  "id": "prd_4ecfb092d8f54893",
+  "title": "Crash Bandicoot N. Sane Trilogy",
+  "how": "title",
+  "euId": "1347784",
+  "fill": {
+   "tagline": "All three original Crash Bandicoot games are debuting on a Nintendo system for the very first time in Crash Bandicoot™ N. Sane Trilogy for Nintendo Switch!",
+   "nsuid": "70010000002089",
+   "product_code": "HACPAHQ3A",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Crash-Bandicoot-N-Sane-Trilogy-1347784.html"
+  }
+ },
+ {
   "id": "prd_4f2857fad85b4338",
   "title": "Tales of ARISE - Beyond the Dawn Edition",
   "how": "title",
@@ -4530,6 +4577,19 @@
   }
  },
  {
+  "id": "prd_5f3a36ceffa24d69",
+  "title": "Trails in the Sky 2nd Chapter - Nintendo Switch 2 Edition",
+  "how": "title",
+  "euId": "3183843",
+  "fill": {
+   "tagline": "Take Fate Into Your Own Hands",
+   "downloadSizeGb": 32.4,
+   "nsuid": "70010000133407",
+   "product_code": "HAC-M-BUU9A",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-Edition/Trails-in-the-Sky-2nd-Chapter-Nintendo-Switch-2-Edition-3183843.html"
+  }
+ },
+ {
   "id": "prd_65fce2035ce9413d",
   "title": "Captain Tsubasa 2: World Fighters",
   "how": "title",
@@ -4537,6 +4597,15 @@
   "fill": {
    "product_code": "HACYBMHVA",
    "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/CAPTAIN-TSUBASA-2-WORLD-FIGHTERS-3017637.html"
+  }
+ },
+ {
+  "id": "prd_8404c32e2c544ea4",
+  "title": "Sonic X Shadow Generations switch 2",
+  "how": "title",
+  "euId": "2807539",
+  "fill": {
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/SONIC-X-SHADOW-GENERATIONS-2807539.html"
   }
  },
  {
@@ -4548,6 +4617,18 @@
    "tagline": "Slash, dash, and manipulate time to unravel your past in a beautifully brutal acrobatic display.",
    "product_code": "HACPAS7YA",
    "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/Katana-ZERO-1532339.html"
+  }
+ },
+ {
+  "id": "prd_96252b4de45f4901",
+  "title": "SpongeBob SquarePants: Titans of the Tide switch 1",
+  "how": "title",
+  "euId": "3170812",
+  "fill": {
+   "tagline": "Save Bikini Bottom in this brand-new ghostly adventure!",
+   "downloadSizeGb": 3.5,
+   "nsuid": "70010000121145",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/SpongeBob-SquarePants-Titans-of-the-Tide-3170812.html"
   }
  },
  {
@@ -4577,6 +4658,29 @@
   "fill": {
    "tagline": "Shovel Knight: Treasure Trove on Nintendo Switch includes the original Shovel Knight game and all previously released campaigns!",
    "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/Shovel-Knight-Treasure-Trove-1200313.html"
+  }
+ },
+ {
+  "id": "prd_bb3ce91b87764684",
+  "title": "SpongeBob SquarePants: Titans of the Tide switch 2",
+  "how": "title",
+  "euId": "2949435",
+  "fill": {
+   "tagline": "Save Bikini Bottom in this brand-new ghostly adventure!",
+   "nsuid": "70010000101928",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/SpongeBob-SquarePants-Titans-of-the-Tide-2949435.html"
+  }
+ },
+ {
+  "id": "prd_c29e3d30355b447a",
+  "title": "Atelier Ryza Secret Trilogy Deluxe Pack switch 2",
+  "how": "title",
+  "euId": "2943805",
+  "fill": {
+   "tagline": "An unseen summer awaits",
+   "nsuid": "70070000028707",
+   "product_code": "BEEYAA29A",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Atelier-Ryza-Secret-Trilogy-Deluxe-Pack-2943805.html"
   }
  },
  {
@@ -4629,6 +4733,16 @@
    "tagline": "Hope is Timeless",
    "downloadSizeGb": 14.5,
    "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/The-Adventures-of-Elliot-The-Millennium-Tales-2882226.html"
+  }
+ },
+ {
+  "id": "prd_db67e6f648294bed",
+  "title": "Dark Souls Remastered",
+  "how": "title",
+  "euId": "1325790",
+  "fill": {
+   "nsuid": "70010000008121",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Dark-Souls-Remastered-1325790.html"
   }
  },
  {
@@ -4767,6 +4881,18 @@
   }
  },
  {
+  "id": "prd_391864a55b884a32",
+  "title": "EA SPORTS FC 26 switch 2",
+  "how": "title",
+  "euId": "2873781",
+  "fill": {
+   "tagline": "The Club is Yours",
+   "supportedLanguages": "Japanese, English, Spanish, French, German, Italian, Dutch, Portuguese, Russian, Korean, Chinese",
+   "nsuid": "70010000100268",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/EA-SPORTS-FC-26-2873781.html"
+  }
+ },
+ {
   "id": "prd_3b080bbbeb5a406e",
   "title": "The Hundred Line: Last Defense Academy",
   "how": "title",
@@ -4823,6 +4949,29 @@
   }
  },
  {
+  "id": "prd_4966d6abd0da4509",
+  "title": "Hollow Knight switch 1",
+  "how": "title",
+  "euId": "1125772",
+  "fill": {
+   "nsuid": "70010000003207",
+   "product_code": "HACPAKLHA",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/Hollow-Knight-1125772.html"
+  }
+ },
+ {
+  "id": "prd_4db08fe5ba464314",
+  "title": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition",
+  "how": "title",
+  "euId": "2881480",
+  "fill": {
+   "tagline": "The groundbreaking tactical RPG makes its long-awaited return.",
+   "supportedLanguages": "Japanese, English, French, German, Korean, Chinese",
+   "nsuid": "70010000100755",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-Edition/FINAL-FANTASY-TACTICS-The-Ivalice-Chronicles-Nintendo-Switch-2-Edition-2881480.html"
+  }
+ },
+ {
   "id": "prd_5b18e929c72c41e0",
   "title": "The Legend of Zelda: Skyward Sword HD",
   "how": "title",
@@ -4841,6 +4990,17 @@
   "euId": "2883415",
   "fill": {
    "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Star-Wars-Outlaws-Gold-Edition-2883415.html"
+  }
+ },
+ {
+  "id": "prd_5c41a894eedd416e",
+  "title": "The Legend of Zelda: Tears of the Kingdom switch 1",
+  "how": "title",
+  "euId": "1576884",
+  "fill": {
+   "tagline": "An epic adventure across the land and skies of Hyrule awaits in The Legend of Zelda: Tears of the Kingdom for Nintendo Switch.",
+   "nsuid": "70010000063715",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/The-Legend-of-Zelda-Tears-of-the-Kingdom-1576884.html"
   }
  },
  {
@@ -4935,6 +5095,21 @@
   }
  },
  {
+  "id": "prd_87ae580ce1e54856",
+  "title": "EA SPORTS FC 27 switch 1",
+  "how": "title",
+  "euId": "3147152",
+  "fill": {
+   "tagline": "The World's Game",
+   "supportedLanguages": "Japanese, English, Spanish, French, German, Italian, Dutch, Portuguese, Russian, Korean, Chinese, Polish",
+   "size": "32.4 GB",
+   "downloadSizeGb": 32.4,
+   "nsuid": "70070000036466",
+   "product_code": "HACYBSYBA",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/EA-SPORTS-FC-27-3147152.html"
+  }
+ },
+ {
   "id": "prd_8a8e7b0dc7b9483a",
   "title": "FINAL FANTASY VIII Remastered",
   "how": "title",
@@ -4945,6 +5120,18 @@
    "nsuid": "70010000019035",
    "product_code": "HACPATU6A",
    "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/FINAL-FANTASY-VIII-Remastered-1626335.html"
+  }
+ },
+ {
+  "id": "prd_928548e6394f46ae",
+  "title": "The Legend of Zelda: Breath of the Wild switch 1",
+  "how": "title",
+  "euId": "1173609",
+  "fill": {
+   "tagline": "Explore a vast and dangerous land to help Link regain his memories following a 100-year slumber in this critically-acclaimed open-air adventure.",
+   "nsuid": "70010000000023",
+   "product_code": "HACPAAAAA",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/The-Legend-of-Zelda-Breath-of-the-Wild-1173609.html"
   }
  },
  {
@@ -4970,6 +5157,19 @@
    "nsuid": "70010000013093",
    "product_code": "HACPARBNA",
    "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/WORLD-OF-FINAL-FANTASY-MAXIMA-1459771.html"
+  }
+ },
+ {
+  "id": "prd_b185a38dcf644622",
+  "title": "EA SPORTS FC 26 switch 1",
+  "how": "title",
+  "euId": "2874004",
+  "fill": {
+   "tagline": "The Club is Yours",
+   "supportedLanguages": "Japanese, English, Spanish, French, German, Italian, Dutch, Portuguese, Russian, Korean, Chinese",
+   "nsuid": "70010000091348",
+   "product_code": "HACYBMZ2A",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/EA-SPORTS-FC-26-2874004.html"
   }
  },
  {
@@ -5029,6 +5229,16 @@
   }
  },
  {
+  "id": "prd_cddf0823d4eb4a54",
+  "title": "Go-Go Town! – Nintendo Switch 2 Edition",
+  "how": "title",
+  "euId": "3115277",
+  "fill": {
+   "nsuid": "70010000128077",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-Edition/Go-Go-Town-Nintendo-Switch-2-Edition-3115277.html"
+  }
+ },
+ {
   "id": "prd_d49c84c34a844de6",
   "title": "NieR:Automata The End of YoRHa Edition",
   "how": "store-link",
@@ -5052,6 +5262,32 @@
   }
  },
  {
+  "id": "prd_d530fb53867c4915",
+  "title": "eFootball Kick-Off!",
+  "how": "title",
+  "euId": "3060035",
+  "fill": {
+   "downloadSizeGb": 26.6,
+   "nsuid": "70010000113744",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/eFootball-Kick-Off--3060035.html"
+  }
+ },
+ {
+  "id": "prd_ddd43641059248a3",
+  "title": "EA SPORTS FC 27 switch 2",
+  "how": "title",
+  "euId": "3147060",
+  "fill": {
+   "tagline": "The World's Game",
+   "supportedLanguages": "Japanese, English, Spanish, French, German, Italian, Dutch, Portuguese, Russian, Korean, Chinese, Polish",
+   "size": "76.4 GB",
+   "downloadSizeGb": 76.4,
+   "nsuid": "70070000036533",
+   "product_code": "BEEYABJUA",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/EA-SPORTS-FC-27-3147060.html"
+  }
+ },
+ {
   "id": "prd_e13531f82f00492d",
   "title": "Rise of the Tomb Raider: 20 Year Celebration",
   "how": "title",
@@ -5060,6 +5296,16 @@
    "downloadSizeGb": 17.6,
    "nsuid": "70010000100723",
    "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Rise-of-the-Tomb-Raider-20-Year-Celebration-3109152.html"
+  }
+ },
+ {
+  "id": "prd_ff440aba76494705",
+  "title": "Stray switch 2",
+  "how": "title",
+  "euId": "3109651",
+  "fill": {
+   "nsuid": "70010000119346",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Stray-3109651.html"
   }
  },
  {
@@ -5575,6 +5821,16 @@
   }
  },
  {
+  "id": "prd_a7b05b105b274f97",
+  "title": "GRID Legends: Deluxe Edition",
+  "how": "title",
+  "euId": "3004520",
+  "fill": {
+   "nsuid": "70010000102793",
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/GRID-Legends-Deluxe-Edition-3004520.html"
+  }
+ },
+ {
   "id": "prd_ad958aa523e24052",
   "title": "Assassin's Creed Shadows",
   "how": "title",
@@ -5703,6 +5959,15 @@
   }
  },
  {
+  "id": "prd_eddd0a3519bd4681",
+  "title": "Super Mario Bros.™ Wonder – Nintendo Switch™ 2 Edition + Meetup in Bellabel Park",
+  "how": "title",
+  "euId": "2915162",
+  "fill": {
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-Edition/Super-Mario-Bros-Wonder-Nintendo-Switch-2-Edition-Meetup-in-Bellabel-Park-2915162.html"
+  }
+ },
+ {
   "id": "prd_efd67851b0b44837",
   "title": "Persona 3 Reload",
   "how": "title",
@@ -5769,6 +6034,15 @@
   "euId": "2792021",
   "fill": {
    "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-Edition/Hades-II-Nintendo-Switch-2-Edition-2792021.html"
+  }
+ },
+ {
+  "id": "prd_032470e4f7dd4cf0",
+  "title": "DAVE THE DIVER – Nintendo Switch 2 Edition",
+  "how": "title",
+  "euId": "2957273",
+  "fill": {
+   "officialStoreUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-Edition/DAVE-THE-DIVER-Nintendo-Switch-2-Edition-2957273.html"
   }
  },
  {
@@ -8029,6 +8303,29 @@
    "size": "1.2 GB",
    "downloadSizeGb": 1.2,
    "nsuid": "70010000104669"
+  }
+ },
+ {
+  "id": "prd_cat_lego-harry-potter-collection",
+  "title": "LEGO Harry Potter Collection",
+  "how": "title",
+  "euId": "1447078",
+  "fill": {
+   "tagline": "This compilation unites the creative prowess of LEGO and the expansive world of Harry Potter!",
+   "description": "This compilation unites the creative prowess of LEGO and the expansive world of Harry Potter!",
+   "descriptionEn": "This compilation unites the creative prowess of LEGO and the expansive world of Harry Potter!",
+   "genres": [
+    "Action",
+    "Adventure"
+   ],
+   "releaseDate": "2018-11-02",
+   "ageRating": "PEGI 7",
+   "numberOfPlayers": "1-2",
+   "supportedLanguages": "English, Spanish, French, German, Italian",
+   "size": "12.1 GB",
+   "downloadSizeGb": 12.1,
+   "product_code": "HACPAQPZA",
+   "coverImage": "https://www.nintendo.com/eu/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_LegoHarryPotterCollection_image500w.jpg"
   }
  },
  {
@@ -12649,8 +12946,8 @@
    "ageRating": "PEGI 18",
    "numberOfPlayers": "1-3",
    "supportedLanguages": "English, Spanish, French, German, Italian, Portuguese, Russian, Chinese, Polish",
-   "size": "18.3 GB",
-   "downloadSizeGb": 18.3,
+   "size": "18.4 GB",
+   "downloadSizeGb": 18.4,
    "nsuid": "70010000080834"
   }
  },
@@ -13117,6 +13414,29 @@
    "downloadSizeGb": 0.87,
    "nsuid": "70010000000206",
    "product_code": "HACPABTCA"
+  }
+ },
+ {
+  "id": "prd_cat_tony-hawk-s-pro-skater-3-4",
+  "title": "Tony Hawk's Pro Skater 3 + 4",
+  "how": "title",
+  "euId": "2797120",
+  "fill": {
+   "tagline": "Two legendary Activision games return on Nintendo Switch 2.",
+   "description": "Two legendary Activision games return on Nintendo Switch 2.",
+   "descriptionEn": "Two legendary Activision games return on Nintendo Switch 2.",
+   "genres": [
+    "Action",
+    "Other",
+    "Sports"
+   ],
+   "publisher": "Activision",
+   "releaseDate": "2025-07-08",
+   "ageRating": "PEGI 12",
+   "numberOfPlayers": "1-8",
+   "supportedLanguages": "Japanese, English, Spanish, French, German, Italian, Portuguese",
+   "nsuid": "70070000028044",
+   "product_code": "BEEYAAWGN"
   }
  },
  {
@@ -31429,7 +31749,7 @@
    "supportedLanguages": "Japanese, English, Spanish, French, German, Italian, Portuguese, Russian, Korean, Chinese",
    "size": "1.7 GB",
    "downloadSizeGb": 1.7,
-   "nsuid": "70070000030174",
+   "nsuid": "70010000099976",
    "nintendoCardImage": "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_games/simonthesorcererorigins/1x1_SimonTheSorcererOrigins_image500w.jpg",
    "coverImage": "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_games/simonthesorcererorigins/2x1_SimonTheSorcererOrigins_image500w.jpg"
   }
@@ -34143,6 +34463,32 @@
    "size": "1.6 GB",
    "downloadSizeGb": 1.6,
    "nsuid": "70010000091771"
+  }
+ },
+ {
+  "id": "prd_cat_the-survivalists",
+  "title": "The Survivalists",
+  "how": "title",
+  "euId": "1695265",
+  "fill": {
+   "tagline": "The island is alive! Your newfound home will change with day/night cycles as you explore and uncover its secrets.",
+   "description": "The island is alive! Your newfound home will change with day/night cycles as you explore and uncover its secrets.",
+   "descriptionEn": "The island is alive! Your newfound home will change with day/night cycles as you explore and uncover its secrets.",
+   "genres": [
+    "Action",
+    "Adventure",
+    "RPG",
+    "Simulation"
+   ],
+   "developer": "Team17 Digital Ltd",
+   "releaseDate": "2020-10-09",
+   "ageRating": "PEGI 7",
+   "numberOfPlayers": "1-4",
+   "supportedLanguages": "Japanese, English, Spanish, French, German, Italian, Portuguese, Russian, Korean, Chinese",
+   "size": "1.1 GB",
+   "downloadSizeGb": 1.1,
+   "product_code": "HACPATLVA",
+   "coverImage": "https://www.nintendo.com/eu/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_TheSurvivalists_image500w.jpg"
   }
  },
  {

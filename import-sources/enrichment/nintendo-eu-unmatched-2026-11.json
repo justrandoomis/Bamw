@@ -5,11 +5,6 @@
   "platform": "switch2"
  },
  {
-  "id": "prd_cat_astral-chain",
-  "title": "ASTRAL CHAIN",
-  "platform": "switch1"
- },
- {
   "id": "prd_cat_attack-on-titan-2",
   "title": "Attack on Titan 2",
   "platform": "switch1"
@@ -85,21 +80,6 @@
   "platform": "switch1"
  },
  {
-  "id": "prd_090e739fce7e4a68",
-  "title": "Tales of Vesperia: Definitive Edition",
-  "platform": "switch1"
- },
- {
-  "id": "prd_4ecfb092d8f54893",
-  "title": "Crash Bandicoot N. Sane Trilogy",
-  "platform": "switch1"
- },
- {
-  "id": "prd_5f3a36ceffa24d69",
-  "title": "Trails in the Sky 2nd Chapter - Nintendo Switch 2 Edition",
-  "platform": "switch2"
- },
- {
   "id": "prd_7801fc274ac44b37",
   "title": "Danganronpa 2x2",
   "platform": "switch2"
@@ -110,33 +90,8 @@
   "platform": "switch1"
  },
  {
-  "id": "prd_8404c32e2c544ea4",
-  "title": "Sonic X Shadow Generations switch 2",
-  "platform": "switch2"
- },
- {
   "id": "prd_8550e31cb3af4dea",
   "title": "Fuyuzono Sacrifice",
-  "platform": "switch1"
- },
- {
-  "id": "prd_96252b4de45f4901",
-  "title": "SpongeBob SquarePants: Titans of the Tide switch 1",
-  "platform": "switch1"
- },
- {
-  "id": "prd_bb3ce91b87764684",
-  "title": "SpongeBob SquarePants: Titans of the Tide switch 2",
-  "platform": "switch2"
- },
- {
-  "id": "prd_c29e3d30355b447a",
-  "title": "Atelier Ryza Secret Trilogy Deluxe Pack switch 2",
-  "platform": "switch2"
- },
- {
-  "id": "prd_db67e6f648294bed",
-  "title": "Dark Souls Remastered",
   "platform": "switch1"
  },
  {
@@ -145,69 +100,14 @@
   "platform": "switch1"
  },
  {
-  "id": "prd_391864a55b884a32",
-  "title": "EA SPORTS FC 26 switch 2",
-  "platform": "switch2"
- },
- {
-  "id": "prd_4966d6abd0da4509",
-  "title": "Hollow Knight switch 1",
-  "platform": "switch1"
- },
- {
-  "id": "prd_4db08fe5ba464314",
-  "title": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition",
-  "platform": "switch2"
- },
- {
-  "id": "prd_5c41a894eedd416e",
-  "title": "The Legend of Zelda: Tears of the Kingdom switch 1",
-  "platform": "switch1"
- },
- {
   "id": "prd_69ea08de9fcb4869",
   "title": "EA SPORTS FIFA 23 Nintendo Switch Legacy Edition",
   "platform": "switch1"
  },
  {
-  "id": "prd_87ae580ce1e54856",
-  "title": "EA SPORTS FC 27 switch 1",
-  "platform": "switch1"
- },
- {
-  "id": "prd_928548e6394f46ae",
-  "title": "The Legend of Zelda: Breath of the Wild switch 1",
-  "platform": "switch1"
- },
- {
-  "id": "prd_b185a38dcf644622",
-  "title": "EA SPORTS FC 26 switch 1",
-  "platform": "switch1"
- },
- {
-  "id": "prd_cddf0823d4eb4a54",
-  "title": "Go-Go Town! – Nintendo Switch 2 Edition",
-  "platform": "switch2"
- },
- {
   "id": "prd_ce036843bb8c42f2",
   "title": "Tomb Raider: Definitive Edition switch 1&2",
   "platform": "both"
- },
- {
-  "id": "prd_d530fb53867c4915",
-  "title": "eFootball Kick-Off!",
-  "platform": "switch2"
- },
- {
-  "id": "prd_ddd43641059248a3",
-  "title": "EA SPORTS FC 27 switch 2",
-  "platform": "switch2"
- },
- {
-  "id": "prd_ff440aba76494705",
-  "title": "Stray switch 2",
-  "platform": "switch2"
  },
  {
   "id": "prd_e395bfb05dc141f1",
@@ -218,11 +118,6 @@
   "id": "prd_7f0b34dece8f4245",
   "title": "RAIDOU Remastered: The Mystery of the Soulless Army",
   "platform": "both"
- },
- {
-  "id": "prd_a7b05b105b274f97",
-  "title": "GRID Legends: Deluxe Edition",
-  "platform": "switch2"
  },
  {
   "id": "prd_c4c08e2c87db4f69",
@@ -240,11 +135,6 @@
   "platform": "switch2"
  },
  {
-  "id": "prd_eddd0a3519bd4681",
-  "title": "Super Mario Bros.™ Wonder – Nintendo Switch™ 2 Edition + Meetup in Bellabel Park",
-  "platform": "switch2"
- },
- {
   "id": "prd_cb0a2dc68a744407",
   "title": "Street Fighter 6: Years 1-2 Fighters Edition",
   "platform": "switch2"
@@ -252,11 +142,6 @@
  {
   "id": "prd_e035ee51b91d4187",
   "title": "JUST DANCE 2026 EDITION",
-  "platform": "switch2"
- },
- {
-  "id": "prd_032470e4f7dd4cf0",
-  "title": "DAVE THE DIVER – Nintendo Switch 2 Edition",
   "platform": "switch2"
  },
  {
@@ -287,11 +172,6 @@
  {
   "id": "prd_cat_utakata-no-uchronia",
   "title": "Utakata no Uchronia",
-  "platform": "switch1"
- },
- {
-  "id": "prd_cat_lego-harry-potter-collection",
-  "title": "LEGO Harry Potter Collection",
   "platform": "switch1"
  },
  {
@@ -388,11 +268,6 @@
   "id": "prd_cat_sd-shin-kamen-rider-rumble",
   "title": "SD Shin Kamen Rider: Rumble",
   "platform": "switch1"
- },
- {
-  "id": "prd_cat_tony-hawk-s-pro-skater-3-4",
-  "title": "Tony Hawk's Pro Skater 3 + 4",
-  "platform": "switch2"
  },
  {
   "id": "prd_cat_the-underground-survival",
@@ -662,11 +537,6 @@
  {
   "id": "prd_cat_sekimorigami",
   "title": "SEKIMORIGAMI",
-  "platform": "switch1"
- },
- {
-  "id": "prd_cat_the-survivalists",
-  "title": "The Survivalists",
   "platform": "switch1"
  },
  {

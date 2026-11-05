@@ -5,7 +5,8 @@
  * languages, size, codes, and the front box / square / wide artwork, each in
  * its own role.
  *
- *   node scripts/catalogue-enrich.mjs [--file import-sources/enrichment/<file>.json] [--apply true]
+ *   node scripts/catalogue-enrich.mjs [--file import-sources/enrichment/<file>.json]
+ *                                     [--settings <settings file>] [--apply true]
  *
  * The patches are generated from public data by `scripts/nintendo-eu-enrich.mjs`
  * and committed under `import-sources/enrichment/`.
@@ -42,9 +43,13 @@ const PATCH_FILE = args.file && args.file !== "true" ? args.file : "import-sourc
 /*
   Owner-approved settings, written by the same run-once token: the one dollar
   rate and the occasion-deal campaigns. Only these keys are accepted.
+
+  Only when named (`--settings <file>`). The first run (2026-11-05) applied
+  `import-sources/enrichment/settings-2026-11.json`; applied by default on
+  every later run, it would put back the rate and the campaigns as they were
+  that morning over whatever the owner has set since.
 */
-const SETTINGS_FILE =
-  args.settings && args.settings !== "true" ? args.settings : "import-sources/enrichment/settings-2026-11.json";
+const SETTINGS_FILE = args.settings && args.settings !== "true" ? args.settings : "";
 const SETTINGS_KEYS = new Set(["usdExchangeRate", "usd_iqd_rate", "deals"]);
 const TOKEN_FILE = "scripts/catalogue-enrich.apply-token";
 const OUT_REPORT = "catalogue-enrich.md";
@@ -188,7 +193,8 @@ for (const patch of patches) {
 }
 
 let settingsPatch = null;
-if (existsSync(SETTINGS_FILE)) {
+if (SETTINGS_FILE) {
+  if (!existsSync(SETTINGS_FILE)) fail(`لا يوجد ملف ${SETTINGS_FILE}`);
   const raw = JSON.parse(readFileSync(SETTINGS_FILE, "utf8"));
   settingsPatch = Object.fromEntries(Object.entries(raw).filter(([key]) => SETTINGS_KEYS.has(key)));
   const rate = Number(settingsPatch.usdExchangeRate ?? settingsPatch.usd_iqd_rate);

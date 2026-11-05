@@ -1,6 +1,9 @@
-# One run-once token. Approved by the owner on 2026-11-05: fill the empty
-# fields of the shop's games from Nintendo's catalogue, set the dollar rate to
-# 1550 and create the Black Friday 2026 campaign with the deals switched off.
+# One run-once token. Approved by the owner on 2026-11-05 («Yes, run it»):
+# fill the empty fields of the shop's games from Nintendo's catalogue again,
+# now that the title match also links names that end in their console
+# («… switch 1») or that Nintendo writes with ™ — 26 more games. Fill only,
+# re-checked against the live product; no settings are written (they are only
+# applied when a run names a file with --settings).
 # Claimed in console_runs before the first write; it can never write twice.
 # Put a NEW token here to run again.
-2026-11-05-nintendo-eu-fill-and-settings
+2026-11-05-nintendo-eu-fill-2
