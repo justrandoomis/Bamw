@@ -51,6 +51,13 @@ function CategoryPage() {
   const [sortBy, setSortBy] = useState<SortOption>("best_sellers");
   const [platform, setPlatform] = useState<PlatformOption>("all");
   const [selectedGenre, setSelectedGenre] = useState<string>("all");
+  /*
+    The games shelf in two halves: the shop's own games, and the rest of
+    Nintendo's to ask for. Both by default, the shop's first; either alone
+    from the pills in the header, so the eighteen thousand are one tap away
+    rather than seventeen hundred cards down.
+  */
+  const [source, setSource] = useState<"all" | "shop" | "catalogue">("all");
 
   /*
     The slim catalogue, through the app's own hook.
@@ -330,11 +337,15 @@ function CategoryPage() {
     scroll stutter and the "the products load again when I scroll back up"
     came from.
   */
+  const shelfProducts = useMemo(
+    () => (isNintendoGames && source === "catalogue" ? [] : products),
+    [isNintendoGames, source, products],
+  );
   const {
     visible: visibleProducts,
     sentinelRef,
     done: allShown,
-  } = useProgressiveList(products, {
+  } = useProgressiveList(shelfProducts, {
     initial: isNintendoGames ? 60 : 24,
     step: isNintendoGames ? 45 : 20,
     /*
@@ -348,14 +359,16 @@ function CategoryPage() {
       scrolling — «تحمل المنتجات من جديد» exactly, which is the fault this
       window exists to fix.
     */
-    resetKey: `${categoryId}|${sortBy}|${platform}|${selectedGenre}`,
+    resetKey: `${categoryId}|${sortBy}|${platform}|${selectedGenre}|${source}`,
   });
 
   /* The rest of Nintendo's games come after the shop's own, once those are all on screen. */
-  const showCatalogue = isNintendoGames && allShown;
+  const showCatalogue = isNintendoGames && allShown && source !== "shop";
   const catalogueSentinelRef = useNearViewport(catalogue.fetchNextPage);
   const catalogueTotal = isNintendoGames ? catalogue.total : 0;
-  const hasGames = products.length > 0 || catalogueTotal > 0;
+  const shownTotal =
+    source === "shop" ? products.length : source === "catalogue" ? catalogueTotal : products.length + catalogueTotal;
+  const hasGames = shelfProducts.length > 0 || (source !== "shop" && catalogueTotal > 0);
 
   const unit = isNintendoGames ? t("لعبة") : t("منتج");
   const platformOptions: { id: PlatformOption; label: string }[] = [
@@ -363,14 +376,21 @@ function CategoryPage() {
     { id: "switch1", label: "Switch 1" },
     { id: "switch2", label: "Switch 2" },
   ];
-  const filtersActive = selectedGenre !== "all" || platform !== "all";
+  const filtersActive = selectedGenre !== "all" || platform !== "all" || source !== "all";
   /* Nothing to sort and nothing to filter: the toolbar would be a bar of nothing. */
   const showToolbar = isLoading || hasGames || filtersActive;
   const resetFilters = () => {
     setSelectedGenre("all");
     setPlatform("all");
     setSortBy("best_sellers");
+    setSource("all");
   };
+  const sourcePills = isNintendoGames
+    ? ([
+        { id: "shop", label: t("في المتجر"), count: products.length },
+        { id: "catalogue", label: t("للطلب"), count: catalogueTotal },
+      ] as const)
+    : [];
 
   return (
     <AppShell currentView="store" onBack={() => navigate({ to: "/" })}>
@@ -395,7 +415,7 @@ function CategoryPage() {
             <div className="relative z-20 flex min-h-[188px] flex-col justify-end p-5 text-white sm:min-h-[248px] sm:p-8">
               <p className="text-[12px] font-bold text-white/80 sm:text-[13px]">
                 <span dir="ltr" className="tabular-nums">
-                  {(products.length + catalogueTotal).toLocaleString("en-US")}
+                  {shownTotal.toLocaleString("en-US")}
                 </span>{" "}
                 {unit}
               </p>
@@ -405,6 +425,31 @@ function CategoryPage() {
               <p className="mt-1.5 max-w-md text-[13px] leading-relaxed text-white/85 sm:text-[15px]">
                 {categoryInfo.description}
               </p>
+              {sourcePills.length > 0 && catalogueTotal > 0 ? (
+                <div role="group" aria-label={t("مصدر الألعاب")} className="mt-3 flex flex-wrap gap-1.5">
+                  {sourcePills.map((pill) => {
+                    const pressed = source === pill.id;
+                    return (
+                      <button
+                        key={pill.id}
+                        type="button"
+                        aria-pressed={pressed}
+                        onClick={() => setSource(pressed ? "all" : pill.id)}
+                        className={`inline-flex min-h-9 items-center gap-1.5 rounded-full px-3.5 text-[12.5px] font-black backdrop-blur transition-colors ${
+                          pressed
+                            ? "bg-white text-[#8B0000] shadow-md"
+                            : "border border-white/35 bg-white/15 text-white hover:bg-white/25"
+                        }`}
+                      >
+                        {pill.label}
+                        <span dir="ltr" className="tabular-nums opacity-80">
+                          {pill.count.toLocaleString("en-US")}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : null}
             </div>
           </div>
         </header>
@@ -508,7 +553,7 @@ function CategoryPage() {
         >
           <div className="min-w-0 flex-1">
             {/* No shop game matches yet the rest of Nintendo's are still on their way: not «no games». */}
-            {isLoading || (isNintendoGames && products.length === 0 && catalogue.isPending) ? (
+            {isLoading || (isNintendoGames && shelfProducts.length === 0 && catalogue.isPending) ? (
               <div
                 className={
                   isNintendoGames
