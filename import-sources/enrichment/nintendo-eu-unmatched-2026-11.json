@@ -1,10 +1,5 @@
 [
  {
-  "id": "prd_cat_9-r-i-p-switch-2",
-  "title": "9 R.I.P.",
-  "platform": "switch2"
- },
- {
   "id": "prd_cat_attack-on-titan-2",
   "title": "Attack on Titan 2",
   "platform": "switch1"
@@ -30,11 +25,6 @@
   "platform": "switch2"
  },
  {
-  "id": "prd_cat_disney-tsum-tsum-festival",
-  "title": "Disney Tsum Tsum Festival",
-  "platform": "switch2"
- },
- {
   "id": "prd_cat_ebaseball-powerful-pro-baseball-2026-2027",
   "title": "eBASEBALL Powerful Pro Baseball 2026-2027",
   "platform": "switch2"
@@ -57,16 +47,6 @@
  {
   "id": "prd_cat_pok-mon-firered-leafgreen",
   "title": "Pokémon FireRed / LeafGreen",
-  "platform": "switch1"
- },
- {
-  "id": "prd_cat_pok-mon-sword-shield-0-10-8-76",
-  "title": "Pokémon Sword / Shield [0:10]",
-  "platform": "switch1"
- },
- {
-  "id": "prd_cat_pok-mon-sword-shield-1-27-7-78",
-  "title": "Pokémon Sword / Shield [1:27]",
   "platform": "switch1"
  },
  {
@@ -115,24 +95,9 @@
   "platform": "switch1"
  },
  {
-  "id": "prd_7f0b34dece8f4245",
-  "title": "RAIDOU Remastered: The Mystery of the Soulless Army",
-  "platform": "both"
- },
- {
   "id": "prd_c4c08e2c87db4f69",
   "title": "Mario & Sonic at the Olympic Games Tokyo 2020",
   "platform": "switch1"
- },
- {
-  "id": "prd_ca9a9392db394624",
-  "title": "Little Nightmares III",
-  "platform": "both"
- },
- {
-  "id": "prd_ebcb11cda2854251",
-  "title": "Hollow Knight: Silksong",
-  "platform": "switch2"
  },
  {
   "id": "prd_cb0a2dc68a744407",
@@ -203,11 +168,6 @@
   "id": "prd_cat_mortal-kombat-11-ultimate",
   "title": "Mortal Kombat 11 Ultimate",
   "platform": "switch2"
- },
- {
-  "id": "prd_cat_sonic-x-shadow-generations-2-23-switch",
-  "title": "Sonic X Shadow Generations [2:23 Switch]",
-  "platform": "switch1"
  },
  {
   "id": "prd_cat_ace-angler-fishing-spirits",
@@ -400,11 +360,6 @@
   "platform": "switch2"
  },
  {
-  "id": "prd_cat_the-town-of-nie-4-09-7-78",
-  "title": "The Town of Nie [4:09]",
-  "platform": "switch1"
- },
- {
   "id": "prd_cat_pac-man-mega-tunnel-battle-chomp-champs",
   "title": "Pac-Man Mega Tunnel Battle: Chomp Champs",
   "platform": "switch1"
@@ -418,11 +373,6 @@
   "id": "prd_cat_battle-spirits-connected-battlers",
   "title": "Battle Spirits: Connected Battlers",
   "platform": "switch1"
- },
- {
-  "id": "prd_cat_morkull-ragast-s-rage-4-29-switch-2",
-  "title": "Morkull Ragast's Rage [4:29 Switch 2]",
-  "platform": "switch2"
  },
  {
   "id": "prd_cat_ebaseball-powerful-pro-baseball-2024-2025",
@@ -440,24 +390,9 @@
   "platform": "switch1"
  },
  {
-  "id": "prd_cat_dragon-quest-builders-2",
-  "title": "DRAGON QUEST BUILDERS 2",
-  "platform": "switch2"
- },
- {
-  "id": "prd_cat_shantae-half-genie-hero",
-  "title": "Shantae: Half-Genie Hero",
-  "platform": "switch2"
- },
- {
   "id": "prd_cat_nobunaga-s-ambition-taishi",
   "title": "Nobunaga's Ambition: Taishi",
   "platform": "switch1"
- },
- {
-  "id": "prd_cat_journey-to-the-savage-planet",
-  "title": "Journey to the Savage Planet",
-  "platform": "switch2"
  },
  {
   "id": "prd_cat_monster-hunter-xx",

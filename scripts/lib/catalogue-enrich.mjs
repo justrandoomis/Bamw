@@ -41,6 +41,31 @@ export function isEmptyValue(value) {
   );
 }
 
+/** The picture fields a repair may write: each its own role, as the fill writes them. */
+export const REPAIRABLE_PICTURES = new Set(["cartridgeImage", "nintendoCardImage", "coverImage"]);
+
+/**
+ * The part of `repair` that may be written onto `live` now: a picture whose
+ * stored link points at a file proven gone (`isDead`, from listing the
+ * buckets) is replaced by Nintendo's picture for the same role. Nothing else:
+ * not a live picture, not an unknown one, not a field that is not a picture,
+ * not with an empty or non-web value. This is the one place the enrichment
+ * writes over a value, and only over a link to nothing.
+ */
+export function planRepair(live, repair, isDead) {
+  const out = {};
+  if (!live || typeof live !== "object" || !repair || typeof repair !== "object") return out;
+  for (const [field, value] of Object.entries(repair)) {
+    if (!REPAIRABLE_PICTURES.has(field)) continue;
+    if (typeof value !== "string" || !/^https:\/\/\S+$/i.test(value.trim())) continue;
+    const current = live[field];
+    if (isEmptyValue(current) || typeof current !== "string") continue;
+    if (!isDead(current.trim())) continue;
+    out[field] = value.trim();
+  }
+  return out;
+}
+
 /** The part of `fill` that may be written onto `live` now. */
 export function planFill(live, fill) {
   const out = {};

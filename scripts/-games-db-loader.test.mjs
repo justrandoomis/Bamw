@@ -29,7 +29,7 @@ import {
   upsertDetailsStatement,
   upsertTitlesStatement,
 } from "./lib/games-db-rows.mjs";
-import { normalise, toFacts } from "./lib/nintendo-eu-index.mjs";
+import { normalise, titleVariants, toFacts } from "./lib/nintendo-eu-index.mjs";
 
 const MIGRATION = readFileSync(
   fileURLToPath(new URL("../migrations/20261105_nintendo_titles.sql", import.meta.url)),
@@ -256,6 +256,41 @@ describe("which product a title links to", () => {
     expect(normalise("Super Mario Odyssey (Switch 1)")).toBe("super mario odyssey");
     expect(normalise("Mario Kart 8 Deluxe ns")).toBe("mario kart 8 deluxe");
     expect(normalise("Nintendo Switch Sports")).toBe("nintendo switch sports");
+  });
+
+  it("reads past the supplier's codes and a pair of games, and across consoles only where nothing is ambiguous", () => {
+    const games = [
+      toFacts(doc({ fs_id: "400", title: "Chained Together", url: "/en-gb/Games/c-400.html", nsuid_txt: ["40"] })),
+      toFacts(doc({ fs_id: "401", title: "Pokémon™ Sword", url: "/en-gb/Games/p-401.html", nsuid_txt: ["41"] })),
+      toFacts(doc({ fs_id: "402", title: "Pokémon™ Shield", url: "/en-gb/Games/p-402.html", nsuid_txt: ["42"] })),
+      toFacts(doc({ fs_id: "403", title: "Hollow Knight: Silksong", url: "/en-gb/Games/h-403.html", nsuid_txt: ["43"] })),
+      toFacts(doc({ fs_id: "404", title: "Little Nightmares III", url: "/en-gb/Games/l-404.html", nsuid_txt: ["44"] })),
+      toFacts(
+        doc({ fs_id: "405", title: "Little Nightmares III", url: "/en-gb/Games/l-405.html", nsuid_txt: ["45"], playable_on_txt: ["BEE"] }),
+      ),
+      toFacts(doc({ fs_id: "406", title: "Fate", url: "/en-gb/Games/f-406.html", nsuid_txt: ["46"] })),
+    ];
+    const links = linkShopProducts(games, [
+      // Real names from the shop's sheet on 2026-11-05.
+      { id: "chained", title: "Chained Together [0:43 Switch 2]", platform: "switch1" },
+      { id: "pokemon", title: "Pokémon Sword / Shield [1:27]", platform: "switch1" },
+      // Sold for Switch 2; Nintendo lists it for Switch 1 only.
+      { id: "silksong", title: "Hollow Knight: Silksong", platform: "switch2" },
+      // Sold for both; Nintendo lists it once for each console.
+      { id: "nightmares", title: "Little Nightmares III", platform: "both" },
+      // A slash with no spaces is part of a name, not a pair.
+      { id: "fate", title: "Fate/EXTELLA", platform: "switch1" },
+    ]);
+    expect(links.get("400")?.productId).toBe("chained");
+    expect(links.get("401")?.productId).toBe("pokemon");
+    expect(links.get("403")?.productId).toBe("silksong");
+    expect(links.get("404")?.productId).toBe("nightmares");
+    expect(links.has("406")).toBe(false);
+    expect(titleVariants("Pokémon Sword / Shield [1:27]")).toEqual([
+      "Pokémon Sword / Shield [1:27]",
+      "Pokémon Sword / Shield",
+      "Pokémon Sword",
+    ]);
   });
 
   it("links nothing on a title two games share, and nothing the shop cannot sell", () => {

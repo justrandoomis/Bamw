@@ -226,10 +226,33 @@ export function indexMaps(index) {
 }
 
 /**
+ * The names a shop listing may go by, as written first: then without the
+ * supplier sheet's bracketed codes («Chained Together [0:43 Switch 2]»,
+ * «Pokémon Sword / Shield [1:27]» — a code holds a digit), then the first of
+ * two games sold as one («Pokémon Sword / Shield» is Pokémon Sword; a slash
+ * with no spaces, as in «Fate/EXTELLA», is part of a name).
+ */
+export function titleVariants(title) {
+  const asWritten = String(title ?? "").trim();
+  const out = [asWritten];
+  const noCodes = asWritten.replace(/\s*\[[^\]]*\d[^\]]*\]\s*/g, " ").replace(/\s+/g, " ").trim();
+  if (noCodes && noCodes !== asWritten) out.push(noCodes);
+  const pair = /^(.*?\S)\s+\/\s+\S/.exec(noCodes);
+  if (pair) out.push(pair[1]);
+  return out;
+}
+
+/**
  * The Nintendo row a product is, strongest evidence first: its own Nintendo
- * store link, then its nsuid, then its exact folded title on the same console
- * — and only when exactly one row has that title. No confident match is no
- * match; a wrong link is worse than none.
+ * store link, then its nsuid, then its exact folded title (or one of its
+ * `titleVariants`) on the same console — and only when exactly one row has
+ * that title. No confident match is no match; a wrong link is worse than none.
+ *
+ * Two console cases are not ambiguity:
+ *   - a listing for both consoles, where Nintendo lists the game once for
+ *     each: the Switch 1 entry is the game;
+ *   - a Switch 2 listing of a game Nintendo lists only for Switch 1 («9 R.I.P.»,
+ *     «Hollow Knight: Silksong»): it is that game, running on Switch 2.
  */
 export function matchProduct(product, maps) {
   const viaLink = storeLinkPaths(product)
@@ -239,9 +262,23 @@ export function matchProduct(product, maps) {
   if (product.nsuid && maps.byNsuid.has(String(product.nsuid))) {
     return { game: maps.byNsuid.get(String(product.nsuid)), how: "nsuid" };
   }
-  const candidates = (maps.byTitle.get(normalise(product.titleEn || product.title)) ?? []).filter((g) =>
-    sameConsole(product, g),
-  );
-  if (candidates.length === 1) return { game: candidates[0], how: "title" };
+  const platform = String(product.platform ?? "switch1");
+  for (const name of titleVariants(product.titleEn || product.title)) {
+    const all = maps.byTitle.get(normalise(name)) ?? [];
+    const same = all.filter((g) => sameConsole(product, g));
+    if (same.length === 1) return { game: same[0], how: "title" };
+    if (
+      platform === "both" &&
+      same.length === 2 &&
+      same.some((g) => g.platform === "switch1") &&
+      same.some((g) => g.platform === "switch2")
+    ) {
+      return { game: same.find((g) => g.platform === "switch1"), how: "title" };
+    }
+    if (!same.length && platform === "switch2") {
+      const forSwitch1 = all.filter((g) => g.platform === "switch1");
+      if (forSwitch1.length === 1) return { game: forSwitch1[0], how: "title" };
+    }
+  }
   return null;
 }

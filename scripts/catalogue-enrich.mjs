@@ -15,6 +15,12 @@
  * in production at the moment of writing (`planFill`), so nothing an admin has
  * written — before or since the patch was made — is ever replaced.
  *
+ * One exception, and only for pictures (`planRepair`): a picture whose stored
+ * link points at a file absent from both buckets — a link to nothing, which
+ * the page shows as «لم يتم إضافة الصورة بعد» — is replaced by Nintendo's
+ * picture for the same role. A live stored picture, one only in the older
+ * bucket, and one whose listing could not be read are all left alone.
+ *
  * DRY unless the pushed commit carries an unspent token in
  * `scripts/catalogue-enrich.apply-token` (claimed in `console_runs` before the
  * first write, so a re-run cannot write twice) or `--apply true` is passed by
@@ -29,7 +35,15 @@ import { existsSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { build } from "esbuild";
 
-import { planFill } from "./lib/catalogue-enrich.mjs";
+import { planFill, planRepair } from "./lib/catalogue-enrich.mjs";
+import { commonPrefix, listPrefix } from "./lib/r2-listing.mjs";
+import {
+  SERVING_BUCKET,
+  WRITING_BUCKET,
+  isBlanketFailure,
+  r2ListVerdictFor,
+  storageKeyFor,
+} from "./lib/square-link-verdict.mjs";
 import { overlayProductIds, readOverlayProduct, writeOverlayProduct } from "./lib/store-overlay.mjs";
 
 const args = Object.fromEntries(
@@ -177,9 +191,49 @@ const store = await app.getStore();
 const live = new Map((store.products ?? []).map((p) => [String(p.id), p]));
 const overlays = await overlayProductIds(app);
 
+/*
+  Which stored pictures are links to nothing. Every `/api/files/...` link a
+  repair could replace is looked up in ONE listing per bucket — the bucket the
+  site serves from and the one older scripts wrote to — never by asking the
+  site picture by picture. «dead» is absent from both; a file only in the
+  older bucket is «misplaced» (square-card-relocate copies those) and is left
+  alone. A listing that did not complete, or a share of dead and unknown past
+  the shared guard, turns every repair off: a checker that cannot see must
+  not erase the shop's pictures.
+*/
+const repairKeys = new Set();
+for (const patch of patches) {
+  const product = live.get(String(patch.id));
+  if (!product || !patch.repair) continue;
+  for (const field of Object.keys(patch.repair)) {
+    const key = storageKeyFor(product[field]);
+    if (key) repairKeys.add(key);
+  }
+}
+const verdicts = new Map();
+let repairsOff = "";
+let pictureCounts = null;
+if (repairKeys.size) {
+  const root = commonPrefix(repairKeys);
+  const r2 = { account: process.env["CLOUDFLARE_ACCOUNT_ID"], token: process.env["CLOUDFLARE_API_TOKEN"] };
+  const servingKeys = await listPrefix(SERVING_BUCKET, root, r2);
+  const writingKeys = await listPrefix(WRITING_BUCKET, root, r2);
+  const counts = { alive: 0, misplaced: 0, dead: 0, unknown: 0 };
+  for (const key of repairKeys) {
+    const verdict = r2ListVerdictFor(key, servingKeys, writingKeys);
+    verdicts.set(key, verdict);
+    counts[verdict] = (counts[verdict] ?? 0) + 1;
+  }
+  if (!servingKeys || !writingKeys) repairsOff = "تعذّرت قراءة قائمة الملفات";
+  else if (isBlanketFailure(counts)) repairsOff = `نسبة المفقود كبيرة على نحو مريب (${counts.dead + counts.unknown} من ${repairKeys.size})`;
+  pictureCounts = counts;
+}
+const isDead = (url) => !repairsOff && verdicts.get(storageKeyFor(url)) === "dead";
+
 const planned = [];
 const missingProducts = [];
 const fieldCounts = {};
+const repairCounts = {};
 for (const patch of patches) {
   const product = live.get(String(patch.id));
   if (!product) {
@@ -187,10 +241,22 @@ for (const patch of patches) {
     continue;
   }
   const fill = planFill(product, patch.fill);
-  if (!Object.keys(fill).length) continue;
+  const repair = planRepair(product, patch.repair, isDead);
+  if (!Object.keys(fill).length && !Object.keys(repair).length) continue;
   for (const field of Object.keys(fill)) fieldCounts[field] = (fieldCounts[field] ?? 0) + 1;
-  planned.push({ id: String(patch.id), title: patch.title, how: patch.how, overlay: overlays.has(String(patch.id)), fill });
+  for (const field of Object.keys(repair)) repairCounts[field] = (repairCounts[field] ?? 0) + 1;
+  planned.push({
+    id: String(patch.id),
+    title: patch.title,
+    how: patch.how,
+    overlay: overlays.has(String(patch.id)),
+    fill: patch.fill,
+    repair: patch.repair ?? {},
+    write: { ...fill, ...repair },
+  });
 }
+/** What may be written onto `product` now, checked again at the moment of writing. */
+const writeFor = (product, entry) => ({ ...planFill(product, entry.fill), ...planRepair(product, entry.repair, isDead) });
 
 let settingsPatch = null;
 if (SETTINGS_FILE) {
@@ -228,14 +294,32 @@ say("| الحقل | عدد المنتجات |");
 say("| --- | --- |");
 for (const [field, n] of Object.entries(fieldCounts).sort((a, b) => b[1] - a[1])) say(`| ${field} | ${n} |`);
 say();
+say(
+  `- صور مخزّنة فُحصت: ${repairKeys.size}` +
+    (pictureCounts
+      ? ` — موجودة ${pictureCounts.alive}، في الحاوية القديمة ${pictureCounts.misplaced}، ` +
+        `مفقودة ${pictureCounts.dead}، غير معروفة ${pictureCounts.unknown}`
+      : ""),
+);
+if (repairsOff) say(`- **الإصلاح متوقف:** ${repairsOff} — لن تُستبدل أي صورة.`);
+say(
+  `- صور مفقودة ستُستبدل بصورة نينتندو للدور نفسه: ` +
+    (Object.entries(repairCounts)
+      .map(([field, n]) => `${field} ${n}`)
+      .join("، ") || "لا شيء"),
+);
+say();
 say("أمثلة:");
-for (const p of planned.slice(0, 8)) say(`- ${p.title} (${p.how}): ${Object.keys(p.fill).join("، ")}`);
+for (const p of planned.slice(0, 8)) say(`- ${p.title} (${p.how}): ${Object.keys(p.write).join("، ")}`);
 say();
 
 const summary = {
   file: PATCH_FILE,
   planned: planned.length,
   fieldCounts,
+  repairCounts,
+  pictures: pictureCounts,
+  repairsOff: repairsOff || null,
   missingProducts: missingProducts.length,
   settings: settingsPatch ? Object.keys(settingsPatch) : [],
 };
@@ -265,25 +349,25 @@ for (const entry of planned.filter((e) => e.overlay)) {
   // Re-read the row itself and plan again: the editor may have saved since.
   const fresh = await readOverlayProduct(app, entry.id);
   if (!fresh) continue;
-  const fill = planFill(fresh, entry.fill);
-  if (!Object.keys(fill).length) continue;
-  await writeOverlayProduct(app, entry.id, { ...fresh, ...fill, updatedAt: now }, now);
+  const write = writeFor(fresh, entry);
+  if (!Object.keys(write).length) continue;
+  await writeOverlayProduct(app, entry.id, { ...fresh, ...write, updatedAt: now }, now);
   overlayWrites += 1;
 }
 
-const chunkIds = new Map(planned.filter((e) => !e.overlay).map((e) => [e.id, e.fill]));
+const chunkEntries = new Map(planned.filter((e) => !e.overlay).map((e) => [e.id, e]));
 let chunkWrites = 0;
 let settingsWritten = false;
-if (chunkIds.size || settingsPatch) {
+if (chunkEntries.size || settingsPatch) {
   await app.updateStore((doc) => {
     chunkWrites = 0;
     doc.products = (doc.products ?? []).map((product) => {
-      const fillFor = chunkIds.get(String(product.id));
-      if (!fillFor) return product;
-      const fill = planFill(product, fillFor);
-      if (!Object.keys(fill).length) return product;
+      const entry = chunkEntries.get(String(product.id));
+      if (!entry) return product;
+      const write = writeFor(product, entry);
+      if (!Object.keys(write).length) return product;
       chunkWrites += 1;
-      return { ...product, ...fill, updatedAt: now };
+      return { ...product, ...write, updatedAt: now };
     });
     if (settingsPatch) {
       // Merged key by key, as every settings screen saves — nothing else moves.

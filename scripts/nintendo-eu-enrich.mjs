@@ -61,6 +61,8 @@ const doc = JSON.parse(readFileSync(CATALOGUE, "utf8"));
 const products = (doc.products ?? []).filter((p) => String(p.kind) !== "hardware");
 const empty = (v) =>
   v === undefined || v === null || (typeof v === "string" && !v.trim()) || (Array.isArray(v) && v.length === 0);
+/** A picture in the shop's own storage, served by `/api/files/...` (scripts/lib/square-link-verdict.mjs). */
+const STORED = /^(?:https?:\/\/[^/]+)?\/api\/files\//i;
 
 const patches = [];
 const unmatched = [];
@@ -108,7 +110,31 @@ for (const product of products) {
   put("cartridgeImage", game.images.frontBox);
   put("nintendoCardImage", game.images.square);
   put("coverImage", game.images.wide);
-  if (Object.keys(fill).length) patches.push({ id: product.id, title: product.titleEn || product.title, how, euId: game.euId, fill });
+  /*
+    A picture the shop keeps in its own storage (`/api/files/...`) may be a
+    link to a file that is gone: Kirby and the Forgotten Land's square card
+    answered 404 on 2026-11-05 and the page showed «لم يتم إضافة الصورة بعد».
+    Nintendo's picture for the same role is offered as a repair, and written
+    only where the buckets prove the stored file absent from both
+    (scripts/catalogue-enrich.mjs). A live stored picture is never replaced.
+  */
+  const repair = {};
+  const offer = (field, value) => {
+    if (value && STORED.test(String(product[field] ?? "").trim())) repair[field] = value;
+  };
+  offer("cartridgeImage", game.images.frontBox);
+  offer("nintendoCardImage", game.images.square);
+  offer("coverImage", game.images.wide);
+  if (Object.keys(fill).length || Object.keys(repair).length) {
+    patches.push({
+      id: product.id,
+      title: product.titleEn || product.title,
+      how,
+      euId: game.euId,
+      fill,
+      ...(Object.keys(repair).length ? { repair } : {}),
+    });
+  }
 }
 
 const missing = index.filter((g) => !matchedIds.has(g.euId) && !g.delisted);
@@ -130,6 +156,8 @@ writeFileSync(
 
 const fieldCounts = {};
 for (const p of patches) for (const k of Object.keys(p.fill)) fieldCounts[k] = (fieldCounts[k] ?? 0) + 1;
+const repairCounts = {};
+for (const p of patches) for (const k of Object.keys(p.repair ?? {})) repairCounts[k] = (repairCounts[k] ?? 0) + 1;
 const how = patches.reduce((acc, p) => ((acc[p.how] = (acc[p.how] ?? 0) + 1), acc), {});
 console.log(
   JSON.stringify(
@@ -139,6 +167,7 @@ console.log(
       matchedBy: how,
       unmatched: unmatched.length,
       fieldsFilled: fieldCounts,
+      repairsOffered: repairCounts,
       missingFromShop: missing.length,
     },
     null,
