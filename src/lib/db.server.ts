@@ -636,6 +636,20 @@ async function loadStore(options?: { skipProducts?: boolean }): Promise<StoreDoc
       unknown
     >;
 
+    /*
+      A catalogue caught half-written.
+
+      `persistStore` is one transaction only through the Worker's D1 binding.
+      Over the REST API — every GitHub workflow — the statements run one by one:
+      the chunks are deleted, then rewritten. A read in that window found the
+      multi-part marker with no chunks (or a truncated set) and assembled the
+      catalogue from the per-product rows alone: on 2026-11-05 `/api/health`
+      counted 199 and 304 products for a shop of 1,715 while a workflow wrote.
+      Such a read is marked, so it is never cached, never served as the shop,
+      and never written back by a read-modify-write.
+    */
+    let productsIncomplete = false;
+
     // Process each heavy section from the fetched rows
     for (const section of HEAVY_SECTIONS) {
       if (skipProducts && section === "products") {
@@ -650,6 +664,16 @@ async function loadStore(options?: { skipProducts?: boolean }): Promise<StoreDoc
             return m && m[1] ? { index: parseInt(m[1], 10), key: r.key, value: r.value } : null;
           })
           .filter((c): c is { index: number; key: string; value: string } => c !== null);
+
+        if (section === "products") {
+          const marker = allStoreRows.find((r) => r.key === "store:products");
+          const indices = [...new Set(chunkRows.map((r) => r.index))].sort((a, b) => a - b);
+          const contiguous = indices.every((index, i) => index === i + 1);
+          // The marker says "split into chunks" ("") but the chunks are gone or gapped.
+          if (marker && marker.value === "" && (indices.length === 0 || !contiguous)) {
+            productsIncomplete = true;
+          }
+        }
 
         let parsed: unknown;
         if (chunkRows.length > 0) {
@@ -689,6 +713,8 @@ async function loadStore(options?: { skipProducts?: boolean }): Promise<StoreDoc
             }
             if (salvagedFromChunks.length > 0) {
               parsed = salvagedFromChunks;
+              // Salvaged pieces of the catalogue are not the catalogue.
+              if (section === "products") productsIncomplete = true;
               console.warn(
                 `[store:load_section:chunk_salvage_success] section=${section} salvagedCount=${salvagedFromChunks.length}`,
               );
@@ -908,6 +934,12 @@ async function loadStore(options?: { skipProducts?: boolean }): Promise<StoreDoc
     doc.problemSolutions = cleanList(doc.problemSolutions);
     doc.settings = doc.settings && typeof doc.settings === "object" ? doc.settings : {};
 
+    if (productsIncomplete) {
+      console.warn("[store:half_written_catalogue_read]", {
+        products: (doc.products as unknown[]).length,
+      });
+      return asDegraded(doc as unknown as StoreDoc);
+    }
     return doc as unknown as StoreDoc;
   }
   return readJson<StoreDoc>(STORE_KEY, emptyStore);
@@ -1320,6 +1352,16 @@ export async function getStore(): Promise<StoreDoc> {
   storeRevCheckedAt = Date.now();
   storeInFlight = loadWithTimeout()
     .then((doc) => {
+      /*
+        Caught mid-write (see `loadStore`): never cached. The last complete
+        snapshot answers if this isolate has one; otherwise the marked doc goes
+        back, and `/api/data` says 503 "try again" rather than selling a
+        quarter of the shop.
+      */
+      if (isStoreDegraded(doc)) {
+        if (storeCache?.doc && (storeCache.doc.products?.length ?? 0) > 0) return storeCache.doc;
+        return doc;
+      }
       // Only cache if doc has meaningful data
       if (doc && (doc.products?.length > 0 || doc.categories?.length > 0)) {
         storeCache = { doc, at: Date.now() };
@@ -1398,6 +1440,20 @@ export async function updateStore(
     let saved = false;
     for (let attempt = 0; attempt < 4 && !saved; attempt++) {
       current = await loadStore();
+      /*
+        Never write back a catalogue read mid-write (see `loadStore`): saving
+        it would persist the missing products as deleted. Wait for the other
+        writer to finish and read again.
+      */
+      let waits = 0;
+      while (isStoreDegraded(current) && waits < 6) {
+        waits += 1;
+        await new Promise((resolve) => setTimeout(resolve, 1_500 * waits));
+        current = await loadStore();
+      }
+      if (isStoreDegraded(current)) {
+        throw new Error("store_busy_try_again: the catalogue is being written by another job");
+      }
       next = (mutate(current) ?? current) as StoreDoc;
       try {
         storeRev = await persistStore(next, storeRev);
