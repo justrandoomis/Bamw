@@ -1,10 +1,10 @@
 # One run-once token. Approved by the owner on 2026-11-05 («some of games
 # without any information fix it»): fill the empty fields of the shop's games
-# from Nintendo's catalogue again — 13 more games now that the match reads past
-# the supplier's codes («[0:43 Switch 2]»), a pair sold as one («Sword /
-# Shield») and a Switch 2 listing of a Switch 1 game — and replace picture links
-# whose stored file is gone from both buckets with Nintendo's picture for the
-# same role. Fill only otherwise; no settings are written.
+# that Nintendo Europe's index does not list under the shop's names, from the
+# same games' pages on Nintendo's US, Hong Kong and Japan stores
+# (import-sources/enrichment/nintendo-stores-2026-11.json, 69 games), with the
+# Nintendo Europe patches as before. Fill only; no settings are written. The 28
+# games no store could fill are listed in nintendo-stores-not-found-2026-11.json.
 # Claimed in console_runs before the first write; it can never write twice.
 # Put a NEW token here to run again.
-2026-11-05-nintendo-eu-fill-3-repair
+2026-11-05-nintendo-stores-fill-4

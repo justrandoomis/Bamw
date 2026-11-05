@@ -53,7 +53,15 @@ const args = Object.fromEntries(
     .matchAll(/--([\w-]+)(?:[= ]([^\s-][^\s]*))?/g)
     .map((m) => [m[1], m[2] ?? "true"]),
 );
-const PATCH_FILE = args.file && args.file !== "true" ? args.file : "import-sources/enrichment/nintendo-eu-2026-11.json";
+/*
+  The patches: Nintendo Europe's index (scripts/nintendo-eu-enrich.mjs), then the
+  facts read from Nintendo's US, Hong Kong and Japan stores for the games that
+  index does not list under the shop's names. Both are fill only.
+*/
+const PATCH_FILES =
+  args.file && args.file !== "true"
+    ? [args.file]
+    : ["import-sources/enrichment/nintendo-eu-2026-11.json", "import-sources/enrichment/nintendo-stores-2026-11.json"];
 /*
   Owner-approved settings, written by the same run-once token: the one dollar
   rate and the occasion-deal campaigns. Only these keys are accepted.
@@ -185,8 +193,26 @@ const app = await import(outfile);
 rmSync(outfile, { force: true });
 
 /* -------------------------------------------------------------------- plan */
-if (!existsSync(PATCH_FILE)) fail(`لا يوجد ملف ${PATCH_FILE}`);
-const patches = JSON.parse(readFileSync(PATCH_FILE, "utf8"));
+for (const file of PATCH_FILES) if (!existsSync(file)) fail(`لا يوجد ملف ${file}`);
+/*
+  One entry per product: a product in two files keeps the first file's value
+  for a field and takes from the next only what the first does not offer.
+*/
+const patchById = new Map();
+for (const patch of PATCH_FILES.flatMap((file) => JSON.parse(readFileSync(file, "utf8")))) {
+  const id = String(patch.id);
+  const known = patchById.get(id);
+  if (!known) {
+    patchById.set(id, { ...patch, fill: { ...(patch.fill ?? {}) }, ...(patch.repair ? { repair: { ...patch.repair } } : {}) });
+    continue;
+  }
+  for (const [field, value] of Object.entries(patch.fill ?? {})) if (!(field in known.fill)) known.fill[field] = value;
+  for (const [field, value] of Object.entries(patch.repair ?? {})) {
+    known.repair = known.repair ?? {};
+    if (!(field in known.repair)) known.repair[field] = value;
+  }
+}
+const patches = [...patchById.values()];
 const store = await app.getStore();
 const live = new Map((store.products ?? []).map((p) => [String(p.id), p]));
 const overlays = await overlayProductIds(app);
@@ -303,7 +329,7 @@ if (settingsPatch) {
   }
 }
 say();
-say(`- الملف: \`${PATCH_FILE}\` (${patches.length} منتجاً)`);
+say(`- الملفات: ${PATCH_FILES.map((file) => `\`${file}\``).join("، ")} (${patches.length} منتجاً)`);
 say(`- منتجات سيُملأ لها شيء الآن: **${planned.length}** (منها ${planned.filter((p) => p.overlay).length} بصف خاص)`);
 say(`- منتجات لم تعد في الكتالوج: ${missingProducts.length}`);
 say();
@@ -331,7 +357,7 @@ for (const p of planned.slice(0, 8)) say(`- ${p.title} (${p.how}): ${Object.keys
 say();
 
 const summary = {
-  file: PATCH_FILE,
+  files: PATCH_FILES,
   planned: planned.length,
   fieldCounts,
   repairCounts,
