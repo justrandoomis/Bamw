@@ -93,6 +93,10 @@ describe("no statement can outgrow D1's parameter limit", () => {
       // both literals in types.ts. Seven states in total, so at most seven
       // parameters, and not a function of how many orders the shop has taken.
       "src/lib/db.server.ts:active": "fixed width",
+      // The Nintendo genres one of the shop's genre chips gathers on the games
+      // shelf (sports: six), sliced to MAX_GENRE_IDS (twelve) in the source.
+      // Derived from the genres the table holds, not from what a visitor sends.
+      "src/lib/games-db.sql.ts:ids": "sliced to a constant",
     };
 
     const unknown = found.filter((entry) => !(`${entry.file}:${entry.source}` in KNOWN));
