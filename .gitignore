@@ -112,3 +112,8 @@ square-card-verify.md
 square-card-verify.json
 square-card-relocate.md
 square-card-relocate.json
+
+# The games database loader: its bundle and its reports.
+.games-db-load-bundle.mjs
+games-db-load.md
+games-db-load.json

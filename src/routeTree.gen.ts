@@ -46,6 +46,7 @@ import { Route as ApiDiscTradeRouteImport } from './routes/api/disc-trade'
 import { Route as ApiExchangeRatesRouteImport } from './routes/api/exchange-rates'
 import { Route as ApiGameCatalogRouteImport } from './routes/api/game-catalog'
 import { Route as ApiGameRequestsRouteImport } from './routes/api/game-requests'
+import { Route as ApiGamesDbRouteImport } from './routes/api/games-db'
 import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as ApiImgRouteImport } from './routes/api/img'
 import { Route as ApiOrderReviewRouteImport } from './routes/api/order-review'
@@ -103,6 +104,7 @@ import { Route as ApiAdminReviewSubmissionsRouteImport } from './routes/api/admi
 import { Route as ApiAdminStoreRouteImport } from './routes/api/admin/store'
 import { Route as ApiAdminUsersRouteImport } from './routes/api/admin/users'
 import { Route as ApiFilesSplatRouteImport } from './routes/api/files/$'
+import { Route as ApiGamesDbSlugRouteImport } from './routes/api/games-db.$slug'
 import { Route as ApiHardwareSlugRouteImport } from './routes/api/hardware/$slug'
 import { Route as ApiModelSplatRouteImport } from './routes/api/model/$'
 import { Route as ApiOauthProviderRouteImport } from './routes/api/oauth.$provider'
@@ -324,6 +326,11 @@ const ApiGameCatalogRoute = ApiGameCatalogRouteImport.update({
 const ApiGameRequestsRoute = ApiGameRequestsRouteImport.update({
   id: '/api/game-requests',
   path: '/api/game-requests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiGamesDbRoute = ApiGamesDbRouteImport.update({
+  id: '/api/games-db',
+  path: '/api/games-db',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiHealthRoute = ApiHealthRouteImport.update({
@@ -613,6 +620,11 @@ const ApiFilesSplatRoute = ApiFilesSplatRouteImport.update({
   path: '/api/files/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiGamesDbSlugRoute = ApiGamesDbSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ApiGamesDbRoute,
+} as any)
 const ApiHardwareSlugRoute = ApiHardwareSlugRouteImport.update({
   id: '/api/hardware/$slug',
   path: '/api/hardware/$slug',
@@ -852,6 +864,7 @@ export interface FileRoutesByFullPath {
   '/api/exchange-rates': typeof ApiExchangeRatesRoute
   '/api/game-catalog': typeof ApiGameCatalogRoute
   '/api/game-requests': typeof ApiGameRequestsRoute
+  '/api/games-db': typeof ApiGamesDbRouteWithChildren
   '/api/health': typeof ApiHealthRoute
   '/api/img': typeof ApiImgRoute
   '/api/order-review': typeof ApiOrderReviewRoute
@@ -910,6 +923,7 @@ export interface FileRoutesByFullPath {
   '/api/admin/store': typeof ApiAdminStoreRoute
   '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/files/$': typeof ApiFilesSplatRoute
+  '/api/games-db/$slug': typeof ApiGamesDbSlugRoute
   '/api/hardware/$slug': typeof ApiHardwareSlugRouteWithChildren
   '/api/model/$': typeof ApiModelSplatRoute
   '/api/oauth/$provider': typeof ApiOauthProviderRouteWithChildren
@@ -985,6 +999,7 @@ export interface FileRoutesByTo {
   '/api/exchange-rates': typeof ApiExchangeRatesRoute
   '/api/game-catalog': typeof ApiGameCatalogRoute
   '/api/game-requests': typeof ApiGameRequestsRoute
+  '/api/games-db': typeof ApiGamesDbRouteWithChildren
   '/api/health': typeof ApiHealthRoute
   '/api/img': typeof ApiImgRoute
   '/api/order-review': typeof ApiOrderReviewRoute
@@ -1043,6 +1058,7 @@ export interface FileRoutesByTo {
   '/api/admin/store': typeof ApiAdminStoreRoute
   '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/files/$': typeof ApiFilesSplatRoute
+  '/api/games-db/$slug': typeof ApiGamesDbSlugRoute
   '/api/hardware/$slug': typeof ApiHardwareSlugRouteWithChildren
   '/api/model/$': typeof ApiModelSplatRoute
   '/api/oauth/$provider': typeof ApiOauthProviderRouteWithChildren
@@ -1119,6 +1135,7 @@ export interface FileRoutesById {
   '/api/exchange-rates': typeof ApiExchangeRatesRoute
   '/api/game-catalog': typeof ApiGameCatalogRoute
   '/api/game-requests': typeof ApiGameRequestsRoute
+  '/api/games-db': typeof ApiGamesDbRouteWithChildren
   '/api/health': typeof ApiHealthRoute
   '/api/img': typeof ApiImgRoute
   '/api/order-review': typeof ApiOrderReviewRoute
@@ -1177,6 +1194,7 @@ export interface FileRoutesById {
   '/api/admin/store': typeof ApiAdminStoreRoute
   '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/files/$': typeof ApiFilesSplatRoute
+  '/api/games-db/$slug': typeof ApiGamesDbSlugRoute
   '/api/hardware/$slug': typeof ApiHardwareSlugRouteWithChildren
   '/api/model/$': typeof ApiModelSplatRoute
   '/api/oauth/$provider': typeof ApiOauthProviderRouteWithChildren
@@ -1254,6 +1272,7 @@ export interface FileRouteTypes {
     | '/api/exchange-rates'
     | '/api/game-catalog'
     | '/api/game-requests'
+    | '/api/games-db'
     | '/api/health'
     | '/api/img'
     | '/api/order-review'
@@ -1312,6 +1331,7 @@ export interface FileRouteTypes {
     | '/api/admin/store'
     | '/api/admin/users'
     | '/api/files/$'
+    | '/api/games-db/$slug'
     | '/api/hardware/$slug'
     | '/api/model/$'
     | '/api/oauth/$provider'
@@ -1387,6 +1407,7 @@ export interface FileRouteTypes {
     | '/api/exchange-rates'
     | '/api/game-catalog'
     | '/api/game-requests'
+    | '/api/games-db'
     | '/api/health'
     | '/api/img'
     | '/api/order-review'
@@ -1445,6 +1466,7 @@ export interface FileRouteTypes {
     | '/api/admin/store'
     | '/api/admin/users'
     | '/api/files/$'
+    | '/api/games-db/$slug'
     | '/api/hardware/$slug'
     | '/api/model/$'
     | '/api/oauth/$provider'
@@ -1520,6 +1542,7 @@ export interface FileRouteTypes {
     | '/api/exchange-rates'
     | '/api/game-catalog'
     | '/api/game-requests'
+    | '/api/games-db'
     | '/api/health'
     | '/api/img'
     | '/api/order-review'
@@ -1578,6 +1601,7 @@ export interface FileRouteTypes {
     | '/api/admin/store'
     | '/api/admin/users'
     | '/api/files/$'
+    | '/api/games-db/$slug'
     | '/api/hardware/$slug'
     | '/api/model/$'
     | '/api/oauth/$provider'
@@ -1654,6 +1678,7 @@ export interface RootRouteChildren {
   ApiExchangeRatesRoute: typeof ApiExchangeRatesRoute
   ApiGameCatalogRoute: typeof ApiGameCatalogRoute
   ApiGameRequestsRoute: typeof ApiGameRequestsRoute
+  ApiGamesDbRoute: typeof ApiGamesDbRouteWithChildren
   ApiHealthRoute: typeof ApiHealthRoute
   ApiImgRoute: typeof ApiImgRoute
   ApiOrderReviewRoute: typeof ApiOrderReviewRoute
@@ -1998,6 +2023,13 @@ declare module '@tanstack/react-router' {
       path: '/api/game-requests'
       fullPath: '/api/game-requests'
       preLoaderRoute: typeof ApiGameRequestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/games-db': {
+      id: '/api/games-db'
+      path: '/api/games-db'
+      fullPath: '/api/games-db'
+      preLoaderRoute: typeof ApiGamesDbRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/health': {
@@ -2399,6 +2431,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiFilesSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/games-db/$slug': {
+      id: '/api/games-db/$slug'
+      path: '/$slug'
+      fullPath: '/api/games-db/$slug'
+      preLoaderRoute: typeof ApiGamesDbSlugRouteImport
+      parentRoute: typeof ApiGamesDbRoute
+    }
     '/api/hardware/$slug': {
       id: '/api/hardware/$slug'
       path: '/api/hardware/$slug'
@@ -2661,6 +2700,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ApiGamesDbRouteChildren {
+  ApiGamesDbSlugRoute: typeof ApiGamesDbSlugRoute
+}
+
+const ApiGamesDbRouteChildren: ApiGamesDbRouteChildren = {
+  ApiGamesDbSlugRoute: ApiGamesDbSlugRoute,
+}
+
+const ApiGamesDbRouteWithChildren = ApiGamesDbRoute._addFileChildren(
+  ApiGamesDbRouteChildren,
+)
+
 interface ApiWalletRouteChildren {
   ApiWalletBinanceActiveIntentRoute: typeof ApiWalletBinanceActiveIntentRoute
   ApiWalletBinanceConfigRoute: typeof ApiWalletBinanceConfigRoute
@@ -2760,6 +2811,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiExchangeRatesRoute: ApiExchangeRatesRoute,
   ApiGameCatalogRoute: ApiGameCatalogRoute,
   ApiGameRequestsRoute: ApiGameRequestsRoute,
+  ApiGamesDbRoute: ApiGamesDbRouteWithChildren,
   ApiHealthRoute: ApiHealthRoute,
   ApiImgRoute: ApiImgRoute,
   ApiOrderReviewRoute: ApiOrderReviewRoute,

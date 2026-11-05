@@ -1,0 +1,11 @@
+# The games database loader's run-once token (scripts/games-db-load.mjs).
+#
+# Empty on purpose: until the owner approves the load, every push runs DRY and
+# only reports what it would write.
+#
+# To load, put ONE new token on its own line below these comments (letters,
+# digits, dots, dashes or underscores, 6 to 80 characters), for example
+#   2026-11-05-games-db-first-load
+# and push. It is claimed in console_runs before the first write, so it can
+# never write twice. Put a NEW token here to run again (a later run writes only
+# the titles that changed).

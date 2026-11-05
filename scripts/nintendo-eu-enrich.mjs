@@ -29,6 +29,10 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
+// The index reader and the matching rules live in one module since the games
+// database loader became their second reader (scripts/games-db-load.mjs).
+import { fetchSwitchIndex, indexMaps, matchProduct } from "./lib/nintendo-eu-index.mjs";
+
 const args = Object.fromEntries(
   process.argv.slice(2).reduce((acc, value, i, all) => {
     if (value.startsWith("--")) acc.push([value.slice(2), all[i + 1]?.startsWith("--") ? "1" : all[i + 1]]);
@@ -37,95 +41,13 @@ const args = Object.fromEntries(
 );
 const OUT = args.out || "nintendo-eu-out";
 const CATALOGUE = args.catalogue;
-const ENDPOINT = "https://search.nintendo-europe.com/en/select";
-const ORIGIN = "https://www.nintendo.com";
-const FIELDS = [
-  "fs_id", "url", "title", "sorting_title", "nsuid_txt", "product_code_txt", "product_code_ss",
-  "dates_released_dts", "publisher", "developer", "excerpt", "product_catalog_description_s",
-  "pretty_game_categories_txt", "pretty_agerating_s", "players_from", "players_to",
-  "language_availability", "datasize_readable_txt", "playable_on_txt", "image_url", "image_url_sq_s",
-  "image_url_h2x1_s", "physical_version_b", "digital_version_b", "eshop_removed_b", "game_series_txt",
-].join(",");
 
 mkdirSync(OUT, { recursive: true });
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-async function page(start, rows) {
-  const url =
-    `${ENDPOINT}?q=*%3A*&fq=${encodeURIComponent("type:GAME AND (playable_on_txt:HAC OR playable_on_txt:BEE)")}` +
-    `&sort=${encodeURIComponent("sorting_title asc")}&start=${start}&rows=${rows}&wt=json&fl=${FIELDS}`;
-  for (let attempt = 1; attempt <= 4; attempt++) {
-    try {
-      const res = await fetch(url, { headers: { accept: "application/json" } });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return (await res.json()).response;
-    } catch (err) {
-      if (attempt === 4) throw err;
-      await sleep(1500 * attempt);
-    }
-  }
-}
-
-const absolute = (value) => {
-  const s = String(value ?? "").trim();
-  if (!s) return "";
-  if (s.startsWith("//")) return `https:${s}`;
-  if (s.startsWith("/")) return `${ORIGIN}${s}`;
-  return s.startsWith("http") ? s : "";
-};
-const first = (value) => (Array.isArray(value) ? value[0] : value);
-const clean = (value) => String(value ?? "").replace(/\s+/g, " ").trim();
-
-/** One Nintendo row, in the shop's own field names. */
-function toFacts(row) {
-  const consoles = (row.playable_on_txt ?? []).map((c) => String(c).toUpperCase());
-  const released = first(row.dates_released_dts);
-  const languages = clean(first(row.language_availability))
-    .split(/\s*,\s*/)
-    .filter(Boolean)
-    .map((l) => l.charAt(0).toUpperCase() + l.slice(1));
-  const size = clean(first(row.datasize_readable_txt));
-  const playersFrom = Number(row.players_from) || 0;
-  const playersTo = Number(row.players_to) || 0;
-  return {
-    euId: String(row.fs_id ?? ""),
-    euUrl: row.url ? `${ORIGIN}${row.url}` : "",
-    title: clean(row.title),
-    platform: consoles.includes("BEE") && !consoles.includes("HAC") ? "switch2" : consoles.includes("BEE") ? "both" : "switch1",
-    nsuid: String(first(row.nsuid_txt) ?? ""),
-    productCode: String(first(row.product_code_txt) ?? first(row.product_code_ss) ?? ""),
-    releaseDate: released ? String(released).slice(0, 10) : "",
-    publisher: clean(row.publisher),
-    developer: clean(row.developer),
-    description: clean(row.product_catalog_description_s || row.excerpt),
-    genres: (row.pretty_game_categories_txt ?? []).map(clean).filter(Boolean),
-    ageRating: clean(row.pretty_agerating_s),
-    numberOfPlayers: playersTo > 1 ? `${playersFrom || 1}-${playersTo}` : playersTo === 1 ? "1" : "",
-    supportedLanguages: languages.join(", "),
-    size,
-    physical: row.physical_version_b === true,
-    digital: row.digital_version_b === true,
-    delisted: row.eshop_removed_b === true,
-    series: (row.game_series_txt ?? []).map(clean).filter(Boolean),
-    images: {
-      frontBox: absolute(row.image_url).includes("/05_packshots/") ? absolute(row.image_url) : "",
-      square: absolute(row.image_url_sq_s),
-      wide: absolute(row.image_url_h2x1_s),
-    },
-  };
-}
 
 /* ------------------------------------------------------------ 1. the index */
-const rows = 500;
-const firstPage = await page(0, rows);
-const total = firstPage.numFound;
-const index = firstPage.docs.map(toFacts);
-for (let start = rows; start < total; start += rows) {
-  const next = await page(start, rows);
-  index.push(...next.docs.map(toFacts));
-  process.stdout.write(`\rindex ${index.length}/${total}`);
-  await sleep(250);
-}
+const { index } = await fetchSwitchIndex({
+  onProgress: (read, total) => process.stdout.write(`\rindex ${read}/${total}`),
+});
 process.stdout.write("\n");
 writeFileSync(join(OUT, "nintendo-eu-switch-index.json"), JSON.stringify(index));
 console.log(`Nintendo EU: ${index.length} Switch-family games`);
@@ -133,71 +55,24 @@ console.log(`Nintendo EU: ${index.length} Switch-family games`);
 if (!CATALOGUE) process.exit(0);
 
 /* ------------------------------------------------------------- 2. matching */
-const normalise = (s) =>
-  String(s ?? "")
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[̀-ͯ]/g, "")
-    .replace(/[™®©]/g, "")
-    .replace(/\s*[[(](switch 2|nintendo switch 2|switch|nintendo switch)[\])]\s*/g, " ")
-    .replace(/[–—:\-_'’".,!?&+]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-const pathOf = (url) => {
-  try {
-    return new URL(url).pathname.replace(/\/+$/, "").toLowerCase();
-  } catch {
-    return "";
-  }
-};
-
-const byPath = new Map();
-const byNsuid = new Map();
-const byTitle = new Map();
-for (const game of index) {
-  if (game.euUrl) byPath.set(pathOf(game.euUrl), game);
-  if (game.nsuid) byNsuid.set(game.nsuid, game);
-  const key = normalise(game.title);
-  if (!byTitle.has(key)) byTitle.set(key, []);
-  byTitle.get(key).push(game);
-}
+const maps = indexMaps(index);
 
 const doc = JSON.parse(readFileSync(CATALOGUE, "utf8"));
 const products = (doc.products ?? []).filter((p) => String(p.kind) !== "hardware");
 const empty = (v) =>
   v === undefined || v === null || (typeof v === "string" && !v.trim()) || (Array.isArray(v) && v.length === 0);
-const sameConsole = (product, game) => {
-  const p = String(product.platform ?? "switch1");
-  return p === "both" || game.platform === "both" || p === game.platform;
-};
 
 const patches = [];
 const unmatched = [];
 const matchedIds = new Set();
 for (const product of products) {
-  const links = [product.officialStoreUrl, product.nintendoEshopUrl, product.eshopUrl, product.officialUrl]
-    .filter(Boolean)
-    .map(pathOf)
-    .filter((p) => p.includes("/en-gb/") || p.includes("/en/"));
-  let game = links.map((p) => byPath.get(p)).find(Boolean);
-  let how = game ? "store-link" : "";
-  if (!game && product.nsuid && byNsuid.has(String(product.nsuid))) {
-    game = byNsuid.get(String(product.nsuid));
-    how = "nsuid";
-  }
-  if (!game) {
-    const candidates = (byTitle.get(normalise(product.titleEn || product.title)) ?? []).filter((g) =>
-      sameConsole(product, g),
-    );
-    if (candidates.length === 1) {
-      game = candidates[0];
-      how = "title";
-    }
-  }
-  if (!game) {
+  // Store link, then nsuid, then the one title on the same console.
+  const match = matchProduct(product, maps);
+  if (!match) {
     unmatched.push({ id: product.id, title: product.titleEn || product.title, platform: product.platform });
     continue;
   }
+  const { game, how } = match;
   matchedIds.add(game.euId);
 
   const fill = {};
