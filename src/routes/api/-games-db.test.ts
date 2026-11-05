@@ -70,8 +70,9 @@ afterEach(() => {
 
 /**
  * Cloudflare's `caches.default` for one test, as a Map from key URL to what
- * the Worker stored. Node has no `caches`, so every other test builds every
- * answer, as before.
+ * the Worker stored. Like the real one, it hands a stored answer back with
+ * max-age raised to the zone's Browser Cache TTL (seen live: 14400). Node has
+ * no `caches`, so every other test builds every answer, as before.
  */
 function installEdgeCache() {
   const stored = new Map<string, { body: string; status: number; headers: [string, string][] }>();
@@ -79,7 +80,10 @@ function installEdgeCache() {
     default: {
       match: async (request: Request) => {
         const hit = stored.get(request.url);
-        return hit ? new Response(hit.body, { status: hit.status, headers: hit.headers }) : undefined;
+        if (!hit) return undefined;
+        const headers = new Headers(hit.headers);
+        headers.set("cache-control", "public, max-age=14400, s-maxage=3600");
+        return new Response(hit.body, { status: hit.status, headers });
       },
       put: async (request: Request, response: Response) => {
         stored.set(request.url, {
@@ -215,6 +219,8 @@ describe("the edge cache across a load", () => {
       const during = await getList();
       expect(during.response.headers.get("x-cache-status")).toBe("edge-hit");
       expect(during.body.total).toBe(8);
+      // Five minutes in a browser, whatever max-age the edge handed back.
+      expect(during.response.headers.get("cache-control")).toBe("public, max-age=300, s-maxage=3600");
 
       // The load ends with its stamp; within the minute every isolate has read it.
       stamp("2026-11-05T04:00:30.000Z");

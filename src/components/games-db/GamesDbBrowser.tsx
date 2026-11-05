@@ -53,7 +53,9 @@ const MIN_GENRE_CHIP = 10;
 const SKELETON_TILES = Array.from({ length: 12 }, (_, i) => i);
 
 async function fetchList(qs: string, signal: AbortSignal): Promise<GamesDbListResponse> {
-  const response = await fetch(`/api/games-db${qs ? `?${qs}` : ""}`, { signal });
+  // Always asked of the server, whose edge cache knows when a load finished;
+  // the browser's own copy does not (src/lib/games-db.server.ts).
+  const response = await fetch(`/api/games-db${qs ? `?${qs}` : ""}`, { signal, cache: "no-cache" });
   if (!response.ok) throw new Error(`games-db ${response.status}`);
   return (await response.json()) as GamesDbListResponse;
 }

@@ -215,6 +215,13 @@ export async function cachedJson(
     if (hit) {
       const headers = new Headers(hit.headers);
       headers.set("x-cache-status", "edge-hit");
+      /*
+        Cloudflare hands a stored answer back with its max-age raised to the
+        zone's Browser Cache TTL (4 hours on 2026-11-05), so every edge hit
+        told browsers to keep it for 4 hours, past the next load. Restated
+        here, the browser keeps it for 5 minutes, like a fresh answer.
+      */
+      headers.set("cache-control", GAMES_DB_CACHE_CONTROL);
       return new Response(hit.body, { status: hit.status, headers });
     }
   }

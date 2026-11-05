@@ -57,7 +57,8 @@ const WASH_MASK = {
 } as const;
 
 async function fetchTitle(slug: string, signal: AbortSignal): Promise<GamesDbTitleResponse> {
-  const response = await fetch(`/api/games-db/${encodeURIComponent(slug)}`, { signal });
+  // Asked of the server every time, like the list (GamesDbBrowser.tsx).
+  const response = await fetch(`/api/games-db/${encodeURIComponent(slug)}`, { signal, cache: "no-cache" });
   // A 404 still carries the answer: whether the database is ready, and that the title is not in it.
   if (!response.ok && response.status !== 404) throw new Error(`games-db ${response.status}`);
   return (await response.json()) as GamesDbTitleResponse;
