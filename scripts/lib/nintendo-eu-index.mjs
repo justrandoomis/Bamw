@@ -25,6 +25,12 @@ export const FIELDS = [
   "pretty_game_categories_txt", "pretty_agerating_s", "players_from", "players_to",
   "language_availability", "datasize_readable_txt", "playable_on_txt", "image_url", "image_url_sq_s",
   "image_url_h2x1_s", "physical_version_b", "digital_version_b", "eshop_removed_b", "game_series_txt",
+  // The rest of what Nintendo says about a game (`details` in `toFacts`), and
+  // its downloads rank: the order «الأكثر مبيعًا عالميًا» gives the catalogue.
+  "downloads_rank_i", "play_mode_tv_mode_b", "play_mode_tabletop_mode_b", "play_mode_handheld_mode_b",
+  "play_mode_camera_play_b", "players_from_local_i", "players_to_local_i", "players_from_online_i",
+  "players_to_online_i", "paid_subscription_required_b", "internet_required_b", "cloud_saves_b",
+  "demo_availability", "hdr_b", "surround_sound_b", "image_url_h16x9_s", "copyright_s",
 ].join(",");
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -97,6 +103,12 @@ export function toFacts(row) {
   const size = clean(first(row.datasize_readable_txt));
   const playersFrom = Number(row.players_from) || 0;
   const playersTo = Number(row.players_to) || 0;
+  const range = (from, to) => {
+    const low = Number(from) || 0;
+    const high = Number(to) || 0;
+    return high > 1 ? `${low || 1}-${high}` : high === 1 ? "1" : "";
+  };
+  const rank = Number(row.downloads_rank_i);
   return {
     euId: String(row.fs_id ?? ""),
     euUrl: row.url ? `${ORIGIN}${row.url}` : "",
@@ -121,6 +133,33 @@ export function toFacts(row) {
       frontBox: absolute(row.image_url).includes("/05_packshots/") ? absolute(row.image_url) : "",
       square: absolute(row.image_url_sq_s),
       wide: absolute(row.image_url_h2x1_s),
+    },
+    // Nintendo's own downloads rank, 1 = most downloaded; 0 = unranked (about half the index).
+    downloadsRank: Number.isInteger(rank) && rank > 0 ? rank : 0,
+    /*
+      What Nintendo's game page lists beside the facts above. Only a flag that
+      is true is a fact: Nintendo leaves most of these unset, and an unset
+      «online play» is not a game without one.
+    */
+    details: {
+      modes: [
+        ["tv", row.play_mode_tv_mode_b],
+        ["tabletop", row.play_mode_tabletop_mode_b],
+        ["handheld", row.play_mode_handheld_mode_b],
+      ]
+        .filter(([, on]) => on === true)
+        .map(([mode]) => mode),
+      localPlayers: range(row.players_from_local_i, row.players_to_local_i),
+      onlinePlayers: range(row.players_from_online_i, row.players_to_online_i),
+      nintendoSwitchOnline: row.paid_subscription_required_b === true,
+      internetRequired: row.internet_required_b === true,
+      cloudSaves: row.cloud_saves_b === true,
+      demo: row.demo_availability === true,
+      hdr: row.hdr_b === true,
+      surroundSound: row.surround_sound_b === true,
+      cameraPlay: row.play_mode_camera_play_b === true,
+      image16x9: absolute(row.image_url_h16x9_s),
+      copyright: clean(row.copyright_s),
     },
   };
 }

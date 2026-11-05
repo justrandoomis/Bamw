@@ -14,7 +14,9 @@ import { Tag, ChevronDown, Gamepad2 } from "lucide-react";
 import { CategoryBannerSlideshow } from "@/components/CategoryBannerSlideshow";
 import { categoryBannerPool } from "@/lib/categoryBanners";
 import { useProgressiveList } from "@/hooks/useProgressiveList";
-import { GAME_GENRES, productGenreIds } from "@/lib/genres";
+import { useNearViewport, useNintendoCatalogue } from "@/hooks/useNintendoCatalogue";
+import { CatalogueTitleCard } from "@/components/games-db/CatalogueTitleCard";
+import { GAME_GENRES, canonicalGenreIds, productGenreIds } from "@/lib/genres";
 import { getProductCategory, isGameProduct } from "@/lib/productSection";
 import { isVisibleToPublic } from "@/lib/purchasable";
 import { matchesNintendoPlatformFilter } from "@/lib/nintendoListing";
@@ -83,6 +85,28 @@ function CategoryPage() {
     categoryId === "nintendo_games" ||
     categoryId === "cat_1";
 
+  /*
+    «the games shoud be on /category/nintendo_games not sepearted page»
+
+    Every other Nintendo game — the titles of Nintendo's index the shop does
+    not sell live, about eighteen thousand — follows the shop's own games in
+    the same grid, under the same chips, a page at a time from the server.
+    They are not in the catalogue document every visitor downloads.
+
+    «Best sellers», price and rating orders have no meaning for a game with no
+    price here; for these the shelf uses Nintendo's downloads rank. The date
+    orders use the release date.
+  */
+  const catalogue = useNintendoCatalogue(
+    {
+      platform: platform === "all" ? "" : platform,
+      shopGenre: selectedGenre === "all" ? "" : selectedGenre,
+      sort: sortBy === "newest" || sortBy === "release_date" ? "new" : "popular",
+    },
+    { enabled: isNintendoGames },
+  );
+  const catalogueGenres = catalogue.genres;
+
   // Extract all available genres for this category
   const availableGenres = useMemo<GenreItem[]>(() => {
     if (!store?.products) return [];
@@ -128,6 +152,10 @@ function CategoryPage() {
     categoryProducts.forEach((p: any) => {
       for (const id of productGenreIds(p)) present.add(id);
     });
+    // And the genres of the rest of Nintendo's games below, folded the same way.
+    if (isNintendoGames) {
+      for (const facet of catalogueGenres) for (const id of canonicalGenreIds(facet.id)) present.add(id);
+    }
     const shelves: GenreItem[] = GAME_GENRES.filter((g) => present.has(g.id));
 
     // If no specific genres were extracted, supply all standard game genres for Nintendo
@@ -136,7 +164,7 @@ function CategoryPage() {
     }
 
     return shelves;
-  }, [store?.products, categoryId, isNintendoGames]);
+  }, [store?.products, categoryId, isNintendoGames, catalogueGenres]);
 
   const products = useMemo(() => {
     if (!store?.products) return [];
@@ -323,6 +351,12 @@ function CategoryPage() {
     resetKey: `${categoryId}|${sortBy}|${platform}|${selectedGenre}`,
   });
 
+  /* The rest of Nintendo's games come after the shop's own, once those are all on screen. */
+  const showCatalogue = isNintendoGames && allShown;
+  const catalogueSentinelRef = useNearViewport(catalogue.fetchNextPage);
+  const catalogueTotal = isNintendoGames ? catalogue.total : 0;
+  const hasGames = products.length > 0 || catalogueTotal > 0;
+
   const unit = isNintendoGames ? t("لعبة") : t("منتج");
   const platformOptions: { id: PlatformOption; label: string }[] = [
     { id: "all", label: t("الكل") },
@@ -331,7 +365,7 @@ function CategoryPage() {
   ];
   const filtersActive = selectedGenre !== "all" || platform !== "all";
   /* Nothing to sort and nothing to filter: the toolbar would be a bar of nothing. */
-  const showToolbar = isLoading || products.length > 0 || filtersActive;
+  const showToolbar = isLoading || hasGames || filtersActive;
   const resetFilters = () => {
     setSelectedGenre("all");
     setPlatform("all");
@@ -361,7 +395,7 @@ function CategoryPage() {
             <div className="relative z-20 flex min-h-[188px] flex-col justify-end p-5 text-white sm:min-h-[248px] sm:p-8">
               <p className="text-[12px] font-bold text-white/80 sm:text-[13px]">
                 <span dir="ltr" className="tabular-nums">
-                  {products.length.toLocaleString("en-US")}
+                  {(products.length + catalogueTotal).toLocaleString("en-US")}
                 </span>{" "}
                 {unit}
               </p>
@@ -473,7 +507,8 @@ function CategoryPage() {
           className={`mx-auto flex max-w-7xl flex-col gap-6 pt-4 ${isNintendoGames ? "px-3 sm:px-4" : "px-4"}`}
         >
           <div className="min-w-0 flex-1">
-            {isLoading ? (
+            {/* No shop game matches yet the rest of Nintendo's are still on their way: not «no games». */}
+            {isLoading || (isNintendoGames && products.length === 0 && catalogue.isPending) ? (
               <div
                 className={
                   isNintendoGames
@@ -489,7 +524,7 @@ function CategoryPage() {
                   />
                 ))}
               </div>
-            ) : products.length > 0 ? (
+            ) : hasGames ? (
               <div className="flex flex-col gap-6">
                 <div
                   className={
@@ -517,9 +552,34 @@ function CategoryPage() {
                       )}
                     </div>
                   ))}
+
+                  {/*
+                    The rest of Nintendo's games, in the same grid. A full-width
+                    line first says why these carry «اطلبها» and no price.
+                  */}
+                  {showCatalogue && catalogue.items.length > 0 ? (
+                    <>
+                      <div className="col-span-full mt-2 rounded-[22px] border border-[var(--clay-rim)] bg-card px-4 py-3 shadow-sm sm:mt-4">
+                        <h2 className="text-[14.5px] font-black text-foreground sm:text-[16px]">
+                          {t("كل ألعاب نينتندو الأخرى")}
+                        </h2>
+                        <p className="mt-0.5 text-[12px] leading-relaxed text-muted-foreground sm:text-[13px]">
+                          <span dir="ltr" className="tabular-nums">
+                            {catalogueTotal.toLocaleString("en-US")}
+                          </span>{" "}
+                          {t("لعبة من فهرس نينتندو الرسمي، غير متوفرة في المتجر الآن. اطلب أي لعبة ونوفّرها لك.")}
+                        </p>
+                      </div>
+                      {catalogue.items.map((item) => (
+                        <div key={`n-${item.slug}`} className="min-w-0 animate-fade-up">
+                          <CatalogueTitleCard item={item} />
+                        </div>
+                      ))}
+                    </>
+                  ) : null}
                 </div>
 
-                {allShown ? null : (
+                {!allShown ? (
                   <div ref={sentinelRef} className="flex justify-center py-6">
                     <span className="sr-only">{t("جاري تحميل المزيد")}</span>
                     <div
@@ -527,7 +587,15 @@ function CategoryPage() {
                       aria-hidden="true"
                     />
                   </div>
-                )}
+                ) : showCatalogue && (catalogue.hasNextPage || catalogue.isPending) ? (
+                  <div ref={catalogueSentinelRef} className="flex justify-center py-6">
+                    <span className="sr-only">{t("جاري تحميل المزيد")}</span>
+                    <div
+                      className="h-6 w-6 animate-spin rounded-full border-2 border-border border-t-[var(--brand-red)]"
+                      aria-hidden="true"
+                    />
+                  </div>
+                ) : null}
               </div>
             ) : (
               <div className="mx-auto mt-6 flex max-w-md flex-col items-center rounded-[28px] border border-[var(--clay-rim)] bg-card px-6 py-12 text-center shadow-md">

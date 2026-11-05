@@ -55,8 +55,16 @@ export const COLUMNS = [
   "loaded_at",
 ];
 
-/** The columns the digest covers: everything except the digest and the clock. */
-const HASHED = COLUMNS.filter((c) => c !== "content_hash" && c !== "loaded_at");
+/**
+ * The columns the digest covers: everything except the digest and the clock —
+ * and the title's row in `nintendo_title_details` (its downloads rank and the
+ * rest of Nintendo's facts), so a title whose details changed is written again.
+ */
+const HASHED = [
+  ...COLUMNS.filter((c) => c !== "content_hash" && c !== "loaded_at"),
+  "downloads_rank",
+  "details",
+];
 
 /**
  * Rows per statement. A row is about 1.2 KB of JSON, so a batch is about
@@ -177,10 +185,38 @@ export function toRow(facts, link, loadedAt) {
     image_wide: url(facts.images?.wide),
     eu_url: url(facts.euUrl),
     shop_product_id: text(link?.productId, 120),
+    // Not columns of nintendo_titles: their own table (`upsertDetailsStatement`).
+    downloads_rank:
+      Number.isInteger(facts.downloadsRank) && facts.downloadsRank > 0 ? facts.downloadsRank : 0,
+    details: detailsJson(facts.details),
   };
   row.content_hash = contentHash(row);
   row.loaded_at = loadedAt;
   return row;
+}
+
+const DETAIL_FLAGS = ["nintendoSwitchOnline", "internetRequired", "cloudSaves", "demo", "hdr", "surroundSound", "cameraPlay"];
+const DETAIL_MODES = new Set(["tv", "tabletop", "handheld"]);
+
+/**
+ * Nintendo's further facts as stored: only what is said — a true flag, a
+ * known player range, a picture — in a fixed key order, so the same facts
+ * always make the same string (and the same digest).
+ */
+export function detailsJson(details) {
+  const out = {};
+  const modes = (Array.isArray(details?.modes) ? details.modes : []).filter((m) => DETAIL_MODES.has(m));
+  if (modes.length) out.modes = [...DETAIL_MODES].filter((m) => modes.includes(m));
+  for (const key of ["localPlayers", "onlinePlayers"]) {
+    const value = text(details?.[key], 10);
+    if (/^\d{1,3}(-\d{1,3})?$/.test(value)) out[key] = value;
+  }
+  for (const key of DETAIL_FLAGS) if (details?.[key] === true) out[key] = true;
+  const image16x9 = url(details?.image16x9);
+  if (image16x9) out.image16x9 = image16x9;
+  const copyright = text(details?.copyright, 200);
+  if (copyright) out.copyright = copyright;
+  return JSON.stringify(out);
 }
 
 /**
@@ -257,6 +293,21 @@ export function upsertTitlesStatement(rows) {
   return {
     sql: `INSERT OR REPLACE INTO nintendo_titles (${COLUMNS.join(", ")}) SELECT ${PICK} FROM json_each(?)`,
     params: [JSON.stringify(rows.map((row) => COLUMNS.map((column) => row[column])))],
+  };
+}
+
+/**
+ * The batch's details rows (downloads rank and Nintendo's further facts), in
+ * one statement with one parameter. Written after the genres and before the
+ * title rows, whose digest covers them: a load that stops in between leaves
+ * the title on its old digest, and the next load writes the batch again.
+ */
+export function upsertDetailsStatement(rows) {
+  return {
+    sql:
+      "INSERT OR REPLACE INTO nintendo_title_details (eu_id, downloads_rank, details) " +
+      "SELECT json_extract(value, '$[0]'), json_extract(value, '$[1]'), json_extract(value, '$[2]') FROM json_each(?)",
+    params: [JSON.stringify(rows.map((row) => [row.eu_id, row.downloads_rank ?? 0, row.details ?? "{}"]))],
   };
 }
 
@@ -348,10 +399,14 @@ export function describeRows(rows) {
   let delisted = 0;
   let linked = 0;
   let undated = 0;
+  let ranked = 0;
+  let withModes = 0;
   let newest = "";
   let oldest = "";
   for (const row of rows) {
     byPlatform[row.platform] = (byPlatform[row.platform] ?? 0) + 1;
+    if (row.downloads_rank > 0) ranked += 1;
+    if (String(row.details ?? "").includes('"modes"')) withModes += 1;
     if (row.image_box) withBox += 1;
     if (row.image_square) withSquare += 1;
     if (row.image_wide) withWide += 1;
@@ -375,6 +430,8 @@ export function describeRows(rows) {
     delisted,
     linked,
     undated,
+    ranked,
+    withModes,
     oldest,
     newest,
     genres: [...genres.entries()].sort((a, b) => b[1] - a[1]),

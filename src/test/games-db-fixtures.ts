@@ -11,6 +11,7 @@ import {
   migrationStatements,
   pruneGenresStatement,
   rowsFor,
+  upsertDetailsStatement,
   upsertTitlesStatement,
 } from "../../scripts/lib/games-db-rows.mjs";
 
@@ -67,13 +68,35 @@ export const GAMES_DB_FIXTURE = [
     releaseDate: "2025-06-05",
     genres: ["Action", "Adventure"],
   }),
-  facts({ euId: "103", title: "Mario Kart World", platform: "switch2", releaseDate: "2025-06-05", genres: ["Racing"] }),
-  facts({ euId: "104", title: "Mario Kart™ 8 Deluxe", releaseDate: "2017-04-28", genres: ["Racing", "Party"] }),
+  facts({
+    euId: "103",
+    title: "Mario Kart World",
+    platform: "switch2",
+    releaseDate: "2025-06-05",
+    genres: ["Racing"],
+    downloadsRank: 3,
+    // As Nintendo's index has it on 2026-11-05 (scripts/lib/nintendo-eu-index.mjs toFacts).
+    details: {
+      modes: ["tv", "tabletop", "handheld"],
+      localPlayers: "2-8",
+      onlinePlayers: "2-24",
+      nintendoSwitchOnline: true,
+      internetRequired: false,
+      cloudSaves: true,
+      hdr: true,
+      surroundSound: true,
+      cameraPlay: true,
+      image16x9: "https://www.nintendo.com/eu/media/images/16x9.png",
+      copyright: "© Nintendo",
+    },
+  }),
+  facts({ euId: "104", title: "Mario Kart™ 8 Deluxe", releaseDate: "2017-04-28", genres: ["Racing", "Party"], downloadsRank: 1 }),
   facts({ euId: "105", title: "Pokémon™ Legends: Z-A", platform: "both", releaseDate: "2025-10-16", genres: ["RPG"] }),
   // A made-up game, dated far enough ahead to stay «upcoming» for as long as these tests run.
   facts({ euId: "106", title: "Lumen Drift: Origins", releaseDate: "2044-06-01", genres: ["Action", "Platformer"] }),
   facts({ euId: "107", title: "An Unannounced Puzzle", releaseDate: "2050-12-31", genres: ["Puzzle"] }),
-  facts({ euId: "108", title: "Super Mario Odyssey", releaseDate: "2017-10-27", genres: ["Platformer"] }),
+  facts({ euId: "108", title: "Super Mario Odyssey", releaseDate: "2017-10-27", genres: ["Platformer"], downloadsRank: 2 }),
+  facts({ euId: "109", title: "Mario Golf: Super Rush", releaseDate: "2021-06-25", genres: ["Golf"] }),
 ];
 
 /** The shop sells TOTK (still live) and Mario Kart World (hidden since the load). */
@@ -88,10 +111,15 @@ export const GAMES_DB_PRODUCTS = [
   `INSERT INTO product_index (id, slug, title, price, hidden, status) VALUES ('prd_mkw', 'mario-kart-world', 'MKW', 60000, 1, '')`,
 ];
 
-/** The loader's three statements for one batch, in the loader's order. */
+/** The loader's four statements for one batch, in the loader's order. */
 export function writeGamesDbFixture(run: (sql: string, params: unknown[]) => unknown) {
   const rows = rowsFor(GAMES_DB_FIXTURE, GAMES_DB_LINKS, "2026-11-05T00:00:00.000Z");
-  for (const statement of [insertGenresStatement(rows), pruneGenresStatement(rows), upsertTitlesStatement(rows)]) {
+  for (const statement of [
+    insertGenresStatement(rows),
+    pruneGenresStatement(rows),
+    upsertDetailsStatement(rows),
+    upsertTitlesStatement(rows),
+  ]) {
     run(statement.sql, statement.params);
   }
 }

@@ -2,8 +2,10 @@
  * The games database's reads, and the edge cache in front of them.
  *
  * Twenty thousand titles are rows in D1 (`nintendo_titles`), read a page at a
- * time. They are deliberately not in the catalogue: `/api/data` ships the
- * whole catalogue to every visitor, and this section is opened by a few.
+ * time. They are deliberately not in the catalogue document: `/api/data` ships
+ * the whole catalogue to every visitor. The games shelf
+ * (/category/nintendo_games) shows the shop's own games from the catalogue,
+ * then pages through these — every other Nintendo game — below them.
  *
  * Before the loader has run there is no table. That is answered as
  * `ready: false` — the page says the database is being prepared — never as a
@@ -29,14 +31,43 @@ import {
   toFacets,
   toListItem,
   toTitle,
+  todayIso,
   type GamesDbStatement,
 } from "./games-db.sql";
+import { canonicalGenreIds } from "./genres";
 
 const all = (statement: GamesDbStatement) =>
   d1All<Record<string, unknown>>(statement.sql, ...statement.binds);
 
 export const isMissingTable = (error: unknown) =>
   /no such table/i.test(error instanceof Error ? error.message : String(error));
+
+const isMissingDetails = (error: unknown) =>
+  /no such table:?\s*nintendo_title_details/i.test(error instanceof Error ? error.message : String(error));
+
+/**
+ * A read that joins `nintendo_title_details`, run again without it while no
+ * load has created that table: «popular» then orders like «new», and a title
+ * has no details, rather than the whole answer failing.
+ */
+async function withDetails<T>(read: (details: boolean) => Promise<T>): Promise<T> {
+  try {
+    return await read(true);
+  } catch (error) {
+    if (!isMissingDetails(error)) throw error;
+    return read(false);
+  }
+}
+
+/**
+ * The Nintendo genres a shop genre gathers, among the ones the table holds:
+ * «sports» is Nintendo's sports, football, golf, tennis, extreme sports and
+ * health & fitness. The same folding the shelf's chips use for the shop's own
+ * products (src/lib/genres.ts), so a chip means the same thing above and below.
+ */
+export function nintendoGenresFor(shopGenre: string, facets: readonly GamesDbFacet[]): string[] {
+  return facets.map((facet) => facet.id).filter((id) => canonicalGenreIds(id).includes(shopGenre));
+}
 
 /*
   The load's revision: the stamp the loader writes into `nintendo_titles_meta`
@@ -121,10 +152,18 @@ const notReadyList = (query: GamesDbQuery): GamesDbListResponse => ({
 export async function listGamesDb(query: GamesDbQuery): Promise<GamesDbListResponse> {
   if (!getD1()) return notReadyList(query);
   try {
-    const [rows, genres] = await Promise.all([all(listStatement(query)), genreFacets()]);
+    const today = todayIso();
+    const facets = genreFacets();
+    // A shop genre is widened over the genres the table holds, so it waits for
+    // them; every other query reads its page and the genres side by side.
+    const genreIds = query.shopGenre ? nintendoGenresFor(query.shopGenre, await facets) : null;
+    const [rows, genres] = await Promise.all([
+      withDetails((details) => all(listStatement(query, today, { genreIds, details }))),
+      facets,
+    ]);
     let total = Number(rows[0]?.["total_rows"] ?? 0);
     if (!rows.length && query.page > 1) {
-      total = Number((await all(countStatement(query)))[0]?.["n"] ?? 0);
+      total = Number((await all(countStatement(query, today, { genreIds })))[0]?.["n"] ?? 0);
     }
     const ready = total > 0 || (await anyTitle());
     if (!ready) return notReadyList(query);
@@ -146,7 +185,7 @@ export async function listGamesDb(query: GamesDbQuery): Promise<GamesDbListRespo
 export async function getGamesDbTitle(slug: string): Promise<GamesDbTitleResponse> {
   if (!getD1()) return { ready: false, title: null, shopPath: null };
   try {
-    const [row] = await all(titleStatement(slug));
+    const [row] = await withDetails((details) => all(titleStatement(slug, { details })));
     if (!row) return { ready: await anyTitle(), title: null, shopPath: null };
     return {
       ready: true,

@@ -26,6 +26,7 @@ import {
   rowsFor,
   stampRevisionStatement,
   toRow,
+  upsertDetailsStatement,
   upsertTitlesStatement,
 } from "./lib/games-db-rows.mjs";
 import { toFacts } from "./lib/nintendo-eu-index.mjs";
@@ -73,17 +74,19 @@ const run = (db, { sql, params }) => {
   return db.prepare(sql).run(...params);
 };
 
-/** One batch, in the loader's order: genres in, stale genres out, titles last. */
+/** One batch, in the loader's order: genres in, stale genres out, details, titles last. */
 const writeBatch = (db, rows) => {
   run(db, insertGenresStatement(rows));
   run(db, pruneGenresStatement(rows));
+  run(db, upsertDetailsStatement(rows));
   run(db, upsertTitlesStatement(rows));
 };
 
 describe("the migration", () => {
-  it("splits into the table, its indexes, the genre table and the stamp table, with every comment gone", () => {
+  it("splits into the tables and their indexes, with every comment gone", () => {
     const statements = migrationStatements(MIGRATION);
-    expect(statements).toHaveLength(7);
+    // Titles + 3 indexes, genres + 1, details + 1, the stamp.
+    expect(statements).toHaveLength(9);
     expect(statements.every((s) => /IF NOT EXISTS/.test(s))).toBe(true);
     expect(statements.some((s) => s.includes("--"))).toBe(false);
     expect(statements[0]).toMatch(/^CREATE TABLE IF NOT EXISTS nintendo_titles/);
@@ -96,7 +99,12 @@ describe("the migration", () => {
       .prepare("SELECT name FROM sqlite_master WHERE type = 'table' ORDER BY name")
       .all()
       .map((r) => r.name);
-    expect(tables).toEqual(["nintendo_title_genres", "nintendo_titles", "nintendo_titles_meta"]);
+    expect(tables).toEqual([
+      "nintendo_title_details",
+      "nintendo_title_genres",
+      "nintendo_titles",
+      "nintendo_titles_meta",
+    ]);
   });
 
   it("names every column the loader writes", () => {
@@ -163,6 +171,47 @@ describe("a Nintendo title as a row", () => {
     // A new link to the shop is a change worth writing.
     expect(a.content_hash).not.toBe(linked.content_hash);
     expect(contentHash(a)).toBe(a.content_hash);
+    // So is a new downloads rank, or a fact Nintendo added to the details.
+    expect(toRow(toFacts(doc({ downloads_rank_i: 40 })), undefined, LOADED_AT).content_hash).not.toBe(a.content_hash);
+    expect(toRow(toFacts(doc({ cloud_saves_b: true })), undefined, LOADED_AT).content_hash).not.toBe(a.content_hash);
+  });
+
+  it("keeps the rest of what Nintendo states — modes, players, online, the 16:9 picture — and nothing unstated", () => {
+    const row = toRow(
+      toFacts(
+        doc({
+          downloads_rank_i: 18,
+          play_mode_tv_mode_b: true,
+          play_mode_handheld_mode_b: true,
+          play_mode_tabletop_mode_b: false,
+          players_from_local_i: 2,
+          players_to_local_i: 8,
+          players_from_online_i: 2,
+          players_to_online_i: 24,
+          paid_subscription_required_b: true,
+          internet_required_b: false,
+          cloud_saves_b: true,
+          image_url_h16x9_s: "https://www.nintendo.com/eu/media/images/assets/16x9.png",
+          copyright_s: "© Nintendo",
+        }),
+      ),
+      undefined,
+      LOADED_AT,
+    );
+    expect(row.downloads_rank).toBe(18);
+    expect(JSON.parse(row.details)).toEqual({
+      modes: ["tv", "handheld"],
+      localPlayers: "2-8",
+      onlinePlayers: "2-24",
+      nintendoSwitchOnline: true,
+      cloudSaves: true,
+      image16x9: "https://www.nintendo.com/eu/media/images/assets/16x9.png",
+      copyright: "© Nintendo",
+    });
+    // A title Nintendo says nothing more about stores an empty object, never a guess.
+    const plain = toRow(toFacts(doc()), undefined, LOADED_AT);
+    expect(plain.downloads_rank).toBe(0);
+    expect(plain.details).toBe("{}");
   });
 });
 
@@ -215,6 +264,11 @@ describe("writing the rows", () => {
     expect(BATCH_ROWS).toBe(100);
     for (const batch of chunk(rows)) writeBatch(db, batch);
     expect(db.prepare("SELECT COUNT(*) AS n FROM nintendo_titles").get().n).toBe(250);
+    // Every title has its details row, the JSON stored as the text that was sent.
+    expect(db.prepare("SELECT COUNT(*) AS n FROM nintendo_title_details").get().n).toBe(250);
+    expect(db.prepare("SELECT details FROM nintendo_title_details WHERE eu_id = '1001'").get().details).toBe(
+      rows.find((r) => r.eu_id === "1001").details,
+    );
     const stored = db.prepare("SELECT * FROM nintendo_titles WHERE eu_id = '1001'").get();
     const sent = rows.find((r) => r.eu_id === "1001");
     for (const column of COLUMNS) expect(stored[column]).toBe(sent[column]);

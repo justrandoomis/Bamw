@@ -1,7 +1,7 @@
 /**
  * The games database: every Nintendo Switch and Switch 2 title in Nintendo
- * Europe's official index, at /games-db — a section of its own, beside the
- * catalogue rather than inside it.
+ * Europe's official index. The games shelf (/category/nintendo_games) lists
+ * the shop's own games and then these; each has its page at /games-db/<slug>.
  *
  * One module for the three places that must agree about a title: the loader
  * that writes the rows (`scripts/games-db-load.mjs`), the API that searches
@@ -18,9 +18,10 @@ export type GamesDbPlatform = "switch1" | "switch2" | "both";
 export type GamesDbPlatformFilter = "" | "switch1" | "switch2";
 /**
  * «new» is released games, newest first (upcoming ones after them); «soon» is
- * only the games still to come, soonest first; «az» is everything by name.
+ * only the games still to come, soonest first; «az» is everything by name;
+ * «popular» is Nintendo's downloads rank, then the unranked by «new».
  */
-export type GamesDbSort = "new" | "soon" | "az";
+export type GamesDbSort = "new" | "soon" | "az" | "popular";
 
 /** A page of the grid: divisible by 2, 3, 4 and 6, the column counts it has. */
 export const GAMES_DB_PAGE_SIZE = 24;
@@ -481,6 +482,14 @@ export interface GamesDbQuery {
   tokens: string[];
   platform: GamesDbPlatformFilter;
   genre: string;
+  /**
+   * One of the shop's own genre ids (src/lib/genres.ts, «rpg», «sports»…),
+   * the chips of the games shelf: the server widens it to every Nintendo genre
+   * that folds into it. Checked for shape here; this module imports nothing.
+   */
+  shopGenre: string;
+  /** "exclude": only the titles the shop does not sell — the rest of the games shelf. */
+  shop: "" | "exclude";
   page: number;
   sort: GamesDbSort;
 }
@@ -506,32 +515,12 @@ export function parseGamesDbQuery(input: SearchInput): GamesDbQuery {
   const page =
     Number.isFinite(pageNumber) && pageNumber > 1 ? Math.min(pageNumber, GAMES_DB_MAX_PAGE) : 1;
   const sortRaw = read(input, "sort");
-  const sort: GamesDbSort = sortRaw === "az" || sortRaw === "soon" ? sortRaw : "new";
-  return { q, tokens: queryTokens(q), platform, genre, page, sort };
-}
-
-/** The page's URL search, every key optional so a plain `/games-db` link stays valid. */
-export interface GamesDbSearch {
-  q?: string;
-  platform?: "switch1" | "switch2";
-  genre?: string;
-  page?: number;
-  sort?: "soon" | "az";
-}
-
-/**
- * The filters as the page's URL keeps them: validated, defaults left out.
- * Returning a key unconditionally would make it required at the type level and
- * break every plain `navigate({ to: "/games-db" })` — the trap /search notes.
- */
-export function gamesDbSearch(query: GamesDbQuery): GamesDbSearch {
-  const out: GamesDbSearch = {};
-  if (query.q) out.q = query.q;
-  if (query.platform) out.platform = query.platform;
-  if (query.genre) out.genre = query.genre;
-  if (query.page > 1) out.page = query.page;
-  if (query.sort !== "new") out.sort = query.sort;
-  return out;
+  const sort: GamesDbSort =
+    sortRaw === "az" || sortRaw === "soon" || sortRaw === "popular" ? sortRaw : "new";
+  const shopGenreRaw = read(input, "shopGenre").trim().toLowerCase();
+  const shopGenre = /^[a-z][a-z_]{1,23}$/.test(shopGenreRaw) ? shopGenreRaw : "";
+  const shop = read(input, "shop") === "exclude" ? "exclude" : "";
+  return { q, tokens: queryTokens(q), platform, genre, shopGenre, shop, page, sort };
 }
 
 /**
@@ -545,6 +534,8 @@ export function gamesDbSearchString(query: Partial<GamesDbQuery>): string {
   if (query.page && query.page > 1) params.set("page", String(query.page));
   if (query.platform) params.set("platform", query.platform);
   if (query.q) params.set("q", query.q);
+  if (query.shop) params.set("shop", query.shop);
+  if (query.shopGenre) params.set("shopGenre", query.shopGenre);
   if (query.sort && query.sort !== "new") params.set("sort", query.sort);
   return params.toString();
 }
@@ -606,6 +597,62 @@ export interface GamesDbTitle {
   delisted: boolean;
   images: { box: string; square: string; wide: string };
   euUrl: string;
+  /** Nintendo's downloads rank: 1 is the most downloaded, 0 unranked. */
+  downloadsRank: number;
+  details: GamesDbDetails;
+}
+
+/**
+ * The rest of what Nintendo's index says about a title, as the loader stores
+ * it (scripts/lib/games-db-rows.mjs detailsJson): only what it says — an
+ * absent flag is «not said», never «no».
+ */
+export interface GamesDbDetails {
+  /** Of "tv", "tabletop", "handheld", in that order. */
+  modes: string[];
+  localPlayers: string;
+  onlinePlayers: string;
+  nintendoSwitchOnline: boolean;
+  internetRequired: boolean;
+  cloudSaves: boolean;
+  demo: boolean;
+  hdr: boolean;
+  surroundSound: boolean;
+  cameraPlay: boolean;
+  image16x9: string;
+  copyright: string;
+}
+
+/** A stored details object, read defensively: anything malformed is «not said». */
+export function parseGamesDbDetails(raw: unknown): GamesDbDetails {
+  let value: Record<string, unknown> = {};
+  try {
+    const parsed = typeof raw === "string" ? JSON.parse(raw || "{}") : raw;
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) value = parsed as Record<string, unknown>;
+  } catch {
+    value = {};
+  }
+  const players = (key: string) => {
+    const text = typeof value[key] === "string" ? (value[key] as string) : "";
+    return /^\d{1,3}(-\d{1,3})?$/.test(text) ? text : "";
+  };
+  const flag = (key: string) => value[key] === true;
+  return {
+    modes: Array.isArray(value["modes"])
+      ? ["tv", "tabletop", "handheld"].filter((mode) => (value["modes"] as unknown[]).includes(mode))
+      : [],
+    localPlayers: players("localPlayers"),
+    onlinePlayers: players("onlinePlayers"),
+    nintendoSwitchOnline: flag("nintendoSwitchOnline"),
+    internetRequired: flag("internetRequired"),
+    cloudSaves: flag("cloudSaves"),
+    demo: flag("demo"),
+    hdr: flag("hdr"),
+    surroundSound: flag("surroundSound"),
+    cameraPlay: flag("cameraPlay"),
+    image16x9: imageOrEmpty(value["image16x9"]),
+    copyright: typeof value["copyright"] === "string" ? (value["copyright"] as string).slice(0, 200) : "",
+  };
 }
 
 export interface GamesDbTitleResponse {

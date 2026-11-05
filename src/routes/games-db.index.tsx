@@ -1,42 +1,26 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-import GamesDbBrowser from "@/components/games-db/GamesDbBrowser";
-import { gamesDbSearch, parseGamesDbQuery, type GamesDbSearch } from "@/lib/games-db";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 /**
- * The games database: every Nintendo Switch and Switch 2 title in Nintendo
- * Europe's index, searched a page at a time from `/api/games-db`.
+ * Where the games database's own page was.
  *
- * Every filter lives in the URL — `/games-db?q=zelda&platform=switch2` — so a
- * result set can be shared, reloaded and reached with the back button. The
- * search is validated by the same parser the API uses, and only the keys it
- * keeps come back, all optional: a plain `navigate({ to: "/games-db" })` must
- * stay valid at the type level.
+ * «the games shoud be on /category/nintendo_games not sepearted page» — every
+ * Nintendo game is now on the games shelf, the shop's own first and the rest
+ * of Nintendo's index after them, and a search answers from both. An old link
+ * still arrives: with a query it goes to the search page, without one to the
+ * shelf. A game's own page (/games-db/<slug>) stays where it was.
  */
 export const Route = createFileRoute("/games-db/")({
-  validateSearch: (search: Record<string, unknown>): GamesDbSearch =>
-    gamesDbSearch(parseGamesDbQuery(search)),
-  head: () => ({
-    meta: [
-      { title: "قاعدة بيانات ألعاب نينتندو — بنانا ستور" },
-      {
-        name: "description",
-        content:
-          "كل ألعاب نينتندو سويتش وسويتش 2 من فهرس نينتندو الرسمي: ابحث وتصفّح حسب الجهاز والتصنيف، واطلب أي لعبة غير متوفرة في المتجر.",
-      },
-      { property: "og:title", content: "قاعدة بيانات ألعاب نينتندو — بنانا ستور" },
-      {
-        property: "og:description",
-        content: "أكثر من عشرين ألف لعبة لـ Switch و Switch 2 بصورها ومعلوماتها.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: GamesDbPage,
+  validateSearch: (search: Record<string, unknown>): { q?: string } => {
+    const raw = search["q"];
+    const q = typeof raw === "string" ? raw.replace(/\s+/g, " ").trim().slice(0, 120) : "";
+    return q ? { q } : {};
+  },
+  beforeLoad: ({ search }) => {
+    if (search.q) throw redirect({ to: "/search", search: { q: search.q }, replace: true });
+    throw redirect({
+      to: "/category/$categoryId",
+      params: { categoryId: "nintendo_games" },
+      replace: true,
+    });
+  },
 });
-
-function GamesDbPage() {
-  const search = Route.useSearch();
-  return <GamesDbBrowser search={search} />;
-}

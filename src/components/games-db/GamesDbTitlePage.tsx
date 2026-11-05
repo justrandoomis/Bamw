@@ -18,10 +18,12 @@ import {
   CalendarDays,
   Code,
   Gamepad2,
+  Globe,
   HardDrive,
   Hash,
   Languages,
   Library,
+  MonitorPlay,
   RotateCcw,
   ShieldCheck,
   Store,
@@ -57,7 +59,7 @@ const WASH_MASK = {
 } as const;
 
 async function fetchTitle(slug: string, signal: AbortSignal): Promise<GamesDbTitleResponse> {
-  // Asked of the server every time, like the list (GamesDbBrowser.tsx).
+  // Asked of the server every time, like the shelf's pages (useNintendoCatalogue).
   const response = await fetch(`/api/games-db/${encodeURIComponent(slug)}`, { signal, cache: "no-cache" });
   // A 404 still carries the answer: whether the database is ready, and that the title is not in it.
   if (!response.ok && response.status !== 404) throw new Error(`games-db ${response.status}`);
@@ -88,10 +90,12 @@ export default function GamesDbTitlePage({ slug }: { slug: string }) {
   }, [title?.slug, slug, navigate]);
 
   useEffect(() => {
-    if (title) document.title = `${title.title} — ${t("قاعدة بيانات ألعاب نينتندو")} | بنانا ستور`;
+    if (title) document.title = `${title.title} — ${t("ألعاب نينتندو سويتش")} | بنانا ستور`;
   }, [title, t]);
 
-  const back = () => void navigate({ to: "/games-db" });
+  // Back to the games shelf, where every Nintendo game is listed.
+  const back = () =>
+    void navigate({ to: "/category/$categoryId", params: { categoryId: "nintendo_games" } });
 
   if (isPending) {
     return (
@@ -111,7 +115,7 @@ export default function GamesDbTitlePage({ slug }: { slug: string }) {
     const copy = {
       error: [t("تعذّر تحميل اللعبة"), t("حدث خطأ أثناء الاتصال. حاول مرة أخرى.")],
       preparing: [t("نجهّز قاعدة البيانات"), t("نضيف كل ألعاب نينتندو الآن. عد بعد قليل.")],
-      missing: [t("لم نجد هذه اللعبة"), t("ربما تغيّر رابطها. ابحث عنها في قاعدة البيانات.")],
+      missing: [t("لم نجد هذه اللعبة"), t("ربما تغيّر رابطها. ابحث عنها بين كل ألعاب نينتندو.")],
     }[state];
     return (
       <AppShell currentView="details" hideNav onBack={back}>
@@ -124,7 +128,7 @@ export default function GamesDbTitlePage({ slug }: { slug: string }) {
             className="mt-2 inline-flex h-11 items-center gap-2 rounded-full bg-[var(--brand-red)] px-5 text-[13px] font-bold text-white shadow-md"
           >
             {state === "error" ? <RotateCcw className="h-4 w-4" aria-hidden="true" /> : null}
-            {state === "error" ? t("أعد المحاولة") : t("ابحث في قاعدة البيانات")}
+            {state === "error" ? t("أعد المحاولة") : t("تصفّح كل الألعاب")}
           </button>
         </div>
       </AppShell>
@@ -154,6 +158,8 @@ export default function GamesDbTitlePage({ slug }: { slug: string }) {
     { label: t("المطوّر"), value: title.developer, icon: Code },
     { label: t("التصنيف العمري"), value: ageRating, icon: ShieldCheck },
     { label: t("عدد اللاعبين"), value: playersLabel(title.players), icon: Users },
+    { label: t("على جهاز واحد"), value: playersLabel(title.details.localPlayers), icon: Users },
+    { label: t("عبر الإنترنت"), value: playersLabel(title.details.onlinePlayers), icon: Globe },
     { label: t("الحجم"), value: title.size, icon: HardDrive },
     /*
       No «disc or digital» fact. Nintendo's flags for it are not dependable:
@@ -165,17 +171,38 @@ export default function GamesDbTitlePage({ slug }: { slug: string }) {
     { label: t("السلسلة"), value: title.series.map(seriesLabel).join("، "), icon: Library },
   ].filter((fact) => fact.value);
 
+  /*
+    How it plays, as Nintendo's own page lists it: the modes, then what online
+    play needs. Only what Nintendo states — an unset flag is not «no».
+  */
+  const modeLabels: Record<string, string> = {
+    tv: t("على التلفاز"),
+    tabletop: t("وضع الطاولة"),
+    handheld: t("محمول باليد"),
+  };
+  const modes = title.details.modes.map((mode) => modeLabels[mode]).filter(Boolean);
+  const features = [
+    title.details.nintendoSwitchOnline ? t("اللعب عبر الإنترنت يتطلب اشتراك Nintendo Switch Online") : "",
+    title.details.internetRequired ? t("تتطلب اتصالاً بالإنترنت") : "",
+    title.details.cloudSaves ? t("تدعم الحفظ السحابي") : "",
+    title.details.demo ? t("لها نسخة تجريبية مجانية في متجر نينتندو") : "",
+    title.details.cameraPlay ? t("تدعم اللعب بالكاميرا على Switch 2") : "",
+    title.details.hdr ? "HDR" : "",
+    title.details.surroundSound ? t("صوت محيطي") : "",
+  ].filter(Boolean);
+  const wash = title.images.wide || title.details.image16x9;
+
   return (
     <AppShell currentView="details" hideNav onBack={back}>
       <div className="clay-canvas relative min-h-screen pb-24">
         <header className="relative isolate overflow-hidden">
-          {title.images.wide ? (
+          {wash ? (
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[26rem] overflow-hidden sm:h-[30rem]"
             >
               <img
-                src={cdnImage(title.images.wide, { width: 800 })}
+                src={cdnImage(wash, { width: 800 })}
                 alt=""
                 style={WASH_MASK}
                 className="h-full w-full scale-125 object-cover opacity-50 blur-3xl saturate-150 dark:opacity-35"
@@ -326,6 +353,33 @@ export default function GamesDbTitlePage({ slug }: { slug: string }) {
             </Section>
           ) : null}
 
+          {modes.length > 0 || features.length > 0 ? (
+            <Section title={t("طريقة اللعب")} icon={MonitorPlay}>
+              {modes.length > 0 ? (
+                <div className="flex flex-wrap gap-1.5">
+                  {modes.map((mode) => (
+                    <span
+                      key={mode}
+                      className="inline-flex h-8 items-center rounded-full bg-[var(--brand-red)]/10 px-3 text-[12.5px] font-bold text-foreground"
+                    >
+                      {mode}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+              {features.length > 0 ? (
+                <ul className={`${modes.length > 0 ? "mt-3" : ""} space-y-1.5`}>
+                  {features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2 text-[13px] leading-relaxed text-foreground">
+                      <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-red)]" />
+                      <span dir="auto">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </Section>
+          ) : null}
+
           {title.languages.length > 0 ? (
             <Section title={t("اللغات")} icon={Languages}>
               <div className="flex flex-wrap gap-1.5">
@@ -343,6 +397,11 @@ export default function GamesDbTitlePage({ slug }: { slug: string }) {
 
           <p className="pt-2 text-center text-[11.5px] text-muted-foreground">
             {t("المعلومات والصور من فهرس Nintendo Europe الرسمي.")}
+            {title.details.copyright ? (
+              <span dir="ltr" className="mt-0.5 block">
+                {title.details.copyright}
+              </span>
+            ) : null}
           </p>
         </main>
       </div>

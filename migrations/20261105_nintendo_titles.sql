@@ -82,6 +82,22 @@ CREATE TABLE IF NOT EXISTS nintendo_title_genres (
 -- A title's own genres, for the loader's tidy-up after a title changes them.
 CREATE INDEX IF NOT EXISTS idx_nintendo_title_genres_title ON nintendo_title_genres (eu_id);
 
+-- The rest of what Nintendo's index says about a title, beside its row: the
+-- downloads rank (1 = most downloaded, 0 = unranked; about half are ranked),
+-- which orders the catalogue by «best sellers», and a JSON object of play
+-- modes, local and online players, Nintendo Switch Online, cloud saves and
+-- a 16:9 picture (scripts/lib/games-db-rows.mjs detailsJson). A table of its
+-- own because CREATE TABLE IF NOT EXISTS can be run before every load and an
+-- added column cannot. The title row's digest covers it.
+CREATE TABLE IF NOT EXISTS nintendo_title_details (
+  eu_id          TEXT PRIMARY KEY,
+  downloads_rank INTEGER NOT NULL DEFAULT 0,
+  details        TEXT NOT NULL DEFAULT '{}'
+);
+
+-- «Best sellers»: the ranked titles in rank order.
+CREATE INDEX IF NOT EXISTS idx_nintendo_title_details_rank ON nintendo_title_details (downloads_rank);
+
 -- The loader's stamp: key 'revision', value the time of the load, written
 -- after the load's last batch. The API keys its edge cache on it. A load
 -- rewrites rows for minutes, and an answer cached in that time — a total of

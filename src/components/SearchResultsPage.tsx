@@ -8,8 +8,15 @@
  * keeps what only a route can own — the URL contract and the page metadata —
  * and reads `q` out of the URL for this component to answer.
  */
-import { Database, Search as SearchIcon, X } from "lucide-react";
+import { Search as SearchIcon, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+
+import { CatalogueTitleCard } from "@/components/games-db/CatalogueTitleCard";
+import {
+  useNearViewport,
+  useNintendoCatalogue,
+  type NintendoCatalogue,
+} from "@/hooks/useNintendoCatalogue";
 import { useNavigate } from "@tanstack/react-router";
 
 import AppShell from "@/components/AppShell";
@@ -114,21 +121,14 @@ export default function SearchResultsPage({ q = "" }: { q?: string }) {
 
   /*
     The shop carries some seventeen hundred games; Nintendo's index has twenty
-    thousand. A search that missed here — or found the wrong one — can carry on
-    in the games database, where a title the shop does not sell can be asked
-    for. A button and `navigate` rather than a Link, so the page renders in a
-    test that stands in only `useNavigate`.
+    thousand. The rest of them — the ones the shop does not sell — answer the
+    same query right here, below the shop's own results, where any of them can
+    be asked for. Games only: a filter to gift cards or consoles leaves them out.
   */
-  const gamesDbLink = q.trim() ? (
-    <button
-      type="button"
-      onClick={() => void navigate({ to: "/games-db", search: { q: q.trim().slice(0, 80) } })}
-      className="inline-flex h-11 items-center gap-2 rounded-full border border-[var(--clay-rim)] bg-card px-5 text-[13px] font-bold text-foreground shadow-sm"
-    >
-      <Database className="h-4 w-4 text-[var(--brand-red)]" aria-hidden="true" />
-      {t("ابحث في كل ألعاب نينتندو")}
-    </button>
-  ) : null;
+  const catalogue = useNintendoCatalogue({ q: q.trim(), sort: "new" }, { enabled: Boolean(q.trim()) });
+  const showCatalogue = Boolean(q.trim()) && (section === "all" || section === "game");
+  const catalogueFound = showCatalogue && catalogue.total > 0;
+  const catalogueWaiting = showCatalogue && catalogue.isPending;
 
   return (
     /*
@@ -187,7 +187,11 @@ export default function SearchResultsPage({ q = "" }: { q?: string }) {
               : isPending && products.length === 0
                 ? t("جارٍ البحث...")
                 : results.length === 0
-                  ? `${t("لا توجد نتائج لـ")} «${q}»`
+                  ? catalogueFound
+                    ? `${catalogue.total.toLocaleString("en-US")} ${t("لعبة من فهرس نينتندو لـ")} «${q}»`
+                    : catalogueWaiting
+                      ? t("جارٍ البحث...")
+                      : `${t("لا توجد نتائج لـ")} «${q}»`
                   : `${results.length} ${t("نتيجة لـ")} «${q}»`}
           </p>
 
@@ -216,23 +220,20 @@ export default function SearchResultsPage({ q = "" }: { q?: string }) {
             <div className="flex justify-center py-24">
               <div className="h-10 w-10 animate-spin rounded-full border-4 border-border border-t-red-500" />
             </div>
-          ) : shown.length > 0 ? (
+          ) : shown.length > 0 || catalogueFound || catalogueWaiting ? (
             <>
-              <div className="mt-6 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4" dir="ltr">
-                {shown.map((row) => (
-                  <ProductCard
-                    key={String(row.product["id"])}
-                    product={row.product}
-                    imageRole="front-box"
-                  />
-                ))}
-              </div>
-              {gamesDbLink ? (
-                <div className="mt-10 flex flex-col items-center gap-3 text-center">
-                  <p className="text-sm font-bold text-muted-foreground">{t("لم تجد لعبتك؟")}</p>
-                  {gamesDbLink}
+              {shown.length > 0 ? (
+                <div className="mt-6 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4" dir="ltr">
+                  {shown.map((row) => (
+                    <ProductCard
+                      key={String(row.product["id"])}
+                      product={row.product}
+                      imageRole="front-box"
+                    />
+                  ))}
                 </div>
               ) : null}
+              {showCatalogue ? <NintendoMatches catalogue={catalogue} /> : null}
             </>
           ) : (
             <div className="mt-6 rounded-3xl border border-dashed border-border bg-card px-6 py-16 text-center">
@@ -256,11 +257,50 @@ export default function SearchResultsPage({ q = "" }: { q?: string }) {
                   </button>
                 ))}
               </div>
-              {gamesDbLink ? <div className="mt-6">{gamesDbLink}</div> : null}
             </div>
           )}
         </div>
       </div>
     </AppShell>
+  );
+}
+
+/**
+ * The Nintendo games that answer the query and that the shop does not sell:
+ * the same cards as the games shelf's, «اطلبها» where a price would be.
+ */
+function NintendoMatches({ catalogue }: { catalogue: NintendoCatalogue }) {
+  const { t } = useI18n();
+  const sentinelRef = useNearViewport(catalogue.fetchNextPage);
+  if (catalogue.isPending) {
+    return (
+      <div className="flex justify-center py-10">
+        <div className="h-8 w-8 animate-spin rounded-full border-[3px] border-border border-t-red-500" />
+      </div>
+    );
+  }
+  if (!catalogue.items.length) return null;
+  return (
+    <section className="mt-10" aria-labelledby="nintendo-matches">
+      <h2 id="nintendo-matches" className="text-[16px] font-black text-foreground">
+        {t("من فهرس نينتندو")}
+      </h2>
+      <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">
+        <span dir="ltr" className="tabular-nums">
+          {catalogue.total.toLocaleString("en-US")}
+        </span>{" "}
+        {t("لعبة غير متوفرة في المتجر الآن. اطلب أي لعبة ونوفّرها لك.")}
+      </p>
+      <div className="mt-4 grid grid-cols-3 gap-2.5 sm:grid-cols-4 sm:gap-3.5 lg:grid-cols-5 xl:grid-cols-6">
+        {catalogue.items.map((item) => (
+          <CatalogueTitleCard key={item.slug} item={item} />
+        ))}
+      </div>
+      {catalogue.hasNextPage ? (
+        <div ref={sentinelRef} className="flex justify-center py-6">
+          <div className="h-6 w-6 animate-spin rounded-full border-2 border-border border-t-red-500" />
+        </div>
+      ) : null}
+    </section>
   );
 }

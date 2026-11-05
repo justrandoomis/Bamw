@@ -128,7 +128,7 @@ describe("after the load", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("cache-control")).toBe("public, max-age=300, s-maxage=3600");
     expect(body.ready).toBe(true);
-    expect(body.total).toBe(8);
+    expect(body.total).toBe(9);
     expect(body.pages).toBe(1);
     // Newest game already out first; the fixture's upcoming one (2044) comes after.
     expect(body.items[0]?.title).toBe("Pokémon™ Legends: Z-A");
@@ -182,6 +182,58 @@ describe("after the load", () => {
     expect((await getTitle("no-such-game-999")).response.status).toBe(404);
     expect((await getTitle("<script>")).response.status).toBe(404);
   });
+
+  it("returns a title with the rest of Nintendo's facts", async () => {
+    load();
+    const { body } = await getTitle("mario-kart-world-103");
+    expect(body.title?.downloadsRank).toBe(3);
+    expect(body.title?.details).toMatchObject({
+      modes: ["tv", "tabletop", "handheld"],
+      onlinePlayers: "2-24",
+      nintendoSwitchOnline: true,
+    });
+  });
+});
+
+/*
+  The games shelf (/category/nintendo_games) lists the shop's own games from
+  the catalogue, then asks for the rest of Nintendo's with its own chips.
+*/
+describe("the rest of the games shelf", () => {
+  it("leaves out what the shop sells live, and filters by the shop's genre chips", async () => {
+    load();
+    const sports = await getList("?shop=exclude&shopGenre=sports&sort=popular");
+    // «Golf» is Nintendo's genre; the shop's «sports» chip gathers it.
+    expect(sports.body.items.map((i) => i.title)).toEqual(["Mario Golf: Super Rush"]);
+    const racing = await getList("?shop=exclude&shopGenre=racing&sort=popular");
+    // Most downloaded first.
+    expect(racing.body.items.map((i) => i.title)).toEqual(["Mario Kart™ 8 Deluxe", "Mario Kart World"]);
+    // A chip no Nintendo genre folds into finds nothing — not everything.
+    const horror = await getList("?shop=exclude&shopGenre=horror");
+    expect(horror.body).toMatchObject({ ready: true, total: 0, items: [] });
+    // TOTK is the shop's, live: on the shelf above, so not here.
+    const zelda = await getList("?shop=exclude&q=zelda");
+    expect(zelda.body.items.map((i) => i.title)).toEqual([
+      "The Legend of Zelda: Tears of the Kingdom – Nintendo Switch™ 2 Edition",
+    ]);
+  });
+
+  it("orders «popular» like «new», and gives titles no details, before a load has written them", async () => {
+    load();
+    db.raw.exec("ALTER TABLE nintendo_title_details RENAME TO nintendo_title_details_parked");
+    try {
+      const popular = await getList("?sort=popular");
+      const newest = await getList("");
+      expect(popular.response.status).toBe(200);
+      expect(popular.body.items.map((i) => i.title)).toEqual(newest.body.items.map((i) => i.title));
+      const title = await getTitle("mario-kart-world-103");
+      expect(title.response.status).toBe(200);
+      expect(title.body.title).toMatchObject({ title: "Mario Kart World", downloadsRank: 0 });
+      expect(title.body.title?.details.modes).toEqual([]);
+    } finally {
+      db.raw.exec("ALTER TABLE nintendo_title_details_parked RENAME TO nintendo_title_details");
+    }
+  });
 });
 
 /*
@@ -208,7 +260,7 @@ describe("the edge cache across a load", () => {
     try {
       const before = await getList();
       expect(before.response.headers.get("x-cache-status")).toBe("fresh");
-      expect(before.body.total).toBe(8);
+      expect(before.body.total).toBe(9);
 
       // A load is under way: a title has landed, the stamp has not.
       db.raw.exec(
@@ -218,7 +270,7 @@ describe("the edge cache across a load", () => {
       db.raw.exec("INSERT INTO nintendo_title_genres (genre, eu_id) VALUES ('racing', '9001')");
       const during = await getList();
       expect(during.response.headers.get("x-cache-status")).toBe("edge-hit");
-      expect(during.body.total).toBe(8);
+      expect(during.body.total).toBe(9);
       // Five minutes in a browser, whatever max-age the edge handed back.
       expect(during.response.headers.get("cache-control")).toBe("public, max-age=300, s-maxage=3600");
 
@@ -227,7 +279,7 @@ describe("the edge cache across a load", () => {
       vi.setSystemTime(new Date("2026-11-05T04:01:01Z"));
       const after = await getList();
       expect(after.response.headers.get("x-cache-status")).toBe("fresh");
-      expect(after.body.total).toBe(9);
+      expect(after.body.total).toBe(10);
       // The genre counts are read again too, not kept for their quarter hour.
       expect(after.body.genres.find((g) => g.id === "racing")?.count).toBe(3);
       expect(stored.size).toBe(2);
@@ -259,7 +311,7 @@ describe("the edge cache across a load", () => {
     try {
       const { response, body } = await getList();
       expect(response.status).toBe(200);
-      expect(body.total).toBe(8);
+      expect(body.total).toBe(9);
       expect(response.headers.get("x-cache-status")).toBe("fresh");
       expect(stored.size).toBe(0);
     } finally {

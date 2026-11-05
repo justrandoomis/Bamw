@@ -41,6 +41,38 @@ vi.mock("@/components/ProductCard", () => ({
   ),
 }));
 vi.mock("@/hooks/useStoreData", () => ({ useStoreData: () => storeState }));
+
+/*
+  The rest of Nintendo's games: the shop's own search answers first, then the
+  titles of Nintendo's index the shop does not sell (useNintendoCatalogue).
+*/
+const emptyCatalogue = {
+  items: [] as { slug: string; title: string }[],
+  total: 0,
+  genres: [],
+  ready: true,
+  isPending: false,
+  isError: false,
+  hasNextPage: false,
+  isFetchingNextPage: false,
+  fetchNextPage: () => {},
+};
+let catalogueState = emptyCatalogue;
+const catalogueCalls: { q?: string }[] = [];
+vi.mock("@/hooks/useNintendoCatalogue", () => ({
+  useNintendoCatalogue: (filters: { q?: string }) => {
+    catalogueCalls.push(filters);
+    return catalogueState;
+  },
+  useNearViewport: () => () => {},
+}));
+vi.mock("@/components/games-db/CatalogueTitleCard", () => ({
+  CatalogueTitleCard: ({ item }: { item: { slug: string; title: string } }) => (
+    <a data-testid="nintendo-result" data-slug={item.slug}>
+      {item.title}
+    </a>
+  ),
+}));
 vi.mock("@/utils/audio", () => ({ playSound: () => {} }));
 vi.mock("@/i18n", () => ({ useI18n: () => ({ t: (key: string) => key, lang: "ar" }) }));
 
@@ -121,6 +153,8 @@ beforeEach(() => {
   navigate.mockClear();
   currentSearch = {};
   storeState = { data: { products: PRODUCTS }, isPending: false };
+  catalogueState = emptyCatalogue;
+  catalogueCalls.length = 0;
 });
 afterEach(cleanup);
 
@@ -223,6 +257,36 @@ describe("while the catalogue is still loading", () => {
     render(<SearchPage />);
     expect(screen.queryByText(/لا توجد نتائج لـ/)).toBeNull();
     expect(screen.getByText("جارٍ البحث...")).toBeTruthy();
+  });
+});
+
+describe("the rest of Nintendo's games", () => {
+  const nintendo = (titles: string[]) => ({
+    ...emptyCatalogue,
+    items: titles.map((title, i) => ({ slug: `game-${i}`, title })),
+    total: titles.length,
+  });
+
+  it("answer the same query, below the shop's own results", () => {
+    currentSearch = { q: "زيلدا" };
+    catalogueState = nintendo(["The Legend of Zelda: Echoes of Wisdom"]);
+    render(<SearchPage />);
+    expect(shown()).toEqual(["p1"]);
+    expect(screen.getAllByTestId("nintendo-result").map((el) => el.textContent)).toEqual([
+      "The Legend of Zelda: Echoes of Wisdom",
+    ]);
+    expect(screen.getByText("من فهرس نينتندو")).toBeTruthy();
+    expect(catalogueCalls.at(-1)?.q).toBe("زيلدا");
+  });
+
+  it("make a game only Nintendo has a result, not «nothing found»", () => {
+    currentSearch = { q: "Chivalware" };
+    catalogueState = nintendo(["Chivalware"]);
+    render(<SearchPage />);
+    expect(shown()).toEqual([]);
+    expect(screen.getAllByTestId("nintendo-result")).toHaveLength(1);
+    expect(screen.queryByText(/لا توجد نتائج لـ/)).toBeNull();
+    expect(screen.queryByText("لم نجد ما يطابق بحثك")).toBeNull();
   });
 });
 

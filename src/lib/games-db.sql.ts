@@ -18,6 +18,7 @@ import {
   genreLabel,
   imageOrEmpty,
   isGamesDbPlatform,
+  parseGamesDbDetails,
   platformsFor,
   shopPathFor,
   splitLanguages,
@@ -31,6 +32,25 @@ export interface GamesDbStatement {
   sql: string;
   binds: (string | number)[];
 }
+
+export interface GamesDbStatementOptions {
+  /**
+   * The Nintendo genres a shop genre (`query.shopGenre`) widened to, worked
+   * out by the server from the genres the table holds. An empty list is a
+   * shop genre no Nintendo genre folds into: it matches nothing. Null: the
+   * query names no shop genre.
+   */
+  genreIds?: string[] | null;
+  /**
+   * Whether `nintendo_title_details` can be read. It is created by the first
+   * load that writes it; before that, «popular» orders like «new» and a
+   * title has no details.
+   */
+  details?: boolean;
+}
+
+/** Most Nintendo genres one shop genre widens to (sports: six). A ceiling on bound parameters. */
+const MAX_GENRE_IDS = 12;
 
 /**
  * The shop's product for a title — only while a customer can still buy it.
@@ -56,9 +76,28 @@ const SHOP_JOIN = `LEFT JOIN product_index p
 export const todayIso = (now: Date = new Date()) => now.toISOString().slice(0, 10);
 
 /** The filters every list and count share. */
-function filters(query: GamesDbQuery, today: string): { where: string; binds: string[] } {
+function filters(
+  query: GamesDbQuery,
+  today: string,
+  genreIds: string[] | null = null,
+): { where: string; binds: string[] } {
   const clauses: string[] = [];
   const binds: string[] = [];
+  if (query.shop === "exclude") {
+    // The titles the shop does not sell live: SHOP_JOIN found no product.
+    clauses.push("p.id IS NULL");
+  }
+  if (genreIds) {
+    const ids = genreIds.slice(0, MAX_GENRE_IDS);
+    if (ids.length) {
+      clauses.push(
+        `t.eu_id IN (SELECT g.eu_id FROM nintendo_title_genres g WHERE g.genre IN (${ids.map(() => "?").join(", ")}))`,
+      );
+      binds.push(...ids);
+    } else {
+      clauses.push("0 = 1");
+    }
+  }
   if (query.sort === "soon") {
     // Only the games still to come. A game with no date is not «soon»: nobody announced when.
     clauses.push("t.release_date > ?");
@@ -95,9 +134,16 @@ function filters(query: GamesDbQuery, today: string): { where: string; binds: st
  *     three pages of 2027 releases nobody can play yet; they have «soon».
  *   - «soon»: only the games still to come, soonest first.
  *   - «az»: everything by name.
+ *   - «popular»: Nintendo's downloads rank, most downloaded first; the
+ *     unranked half after them, in the «new» order.
  */
-export function listStatement(query: GamesDbQuery, today: string = todayIso()): GamesDbStatement {
-  const { where, binds } = filters(query, today);
+export function listStatement(
+  query: GamesDbQuery,
+  today: string = todayIso(),
+  options: GamesDbStatementOptions = {},
+): GamesDbStatement {
+  const { where, binds } = filters(query, today, options.genreIds ?? null);
+  const popular = query.sort === "popular" && options.details !== false;
   const order: string[] = [];
   const orderBinds: string[] = [];
   if (query.tokens.length) {
@@ -112,6 +158,9 @@ export function listStatement(query: GamesDbQuery, today: string = todayIso()): 
   } else if (query.sort === "soon") {
     order.push("t.release_date", "t.norm_title", "t.eu_id");
   } else {
+    if (popular) {
+      order.push("CASE WHEN COALESCE(d.downloads_rank, 0) > 0 THEN 0 ELSE 1 END", "d.downloads_rank");
+    }
     order.push(
       "CASE WHEN t.release_date = '' THEN 2 WHEN t.release_date > ? THEN 1 ELSE 0 END",
       "t.release_date DESC",
@@ -124,6 +173,7 @@ export function listStatement(query: GamesDbQuery, today: string = todayIso()): 
        t.delisted, p.id AS shop_id, p.slug AS shop_slug, COUNT(*) OVER () AS total_rows
   FROM nintendo_titles t
   ${SHOP_JOIN}
+  ${popular ? "LEFT JOIN nintendo_title_details d ON d.eu_id = t.eu_id" : ""}
   ${where}
  ORDER BY ${order.join(", ")}
  LIMIT ? OFFSET ?`;
@@ -134,9 +184,15 @@ export function listStatement(query: GamesDbQuery, today: string = todayIso()): 
 }
 
 /** The total alone — only needed for a page past the end, where the window has no row to ride on. */
-export function countStatement(query: GamesDbQuery, today: string = todayIso()): GamesDbStatement {
-  const { where, binds } = filters(query, today);
-  return { sql: `SELECT COUNT(*) AS n FROM nintendo_titles t ${where}`, binds };
+export function countStatement(
+  query: GamesDbQuery,
+  today: string = todayIso(),
+  options: GamesDbStatementOptions = {},
+): GamesDbStatement {
+  const { where, binds } = filters(query, today, options.genreIds ?? null);
+  // «Not in the shop» is decided by the product join, so the count needs it too.
+  const join = query.shop === "exclude" ? SHOP_JOIN : "";
+  return { sql: `SELECT COUNT(*) AS n FROM nintendo_titles t ${join} ${where}`, binds };
 }
 
 /** Every genre and how many titles carry it, largest first. */
@@ -161,15 +217,17 @@ export function revisionStatement(): GamesDbStatement {
  * One title by its address. The whole slug first; failing that, the id it ends
  * in, so a link made before Nintendo renamed the game still arrives.
  */
-export function titleStatement(slug: string): GamesDbStatement {
+export function titleStatement(slug: string, options: GamesDbStatementOptions = {}): GamesDbStatement {
   const wanted = String(slug ?? "")
     .trim()
     .toLowerCase()
     .slice(0, 160);
+  const details = options.details !== false;
   return {
-    sql: `SELECT t.*, p.id AS shop_id, p.slug AS shop_slug
+    sql: `SELECT t.*, p.id AS shop_id, p.slug AS shop_slug${details ? ", d.downloads_rank AS downloads_rank, d.details AS details" : ""}
   FROM nintendo_titles t
   ${SHOP_JOIN}
+  ${details ? "LEFT JOIN nintendo_title_details d ON d.eu_id = t.eu_id" : ""}
  WHERE t.slug = ? OR t.eu_id = ?
  ORDER BY t.slug = ? DESC
  LIMIT 1`,
@@ -237,6 +295,8 @@ export function toTitle(row: Row): GamesDbTitle {
       wide: imageOrEmpty(row["image_wide"]),
     },
     euUrl: imageOrEmpty(row["eu_url"]),
+    downloadsRank: Math.max(0, Math.floor(Number(row["downloads_rank"] ?? 0)) || 0),
+    details: parseGamesDbDetails(row["details"]),
   };
 }
 

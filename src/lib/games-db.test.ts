@@ -113,6 +113,11 @@ describe("a request's filters", () => {
       gamesDbSearchString(parseGamesDbQuery({ sort: "az", q: "zelda", platform: "switch2", page: "2", genre: "action" })),
     ).toBe("genre=action&page=2&platform=switch2&q=zelda&sort=az");
     expect(gamesDbSearchString(parseGamesDbQuery({ page: "1", sort: "new" }))).toBe("");
+    expect(
+      gamesDbSearchString(parseGamesDbQuery({ sort: "popular", shopGenre: "RPG", shop: "exclude", platform: "switch1" })),
+    ).toBe("platform=switch1&shop=exclude&shopGenre=rpg&sort=popular");
+    // Only the one value «shop» has, and only a genre id's shape.
+    expect(parseGamesDbQuery({ shop: "include", shopGenre: "rpg' OR 1=1" })).toMatchObject({ shop: "", shopGenre: "" });
   });
 
   it("gives every title an address ending in its id, which survives a rename", () => {
@@ -165,6 +170,7 @@ describe("the list", () => {
     const db = database();
     expect(titles(db, query({ q: "mario" }))).toEqual([
       "Mario Kart World",
+      "Mario Golf: Super Rush",
       "Mario Kart™ 8 Deluxe",
       "Super Mario Odyssey",
     ]);
@@ -206,6 +212,39 @@ describe("the list", () => {
     }
   });
 
+  it("leaves out, for the games shelf, every title the shop sells live", () => {
+    const db = database();
+    const rest = titles(db, query({ shop: "exclude", q: "zelda tears" }));
+    // TOTK is the shop's (live product): it is on the shelf above, not here.
+    expect(rest).toEqual(["The Legend of Zelda: Tears of the Kingdom – Nintendo Switch™ 2 Edition"]);
+    // Mario Kart World's product is hidden, so the title is not «the shop's» and stays.
+    expect(titles(db, query({ shop: "exclude", q: "mario kart world" }))).toEqual(["Mario Kart World"]);
+    expect(rows(db, countStatement(query({ shop: "exclude", page: 9 }), TODAY))[0]?.["n"]).toBe(
+      GAMES_DB_FIXTURE.length - 1,
+    );
+  });
+
+  it("filters by the Nintendo genres a shop genre gathers, and by none when it gathers none", () => {
+    const db = database();
+    const sports = rows(db, listStatement(query(), TODAY, { genreIds: ["sports", "golf"] })).map((r) => r["title"]);
+    expect(sports).toEqual(["Mario Golf: Super Rush"]);
+    expect(rows(db, listStatement(query(), TODAY, { genreIds: [] }))).toEqual([]);
+    const count = rows(db, countStatement(query({ page: 5 }), TODAY, { genreIds: ["racing", "party"] }))[0]?.["n"];
+    expect(count).toBe(2);
+  });
+
+  it("orders «popular» by Nintendo's downloads rank, then the unranked by «new»", () => {
+    const db = database();
+    const popular = titles(db, query({ sort: "popular" }));
+    expect(popular.slice(0, 3)).toEqual(["Mario Kart™ 8 Deluxe", "Super Mario Odyssey", "Mario Kart World"]);
+    // The unranked follow in the «new» order: Pokémon (2025-10-16) first.
+    expect(popular[3]).toBe("Pokémon™ Legends: Z-A");
+    // Without the details table (before the first load that writes it), «popular» is «new».
+    const statement = listStatement(query({ sort: "popular" }), TODAY, { details: false });
+    expect(statement.sql).not.toContain("nintendo_title_details");
+    expect(rows(db, statement).map((r) => r["title"])).toEqual(titles(db, query()));
+  });
+
   it("names the genres in Arabic, largest first", () => {
     const db = database();
     const facets = toFacets(rows(db, facetsStatement()));
@@ -236,5 +275,26 @@ describe("one title", () => {
     const db = database();
     const [row] = rows(db, titleStatement(slugFor("An Unannounced Puzzle", "107")));
     expect(toTitle(row!).releaseDate).toBe("");
+  });
+
+  it("carries the rest of Nintendo's facts — and only the ones Nintendo states", () => {
+    const db = database();
+    const mkw = toTitle(rows(db, titleStatement(slugFor("Mario Kart World", "103")))[0]!);
+    expect(mkw.downloadsRank).toBe(3);
+    expect(mkw.details).toMatchObject({
+      modes: ["tv", "tabletop", "handheld"],
+      localPlayers: "2-8",
+      onlinePlayers: "2-24",
+      nintendoSwitchOnline: true,
+      cloudSaves: true,
+      // Stated false by Nintendo, and false here: a flag is only ever «said».
+      internetRequired: false,
+      image16x9: "https://www.nintendo.com/eu/media/images/16x9.png",
+    });
+    const plain = toTitle(rows(db, titleStatement(slugFor("Super Mario Odyssey", "108")))[0]!);
+    expect(plain.details).toMatchObject({ modes: [], localPlayers: "", nintendoSwitchOnline: false });
+    // Read without the details table, a title is still whole.
+    const bare = toTitle(rows(db, titleStatement(slugFor("Super Mario Odyssey", "108"), { details: false }))[0]!);
+    expect(bare).toMatchObject({ title: "Super Mario Odyssey", downloadsRank: 0 });
   });
 });

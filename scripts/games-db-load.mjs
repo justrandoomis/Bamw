@@ -51,6 +51,7 @@ import {
   pruneGenresStatement,
   rowsFor,
   stampRevisionStatement,
+  upsertDetailsStatement,
   upsertTitlesStatement,
 } from "./lib/games-db-rows.mjs";
 import { fetchSwitchIndex } from "./lib/nintendo-eu-index.mjs";
@@ -273,6 +274,7 @@ say(
   `- الصور: علبة أمامية ${facts.withBox}، مربعة ${facts.withSquare}، عريضة ${facts.withWide}، بلا أي صورة ${facts.withoutPicture}`,
 );
 say(`- أُزيلت من المتجر الرقمي: ${facts.delisted}`);
+say(`- لها ترتيب تنزيلات عند نينتندو: ${facts.ranked}، ولها أوضاع لعب مذكورة: ${facts.withModes}`);
 say(`- تواريخ الإصدار: من ${facts.oldest || "—"} إلى ${facts.newest || "—"}، بلا تاريخ: ${facts.undated}`);
 say(
   products
@@ -362,11 +364,13 @@ let written = 0;
 let batchesDone = 0;
 for (const batch of batches) {
   try {
-    // Genres first, the title row (and its hash) last: see games-db-rows.mjs.
+    // Genres first, then the details, the title row (and its hash) last: see games-db-rows.mjs.
     const add = insertGenresStatement(batch);
     if (add.params[0] !== "[]") await d1.run(add.sql, add.params);
     const prune = pruneGenresStatement(batch);
     await d1.run(prune.sql, prune.params);
+    const details = upsertDetailsStatement(batch);
+    await d1.run(details.sql, details.params);
     const upsert = upsertTitlesStatement(batch);
     await d1.run(upsert.sql, upsert.params);
   } catch (error) {
