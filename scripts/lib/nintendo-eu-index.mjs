@@ -169,13 +169,24 @@ export function toFacts(row) {
 /** A title folded for matching a shop product to a Nintendo row. */
 export const normalise = (s) =>
   String(s ?? "")
+    // Before NFKD, which turns «™» into the letters «TM» («switchTM 2 edition»):
+    // Nintendo writes the sign and the shop does not, so neither side matched.
+    .replace(/[™®©]/g, "")
     .toLowerCase()
     .normalize("NFKD")
     .replace(/[̀-ͯ]/g, "")
-    .replace(/[™®©]/g, "")
-    .replace(/\s*[[(](switch 2|nintendo switch 2|switch|nintendo switch)[\])]\s*/g, " ")
+    .replace(/\s*[[(](nintendo switch [12]|switch [12]|nintendo switch|switch)[\])]\s*/g, " ")
     .replace(/[–—:\-_'’".,!?&+]/g, " ")
     .replace(/\s+/g, " ")
+    .trim()
+    /*
+      A console named at the very end, bare, the way the shop's own sheet
+      writes it: «The Legend of Zelda: Tears of the Kingdom switch 1». Left
+      in, the shop's TOTK and BOTW matched nothing and the games shelf listed
+      them twice (2026-11-05). «… Switch 2 Edition» ends in «edition» and is
+      kept: it is a different game.
+    */
+    .replace(/\s+(nintendo\s+)?(switch|ns)(\s*[12])?$/, "")
     .trim();
 
 export const pathOf = (url) => {

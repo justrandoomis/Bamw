@@ -1,12 +1,15 @@
 # The games database loader's run-once token (scripts/games-db-load.mjs).
 #
-# Approved by the owner on 2026-11-05: load every Switch / Switch 2 title in
-# Nintendo Europe's index (20,065 that day) into nintendo_titles, the table
-# behind /games-db. It writes only that table and nintendo_title_genres —
-# never the catalogue, and no prices.
+# Second load, 2026-11-05, for the owner's «every game should be full in
+# information»: every title again with the rest of Nintendo's facts (play
+# modes, local and online players, Nintendo Switch Online, cloud saves, the
+# 16:9 picture, the downloads rank) into nintendo_title_details, and the
+# shop's games linked by name even when the name ends in its console. It
+# writes only nintendo_titles, nintendo_title_genres, nintendo_title_details
+# and the revision stamp — never the catalogue, and no prices.
 #
 # It is claimed in console_runs before the first write, so it can never write
 # twice. To run again, replace the line below with a NEW token (letters,
 # digits, dots, dashes or underscores, 6 to 80 characters) and push; a later
 # run writes only the titles that changed. Remove the line to go back to dry.
-2026-11-05-games-db-load-1
+2026-11-05-games-db-details-1

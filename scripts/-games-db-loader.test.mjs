@@ -29,7 +29,7 @@ import {
   upsertDetailsStatement,
   upsertTitlesStatement,
 } from "./lib/games-db-rows.mjs";
-import { toFacts } from "./lib/nintendo-eu-index.mjs";
+import { normalise, toFacts } from "./lib/nintendo-eu-index.mjs";
 
 const MIGRATION = readFileSync(
   fileURLToPath(new URL("../migrations/20261105_nintendo_titles.sql", import.meta.url)),
@@ -229,6 +229,33 @@ describe("which product a title links to", () => {
       { id: "by-nsuid", title: "y", nsuid: "70010000102274" },
     ]);
     expect(links.get("2895344")).toEqual({ productId: "by-link", how: "store-link" });
+  });
+
+  it("links a product whose name ends in its console, the way the shop's sheet writes it", () => {
+    // Real names from the shop on 2026-11-05: no nsuid, no store link, a bare «switch 1».
+    const zelda = [
+      toFacts(doc({ fs_id: "300", title: "The Legend of Zelda: Tears of the Kingdom", url: "/en-gb/Games/t-300.html", nsuid_txt: ["3"] })),
+      toFacts(
+        doc({
+          fs_id: "301",
+          title: "The Legend of Zelda: Tears of the Kingdom – Nintendo Switch™ 2 Edition",
+          url: "/en-gb/Games/t-301.html",
+          nsuid_txt: ["4"],
+          playable_on_txt: ["BEE"],
+        }),
+      ),
+    ];
+    const links = linkShopProducts(zelda, [
+      { id: "totk-1", title: "The Legend of Zelda: Tears of the Kingdom switch 1", platform: "switch1" },
+      { id: "totk-2", title: "The Legend of Zelda: Tears of the Kingdom — Nintendo Switch 2 Edition", platform: "switch2" },
+    ]);
+    expect(links.get("300")?.productId).toBe("totk-1");
+    // The Switch 2 Edition is its own game, and keeps its own product.
+    expect(links.get("301")?.productId).toBe("totk-2");
+    expect(normalise("Pokémon™ Legends: Z-A")).toBe("pokemon legends z a");
+    expect(normalise("Super Mario Odyssey (Switch 1)")).toBe("super mario odyssey");
+    expect(normalise("Mario Kart 8 Deluxe ns")).toBe("mario kart 8 deluxe");
+    expect(normalise("Nintendo Switch Sports")).toBe("nintendo switch sports");
   });
 
   it("links nothing on a title two games share, and nothing the shop cannot sell", () => {
