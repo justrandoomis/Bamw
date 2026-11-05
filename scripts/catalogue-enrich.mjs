@@ -227,6 +227,18 @@ if (repairKeys.size) {
   if (!servingKeys || !writingKeys) repairsOff = "تعذّرت قراءة قائمة الملفات";
   else if (isBlanketFailure(counts)) repairsOff = `نسبة المفقود كبيرة على نحو مريب (${counts.dead + counts.unknown} من ${repairKeys.size})`;
   pictureCounts = counts;
+  /*
+    Counts only, as a GitHub notice: the run page shows notices to anyone,
+    while the report needs a signed-in account. No title, id or address.
+  */
+  console.log(
+    `::notice title=Stored pictures::${repairKeys.size} checked under ${root || "(no shared folder)"}; ` +
+      `listing ${SERVING_BUCKET}: ${servingKeys ? servingKeys.size : "failed"}, ${WRITING_BUCKET}: ${writingKeys ? writingKeys.size : "failed"}; ` +
+      `alive ${counts.alive}, misplaced ${counts.misplaced}, dead ${counts.dead}, unknown ${counts.unknown}; ` +
+      `repairs ${repairsOff ? "OFF" : "on"}`,
+  );
+} else {
+  console.log(`::notice title=Stored pictures::none to check (${patches.filter((p) => p.repair).length} patches offer a repair)`);
 }
 const isDead = (url) => !repairsOff && verdicts.get(storageKeyFor(url)) === "dead";
 
@@ -257,6 +269,11 @@ for (const patch of patches) {
 }
 /** What may be written onto `product` now, checked again at the moment of writing. */
 const writeFor = (product, entry) => ({ ...planFill(product, entry.fill), ...planRepair(product, entry.repair, isDead) });
+console.log(
+  `::notice title=Plan::${planned.length} products to write; ` +
+    `fields ${Object.values(fieldCounts).reduce((a, b) => a + b, 0)}; ` +
+    `repairs ${Object.entries(repairCounts).map(([f, n]) => `${f} ${n}`).join(", ") || "none"}`,
+);
 
 let settingsPatch = null;
 if (SETTINGS_FILE) {
