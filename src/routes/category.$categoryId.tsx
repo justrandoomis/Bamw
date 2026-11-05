@@ -14,7 +14,7 @@ import { Tag, ChevronDown, Gamepad2 } from "lucide-react";
 import { CategoryBannerSlideshow } from "@/components/CategoryBannerSlideshow";
 import { categoryBannerPool } from "@/lib/categoryBanners";
 import { useProgressiveList } from "@/hooks/useProgressiveList";
-import { GAME_GENRES, genreLabel } from "@/lib/genres";
+import { GAME_GENRES, productGenreIds } from "@/lib/genres";
 import { getProductCategory, isGameProduct } from "@/lib/productSection";
 import { isVisibleToPublic } from "@/lib/purchasable";
 import { matchesNintendoPlatformFilter } from "@/lib/nintendoListing";
@@ -38,57 +38,6 @@ type PlatformOption = "all" | "switch1" | "switch2";
 interface GenreItem {
   id: string;
   label: string;
-}
-
-function getProductGenres(p: any): string[] {
-  const result = new Set<string>();
-
-  // 1. Array or string of genres
-  if (Array.isArray(p.genres)) {
-    p.genres.forEach((g: any) => {
-      if (typeof g === "string" && g.trim()) result.add(g.trim().toLowerCase());
-    });
-  } else if (typeof p.genres === "string" && p.genres.trim()) {
-    try {
-      const parsed = JSON.parse(p.genres);
-      if (Array.isArray(parsed)) {
-        parsed.forEach((g: any) => {
-          if (typeof g === "string" && g.trim()) result.add(g.trim().toLowerCase());
-        });
-      }
-    } catch {
-      p.genres.split(",").forEach((g: string) => {
-        if (g.trim()) result.add(g.trim().toLowerCase());
-      });
-    }
-  }
-
-  // 2. Single genre or CSV
-  if (Array.isArray(p.genre)) {
-    p.genre.forEach((g: any) => {
-      if (typeof g === "string" && g.trim()) result.add(g.trim().toLowerCase());
-    });
-  } else if (typeof p.genre === "string" && p.genre.trim()) {
-    p.genre.split(",").forEach((g: string) => {
-      if (g.trim()) result.add(g.trim().toLowerCase());
-    });
-  }
-
-  // 3. Metadata genres
-  if (Array.isArray(p.metadata?.genres)) {
-    p.metadata.genres.forEach((g: any) => {
-      if (typeof g === "string" && g.trim()) result.add(g.trim().toLowerCase());
-    });
-  }
-
-  // 4. Tags
-  if (Array.isArray(p.tags)) {
-    p.tags.forEach((t: any) => {
-      if (typeof t === "string" && t.trim()) result.add(t.trim().toLowerCase());
-    });
-  }
-
-  return Array.from(result);
 }
 
 function CategoryPage() {
@@ -166,51 +115,27 @@ function CategoryPage() {
       return pCat === targetCat || resolved === targetCat;
     });
 
-    const genreKeys = new Set<string>();
+    /*
+      Only the shop's own genres, and only those some product here has.
+
+      Every distinct raw genre and tag used to become a chip of its own — over
+      200 on this page, Arabic beside raw English, "football" beside "football
+      / soccer", Nintendo's "Shop Shop" and "Other". Each raw string now folds
+      into the shop's genres (src/lib/genres.ts), so the row is one short,
+      Arabic list in a fixed order.
+    */
+    const present = new Set<string>();
     categoryProducts.forEach((p: any) => {
-      const gList = getProductGenres(p);
-      gList.forEach((g) => {
-        if (g && g !== "account" && g !== "undefined" && g !== "null") {
-          genreKeys.add(g);
-        }
-      });
+      for (const id of productGenreIds(p)) present.add(id);
     });
-
-    // Map known GAME_GENRES
-    const matchedKnown: GenreItem[] = [];
-    const matchedKnownIds = new Set<string>();
-
-    GAME_GENRES.forEach((gg) => {
-      const isPresent = Array.from(genreKeys).some(
-        (k) =>
-          k === gg.id ||
-          k === gg.label ||
-          k.includes(gg.id) ||
-          k.includes(gg.label) ||
-          gg.label.includes(k),
-      );
-      if (isPresent) {
-        matchedKnown.push(gg);
-        matchedKnownIds.add(gg.id);
-        matchedKnownIds.add(gg.label.toLowerCase());
-      }
-    });
-
-    // Add any remaining custom genres
-    const customGenres: GenreItem[] = [];
-    genreKeys.forEach((k) => {
-      if (!matchedKnownIds.has(k)) {
-        const customLabel = genreLabel(k);
-        customGenres.push({ id: k, label: customLabel });
-      }
-    });
+    const shelves: GenreItem[] = GAME_GENRES.filter((g) => present.has(g.id));
 
     // If no specific genres were extracted, supply all standard game genres for Nintendo
-    if (matchedKnown.length === 0 && customGenres.length === 0 && isNintendoGames) {
+    if (shelves.length === 0 && isNintendoGames) {
       return GAME_GENRES;
     }
 
-    return [...matchedKnown, ...customGenres];
+    return shelves;
   }, [store?.products, categoryId, isNintendoGames]);
 
   const products = useMemo(() => {
@@ -257,26 +182,9 @@ function CategoryPage() {
       // Platform filter
       if (!matchesNintendoPlatformFilter(p, platform)) return false;
 
-      // Genre filter
-      if (selectedGenre !== "all") {
-        const pGenres = getProductGenres(p);
-        const selLower = selectedGenre.toLowerCase();
-        const selLabel = genreLabel(selectedGenre).toLowerCase();
-
-        const matchGenre = pGenres.some((g) => {
-          const gLower = g.toLowerCase();
-          return (
-            gLower === selLower ||
-            gLower === selLabel ||
-            gLower.includes(selLower) ||
-            selLower.includes(gLower) ||
-            gLower.includes(selLabel) ||
-            selLabel.includes(gLower)
-          );
-        });
-
-        if (!matchGenre) return false;
-      }
+      // Genre filter: the product belongs to the chosen shop genre — exactly,
+      // not by a substring of some unrelated tag.
+      if (selectedGenre !== "all" && !productGenreIds(p).has(selectedGenre)) return false;
 
       return true;
     });
