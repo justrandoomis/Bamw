@@ -877,8 +877,8 @@ function HardwareDetailsBody({ product, view }: { product: Record_; view: Produc
         <div className="space-y-5">
           {view.overview || description ? (
             <div className="space-y-3 whitespace-pre-line text-[14px] leading-relaxed text-foreground/80">
-              {view.overview ? <p>{view.overview}</p> : null}
-              {description ? <p>{description}</p> : null}
+              {view.overview ? <p dir="auto">{view.overview}</p> : null}
+              {description ? <p dir="auto">{description}</p> : null}
             </div>
           ) : null}
           <InfoCards items={overview} />

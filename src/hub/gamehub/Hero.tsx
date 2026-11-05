@@ -369,8 +369,16 @@ export function Hero() {
               ) : null}
             </div>
 
+            {/*
+              `dir="auto"`: the tagline is often Nintendo's English pitch. Laid
+              out right to left it put its closing «!» first («!CHAIN™»); the
+              paragraph now takes its direction from its own first letter.
+            */}
             {game.tagline ? (
-              <p className="mx-auto mt-3.5 max-w-xl text-[14px] leading-relaxed text-muted-foreground lg:mx-0">
+              <p
+                dir="auto"
+                className="mx-auto mt-3.5 max-w-xl text-[14px] leading-relaxed text-muted-foreground lg:mx-0"
+              >
                 {game.tagline}
               </p>
             ) : null}

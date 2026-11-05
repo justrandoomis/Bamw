@@ -256,7 +256,7 @@ function DetailsBody({
           </div>
 
           {view.descriptionShort ? (
-            <p className="text-[14px] leading-relaxed text-foreground/80">
+            <p dir="auto" className="text-[14px] leading-relaxed text-foreground/80">
               {view.descriptionShort}
             </p>
           ) : null}
@@ -691,9 +691,9 @@ function SectionBody({
       */
       return (
         <div className="space-y-3 whitespace-pre-line leading-relaxed text-muted-foreground">
-          {view.overview ? <p>{view.overview}</p> : null}
+          {view.overview ? <p dir="auto">{view.overview}</p> : null}
           {view.descriptionFull && view.descriptionFull !== view.overview ? (
-            <p>{view.descriptionFull}</p>
+            <p dir="auto">{view.descriptionFull}</p>
           ) : null}
         </div>
       );

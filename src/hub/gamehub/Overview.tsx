@@ -48,7 +48,9 @@ export function GlanceSection() {
     <Section id="overview" title={t("glance.about")} weight="primary">
       <Reveal>
         <Panel className="p-5 sm:p-6">
+          {/* English or Arabic, each laid out its own way (see the hero's tagline). */}
           <p
+            dir="auto"
             className={cn(
               "max-w-3xl text-[15px] leading-[1.85] text-foreground/85",
               !expanded && isLong && "line-clamp-5",
