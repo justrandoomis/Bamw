@@ -41,12 +41,18 @@ export function ageRatingLabel(rating: string): string {
   return /^(unknown|tbd|n\/a)$/i.test(text) ? "" : text;
 }
 
-/** The ways the game is sold, in the order a buyer cares about. */
-export function editionsLabel(physical: boolean, digital: boolean): string {
-  if (physical && digital) return "قرص ونسخة رقمية";
-  if (physical) return "قرص فقط";
-  if (digital) return "نسخة رقمية فقط";
-  return "";
+/**
+ * A count of games, with the noun Arabic gives that number: «لعبة واحدة»,
+ * «لعبتان», «5 ألعاب», «24 لعبة», «103 ألعاب». Digits stay Latin, as the
+ * rest of the shop writes them.
+ */
+export function gamesCountLabel(count: number): string {
+  if (count <= 0) return "لا توجد ألعاب";
+  if (count === 1) return "لعبة واحدة";
+  if (count === 2) return "لعبتان";
+  const lastTwo = count % 100;
+  const noun = lastTwo >= 3 && lastTwo <= 10 ? "ألعاب" : "لعبة";
+  return `${count.toLocaleString("en-US")} ${noun}`;
 }
 
 /** The product id inside a `/product/<id>` link the API answers with. */

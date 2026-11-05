@@ -71,6 +71,8 @@ import { Route as BundleBundleIdRouteImport } from './routes/bundle.$bundleId'
 import { Route as BundlesIndexRouteImport } from './routes/bundles.index'
 import { Route as BundlesBundleIdRouteImport } from './routes/bundles.$bundleId'
 import { Route as CategoryCategoryIdRouteImport } from './routes/category.$categoryId'
+import { Route as GamesDbIndexRouteImport } from './routes/games-db.index'
+import { Route as GamesDbSlugRouteImport } from './routes/games-db.$slug'
 import { Route as HardwareSlugRouteImport } from './routes/hardware/$slug'
 import { Route as OrdersIndexRouteImport } from './routes/orders.index'
 import { Route as OrdersOrderIdRouteImport } from './routes/orders.$orderId'
@@ -451,6 +453,16 @@ const BundlesBundleIdRoute = BundlesBundleIdRouteImport.update({
 const CategoryCategoryIdRoute = CategoryCategoryIdRouteImport.update({
   id: '/category/$categoryId',
   path: '/category/$categoryId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesDbIndexRoute = GamesDbIndexRouteImport.update({
+  id: '/games-db/',
+  path: '/games-db/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesDbSlugRoute = GamesDbSlugRouteImport.update({
+  id: '/games-db/$slug',
+  path: '/games-db/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HardwareSlugRoute = HardwareSlugRouteImport.update({
@@ -888,6 +900,7 @@ export interface FileRoutesByFullPath {
   '/bundle/$bundleId': typeof BundleBundleIdRoute
   '/bundles/$bundleId': typeof BundlesBundleIdRoute
   '/category/$categoryId': typeof CategoryCategoryIdRoute
+  '/games-db/$slug': typeof GamesDbSlugRoute
   '/hardware/$slug': typeof HardwareSlugRoute
   '/orders/$orderId': typeof OrdersOrderIdRoute
   '/product/$productId': typeof ProductProductIdRoute
@@ -899,6 +912,7 @@ export interface FileRoutesByFullPath {
   '/telegram/wallet-review': typeof TelegramWalletReviewRoute
   '/admin/': typeof AdminIndexRoute
   '/bundles/': typeof BundlesIndexRoute
+  '/games-db/': typeof GamesDbIndexRoute
   '/orders/': typeof OrdersIndexRoute
   '/telegram/': typeof TelegramIndexRoute
   '/api/admin/assets': typeof ApiAdminAssetsRoute
@@ -1023,6 +1037,7 @@ export interface FileRoutesByTo {
   '/bundle/$bundleId': typeof BundleBundleIdRoute
   '/bundles/$bundleId': typeof BundlesBundleIdRoute
   '/category/$categoryId': typeof CategoryCategoryIdRoute
+  '/games-db/$slug': typeof GamesDbSlugRoute
   '/hardware/$slug': typeof HardwareSlugRoute
   '/orders/$orderId': typeof OrdersOrderIdRoute
   '/product/$productId': typeof ProductProductIdRoute
@@ -1034,6 +1049,7 @@ export interface FileRoutesByTo {
   '/telegram/wallet-review': typeof TelegramWalletReviewRoute
   '/admin': typeof AdminIndexRoute
   '/bundles': typeof BundlesIndexRoute
+  '/games-db': typeof GamesDbIndexRoute
   '/orders': typeof OrdersIndexRoute
   '/telegram': typeof TelegramIndexRoute
   '/api/admin/assets': typeof ApiAdminAssetsRoute
@@ -1159,6 +1175,7 @@ export interface FileRoutesById {
   '/bundle/$bundleId': typeof BundleBundleIdRoute
   '/bundles/$bundleId': typeof BundlesBundleIdRoute
   '/category/$categoryId': typeof CategoryCategoryIdRoute
+  '/games-db/$slug': typeof GamesDbSlugRoute
   '/hardware/$slug': typeof HardwareSlugRoute
   '/orders/$orderId': typeof OrdersOrderIdRoute
   '/product/$productId': typeof ProductProductIdRoute
@@ -1170,6 +1187,7 @@ export interface FileRoutesById {
   '/telegram/wallet-review': typeof TelegramWalletReviewRoute
   '/admin/': typeof AdminIndexRoute
   '/bundles/': typeof BundlesIndexRoute
+  '/games-db/': typeof GamesDbIndexRoute
   '/orders/': typeof OrdersIndexRoute
   '/telegram/': typeof TelegramIndexRoute
   '/api/admin/assets': typeof ApiAdminAssetsRoute
@@ -1296,6 +1314,7 @@ export interface FileRouteTypes {
     | '/bundle/$bundleId'
     | '/bundles/$bundleId'
     | '/category/$categoryId'
+    | '/games-db/$slug'
     | '/hardware/$slug'
     | '/orders/$orderId'
     | '/product/$productId'
@@ -1307,6 +1326,7 @@ export interface FileRouteTypes {
     | '/telegram/wallet-review'
     | '/admin/'
     | '/bundles/'
+    | '/games-db/'
     | '/orders/'
     | '/telegram/'
     | '/api/admin/assets'
@@ -1431,6 +1451,7 @@ export interface FileRouteTypes {
     | '/bundle/$bundleId'
     | '/bundles/$bundleId'
     | '/category/$categoryId'
+    | '/games-db/$slug'
     | '/hardware/$slug'
     | '/orders/$orderId'
     | '/product/$productId'
@@ -1442,6 +1463,7 @@ export interface FileRouteTypes {
     | '/telegram/wallet-review'
     | '/admin'
     | '/bundles'
+    | '/games-db'
     | '/orders'
     | '/telegram'
     | '/api/admin/assets'
@@ -1566,6 +1588,7 @@ export interface FileRouteTypes {
     | '/bundle/$bundleId'
     | '/bundles/$bundleId'
     | '/category/$categoryId'
+    | '/games-db/$slug'
     | '/hardware/$slug'
     | '/orders/$orderId'
     | '/product/$productId'
@@ -1577,6 +1600,7 @@ export interface FileRouteTypes {
     | '/telegram/wallet-review'
     | '/admin/'
     | '/bundles/'
+    | '/games-db/'
     | '/orders/'
     | '/telegram/'
     | '/api/admin/assets'
@@ -1702,6 +1726,7 @@ export interface RootRouteChildren {
   BundleBundleIdRoute: typeof BundleBundleIdRoute
   BundlesBundleIdRoute: typeof BundlesBundleIdRoute
   CategoryCategoryIdRoute: typeof CategoryCategoryIdRoute
+  GamesDbSlugRoute: typeof GamesDbSlugRoute
   HardwareSlugRoute: typeof HardwareSlugRoute
   OrdersOrderIdRoute: typeof OrdersOrderIdRoute
   ProductProductIdRoute: typeof ProductProductIdRoute
@@ -1713,6 +1738,7 @@ export interface RootRouteChildren {
   TelegramWalletReviewRoute: typeof TelegramWalletReviewRoute
   AdminIndexRoute: typeof AdminIndexRoute
   BundlesIndexRoute: typeof BundlesIndexRoute
+  GamesDbIndexRoute: typeof GamesDbIndexRoute
   OrdersIndexRoute: typeof OrdersIndexRoute
   TelegramIndexRoute: typeof TelegramIndexRoute
   ApiAdminAssetsRoute: typeof ApiAdminAssetsRoute
@@ -2198,6 +2224,20 @@ declare module '@tanstack/react-router' {
       path: '/category/$categoryId'
       fullPath: '/category/$categoryId'
       preLoaderRoute: typeof CategoryCategoryIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games-db/': {
+      id: '/games-db/'
+      path: '/games-db'
+      fullPath: '/games-db/'
+      preLoaderRoute: typeof GamesDbIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games-db/$slug': {
+      id: '/games-db/$slug'
+      path: '/games-db/$slug'
+      fullPath: '/games-db/$slug'
+      preLoaderRoute: typeof GamesDbSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hardware/$slug': {
@@ -2835,6 +2875,7 @@ const rootRouteChildren: RootRouteChildren = {
   BundleBundleIdRoute: BundleBundleIdRoute,
   BundlesBundleIdRoute: BundlesBundleIdRoute,
   CategoryCategoryIdRoute: CategoryCategoryIdRoute,
+  GamesDbSlugRoute: GamesDbSlugRoute,
   HardwareSlugRoute: HardwareSlugRoute,
   OrdersOrderIdRoute: OrdersOrderIdRoute,
   ProductProductIdRoute: ProductProductIdRoute,
@@ -2846,6 +2887,7 @@ const rootRouteChildren: RootRouteChildren = {
   TelegramWalletReviewRoute: TelegramWalletReviewRoute,
   AdminIndexRoute: AdminIndexRoute,
   BundlesIndexRoute: BundlesIndexRoute,
+  GamesDbIndexRoute: GamesDbIndexRoute,
   OrdersIndexRoute: OrdersIndexRoute,
   TelegramIndexRoute: TelegramIndexRoute,
   ApiAdminAssetsRoute: ApiAdminAssetsRoute,

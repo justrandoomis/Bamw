@@ -8,7 +8,7 @@
  * keeps what only a route can own — the URL contract and the page metadata —
  * and reads `q` out of the URL for this component to answer.
  */
-import { Search as SearchIcon, X } from "lucide-react";
+import { Database, Search as SearchIcon, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 
@@ -112,6 +112,24 @@ export default function SearchResultsPage({ q = "" }: { q?: string }) {
     submit(suggestion);
   };
 
+  /*
+    The shop carries some seventeen hundred games; Nintendo's index has twenty
+    thousand. A search that missed here — or found the wrong one — can carry on
+    in the games database, where a title the shop does not sell can be asked
+    for. A button and `navigate` rather than a Link, so the page renders in a
+    test that stands in only `useNavigate`.
+  */
+  const gamesDbLink = q.trim() ? (
+    <button
+      type="button"
+      onClick={() => void navigate({ to: "/games-db", search: { q: q.trim().slice(0, 80) } })}
+      className="inline-flex h-11 items-center gap-2 rounded-full border border-[var(--clay-rim)] bg-card px-5 text-[13px] font-bold text-foreground shadow-sm"
+    >
+      <Database className="h-4 w-4 text-[var(--brand-red)]" aria-hidden="true" />
+      {t("ابحث في كل ألعاب نينتندو")}
+    </button>
+  ) : null;
+
   return (
     /*
       «search», not «store».
@@ -199,15 +217,23 @@ export default function SearchResultsPage({ q = "" }: { q?: string }) {
               <div className="h-10 w-10 animate-spin rounded-full border-4 border-border border-t-red-500" />
             </div>
           ) : shown.length > 0 ? (
-            <div className="mt-6 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4" dir="ltr">
-              {shown.map((row) => (
-                <ProductCard
-                  key={String(row.product["id"])}
-                  product={row.product}
-                  imageRole="front-box"
-                />
-              ))}
-            </div>
+            <>
+              <div className="mt-6 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4" dir="ltr">
+                {shown.map((row) => (
+                  <ProductCard
+                    key={String(row.product["id"])}
+                    product={row.product}
+                    imageRole="front-box"
+                  />
+                ))}
+              </div>
+              {gamesDbLink ? (
+                <div className="mt-10 flex flex-col items-center gap-3 text-center">
+                  <p className="text-sm font-bold text-muted-foreground">{t("لم تجد لعبتك؟")}</p>
+                  {gamesDbLink}
+                </div>
+              ) : null}
+            </>
           ) : (
             <div className="mt-6 rounded-3xl border border-dashed border-border bg-card px-6 py-16 text-center">
               <div className="mb-4 text-5xl">{q.trim() ? "🔍" : "🎮"}</div>
@@ -230,6 +256,7 @@ export default function SearchResultsPage({ q = "" }: { q?: string }) {
                   </button>
                 ))}
               </div>
+              {gamesDbLink ? <div className="mt-6">{gamesDbLink}</div> : null}
             </div>
           )}
         </div>

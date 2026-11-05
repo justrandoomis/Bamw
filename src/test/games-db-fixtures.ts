@@ -70,7 +70,8 @@ export const GAMES_DB_FIXTURE = [
   facts({ euId: "103", title: "Mario Kart World", platform: "switch2", releaseDate: "2025-06-05", genres: ["Racing"] }),
   facts({ euId: "104", title: "Mario Kart™ 8 Deluxe", releaseDate: "2017-04-28", genres: ["Racing", "Party"] }),
   facts({ euId: "105", title: "Pokémon™ Legends: Z-A", platform: "both", releaseDate: "2025-10-16", genres: ["RPG"] }),
-  facts({ euId: "106", title: "Hollow Knight: Silksong", releaseDate: "2027-02-01", genres: ["Action", "Platformer"] }),
+  // A made-up game, dated far enough ahead to stay «upcoming» for as long as these tests run.
+  facts({ euId: "106", title: "Lumen Drift: Origins", releaseDate: "2044-06-01", genres: ["Action", "Platformer"] }),
   facts({ euId: "107", title: "An Unannounced Puzzle", releaseDate: "2050-12-31", genres: ["Puzzle"] }),
   facts({ euId: "108", title: "Super Mario Odyssey", releaseDate: "2017-10-27", genres: ["Platformer"] }),
 ];

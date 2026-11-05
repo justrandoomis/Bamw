@@ -64,7 +64,11 @@ function rows(db: DatabaseSync, statement: GamesDbStatement) {
   return db.prepare(statement.sql).all(...(statement.binds as never[])) as Record<string, unknown>[];
 }
 
-const titles = (db: DatabaseSync, q: GamesDbQuery) => rows(db, listStatement(q)).map((r) => String(r["title"]));
+/** A fixed day, so «released» and «upcoming» do not move as the calendar does. */
+const TODAY = "2026-11-05";
+
+const titles = (db: DatabaseSync, q: GamesDbQuery) =>
+  rows(db, listStatement(q, TODAY)).map((r) => String(r["title"]));
 
 describe("a query, as the words every result must contain", () => {
   it("turns the Arabic names people type into Nintendo's English ones", () => {
@@ -99,6 +103,7 @@ describe("a request's filters", () => {
   it("falls back to the default for anything it does not recognise", () => {
     const parsed = parseGamesDbQuery(new URLSearchParams("platform=wii&page=-3&sort=price&genre=Board%20game"));
     expect(parsed).toMatchObject({ platform: "", page: 1, sort: "new", genre: "board-game" });
+    expect(parseGamesDbQuery({ sort: "soon" }).sort).toBe("soon");
     expect(parseGamesDbQuery({ page: "99999" }).page).toBe(1000);
     expect(parseGamesDbQuery({ q: `  ${"z".repeat(200)}  ` }).q).toHaveLength(80);
   });
@@ -118,17 +123,23 @@ describe("a request's filters", () => {
 });
 
 describe("the list", () => {
-  it("opens newest first: upcoming games on top, a game with no date last", () => {
+  it("opens on the newest game already out, with the ones still to come after, and no date last", () => {
     const db = database();
     const all = titles(db, query());
-    expect(all[0]).toBe("Hollow Knight: Silksong");
-    expect(all[1]).toBe("Pokémon™ Legends: Z-A");
+    expect(all[0]).toBe("Pokémon™ Legends: Z-A");
+    expect(all.at(-2)).toBe("Lumen Drift: Origins");
     expect(all.at(-1)).toBe("An Unannounced Puzzle");
+  });
+
+  it("lists under «soon» only the games still to come — not the ones with no date", () => {
+    const db = database();
+    expect(titles(db, query({ sort: "soon" }))).toEqual(["Lumen Drift: Origins"]);
+    expect(rows(db, countStatement(query({ sort: "soon", page: 2 }), TODAY))[0]?.["n"]).toBe(1);
   });
 
   it("counts the whole filtered set on the page's own rows", () => {
     const db = database();
-    const page = rows(db, listStatement(query({ genre: "racing" })));
+    const page = rows(db, listStatement(query({ genre: "racing" }), TODAY));
     expect(page.map((r) => r["title"])).toEqual(["Mario Kart World", "Mario Kart™ 8 Deluxe"]);
     expect(page.every((r) => r["total_rows"] === 2)).toBe(true);
   });
@@ -146,7 +157,7 @@ describe("the list", () => {
     const db = database();
     expect(titles(db, query({ q: "zelda" }))).toHaveLength(2);
     expect(titles(db, query({ q: "زيلدا" }))).toHaveLength(2);
-    expect(titles(db, query({ q: "silksong" }))).toEqual(["Hollow Knight: Silksong"]);
+    expect(titles(db, query({ q: "lumen" }))).toEqual(["Lumen Drift: Origins"]);
     expect(titles(db, query({ q: "غسالة" }))).toEqual([]);
   });
 
@@ -161,13 +172,13 @@ describe("the list", () => {
 
   it("goes A to Z when asked", () => {
     const db = database();
-    expect(titles(db, query({ sort: "az" })).slice(0, 2)).toEqual(["An Unannounced Puzzle", "Hollow Knight: Silksong"]);
+    expect(titles(db, query({ sort: "az" })).slice(0, 2)).toEqual(["An Unannounced Puzzle", "Lumen Drift: Origins"]);
   });
 
   it("links a title to the shop only while its product is live", () => {
     const db = database();
-    const items = rows(db, listStatement(query({ q: "zelda tears" })))
-      .concat(rows(db, listStatement(query({ q: "mario kart world" }))))
+    const items = rows(db, listStatement(query({ q: "zelda tears" }), TODAY))
+      .concat(rows(db, listStatement(query({ q: "mario kart world" }), TODAY)))
       .map(toListItem);
     const byTitle = Object.fromEntries(items.map((item) => [item.title, item.shopPath]));
     expect(byTitle["The Legend of Zelda: Tears of the Kingdom"]).toBe("/product/zelda-totk");
@@ -179,16 +190,20 @@ describe("the list", () => {
 
   it("answers a page past the end with nothing, and the count from its own statement", () => {
     const db = database();
-    expect(rows(db, listStatement(query({ page: 2 })))).toEqual([]);
-    expect(rows(db, countStatement(query({ page: 2 })))[0]?.["n"]).toBe(GAMES_DB_FIXTURE.length);
+    expect(rows(db, listStatement(query({ page: 2 }), TODAY))).toEqual([]);
+    expect(rows(db, countStatement(query({ page: 2 }), TODAY))[0]?.["n"]).toBe(GAMES_DB_FIXTURE.length);
     expect(GAMES_DB_PAGE_SIZE).toBe(24);
   });
 
   it("stays far inside D1's parameter limit with every filter at once", () => {
-    const busiest = listStatement(
-      query({ platform: "switch2", genre: "action", q: "a b c d e f g h i j k l", page: 3 }),
-    );
-    expect(busiest.binds.length).toBeLessThanOrEqual(2 + 1 + GAMES_DB_MAX_TOKENS + 3 + 2);
+    for (const sort of ["new", "soon", "az"] as const) {
+      const busiest = listStatement(
+        query({ platform: "switch2", genre: "action", q: "a b c d e f g h i j k l", page: 3, sort }),
+        TODAY,
+      );
+      // Console 2, genre 1, «soon» 1, words, relevance 3, release order 1, page 2.
+      expect(busiest.binds.length).toBeLessThanOrEqual(2 + 1 + 1 + GAMES_DB_MAX_TOKENS + 3 + 1 + 2);
+    }
   });
 
   it("names the genres in Arabic, largest first", () => {

@@ -86,7 +86,6 @@ export function text(value, max = 500) {
   const raw = String(value ?? "");
   const wellFormed = typeof raw.toWellFormed === "function" ? raw.toWellFormed() : raw;
   return wellFormed
-    // eslint-disable-next-line no-control-regex
     .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, "")
     .trim()
     .slice(0, max);

@@ -7,9 +7,9 @@
  * that talks to D1 is `games-db.server.ts`.
  *
  * Every statement has a fixed ceiling of bound parameters, set in the source:
- * the console filter is two, the genre one, the query at most
- * GAMES_DB_MAX_TOKENS, the relevance order three, the page two — fourteen at
- * most, against D1's hundred.
+ * the console filter is two, the genre one, «coming soon» one, the query at
+ * most GAMES_DB_MAX_TOKENS, the relevance order three, the release order one,
+ * the page two — sixteen at most, against D1's hundred.
  */
 import {
   GAMES_DB_PAGE_SIZE,
@@ -48,10 +48,21 @@ const SHOP_JOIN = `LEFT JOIN product_index p
    AND COALESCE(p.price, 0) > 0
    AND lower(trim(p.status)) NOT IN ('inactive', 'disabled', 'draft', 'hidden', 'deleted', 'غير نشط', 'موقوف', 'مخفي', 'محذوف')`;
 
+/**
+ * Today as the stored dates spell it: the line between released and upcoming.
+ * A parameter rather than SQLite's `date('now')`, so a test can fix the day.
+ */
+export const todayIso = (now: Date = new Date()) => now.toISOString().slice(0, 10);
+
 /** The filters every list and count share. */
-function filters(query: GamesDbQuery): { where: string; binds: string[] } {
+function filters(query: GamesDbQuery, today: string): { where: string; binds: string[] } {
   const clauses: string[] = [];
   const binds: string[] = [];
+  if (query.sort === "soon") {
+    // Only the games still to come. A game with no date is not «soon»: nobody announced when.
+    clauses.push("t.release_date > ?");
+    binds.push(today);
+  }
   const platforms = platformsFor(query.platform);
   if (platforms.length === 2) {
     clauses.push("t.platform IN (?, ?)");
@@ -76,11 +87,16 @@ function filters(query: GamesDbQuery): { where: string; binds: string[] } {
  * over the filtered set — one statement where a separate count would be two).
  *
  * With a query, the title that IS the query comes first, then the ones that
- * start with it, then the ones with a word that starts with it. Otherwise
- * newest first — upcoming games at the top — or A to Z.
+ * start with it, then the ones with a word that starts with it. Then:
+ *
+ *   - «new»: games already out, newest first — then the ones still to come,
+ *     then the undated. Upcoming games first would have opened the database on
+ *     three pages of 2027 releases nobody can play yet; they have «soon».
+ *   - «soon»: only the games still to come, soonest first.
+ *   - «az»: everything by name.
  */
-export function listStatement(query: GamesDbQuery): GamesDbStatement {
-  const { where, binds } = filters(query);
+export function listStatement(query: GamesDbQuery, today: string = todayIso()): GamesDbStatement {
+  const { where, binds } = filters(query, today);
   const order: string[] = [];
   const orderBinds: string[] = [];
   if (query.tokens.length) {
@@ -90,8 +106,19 @@ export function listStatement(query: GamesDbQuery): GamesDbStatement {
     );
     orderBinds.push(phrase, `${phrase}%`, `% ${phrase}%`);
   }
-  if (query.sort === "az") order.push("t.norm_title", "t.eu_id");
-  else order.push("t.release_date = ''", "t.release_date DESC", "t.norm_title", "t.eu_id");
+  if (query.sort === "az") {
+    order.push("t.norm_title", "t.eu_id");
+  } else if (query.sort === "soon") {
+    order.push("t.release_date", "t.norm_title", "t.eu_id");
+  } else {
+    order.push(
+      "CASE WHEN t.release_date = '' THEN 2 WHEN t.release_date > ? THEN 1 ELSE 0 END",
+      "t.release_date DESC",
+      "t.norm_title",
+      "t.eu_id",
+    );
+    orderBinds.push(today);
+  }
   const sql = `SELECT t.slug, t.title, t.platform, t.release_date, t.publisher, t.genres, t.image_square,
        t.delisted, p.id AS shop_id, p.slug AS shop_slug, COUNT(*) OVER () AS total_rows
   FROM nintendo_titles t
@@ -106,8 +133,8 @@ export function listStatement(query: GamesDbQuery): GamesDbStatement {
 }
 
 /** The total alone — only needed for a page past the end, where the window has no row to ride on. */
-export function countStatement(query: GamesDbQuery): GamesDbStatement {
-  const { where, binds } = filters(query);
+export function countStatement(query: GamesDbQuery, today: string = todayIso()): GamesDbStatement {
+  const { where, binds } = filters(query, today);
   return { sql: `SELECT COUNT(*) AS n FROM nintendo_titles t ${where}`, binds };
 }
 

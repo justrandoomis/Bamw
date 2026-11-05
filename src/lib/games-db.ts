@@ -16,7 +16,11 @@
 
 export type GamesDbPlatform = "switch1" | "switch2" | "both";
 export type GamesDbPlatformFilter = "" | "switch1" | "switch2";
-export type GamesDbSort = "new" | "az";
+/**
+ * «new» is released games, newest first (upcoming ones after them); «soon» is
+ * only the games still to come, soonest first; «az» is everything by name.
+ */
+export type GamesDbSort = "new" | "soon" | "az";
 
 /** A page of the grid: divisible by 2, 3, 4 and 6, the column counts it has. */
 export const GAMES_DB_PAGE_SIZE = 24;
@@ -193,6 +197,54 @@ export function genreLabel(id: string, fallback = ""): string {
   if (GENRE_LABELS[id]) return GENRE_LABELS[id];
   if (fallback) return fallback;
   return id.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+/* ------------------------------------------------------------------ */
+/* Series                                                              */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Nintendo files a game's series as an internal key («the_legend_of_zelda»),
+ * not a name. These are all 26 keys the index used on 2026-11-05, spelled the
+ * way the series spells itself; a key added later is spaced and capitalised.
+ */
+const SERIES_NAMES: Record<string, string> = {
+  "51_worldwide_games": "51 Worldwide Games",
+  ace_attorney: "Ace Attorney",
+  animal_crossing: "Animal Crossing",
+  bayonetta: "Bayonetta",
+  donkey_kong: "Donkey Kong",
+  dr_kawashimas_brain_training: "Dr Kawashima's Brain Training",
+  final_fantasy: "Final Fantasy",
+  fire_emblem: "Fire Emblem",
+  kirby: "Kirby",
+  lego: "LEGO",
+  mario_kart: "Mario Kart",
+  mario_party: "Mario Party",
+  mario_sports: "Mario Sports",
+  metroid: "Metroid",
+  monster_hunter: "Monster Hunter",
+  pikmin: "Pikmin",
+  pokemon: "Pokémon",
+  professor_layton: "Professor Layton",
+  sonic_the_hedgehog: "Sonic the Hedgehog",
+  splatoon: "Splatoon",
+  super_mario: "Super Mario",
+  super_smash_bros: "Super Smash Bros.",
+  the_legend_of_zelda: "The Legend of Zelda",
+  warioware: "WarioWare",
+  xenoblade_chronicles: "Xenoblade Chronicles",
+  yoshi: "Yoshi",
+};
+
+export function seriesLabel(key: string): string {
+  const known = SERIES_NAMES[key.trim().toLowerCase()];
+  if (known) return known;
+  return key
+    .split(/[_\s]+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
 
 /* ------------------------------------------------------------------ */
@@ -447,8 +499,33 @@ export function parseGamesDbQuery(input: SearchInput): GamesDbQuery {
   const pageNumber = Number.parseInt(read(input, "page"), 10);
   const page =
     Number.isFinite(pageNumber) && pageNumber > 1 ? Math.min(pageNumber, GAMES_DB_MAX_PAGE) : 1;
-  const sort: GamesDbSort = read(input, "sort") === "az" ? "az" : "new";
+  const sortRaw = read(input, "sort");
+  const sort: GamesDbSort = sortRaw === "az" || sortRaw === "soon" ? sortRaw : "new";
   return { q, tokens: queryTokens(q), platform, genre, page, sort };
+}
+
+/** The page's URL search, every key optional so a plain `/games-db` link stays valid. */
+export interface GamesDbSearch {
+  q?: string;
+  platform?: "switch1" | "switch2";
+  genre?: string;
+  page?: number;
+  sort?: "soon" | "az";
+}
+
+/**
+ * The filters as the page's URL keeps them: validated, defaults left out.
+ * Returning a key unconditionally would make it required at the type level and
+ * break every plain `navigate({ to: "/games-db" })` — the trap /search notes.
+ */
+export function gamesDbSearch(query: GamesDbQuery): GamesDbSearch {
+  const out: GamesDbSearch = {};
+  if (query.q) out.q = query.q;
+  if (query.platform) out.platform = query.platform;
+  if (query.genre) out.genre = query.genre;
+  if (query.page > 1) out.page = query.page;
+  if (query.sort !== "new") out.sort = query.sort;
+  return out;
 }
 
 /**

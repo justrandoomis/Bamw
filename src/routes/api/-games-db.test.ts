@@ -87,7 +87,8 @@ describe("after the load", () => {
     expect(body.ready).toBe(true);
     expect(body.total).toBe(8);
     expect(body.pages).toBe(1);
-    expect(body.items[0]?.title).toBe("Hollow Knight: Silksong");
+    // Newest game already out first; the fixture's upcoming one (2044) comes after.
+    expect(body.items[0]?.title).toBe("Pokémon™ Legends: Z-A");
     expect(body.genres.find((g) => g.id === "racing")).toEqual({ id: "racing", label: "سباق", count: 2 });
     // One page, the genre counts and nothing else: two statements.
     expect(db.log).toHaveLength(2);
