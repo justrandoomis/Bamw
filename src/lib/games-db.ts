@@ -29,6 +29,12 @@ export const GAMES_DB_MAX_PAGE = 1000;
 /** A query is echoed into a cache key and a SQL parameter; it is bounded for both. */
 export const GAMES_DB_MAX_QUERY_LENGTH = 80;
 /**
+ * The key of the loader's stamp in `nintendo_titles_meta`: written when a load
+ * finishes (scripts/lib/games-db-rows.mjs), read into the API's edge-cache key
+ * (games-db.server.ts), so nothing cached while a load was running outlives it.
+ */
+export const GAMES_DB_REVISION_KEY = "revision";
+/**
  * Every word of a query is one `LIKE` parameter, so the word count is the
  * parameter count — capped here, in the source, rather than by whatever the
  * address bar was pasted full of. D1 refuses past 100.

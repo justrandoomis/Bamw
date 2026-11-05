@@ -81,3 +81,14 @@ CREATE TABLE IF NOT EXISTS nintendo_title_genres (
 
 -- A title's own genres, for the loader's tidy-up after a title changes them.
 CREATE INDEX IF NOT EXISTS idx_nintendo_title_genres_title ON nintendo_title_genres (eu_id);
+
+-- The loader's stamp: key 'revision', value the time of the load, written
+-- after the load's last batch. The API keys its edge cache on it. A load
+-- rewrites rows for minutes, and an answer cached in that time — a total of
+-- 8,800 of 20,065 on 2026-11-05 — was otherwise served for the cache's full
+-- hour after the load. With the stamp, it is never served once the load ends.
+-- A database loaded before this table existed has no row, and the key says 0.
+CREATE TABLE IF NOT EXISTS nintendo_titles_meta (
+  key   TEXT PRIMARY KEY,
+  value TEXT NOT NULL DEFAULT ''
+);

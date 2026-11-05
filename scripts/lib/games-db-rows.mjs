@@ -21,7 +21,7 @@
  */
 import { createHash } from "node:crypto";
 
-import { foldTitle, genreId, slugFor } from "../../src/lib/games-db.ts";
+import { GAMES_DB_REVISION_KEY, foldTitle, genreId, slugFor } from "../../src/lib/games-db.ts";
 import { indexMaps, matchProduct } from "./nintendo-eu-index.mjs";
 
 /** The table's columns, in the order every statement and every row array uses. */
@@ -283,6 +283,20 @@ export function pruneGenresStatement(rows) {
       "WHERE json_extract(keep.value, '$[0]') = nintendo_title_genres.genre " +
       "AND json_extract(keep.value, '$[1]') = nintendo_title_genres.eu_id)",
     params: [JSON.stringify(rows.map((row) => row.eu_id)), JSON.stringify(genrePairs(rows))],
+  };
+}
+
+/**
+ * The load's stamp, written after its last batch: the API keys its edge cache
+ * on it (src/lib/games-db.server.ts), so an answer cached while the rows were
+ * changing is never served once this lands. Written by every load that
+ * finishes, also one that changed nothing: one refilled cache costs less than
+ * deciding which runs were whole.
+ */
+export function stampRevisionStatement(revision) {
+  return {
+    sql: "INSERT OR REPLACE INTO nintendo_titles_meta (key, value) VALUES (?, ?)",
+    params: [GAMES_DB_REVISION_KEY, String(revision)],
   };
 }
 

@@ -50,6 +50,7 @@ import {
   planWrites,
   pruneGenresStatement,
   rowsFor,
+  stampRevisionStatement,
   upsertTitlesStatement,
 } from "./lib/games-db-rows.mjs";
 import { fetchSwitchIndex } from "./lib/nintendo-eu-index.mjs";
@@ -383,19 +384,38 @@ for (const batch of batches) {
   }
 }
 
+/*
+  The stamp, after the last batch: until it lands the API keeps answering under
+  the previous revision, and nothing it cached while this load ran is served
+  once it does (src/lib/games-db.server.ts). Without it the rows are still
+  right; only answers cached during the load stay up to an hour.
+*/
+try {
+  const stamp = stampRevisionStatement(loadedAt);
+  await d1.run(stamp.sql, stamp.params);
+} catch (error) {
+  say(
+    `كُتب ${written} عنواناً، لكن تعذّر ختم المراجعة: ${error instanceof Error ? error.message : String(error)}. ` +
+      "ما خُزّن مؤقتاً أثناء التحميل يبقى حتى ساعة؛ تشغيل برمز جديد يختمها.",
+  );
+  finish({ ...summary, applied: true, written, batches: batchesDone, stamped: false });
+  process.exit(1);
+}
+
 const [after] = await d1.all(
   "SELECT COUNT(*) AS n, SUM(CASE WHEN shop_product_id <> '' THEN 1 ELSE 0 END) AS linked FROM nintendo_titles",
 );
 const [genreRows] = await d1.all("SELECT COUNT(*) AS n FROM nintendo_title_genres");
 say(
   `كُتب ${written} عنواناً في ${batchesDone} دفعة. الجدول الآن: ${after?.n ?? "?"} عنواناً ` +
-    `(${after?.linked ?? "?"} يبيعها المتجر)، و${genreRows?.n ?? "?"} صف تصنيف.`,
+    `(${after?.linked ?? "?"} يبيعها المتجر)، و${genreRows?.n ?? "?"} صف تصنيف. المراجعة: \`${loadedAt}\`.`,
 );
 finish({
   ...summary,
   applied: true,
   written,
   batches: batchesDone,
+  revision: loadedAt,
   tableTitlesAfter: Number(after?.n ?? 0),
   linkedAfter: Number(after?.linked ?? 0),
 });

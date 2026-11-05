@@ -24,6 +24,7 @@ import {
   planWrites,
   pruneGenresStatement,
   rowsFor,
+  stampRevisionStatement,
   toRow,
   upsertTitlesStatement,
 } from "./lib/games-db-rows.mjs";
@@ -80,9 +81,9 @@ const writeBatch = (db, rows) => {
 };
 
 describe("the migration", () => {
-  it("splits into the table, its indexes and the genre table, with every comment gone", () => {
+  it("splits into the table, its indexes, the genre table and the stamp table, with every comment gone", () => {
     const statements = migrationStatements(MIGRATION);
-    expect(statements).toHaveLength(6);
+    expect(statements).toHaveLength(7);
     expect(statements.every((s) => /IF NOT EXISTS/.test(s))).toBe(true);
     expect(statements.some((s) => s.includes("--"))).toBe(false);
     expect(statements[0]).toMatch(/^CREATE TABLE IF NOT EXISTS nintendo_titles/);
@@ -95,7 +96,7 @@ describe("the migration", () => {
       .prepare("SELECT name FROM sqlite_master WHERE type = 'table' ORDER BY name")
       .all()
       .map((r) => r.name);
-    expect(tables).toEqual(["nintendo_title_genres", "nintendo_titles"]);
+    expect(tables).toEqual(["nintendo_title_genres", "nintendo_titles", "nintendo_titles_meta"]);
   });
 
   it("names every column the loader writes", () => {
@@ -264,6 +265,17 @@ describe("writing the rows", () => {
     expect(genrePairs([row])).toEqual([
       ["action", "2895344"],
       ["board-game", "2895344"],
+    ]);
+  });
+});
+
+describe("the load's stamp", () => {
+  it("is one row, which every finished load replaces with its own time", () => {
+    const db = database();
+    run(db, stampRevisionStatement(LOADED_AT));
+    run(db, stampRevisionStatement("2026-11-06T01:00:00.000Z"));
+    expect(db.prepare("SELECT key, value FROM nintendo_titles_meta").all()).toEqual([
+      { key: "revision", value: "2026-11-06T01:00:00.000Z" },
     ]);
   });
 });

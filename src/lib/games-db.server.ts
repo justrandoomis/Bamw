@@ -24,6 +24,7 @@ import {
   countStatement,
   facetsStatement,
   listStatement,
+  revisionStatement,
   titleStatement,
   toFacets,
   toListItem,
@@ -38,17 +39,58 @@ export const isMissingTable = (error: unknown) =>
   /no such table/i.test(error instanceof Error ? error.message : String(error));
 
 /*
+  The load's revision: the stamp the loader writes into `nintendo_titles_meta`
+  after a load's last batch. The edge cache and the genre counts below are
+  keyed on it. A load rewrites rows for minutes, and on 2026-11-05 an answer
+  cached halfway through one (8,800 titles of 20,065) went on being served
+  for the cache's full hour. Keyed on the revision, whatever was cached during
+  a load is left behind the moment its stamp lands. Each isolate reads the
+  stamp at most once a minute, so a finished load reaches every answer within
+  a minute.
+*/
+const REVISION_TTL_MS = 60_000;
+let revisionMemo: { at: number; revision: string } | null = null;
+
+/**
+ * The stamp, or "" when there is none (no load has stamped this database, or
+ * it was loaded before the table existed). Null when it could not be read: the
+ * caller then does without the cache rather than file an answer under a guess.
+ */
+async function loadRevision(): Promise<string | null> {
+  if (revisionMemo && Date.now() - revisionMemo.at < REVISION_TTL_MS) return revisionMemo.revision;
+  if (!getD1()) return null;
+  let revision = "";
+  try {
+    const [row] = await all(revisionStatement());
+    revision = String(row?.["value"] ?? "");
+  } catch (error) {
+    if (!isMissingTable(error)) return null;
+  }
+  revisionMemo = { at: Date.now(), revision };
+  return revision;
+}
+
+/*
   The genre counts change only when the loader runs, and they are the same for
-  every page and every filter — so one isolate asks once per quarter hour
-  rather than once per cache miss (each ask reads every genre row).
+  every page and every filter — so one isolate asks once per quarter hour, or
+  as soon as the load's revision changes, rather than once per cache miss
+  (each ask reads every genre row).
 */
 const FACETS_TTL_MS = 15 * 60_000;
-let facetsMemo: { at: number; facets: GamesDbFacet[] } | null = null;
+let facetsMemo: { at: number; revision: string; facets: GamesDbFacet[] } | null = null;
 
 async function genreFacets(): Promise<GamesDbFacet[]> {
-  if (facetsMemo && Date.now() - facetsMemo.at < FACETS_TTL_MS) return facetsMemo.facets;
+  const revision = await loadRevision();
+  if (
+    revision !== null &&
+    facetsMemo !== null &&
+    facetsMemo.revision === revision &&
+    Date.now() - facetsMemo.at < FACETS_TTL_MS
+  ) {
+    return facetsMemo.facets;
+  }
   const facets = toFacets(await all(facetsStatement()));
-  if (facets.length) facetsMemo = { at: Date.now(), facets };
+  if (facets.length && revision !== null) facetsMemo = { at: Date.now(), revision, facets };
   return facets;
 }
 
@@ -61,6 +103,7 @@ async function anyTitle(): Promise<boolean> {
 
 /** Test seam: forget what this isolate remembers between requests. */
 export function resetGamesDbMemo(): void {
+  revisionMemo = null;
   facetsMemo = null;
   loadedSeen = false;
 }
@@ -141,10 +184,20 @@ export const GAMES_DB_CACHE_VERSION = "v1";
 export const GAMES_DB_CACHE_CONTROL = "public, max-age=300, s-maxage=3600";
 
 /**
+ * Where an answer is kept at the edge: the answers' version, the load's
+ * revision ("0" before any stamp), then the validated filters (`keyPath`) —
+ * never the raw URL, so `?page=1&q=Zelda` and `?q=zelda` share one entry and
+ * a made-up parameter cannot mint a new one.
+ */
+export function edgeCacheUrl(requestUrl: string, revision: string, keyPath: string): string {
+  const origin = new URL(requestUrl).origin;
+  return `${origin}/__edge/games-db/${GAMES_DB_CACHE_VERSION}/${encodeURIComponent(revision || "0")}/${keyPath}`;
+}
+
+/**
  * A JSON answer, served from the edge when it is there and stored there when
- * it may be. The key is built from the validated filters (`keyPath`), never
- * from the raw URL, so `?page=1&q=Zelda` and `?q=zelda` share one entry and a
- * made-up parameter cannot mint a new one.
+ * it may be, at `edgeCacheUrl`. When the load's revision cannot be read, the
+ * answer is built and sent without the edge cache.
  */
 export async function cachedJson(
   request: Request,
@@ -152,11 +205,12 @@ export async function cachedJson(
   build: () => Promise<{ body: unknown; status?: number; cacheable: boolean }>,
 ): Promise<Response> {
   const cache = edgeCache();
-  const key = new Request(
-    `${new URL(request.url).origin}/__edge/games-db/${GAMES_DB_CACHE_VERSION}/${keyPath}`,
-    { method: "GET" },
-  );
-  if (cache) {
+  const revision = cache ? await loadRevision() : null;
+  const key =
+    cache && revision !== null
+      ? new Request(edgeCacheUrl(request.url, revision, keyPath), { method: "GET" })
+      : null;
+  if (cache && key) {
     const hit = await cache.match(key).catch(() => undefined);
     if (hit) {
       const headers = new Headers(hit.headers);
@@ -173,6 +227,6 @@ export async function cachedJson(
       "x-cache-status": "fresh",
     },
   });
-  if (cache && cacheable) await cache.put(key, response.clone()).catch(() => undefined);
+  if (cache && key && cacheable) await cache.put(key, response.clone()).catch(() => undefined);
   return response;
 }

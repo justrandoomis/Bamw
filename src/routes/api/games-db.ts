@@ -10,8 +10,9 @@ import { guard } from "@/lib/http.server";
  *   GET /api/games-db?q=&platform=switch1|switch2&genre=&page=&sort=new|az
  *
  * Public and identical for every visitor, so it is answered from the edge
- * cache (an hour) and keyed on the validated filters. An answer from before
- * the loader has run (`ready: false`) is never cached.
+ * cache (an hour), keyed on the load's revision and the validated filters —
+ * a finished load is never answered from what was cached while it ran. An
+ * answer from before the loader has run (`ready: false`) is never cached.
  */
 export const Route = createFileRoute("/api/games-db")({
   server: {

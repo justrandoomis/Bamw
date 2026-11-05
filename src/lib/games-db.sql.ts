@@ -13,6 +13,7 @@
  */
 import {
   GAMES_DB_PAGE_SIZE,
+  GAMES_DB_REVISION_KEY,
   euIdFromSlug,
   genreLabel,
   imageOrEmpty,
@@ -149,6 +150,11 @@ export function facetsStatement(): GamesDbStatement {
 /** Whether the loader has written anything yet. */
 export function anyTitleStatement(): GamesDbStatement {
   return { sql: "SELECT 1 AS present FROM nintendo_titles LIMIT 1", binds: [] };
+}
+
+/** The stamp the last finished load left (`GAMES_DB_REVISION_KEY`): no row before the first. */
+export function revisionStatement(): GamesDbStatement {
+  return { sql: "SELECT value FROM nintendo_titles_meta WHERE key = ?", binds: [GAMES_DB_REVISION_KEY] };
 }
 
 /**
